@@ -10,7 +10,7 @@ if [[ ! -d elemental2 ]]; then
   git clone https://github.com/google/elemental2.git
 fi
 
-alias bazelisk=bazel
+alias bazel=bazelisk
 cd elemental2
 #bazel build java/...
 cd ..
