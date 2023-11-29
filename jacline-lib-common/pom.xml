@@ -13,13 +13,14 @@
     <artifactId>jacline-lib-common</artifactId>
 
     <properties>
+        <jacline.version>${project.version}</jacline.version>
     </properties>
     <build>
         <plugins>
             <plugin>
                 <groupId>com.kohlschutter.jacline</groupId>
                 <artifactId>jacline-maven-plugin</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${jacline.version}</version>
                 <executions>
                     <execution>
                         <id>default-jacline-compile</id>
@@ -29,6 +30,13 @@
                         <phase>compile</phase>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <failOnWarnings>false</failOnWarnings>
+                </configuration>
             </plugin>
         </plugins>
     </build>
