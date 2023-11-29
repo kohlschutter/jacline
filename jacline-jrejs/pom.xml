@@ -198,9 +198,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.kohlschutter.jsinterop</groupId>
+            <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-jsinterop-base</artifactId>
-            <version>1.0.2</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

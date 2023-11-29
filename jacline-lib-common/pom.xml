@@ -48,14 +48,9 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.jsinterop</groupId>
-            <artifactId>jsinterop-annotations</artifactId>
-            <version>2.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.kohlschutter.elemental2</groupId>
+            <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-elemental2-dom</artifactId>
-            <version>1.2.1</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.kohlschutter</groupId>
