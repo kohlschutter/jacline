@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"ArrayList.impl.java.js",
+"lineCount":126,
+"mappings":"A;;;;;;;;;;;;;;;MAqCa,S;;CAAA,W;EAAAA,Q;;;;QAEJ,S;EAAAC,oB;EAAAA,gC;EAAAA,6C;EAAAA,iB;;;;CAAA,gC;EAAYC,4C;EACjBA,8E;;;;QAGK,6B,sBAAkCC,C;EAAlCF,oB;EAAAA,gC;EAAAA,oE;EAAAA,iB;;;;CAAA,sD,sBAAkCE,C;EACvCD,wC;EAEAA,mF;;;;QAGK,Y,eAAcE,e;EAAdH,oB;EAAAA,gC;EAAAA,iE;EAAAA,iB;;;;CAAA,qC,eAAcG,e;EACnBF,wC;EAEAA,sI;;;CAIa,G,UAAMG,C;EACnBC,+G;EACAA,Y;;;CAIU,U,eAAQC,K,WAASF,C;EAC3BC,gH;EACAA,+H;;;CAIa,a,eAAWC,K,uBAA+BJ,C;EACvDK,gH;EACAA,8F;;;CAGc,uE,eAAeC,W,uBAAqCN,C;EAClEO,IAASC,MAATD,e;EACAA,IAAIE,GAAJF,iB;EACAA;GACEA,aADFA;G;EAIAA,IAAIG,SAAJH,0D;EACAA,mH;EAIAA,IAAII,cAAJJ,yB;EACAA,uN;EAGAA,gJ;EACAA,Y;;;CAGY,yB;EACZK,kF;;;CAGU,2B,eAAmBC,O;;CAK1B,qC,eAAeT,K;EAClBU,oH;;;CAIE,6B;EACFC,oD;;;CAIc,O;EACdC,8J;;;CAGU,kB;;CAKG,6B,eAAgBC,S,gBAAeC,Q;EAC5CC,qI;EACAA,IAAIC,KAAJD,4B;EACAA,4H;;;CAGG,kC,eAAYE,O;EACfC,iH;;;QA3FS,O;EAAAC,4B;EAAAA,yB;EAAAA;",
+"sources":["ArrayList.java"],
+"names":["java.util.ArrayList.<synthetic: ctor_js>","java.util.ArrayList.<synthetic: ctor_create>","java.util.ArrayList.<init>","c","initialCapacity","o","java.util.ArrayList.add","index","java.util.ArrayList.addAll","insertIndex","java.util.ArrayList.addAllImpl","values","len","newLength","insertEndIndex","java.util.ArrayList.clone","ignored","java.util.ArrayList.removeImpl","java.util.ArrayList.sizeImpl","java.util.ArrayList.toArray","fromIndex","endIndex","java.util.ArrayList.removeRange","count","newSize","java.util.ArrayList.setSize","java.util.ArrayList.<clinit>"]
+}

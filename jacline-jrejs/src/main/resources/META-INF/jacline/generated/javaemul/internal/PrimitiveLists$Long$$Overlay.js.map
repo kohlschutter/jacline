@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"PrimitiveLists$Long$$Overlay.impl.java.js",
+"lineCount":23,
+"mappings":"A;;;;;;;;MAqFsB,Q;;QAOE,6E;EAAAA,mB;EAClBA,oE;;;QAQkB,uE;EAAAC,mB;EAClBA,oE;;;QAjBgB,O;EAAAC,2B;EAAAA;",
+"sources":["PrimitiveLists.java"],
+"names":["javaemul.internal.PrimitiveLists$Long$$Overlay.internalArray__$devirt","javaemul.internal.PrimitiveLists$Long$$Overlay.toArray__$devirt","javaemul.internal.PrimitiveLists$Long$$Overlay.<clinit>"]
+}

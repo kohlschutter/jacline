@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"EnumMap.impl.java.js",
+"lineCount":125,
+"mappings":"A;;;;;;;;;;;;;;;;;;;;MA0Ba,O;;CAAA,W;EAAAA,Q;EAAAA;OAEW,yBAFXA,C;;;;QAIX,S;EAAAC,kB;EAAAA,8B;EAAAA,2C;EAAAA,iB;;;;CAAA,8B;EAAUC,0C;EAAAA,wC;;;;QAEH,wB,iBAAiBC,I;EAAjBF,kB;EAAAA,8B;EAAAA,gE;EAAAA,iB;;;;CAAA,+C,iBAAiBE,I;EAAMD,0C;EAAAA,wC;;;;QAEvB,sB,kBAA4BE,C;EAA5BH,kB;EAAAA,8B;EAAAA,2D;EAAAA,iB;;;;CAAA,6C,kBAA4BG,C;EAAGF,0C;EAAAA,wC;EACpCA,e;EACAA,gG;;;CAIU,K;EACVG,uC;;;CAGmB,0B;EACnBC,0E;;;CAIa,W,UAAmBC,G;EAChCC,uD;;;CAIa,a,UAAqBC,K;EAClCC,2D;;;CAIY,M;EACZC,+C;;;CAI0B,yB;EAC1BC,kE;;;CAIO,G,UAAWC,C;EAClBC,6C;;;CAIO,yD,UAAMP,G,WAAOE,K;EACpBM,sD;;;CAIO,M,UAAcR,G;EACrBS,kD;;;CAIS,I;EACTC,6C;;;;CA3DS,G;EAAAF,qH;;;CAAA,gC;EAEXb,mF;;;QAFW,O;EAAAgB,0B;EAAAA,uB;EAAAA;",
+"sources":["EnumMap.java"],
+"names":["java.util.EnumMap.<synthetic: ctor_js>","java.util.EnumMap.<synthetic: ctor_create>","java.util.EnumMap.<init>","type","m","java.util.EnumMap.clear","java.util.EnumMap.clone","key","java.util.EnumMap.containsKey","value","java.util.EnumMap.containsValue","java.util.EnumMap.keySet","java.util.EnumMap.entrySet","k","java.util.EnumMap.get","java.util.EnumMap.put","java.util.EnumMap.remove","java.util.EnumMap.size","java.util.EnumMap.<clinit>"]
+}
