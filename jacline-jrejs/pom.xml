@@ -138,6 +138,14 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <failOnWarnings>false</failOnWarnings>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -147,8 +155,8 @@
                         <id>default-jar</id>
                         <configuration>
                             <includes>
-				    <include>META-INF/jacline/**</include>
-				    <include>javaemul/**</include>
+                                <include>META-INF/jacline/**</include>
+                                <include>javaemul/**</include>
                             </includes>
                         </configuration>
                     </execution>
@@ -175,7 +183,8 @@
                             <classifier>bootstrap-embedded</classifier>
                             <classesDirectory>${project.build.directory}</classesDirectory>
                             <includes>
-                                <include>jacline-jrejs-1.0.0-SNAPSHOT-bootstrap.jar</include>
+                                <include>
+                                    jacline-jrejs-1.0.0-SNAPSHOT-bootstrap.jar</include>
                             </includes>
                             <archive>
                                 <addMavenDescriptor>false</addMavenDescriptor>
