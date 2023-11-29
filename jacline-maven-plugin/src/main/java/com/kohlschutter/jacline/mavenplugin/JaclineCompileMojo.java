@@ -62,9 +62,14 @@ import com.kohlschutter.jacline.jscomp.ClosureCompilationResult;
 import com.kohlschutter.jacline.jscomp.ClosureCompiler;
 import com.kohlschutter.jacline.jscomp.ClosureCompilerSources;
 
+/**
+ * Compiles code with jacline.
+ * 
+ * @author Christian Kohlschütter
+ */
 @Mojo(name = "compile", defaultPhase = LifecyclePhase.COMPILE, threadSafe = true, //
     requiresDependencyCollection = ResolutionScope.COMPILE, requiresDependencyResolution = ResolutionScope.COMPILE)
-@SuppressWarnings("null")
+@SuppressWarnings({"null", "PMD.GuardLogStatement"})
 public class JaclineCompileMojo extends AbstractMojo {
   private static final Pattern FILE_DEDUP_SUFFIX = Pattern.compile("(\\-[0-9]+)?(\\.[a-z]+)$");
 
@@ -112,7 +117,15 @@ public class JaclineCompileMojo extends AbstractMojo {
 
   private String projectBaseDirAbsoluteString;
 
+  @SuppressWarnings("PMD.ProperLogger")
   private Log log;
+
+  /**
+   * Mucho mojo.
+   */
+  public JaclineCompileMojo() {
+    super();
+  }
 
   @Override
   public void execute() throws MojoExecutionException, MojoFailureException {
@@ -135,7 +148,7 @@ public class JaclineCompileMojo extends AbstractMojo {
         IOUtil.deleteRecursively(p);
       }
     } catch (IOException e) {
-      throw new MojoExecutionException("Could not delete " + jaclineMetaInfDirectory);
+      throw new MojoExecutionException("Could not delete " + jaclineMetaInfDirectory, e);
     }
 
     try (CompilerOutput to = CompilerOutput.newInstanceWithTargetDirectory(Path.of(
@@ -175,6 +188,7 @@ public class JaclineCompileMojo extends AbstractMojo {
     }
   }
 
+  @SuppressWarnings("PMD.CognitiveComplexity")
   private void copyJavaScriptFiles(List<String> roots, List<String> entryPointsList,
       @NonNull Path outDir) throws IOException {
     Set<Path> entryPointPaths = new HashSet<>();
@@ -198,12 +212,12 @@ public class JaclineCompileMojo extends AbstractMojo {
     Map<String, AtomicInteger> sameFileMap = new HashMap<>();
 
     for (String r : roots) {
-      Path rPath = absolutePath(r);
-      if (!Files.isDirectory(rPath)) {
-        log.info("Skipping non-existing directory: " + rPath);
+      Path rp = absolutePath(r);
+      if (!Files.isDirectory(rp)) {
+        log.info("Skipping non-existing directory: " + rp);
         continue;
       }
-      List<Path> files = Files.find(rPath, 64, (p, a) -> {
+      List<Path> files = Files.find(rp, 64, (p, a) -> {
         return !a.isDirectory() && p.toString().endsWith(".js");
       }, FileVisitOption.FOLLOW_LINKS).collect(Collectors.toList());
 
@@ -356,7 +370,7 @@ public class JaclineCompileMojo extends AbstractMojo {
     }
   }
 
-  private static final void mkdirs(File file) throws IOException {
+  private static void mkdirs(File file) throws IOException {
     if (!file.mkdirs()) {
       if (!file.isDirectory()) {
         throw new IOException("Could not create directory: " + file);
