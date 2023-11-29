@@ -17,17 +17,24 @@
  */
 package com.kohlschutter.jacline;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
-public final class Problems {
+public final class Problems implements Serializable {
+  private static final long serialVersionUID = 1L;
   private String stage = "default";
   private final List<Problem> errors = new ArrayList<>();
   private final List<Problem> warnings = new ArrayList<>();
   private final List<Problem> infoMessages = new ArrayList<>();
 
-  public static final class Problem {
+  public Problems() {
+  }
+
+  public static final class Problem implements Serializable {
+    private static final long serialVersionUID = 1L;
     String stage;
     String message;
 
@@ -50,6 +57,7 @@ public final class Problems {
     }
   }
 
+  @SuppressWarnings("PMD.ShortMethodName")
   public static Problems of(Problems... list) {
     if (list.length == 1) {
       return list[0];
@@ -59,9 +67,6 @@ public final class Problems {
       out.updateFrom(p);
     }
     return out;
-  }
-
-  public Problems() {
   }
 
   public void updateFrom(Problems other) {
@@ -118,15 +123,15 @@ public final class Problems {
   }
 
   public List<Problem> getErrors() {
-    return errors;
+    return Collections.unmodifiableList(errors);
   }
 
   public List<Problem> getWarnings() {
-    return warnings;
+    return Collections.unmodifiableList(warnings);
   }
 
   public List<Problem> getInfoMessages() {
-    return infoMessages;
+    return Collections.unmodifiableList(infoMessages);
   }
 
   public Problems newSnapshot() {

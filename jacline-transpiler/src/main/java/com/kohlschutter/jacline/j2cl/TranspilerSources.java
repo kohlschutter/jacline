@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -88,7 +89,7 @@ public final class TranspilerSources {
   }
 
   public List<Path> getSourceFiles() {
-    return sourceFiles;
+    return Collections.unmodifiableList(sourceFiles);
   }
 
   public List<String> getEffectiveClasspath(boolean onlyAddExisting) {

@@ -17,6 +17,7 @@
  */
 package com.kohlschutter.jacline.jscomp;
 
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -25,17 +26,19 @@ import com.google.javascript.jscomp.CodePrinter.LicenseTracker;
 import com.google.javascript.jscomp.Compiler;
 import com.google.javascript.jscomp.jarjar.com.google.common.collect.ImmutableSet;
 import com.google.javascript.rhino.Node;
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 
 public final class TrackingOnlyLicenseTracker implements LicenseTracker {
-  private AbstractCompiler compiler;
+  private final AbstractCompiler compiler;
   private final Set<String> seenLicenses = new LinkedHashSet<>();
   private String lastSeenFile = "";
 
+  @SuppressFBWarnings("EI_EXPOSE_REP2")
   public TrackingOnlyLicenseTracker(AbstractCompiler compiler) {
     this.compiler = compiler;
   }
 
-  protected boolean shouldUseLicenseInfo(Node node) {
+  private boolean shouldUseLicenseInfo(Node node) {
     return !node.isRoot() && !node.isScript();
   }
 
@@ -63,6 +66,6 @@ public final class TrackingOnlyLicenseTracker implements LicenseTracker {
   }
 
   public Set<String> getSeenLicenses() {
-    return seenLicenses;
+    return Collections.unmodifiableSet(seenLicenses);
   }
 }

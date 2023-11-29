@@ -40,22 +40,25 @@ final class BootstrapJarSupport {
   private static final Pattern PAT_JREJS = Pattern.compile(
       "/jacline-jrejs-[0-9\\.]+(-SNAPSHOT)?\\.jar$");
 
-  private static String JREJS_PATH = null;
+  private static String jreJsPath = null;
 
   private BootstrapJarSupport() {
 
   }
 
+  @SuppressWarnings({
+      "PMD.NcssCount", "PMD.CognitiveComplexity", "PMD.NPathComplexity", "PMD.CyclomaticComplexity",
+      "PMD.PreserveStackTrace", "PMD.AvoidBranchingStatementAsLastInLoop"})
   public static synchronized String jrejsLibraryPath() {
-    if (JREJS_PATH != null) {
-      return JREJS_PATH;
+    if (jreJsPath != null) {
+      return jreJsPath;
     }
 
     // Always permit an override. You never know...
     String overrideBootstrapJar = System.getProperty("jacline.j2cl.bootstrap.jar", "");
     if (!overrideBootstrapJar.isEmpty()) {
       if (Files.isReadable(Path.of(overrideBootstrapJar))) {
-        return (JREJS_PATH = overrideBootstrapJar);
+        return (jreJsPath = overrideBootstrapJar);
       } else {
         throw new IllegalStateException(
             "jar specified via \"jacline.j2cl.bootstrap.jar\" system property is not accessible: "
@@ -70,6 +73,7 @@ final class BootstrapJarSupport {
 
     // java.class.path may be incomplete; try adding entries from our classloader if possible
     // This is required for the Maven plugin, for example.
+    @SuppressWarnings("PMD.UseProperClassLoader")
     ClassLoader cl = BootstrapJarSupport.class.getClassLoader();
     if (cl instanceof URLClassLoader) {
       for (URL url : ((URLClassLoader) cl).getURLs()) {
@@ -104,7 +108,7 @@ final class BootstrapJarSupport {
             return a.isRegularFile() && f.toString().endsWith("-bootstrap.jar");
           }).findFirst();
           if (jar.isPresent() && Files.isReadable(jar.get())) {
-            return (JREJS_PATH = jar.get().toString());
+            return (jreJsPath = jar.get().toString());
           }
         } catch (IOException ignore) {
           // ignore
@@ -125,7 +129,7 @@ final class BootstrapJarSupport {
           continue;
         }
         if (size > 0) {
-          return (JREJS_PATH = bootstrapJarPath.toString());
+          return (jreJsPath = bootstrapJarPath.toString());
         }
       }
 
@@ -155,8 +159,10 @@ final class BootstrapJarSupport {
           try {
             tempFile = Files.createTempFile("jaclineTmp-", ".jar");
           } catch (IOException e1) {
-            throw new IllegalStateException(
-                "Cannot create temporary files needed for bootstrap classpath");
+            IllegalStateException ise = new IllegalStateException(
+                "Cannot create temporary files needed for bootstrap classpath", e);
+            ise.addSuppressed(e1);
+            throw ise;
           }
         }
         pathToReturn = tempFile.toString();
@@ -185,7 +191,7 @@ final class BootstrapJarSupport {
         }
       }
 
-      return (JREJS_PATH = pathToReturn);
+      return (jreJsPath = pathToReturn);
     }
 
     // Looks like our expectations failed

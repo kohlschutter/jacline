@@ -26,6 +26,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -47,11 +48,11 @@ public final class ClosureCompilerSources {
   }
 
   public List<Path> getEntryPoints() {
-    return entryPoints;
+    return Collections.unmodifiableList(entryPoints);
   }
 
   public List<Path> getOtherFiles() {
-    return otherFiles;
+    return Collections.unmodifiableList(otherFiles);
   }
 
   public void addSourcesFromClasspath() throws IOException {
@@ -67,6 +68,7 @@ public final class ClosureCompilerSources {
     addSourcesFromClasspath(classpath, null);
   }
 
+  @SuppressWarnings("PMD.CognitiveComplexity")
   public void addSourcesFromClasspath(List<String> classpath, Predicate<Path> acceptableEntries)
       throws IOException {
     Path dir;

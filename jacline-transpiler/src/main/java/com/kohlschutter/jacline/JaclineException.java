@@ -20,16 +20,20 @@ package com.kohlschutter.jacline;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
+
 public class JaclineException extends Exception {
 
   private static final long serialVersionUID = 1L;
   private final Problems problems;
 
+  @SuppressFBWarnings("EI_EXPOSE_REP")
   public JaclineException(Problems problems) {
     super();
     this.problems = problems;
   }
 
+  @SuppressFBWarnings("EI_EXPOSE_REP")
   public Problems getProblems() {
     return problems;
   }

@@ -38,13 +38,16 @@ import com.google.javascript.jscomp.DependencyOptions;
 import com.google.javascript.jscomp.ModuleIdentifier;
 import com.google.javascript.jscomp.Result;
 import com.google.javascript.jscomp.SourceFile;
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 
 public class ClosureCompiler implements Closeable {
-  private static List<SourceFile> BUILTIN_EXTERNS;
+  private static List<SourceFile> builtinExterns;
 
+  @SuppressWarnings("PMD.AssignmentToNonFinalStatic")
+  @SuppressFBWarnings({"ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD", "EI_EXPOSE_REP"})
   public ClosureCompiler() throws IOException {
-    if (BUILTIN_EXTERNS == null) {
-      BUILTIN_EXTERNS = Collections.unmodifiableList(CommandLineRunner.getBuiltinExterns(
+    if (builtinExterns == null) {
+      builtinExterns = Collections.unmodifiableList(CommandLineRunner.getBuiltinExterns(
           Environment.BROWSER));
     }
   }
@@ -69,8 +72,6 @@ public class ClosureCompiler implements Closeable {
     addSourceFiles(entryPoints, filesMap);
     List<Path> entryPointPaths = new ArrayList<>(filesMap.keySet());
     addSourceFiles(otherSources, filesMap);
-
-    List<SourceFile> sources = new ArrayList<>(filesMap.values());
 
     CompilerImpl compiler = new CompilerImpl();
 
@@ -100,7 +101,8 @@ public class ClosureCompiler implements Closeable {
       compiler.setSuppressReport(true);
     }
 
-    Result result = compiler.compile(BUILTIN_EXTERNS, sources, options);
+    List<SourceFile> sources = new ArrayList<>(filesMap.values());
+    Result result = compiler.compile(builtinExterns, sources, options);
     if (result.success) {
       return ClosureCompilationResult.ofSource(compiler.toSource());
     } else {
@@ -111,8 +113,8 @@ public class ClosureCompiler implements Closeable {
 
   private void addSourceFiles(List<Path> paths, Map<Path, SourceFile> filesMap) throws IOException {
     for (Path p : paths) {
-      p = p.toRealPath();
-      filesMap.computeIfAbsent(p, (path) -> SourceFile.fromPath(path, StandardCharsets.UTF_8));
+      filesMap.computeIfAbsent(p.toRealPath(), (path) -> SourceFile.fromPath(path,
+          StandardCharsets.UTF_8));
     }
   }
 

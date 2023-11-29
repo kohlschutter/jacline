@@ -23,6 +23,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
+
 public class CompilerOutput implements Closeable {
   protected final Path outputDir;
 
@@ -60,6 +62,7 @@ public class CompilerOutput implements Closeable {
 
   }
 
+  @SuppressFBWarnings("EI_EXPOSE_REP")
   public Problems getProblems() {
     return problems;
   }
