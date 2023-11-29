@@ -72,10 +72,11 @@ Java.
 Clone this repository, change into the clone's directory, and run
 
 ```
+  git submodule update --init
   mvn clean install
 ```
 
-to build everything.
+to setup and build everything.
 
 ### Snapshot builds for testing
 
