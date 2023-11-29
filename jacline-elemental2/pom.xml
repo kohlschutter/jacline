@@ -6,68 +6,112 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
+        <groupId>com.kohlschutter.jacline</groupId>
+        <artifactId>jacline</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.kohlschutter.elemental2</groupId>
     <artifactId>jacline-elemental2</artifactId>
-    <version>1.2.1</version>
     <packaging>pom</packaging>
 
-    <name>Elemental2</name>
     <description>Thin Java abstractions for the standard built-in objects for
         Javascript.</description>
-    <url>https://www.gwtproject.org</url>
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-    <scm>
-        <connection>scm:git:https://github.com/google/elemental2.git</connection>
-        <developerConnection>scm:git:git@github.com:google/elemental2.git</developerConnection>
-        <url>https://github.com/google/elemental2</url>
-    </scm>
-
-    <issueManagement>
-        <url>https://github.com/google/elemental2/issues</url>
-        <system>GitHub Issues</system>
-    </issueManagement>
-
-    <developers>
-        <developer>
-            <name>J2CL Team</name>
-            <organization>Google</organization>
-            <organizationUrl>http://www.google.com</organizationUrl>
-        </developer>
-    </developers>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-check</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>default-cpd-check</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>check-license-headers</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>de.thetaphi</groupId>
+                <artifactId>forbiddenapis</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>spotbugs-during-install</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>checkstyle-during-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <failOnWarnings>false</failOnWarnings>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-annotations</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.jsinterop</groupId>
-            <artifactId>jsinterop-annotations</artifactId>
-            <version>2.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.kohlschutter.jsinterop</groupId>
+            <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-jsinterop-base</artifactId>
-            <version>1.0.2</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-jrejs</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
