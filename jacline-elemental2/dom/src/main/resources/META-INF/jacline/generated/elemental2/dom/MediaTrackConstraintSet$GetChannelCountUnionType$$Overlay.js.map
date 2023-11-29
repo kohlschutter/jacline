@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"MediaTrackConstraintSet$GetChannelCountUnionType$$Overlay.impl.java.js",
+"lineCount":31,
+"mappings":"A;;;;;;MAyDiB,Q;;QAEuC,uF,UAAUA,C;EAAEC,mB;EACpEA,yE;;;QAG2B,mI;EAAAC,mB;EAC3BA,iG;;;QAGY,sF;EAAAC,mB;EACZA,mD;;;QAGgB,0F;EAAAC,mB;EAChBA,oC;;;QAfiB,O;EAAAC,2B;EAAAA;",
+"sources":["MediaTrackConstraintSet.java"],
+"names":["o","elemental2.dom.MediaTrackConstraintSet$GetChannelCountUnionType$$Overlay.of","elemental2.dom.MediaTrackConstraintSet$GetChannelCountUnionType$$Overlay.asConstrainLongRange__$devirt","elemental2.dom.MediaTrackConstraintSet$GetChannelCountUnionType$$Overlay.asInt__$devirt","elemental2.dom.MediaTrackConstraintSet$GetChannelCountUnionType$$Overlay.isInt__$devirt","elemental2.dom.MediaTrackConstraintSet$GetChannelCountUnionType$$Overlay.<clinit>"]
+}

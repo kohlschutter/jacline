@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"JsString$MatchAllRegexpUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MA0CiB,Q;;QAEuB,wE,UAAUA,C;EAAEC,mB;EACpDA,yE;;;QAGiB,iG;EAAAC,mB;EACjBA,oH;;;QAGe,uF;EAAAC,mB;EACfA,mE;;;QAGgB,gF;EAAAC,mB;EAChBA,+C;;;QAGgB,8E;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["JsString.java"],
+"names":["o","elemental2.core.JsString$MatchAllRegexpUnionType$$Overlay.of","elemental2.core.JsString$MatchAllRegexpUnionType$$Overlay.asJsRegExp__$devirt","elemental2.core.JsString$MatchAllRegexpUnionType$$Overlay.asString__$devirt","elemental2.core.JsString$MatchAllRegexpUnionType$$Overlay.isJsRegExp__$devirt","elemental2.core.JsString$MatchAllRegexpUnionType$$Overlay.isString__$devirt","elemental2.core.JsString$MatchAllRegexpUnionType$$Overlay.<clinit>"]
+}

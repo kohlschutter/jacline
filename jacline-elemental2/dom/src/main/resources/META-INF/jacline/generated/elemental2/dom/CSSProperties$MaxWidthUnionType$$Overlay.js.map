@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"CSSProperties$MaxWidthUnionType$$Overlay.impl.java.js",
+"lineCount":37,
+"mappings":"A;;;;;;;MAmjBiB,Q;;QAEsB,sE,UAAUA,C;EAAEC,mB;EACnDA,yE;;;QAGe,2E;EAAAC,mB;EACfA,yD;;;QAGe,qF;EAAAC,mB;EACfA,mE;;;QAGgB,4E;EAAAC,mB;EAChBA,oC;;;QAGgB,4E;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["CSSProperties.java"],
+"names":["o","elemental2.dom.CSSProperties$MaxWidthUnionType$$Overlay.of","elemental2.dom.CSSProperties$MaxWidthUnionType$$Overlay.asDouble__$devirt","elemental2.dom.CSSProperties$MaxWidthUnionType$$Overlay.asString__$devirt","elemental2.dom.CSSProperties$MaxWidthUnionType$$Overlay.isDouble__$devirt","elemental2.dom.CSSProperties$MaxWidthUnionType$$Overlay.isString__$devirt","elemental2.dom.CSSProperties$MaxWidthUnionType$$Overlay.<clinit>"]
+}

@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"FontFaceDescriptors$$Overlay.impl.java.js",
+"lineCount":16,
+"mappings":"A;;;;;;MASiB,Q;;QAEU,4C;EAAQA,mB;EACnCA,+L;;;QAHiB,O;EAAAC,2B;EAAAA;",
+"sources":["FontFaceDescriptors.java"],
+"names":["elemental2.dom.FontFaceDescriptors$$Overlay.create","elemental2.dom.FontFaceDescriptors$$Overlay.<clinit>"]
+}

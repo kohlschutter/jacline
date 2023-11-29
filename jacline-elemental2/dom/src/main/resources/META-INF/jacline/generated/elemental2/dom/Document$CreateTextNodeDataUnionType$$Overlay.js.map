@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Document$CreateTextNodeDataUnionType$$Overlay.impl.java.js",
+"lineCount":37,
+"mappings":"A;;;;;;;MAgGiB,Q;;QAE2B,2E,UAAUA,C;EAAEC,mB;EACxDA,yE;;;QAGe,gF;EAAAC,mB;EACfA,yD;;;QAGe,0F;EAAAC,mB;EACfA,mE;;;QAGgB,iF;EAAAC,mB;EAChBA,oC;;;QAGgB,iF;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["Document.java"],
+"names":["o","elemental2.dom.Document$CreateTextNodeDataUnionType$$Overlay.of","elemental2.dom.Document$CreateTextNodeDataUnionType$$Overlay.asDouble__$devirt","elemental2.dom.Document$CreateTextNodeDataUnionType$$Overlay.asString__$devirt","elemental2.dom.Document$CreateTextNodeDataUnionType$$Overlay.isDouble__$devirt","elemental2.dom.Document$CreateTextNodeDataUnionType$$Overlay.isString__$devirt","elemental2.dom.Document$CreateTextNodeDataUnionType$$Overlay.<clinit>"]
+}

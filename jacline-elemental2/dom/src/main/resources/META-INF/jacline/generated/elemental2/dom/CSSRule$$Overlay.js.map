@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"CSSRule$$Overlay.impl.java.js",
+"lineCount":68,
+"mappings":"A;;;;;MAQa,Q;;QACb,mD;EAAAA,4F;;;QAEA,qD;EAAAA,8F;;;QAEA,kD;EAAAA,2F;;;QAEA,iD;EAAAA,0F;;;QAEA,gD;EAAAA,yF;;;QAEA,iD;EAAAA,0F;;;QAEA,mD;EAAAA,4F;;;QAba,O;EAAAC,2B;EAAAA,wB;EACbA,sF;EAEAA,0F;EAEAA,oF;EAEAA,kF;EAEAA,gF;EAEAA,kF;EAEAA,sF;;;;;;;;;;AAba;mE;AAAA;qE;AAAA;kE;AAAA;iE;AAAA;gE;AAAA;iE;AAAA;;",
+"sources":["CSSRule.java"],
+"names":["elemental2.dom.CSSRule$$Overlay.<synthetic: getter>","elemental2.dom.CSSRule$$Overlay.<clinit>"]
+}

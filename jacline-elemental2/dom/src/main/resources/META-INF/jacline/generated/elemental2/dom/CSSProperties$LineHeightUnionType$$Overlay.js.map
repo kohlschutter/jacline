@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"CSSProperties$LineHeightUnionType$$Overlay.impl.java.js",
+"lineCount":37,
+"mappings":"A;;;;;;;MAkZiB,Q;;QAEwB,wE,UAAUA,C;EAAEC,mB;EACrDA,yE;;;QAGe,6E;EAAAC,mB;EACfA,yD;;;QAGe,uF;EAAAC,mB;EACfA,mE;;;QAGgB,8E;EAAAC,mB;EAChBA,oC;;;QAGgB,8E;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["CSSProperties.java"],
+"names":["o","elemental2.dom.CSSProperties$LineHeightUnionType$$Overlay.of","elemental2.dom.CSSProperties$LineHeightUnionType$$Overlay.asDouble__$devirt","elemental2.dom.CSSProperties$LineHeightUnionType$$Overlay.asString__$devirt","elemental2.dom.CSSProperties$LineHeightUnionType$$Overlay.isDouble__$devirt","elemental2.dom.CSSProperties$LineHeightUnionType$$Overlay.isString__$devirt","elemental2.dom.CSSProperties$LineHeightUnionType$$Overlay.<clinit>"]
+}

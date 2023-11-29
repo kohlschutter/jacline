@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"MediaStream$ConstructorStreamOrTracksUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MAmBiB,Q;;QAEqC,qF,UAAUA,C;EAAEC,mB;EAClEA,yE;;;QAGkC,4G;EAAAC,mB;EAClCA,oI;;;QAGoB,mH;EAAAC,mB;EACpBA,4H;;;QAGgB,4F;EAAAC,mB;EAChBA,8C;;;QAGgB,gG;EAAAC,mB;EAChBA,kD;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["MediaStream.java"],
+"names":["o","elemental2.dom.MediaStream$ConstructorStreamOrTracksUnionType$$Overlay.of","elemental2.dom.MediaStream$ConstructorStreamOrTracksUnionType$$Overlay.asJsArray__$devirt","elemental2.dom.MediaStream$ConstructorStreamOrTracksUnionType$$Overlay.asMediaStream__$devirt","elemental2.dom.MediaStream$ConstructorStreamOrTracksUnionType$$Overlay.isJsArray__$devirt","elemental2.dom.MediaStream$ConstructorStreamOrTracksUnionType$$Overlay.isMediaStream__$devirt","elemental2.dom.MediaStream$ConstructorStreamOrTracksUnionType$$Overlay.<clinit>"]
+}

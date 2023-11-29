@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"BigInt$ToLocaleStringLocalesUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MA0CiB,Q;;QAE4B,6E,UAAUA,C;EAAEC,mB;EACzDA,yE;;;QAGwB,oG;EAAAC,mB;EACxBA,2H;;;QAGe,4F;EAAAC,mB;EACfA,mE;;;QAGgB,oF;EAAAC,mB;EAChBA,8C;;;QAGgB,mF;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["BigInt.java"],
+"names":["o","elemental2.core.BigInt$ToLocaleStringLocalesUnionType$$Overlay.of","elemental2.core.BigInt$ToLocaleStringLocalesUnionType$$Overlay.asJsArray__$devirt","elemental2.core.BigInt$ToLocaleStringLocalesUnionType$$Overlay.asString__$devirt","elemental2.core.BigInt$ToLocaleStringLocalesUnionType$$Overlay.isJsArray__$devirt","elemental2.core.BigInt$ToLocaleStringLocalesUnionType$$Overlay.isString__$devirt","elemental2.core.BigInt$ToLocaleStringLocalesUnionType$$Overlay.<clinit>"]
+}

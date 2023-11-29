@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"EventSource$ConstructorUrlUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MAiBiB,Q;;QAE0B,0E,UAAUA,C;EAAEC,mB;EACvDA,yE;;;QAGe,yF;EAAAC,mB;EACfA,mE;;;QAGY,wF;EAAAC,mB;EACZA,4G;;;QAGgB,gF;EAAAC,mB;EAChBA,wC;;;QAGgB,6E;EAAAC,mB;EAChBA,0C;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["EventSource.java"],
+"names":["o","elemental2.dom.EventSource$ConstructorUrlUnionType$$Overlay.of","elemental2.dom.EventSource$ConstructorUrlUnionType$$Overlay.asString__$devirt","elemental2.dom.EventSource$ConstructorUrlUnionType$$Overlay.asURL__$devirt","elemental2.dom.EventSource$ConstructorUrlUnionType$$Overlay.isString__$devirt","elemental2.dom.EventSource$ConstructorUrlUnionType$$Overlay.isURL__$devirt","elemental2.dom.EventSource$ConstructorUrlUnionType$$Overlay.<clinit>"]
+}

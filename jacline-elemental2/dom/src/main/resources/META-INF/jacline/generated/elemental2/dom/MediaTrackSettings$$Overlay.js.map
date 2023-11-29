@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"MediaTrackSettings$$Overlay.impl.java.js",
+"lineCount":15,
+"mappings":"A;;;;;MAUiB,Q;;QAiHJ,4I,sDAAmEA,gB;EAAnEC,mB;EACbA,6H;;;QAlHiB,O;EAAAC,2B;EAAAA;",
+"sources":["MediaTrackSettings.java"],
+"names":["pointsOfInterest","elemental2.dom.MediaTrackSettings$$Overlay.setPointsOfInterest__$devirt","elemental2.dom.MediaTrackSettings$$Overlay.<clinit>"]
+}

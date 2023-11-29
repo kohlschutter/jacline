@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Float64Array$$Overlay.impl.java.js",
+"lineCount":90,
+"mappings":"A;;;;;;;MAiBa,Q;;QAiFuB,0H,4BAAyBA,M,qCAA8BC,K,WAAQC,O;EAAQC,mB;EAC3GA,0H;;;QAGiC,wG,4BAAyBH,M,qCAA8BC,K;EAAME,mB;EAC9FA,iH;;;QAGiC,gE,4BAAyBH,M;EAAOG,mB;EACjEA,0G;;;QAGoC,0H,0BAAwBH,M,qCAA8BC,K,WAAQC,O;EAAQC,mB;EAC1GA,0H;;;QAGiC,wG,0BAAwBH,M,qCAA8BC,K;EAAME,mB;EAC7FA,iH;;;QAGiC,gE,0BAAwBH,M;EAAOG,mB;EAChEA,0G;;;QAGoC,gH,gBAAYH,M,qCAA8BC,K,WAAQC,O;EAAQC,mB;EAC9FA,0H;;;QAGiC,8F,gBAAYH,M,qCAA8BC,K;EAAME,mB;EACjFA,iH;;;QAGiC,sD,gBAAYH,M;EAAOG,mB;EACpDA,0G;;;QAGoC,8G,sBAAcH,M,qCAA8BC,K,WAAQC,O;EAAQC,mB;EAChGA,8P;;;QAGiC,4F,sBAAcH,M,qCAA8BC,K;EAAME,mB;EACnFA,mO;;;QAGiC,oD,sBAAcH,M;EAAOG,mB;EACtDA,oL;;;QAnDA,8D;EAAAC,uG;;;QA3Ea,O;EAAAC,2B;EAAAA,wB;EA2EbA,2G;;;;;;;;;;;;AA3Ea;;",
+"sources":["Float64Array.java"],
+"names":["source","mapFn","thisArg","elemental2.core.Float64Array$$Overlay.from","elemental2.core.Float64Array$$Overlay.<synthetic: getter>","elemental2.core.Float64Array$$Overlay.<clinit>"]
+}

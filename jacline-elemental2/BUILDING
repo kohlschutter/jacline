@@ -1,0 +1,8 @@
+Important!
+
+Do not modify any files in */src/
+
+They are copies obtained via update.sh, and added to this repository only for
+performance reasons.
+
+Invoking that script will overwrite all changes.

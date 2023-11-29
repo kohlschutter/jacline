@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"DomGlobal$CreateImageBitmapSxOrOptionsUnionType$$Overlay.impl.java.js",
+"lineCount":31,
+"mappings":"A;;;;;;MA4GiB,Q;;QAEsC,sF,UAAUA,C;EAAEC,mB;EACnEA,yE;;;QAGe,2F;EAAAC,mB;EACfA,yD;;;QAG2B,kI;EAAAC,mB;EAC3BA,iG;;;QAGgB,4F;EAAAC,mB;EAChBA,oC;;;QAfiB,O;EAAAC,2B;EAAAA;",
+"sources":["DomGlobal.java"],
+"names":["o","elemental2.dom.DomGlobal$CreateImageBitmapSxOrOptionsUnionType$$Overlay.of","elemental2.dom.DomGlobal$CreateImageBitmapSxOrOptionsUnionType$$Overlay.asDouble__$devirt","elemental2.dom.DomGlobal$CreateImageBitmapSxOrOptionsUnionType$$Overlay.asImageBitmapOptions__$devirt","elemental2.dom.DomGlobal$CreateImageBitmapSxOrOptionsUnionType$$Overlay.isDouble__$devirt","elemental2.dom.DomGlobal$CreateImageBitmapSxOrOptionsUnionType$$Overlay.<clinit>"]
+}

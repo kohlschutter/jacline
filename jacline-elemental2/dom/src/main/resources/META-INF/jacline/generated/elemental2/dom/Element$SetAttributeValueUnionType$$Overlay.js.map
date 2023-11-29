@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Element$SetAttributeValueUnionType$$Overlay.impl.java.js",
+"lineCount":71,
+"mappings":"A;;;;;;;;;;;MA8biB,Q;;QAEyB,yE,UAAUA,C;EAAEC,mB;EACtDA,yE;;;QAGgB,gF;EAAAC,mB;EAChBA,2D;;;QAGe,8E;EAAAC,mB;EACfA,yD;;;QAGe,wF;EAAAC,mB;EACfA,mE;;;QAGoB,uG;EAAAC,mB;EACpBA,4H;;;QAGyB,iH;EAAAC,mB;EACzBA,sI;;;QAGgB,gF;EAAAC,mB;EAChBA,qC;;;QAGgB,+E;EAAAC,mB;EAChBA,oC;;;QAGgB,+E;EAAAC,mB;EAChBA,wC;;;QAGgB,oF;EAAAC,mB;EAChBA,kD;;;QAGgB,yF;EAAAC,mB;EAChBA,uD;;;QA3CiB,O;EAAAC,2B;EAAAA;",
+"sources":["Element.java"],
+"names":["o","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.of","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.asBoolean__$devirt","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.asDouble__$devirt","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.asString__$devirt","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.asTrustedHTML__$devirt","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.asTrustedScriptURL__$devirt","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.isBoolean__$devirt","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.isDouble__$devirt","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.isString__$devirt","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.isTrustedHTML__$devirt","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.isTrustedScriptURL__$devirt","elemental2.dom.Element$SetAttributeValueUnionType$$Overlay.<clinit>"]
+}

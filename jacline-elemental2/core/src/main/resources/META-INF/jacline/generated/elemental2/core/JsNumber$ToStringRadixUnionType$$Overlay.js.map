@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"JsNumber$ToStringRadixUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MAqCiB,Q;;QAEsB,uE,UAAUA,C;EAAEC,mB;EACnDA,yE;;;QAGY,sE;EAAAC,mB;EACZA,mD;;;QAGiB,gG;EAAAC,mB;EACjBA,oH;;;QAGgB,0E;EAAAC,mB;EAChBA,oC;;;QAGgB,+E;EAAAC,mB;EAChBA,+C;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["JsNumber.java"],
+"names":["o","elemental2.core.JsNumber$ToStringRadixUnionType$$Overlay.of","elemental2.core.JsNumber$ToStringRadixUnionType$$Overlay.asInt__$devirt","elemental2.core.JsNumber$ToStringRadixUnionType$$Overlay.asJsNumber__$devirt","elemental2.core.JsNumber$ToStringRadixUnionType$$Overlay.isInt__$devirt","elemental2.core.JsNumber$ToStringRadixUnionType$$Overlay.isJsNumber__$devirt","elemental2.core.JsNumber$ToStringRadixUnionType$$Overlay.<clinit>"]
+}

@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Uint8ClampedArray$$Overlay.impl.java.js",
+"lineCount":90,
+"mappings":"A;;;;;;;MAiBa,Q;;QAiF4B,oI,4BAAyBA,M,qCAAmCC,K,WAAQC,O;EAAQC,mB;EACrHA,+H;;;QAGsC,kH,4BAAyBH,M,qCAAmCC,K;EAAME,mB;EACxGA,sH;;;QAGsC,qE,4BAAyBH,M;EAAOG,mB;EACtEA,+G;;;QAGyC,oI,0BAAwBH,M,qCAAmCC,K,WAAQC,O;EAAQC,mB;EACpHA,+H;;;QAGsC,kH,0BAAwBH,M,qCAAmCC,K;EAAME,mB;EACvGA,sH;;;QAGsC,qE,0BAAwBH,M;EAAOG,mB;EACrEA,+G;;;QAGyC,0H,gBAAYH,M,qCAAmCC,K,WAAQC,O;EAAQC,mB;EACxGA,+H;;;QAGsC,wG,gBAAYH,M,qCAAmCC,K;EAAME,mB;EAC3FA,sH;;;QAGsC,2D,gBAAYH,M;EAAOG,mB;EACzDA,+G;;;QAGyC,wH,sBAAcH,M,qCAAmCC,K,WAAQC,O;EAAQC,mB;EAC1GA,wQ;;;QAGsC,sG,sBAAcH,M,qCAAmCC,K;EAAME,mB;EAC7FA,6O;;;QAGsC,yD,sBAAcH,M;EAAOG,mB;EAC3DA,yL;;;QAnDA,mE;EAAAC,4G;;;QA3Ea,O;EAAAC,2B;EAAAA,wB;EA2EbA,qH;;;;;;;;;;;;AA3Ea;;",
+"sources":["Uint8ClampedArray.java"],
+"names":["source","mapFn","thisArg","elemental2.core.Uint8ClampedArray$$Overlay.from","elemental2.core.Uint8ClampedArray$$Overlay.<synthetic: getter>","elemental2.core.Uint8ClampedArray$$Overlay.<clinit>"]
+}

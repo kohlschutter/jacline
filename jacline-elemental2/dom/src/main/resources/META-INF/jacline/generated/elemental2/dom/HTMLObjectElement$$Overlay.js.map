@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"HTMLObjectElement$$Overlay.impl.java.js",
+"lineCount":22,
+"mappings":"A;;;;;;;MAaa,Q;;QAoEK,iG,mDAAoBA,M,gBAAcC,Q,iBAAgBC,K;EAAlDC,mB;EAClBA,wH;;;QAIkB,uF,mDAAoBH,M,gBAAcC,Q,gBAAgBC,K;EAAlDC,mB;EAClBA,wH;;;QA1Ea,O;EAAAC,2B;EAAAA;",
+"sources":["HTMLObjectElement.java"],
+"names":["target","property","value","elemental2.dom.HTMLObjectElement$$Overlay.TSetProperty__$devirt","elemental2.dom.HTMLObjectElement$$Overlay.<clinit>"]
+}

@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"JsMap$ConstructorIterableUnionType$$Overlay.impl.java.js",
+"lineCount":32,
+"mappings":"A;;;;;;;MA6BiB,Q;;QAEyB,0E,UAAUA,C;EAAEC,mB;EACtDA,yE;;;QAGqG,iG;EAAAC,mB;EACrGA,4H;;;QAGwG,uG;EAAAC,mB;EACxGA,iG;;;QAGgB,iF;EAAAC,mB;EAChBA,8C;;;QAfiB,O;EAAAC,2B;EAAAA;",
+"sources":["JsMap.java"],
+"names":["o","elemental2.core.JsMap$ConstructorIterableUnionType$$Overlay.of","elemental2.core.JsMap$ConstructorIterableUnionType$$Overlay.asJsArray__$devirt","elemental2.core.JsMap$ConstructorIterableUnionType$$Overlay.asJsIterable__$devirt","elemental2.core.JsMap$ConstructorIterableUnionType$$Overlay.isJsArray__$devirt","elemental2.core.JsMap$ConstructorIterableUnionType$$Overlay.<clinit>"]
+}

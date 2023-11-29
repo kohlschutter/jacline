@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"ServiceWorkerGlobalScope$NotificationFieldType$$Overlay.impl.java.js",
+"lineCount":16,
+"mappings":"A;;;;;;MA0BiB,Q;;QAEqC,uE;EAAQA,mB;EAC9DA,6K;;;QAHiB,O;EAAAC,2B;EAAAA;",
+"sources":["ServiceWorkerGlobalScope.java"],
+"names":["elemental2.dom.ServiceWorkerGlobalScope$NotificationFieldType$$Overlay.create","elemental2.dom.ServiceWorkerGlobalScope$NotificationFieldType$$Overlay.<clinit>"]
+}

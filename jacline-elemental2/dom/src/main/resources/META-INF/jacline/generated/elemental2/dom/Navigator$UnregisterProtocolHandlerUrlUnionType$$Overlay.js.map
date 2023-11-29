@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Navigator$UnregisterProtocolHandlerUrlUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MA+CiB,Q;;QAEsC,sF,UAAUA,C;EAAEC,mB;EACnEA,yE;;;QAGe,qG;EAAAC,mB;EACfA,mE;;;QAGY,oG;EAAAC,mB;EACZA,4G;;;QAGgB,4F;EAAAC,mB;EAChBA,wC;;;QAGgB,yF;EAAAC,mB;EAChBA,0C;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["Navigator.java"],
+"names":["o","elemental2.dom.Navigator$UnregisterProtocolHandlerUrlUnionType$$Overlay.of","elemental2.dom.Navigator$UnregisterProtocolHandlerUrlUnionType$$Overlay.asString__$devirt","elemental2.dom.Navigator$UnregisterProtocolHandlerUrlUnionType$$Overlay.asURL__$devirt","elemental2.dom.Navigator$UnregisterProtocolHandlerUrlUnionType$$Overlay.isString__$devirt","elemental2.dom.Navigator$UnregisterProtocolHandlerUrlUnionType$$Overlay.isURL__$devirt","elemental2.dom.Navigator$UnregisterProtocolHandlerUrlUnionType$$Overlay.<clinit>"]
+}

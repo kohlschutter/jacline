@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Symbol$$Overlay.impl.java.js",
+"lineCount":103,
+"mappings":"A;;;;;MAQa,Q;;QACb,oD;EAAAA,6F;;;QAEA,kD;EAAAA,2F;;;QAEA,yD;EAAAA,kG;;;QAEA,+C;EAAAA,wF;;;QAEA,4C;EAAAA,qF;;;QAEA,+C;EAAAA,wF;;;QAEA,8C;EAAAA,uF;;;QAEA,6C;EAAAA,sF;;;QAEA,8C;EAAAA,uF;;;QAEA,kD;EAAAA,2F;;;QAEA,kD;EAAAA,2F;;;QAEA,kD;EAAAA,2F;;;QAvBa,O;EAAAC,2B;EAAAA,wB;EACbA,uF;EAEAA,mF;EAEAA,iG;EAEAA,6E;EAEAA,uE;EAEAA,6E;EAEAA,2E;EAEAA,yE;EAEAA,2E;EAEAA,mF;EAEAA,mF;EAEAA,mF;;;;;;;;;;AAvBa;gE;AAAA;8D;AAAA;qE;AAAA;2D;AAAA;wD;AAAA;2D;AAAA;0D;AAAA;yD;AAAA;0D;AAAA;8D;AAAA;8D;AAAA;;",
+"sources":["Symbol.java"],
+"names":["elemental2.core.Symbol$$Overlay.<synthetic: getter>","elemental2.core.Symbol$$Overlay.<clinit>"]
+}

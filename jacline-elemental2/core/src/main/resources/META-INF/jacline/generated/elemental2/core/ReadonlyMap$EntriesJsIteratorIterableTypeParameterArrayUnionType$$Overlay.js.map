@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"ReadonlyMap$EntriesJsIteratorIterableTypeParameterArrayUnionType$$Overlay.impl.java.js",
+"lineCount":25,
+"mappings":"A;;;;;MAciB,Q;;QAEuD,wG,UAAUA,C;EAAEC,mB;EACpFA,yE;;;QAGY,oH;EAAAC,mB;EACZA,+D;;;QAGc,sH;EAAAC,mB;EACdA,+D;;;QAXiB,O;EAAAC,2B;EAAAA;",
+"sources":["ReadonlyMap.java"],
+"names":["o","elemental2.core.ReadonlyMap$EntriesJsIteratorIterableTypeParameterArrayUnionType$$Overlay.of","elemental2.core.ReadonlyMap$EntriesJsIteratorIterableTypeParameterArrayUnionType$$Overlay.asKEY__$devirt","elemental2.core.ReadonlyMap$EntriesJsIteratorIterableTypeParameterArrayUnionType$$Overlay.asVALUE__$devirt","elemental2.core.ReadonlyMap$EntriesJsIteratorIterableTypeParameterArrayUnionType$$Overlay.<clinit>"]
+}

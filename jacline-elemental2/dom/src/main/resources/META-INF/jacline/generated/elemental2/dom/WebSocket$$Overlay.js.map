@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"WebSocket$$Overlay.impl.java.js",
+"lineCount":71,
+"mappings":"A;;;;;;;MAmBa,Q;;QA6KK,4E,gDAAiBA,I;EAAjBC,mB;EAClBA,6F;;;QAGkB,gF,oDAAqBD,I;EAArBC,mB;EAClBA,6F;;;QAGkB,oE,yCAAUD,I;EAAVC,mB;EAClBA,6F;;;QAIkB,iE,4CAAYD,I;EAAZC,mB;EAClBA,6F;;;QAtDA,+C;EAAAC,wF;;;QAEA,gD;EAAAA,yF;;;QAEA,mD;EAAAA,4F;;;QAEA,6C;EAAAA,sF;;;QA3Ia,O;EAAAC,2B;EAAAA,wB;EAqIbA,8E;EAEAA,gF;EAEAA,sF;EAEAA,0E;;;;;;;;;;;;AA3Ia;+D;AAAA;gE;AAAA;mE;AAAA;;",
+"sources":["WebSocket.java"],
+"names":["data","elemental2.dom.WebSocket$$Overlay.send__$devirt","elemental2.dom.WebSocket$$Overlay.<synthetic: getter>","elemental2.dom.WebSocket$$Overlay.<clinit>"]
+}

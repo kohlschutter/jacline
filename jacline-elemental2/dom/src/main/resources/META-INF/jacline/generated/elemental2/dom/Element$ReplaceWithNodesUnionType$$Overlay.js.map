@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Element$ReplaceWithNodesUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MAkWiB,Q;;QAEwB,wE,UAAUA,C;EAAEC,mB;EACrDA,yE;;;QAGa,wF;EAAAC,mB;EACbA,8G;;;QAGe,uF;EAAAC,mB;EACfA,mE;;;QAGgB,4E;EAAAC,mB;EAChBA,2C;;;QAGgB,8E;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["Element.java"],
+"names":["o","elemental2.dom.Element$ReplaceWithNodesUnionType$$Overlay.of","elemental2.dom.Element$ReplaceWithNodesUnionType$$Overlay.asNode__$devirt","elemental2.dom.Element$ReplaceWithNodesUnionType$$Overlay.asString__$devirt","elemental2.dom.Element$ReplaceWithNodesUnionType$$Overlay.isNode__$devirt","elemental2.dom.Element$ReplaceWithNodesUnionType$$Overlay.isString__$devirt","elemental2.dom.Element$ReplaceWithNodesUnionType$$Overlay.<clinit>"]
+}

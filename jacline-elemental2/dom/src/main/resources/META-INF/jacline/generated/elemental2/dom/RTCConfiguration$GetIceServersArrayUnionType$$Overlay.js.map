@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"RTCConfiguration$GetIceServersArrayUnionType$$Overlay.impl.java.js",
+"lineCount":30,
+"mappings":"A;;;;;MAeiB,Q;;QAEmC,mF,UAAUA,C;EAAEC,mB;EAChEA,yE;;;QAG6C,kJ;EAAAC,mB;EAC7CA,gF;;;QAG+B,uI;EAAAC,mB;EAC/BA,qG;;;QAGuC,sI;EAAAC,mB;EACvCA,gF;;;QAfiB,O;EAAAC,2B;EAAAA;",
+"sources":["RTCConfiguration.java"],
+"names":["o","elemental2.dom.RTCConfiguration$GetIceServersArrayUnionType$$Overlay.of","elemental2.dom.RTCConfiguration$GetIceServersArrayUnionType$$Overlay.asIceServersFieldType__$devirt","elemental2.dom.RTCConfiguration$GetIceServersArrayUnionType$$Overlay.asRTCIceServerInterface___$devirt","elemental2.dom.RTCConfiguration$GetIceServersArrayUnionType$$Overlay.asUrlsFieldType__$devirt","elemental2.dom.RTCConfiguration$GetIceServersArrayUnionType$$Overlay.<clinit>"]
+}

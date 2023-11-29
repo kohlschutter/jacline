@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"WorkerGlobalScope$$Overlay.impl.java.js",
+"lineCount":55,
+"mappings":"A;;;;;MAwBiB,Q;;QAmES,kI,oDAAcA,K,qBAAkBC,I;EAAhCC,mB;EAC1BA,4G;;;QAG0B,sG,oDAAcF,K;EAAdE,mB;EAC1BA,sG;;;QAG0B,4H,oDAAaF,K,qBAAkBC,I;EAA/BC,mB;EAC1BA,4G;;;QAG0B,gG,oDAAaF,K;EAAbE,mB;EAC1BA,sG;;;QAG0B,8H,gDAAUF,K,qBAAkBC,I;EAA5BC,mB;EAC1BA,4G;;;QAG0B,kG,gDAAUF,K;EAAVE,mB;EAC1BA,sG;;;QAmBa,yG,8CAAmBC,O,6BAA8BC,iB;EAAjDC,mB;EACbA,0H;;;QAIa,2H,8CAAmBF,O,oCAAmCC,iB;EAAtDC,mB;EACbA,0H;;;QAGa,sH,8CAAmBF,O,6BAAuBC,iB;EAA1CC,mB;EACbA,oP;;;QArHiB,O;EAAAC,2B;EAAAA;",
+"sources":["WorkerGlobalScope.java"],
+"names":["input","init","elemental2.dom.WorkerGlobalScope$$Overlay.fetch__$devirt","message","transferOrOptions","elemental2.dom.WorkerGlobalScope$$Overlay.postMessage__$devirt","elemental2.dom.WorkerGlobalScope$$Overlay.<clinit>"]
+}

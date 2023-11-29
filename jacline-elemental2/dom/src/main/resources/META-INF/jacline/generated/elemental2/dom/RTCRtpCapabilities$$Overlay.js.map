@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"RTCRtpCapabilities$$Overlay.impl.java.js",
+"lineCount":26,
+"mappings":"A;;;;;;MAWiB,Q;;QAES,2C;EAAQA,mB;EAClCA,8L;;;QASa,2G,0EAAkCC,M;EAAlCC,mB;EACbA,6H;;;QAKa,+H,oFAAsDC,gB;EAAtDC,mB;EACbA,2J;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["RTCRtpCapabilities.java"],
+"names":["elemental2.dom.RTCRtpCapabilities$$Overlay.create","codecs","elemental2.dom.RTCRtpCapabilities$$Overlay.setCodecs__$devirt","headerExtensions","elemental2.dom.RTCRtpCapabilities$$Overlay.setHeaderExtensions__$devirt","elemental2.dom.RTCRtpCapabilities$$Overlay.<clinit>"]
+}

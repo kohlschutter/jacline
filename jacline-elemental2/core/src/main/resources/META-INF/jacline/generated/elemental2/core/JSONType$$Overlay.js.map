@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"JSONType$$Overlay.impl.java.js",
+"lineCount":82,
+"mappings":"A;;;;;;;MAWa,Q;;QA0DO,6H,qCAAiBA,O,wBAAwBC,Q,iBAAgBC,K;EAAzDC,mB;EACpBA,sM;;;QAGoB,6J,qCAAiBH,O,wBAAwBC,Q,WAA0CC,K;EAAnFC,mB;EACpBA,6H;;;QAGoB,gH,qCAAiBH,O,wBAAwBC,Q,gBAAaC,K;EAAtDC,mB;EACpBA,sM;;;QAGoB,2G,qCAAiBH,O,wBAAwBC,Q;EAAzCE,mB;EACpBA,sH;;;QAGoB,8H,qCAAiBH,O,wBAAiBC,Q,iBAAgBC,K;EAAlDC,mB;EACpBA,wQ;;;QAGoB,8J,qCAAiBH,O,wBAAiBC,Q,WAA0CC,K;EAA5EC,mB;EACpBA,wS;;;QAGoB,iH,qCAAiBH,O,wBAAiBC,Q,gBAAaC,K;EAA/CC,mB;EACpBA,2P;;;QAGoB,4G,qCAAiBH,O,wBAAiBC,Q;EAAlCE,mB;EACpBA,+O;;;QAGoB,kJ,qCAAiBH,O,iCAAqCC,Q,iBAAgBC,K;EAAtEC,mB;EACpBA,sM;;;QAGoB,kL,qCAAiBH,O,iCAAqCC,Q,WAA0CC,K;EAAhGC,mB;EACpBA,6H;;;QAGoB,qI,qCAAiBH,O,iCAAqCC,Q,gBAAaC,K;EAAnEC,mB;EACpBA,sM;;;QAGoB,gI,qCAAiBH,O,iCAAqCC,Q;EAAtDE,mB;EACpBA,sH;;;QAGoB,yJ,qCAAiBH,O,WAA4CC,Q,iBAAgBC,K;EAA7EC,mB;EACpBA,6H;;;QAIoB,4I,qCAAiBH,O,WAA4CC,Q,gBAAaC,K;EAA1EC,mB;EACpBA,6H;;;QAhHa,O;EAAAC,2B;EAAAA;",
+"sources":["JSONType.java"],
+"names":["jsonObj","replacer","space","elemental2.core.JSONType$$Overlay.stringify__$devirt","elemental2.core.JSONType$$Overlay.<clinit>"]
+}

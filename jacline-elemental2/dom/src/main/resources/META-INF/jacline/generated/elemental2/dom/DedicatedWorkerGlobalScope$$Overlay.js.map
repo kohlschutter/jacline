@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"DedicatedWorkerGlobalScope$$Overlay.impl.java.js",
+"lineCount":25,
+"mappings":"A;;;;;MAciB,Q;;QA+BJ,wH,uDAAyBA,O,6BAA8BC,iB;EAAvDC,mB;EACbA,gI;;;QAGa,0I,uDAAyBF,O,oCAAmCC,iB;EAA5DC,mB;EACbA,gI;;;QAGa,qI,uDAAyBF,O,6BAAuBC,iB;EAAhDC,mB;EACbA,mQ;;;QAxCiB,O;EAAAC,2B;EAAAA;",
+"sources":["DedicatedWorkerGlobalScope.java"],
+"names":["message","transferOrOptions","elemental2.dom.DedicatedWorkerGlobalScope$$Overlay.webkitPostMessage__$devirt","elemental2.dom.DedicatedWorkerGlobalScope$$Overlay.<clinit>"]
+}

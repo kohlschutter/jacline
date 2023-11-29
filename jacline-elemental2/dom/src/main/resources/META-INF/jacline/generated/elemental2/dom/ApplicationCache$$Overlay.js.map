@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"ApplicationCache$$Overlay.impl.java.js",
+"lineCount":61,
+"mappings":"A;;;;;MAUa,Q;;QA6Bb,wD;EAAAA,iG;;;QAEA,2D;EAAAA,oG;;;QAEA,oD;EAAAA,6F;;;QAEA,wD;EAAAA,iG;;;QAEA,wD;EAAAA,iG;;;QAEA,2D;EAAAA,oG;;;QAvCa,O;EAAAC,2B;EAAAA,wB;EA6BbA,gG;EAEAA,sG;EAEAA,wF;EAEAA,gG;EAEAA,gG;EAEAA,sG;;;;;;;;;;AAvCa;wE;AAAA;2E;AAAA;oE;AAAA;wE;AAAA;wE;AAAA;;",
+"sources":["ApplicationCache.java"],
+"names":["elemental2.dom.ApplicationCache$$Overlay.<synthetic: getter>","elemental2.dom.ApplicationCache$$Overlay.<clinit>"]
+}

@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"CSSProperties$BorderImageSliceUnionType$$Overlay.impl.java.js",
+"lineCount":37,
+"mappings":"A;;;;;;;MAqJiB,Q;;QAE8B,8E,UAAUA,C;EAAEC,mB;EAC3DA,yE;;;QAGe,mF;EAAAC,mB;EACfA,yD;;;QAGe,6F;EAAAC,mB;EACfA,mE;;;QAGgB,oF;EAAAC,mB;EAChBA,oC;;;QAGgB,oF;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["CSSProperties.java"],
+"names":["o","elemental2.dom.CSSProperties$BorderImageSliceUnionType$$Overlay.of","elemental2.dom.CSSProperties$BorderImageSliceUnionType$$Overlay.asDouble__$devirt","elemental2.dom.CSSProperties$BorderImageSliceUnionType$$Overlay.asString__$devirt","elemental2.dom.CSSProperties$BorderImageSliceUnionType$$Overlay.isDouble__$devirt","elemental2.dom.CSSProperties$BorderImageSliceUnionType$$Overlay.isString__$devirt","elemental2.dom.CSSProperties$BorderImageSliceUnionType$$Overlay.<clinit>"]
+}

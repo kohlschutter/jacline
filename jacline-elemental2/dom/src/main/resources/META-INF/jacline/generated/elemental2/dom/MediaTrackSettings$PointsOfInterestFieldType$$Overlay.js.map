@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"MediaTrackSettings$PointsOfInterestFieldType$$Overlay.impl.java.js",
+"lineCount":16,
+"mappings":"A;;;;;;MAYiB,Q;;QAEmC,qE;EAAQA,mB;EAC5DA,6K;;;QAHiB,O;EAAAC,2B;EAAAA;",
+"sources":["MediaTrackSettings.java"],
+"names":["elemental2.dom.MediaTrackSettings$PointsOfInterestFieldType$$Overlay.create","elemental2.dom.MediaTrackSettings$PointsOfInterestFieldType$$Overlay.<clinit>"]
+}

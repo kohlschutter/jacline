@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"ValidityStateFlags$$Overlay.impl.java.js",
+"lineCount":16,
+"mappings":"A;;;;;;MAQiB,Q;;QAES,2C;EAAQA,mB;EAClCA,8L;;;QAHiB,O;EAAAC,2B;EAAAA;",
+"sources":["ValidityStateFlags.java"],
+"names":["elemental2.dom.ValidityStateFlags$$Overlay.create","elemental2.dom.ValidityStateFlags$$Overlay.<clinit>"]
+}

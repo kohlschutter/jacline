@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Element$MatchesSelectorRefNodesUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MAiHiB,Q;;QAE+B,+E,UAAUA,C;EAAEC,mB;EAC5DA,yE;;;QAGa,+F;EAAAC,mB;EACbA,8G;;;QAGyB,uG;EAAAC,mB;EACzBA,yH;;;QAGgB,mF;EAAAC,mB;EAChBA,2C;;;QAGgB,uF;EAAAC,mB;EAChBA,+C;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["Element.java"],
+"names":["o","elemental2.dom.Element$MatchesSelectorRefNodesUnionType$$Overlay.of","elemental2.dom.Element$MatchesSelectorRefNodesUnionType$$Overlay.asNode__$devirt","elemental2.dom.Element$MatchesSelectorRefNodesUnionType$$Overlay.asNodeList__$devirt","elemental2.dom.Element$MatchesSelectorRefNodesUnionType$$Overlay.isNode__$devirt","elemental2.dom.Element$MatchesSelectorRefNodesUnionType$$Overlay.isNodeList__$devirt","elemental2.dom.Element$MatchesSelectorRefNodesUnionType$$Overlay.<clinit>"]
+}

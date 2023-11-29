@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"ElementInternals$SetFormValueStateUnionType$$Overlay.impl.java.js",
+"lineCount":49,
+"mappings":"A;;;;;;;;;MAmBiB,Q;;QAEkC,kF,UAAUA,C;EAAEC,mB;EAC/DA,yE;;;QAGa,kG;EAAAC,mB;EACbA,8G;;;QAGiB,0G;EAAAC,mB;EACjBA,sH;;;QAGe,iG;EAAAC,mB;EACfA,mE;;;QAGgB,sF;EAAAC,mB;EAChBA,2C;;;QAGgB,0F;EAAAC,mB;EAChBA,+C;;;QAGgB,wF;EAAAC,mB;EAChBA,wC;;;QA3BiB,O;EAAAC,2B;EAAAA;",
+"sources":["ElementInternals.java"],
+"names":["o","elemental2.dom.ElementInternals$SetFormValueStateUnionType$$Overlay.of","elemental2.dom.ElementInternals$SetFormValueStateUnionType$$Overlay.asFile__$devirt","elemental2.dom.ElementInternals$SetFormValueStateUnionType$$Overlay.asFormData__$devirt","elemental2.dom.ElementInternals$SetFormValueStateUnionType$$Overlay.asString__$devirt","elemental2.dom.ElementInternals$SetFormValueStateUnionType$$Overlay.isFile__$devirt","elemental2.dom.ElementInternals$SetFormValueStateUnionType$$Overlay.isFormData__$devirt","elemental2.dom.ElementInternals$SetFormValueStateUnionType$$Overlay.isString__$devirt","elemental2.dom.ElementInternals$SetFormValueStateUnionType$$Overlay.<clinit>"]
+}

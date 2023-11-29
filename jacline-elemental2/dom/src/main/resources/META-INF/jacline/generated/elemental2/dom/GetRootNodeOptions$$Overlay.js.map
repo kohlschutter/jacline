@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"GetRootNodeOptions$$Overlay.impl.java.js",
+"lineCount":16,
+"mappings":"A;;;;;;MAQiB,Q;;QAES,2C;EAAQA,mB;EAClCA,8L;;;QAHiB,O;EAAAC,2B;EAAAA;",
+"sources":["GetRootNodeOptions.java"],
+"names":["elemental2.dom.GetRootNodeOptions$$Overlay.create","elemental2.dom.GetRootNodeOptions$$Overlay.<clinit>"]
+}

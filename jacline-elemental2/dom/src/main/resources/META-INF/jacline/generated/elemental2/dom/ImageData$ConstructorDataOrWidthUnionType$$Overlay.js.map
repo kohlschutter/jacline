@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"ImageData$ConstructorDataOrWidthUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MAWiB,Q;;QAEgC,gF,UAAUA,C;EAAEC,mB;EAC7DA,yE;;;QAGe,qF;EAAAC,mB;EACfA,yD;;;QAG0B,2H;EAAAC,mB;EAC1BA,wI;;;QAGgB,sF;EAAAC,mB;EAChBA,oC;;;QAGgB,iG;EAAAC,mB;EAChBA,wD;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["ImageData.java"],
+"names":["o","elemental2.dom.ImageData$ConstructorDataOrWidthUnionType$$Overlay.of","elemental2.dom.ImageData$ConstructorDataOrWidthUnionType$$Overlay.asDouble__$devirt","elemental2.dom.ImageData$ConstructorDataOrWidthUnionType$$Overlay.asUint8ClampedArray__$devirt","elemental2.dom.ImageData$ConstructorDataOrWidthUnionType$$Overlay.isDouble__$devirt","elemental2.dom.ImageData$ConstructorDataOrWidthUnionType$$Overlay.isUint8ClampedArray__$devirt","elemental2.dom.ImageData$ConstructorDataOrWidthUnionType$$Overlay.<clinit>"]
+}

@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"ServiceWorkerContainer$RegisterScriptURLUnionType$$Overlay.impl.java.js",
+"lineCount":49,
+"mappings":"A;;;;;;;;;MA0DiB,Q;;QAEwC,wF,UAAUA,C;EAAEC,mB;EACrEA,yE;;;QAGe,uG;EAAAC,mB;EACfA,mE;;;QAGyB,gI;EAAAC,mB;EACzBA,sI;;;QAGY,sG;EAAAC,mB;EACZA,4G;;;QAGgB,8F;EAAAC,mB;EAChBA,wC;;;QAGgB,wG;EAAAC,mB;EAChBA,uD;;;QAGgB,2F;EAAAC,mB;EAChBA,0C;;;QA3BiB,O;EAAAC,2B;EAAAA;",
+"sources":["ServiceWorkerContainer.java"],
+"names":["o","elemental2.dom.ServiceWorkerContainer$RegisterScriptURLUnionType$$Overlay.of","elemental2.dom.ServiceWorkerContainer$RegisterScriptURLUnionType$$Overlay.asString__$devirt","elemental2.dom.ServiceWorkerContainer$RegisterScriptURLUnionType$$Overlay.asTrustedScriptURL__$devirt","elemental2.dom.ServiceWorkerContainer$RegisterScriptURLUnionType$$Overlay.asURL__$devirt","elemental2.dom.ServiceWorkerContainer$RegisterScriptURLUnionType$$Overlay.isString__$devirt","elemental2.dom.ServiceWorkerContainer$RegisterScriptURLUnionType$$Overlay.isTrustedScriptURL__$devirt","elemental2.dom.ServiceWorkerContainer$RegisterScriptURLUnionType$$Overlay.isURL__$devirt","elemental2.dom.ServiceWorkerContainer$RegisterScriptURLUnionType$$Overlay.<clinit>"]
+}

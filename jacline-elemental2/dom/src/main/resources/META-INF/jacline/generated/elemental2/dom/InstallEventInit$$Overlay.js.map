@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"InstallEventInit$$Overlay.impl.java.js",
+"lineCount":16,
+"mappings":"A;;;;;;MASiB,Q;;QAEO,yC;EAAQA,mB;EAChCA,4L;;;QAHiB,O;EAAAC,2B;EAAAA;",
+"sources":["InstallEventInit.java"],
+"names":["elemental2.dom.InstallEventInit$$Overlay.create","elemental2.dom.InstallEventInit$$Overlay.<clinit>"]
+}

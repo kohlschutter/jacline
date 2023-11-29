@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"HTMLCanvasElement$$Overlay.impl.java.js",
+"lineCount":17,
+"mappings":"A;;;;;;;MAca,Q;;QAWS,qH,oDAAkBA,S,WAAiBC,I;EAAnCC,mB;EACtBA,0H;;;QAZa,O;EAAAC,2B;EAAAA;",
+"sources":["HTMLCanvasElement.java"],
+"names":["contextId","args","elemental2.dom.HTMLCanvasElement$$Overlay.getContext__$devirt","elemental2.dom.HTMLCanvasElement$$Overlay.<clinit>"]
+}

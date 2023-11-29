@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"CanvasDrawingStyles$$Overlay.impl.java.js",
+"lineCount":15,
+"mappings":"A;;;;;MAUiB,Q;;QA0BJ,gF,4DAAqBA,Q;EAArBC,mB;EACbA,qH;;;QA3BiB,O;EAAAC,2B;EAAAA;",
+"sources":["CanvasDrawingStyles.java"],
+"names":["segments","elemental2.dom.CanvasDrawingStyles$$Overlay.setLineDash__$devirt","elemental2.dom.CanvasDrawingStyles$$Overlay.<clinit>"]
+}

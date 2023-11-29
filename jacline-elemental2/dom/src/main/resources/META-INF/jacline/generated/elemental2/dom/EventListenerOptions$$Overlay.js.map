@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"EventListenerOptions$$Overlay.impl.java.js",
+"lineCount":16,
+"mappings":"A;;;;;;MAQiB,Q;;QAEW,6C;EAAQA,mB;EACpCA,gM;;;QAHiB,O;EAAAC,2B;EAAAA;",
+"sources":["EventListenerOptions.java"],
+"names":["elemental2.dom.EventListenerOptions$$Overlay.create","elemental2.dom.EventListenerOptions$$Overlay.<clinit>"]
+}

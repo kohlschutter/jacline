@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"RelatedEvent$RelatedEventEventInitDictType$$Overlay.impl.java.js",
+"lineCount":16,
+"mappings":"A;;;;;;MAciB,Q;;QAEiC,mE;EAAQA,mB;EAC1DA,6K;;;QAHiB,O;EAAAC,2B;EAAAA;",
+"sources":["RelatedEvent.java"],
+"names":["elemental2.dom.RelatedEvent$RelatedEventEventInitDictType$$Overlay.create","elemental2.dom.RelatedEvent$RelatedEventEventInitDictType$$Overlay.<clinit>"]
+}

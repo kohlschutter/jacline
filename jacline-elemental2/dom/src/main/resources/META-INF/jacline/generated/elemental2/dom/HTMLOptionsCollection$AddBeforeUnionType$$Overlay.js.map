@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"HTMLOptionsCollection$AddBeforeUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MAciB,Q;;QAE+B,+E,UAAUA,C;EAAEC,mB;EAC5DA,yE;;;QAGe,oF;EAAAC,mB;EACfA,yD;;;QAGoB,6G;EAAAC,mB;EACpBA,4H;;;QAGgB,qF;EAAAC,mB;EAChBA,oC;;;QAGgB,0F;EAAAC,mB;EAChBA,kD;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["HTMLOptionsCollection.java"],
+"names":["o","elemental2.dom.HTMLOptionsCollection$AddBeforeUnionType$$Overlay.of","elemental2.dom.HTMLOptionsCollection$AddBeforeUnionType$$Overlay.asDouble__$devirt","elemental2.dom.HTMLOptionsCollection$AddBeforeUnionType$$Overlay.asHTMLElement__$devirt","elemental2.dom.HTMLOptionsCollection$AddBeforeUnionType$$Overlay.isDouble__$devirt","elemental2.dom.HTMLOptionsCollection$AddBeforeUnionType$$Overlay.isHTMLElement__$devirt","elemental2.dom.HTMLOptionsCollection$AddBeforeUnionType$$Overlay.<clinit>"]
+}

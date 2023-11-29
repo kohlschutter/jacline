@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Location$AssignUrlUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MAYiB,Q;;QAEkB,kE,UAAUA,C;EAAEC,mB;EAC/CA,yE;;;QAGe,iF;EAAAC,mB;EACfA,mE;;;QAGY,gF;EAAAC,mB;EACZA,4G;;;QAGgB,wE;EAAAC,mB;EAChBA,wC;;;QAGgB,qE;EAAAC,mB;EAChBA,0C;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["Location.java"],
+"names":["o","elemental2.dom.Location$AssignUrlUnionType$$Overlay.of","elemental2.dom.Location$AssignUrlUnionType$$Overlay.asString__$devirt","elemental2.dom.Location$AssignUrlUnionType$$Overlay.asURL__$devirt","elemental2.dom.Location$AssignUrlUnionType$$Overlay.isString__$devirt","elemental2.dom.Location$AssignUrlUnionType$$Overlay.isURL__$devirt","elemental2.dom.Location$AssignUrlUnionType$$Overlay.<clinit>"]
+}

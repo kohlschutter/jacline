@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		   <groupId>com.kohlschutter.elemental2</groupId>
+    <artifactId>jacline-elemental2</artifactId>
+    <version>1.2.1</version>
+	</parent>
+
+  <artifactId>jacline-elemental2-promise</artifactId>
+  <packaging>jar</packaging>
+
+  <name>Elemental2 Promise</name>
+  <description>Thin Java abstractions for the standard built-in objects for Javascript.</description>
+  <url>https://www.gwtproject.org</url>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:https://github.com/google/elemental2.git</connection>
+    <developerConnection>scm:git:git@github.com:google/elemental2.git</developerConnection>
+    <url>https://github.com/google/elemental2</url>
+  </scm>
+
+  <issueManagement>
+    <url>https://github.com/google/elemental2/issues</url>
+    <system>GitHub Issues</system>
+  </issueManagement>
+
+  <developers>
+    <developer>
+      <name>J2CL Team</name>
+      <organization>Google</organization>
+      <organizationUrl>http://www.google.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <dependencies>
+  </dependencies>
+</project>

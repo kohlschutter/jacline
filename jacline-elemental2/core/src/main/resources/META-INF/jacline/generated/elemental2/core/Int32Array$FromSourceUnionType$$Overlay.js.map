@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Int32Array$FromSourceUnionType$$Overlay.impl.java.js",
+"lineCount":36,
+"mappings":"A;;;;;;MAsEiB,Q;;QAEqB,sE,UAAUA,C;EAAEC,mB;EAClDA,yE;;;QAG4B,oG;EAAAC,mB;EAC5BA,kG;;;QAG2B,mG;EAAAC,mB;EAC3BA,gG;;;QAGe,qF;EAAAC,mB;EACfA,mE;;;QAGgB,4E;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["Int32Array.java"],
+"names":["o","elemental2.core.Int32Array$FromSourceUnionType$$Overlay.of","elemental2.core.Int32Array$FromSourceUnionType$$Overlay.asJsArrayLike__$devirt","elemental2.core.Int32Array$FromSourceUnionType$$Overlay.asJsIterable__$devirt","elemental2.core.Int32Array$FromSourceUnionType$$Overlay.asString__$devirt","elemental2.core.Int32Array$FromSourceUnionType$$Overlay.isString__$devirt","elemental2.core.Int32Array$FromSourceUnionType$$Overlay.<clinit>"]
+}

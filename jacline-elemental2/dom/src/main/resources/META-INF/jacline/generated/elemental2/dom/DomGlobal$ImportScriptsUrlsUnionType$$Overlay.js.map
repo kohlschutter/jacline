@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"DomGlobal$ImportScriptsUrlsUnionType$$Overlay.impl.java.js",
+"lineCount":49,
+"mappings":"A;;;;;;;;;MA8JiB,Q;;QAE2B,2E,UAAUA,C;EAAEC,mB;EACxDA,yE;;;QAGe,0F;EAAAC,mB;EACfA,mE;;;QAGyB,mH;EAAAC,mB;EACzBA,sI;;;QAGY,yF;EAAAC,mB;EACZA,4G;;;QAGgB,iF;EAAAC,mB;EAChBA,wC;;;QAGgB,2F;EAAAC,mB;EAChBA,uD;;;QAGgB,8E;EAAAC,mB;EAChBA,0C;;;QA3BiB,O;EAAAC,2B;EAAAA;",
+"sources":["DomGlobal.java"],
+"names":["o","elemental2.dom.DomGlobal$ImportScriptsUrlsUnionType$$Overlay.of","elemental2.dom.DomGlobal$ImportScriptsUrlsUnionType$$Overlay.asString__$devirt","elemental2.dom.DomGlobal$ImportScriptsUrlsUnionType$$Overlay.asTrustedScriptURL__$devirt","elemental2.dom.DomGlobal$ImportScriptsUrlsUnionType$$Overlay.asURL__$devirt","elemental2.dom.DomGlobal$ImportScriptsUrlsUnionType$$Overlay.isString__$devirt","elemental2.dom.DomGlobal$ImportScriptsUrlsUnionType$$Overlay.isTrustedScriptURL__$devirt","elemental2.dom.DomGlobal$ImportScriptsUrlsUnionType$$Overlay.isURL__$devirt","elemental2.dom.DomGlobal$ImportScriptsUrlsUnionType$$Overlay.<clinit>"]
+}

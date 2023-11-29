@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"HTMLDocument$LinksHTMLCollectionTypeParameterUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MAoBiB,Q;;QAE6C,6F,UAAUA,C;EAAEC,mB;EAC1EA,yE;;;QAG0B,uI;EAAAC,mB;EAC1BA,wI;;;QAGwB,mI;EAAAC,mB;EACxBA,oI;;;QAGgB,8G;EAAAC,mB;EAChBA,wD;;;QAGgB,4G;EAAAC,mB;EAChBA,sD;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["HTMLDocument.java"],
+"names":["o","elemental2.dom.HTMLDocument$LinksHTMLCollectionTypeParameterUnionType$$Overlay.of","elemental2.dom.HTMLDocument$LinksHTMLCollectionTypeParameterUnionType$$Overlay.asHTMLAnchorElement__$devirt","elemental2.dom.HTMLDocument$LinksHTMLCollectionTypeParameterUnionType$$Overlay.asHTMLAreaElement__$devirt","elemental2.dom.HTMLDocument$LinksHTMLCollectionTypeParameterUnionType$$Overlay.isHTMLAnchorElement__$devirt","elemental2.dom.HTMLDocument$LinksHTMLCollectionTypeParameterUnionType$$Overlay.isHTMLAreaElement__$devirt","elemental2.dom.HTMLDocument$LinksHTMLCollectionTypeParameterUnionType$$Overlay.<clinit>"]
+}

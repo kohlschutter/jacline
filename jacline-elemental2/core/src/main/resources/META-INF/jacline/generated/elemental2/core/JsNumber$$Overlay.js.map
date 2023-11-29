@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"JsNumber$$Overlay.impl.java.js",
+"lineCount":139,
+"mappings":"A;;;;;;;MAYa,Q;;QA6EO,wH,gDAA+BA,O,gBAAiBC,O;EAAhDC,mB;EACpBA,0H;;;QAGoB,gH,gDAA+BF,O,WAAeC,O;EAA9CC,mB;EACpBA,mP;;;QAGoB,8F,gDAA+BF,O;EAA/BE,mB;EACpBA,iH;;;QAGoB,iH,yCAAsBF,O,gBAAiBC,O;EAAvCC,mB;EACpBA,0H;;;QAGoB,yH,gDAAwBF,O,gBAAiBC,O;EAAzCC,mB;EACpBA,2P;;;QAGoB,yG,yCAAsBF,O,WAAeC,O;EAArCC,mB;EACpBA,4O;;;QAGoB,iH,gDAAwBF,O,WAAeC,O;EAAvCC,mB;EACpBA,oP;;;QAGoB,uF,yCAAsBF,O;EAAtBE,mB;EACpBA,iH;;;QAGoB,+F,gDAAwBF,O;EAAxBE,mB;EACpBA,wN;;;QAIoB,gJ,mCAAuDF,O,WAAeC,O;EAAtEC,mB;EACpBA,+H;;;QAMoB,yF,wCAAkBC,K;EAAlBC,mB;EACpBA,yG;;;QAIoB,oE,wCAAaD,K;EAAbC,mB;EACpBA,yG;;;QAhFA,gD;EAAAC,yF;;;QAEA,yD;EAAAA,kG;;;QAEA,kD;EAAAA,2F;;;QAEA,yD;EAAAA,kG;;;QAEA,kD;EAAAA,2F;;;QAEA,0D;EAAAA,mG;;;QAEA,4C;EAAAA,qF;;;QAEA,0D;EAAAA,mG;;;QA7Da,O;EAAAC,2B;EAAAA,wB;EA+CbA,6E;EAEAA,+F;EAEAA,iF;EAEAA,+F;EAEAA,iF;EAEAA,iG;EAEAA,qE;EAEAA,iG;;;;;;;;;;;;AA7Da;gE;AAAA;yE;AAAA;kE;AAAA;yE;AAAA;kE;AAAA;0E;AAAA;4D;AAAA;;",
+"sources":["JsNumber.java"],
+"names":["locales","options","elemental2.core.JsNumber$$Overlay.toLocaleString__$devirt","radix","elemental2.core.JsNumber$$Overlay.toString__$devirt","elemental2.core.JsNumber$$Overlay.<synthetic: getter>","elemental2.core.JsNumber$$Overlay.<clinit>"]
+}

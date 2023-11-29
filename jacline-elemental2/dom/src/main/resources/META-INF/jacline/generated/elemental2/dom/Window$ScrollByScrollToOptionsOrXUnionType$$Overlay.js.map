@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Window$ScrollByScrollToOptionsOrXUnionType$$Overlay.impl.java.js",
+"lineCount":31,
+"mappings":"A;;;;;;MA2ViB,Q;;QAEiC,iF,UAAUA,C;EAAEC,mB;EAC9DA,yE;;;QAGe,sF;EAAAC,mB;EACfA,yD;;;QAGwB,uH;EAAAC,mB;EACxBA,8F;;;QAGgB,uF;EAAAC,mB;EAChBA,oC;;;QAfiB,O;EAAAC,2B;EAAAA;",
+"sources":["Window.java"],
+"names":["o","elemental2.dom.Window$ScrollByScrollToOptionsOrXUnionType$$Overlay.of","elemental2.dom.Window$ScrollByScrollToOptionsOrXUnionType$$Overlay.asDouble__$devirt","elemental2.dom.Window$ScrollByScrollToOptionsOrXUnionType$$Overlay.asScrollToOptions__$devirt","elemental2.dom.Window$ScrollByScrollToOptionsOrXUnionType$$Overlay.isDouble__$devirt","elemental2.dom.Window$ScrollByScrollToOptionsOrXUnionType$$Overlay.<clinit>"]
+}

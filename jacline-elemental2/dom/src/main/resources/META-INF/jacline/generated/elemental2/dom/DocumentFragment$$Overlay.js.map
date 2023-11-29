@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"DocumentFragment$$Overlay.impl.java.js",
+"lineCount":43,
+"mappings":"A;;;;;;;;MAUa,Q;;QA2EK,qF,uDAAeA,K;EAAfC,mB;EAClBA,oL;;;QAGkB,kF,0DAAiBD,K;EAAjBC,mB;EAClBA,oL;;;QAGkB,sF,uDAAgBD,K;EAAhBE,mB;EAClBA,qL;;;QAIkB,mF,0DAAkBF,K;EAAlBE,mB;EAClBA,qL;;;QAGkB,8F,uDAAwBF,K;EAAxBG,mB;EAClBA,6L;;;QAIkB,2F,0DAA0BH,K;EAA1BG,mB;EAClBA,6L;;;QAlGa,O;EAAAC,2B;EAAAA;",
+"sources":["DocumentFragment.java"],
+"names":["nodes","elemental2.dom.DocumentFragment$$Overlay.append__$devirt","elemental2.dom.DocumentFragment$$Overlay.prepend__$devirt","elemental2.dom.DocumentFragment$$Overlay.replaceChildren__$devirt","elemental2.dom.DocumentFragment$$Overlay.<clinit>"]
+}

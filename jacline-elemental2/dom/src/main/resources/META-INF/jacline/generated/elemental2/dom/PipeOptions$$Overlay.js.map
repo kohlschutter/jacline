@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"PipeOptions$$Overlay.impl.java.js",
+"lineCount":16,
+"mappings":"A;;;;;;MAQiB,Q;;QAEE,oC;EAAQA,mB;EAC3BA,uL;;;QAHiB,O;EAAAC,2B;EAAAA;",
+"sources":["PipeOptions.java"],
+"names":["elemental2.dom.PipeOptions$$Overlay.create","elemental2.dom.PipeOptions$$Overlay.<clinit>"]
+}

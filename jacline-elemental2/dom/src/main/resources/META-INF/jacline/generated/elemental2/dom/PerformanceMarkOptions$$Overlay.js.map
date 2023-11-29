@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"PerformanceMarkOptions$$Overlay.impl.java.js",
+"lineCount":21,
+"mappings":"A;;;;;;MAUiB,Q;;QAEa,+C;EAAQA,mB;EACtCA,kM;;;QASa,mF,mDAAiBC,M;EAAjBC,mB;EACbA,uG;;;QAbiB,O;EAAAC,2B;EAAAA;",
+"sources":["PerformanceMarkOptions.java"],
+"names":["elemental2.dom.PerformanceMarkOptions$$Overlay.create","detail","elemental2.dom.PerformanceMarkOptions$$Overlay.setDetail__$devirt","elemental2.dom.PerformanceMarkOptions$$Overlay.<clinit>"]
+}

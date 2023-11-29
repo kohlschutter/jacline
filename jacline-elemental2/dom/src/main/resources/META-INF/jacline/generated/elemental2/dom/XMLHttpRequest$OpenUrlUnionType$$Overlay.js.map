@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"XMLHttpRequest$OpenUrlUnionType$$Overlay.impl.java.js",
+"lineCount":38,
+"mappings":"A;;;;;;;;MAuDiB,Q;;QAEsB,sE,UAAUA,C;EAAEC,mB;EACnDA,yE;;;QAGe,qF;EAAAC,mB;EACfA,mE;;;QAGY,oF;EAAAC,mB;EACZA,4G;;;QAGgB,4E;EAAAC,mB;EAChBA,wC;;;QAGgB,yE;EAAAC,mB;EAChBA,0C;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["XMLHttpRequest.java"],
+"names":["o","elemental2.dom.XMLHttpRequest$OpenUrlUnionType$$Overlay.of","elemental2.dom.XMLHttpRequest$OpenUrlUnionType$$Overlay.asString__$devirt","elemental2.dom.XMLHttpRequest$OpenUrlUnionType$$Overlay.asURL__$devirt","elemental2.dom.XMLHttpRequest$OpenUrlUnionType$$Overlay.isString__$devirt","elemental2.dom.XMLHttpRequest$OpenUrlUnionType$$Overlay.isURL__$devirt","elemental2.dom.XMLHttpRequest$OpenUrlUnionType$$Overlay.<clinit>"]
+}

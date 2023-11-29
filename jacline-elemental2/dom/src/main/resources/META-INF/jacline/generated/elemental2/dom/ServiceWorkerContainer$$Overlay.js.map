@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"ServiceWorkerContainer$$Overlay.impl.java.js",
+"lineCount":50,
+"mappings":"A;;;;;MAqBiB,Q;;QAgF0B,+G,yDAAuBA,W;EAAvBC,mB;EAC3CA,sH;;;QAG2C,iH,qDAAoBD,W;EAApBC,mB;EAC3CA,sH;;;QAM2C,4I,yDAAgBC,S,6BAA8BC,O;EAA9CC,mB;EAC3CA,sH;;;QAG2C,wG,yDAAgBF,S;EAAhBE,mB;EAC3CA,6G;;;QAG2C,2J,kEAA0BF,S,6BAA8BC,O;EAAxDC,mB;EAC3CA,sH;;;QAG2C,uH,kEAA0BF,S;EAA1BE,mB;EAC3CA,6G;;;QAG2C,8I,qDAAaF,S,6BAA8BC,O;EAA3CC,mB;EAC3CA,sH;;;QAG2C,0G,qDAAaF,S;EAAbE,mB;EAC3CA,6G;;;QAhHiB,O;EAAAC,2B;EAAAA;",
+"sources":["ServiceWorkerContainer.java"],
+"names":["documentURL","elemental2.dom.ServiceWorkerContainer$$Overlay.getRegistration__$devirt","scriptURL","options","elemental2.dom.ServiceWorkerContainer$$Overlay.register__$devirt","elemental2.dom.ServiceWorkerContainer$$Overlay.<clinit>"]
+}

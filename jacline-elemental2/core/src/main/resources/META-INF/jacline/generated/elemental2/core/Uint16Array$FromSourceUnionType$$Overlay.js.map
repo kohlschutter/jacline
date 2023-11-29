@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"Uint16Array$FromSourceUnionType$$Overlay.impl.java.js",
+"lineCount":36,
+"mappings":"A;;;;;;MAsEiB,Q;;QAEsB,uE,UAAUA,C;EAAEC,mB;EACnDA,yE;;;QAG4B,qG;EAAAC,mB;EAC5BA,kG;;;QAG2B,oG;EAAAC,mB;EAC3BA,gG;;;QAGe,sF;EAAAC,mB;EACfA,mE;;;QAGgB,6E;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
+"sources":["Uint16Array.java"],
+"names":["o","elemental2.core.Uint16Array$FromSourceUnionType$$Overlay.of","elemental2.core.Uint16Array$FromSourceUnionType$$Overlay.asJsArrayLike__$devirt","elemental2.core.Uint16Array$FromSourceUnionType$$Overlay.asJsIterable__$devirt","elemental2.core.Uint16Array$FromSourceUnionType$$Overlay.asString__$devirt","elemental2.core.Uint16Array$FromSourceUnionType$$Overlay.isString__$devirt","elemental2.core.Uint16Array$FromSourceUnionType$$Overlay.<clinit>"]
+}
