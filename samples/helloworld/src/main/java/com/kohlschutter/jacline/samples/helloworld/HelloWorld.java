@@ -31,8 +31,16 @@ import jsinterop.annotations.JsType;
  */
 @JsType // Mark this class as being accessible from jacline JavaScript
 // @JsExport // Additionally, mark this class as being accessible from outside JavaScript
-public class HelloWorld {
+public final class HelloWorld {
 
+  private HelloWorld() {
+  }
+
+  /**
+   * Returns a hello world greeting.
+   * 
+   * @return The greeting.
+   */
   // @JsExport // Mark this method as being accessible from outside JavaScript
   public static String getHelloWorld() {
     return "Hello from Java";
