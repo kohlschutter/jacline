@@ -29,5 +29,14 @@
 
     <modules>
         <module>jacline-annotations</module>
+        <module>jacline-gcl-base</module>
+        <module>jacline-jsinterop-base</module>
+        <module>jacline-jrejs</module>
+        <module>jacline-elemental2</module>
+        <module>jacline-j2cl</module>
+        <module>jacline-transpiler</module>
+        <module>jacline-maven-plugin</module>
+        <module>jacline-lib-common</module>
+        <module>samples/helloworld</module>
     </modules>
 </project>
