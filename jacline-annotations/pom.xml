@@ -13,7 +13,6 @@
     <artifactId>jacline-annotations</artifactId>
 
     <properties>
-        <kohlschutter.project.notice.file>${project.parent.basedir}/NOTICE</kohlschutter.project.notice.file>
     </properties>
 
     <dependencies>
