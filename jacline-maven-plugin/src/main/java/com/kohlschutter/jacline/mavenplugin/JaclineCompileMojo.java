@@ -293,14 +293,19 @@ public class JaclineCompileMojo extends AbstractMojo {
     ClosureCompilerSources cs = new ClosureCompilerSources();
 
     cs.addSource(transpiledOut);
+
+    boolean haveSourceRoots = false;
     for (String s : javascriptSourceRoots) {
       Path p = absolutePath(s);
       if (!Files.exists(p)) {
         log.warn("Skipping missing source root: " + p);
         continue;
       }
+      haveSourceRoots = true;
       cs.addSource(p);
     }
+
+    boolean haveEntryPoints = false;
     for (String s : entryPoints) {
       Path p = absolutePath(s);
       if (!Files.exists(p)) {
@@ -308,7 +313,13 @@ public class JaclineCompileMojo extends AbstractMojo {
         continue;
       }
 
+      haveEntryPoints = true;
       cs.addEntryPoint(p);
+    }
+
+    if (!haveSourceRoots && !haveEntryPoints) {
+      log.info("Nothing to do for the closure-compiler");
+      return;
     }
 
     List<String> compileClasspathElements = project.getCompileClasspathElements();
