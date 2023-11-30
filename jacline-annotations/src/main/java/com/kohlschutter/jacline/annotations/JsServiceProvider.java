@@ -34,5 +34,10 @@ import java.util.ServiceLoader;
 @Target({ElementType.TYPE})
 @Documented
 public @interface JsServiceProvider {
+  /**
+   * The services implemented by the annotated class.
+   * 
+   * @return The list of services.
+   */
   Class<?>[] services();
 }
