@@ -21,7 +21,7 @@ import jsinterop.annotations.JsFunction;
 
 /**
  * Something that can encode an array.
- * 
+ *
  * @author Christian Kohlschütter
  */
 @JsFunction
@@ -30,7 +30,7 @@ public interface ArrayEncoder {
   /**
    * Returns an object that contains the encoded contents of the given array; the object itself must
    * be created with {@link SequenceEncoder#begin()}.
-   * 
+   *
    * @param array The array to encode.
    * @return The encoded object.
    */
