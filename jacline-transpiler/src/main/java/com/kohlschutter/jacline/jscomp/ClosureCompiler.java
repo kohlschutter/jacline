@@ -62,7 +62,6 @@ public class ClosureCompiler implements Closeable {
       throws IOException {
     return compile(compilerSources, false, null);
   }
-ls
 
   public ClosureCompilationResult compile(ClosureCompilerSources compilerSources,
       boolean disableStderr, Consumer<CompilerOptions> optionsModifier) throws IOException {

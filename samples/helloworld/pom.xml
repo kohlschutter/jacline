@@ -89,29 +89,15 @@
             <artifactId>jacline-annotations</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-jsinterop-base</artifactId>
             <version>${jacline.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-elemental2-dom</artifactId>
             <version>${jacline.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.kohlschutter</groupId>
-            <artifactId>kohlschutter-test-util</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.kohlschutter.jacline</groupId>
-            <artifactId>jacline-transpiler</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
