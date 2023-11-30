@@ -44,7 +44,8 @@ public class ClosureCompiler implements Closeable {
   private static List<SourceFile> builtinExterns;
 
   @SuppressWarnings("PMD.AssignmentToNonFinalStatic")
-  @SuppressFBWarnings({"ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD", "EI_EXPOSE_REP", "CT_CONSTRUCTOR_THROW"})
+  @SuppressFBWarnings({
+      "ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD", "EI_EXPOSE_REP", "CT_CONSTRUCTOR_THROW"})
   public ClosureCompiler() throws IOException {
     if (builtinExterns == null) {
       builtinExterns = Collections.unmodifiableList(CommandLineRunner.getBuiltinExterns(
@@ -61,6 +62,7 @@ public class ClosureCompiler implements Closeable {
       throws IOException {
     return compile(compilerSources, false, null);
   }
+ls
 
   public ClosureCompilationResult compile(ClosureCompilerSources compilerSources,
       boolean disableStderr, Consumer<CompilerOptions> optionsModifier) throws IOException {
