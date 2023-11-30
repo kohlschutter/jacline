@@ -1,5 +1,5 @@
 /*
- * jacline sample: helloworld
+ * jacline sample: json
  *
  * Copyright 2023 Christian Kohlschütter
  *
@@ -17,8 +17,12 @@
  */
 package com.kohlschutter.jacline.samples.helloworld;
 
+import java.io.IOException;
+
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.annotations.JsExport;
+import com.kohlschutter.jacline.annotations.JsServiceProvider;
+import com.kohlschutter.jacline.lib.common.Decodables;
 import com.kohlschutter.jacline.lib.common.DecodingException;
 import com.kohlschutter.jacline.lib.common.Encodable;
 import com.kohlschutter.jacline.lib.common.KeyDecoder;
@@ -29,22 +33,23 @@ import com.kohlschutter.jacline.lib.common.StandardArrayEncoders;
 import jsinterop.annotations.JsType;
 
 /**
- * A simple hello world example.
- * <p>
- * When both class and method are marked with {@code @JsExport}, you can reference the class in the
- * browser by name, i.e.,
- * {@code com.kohlschutter.jacline.samples.helloworld.HelloWorld.getHelloWorld()} works.
- * <p>
- * If they're not marked with {@code @JsExport}, the closure compiler can optimize this code away
- * and ultimately produce a single-statement output file.
+ * A not so simple hello world example, demonstrating the use of {@link KeyEncoder} and company.
  */
 @JsType // Mark this class as being accessible from jacline JavaScript
 @JsExport // Additionally, mark this class as being accessible from outside JavaScript
 @SuppressFBWarnings("CNT_ROUGH_CONSTANT_VALUE")
+@JsServiceProvider(services = {Encodable.class})
 public final class HelloWorld implements Encodable {
   private static final String CODED_TYPE = "com.kohlschutter.jacline.samples.helloworld.HelloWorld";
   private String message = "Hello from Java";
   private Object[] array;
+
+  static {
+    // Register our decoder with the global Decodables registry
+    // FIXME: Until @JsServiceProvider is properly implemented, we need to manually trigger
+    // static initializers by "new HelloWorld()" or similar.
+    Decodables.setDecoder(CODED_TYPE, HelloWorld::decode);
+  }
 
   /**
    * Creates some hello world magic.
@@ -77,8 +82,8 @@ public final class HelloWorld implements Encodable {
   public Object encode() {
     KeyEncoder enc = KeyEncoder.begin(CODED_TYPE);
     enc.encodeString("message", message);
-    enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", true).encodeNumber("pi",
-        3.14).end();
+    enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", false).encodeNumber(
+        "pi", 3.14).end();
     enc.encodeArray("stringArray", StandardArrayEncoders::strings, array);
     return enc.getEncoded();
   }
@@ -92,15 +97,18 @@ public final class HelloWorld implements Encodable {
    */
   @JsExport
   public static HelloWorld decode(Object obj) throws DecodingException {
-    KeyDecoder dec = KeyDecoder.load(CODED_TYPE, obj);
-    checkSanity(dec);
+    try (KeyDecoder dec = KeyDecoder.load(CODED_TYPE, obj)) {
+      checkSanity(dec);
 
-    HelloWorld hw = new HelloWorld();
-    hw.setMessage(dec.stringForKey("message"));
+      HelloWorld hw = new HelloWorld();
+      hw.setMessage(dec.stringForKey("message"));
 
-    hw.array = dec.arrayForKey("stringArray", StandardArrayDecoders::strings);
+      hw.array = dec.arrayForKey("stringArray", StandardArrayDecoders::strings);
 
-    return hw;
+      return hw;
+    } catch (IOException e) {
+      throw new DecodingException(e);
+    }
   }
 
   /**
@@ -108,8 +116,9 @@ public final class HelloWorld implements Encodable {
    * the target object.
    * 
    * @param dec The {@link KeyDecoder} instance.
+   * @throws DecodingException
    */
-  private static void checkSanity(KeyDecoder dec) {
+  private static void checkSanity(KeyDecoder dec) throws DecodingException {
     dec.objectForKey("obj", (encoded) -> {
       KeyDecoder objectDecoder = KeyDecoder.load("SomeObjectType", encoded);
 
@@ -117,12 +126,17 @@ public final class HelloWorld implements Encodable {
 
       if (Math.abs(3.141 - pi.floatValue()) > 0.001f) {
         if (objectDecoder.booleanForKey("indiana")) {
-          throw new IllegalStateException("Not again, Indiana!");
+          throw new DecodingException("Not again, Indiana!");
         } else {
-          throw new IllegalStateException("Not my reality");
+          throw new DecodingException("Not my reality");
         }
       }
       return pi.floatValue(); // return value is not used
     });
+  }
+
+  @Override
+  public String toString() {
+    return getMessage();
   }
 }
