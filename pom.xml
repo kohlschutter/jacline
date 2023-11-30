@@ -38,5 +38,6 @@
         <module>jacline-maven-plugin</module>
         <module>jacline-lib-common</module>
         <module>samples/helloworld</module>
+        <module>samples/json</module>
     </modules>
 </project>

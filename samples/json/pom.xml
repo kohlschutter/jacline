@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.kohlschutter.jacline</groupId>
+        <artifactId>jacline</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.kohlschutter.jacline.samples</groupId>
+    <artifactId>json</artifactId>
+
+    <properties>
+        <!-- In your own projects, replace ${project.version} with the actual
+        jacline version -->
+        <jacline.version>${project.version}</jacline.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <!-- Example: This source directory is ignored
+                                by jacline -->
+                                <source>src/server/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-maven-plugin</artifactId>
+                <version>${jacline.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-jacline-compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <phase>compile</phase>
+                        <configuration>
+                            <compileSourceRoots>
+                                <compileSourceRoot>src/main/java</compileSourceRoot>
+                            </compileSourceRoots>
+                            <javascriptSourceRoots>
+                                <javascriptSourceRoot>src/main/jacline</javascriptSourceRoot>
+                            </javascriptSourceRoots>
+                            <entryPoints>
+                                <!-- List all possible entry points here -->
+                                <!-- If omitted, the Closure compiler is not run -->
+                                <entryPoint>src/main/jacline/app.js</entryPoint>
+                            </entryPoints>
+                            <outputFile>
+                                <!-- Path relative to target/classes -->jacline-generated.js</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <!-- Example: This source directory is ignored by jacline -->
+                <directory>src/server/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.kohlschutter.jacline</groupId>
+            <artifactId>jacline-lib-common</artifactId>
+            <version>${jacline.version}</version>
+        </dependency>
+    </dependencies>
+</project>
