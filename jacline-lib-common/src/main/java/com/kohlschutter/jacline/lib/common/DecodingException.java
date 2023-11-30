@@ -17,6 +17,8 @@
  */
 package com.kohlschutter.jacline.lib.common;
 
+import jsinterop.annotations.JsMethod;
+
 public class DecodingException extends Exception {
   private static final long serialVersionUID = 1L;
 
@@ -34,5 +36,15 @@ public class DecodingException extends Exception {
 
   public DecodingException(Throwable cause) {
     super(cause);
+  }
+
+  @JsMethod
+  public static DecodingException withMessage(String message) {
+    return new DecodingException(message);
+  }
+
+  @JsMethod
+  public static DecodingException withUnexpectedType(String expected, String found) {
+    return new DecodingException("Unexpected type: " + found + "; expected: " + expected);
   }
 }

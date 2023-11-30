@@ -18,12 +18,13 @@
 package com.kohlschutter.jacline.lib.common;
 
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
+import com.kohlschutter.jacline.lib.common.vanilla.JsonSequenceDecoder;
 
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, namespace = "kohlschutter.coding", name = "SequenceDecoder")
-public interface SequenceDecoder {
+public interface SequenceDecoder extends JsCloseable {
 
   @FunctionalInterface
   @JsFunction
@@ -41,14 +42,14 @@ public interface SequenceDecoder {
 
   SequenceDecoder numbers(int count, SequenceConsumer<Number> forEach) throws DecodingException;
 
-  <T> SequenceDecoder arrays(int count, ArrayDecoder<T[]> decoder, SequenceConsumer<T[]> forEach)
+  <T> SequenceDecoder arrays(int count, ArrayDecoder<T> decoder, SequenceConsumer<T[]> forEach)
       throws DecodingException;
 
   <T> SequenceDecoder objects(int count, ObjectDecoder<T> decoder, SequenceConsumer<T> forEach)
       throws DecodingException;
 
   @JsImplementationProvidedSeparately
-  static SequenceDecoder load(Object serialized) {
-    throw new UnsupportedOperationException("Not yet implemented for vanilla Java");
+  static SequenceDecoder load(Object encoded) throws DecodingException {
+    return new JsonSequenceDecoder(encoded);
   }
 }

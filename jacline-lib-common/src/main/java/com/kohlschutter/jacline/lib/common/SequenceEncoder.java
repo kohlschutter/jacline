@@ -18,6 +18,7 @@
 package com.kohlschutter.jacline.lib.common;
 
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
+import com.kohlschutter.jacline.lib.common.vanilla.JsonSequenceEncoder;
 
 import jsinterop.annotations.JsType;
 
@@ -26,26 +27,26 @@ public interface SequenceEncoder {
   /**
    * Encodes a string (or {@code null}).
    *
-   * @param value The value.
+   * @param values The values.
    * @return This encoder.
    */
-  SequenceEncoder encodeStrings(String... value);
+  SequenceEncoder encodeStrings(String... values);
 
   /**
    * Encodes a boolean (or {@code null}).
    *
-   * @param value The value.
+   * @param values The values.
    * @return This encoder.
    */
-  SequenceEncoder encodeBooleans(Boolean... value);
+  SequenceEncoder encodeBooleans(Boolean... values);
 
   /**
    * Encodes a number (or {@code null}).
    *
-   * @param value The value.
+   * @param values The values.
    * @return This encoder.
    */
-  SequenceEncoder encodeNumbers(Number... value);
+  SequenceEncoder encodeNumbers(Number... values);
 
   /**
    * Encodes an array.
@@ -58,10 +59,10 @@ public interface SequenceEncoder {
    * Returns a new encoder that can encode the object stored under the given key.
    *
    * @param encoder The object encoder
-   * @param obj The objects
+   * @param objects The objects
    * @return This encoder.
    */
-  SequenceEncoder encodeObjects(ObjectEncoder encoder, Object... obj);
+  SequenceEncoder encodeObjects(ObjectEncoder encoder, Object... objects);
 
   /**
    * Ends any {@link #beginEncodeArray()} block, returning the parent encoder, or the same encoder
@@ -80,6 +81,6 @@ public interface SequenceEncoder {
 
   @JsImplementationProvidedSeparately
   static SequenceEncoder begin() {
-    throw new UnsupportedOperationException("Not yet implemented for vanilla Java");
+    return new JsonSequenceEncoder();
   }
 }

@@ -7,6 +7,15 @@ class SequenceDecoder {
         this.pos = 0;
     }
 
+    close() {
+        this.o = null;
+    }
+
+    /** @export */
+    m_close__void() {
+        this.close();
+    }
+
     offset() {
         return this.pos;
     }

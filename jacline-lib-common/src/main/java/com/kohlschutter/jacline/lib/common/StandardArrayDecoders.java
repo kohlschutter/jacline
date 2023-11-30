@@ -17,62 +17,75 @@
  */
 package com.kohlschutter.jacline.lib.common;
 
+import java.io.IOException;
+
 import jsinterop.annotations.JsType;
 
 @JsType
 public class StandardArrayDecoders {
-  @FunctionalInterface
-  public interface ArrayCreator<T> {
-    T[] newArray(int size);
-  }
-
   public static Object[] objects(Object serialized) throws DecodingException {
     return objectsWithDecoder(serialized, null, (l) -> new Object[l]);
   }
 
   public static <T> T[] objectsWithDecoder(Object serialized, ObjectDecoder<T> decoder,
       ArrayCreator<T> arrayCreator) throws DecodingException {
-    SequenceDecoder dec = SequenceDecoder.load(serialized);
-    T[] array = arrayCreator.newArray(dec.size());
-    dec.objects(array.length, decoder, (e) -> array[dec.offset()] = e);
-    assert (dec.offset() == dec.size());
-    return array;
+    try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
+      T[] array = arrayCreator.newArray(dec.size());
+      dec.objects(array.length, decoder, (e) -> array[dec.offset()] = e);
+      assert (dec.offset() == dec.size());
+      return array;
+    } catch (IOException e) {
+      throw new DecodingException(e);
+    }
   }
 
   public static String[] strings(Object serialized) throws DecodingException {
-    SequenceDecoder dec = SequenceDecoder.load(serialized);
-    String[] array = new String[dec.size()];
-    dec.strings(array.length, (e) -> array[dec.offset()] = e);
-    assert (dec.offset() == dec.size());
-    return array;
+    try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
+      String[] array = new String[dec.size()];
+      dec.strings(array.length, (e) -> array[dec.offset()] = e);
+      assert (dec.offset() == dec.size());
+      return array;
+    } catch (IOException e) {
+      throw new DecodingException(e);
+    }
+
   }
 
   public static Boolean[] booleans(Object serialized) throws DecodingException {
-    SequenceDecoder dec = SequenceDecoder.load(serialized);
-    Boolean[] array = new Boolean[dec.size()];
-    dec.booleans(array.length, (e) -> array[dec.offset()] = e);
-    assert (dec.offset() == dec.size());
-    return array;
+    try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
+      Boolean[] array = new Boolean[dec.size()];
+      dec.booleans(array.length, (e) -> array[dec.offset()] = e);
+      assert (dec.offset() == dec.size());
+      return array;
+    } catch (IOException e) {
+      throw new DecodingException(e);
+    }
   }
 
   public static Number[] numbers(Object serialized) throws DecodingException {
-    SequenceDecoder dec = SequenceDecoder.load(serialized);
-    Number[] array = new Number[dec.size()];
-    dec.numbers(array.length, (e) -> array[dec.offset()] = e);
-    assert (dec.offset() == dec.size());
-    return array;
+    try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
+      Number[] array = new Number[dec.size()];
+      dec.numbers(array.length, (e) -> array[dec.offset()] = e);
+      assert (dec.offset() == dec.size());
+      return array;
+    } catch (IOException e) {
+      throw new DecodingException(e);
+    }
   }
 
   public static Object[][] arrays(Object serialized) throws DecodingException {
     return arraysWithDecoder(serialized, null, (l) -> new Object[l][]);
   }
 
-  public static <T> T[][] arraysWithDecoder(Object serialized, ArrayDecoder<T[]> decoder,
+  public static <T> T[][] arraysWithDecoder(Object serialized, ArrayDecoder<T> decoder,
       ArrayCreator<T[]> arrayCreator) throws DecodingException {
-    SequenceDecoder dec = SequenceDecoder.load(serialized);
-    T[][] array = arrayCreator.newArray(dec.size());
-    dec.arrays(array.length, decoder, (e) -> array[dec.offset()] = e);
-    assert (dec.offset() == dec.size());
-    return array;
+    try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
+      T[][] array = arrayCreator.newArray(dec.size());
+      dec.arrays(array.length, decoder, (e) -> array[dec.offset()] = e);
+      assert (dec.offset() == dec.size());
+      return array;
+    } catch (IOException e) {
+      throw new DecodingException(e);
+    }
   }
 }

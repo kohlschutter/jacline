@@ -1,9 +1,20 @@
 goog.module("kohlschutter.coding.KeyDecoder");
 
+const DecodingException = goog.require("com.kohlschutter.jacline.lib.common.DecodingException");
+
 // FIXME type checking
 class KeyDecoder {
     constructor(o) {
         this.o = o;
+    }
+
+    close() {
+        this.o = null;
+    }
+
+    /** @export */
+    m_close__void() {
+        this.close();
     }
 
     hasKey(k) {
@@ -37,10 +48,16 @@ class KeyDecoder {
 
     static load(expectedType, o) {
         if (expectedType) {
-            // FIXME check type
+            if (o["javaClass"] != expectedType) {
+                throw DecodingException.withUnexpectedType(expectedType, o["javaClass"]);
+            }
         }
         return new KeyDecoder(o);
     }
 }
+
+KeyDecoder.prototype[""] = function() {
+    this.close();
+};
 
 exports = KeyDecoder;

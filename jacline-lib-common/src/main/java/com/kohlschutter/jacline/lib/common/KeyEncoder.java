@@ -18,6 +18,7 @@
 package com.kohlschutter.jacline.lib.common;
 
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
+import com.kohlschutter.jacline.lib.common.vanilla.JsonKeyEncoder;
 
 import jsinterop.annotations.JsType;
 
@@ -59,7 +60,7 @@ public interface KeyEncoder {
    * @param array The array.
    * @return This encoder.
    */
-  SequenceEncoder encodeArray(String key, ArrayEncoder encoder, Object[] array);
+  KeyEncoder encodeArray(String key, ArrayEncoder encoder, Object[] array);
 
   /**
    * Returns a new encoder that can encode the object stored under the given key.
@@ -87,6 +88,7 @@ public interface KeyEncoder {
 
   @JsImplementationProvidedSeparately
   static KeyEncoder begin(String type) {
-    throw new UnsupportedOperationException("Not yet implemented for vanilla Java");
+    JsonKeyEncoder enc = new JsonKeyEncoder(type);
+    return enc;
   }
 }

@@ -26,6 +26,10 @@ import jsinterop.annotations.JsType;
 public final class Decodables {
   private static final Dictionary<ObjectDecoder<?>> MAP = Dictionary.newDictionary();
 
+  static {
+    DecodablesInit.init();
+  }
+
   @JsExport
   public static ObjectDecoder<?> getDecoder(String type) {
     return MAP.get(type);

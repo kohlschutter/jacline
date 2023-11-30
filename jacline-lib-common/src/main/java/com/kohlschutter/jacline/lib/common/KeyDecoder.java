@@ -18,25 +18,26 @@
 package com.kohlschutter.jacline.lib.common;
 
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
+import com.kohlschutter.jacline.lib.common.vanilla.JsonKeyDecoder;
 
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, namespace = "kohlschutter.coding", name = "KeyDecoder")
-public interface KeyDecoder {
+public interface KeyDecoder extends JsCloseable {
   String stringForKey(String key);
 
   Boolean booleanForKey(String key);
 
   Number numberForKey(String key);
 
-  <T> T[] arrayForKey(String key, ArrayDecoder<T> decoderProvider);
+  <T> T[] arrayForKey(String key, ArrayDecoder<T> decoder) throws DecodingException;
 
-  <T> T objectForKey(String key, ObjectDecoder<T> decoder);
+  <T> T objectForKey(String key, ObjectDecoder<T> decoder) throws DecodingException;
 
   boolean hasKey(String key);
 
   @JsImplementationProvidedSeparately
-  static KeyDecoder load(String expectedCodedType, Object serialized) throws DecodingException {
-    throw new DecodingException("Not implemented yet for JVM"); // code for Java, not JavaScript
+  static KeyDecoder load(String expectedCodedType, Object encoded) throws DecodingException {
+    return new JsonKeyDecoder(expectedCodedType, encoded);
   }
 }
