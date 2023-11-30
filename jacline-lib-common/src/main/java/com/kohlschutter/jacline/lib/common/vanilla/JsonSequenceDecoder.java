@@ -37,11 +37,11 @@ import jakarta.json.spi.JsonProvider;
 import jakarta.json.stream.JsonParser;
 import jakarta.json.stream.JsonParser.Event;
 
-public class JsonSequenceDecoder implements SequenceDecoder {
+public final class JsonSequenceDecoder implements SequenceDecoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonParser parser;
-  private int offset = 0;
-  private final int size;
+  private int pos = 0;
+  private final int length;
   private final Iterator<JsonValue> iterator;
 
   public JsonSequenceDecoder(Object encoded) throws DecodingException {
@@ -51,7 +51,7 @@ public class JsonSequenceDecoder implements SequenceDecoder {
       JsonArray array = ((JsonArray) encoded);
       stream = array.stream();
       parser = null;
-      size = array.size();
+      length = array.size();
     } else {
       if (encoded instanceof Reader) {
         parser = PROVIDER.createParser((Reader) encoded);
@@ -63,11 +63,11 @@ public class JsonSequenceDecoder implements SequenceDecoder {
           throw new DecodingException("Not an array");
         }
         JsonArray array = parser.getArray();
-        size = array.size();
+        length = array.size();
         stream = array.stream();
       } else {
         stream = Stream.empty();
-        size = 0;
+        length = 0;
       }
     }
 
@@ -76,17 +76,17 @@ public class JsonSequenceDecoder implements SequenceDecoder {
 
   @Override
   public int size() {
-    return size;
+    return length;
   }
 
   @Override
-  public int offset() {
-    return offset;
+  public int position() {
+    return pos;
   }
 
   private int checkCount(int count) {
-    if (count > size - offset || count < 0) {
-      count = size - offset;
+    if (count > length - pos || count < 0) {
+      count = length - pos;
     }
     return count;
   }
@@ -95,7 +95,7 @@ public class JsonSequenceDecoder implements SequenceDecoder {
   public SequenceDecoder strings(int count, SequenceConsumer<String> forEach)
       throws DecodingException {
     count = checkCount(count);
-    for (int i = 0; i < count; i++, offset++) {
+    for (int i = 0; i < count; i++, pos++) {
       JsonValue next = iterator.next();
 
       String val;
@@ -121,7 +121,7 @@ public class JsonSequenceDecoder implements SequenceDecoder {
   public SequenceDecoder booleans(int count, SequenceConsumer<Boolean> forEach)
       throws DecodingException {
     count = checkCount(count);
-    for (int i = 0; i < count; i++, offset++) {
+    for (int i = 0; i < count; i++, pos++) {
       JsonValue next = iterator.next();
 
       Boolean val;
@@ -150,7 +150,7 @@ public class JsonSequenceDecoder implements SequenceDecoder {
   public SequenceDecoder numbers(int count, SequenceConsumer<Number> forEach)
       throws DecodingException {
     count = checkCount(count);
-    for (int i = 0; i < count; i++, offset++) {
+    for (int i = 0; i < count; i++, pos++) {
       JsonValue next = iterator.next();
 
       Number val;
@@ -176,7 +176,7 @@ public class JsonSequenceDecoder implements SequenceDecoder {
   public <T> SequenceDecoder arrays(int count, ArrayDecoder<T> decoder,
       SequenceConsumer<T[]> forEach) throws DecodingException {
     count = checkCount(count);
-    for (int i = 0; i < count; i++, offset++) {
+    for (int i = 0; i < count; i++, pos++) {
       JsonValue next = iterator.next();
 
       T[] val;
@@ -205,7 +205,7 @@ public class JsonSequenceDecoder implements SequenceDecoder {
   public <T> SequenceDecoder objects(int count, ObjectDecoder<T> decoder,
       SequenceConsumer<T> forEach) throws DecodingException {
     count = checkCount(count);
-    for (int i = 0; i < count; i++, offset++) {
+    for (int i = 0; i < count; i++, pos++) {
       JsonValue next = iterator.next();
 
       T val;

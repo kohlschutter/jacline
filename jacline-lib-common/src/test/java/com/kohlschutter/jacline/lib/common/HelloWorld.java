@@ -109,7 +109,7 @@ public final class HelloWorld implements Encodable {
    * the target object.
    *
    * @param dec The {@link KeyDecoder} instance.
-   * @throws DecodingException
+   * @throws DecodingException on error.
    */
   private static void checkSanity(KeyDecoder dec) throws DecodingException {
     dec.objectForKey("obj", (encoded) -> {

@@ -29,7 +29,7 @@ import jakarta.json.spi.JsonProvider;
 import jsinterop.annotations.JsIgnore;
 
 @SuppressWarnings("unusable-by-js")
-public class JsonSequenceEncoder implements SequenceEncoder {
+public final class JsonSequenceEncoder implements SequenceEncoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonArrayBuilder builder;
   private final JsonSequenceEncoder parent;

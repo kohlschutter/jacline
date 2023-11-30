@@ -19,8 +19,20 @@ package com.kohlschutter.jacline.lib.common;
 
 import jsinterop.annotations.JsFunction;
 
+/**
+ * Creates a new array for a given generic type.
+ * 
+ * @param <T> The type of the array.
+ * @author Christian Kohlschütter
+ */
 @FunctionalInterface
 @JsFunction
 public interface ArrayCreator<T> {
+  /**
+   * Creates a new array for a given generic type of the given size.
+   * 
+   * @param size The size.
+   * @return The array.
+   */
   T[] newArray(int size);
 }

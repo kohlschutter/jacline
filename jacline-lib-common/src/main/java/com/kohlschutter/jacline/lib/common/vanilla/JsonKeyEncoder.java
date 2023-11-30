@@ -31,7 +31,7 @@ import jakarta.json.spi.JsonProvider;
 import jsinterop.annotations.JsIgnore;
 
 @SuppressWarnings("unusable-by-js")
-public class JsonKeyEncoder implements KeyEncoder {
+public final class JsonKeyEncoder implements KeyEncoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonKeyEncoder parent;
   private final JsonObjectBuilder builder;

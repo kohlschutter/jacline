@@ -32,7 +32,7 @@ import jakarta.json.spi.JsonProvider;
 import jakarta.json.stream.JsonParser;
 import jakarta.json.stream.JsonParser.Event;
 
-public class JsonKeyDecoder implements KeyDecoder {
+public final class JsonKeyDecoder implements KeyDecoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonParser parser;
   private final JsonObject object;
@@ -89,6 +89,7 @@ public class JsonKeyDecoder implements KeyDecoder {
   }
 
   @Override
+  @SuppressWarnings("PMD.ReturnEmptyCollectionRatherThanNull")
   public <T> T[] arrayForKey(String key, ArrayDecoder<T> decoder) throws DecodingException {
     if (isNull(key)) {
       return null;

@@ -16,7 +16,7 @@ class SequenceDecoder {
         this.close();
     }
 
-    offset() {
+    position() {
         return this.pos;
     }
 

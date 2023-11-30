@@ -34,7 +34,7 @@ public interface SequenceDecoder extends JsCloseable {
 
   int size();
 
-  int offset();
+  int position();
 
   SequenceDecoder strings(int count, SequenceConsumer<String> forEach) throws DecodingException;
 

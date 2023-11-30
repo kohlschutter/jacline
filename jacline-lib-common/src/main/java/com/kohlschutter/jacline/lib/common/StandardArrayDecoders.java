@@ -31,8 +31,8 @@ public class StandardArrayDecoders {
       ArrayCreator<T> arrayCreator) throws DecodingException {
     try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
       T[] array = arrayCreator.newArray(dec.size());
-      dec.objects(array.length, decoder, (e) -> array[dec.offset()] = e);
-      assert (dec.offset() == dec.size());
+      dec.objects(array.length, decoder, (e) -> array[dec.position()] = e);
+      assert (dec.position() == dec.size());
       return array;
     } catch (IOException e) {
       throw new DecodingException(e);
@@ -42,8 +42,8 @@ public class StandardArrayDecoders {
   public static String[] strings(Object serialized) throws DecodingException {
     try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
       String[] array = new String[dec.size()];
-      dec.strings(array.length, (e) -> array[dec.offset()] = e);
-      assert (dec.offset() == dec.size());
+      dec.strings(array.length, (e) -> array[dec.position()] = e);
+      assert (dec.position() == dec.size());
       return array;
     } catch (IOException e) {
       throw new DecodingException(e);
@@ -54,8 +54,8 @@ public class StandardArrayDecoders {
   public static Boolean[] booleans(Object serialized) throws DecodingException {
     try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
       Boolean[] array = new Boolean[dec.size()];
-      dec.booleans(array.length, (e) -> array[dec.offset()] = e);
-      assert (dec.offset() == dec.size());
+      dec.booleans(array.length, (e) -> array[dec.position()] = e);
+      assert (dec.position() == dec.size());
       return array;
     } catch (IOException e) {
       throw new DecodingException(e);
@@ -65,8 +65,8 @@ public class StandardArrayDecoders {
   public static Number[] numbers(Object serialized) throws DecodingException {
     try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
       Number[] array = new Number[dec.size()];
-      dec.numbers(array.length, (e) -> array[dec.offset()] = e);
-      assert (dec.offset() == dec.size());
+      dec.numbers(array.length, (e) -> array[dec.position()] = e);
+      assert (dec.position() == dec.size());
       return array;
     } catch (IOException e) {
       throw new DecodingException(e);
@@ -81,8 +81,8 @@ public class StandardArrayDecoders {
       ArrayCreator<T[]> arrayCreator) throws DecodingException {
     try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
       T[][] array = arrayCreator.newArray(dec.size());
-      dec.arrays(array.length, decoder, (e) -> array[dec.offset()] = e);
-      assert (dec.offset() == dec.size());
+      dec.arrays(array.length, decoder, (e) -> array[dec.position()] = e);
+      assert (dec.position() == dec.size());
       return array;
     } catch (IOException e) {
       throw new DecodingException(e);

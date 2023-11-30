@@ -26,7 +26,7 @@ import java.io.IOException;
  * Such JavaScript classes must implement the following method as follows:
  * <p>
  * {@code /** @export} {@code *}{@code /}<br />
- * {@code m_close__void()}<tt>{</tt><em>[...]</em><tt>}</tt>
+ * {@code m_close__void()}<code>{</code><em>[...]</em><code>}</code>
  *
  * @author Christian Kohlschütter
  */
