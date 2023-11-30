@@ -86,17 +86,7 @@
     <dependencies>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
-            <artifactId>jacline-annotations</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.kohlschutter.jacline</groupId>
-            <artifactId>jacline-jsinterop-base</artifactId>
-            <version>${jacline.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.kohlschutter.jacline</groupId>
-            <artifactId>jacline-elemental2-dom</artifactId>
+            <artifactId>jacline-lib-common</artifactId>
             <version>${jacline.version}</version>
         </dependency>
     </dependencies>
