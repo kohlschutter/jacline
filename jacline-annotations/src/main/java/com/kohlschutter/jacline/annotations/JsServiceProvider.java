@@ -36,7 +36,7 @@ import java.util.ServiceLoader;
 public @interface JsServiceProvider {
   /**
    * The services implemented by the annotated class.
-   * 
+   *
    * @return The list of services.
    */
   Class<?>[] services();

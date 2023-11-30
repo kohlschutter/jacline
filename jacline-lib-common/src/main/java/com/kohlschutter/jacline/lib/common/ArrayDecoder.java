@@ -21,7 +21,7 @@ import jsinterop.annotations.JsFunction;
 
 /**
  * Something that can decode an array.
- * 
+ *
  * @param <T> The type of the array.
  * @author Christian Kohlschütter
  */
@@ -30,7 +30,7 @@ import jsinterop.annotations.JsFunction;
 public interface ArrayDecoder<T> {
   /**
    * Decodes an array from a serialized representation.
-   * 
+   *
    * @param serialized The serialized representation.
    * @return The array.
    * @throws DecodingException on error.
