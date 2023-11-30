@@ -19,6 +19,7 @@ package com.kohlschutter.jacline.samples.helloworld;
 
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.annotations.JsExport;
+import com.kohlschutter.jacline.lib.common.DecodingException;
 import com.kohlschutter.jacline.lib.common.Encodable;
 import com.kohlschutter.jacline.lib.common.KeyDecoder;
 import com.kohlschutter.jacline.lib.common.KeyEncoder;
@@ -87,9 +88,10 @@ public final class HelloWorld implements Encodable {
    * 
    * @param obj The encoded object.
    * @return A new {@link HelloWorld} instance.
+   * @throws DecodingException on error.
    */
   @JsExport
-  public static HelloWorld decode(Object obj) {
+  public static HelloWorld decode(Object obj) throws DecodingException {
     KeyDecoder dec = KeyDecoder.load(CODED_TYPE, obj);
     checkSanity(dec);
 
@@ -108,7 +110,7 @@ public final class HelloWorld implements Encodable {
    * @param dec The {@link KeyDecoder} instance.
    */
   private static void checkSanity(KeyDecoder dec) {
-    dec.objectForKey("obj", "SomeObjectType", (encoded) -> {
+    dec.objectForKey("obj", (encoded) -> {
       KeyDecoder objectDecoder = KeyDecoder.load("SomeObjectType", encoded);
 
       Number pi = objectDecoder.numberForKey("pi");

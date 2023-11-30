@@ -4,12 +4,15 @@ goog.module("kohlschutter.coding.SequenceDecoder");
 class SequenceDecoder {
     constructor(o) {
         this.o = o;
-        this.out = [];
         this.pos = 0;
     }
 
+    offset() {
+        return this.pos;
+    }
+
     size() {
-        if(this.o) {
+        if (this.o) {
             return this.o.length;
         } else {
             return 0;
@@ -28,64 +31,78 @@ class SequenceDecoder {
         }
     }
 
-    strings(count) {
+    strings(count, consumer) {
         count = this._checkCount(count);
         for (var i = 0; i < count; i++) {
-            var obj = this.o[this.pos++];
-            // FIXME check type
-            this.out.push(obj);
+            var obj = this.o[this.pos];
+            try {
+                // FIXME check type
+                consumer(obj);
+            } finally {
+                this.pos++;
+            }
         }
         return this;
     }
 
-    booleans(count) {
+    booleans(count, consumer) {
         count = this._checkCount(count);
         for (var i = 0; i < count; i++) {
-            var obj = this.o[this.pos++];
-            // FIXME check type
-            this.out.push(obj);
+            var obj = this.o[this.pos];
+            try {
+                // FIXME check type
+                consumer(obj);
+            } finally {
+                this.pos++;
+            }
         }
         return this;
     }
 
-    numbers(count) {
+    numbers(count, consumer) {
         count = this._checkCount(count);
         for (var i = 0; i < count; i++) {
-            var obj = this.o[this.pos++];
-            // FIXME check type
-            this.out.push(obj);
+            var obj = this.o[this.pos];
+            try {
+                // FIXME check type
+                consumer(obj);
+            } finally {
+                this.pos++;
+            }
         }
         return this;
     }
 
-    arrays(count, decoder) {
+    arrays(count, decoder, consumer) {
         count = this._checkCount(count);
         for (var i = 0; i < count; i++) {
-            var obj = this.o[this.pos++];
-            // FIXME check type
-            obj = decoder(obj);
-            this.out.push(obj);
+            var obj = this.o[this.pos];
+            try {
+                if (decoder) {
+                    obj = decoder(obj);
+                }
+                consumer(obj);
+            } finally {
+                this.pos++;
+            }
         }
         return this;
     }
 
-    objects(count, expectedType, decoder) {
+    objects(count, decoder, consumer) {
         count = this._checkCount(count);
         for (var i = 0; i < count; i++) {
-            var obj = this.o[this.pos++];
-            // FIXME check type
-            obj = decoder(obj);
-            this.out.push(obj);
+            var obj = this.o[this.pos];
+            try {
+                if (decoder) {
+                    obj = decoder(obj);
+                }
+                consumer(obj);
+            } finally {
+                this.pos++;
+            }
         }
         return this;
-    }
-
-    getArray() {
-        if (this.o) {
-            return this.out;
-        } else {
-            return null;
-        }
     }
 
     static load(o) {

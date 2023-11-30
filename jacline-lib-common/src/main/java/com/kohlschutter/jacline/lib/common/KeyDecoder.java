@@ -29,14 +29,14 @@ public interface KeyDecoder {
 
   Number numberForKey(String key);
 
-  Object[] arrayForKey(String key, ArrayDecoder decoderProvider);
+  <T> T[] arrayForKey(String key, ArrayDecoder<T> decoderProvider);
 
-  Object objectForKey(String key, String expectedCodedType, ObjectDecoder decoder);
+  <T> T objectForKey(String key, ObjectDecoder<T> decoder);
 
   boolean hasKey(String key);
 
   @JsImplementationProvidedSeparately
-  static KeyDecoder load(String expectedCodedType, Object serialized) {
-    throw new UnsupportedOperationException(); // code for Java, not JavaScript
+  static KeyDecoder load(String expectedCodedType, Object serialized) throws DecodingException {
+    throw new DecodingException("Not implemented yet for JVM"); // code for Java, not JavaScript
   }
 }

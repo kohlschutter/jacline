@@ -26,7 +26,7 @@ class KeyDecoder {
         return dp(this.o[k]);
     }
 
-    objectForKey(k, expectedType, decoder) {
+    objectForKey(k, decoder) {
         var obj = this.o[k];
         if (obj) {
             return decoder(obj);
@@ -36,6 +36,9 @@ class KeyDecoder {
     }
 
     static load(expectedType, o) {
+        if (expectedType) {
+            // FIXME check type
+        }
         return new KeyDecoder(o);
     }
 }

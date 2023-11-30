@@ -19,23 +19,33 @@ package com.kohlschutter.jacline.lib.common;
 
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
 
+import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, namespace = "kohlschutter.coding", name = "SequenceDecoder")
 public interface SequenceDecoder {
+
+  @FunctionalInterface
+  @JsFunction
+  interface SequenceConsumer<T> {
+    void consume(T t) throws DecodingException;
+  }
+
   int size();
 
-  SequenceDecoder strings(int count);
+  int offset();
 
-  SequenceDecoder booleans(int count);
+  SequenceDecoder strings(int count, SequenceConsumer<String> forEach) throws DecodingException;
 
-  SequenceDecoder numbers(int count);
+  SequenceDecoder booleans(int count, SequenceConsumer<Boolean> forEach) throws DecodingException;
 
-  SequenceDecoder arrays(int count, ArrayDecoder decoder);
+  SequenceDecoder numbers(int count, SequenceConsumer<Number> forEach) throws DecodingException;
 
-  SequenceDecoder objects(int count, String expectedCodedType, ObjectDecoder decoder);
+  <T> SequenceDecoder arrays(int count, ArrayDecoder<T[]> decoder, SequenceConsumer<T[]> forEach)
+      throws DecodingException;
 
-  Object[] getArray();
+  <T> SequenceDecoder objects(int count, ObjectDecoder<T> decoder, SequenceConsumer<T> forEach)
+      throws DecodingException;
 
   @JsImplementationProvidedSeparately
   static SequenceDecoder load(Object serialized) {
