@@ -24,6 +24,7 @@ Particularly, jacline sports the following highlights:
 - Replaces "Super-Sourcing" with "Common-Sourcing", i.e., having the same Java source definitions
   for JavaScript/JVM targets along with the occasional native JavaScript file that replaces the
   vanilla Java implementation for the JavaScript context.
+- Enables "Closeable" support (e.g. in try-with-resources) for native JavaScript class implementations.
 - Improves the interaction with outside JavaScript code using custom annotations, such as
   @JsImport and @JsExport
 - Provides all required and recommended JavaScript library dependencies in the same repository as
@@ -33,6 +34,7 @@ Particularly, jacline sports the following highlights:
 [elemental2](https://github.com/google/elemental2))
 - Provides optional library code utilizing jacline's additional features, such as JSON-based
   class encoding/decoding.
+- Provides a minimal dummy ServiceLoader interface.
 - Allows for a simple integration with [Dumbo](https://github.com/kohlschuetter/dumbo).
 
 ## Limitations
