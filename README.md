@@ -57,15 +57,42 @@ jacline](samples/helloworld/):
   cat target/classes/jacline-generated.js
 ```
 
+The source code is in [src/main](samples/helloworld/src/main) for both Java (under `java/`) and
+JavaScript code (under `jacline/`).  The transpilation is configured and triggered via the Maven
+[pom.xml](samples/helloworld/pom.xml).
+
 Now try to modify the source code for
-[HelloWorld.java](src/main/java/com/kohlschutter/jacline/samples/helloworld/HelloWorld.java),
+[HelloWorld.java](samples/helloworld/src/main/java/com/kohlschutter/jacline/samples/helloworld/HelloWorld.java),
 enabling the two `@JsExport` statements, then run `mvn clean install` again.
 
 Notice that the generated code is now bigger, but you can call the Java class from JavaScript!
 
-To do so, paste the code into a blank page in your browser, then open the JavaScript console
-and type the fully qualified class name to access the class and its methods, just like from
-Java.
+To do so, paste the code into a blank page in your browser (or open `target/classes/index.html` in
+your browser), then open the JavaScript console and type the fully qualified class name to access
+the class and its methods, just like from Java.
+
+### json
+
+This example demonstrates the use of the "Encodable" API (provided by jacline-lib-common) in
+JavaScript, and the "Common-Sourcing" approach of jacline.
+
+```
+  cd samples/json
+  mvn clean install
+  cat target/classes/jacline-generated.js
+  open target/classes/index.html
+```
+
+The source code is in [src/main](samples/json/src/main) for both Java (under `java/`) and JavaScript
+code (under `jacline/`).  The transpilation is configured and triggered via the Maven
+[pom.xml](samples/json/pom.xml).
+
+Inspect the JavaScript console of this page to see various forms of output, demonstrating how a
+native Java class can be encoded as JSON, and back.
+
+Compare the behavior with the vanilla Java test code under
+[src/test/java](samples/json/src/test/java).  It uses the same classes, but provides an entirely
+different implementation for the JSON parsing code.
 
 ## Building
 
