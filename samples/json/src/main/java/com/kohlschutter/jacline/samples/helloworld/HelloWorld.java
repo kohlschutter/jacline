@@ -59,7 +59,7 @@ public final class HelloWorld implements Encodable {
 
   /**
    * Returns a hello world greeting.
-   * 
+   *
    * @return The greeting.
    */
   @JsExport
@@ -69,7 +69,7 @@ public final class HelloWorld implements Encodable {
 
   /**
    * Sets the hello world greeting.
-   * 
+   *
    * @param message The new greeting.
    */
   @JsExport
@@ -90,7 +90,7 @@ public final class HelloWorld implements Encodable {
 
   /**
    * Decodes an encoded object of this type via {@link KeyDecoder}.
-   * 
+   *
    * @param obj The encoded object.
    * @return A new {@link HelloWorld} instance.
    * @throws DecodingException on error.
@@ -114,7 +114,7 @@ public final class HelloWorld implements Encodable {
   /**
    * Checks for the presence of some object and its properties, without actually using the data for
    * the target object.
-   * 
+   *
    * @param dec The {@link KeyDecoder} instance.
    * @throws DecodingException
    */

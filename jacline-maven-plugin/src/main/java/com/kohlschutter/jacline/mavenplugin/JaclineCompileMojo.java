@@ -64,7 +64,7 @@ import com.kohlschutter.jacline.jscomp.ClosureCompilerSources;
 
 /**
  * Compiles code with jacline.
- * 
+ *
  * @author Christian Kohlschütter
  */
 @Mojo(name = "compile", defaultPhase = LifecyclePhase.COMPILE, threadSafe = true, //

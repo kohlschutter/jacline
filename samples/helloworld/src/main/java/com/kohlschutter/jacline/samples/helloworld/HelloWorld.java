@@ -38,7 +38,7 @@ public final class HelloWorld {
 
   /**
    * Returns a hello world greeting.
-   * 
+   *
    * @return The greeting.
    */
   // @JsExport // Mark this method as being accessible from outside JavaScript
