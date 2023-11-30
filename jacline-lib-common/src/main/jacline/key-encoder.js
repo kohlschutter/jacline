@@ -27,7 +27,7 @@ class KeyEncoder {
         return this;
     }
     encodeArray(key, encoder, value) {
-        this.obj[key] = encoder(value);
+        this.obj[key] = value == null ? null : encoder(value);
         return this;
     }
 

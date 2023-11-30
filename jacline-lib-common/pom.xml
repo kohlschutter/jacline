@@ -49,6 +49,11 @@
         </dependency>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
+            <artifactId>jacline-jsinterop-base</artifactId>
+            <version>${jacline.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-elemental2-dom</artifactId>
             <version>${project.version}</version>
         </dependency>

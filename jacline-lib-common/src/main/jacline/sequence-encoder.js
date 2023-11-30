@@ -16,26 +16,29 @@ class SequenceEncoder {
     }
 
     encodeStrings(...value) {
-        for (var i = 0, n = value.length; i < n; i++) {
-            var v = value[i];
-            this.out.push(v);
-        }
+        if (value)
+            for (var i = 0, n = value.length; i < n; i++) {
+                var v = value[i];
+                this.out.push(v);
+            }
         return this;
     }
 
     encodeBooleans(...value) {
-        for (var i = 0, n = value.length; i < n; i++) {
-            var v = value[i];
-            this.out.push(v);
-        }
+        if (value)
+            for (var i = 0, n = value.length; i < n; i++) {
+                var v = value[i];
+                this.out.push(v);
+            }
         return this;
     }
 
     encodeNumbers(...value) {
-        for (var i = 0, n = value.length; i < n; i++) {
-            var v = value[i];
-            this.out.push(v);
-        }
+        if (value)
+            for (var i = 0, n = value.length; i < n; i++) {
+                var v = value[i];
+                this.out.push(v);
+            }
         return this;
     }
 
@@ -53,11 +56,12 @@ class SequenceEncoder {
     }
 
     encodeObjects(encoder, ...value) {
-        for (var i = 0, n = value.length; i < n; i++) {
-            var obj = value[i];
-            obj = encoder(obj);
-            this.out.push(obj);
-        }
+        if (value)
+            for (var i = 0, n = value.length; i < n; i++) {
+                var obj = value[i];
+                obj = encoder(obj);
+                this.out.push(obj);
+            }
         return this;
     }
 }
