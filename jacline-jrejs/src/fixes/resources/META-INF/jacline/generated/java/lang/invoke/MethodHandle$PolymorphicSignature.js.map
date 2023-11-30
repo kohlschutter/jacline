@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"MethodHandle$PolymorphicSignature.impl.java.js",
+"lineCount":14,
+"mappings":"A;;;;;;;;;MAUe,oB;;QAAA,O;EAAAA,uC;EAAAA;",
+"sources":["MethodHandle.java"],
+"names":["java.lang.invoke.MethodHandle$PolymorphicSignature.<clinit>"]
+}
