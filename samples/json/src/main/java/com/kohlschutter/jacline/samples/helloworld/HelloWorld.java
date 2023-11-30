@@ -20,13 +20,11 @@ package com.kohlschutter.jacline.samples.helloworld;
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.annotations.JsExport;
 import com.kohlschutter.jacline.lib.common.Encodable;
-import com.kohlschutter.jacline.lib.common.JSON;
 import com.kohlschutter.jacline.lib.common.KeyDecoder;
 import com.kohlschutter.jacline.lib.common.KeyEncoder;
 import com.kohlschutter.jacline.lib.common.StandardArrayDecoders;
 import com.kohlschutter.jacline.lib.common.StandardArrayEncoders;
 
-import elemental2.dom.DomGlobal;
 import jsinterop.annotations.JsType;
 
 /**
@@ -63,6 +61,11 @@ public final class HelloWorld implements Encodable {
     return message;
   }
 
+  /**
+   * Sets the hello world greeting.
+   * 
+   * @param message The new greeting.
+   */
   @JsExport
   public void setMessage(String message) {
     this.message = message;
@@ -79,6 +82,12 @@ public final class HelloWorld implements Encodable {
     return enc.getEncoded();
   }
 
+  /**
+   * Decodes an encoded object of this type via {@link KeyDecoder}.
+   * 
+   * @param obj The encoded object.
+   * @return A new {@link HelloWorld} instance.
+   */
   @JsExport
   public static HelloWorld decode(Object obj) {
     KeyDecoder dec = KeyDecoder.load(CODED_TYPE, obj);
@@ -92,6 +101,12 @@ public final class HelloWorld implements Encodable {
     return hw;
   }
 
+  /**
+   * Checks for the presence of some object and its properties, without actually using the data for
+   * the target object.
+   * 
+   * @param dec The {@link KeyDecoder} instance.
+   */
   private static void checkSanity(KeyDecoder dec) {
     dec.objectForKey("obj", "SomeObjectType", (encoded) -> {
       KeyDecoder objectDecoder = KeyDecoder.load("SomeObjectType", encoded);
