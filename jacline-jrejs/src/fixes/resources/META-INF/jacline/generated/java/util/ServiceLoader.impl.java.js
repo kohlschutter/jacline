@@ -8,6 +8,7 @@ let Class = goog.forwardDeclare('java.lang.Class$impl');
 let j_l_String = goog.forwardDeclare('java.lang.String$impl');
 let Collections = goog.forwardDeclare('java.util.Collections$impl');
 let Iterator = goog.forwardDeclare('java.util.Iterator$impl');
+let Optional = goog.forwardDeclare('java.util.Optional$impl');
 let Spliterator = goog.forwardDeclare('java.util.Spliterator$impl');
 let Consumer = goog.forwardDeclare('java.util.function.Consumer$impl');
 
@@ -43,6 +44,10 @@ class ServiceLoader extends j_l_Object {
   ServiceLoader.$clinit();
   return /**@type {!ServiceLoader<S_1>}*/ (ServiceLoader.$create__java_lang_Class(service));
  }
+ /** @nodts @return {Optional<S>} */
+ m_findFirst__java_util_Optional() {
+  return /**@type {Optional<S>}*/ (Optional.m_empty__java_util_Optional());
+ }
  /** @override @return {?string} */
  toString() {
   return 'java.util.ServiceLoader[' + j_l_String.m_valueOf__java_lang_Object__java_lang_String(this.f_service__java_util_ServiceLoader_.m_getName__java_lang_String()) + ']';
@@ -73,6 +78,7 @@ class ServiceLoader extends j_l_Object {
  static $loadModules() {
   j_l_String = goog.module.get('java.lang.String$impl');
   Collections = goog.module.get('java.util.Collections$impl');
+  Optional = goog.module.get('java.util.Optional$impl');
  }
 }
 Iterable.$markImplementor(ServiceLoader);

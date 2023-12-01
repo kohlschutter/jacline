@@ -15,6 +15,10 @@ public final class ServiceLoader<S> implements Iterable<S> {
     return new ServiceLoader<>(service);
   }
 
+  public Optional<S> findFirst() {
+    return Optional.empty();
+  }
+
   /**
    * Returns a string describing this service.
    *
