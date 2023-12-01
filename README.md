@@ -25,17 +25,25 @@ Particularly, jacline sports the following highlights:
   for JavaScript/JVM targets along with the occasional native JavaScript file that replaces the
   vanilla Java implementation for the JavaScript context.
 - Enables "Closeable" support (e.g. in try-with-resources) for native JavaScript class implementations.
-- Improves the interaction with outside JavaScript code using custom annotations, such as
-  @JsImport and @JsExport
-- Enables the definition of entry points in Java, via @JsEntryPoint (calls all static initializers
-  upon application start), even for library dependencies.
+- Improves the interaction with outside JavaScript code using custom annotations, such as:
+  - `@JsImport`: Declares that the annotated interface has an implementation that is supplied by some
+  external JavaScript code.
+  - `@JsExport`: Declares that the class or class method should be accessible by some external
+  JavaScript code. This prevents too eager obfuscation and code removal.
+  - `@JsEntryPoint`: Enables the definition of entry points in Java, calling all static initializers
+  upon application start, even for library dependencies.
+  - `@JsIgnoreType`: Declares that a type should be ignored entirely for transpilation purposes.
+  - `@JsImplementationProvidedSeparately`: Declares that a method of a type that is marked with
+  `@JsType(isNative=true)` as being provided with a default implementation for vanilla Java, whereas
+  the JavaScript-specific implementation is provided separately in some JavaScript file
+  ("Common-Sourcing").
 - Provides all required and recommended JavaScript library dependencies in the same repository as
   the rest of the code (some required code from
   [closure-library](https://github.com/google/closure-library) as well as j2cl's jre.js,
 [jsinterop-base](https://github.com/google/jsinterop-base),
 [elemental2](https://github.com/google/elemental2))
 - Provides optional library code utilizing jacline's additional features, such as JSON-based
-  class encoding/decoding.
+  class encoding/decoding that works both in vanilla Java/JVM and JavaScript.
 - Provides a minimal dummy ServiceLoader interface.
 - Allows for a simple integration with [Dumbo](https://github.com/kohlschuetter/dumbo).
 
