@@ -11,7 +11,15 @@
 #
 version="1.0.0-SNAPSHOT"
 #
+set -e
 cd "$(dirname $0)"/..
 mvn -Pbootstrap-fixes -Djacline.j2cl.bootstrap.jar=$HOME/.m2/repository/com/kohlschutter/jacline/jacline-jrejs/"$version"/jacline-jrejs-"$version"-bootstrap.jar clean compile
-cp -av target/classes/META-INF/jacline/* src/fixes/resources/META-INF/jacline/
+
+targetDir=target/classes/META-INF/jacline
+fixesResources=src/fixes/resources/META-INF/jacline/
+for f in $( cd "$targetDir" ; find . -type f ); do
+   [[ -f "src/main/resources/META-INF/jacline/$f" ]] && continue
+   mkdir -p $(dirname "$fixesResources/$f")
+   cp -av "$targetDir/$f" "$fixesResources/$f"
+done
 git status .
