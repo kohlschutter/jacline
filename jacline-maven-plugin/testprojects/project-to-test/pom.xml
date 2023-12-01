@@ -10,12 +10,16 @@
     <packaging>jar</packaging>
     <name>Test MyMojo</name>
 
+    <properties>
+        <jacline.version>${project.version}</jacline.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>com.kohlschutter.jacline</groupId>
                 <artifactId>jacline-maven-plugin</artifactId>
-                <version>${project.version}</version>
+                <version>${jacline.version}</version>
                 <executions>
                     <execution>
                         <id>default-jacline-compile</id>
@@ -30,4 +34,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.kohlschutter.jacline</groupId>
+            <artifactId>jacline-lib-common</artifactId>
+            <version>${jacline.version}</version>
+        </dependency>
+    </dependencies>
 </project>

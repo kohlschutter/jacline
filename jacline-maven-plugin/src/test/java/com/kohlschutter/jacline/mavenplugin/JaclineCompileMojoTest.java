@@ -17,6 +17,7 @@
  */
 package com.kohlschutter.jacline.mavenplugin;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -25,7 +26,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import org.apache.maven.plugin.testing.MojoRule;
+import org.apache.maven.project.MavenProject;
 import org.junit.Rule;
+import org.junit.Test;
+
+import com.kohlschutter.util.ExecutionEnvironmentUtil;
 
 public class JaclineCompileMojoTest {
   @Rule
@@ -39,16 +44,19 @@ public class JaclineCompileMojoTest {
     }
   };
 
-  // @Test
+//  @Test // this is broken
   public void testSomething() throws Exception {
-    File pom = new File("target/test-classes/project-to-test/");
-    // if (!pom.isDirectory()) {
-    pom = new File(JaclineCompileMojoTest.class.getResource("/project-to-test").toURI());
-    // }
-    assertNotNull(pom);
-    assertTrue(pom.exists());
+    assertFalse("Maven testing harness is incompatible with Eclipse m2e", ExecutionEnvironmentUtil
+        .isInEclipse());
+    File projectDir = new File("testprojects/project-to-test/");
+    assertNotNull(projectDir);
+    assertTrue(projectDir.exists());
 
-    JaclineCompileMojo myMojo = (JaclineCompileMojo) rule.lookupConfiguredMojo(pom, "compile");
+    MavenProject mavenProject = rule.readMavenProject(projectDir);
+    mavenProject.getBuild().setDirectory(projectDir.getAbsolutePath());
+
+    JaclineCompileMojo myMojo = (JaclineCompileMojo) rule.lookupConfiguredMojo(mavenProject,
+        "compile");
     assertNotNull(myMojo);
     myMojo.execute();
 
