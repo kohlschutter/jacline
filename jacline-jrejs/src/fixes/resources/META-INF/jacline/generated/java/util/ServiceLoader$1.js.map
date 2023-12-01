@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"ServiceLoader$1.impl.java.js",
+"lineCount":67,
+"mappings":"A;;;;;;;;;;;;;;;;;MAkC+B,E;;CAAA,W;EAAAA,Q;EAAAA;8C;EAAAA;+C;;;QAAA,oD;EAAAC,a;EAAAA,yB;EAAAA,yH;EAAAA,iB;;;CAAA,mF;EAAAC,0D;EADwBC,4D;EACxBD,qC;;;CAER,kB;EACbE,yE;;;CAIO,wB;EACPC,IAAiCC,EAAjCD,qI;EACAA;GACEA,mJADFA;G;EAIAA,yC;;;;CAbqB,qD;EAAAE,yG;;;;CAAA,c;EAAAC,4D;;;QAAA,O;EAAAC,qB;EAAAA,kB;EAAAA,qB;EAAAA;",
+"sources":["ServiceLoader.java"],
+"names":["java.util.ServiceLoader$1.<synthetic: ctor_js>","java.util.ServiceLoader$1.<synthetic: ctor_create>","java.util.ServiceLoader$1.<init>","it","java.util.ServiceLoader$1.hasNext","java.util.ServiceLoader$1.next","en","java.util.ServiceLoader$1.forEachRemaining","java.util.ServiceLoader$1.remove","java.util.ServiceLoader$1.<clinit>"]
+}
