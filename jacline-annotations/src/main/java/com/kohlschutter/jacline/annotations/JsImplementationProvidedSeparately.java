@@ -24,7 +24,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Declares that a method of a type that is marked with {@code @JsType(isNative=true)} as being
+ * Declares that a method of a type that is marked with {@code @JsType(isNative=true)} is being
  * provided with a default implementation for vanilla Java, whereas the JavaScript-specific
  * implementation is provided separately in some JavaScript file.
  *

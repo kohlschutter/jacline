@@ -34,7 +34,7 @@ Particularly, jacline sports the following highlights:
   upon application start, even for library dependencies.
   - `@JsIgnoreType`: Declares that a type should be ignored entirely for transpilation purposes.
   - `@JsImplementationProvidedSeparately`: Declares that a method of a type that is marked with
-  `@JsType(isNative=true)` as being provided with a default implementation for vanilla Java, whereas
+  `@JsType(isNative=true)` is being provided with a default implementation for vanilla Java, whereas
   the JavaScript-specific implementation is provided separately in some JavaScript file
   ("Common-Sourcing").
 - Provides all required and recommended JavaScript library dependencies in the same repository as
