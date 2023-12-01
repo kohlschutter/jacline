@@ -77,6 +77,12 @@ public class JaclineCompileMojo extends AbstractMojo {
   private MavenProject project;
 
   /**
+   * Whether library contents should be created.
+   */
+  @Parameter(defaultValue = "true")
+  boolean createLibrary = true;
+
+  /**
    * The output directory.
    */
   @Parameter(defaultValue = "")
@@ -158,9 +164,8 @@ public class JaclineCompileMojo extends AbstractMojo {
 
         transpile(transpiler, to);
 
-        if (!entryPoints.isEmpty() && useDefaultMetaInfDir && !jaclineMetaInfDirectory.isBlank()) {
-          // Entry points were specified in the Maven config, and no jaclineMetaInfDirectory
-          // was specified explicitly -> we do not need to export Jacline JavaScript code as a library
+        if (!createLibrary) {
+          log.info("Not creating library contents under " + jaclineMetaInfDirectory);
           IOUtil.deleteRecursively(Path.of(jaclineMetaInfDirectory));
         } else {
           copyJavaScriptFiles(javascriptSourceRoots, entryPoints, Path.of(jaclineMetaInfDirectory,
@@ -285,11 +290,6 @@ public class JaclineCompileMojo extends AbstractMojo {
 
   private void closureCompile(Path transpiledOut) throws IOException,
       DependencyResolutionRequiredException, MojoExecutionException {
-    if (entryPoints.isEmpty()) {
-      log.info("No entry points defined, skipping closure-compiler step");
-      return;
-    }
-
     ClosureCompilerSources cs = new ClosureCompilerSources();
 
     cs.addSource(transpiledOut);
@@ -317,13 +317,30 @@ public class JaclineCompileMojo extends AbstractMojo {
       cs.addEntryPoint(p);
     }
 
+    List<String> compileClasspathElements = project.getCompileClasspathElements();
+    cs.addSourcesFromClasspath(compileClasspathElements);
+
+    for (Path p : cs.getOtherFiles()) {
+      boolean isSubDir = false;
+      if (p.endsWith("META-INF/jacline") || (p.endsWith("jacline/generated") && (isSubDir =
+          true))) {
+        Path generatedEntryPoints = isSubDir ? p.resolve("generated-entrypoints.js") : p.resolve(
+            "generated/generated-entrypoints.js");
+        if (Files.exists(generatedEntryPoints)) {
+          haveEntryPoints = true;
+          if (cs.addEntryPoint(generatedEntryPoints)) {
+            if (log.isInfoEnabled()) {
+              log.info("Adding generated entry points: " + generatedEntryPoints.toUri());
+            }
+          }
+        }
+      }
+    }
+
     if (!haveSourceRoots && !haveEntryPoints) {
       log.info("Nothing to do for the closure-compiler");
       return;
     }
-
-    List<String> compileClasspathElements = project.getCompileClasspathElements();
-    cs.addSourcesFromClasspath(compileClasspathElements);
 
     try (ClosureCompiler jc = new ClosureCompiler()) {
       Problems problems = new Problems();
