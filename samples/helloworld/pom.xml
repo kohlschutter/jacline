@@ -60,8 +60,8 @@
                                 <javascriptSourceRoot>src/main/jacline</javascriptSourceRoot>
                             </javascriptSourceRoots>
                             <entryPoints>
-                                <!-- List all possible entry points here -->
-                                <!-- If omitted, the Closure compiler is not run -->
+                                <!-- List all possible JavaScript entry points here -->
+                                <!-- Also see @JsEntryPoint -->
                                 <entryPoint>src/main/jacline/app.js</entryPoint>
                             </entryPoints>
                             <outputFile>
