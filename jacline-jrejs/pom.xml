@@ -52,6 +52,32 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>bootstrap-fixes</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.kohlschutter.jacline</groupId>
+                        <artifactId>jacline-maven-plugin</artifactId>
+                        <version>${project.version}</version>
+                        <executions>
+                            <execution>
+                                <id>default-jacline-compile</id>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                                <phase>compile</phase>
+                                <configuration>
+                                    <compileSourceRoots>
+                                        <compileSourceRoot>src/fixes/java</compileSourceRoot>
+                                    </compileSourceRoots>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
     <build>
