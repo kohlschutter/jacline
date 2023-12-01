@@ -159,8 +159,8 @@ public class JaclineCompileMojo extends AbstractMojo {
         transpile(transpiler, to);
 
         if (!entryPoints.isEmpty() && useDefaultMetaInfDir && !jaclineMetaInfDirectory.isBlank()) {
-          // No entry points were specified in the Maven config, and no jaclineMetaInfDirectory
-          // was specified either -> we do not need to export Jacline JavaScript code as a library
+          // Entry points were specified in the Maven config, and no jaclineMetaInfDirectory
+          // was specified explicitly -> we do not need to export Jacline JavaScript code as a library
           IOUtil.deleteRecursively(Path.of(jaclineMetaInfDirectory));
         } else {
           copyJavaScriptFiles(javascriptSourceRoots, entryPoints, Path.of(jaclineMetaInfDirectory,
