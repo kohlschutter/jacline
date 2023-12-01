@@ -27,6 +27,13 @@ import java.util.ServiceLoader;
 /**
  * Declares that a type provides certain service implementations that can be loaded via
  * {@link ServiceLoader}.
+ * <p>
+ * Classes annotated with this type must be public and have a public no-arg constructor with no
+ * declared exceptions. They also must implement all service interfaces declared in this annotation.
+ * <p>
+ * The instance will be instantiated upon demand, but code is initialized along with types annotated
+ * with {@link JsEntryPoint}, so the services might not be available if there is a dependency cycle
+ * upon calling a particular static initializer).
  *
  * @author Christian Kohlschütter
  */
@@ -39,5 +46,5 @@ public @interface JsServiceProvider {
    *
    * @return The list of services.
    */
-  Class<?>[] services();
+  Class<?>[] value() default {};
 }
