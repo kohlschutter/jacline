@@ -51,6 +51,7 @@ import org.eclipse.jdt.annotation.NonNull;
 
 import com.google.javascript.jscomp.jarjar.com.google.re2j.Matcher;
 import com.google.javascript.jscomp.jarjar.com.google.re2j.Pattern;
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.CompilerOutput;
 import com.kohlschutter.jacline.IOUtil;
 import com.kohlschutter.jacline.JaclineException;
@@ -142,10 +143,8 @@ public class JaclineCompileMojo extends AbstractMojo {
 
     projectBaseDirAbsoluteString = projectBaseDir.getAbsolutePath();
 
-    boolean useDefaultMetaInfDir = false;
     if (jaclineMetaInfDirectory == null || jaclineMetaInfDirectory.isBlank()) {
       jaclineMetaInfDirectory = jaclineMetaInfDirectoryDefault;
-      useDefaultMetaInfDir = true;
     }
 
     try {
@@ -288,6 +287,8 @@ public class JaclineCompileMojo extends AbstractMojo {
     }
   }
 
+  @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.NPathComplexity"})
+  @SuppressFBWarnings("QBA_QUESTIONABLE_BOOLEAN_ASSIGNMENT")
   private void closureCompile(Path transpiledOut) throws IOException,
       DependencyResolutionRequiredException, MojoExecutionException {
     ClosureCompilerSources cs = new ClosureCompilerSources();

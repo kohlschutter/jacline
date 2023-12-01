@@ -18,6 +18,25 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/vanilla/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>com.kohlschutter.jacline</groupId>
                 <artifactId>jacline-maven-plugin</artifactId>
                 <version>${jacline.version}</version>
@@ -28,6 +47,9 @@
                             <goal>compile</goal>
                         </goals>
                         <phase>compile</phase>
+                        <configuration>
+                            <compileSourceRoots>src/main/java</compileSourceRoots>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

@@ -18,7 +18,6 @@
 package com.kohlschutter.jacline.lib.common;
 
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
-import com.kohlschutter.jacline.lib.common.vanilla.JsonSequenceEncoder;
 
 import jsinterop.annotations.JsType;
 
@@ -81,6 +80,6 @@ public interface SequenceEncoder {
 
   @JsImplementationProvidedSeparately
   static SequenceEncoder begin() {
-    return new JsonSequenceEncoder();
+    return EncodableSupportProvider.getDefault().sequenceEncoder();
   }
 }

@@ -18,7 +18,6 @@
 package com.kohlschutter.jacline.lib.common;
 
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
-import com.kohlschutter.jacline.lib.common.vanilla.JsonKeyDecoder;
 
 import jsinterop.annotations.JsType;
 
@@ -38,6 +37,6 @@ public interface KeyDecoder extends JsCloseable {
 
   @JsImplementationProvidedSeparately
   static KeyDecoder load(String expectedCodedType, Object encoded) throws DecodingException {
-    return new JsonKeyDecoder(expectedCodedType, encoded);
+    return EncodableSupportProvider.getDefault().keyDecoder(expectedCodedType, encoded);
   }
 }

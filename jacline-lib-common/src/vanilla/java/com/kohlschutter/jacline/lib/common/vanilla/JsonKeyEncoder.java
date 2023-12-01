@@ -21,6 +21,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Objects;
 
+import com.kohlschutter.jacline.annotations.JsIgnoreType;
 import com.kohlschutter.jacline.lib.common.ArrayEncoder;
 import com.kohlschutter.jacline.lib.common.KeyEncoder;
 
@@ -28,16 +29,14 @@ import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
 import jakarta.json.JsonValue;
 import jakarta.json.spi.JsonProvider;
-import jsinterop.annotations.JsIgnore;
 
-@SuppressWarnings("unusable-by-js")
+@JsIgnoreType
 public final class JsonKeyEncoder implements KeyEncoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonKeyEncoder parent;
   private final JsonObjectBuilder builder;
   private final String parentKey;
 
-  @JsIgnore
   public JsonKeyEncoder(String type) {
     this(type, null, null);
   }
@@ -55,7 +54,6 @@ public final class JsonKeyEncoder implements KeyEncoder {
   }
 
   @Override
-  @JsIgnore
   public KeyEncoder encodeString(String key, String value) {
     if (value == null) {
       builder.addNull(key);
@@ -66,7 +64,6 @@ public final class JsonKeyEncoder implements KeyEncoder {
   }
 
   @Override
-  @JsIgnore
   public KeyEncoder encodeBoolean(String key, Boolean value) {
     if (value == null) {
       builder.addNull(key);
@@ -77,7 +74,6 @@ public final class JsonKeyEncoder implements KeyEncoder {
   }
 
   @Override
-  @JsIgnore
   public KeyEncoder encodeNumber(String key, Number value) {
     if (value == null) {
       builder.addNull(key);
@@ -100,7 +96,6 @@ public final class JsonKeyEncoder implements KeyEncoder {
   }
 
   @Override
-  @JsIgnore
   public KeyEncoder encodeArray(String key, ArrayEncoder encoder, Object[] array) {
     if (array == null) {
       builder.addNull(key);
@@ -116,13 +111,11 @@ public final class JsonKeyEncoder implements KeyEncoder {
   }
 
   @Override
-  @JsIgnore
   public KeyEncoder beginEncodeObject(String key, String type) {
     return new JsonKeyEncoder(type, this, key);
   }
 
   @Override
-  @JsIgnore
   public KeyEncoder end() {
     JsonKeyEncoder p = this.parent;
     if (p != null) {
@@ -132,7 +125,6 @@ public final class JsonKeyEncoder implements KeyEncoder {
   }
 
   @Override
-  @JsIgnore
   public JsonObject getEncoded() {
     return builder.build();
   }

@@ -18,7 +18,6 @@
 package com.kohlschutter.jacline.lib.common;
 
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
-import com.kohlschutter.jacline.lib.common.vanilla.JsonKeyEncoder;
 
 import jsinterop.annotations.JsType;
 
@@ -88,7 +87,6 @@ public interface KeyEncoder {
 
   @JsImplementationProvidedSeparately
   static KeyEncoder begin(String type) {
-    JsonKeyEncoder enc = new JsonKeyEncoder(type);
-    return enc;
+    return EncodableSupportProvider.getDefault().keyEncoder(type);
   }
 }

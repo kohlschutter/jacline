@@ -20,21 +20,20 @@ package com.kohlschutter.jacline.lib.common.vanilla;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import com.kohlschutter.jacline.annotations.JsIgnoreType;
 import com.kohlschutter.jacline.lib.common.ObjectEncoder;
 import com.kohlschutter.jacline.lib.common.SequenceEncoder;
 
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonValue;
 import jakarta.json.spi.JsonProvider;
-import jsinterop.annotations.JsIgnore;
 
-@SuppressWarnings("unusable-by-js")
+@JsIgnoreType
 public final class JsonSequenceEncoder implements SequenceEncoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonArrayBuilder builder;
   private final JsonSequenceEncoder parent;
 
-  @JsIgnore
   public JsonSequenceEncoder() {
     this(null);
   }
@@ -45,7 +44,6 @@ public final class JsonSequenceEncoder implements SequenceEncoder {
   }
 
   @Override
-  @JsIgnore
   public SequenceEncoder encodeStrings(String... values) {
     for (String value : values) {
       if (value == null) {
@@ -58,7 +56,6 @@ public final class JsonSequenceEncoder implements SequenceEncoder {
   }
 
   @Override
-  @JsIgnore
   public SequenceEncoder encodeBooleans(Boolean... values) {
     for (Boolean value : values) {
       if (value == null) {
@@ -71,7 +68,6 @@ public final class JsonSequenceEncoder implements SequenceEncoder {
   }
 
   @Override
-  @JsIgnore
   public SequenceEncoder encodeNumbers(Number... values) {
     for (Number value : values) {
       if (value == null) {
@@ -96,20 +92,17 @@ public final class JsonSequenceEncoder implements SequenceEncoder {
   }
 
   @Override
-  @JsIgnore
   public SequenceEncoder beginEncodeArray() {
     return new JsonSequenceEncoder(this);
   }
 
   @Override
-  @JsIgnore
   public SequenceEncoder encodeObjects(ObjectEncoder encoder, Object... obj) {
     // TODO Auto-generated method stub
     return null;
   }
 
   @Override
-  @JsIgnore
   public SequenceEncoder end() {
     JsonSequenceEncoder p = this.parent;
     if (p != null) {
@@ -119,8 +112,6 @@ public final class JsonSequenceEncoder implements SequenceEncoder {
   }
 
   @Override
-  @JsIgnore
-  @SuppressWarnings("unusable-by-js")
   public JsonValue getEncoded() {
     return builder.build();
   }

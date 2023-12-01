@@ -23,6 +23,7 @@ import java.io.StringReader;
 import java.util.Iterator;
 import java.util.stream.Stream;
 
+import com.kohlschutter.jacline.annotations.JsIgnoreType;
 import com.kohlschutter.jacline.lib.common.ArrayDecoder;
 import com.kohlschutter.jacline.lib.common.DecodingException;
 import com.kohlschutter.jacline.lib.common.ObjectDecoder;
@@ -37,6 +38,7 @@ import jakarta.json.spi.JsonProvider;
 import jakarta.json.stream.JsonParser;
 import jakarta.json.stream.JsonParser.Event;
 
+@JsIgnoreType
 public final class JsonSequenceDecoder implements SequenceDecoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonParser parser;

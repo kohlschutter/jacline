@@ -18,7 +18,6 @@
 package com.kohlschutter.jacline.lib.common;
 
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
-import com.kohlschutter.jacline.lib.common.vanilla.JsonSequenceDecoder;
 
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsType;
@@ -50,6 +49,6 @@ public interface SequenceDecoder extends JsCloseable {
 
   @JsImplementationProvidedSeparately
   static SequenceDecoder load(Object encoded) throws DecodingException {
-    return new JsonSequenceDecoder(encoded);
+    return EncodableSupportProvider.getDefault().sequenceDecoder(encoded);
   }
 }

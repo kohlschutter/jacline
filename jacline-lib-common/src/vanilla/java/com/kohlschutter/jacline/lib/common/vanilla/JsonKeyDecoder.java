@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 
+import com.kohlschutter.jacline.annotations.JsIgnoreType;
 import com.kohlschutter.jacline.lib.common.ArrayDecoder;
 import com.kohlschutter.jacline.lib.common.DecodingException;
 import com.kohlschutter.jacline.lib.common.KeyDecoder;
@@ -32,6 +33,7 @@ import jakarta.json.spi.JsonProvider;
 import jakarta.json.stream.JsonParser;
 import jakarta.json.stream.JsonParser.Event;
 
+@JsIgnoreType
 public final class JsonKeyDecoder implements KeyDecoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonParser parser;
