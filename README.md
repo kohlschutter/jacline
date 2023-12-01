@@ -27,6 +27,8 @@ Particularly, jacline sports the following highlights:
 - Enables "Closeable" support (e.g. in try-with-resources) for native JavaScript class implementations.
 - Improves the interaction with outside JavaScript code using custom annotations, such as
   @JsImport and @JsExport
+- Enables the definition of entry points in Java, via @JsEntryPoint (calls all static initializers
+  upon application start), even for library dependencies.
 - Provides all required and recommended JavaScript library dependencies in the same repository as
   the rest of the code (some required code from
   [closure-library](https://github.com/google/closure-library) as well as j2cl's jre.js,
