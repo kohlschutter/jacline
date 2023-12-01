@@ -24,7 +24,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Declares that a type should be ignored entirely for transpilation.
+ * Declares that a type should be ignored entirely for transpilation purposes.
  *
  * @author Christian Kohlschütter
  */
