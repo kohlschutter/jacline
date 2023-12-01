@@ -68,9 +68,9 @@
                                 </goals>
                                 <phase>compile</phase>
                                 <configuration>
-                                    <compileSourceRoots>
-                                        <compileSourceRoot>src/fixes/java</compileSourceRoot>
-                                    </compileSourceRoots>
+                                    <transpileSourceRoots>
+                                        <transpileSourceRoot>src/fixes/java</transpileSourceRoot>
+                                    </transpileSourceRoots>
                                 </configuration>
                             </execution>
                         </executions>

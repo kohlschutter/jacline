@@ -96,10 +96,10 @@ public class JaclineCompileMojo extends AbstractMojo {
   String jaclineMetaInfDirectoryDefault;
 
   /**
-   * The source directories containing the sources to be compiled.
+   * The source directories containing the sources to be transpiled.
    */
   @Parameter(defaultValue = "${project.compileSourceRoots}")
-  List<String> compileSourceRoots;
+  List<String> transpileSourceRoots;
 
   /**
    * The resource directories containing additional Javascript files.
@@ -261,7 +261,7 @@ public class JaclineCompileMojo extends AbstractMojo {
       sources.addClasspathElement(s);
     }
 
-    for (String sr : compileSourceRoots) {
+    for (String sr : transpileSourceRoots) {
       Path p = absolutePath(sr);
       if (!Files.exists(p)) {
         log.info("Skipping non-existing directory: " + p);

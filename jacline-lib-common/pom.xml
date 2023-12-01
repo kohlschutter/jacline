@@ -51,7 +51,9 @@
                             <!-- It is slightly faster to not include
                             non-jacline code in the first place. Plus, we don't
                             have to mark these other classes with @JsIgnoreType -->
-                            <compileSourceRoots>src/main/java</compileSourceRoots>
+                            <transpileSourceRoots>
+                                <transpileSourceRoot>src/main/java</transpileSourceRoot>
+                            </transpileSourceRoots>
                         </configuration>
                     </execution>
                 </executions>

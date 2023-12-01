@@ -53,9 +53,9 @@
                         </goals>
                         <phase>compile</phase>
                         <configuration>
-                            <compileSourceRoots>
-                                <compileSourceRoot>src/main/java</compileSourceRoot>
-                            </compileSourceRoots>
+                            <transpileSourceRoots>
+                                <transpileSourceRoot>src/main/java</transpileSourceRoot>
+                            </transpileSourceRoots>
                             <javascriptSourceRoots>
                                 <javascriptSourceRoot>src/main/jacline</javascriptSourceRoot>
                             </javascriptSourceRoots>
