@@ -26,21 +26,23 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
 public final class ClosureCompilerSources {
   private static final String META_INF_JACLINE = "META-INF/jacline";
-  private final List<Path> entryPoints = new ArrayList<>();
-  private final List<Path> otherFiles = new ArrayList<>();
+  private final Collection<Path> entryPoints = new LinkedHashSet<>();
+  private final Collection<Path> otherFiles = new LinkedHashSet<>();
 
   public ClosureCompilerSources() {
   }
 
-  public void addEntryPoint(Path p) {
-    entryPoints.add(p);
+  public boolean addEntryPoint(Path p) {
+    return entryPoints.add(p);
   }
 
   public void addSource(Path p) {
@@ -48,11 +50,11 @@ public final class ClosureCompilerSources {
   }
 
   public List<Path> getEntryPoints() {
-    return Collections.unmodifiableList(entryPoints);
+    return Collections.unmodifiableList(new ArrayList<>(entryPoints));
   }
 
   public List<Path> getOtherFiles() {
-    return Collections.unmodifiableList(otherFiles);
+    return Collections.unmodifiableList(new ArrayList<>(otherFiles));
   }
 
   public void addSourcesFromClasspath() throws IOException {
