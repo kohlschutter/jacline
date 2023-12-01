@@ -16,10 +16,10 @@ make it into mainline j2cl.
 
 Particularly, jacline sports the following highlights:
 
+- Provides a Maven plugin to simplify developing from the command line and IDEs like Eclipse
 - Can be referenced as dependencies by Maven, Gradle, etc.
 - Can be built from source with Maven and especially without "bazel"/"bazelisk"
 - Follows semantic versioning that is consistent for the entire codebase
-- Provides a Maven plugin to simplify developing from the command line and IDEs like Eclipse
 - Embeds/reuses transpiled JavaScript into a META-INF folder included in regular Java libraries
 - Replaces "Super-Sourcing" with "Common-Sourcing", i.e., having the same Java source definitions
   for JavaScript/JVM targets along with the occasional native JavaScript file that replaces the
@@ -103,6 +103,81 @@ native Java class can be encoded as JSON, and back.
 Compare the behavior with the vanilla Java test code under
 [src/test/java](samples/json/src/test/java).  It uses the same classes, but provides an entirely
 different implementation for the JSON parsing code.
+
+## Maven plugin usage
+
+The primary way to use jacline is via the provided Maven plugin (`jacline-maven-plugin`), which
+also supports Eclipse m2e (detailed errors are shown in the "Error Log" view).
+
+Not only the samples above but jacline itself makes use of the plugin as much as possible, so please
+also check the individual sub modules for further inspiration,.
+
+### Example
+
+First, define a property `jacline.version` in your POM.
+
+```xml
+    <properties>
+            <jacline.version>1.0.0-SNAPSHOT</jacline.version>
+    </properties>
+```
+
+Then, in the `<build><plugins>` section, add the following plugin:
+
+```xml
+    <plugin>
+        <groupId>com.kohlschutter.jacline</groupId>
+        <artifactId>jacline-maven-plugin</artifactId>
+        <version>${jacline.version}</version>
+        <executions>
+            <execution>
+                <id>default-jacline-compile</id>
+                <goals>
+                    <goal>compile</goal>
+                </goals>
+                <phase>compile</phase>
+
+                <!-- Configuration can be omitted for sensible default values -->
+                <configuration>
+                    <!-- If true (by default), a META-INF/jacline folder will be created
+                    in the target jar of your project, which allows adding the JavaScript code as a
+                    dependency by other Maven projects. -->
+                    <createLibrary>true</createLibrary>
+
+                    <!-- Specifies all source roots where Java files should be transpiled to
+                    JavaScript. By default, it's ${project.compileSourceRoots}. This can be
+                    narrowed down for a project that has code in a separate source folder
+                    that is not to be transpiled. See jacline-lib-common/pom.xml for example -->
+                    <transpileSourceRoots>
+                        <transpileSourceRoot>src/main/java</transpileSourceRoot>
+                    </transpileSourceRoots>
+
+                    <!-- Specifies the source roots for JavaScript files that should be included
+                    in the final output -->
+                    <javascriptSourceRoots>
+                        <javascriptSourceRoot>src/main/jacline</javascriptSourceRoot>
+                    </javascriptSourceRoots>
+
+                    <!-- List all possible entry points here -->
+                    <entryPoints>
+                        <entryPoint>src/main/jacline/app.js</entryPoint>
+                    </entryPoints>
+
+                    <!-- Relative paths are relative to ${project.build.outputDirectory} / target/classes -->
+                    <outputFile>
+                        jacline-generated.js
+                    </outputFile>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+```
+
+Your project should now support jacline:
+
+```bash
+mvn clean compile
+```
 
 ## Building
 
