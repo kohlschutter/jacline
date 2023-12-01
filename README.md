@@ -25,6 +25,7 @@ Particularly, jacline sports the following highlights:
   for JavaScript/JVM targets along with the occasional native JavaScript file that replaces the
   vanilla Java implementation for the JavaScript context.
 - Enables "Closeable" support (e.g. in try-with-resources) for native JavaScript class implementations.
+- Provides a simplified Service Provider Interface implementation via ServiceLoader
 - Improves the interaction with outside JavaScript code using custom annotations, such as:
   - `@JsImport`: Declares that the annotated interface has an implementation that is supplied by some
   external JavaScript code.
@@ -37,6 +38,8 @@ Particularly, jacline sports the following highlights:
   `@JsType(isNative=true)` is being provided with a default implementation for vanilla Java, whereas
   the JavaScript-specific implementation is provided separately in some JavaScript file
   ("Common-Sourcing").
+  - `@JsServiceProvider`: Registers a class as an implementation for one or more interfaces, which
+  can then later be used via `java.util.ServiceLoader`.
 - Provides all required and recommended JavaScript library dependencies in the same repository as
   the rest of the code (some required code from
   [closure-library](https://github.com/google/closure-library) as well as j2cl's jre.js,
@@ -44,7 +47,6 @@ Particularly, jacline sports the following highlights:
 [elemental2](https://github.com/google/elemental2))
 - Provides optional library code utilizing jacline's additional features, such as JSON-based
   class encoding/decoding that works both in vanilla Java/JVM and JavaScript.
-- Provides a minimal dummy ServiceLoader interface.
 - Allows for a simple integration with [Dumbo](https://github.com/kohlschuetter/dumbo).
 
 ## Limitations
