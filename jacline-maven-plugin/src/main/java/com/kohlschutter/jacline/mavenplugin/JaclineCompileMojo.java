@@ -123,7 +123,7 @@ public class JaclineCompileMojo extends AbstractMojo {
   @Parameter(readonly = true, defaultValue = "${project.build.outputDirectory}")
   String outputFileDir;
 
-  @Parameter(defaultValue = "false")
+  @Parameter(defaultValue = "true")
   boolean deleteJaclineMetaInfDirectory;
 
   private String projectBaseDirAbsoluteString;
@@ -152,6 +152,7 @@ public class JaclineCompileMojo extends AbstractMojo {
     }
 
     if (deleteJaclineMetaInfDirectory) {
+      // This is usually necessary to prevent "Duplicate module" errors
       // IMPORTANT: We'll always clear ./generated in code below
       try {
         Path p = Path.of(jaclineMetaInfDirectory);
@@ -332,6 +333,8 @@ public class JaclineCompileMojo extends AbstractMojo {
       boolean isSubDir = false;
       if (p.endsWith("META-INF/jacline") || (p.endsWith("jacline/generated") && (isSubDir =
           true))) {
+
+        // META-INF/jacline/generated/generated-entrypoints.js
         Path generatedEntryPoints = isSubDir ? p.resolve("generated-entrypoints.js") : p.resolve(
             "generated/generated-entrypoints.js");
         if (Files.exists(generatedEntryPoints)) {
@@ -342,6 +345,7 @@ public class JaclineCompileMojo extends AbstractMojo {
             }
           }
         }
+
       }
     }
 
