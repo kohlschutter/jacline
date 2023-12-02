@@ -44,7 +44,7 @@ public class JaclineCompileMojoTest {
     }
   };
 
-//  @Test // this is broken
+  // @Test // this is broken
   public void testSomething() throws Exception {
     assertFalse("Maven testing harness is incompatible with Eclipse m2e", ExecutionEnvironmentUtil
         .isInEclipse());
