@@ -27,6 +27,7 @@ import java.util.Map;
 import com.google.javascript.jscomp.CompilerOptions;
 import com.google.javascript.jscomp.Result;
 import com.google.javascript.jscomp.SourceFile;
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 
 public final class ClosureCompilerRun {
   private final CompilerImpl compiler;
@@ -67,6 +68,7 @@ public final class ClosureCompilerRun {
     }
   }
 
+  @SuppressFBWarnings("EI_EXPOSE_REP")
   public CompilerOptions getOptions() {
     return options;
   }
