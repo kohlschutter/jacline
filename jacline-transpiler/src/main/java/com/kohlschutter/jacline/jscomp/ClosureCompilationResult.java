@@ -17,7 +17,10 @@
  */
 package com.kohlschutter.jacline.jscomp;
 
-public final class ClosureCompilationResult {
+import java.io.Closeable;
+import java.io.IOException;
+
+public final class ClosureCompilationResult implements Closeable {
   private final String source;
 
   private ClosureCompilationResult(String source) {
@@ -34,5 +37,9 @@ public final class ClosureCompilationResult {
 
   public String getSource() {
     return source;
+  }
+
+  @Override
+  public void close() throws IOException {
   }
 }

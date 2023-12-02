@@ -19,6 +19,7 @@ package com.kohlschutter.jacline.jscomp;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
@@ -36,7 +37,6 @@ import com.google.javascript.jscomp.CompilerOptions;
 import com.google.javascript.jscomp.CompilerOptions.Environment;
 import com.google.javascript.jscomp.DependencyOptions;
 import com.google.javascript.jscomp.ModuleIdentifier;
-import com.google.javascript.jscomp.Result;
 import com.google.javascript.jscomp.SourceFile;
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 
@@ -58,12 +58,7 @@ public class ClosureCompiler implements Closeable {
     // FIXME delete temporary files as necessary
   }
 
-  public ClosureCompilationResult compile(ClosureCompilerSources compilerSources)
-      throws IOException {
-    return compile(compilerSources, false, null);
-  }
-
-  public ClosureCompilationResult compile(ClosureCompilerSources compilerSources,
+  public ClosureCompilerRun prepareCompile(ClosureCompilerSources compilerSources,
       boolean disableStderr, Consumer<CompilerOptions> optionsModifier) throws IOException {
 
     List<Path> entryPoints = resolveFiles(compilerSources.getEntryPoints());
@@ -102,21 +97,26 @@ public class ClosureCompiler implements Closeable {
       compiler.setSuppressReport(true);
     }
 
-    List<SourceFile> sources = new ArrayList<>(filesMap.values());
-    Result result = compiler.compile(builtinExterns, sources, options);
-    if (result.success) {
-      return ClosureCompilationResult.ofSource(compiler.toSource());
-    } else {
-      return ClosureCompilationResult.ofFailure();
-    }
-
+    return new ClosureCompilerRun(compiler, builtinExterns, filesMap, options);
   }
 
   private void addSourceFiles(List<Path> paths, Map<Path, SourceFile> filesMap) throws IOException {
     for (Path p : paths) {
-      filesMap.computeIfAbsent(p.toRealPath(), (path) -> SourceFile.fromPath(path,
-          StandardCharsets.UTF_8));
+      filesMap.computeIfAbsent(p.toRealPath(), (path) -> fromPath(path));
     }
+  }
+
+  private static SourceFile fromPath(Path path) {
+    String originalPath;
+    URI u = path.toUri();
+    if ("file".equals(u.getScheme())) {
+      originalPath = path.toAbsolutePath().toString();
+    } else {
+      originalPath = u.toString();
+    }
+
+    return SourceFile.builder().withPath(path).withCharset(StandardCharsets.UTF_8).withOriginalPath(
+        originalPath).build();
   }
 
   private List<Path> resolveFiles(List<Path> list) throws IOException {

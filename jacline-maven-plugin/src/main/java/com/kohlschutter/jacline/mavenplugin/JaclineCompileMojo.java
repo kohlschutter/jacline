@@ -61,6 +61,7 @@ import com.kohlschutter.jacline.j2cl.JaclineJ2ClTranspiler;
 import com.kohlschutter.jacline.j2cl.TranspilerSources;
 import com.kohlschutter.jacline.jscomp.ClosureCompilationResult;
 import com.kohlschutter.jacline.jscomp.ClosureCompiler;
+import com.kohlschutter.jacline.jscomp.ClosureCompilerRun;
 import com.kohlschutter.jacline.jscomp.ClosureCompilerSources;
 
 /**
@@ -352,7 +353,7 @@ public class JaclineCompileMojo extends AbstractMojo {
     try (ClosureCompiler jc = new ClosureCompiler()) {
       Problems problems = new Problems();
 
-      ClosureCompilationResult result = jc.compile(cs, true, (opt) -> {
+      ClosureCompilerRun runConfig = jc.prepareCompile(cs, true, (opt) -> {
         opt.setErrorHandler((level, error) -> {
           String msg = error.toString();
 
@@ -373,34 +374,36 @@ public class JaclineCompileMojo extends AbstractMojo {
         });
       });
 
-      File outFile = absolutePath(outputFile, outputFileDir).toFile();
+      try (ClosureCompilationResult result = runConfig.compile()) {
+        File outFile = absolutePath(outputFile, outputFileDir).toFile();
 
-      String source = result.getSource();
-      if (source == null) {
-        log.error("Closure compiler failed to build output file: " + outputFile);
-        throw new MojoExecutionException("Closure compilation failure") {
+        String source = result.getSource();
+        if (source == null) {
+          log.error("Closure compiler failed to build output file: " + outputFile);
+          throw new MojoExecutionException("Closure compilation failure") {
 
-          private static final long serialVersionUID = 1L;
+            private static final long serialVersionUID = 1L;
 
-          @Override
-          public void printStackTrace(PrintStream s) {
-            super.printStackTrace(s);
-            problems.consumeMessages((msg) -> s.println("\t" + msg));
-          }
+            @Override
+            public void printStackTrace(PrintStream s) {
+              super.printStackTrace(s);
+              problems.consumeMessages((msg) -> s.println("\t" + msg));
+            }
 
-          @Override
-          public void printStackTrace(PrintWriter s) {
-            super.printStackTrace(s);
-            problems.consumeMessages((msg) -> s.println("\t" + msg));
-          }
-        };
-      }
+            @Override
+            public void printStackTrace(PrintWriter s) {
+              super.printStackTrace(s);
+              problems.consumeMessages((msg) -> s.println("\t" + msg));
+            }
+          };
+        }
 
-      log.info("Writing output to: " + outputFile);
-      mkdirs(outFile.getParentFile());
-      try (PrintWriter out = new PrintWriter(new OutputStreamWriter(new FileOutputStream(outFile),
-          StandardCharsets.UTF_8))) {
-        out.println(source);
+        log.info("Writing output to: " + outputFile);
+        mkdirs(outFile.getParentFile());
+        try (PrintWriter out = new PrintWriter(new OutputStreamWriter(new FileOutputStream(outFile),
+            StandardCharsets.UTF_8))) {
+          out.println(source);
+        }
       }
     }
   }
