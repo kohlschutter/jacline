@@ -122,6 +122,9 @@ public class JaclineCompileMojo extends AbstractMojo {
   @Parameter(readonly = true, defaultValue = "${project.build.outputDirectory}")
   String outputFileDir;
 
+  @Parameter(defaultValue = "false")
+  boolean deleteJaclineMetaInfDirectory;
+
   private String projectBaseDirAbsoluteString;
 
   @SuppressWarnings("PMD.ProperLogger")
@@ -147,13 +150,16 @@ public class JaclineCompileMojo extends AbstractMojo {
       jaclineMetaInfDirectory = jaclineMetaInfDirectoryDefault;
     }
 
-    try {
-      Path p = Path.of(jaclineMetaInfDirectory);
-      if (Files.exists(p)) {
-        IOUtil.deleteRecursively(p);
+    if (deleteJaclineMetaInfDirectory) {
+      // IMPORTANT: We'll always clear ./generated in code below
+      try {
+        Path p = Path.of(jaclineMetaInfDirectory);
+        if (Files.exists(p)) {
+          IOUtil.deleteRecursively(p);
+        }
+      } catch (IOException e) {
+        throw new MojoExecutionException("Could not delete " + jaclineMetaInfDirectory, e);
       }
-    } catch (IOException e) {
-      throw new MojoExecutionException("Could not delete " + jaclineMetaInfDirectory, e);
     }
 
     try (CompilerOutput to = CompilerOutput.newInstanceWithTargetDirectory(Path.of(
