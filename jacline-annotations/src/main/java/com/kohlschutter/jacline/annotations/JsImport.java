@@ -26,6 +26,11 @@ import java.lang.annotation.Target;
 /**
  * Declares that the annotated interface has an implementation that is supplied by some external
  * JavaScript code.
+ * <p>
+ * If this type refers to some global object (e.g., `jQuery`, `Dumbo`), create a class with
+ * {@code public
+ * static native} methods, and annotate the class with {@code @JsType(isNative = true, namespace =
+ * JsPackage.GLOBAL, name = "NameOfGlobalObject")}
  *
  * @author Christian Kohlschütter
  */
