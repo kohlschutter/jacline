@@ -307,7 +307,7 @@ public class JaclineCompileMojo extends AbstractMojo {
     for (String s : javascriptSourceRoots) {
       Path p = absolutePath(s);
       if (!Files.exists(p)) {
-        log.warn("Skipping missing source root: " + p);
+        log.info("Skipping missing source root: " + p);
         continue;
       }
       haveSourceRoots = true;

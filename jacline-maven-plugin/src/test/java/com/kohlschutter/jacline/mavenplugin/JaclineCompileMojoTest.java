@@ -28,7 +28,6 @@ import java.nio.file.Path;
 import org.apache.maven.plugin.testing.MojoRule;
 import org.apache.maven.project.MavenProject;
 import org.junit.Rule;
-import org.junit.Test;
 
 import com.kohlschutter.util.ExecutionEnvironmentUtil;
 
