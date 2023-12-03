@@ -19,7 +19,7 @@ package com.kohlschutter.jacline.lib.coding;
 
 /**
  * Common helper methods for {@link Codable} coding providers.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public final class CodingProviders {
@@ -28,7 +28,7 @@ public final class CodingProviders {
 
   /**
    * Returns the {@link KeyEncoderProvider} that should be used, given the parameters.
-   * 
+   *
    * @param provider The original {@link KeyEncoderProvider}, or {@code null} (for default).
    * @return Some {@link KeyEncoderProvider}.
    */
@@ -42,7 +42,7 @@ public final class CodingProviders {
 
   /**
    * Returns the {@link KeyDecoderProvider} that should be used, given the parameters.
-   * 
+   *
    * @param provider The original {@link KeyDecoderProvider}, or {@code null} (for default).
    * @return Some {@link KeyDecoderProvider}.
    */

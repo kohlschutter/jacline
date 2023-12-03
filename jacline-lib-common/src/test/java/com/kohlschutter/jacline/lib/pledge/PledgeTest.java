@@ -45,7 +45,7 @@ public class PledgeTest {
   public void testThenable() throws Exception {
     CompletableFuture<Integer> result = new CompletableFuture<>();
 
-    Pledge.resolveThenable(int.class, (success, fail) -> {
+    Pledge.<Integer> resolveThenable((success, fail) -> {
       success.consume(1);
     }).then((i) -> {
       return i + 22;
@@ -62,7 +62,7 @@ public class PledgeTest {
   public void testThenableFail() throws Exception {
     CompletableFuture<Integer> result = new CompletableFuture<>();
 
-    Pledge.resolveThenable(int.class, (success, fail) -> {
+    Pledge.<Integer> resolveThenable((success, fail) -> {
       fail.consume("not an exception");
     }).then((i) -> {
       return i + 22;
@@ -79,5 +79,23 @@ public class PledgeTest {
       assertEquals("not an exception", Pledge.asObject(e.getCause()));
     }
     assertTrue(result.isCompletedExceptionally());
+  }
+
+  @Test
+  public void testRejected() throws Exception {
+    CompletableFuture<Number> result = new CompletableFuture<>();
+
+    Pledge.<Number> reject("Rejected for some reason").thenAccept((i) -> {
+      result.complete(i);
+    }).exceptionallyAccept((e) -> {
+      result.completeExceptionally(Pledge.asThrowable(e));
+    });
+
+    try {
+      result.get();
+      fail("Expected a ExecutionException");
+    } catch (ExecutionException e) {
+      assertEquals("Rejected for some reason", Pledge.asObject(e.getCause()));
+    }
   }
 }

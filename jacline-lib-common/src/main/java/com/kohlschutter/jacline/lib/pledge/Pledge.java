@@ -72,8 +72,13 @@ public interface Pledge<T> {
   }
 
   @JsImplementationProvidedSeparately
-  static <T> Pledge<T> resolveThenable(Class<T> outputClass, Thenable<T> thenable) {
+  static <T> Pledge<T> resolveThenable(Thenable<T> thenable) {
     return FuturePledge.supplyAsyncThenable(thenable);
+  }
+
+  @JsImplementationProvidedSeparately
+  static <T> Pledge<T> reject(Object obj) {
+    return FuturePledge.<T> supplyRejected(obj);
   }
 
   @JsImplementationProvidedSeparately

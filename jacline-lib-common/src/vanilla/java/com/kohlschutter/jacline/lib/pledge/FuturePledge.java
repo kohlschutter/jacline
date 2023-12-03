@@ -14,24 +14,24 @@ import com.kohlschutter.jacline.lib.function.JsRunnable;
  * @param <T> The return type.
  * @author Christian Kohlschütter
  */
-public final class FuturePledge<T> implements Pledge<T> {
+final class FuturePledge<T> implements Pledge<T> {
   private final CompletableFuture<T> future;
 
   private FuturePledge(CompletableFuture<T> future) {
     this.future = future;
   }
 
-  public static <T> FuturePledge<T> ofCompletableFuture(CompletableFuture<T> future) {
+  static <T> FuturePledge<T> ofCompletableFuture(CompletableFuture<T> future) {
     return new FuturePledge<>(future);
   }
 
-  public static <T> FuturePledge<T> supplyCompleted(T obj) {
+  static <T> FuturePledge<T> supplyCompleted(T obj) {
     CompletableFuture<T> future = new CompletableFuture<T>();
     future.complete(obj);
     return ofCompletableFuture(future);
   }
 
-  public static <T> Pledge<T> supplyAsyncThenable(Thenable<T> thenable) {
+  static <T> Pledge<T> supplyAsyncThenable(Thenable<T> thenable) {
     CompletableFuture<T> future = new CompletableFuture<T>();
     FuturePledge<T> pledge = FuturePledge.ofCompletableFuture(future);
 
@@ -45,7 +45,7 @@ public final class FuturePledge<T> implements Pledge<T> {
     return pledge;
   }
 
-  public static <T> FuturePledge<T> supplyAsync(Supplier<T> supplier) {
+  static <T> FuturePledge<T> supplyAsync(Supplier<T> supplier) {
     return ofCompletableFuture(CompletableFuture.supplyAsync(supplier));
   }
 
@@ -62,5 +62,11 @@ public final class FuturePledge<T> implements Pledge<T> {
   @Override
   public Pledge<Void> lastly(JsRunnable runnable) {
     return new FuturePledge<>(future.thenAccept((x) -> runnable.run()));
+  }
+
+  public static <T> Pledge<T> supplyRejected(Object obj) {
+    CompletableFuture<T> future = new CompletableFuture<T>();
+    future.completeExceptionally(Pledge.asThrowable(obj));
+    return ofCompletableFuture(future);
   }
 }

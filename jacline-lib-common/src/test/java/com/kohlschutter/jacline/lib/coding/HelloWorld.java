@@ -110,7 +110,7 @@ public final class HelloWorld implements Codable {
   /**
    * Decodes an encoded object of this type via {@link KeyDecoder} and the default provider; for
    * testing.
-   * 
+   *
    * @param encoded The encoded object.
    * @return A new {@link HelloWorld} instance.
    * @throws DecodingException on error.

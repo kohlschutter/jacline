@@ -8,8 +8,13 @@ Pledge.resolveObject = function(obj) {
 };
 
 /**  @suppress {checkTypes} @return {Pledge<T_1>} */
-Pledge.resolveThenable = function(_, obj) {
+Pledge.resolveThenable = function(obj) {
     return Promise.resolve(obj);
+};
+
+/**  @suppress {checkTypes} @return {Pledge<T_1>} */
+Pledge.reject = function(obj) {
+    return Promise.reject(obj);
 };
 
 /**  @suppress {checkTypes} */
