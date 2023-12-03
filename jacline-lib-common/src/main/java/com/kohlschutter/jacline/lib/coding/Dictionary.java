@@ -26,7 +26,7 @@ import jsinterop.annotations.JsType;
 
 /**
  * A simple dictionary implementation, using strings as keys, and a generic type for values.
- * 
+ *
  * @param <V> The value type.
  * @author Christian Kohlschütter
  */

@@ -20,6 +20,7 @@ package com.kohlschutter.jacline.lib.pledge;
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
 import com.kohlschutter.jacline.annotations.JsImport;
 import com.kohlschutter.jacline.annotations.JsPatched;
+import com.kohlschutter.jacline.lib.exception.JsException;
 import com.kohlschutter.jacline.lib.function.JsConsumerCallback;
 import com.kohlschutter.jacline.lib.function.JsFunctionCallback;
 import com.kohlschutter.jacline.lib.function.JsRunnable;
@@ -77,13 +78,11 @@ public interface Pledge<T> {
 
   @JsImplementationProvidedSeparately
   static Throwable asThrowable(Object o) {
-    return o == null || o instanceof Throwable ? (Throwable) o : new FuturePledgeWrapperException(
-        o);
+    return o == null || o instanceof Throwable ? (Throwable) o : JsException.wrap(o);
   }
 
   @JsImplementationProvidedSeparately
   static Object asObject(Object o) {
-    return o instanceof FuturePledgeWrapperException ? ((FuturePledgeWrapperException) o)
-        .getObject() : o;
+    return JsException.unwrap(o);
   }
 }

@@ -33,7 +33,7 @@ public class DecodablesTest {
     // These declarations trigger HelloWorld's static initializer, which in turn registers the
     // Encodable (using the correct type) with Decodables.
     Object decoded = Objects.requireNonNull(Decodables.getDecoder(
-        "com.kohlschutter.jacline.samples.helloworld.HelloWorld").decode(
+        "com.kohlschutter.jacline.samples.helloworld.HelloWorld").decode(null,
             "{\"javaClass\":\"com.kohlschutter.jacline.samples.helloworld.HelloWorld\","
                 + "\"message\":\"Greetings, jacline user!\"," + "\"obj\":{"
                 + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":true," + "\"pi\":3.14" + "},"

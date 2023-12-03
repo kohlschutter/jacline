@@ -1,10 +1,10 @@
-import com.kohlschutter.jacline.samples.helloworld.HelloWorld;
+import com.kohlschutter.jacline.samples.json.HelloWorld;
 
 /**
  * The module descriptor for the "json" project.
  * <p>
- * Note how the {@code provides} statement ensures that the static initializer of {@link HelloWorld}
- * is being called by {@link Decodables}, at least for vanilla JVM environments.
+ * Note how the {@code provides} statement declares that the static initializer of
+ * {@link HelloWorld} should be called by {@code Decodables}, at least for vanilla JVM environments.
  * 
  * @provides com.kohlschutter.jacline.lib.coding.Codable
  */

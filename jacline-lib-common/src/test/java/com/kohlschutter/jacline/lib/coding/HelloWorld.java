@@ -72,8 +72,8 @@ public final class HelloWorld implements Codable {
 
   @Override
   @JsExport
-  public Object encode() {
-    KeyEncoder enc = KeyEncoder.begin(CODED_TYPE);
+  public Object encode(KeyEncoderProvider provider) {
+    KeyEncoder enc = CodingProviders.decorateEncoderProvider(provider).begin(CODED_TYPE);
     enc.encodeString("message", message);
     enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", false).encodeNumber(
         "pi", 3.14).end();
@@ -89,8 +89,9 @@ public final class HelloWorld implements Codable {
    * @throws DecodingException on error.
    */
   @JsExport
-  public static HelloWorld decode(Object obj) throws DecodingException {
-    try (KeyDecoder dec = KeyDecoder.load(CODED_TYPE, obj)) {
+  public static HelloWorld decode(KeyDecoderProvider provider, Object obj)
+      throws DecodingException {
+    try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).load(CODED_TYPE, obj)) {
       checkSanity(dec);
 
       HelloWorld hw = new HelloWorld();
@@ -102,6 +103,10 @@ public final class HelloWorld implements Codable {
     } catch (IOException e) {
       throw new DecodingException(e);
     }
+  }
+
+  static HelloWorld decodeDefault(Object obj) throws DecodingException {
+    return decode(KeyDecoder::load, obj);
   }
 
   /**

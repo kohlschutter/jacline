@@ -35,11 +35,10 @@ import com.kohlschutter.jacline.annotations.JsServiceProvider;
  * @see JsServiceProvider
  */
 public interface Codable {
-
   /**
-   * Encodes this instance via {@link KeyEncoder}.
+   * Encodes this instance via the given {@link KeyEncoderProvider}.
    *
    * @return The encoded representation.
    */
-  Object encode();
+  Object encode(KeyEncoderProvider provider);
 }

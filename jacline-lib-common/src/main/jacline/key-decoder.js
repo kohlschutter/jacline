@@ -1,8 +1,12 @@
 goog.module("kohlschutter.coding.KeyDecoder");
 
 const DecodingException = goog.require("com.kohlschutter.jacline.lib.coding.DecodingException");
+const JsCloseable = goog.require('com.kohlschutter.jacline.lib.io.JsCloseable');
 
 // FIXME type checking
+/**
+ * @implements {JsCloseable}
+ */
 class KeyDecoder {
     constructor(o) {
         this.o = o;
@@ -12,7 +16,6 @@ class KeyDecoder {
         this.o = null;
     }
 
-    /** @export */
     m_close__void() {
         this.close();
     }
@@ -55,5 +58,7 @@ class KeyDecoder {
         return new KeyDecoder(o);
     }
 }
+
+JsCloseable.$markImplementor(KeyDecoder);
 
 exports = KeyDecoder;

@@ -27,28 +27,28 @@ import jsinterop.annotations.JsType;
  * Maps a decodable type identifier to its {@link ObjectDecoder}.
  * <p>
  * While the {@link ObjectDecoder}s can be registered manually, the recommended process is to call
- * {@link Decodables#setDecoder(String, ObjectDecoder)} from a <em>static initializer</em> block in
- * each class implementing {@link Codable}. See {@link Codable} for details.
- * 
+ * {@link Decodables#setDecoder(String, Decoder)} from a <em>static initializer</em> block in each
+ * class implementing {@link Codable}. See {@link Codable} for details.
+ *
  * @author Christian Kohlschütter
  */
 @JsExport
 @JsType(name = "Decodables", namespace = "kohlschutter.coding")
 public final class Decodables {
-  private static final Dictionary<ObjectDecoder<?>> MAP = Dictionary.newDictionary();
+  private static final Dictionary<Decoder<?>> MAP = Dictionary.newDictionary();
 
   static {
     DecodablesInit.init();
   }
 
   @JsExport
-  public static ObjectDecoder<?> getDecoder(String type) {
+  public static Decoder<?> getDecoder(String type) {
     return Objects.requireNonNull(MAP.get(type), () -> {
       return "Decoder not found: " + type;
     });
   }
 
-  public static void setDecoder(String type, ObjectDecoder<?> dec) {
+  public static void setDecoder(String type, Decoder<?> dec) {
     MAP.put(type, dec);
   }
 }

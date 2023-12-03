@@ -44,25 +44,25 @@ public class KeyEncoderTest {
     assertEquals(
         "{\"javaClass\":\"com.kohlschutter.jacline.samples.helloworld.HelloWorld\",\"message\":\"Hello from Java\","
             + "\"obj\":{\"javaClass\":\"SomeObjectType\",\"indiana\":false,\"pi\":3.14},\"stringArray\":null}",
-        hw.encode().toString());
+        hw.encode(KeyEncoder::begin).toString());
   }
 
   @Test
   public void testDecoder() throws Exception {
     HelloWorld hw = new HelloWorld();
-    Object encode = hw.encode();
+    Object encode = hw.encode(KeyEncoder::begin);
 
-    HelloWorld hw1a = HelloWorld.decode(encode); // JsonObject shortcut
+    HelloWorld hw1a = HelloWorld.decodeDefault(encode); // JsonObject shortcut
     assertEquals(hw.getMessage(), hw1a.getMessage());
-    assertEquals(encode, hw1a.encode());
+    assertEquals(encode, hw1a.encode(KeyEncoder::begin));
 
-    HelloWorld hw1b = HelloWorld.decode(encode.toString()); // String
+    HelloWorld hw1b = HelloWorld.decodeDefault(encode.toString()); // String
     assertEquals(hw.getMessage(), hw1b.getMessage());
-    assertEquals(encode.toString(), hw1b.encode().toString());
+    assertEquals(encode.toString(), hw1b.encode(KeyEncoder::begin).toString());
 
-    HelloWorld hw1c = HelloWorld.decode(new StringReader(encode.toString())); // Reader
+    HelloWorld hw1c = HelloWorld.decodeDefault(new StringReader(encode.toString())); // Reader
     assertEquals(hw.getMessage(), hw1c.getMessage());
-    assertEquals(encode.toString(), hw1c.encode().toString());
+    assertEquals(encode.toString(), hw1c.encode(KeyEncoder::begin).toString());
   }
 
   @Test
@@ -71,10 +71,10 @@ public class KeyEncoderTest {
         + "\"message\":\"Greetings, jacline user!\"," + "\"obj\":{"
         + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":false," + "\"pi\":3.14" + "},"
         + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}";
-    HelloWorld hw = HelloWorld.decode(json);
+    HelloWorld hw = HelloWorld.decodeDefault(json);
 
     assertEquals("Greetings, jacline user!", hw.getMessage());
-    assertEquals(json, hw.encode().toString());
+    assertEquals(json, hw.encode(KeyEncoder::begin).toString());
   }
 
   @Test
@@ -84,6 +84,6 @@ public class KeyEncoderTest {
         + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":true," + "\"pi\":4" + "},"
         + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}";
 
-    assertThrows(DecodingException.class, () -> HelloWorld.decode(json));
+    assertThrows(DecodingException.class, () -> HelloWorld.decodeDefault(json));
   }
 }

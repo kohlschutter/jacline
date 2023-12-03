@@ -23,10 +23,16 @@ import java.io.IOException;
 /**
  * Glue code to enable native JavaScript classes supporting {@link Closeable} for try-finally etc.
  * <p>
- * Such JavaScript classes must implement the following method as follows:
- * <p>
- * {@code /** @export} {@code *}{@code /}<br />
+ * Such JavaScript classes must:
+ * <ul>
+ * <li>source {@code JsCloseable} as follows:
+ * {@code const JsCloseable = goog.require('com.kohlschutter.jacline.lib.io.JsCloseable');}</li>
+ * <li>declare <code>@implements {JsCloseable}</code> in the type's JsDoc comment</li>
+ * <li>implement the following method:
  * {@code m_close__void()}<code>{</code><em>[...]</em><code>}</code>
+ * <li>call {@code JsCloseable.$markImplementor(TheTypeName);} after declaring the class</li>
+ * </ul>
+ * See {@code key-decoder.js} as an example.
  *
  * @author Christian Kohlschütter
  */
