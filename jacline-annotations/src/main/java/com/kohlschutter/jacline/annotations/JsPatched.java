@@ -24,19 +24,19 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Declares that a method of a type that is either:
- * <ul>
- * <li>marked with {@code @JsType(isNative=true)}, or</li>
- * <li>marked with {@code @JsPatched}</li>
- * </ul>
- * is being provided with a default implementation for vanilla Java, whereas the JavaScript-specific
- * implementation is provided separately in some JavaScript file.
- *
+ * Declares that a type's JavaScript implementation (module ending with {@code $impl}) is patched
+ * using native JavaScript code provided separately (providing a module ending with
+ * {@code $impl$patched}), and that the header file (module not ending in {@code $impl}), which
+ * usually sources the implementation script, should rather source the patched module.
+ * <p>
+ * The {@code $impl$patched} module can either modify/decorate the default implementation, or
+ * replace it entirely.
+ * </p>
+ * 
  * @author Christian Kohlschütter
- * @see JsPatched
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD})
+@Target({ElementType.TYPE})
 @Documented
-public @interface JsImplementationProvidedSeparately {
+public @interface JsPatched {
 }
