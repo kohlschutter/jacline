@@ -15,21 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.kohlschutter.jacline.lib.coding;
+package com.kohlschutter.jacline.lib.json;
 
-/**
- * Marks an object capable to encoding/decoding via {@link KeyEncoder}/{@link KeyDecoder}, etc.
- * <p>
- * Implementations must also provide a static method {@code #decode(Object)}.
- *
- * @author Christian Kohlschütter
- */
-public interface Encodable {
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
-  /**
-   * Encodes this instance via {@link KeyEncoder}.
-   *
-   * @return The encoded representation.
-   */
-  Object encode();
+@SuppressWarnings("PMD.ShortClassName")
+@JsType(isNative = true, name = "JSON", namespace = JsPackage.GLOBAL)
+public class JSON {
+  public static native String stringify(Object... obj);
+
+  public static native Object parse(String json);
 }

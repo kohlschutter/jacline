@@ -31,8 +31,8 @@ import jsinterop.annotations.JsType;
 @JsType // Mark this class as being accessible from jacline JavaScript
 @JsExport // Additionally, mark this class as being accessible from outside JavaScript
 @SuppressFBWarnings("CNT_ROUGH_CONSTANT_VALUE")
-@JsServiceProvider(Encodable.class)
-public final class HelloWorld implements Encodable {
+@JsServiceProvider(Codable.class)
+public final class HelloWorld implements Codable {
   private static final String CODED_TYPE = "com.kohlschutter.jacline.samples.helloworld.HelloWorld";
   private String message = "Hello from Java";
   private Object[] array;

@@ -25,7 +25,7 @@ final class DecodablesInit {
 
   static void init() {
     for (@SuppressWarnings("unused")
-    Encodable en : ServiceLoader.load(Encodable.class)) {
+    Codable en : ServiceLoader.load(Codable.class)) {
       // trigger static initializers
     }
   }

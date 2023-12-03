@@ -23,6 +23,15 @@ import com.kohlschutter.jacline.annotations.JsExport;
 
 import jsinterop.annotations.JsType;
 
+/**
+ * Maps a decodable type identifier to its {@link ObjectDecoder}.
+ * <p>
+ * While the {@link ObjectDecoder}s can be registered manually, the recommended process is to call
+ * {@link Decodables#setDecoder(String, ObjectDecoder)} from a <em>static initializer</em> block in
+ * each class implementing {@link Codable}. See {@link Codable} for details.
+ * 
+ * @author Christian Kohlschütter
+ */
 @JsExport
 @JsType(name = "Decodables", namespace = "kohlschutter.coding")
 public final class Decodables {

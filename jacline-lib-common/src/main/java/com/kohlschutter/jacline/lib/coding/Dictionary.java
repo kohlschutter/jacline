@@ -24,6 +24,12 @@ import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
 
 import jsinterop.annotations.JsType;
 
+/**
+ * A simple dictionary implementation, using strings as keys, and a generic type for values.
+ * 
+ * @param <V> The value type.
+ * @author Christian Kohlschütter
+ */
 @JsType(isNative = true, namespace = "kohlschutter.coding", name = "Dictionary")
 public interface Dictionary<V> {
   boolean containsKey(String k);

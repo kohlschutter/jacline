@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
+        <!-- In your projects, please remove/replace with your own parent -->
         <groupId>com.kohlschutter.jacline</groupId>
         <artifactId>jacline</artifactId>
         <version>1.0.0-SNAPSHOT</version>
@@ -53,6 +54,7 @@
                         </goals>
                         <phase>compile</phase>
                         <configuration>
+                            <createLibrary>true</createLibrary>
                             <transpileSourceRoots>
                                 <transpileSourceRoot>src/main/java</transpileSourceRoot>
                             </transpileSourceRoots>
@@ -60,7 +62,8 @@
                                 <javascriptSourceRoot>src/main/jacline</javascriptSourceRoot>
                             </javascriptSourceRoots>
                             <entryPoints>
-                                <!-- List all possible JavaScript entry points here -->
+                                <!-- List all possible JavaScript entry points
+                                here -->
                                 <!-- Also see @JsEntryPoint -->
                                 <entryPoint>src/main/jacline/app.js</entryPoint>
                             </entryPoints>
