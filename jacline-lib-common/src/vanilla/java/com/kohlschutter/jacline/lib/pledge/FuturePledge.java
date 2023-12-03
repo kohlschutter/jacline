@@ -14,7 +14,7 @@ import com.kohlschutter.jacline.lib.function.JsRunnable;
  * @param <T> The return type.
  * @author Christian Kohlschütter
  */
-public class FuturePledge<T> implements Pledge<T> {
+public final class FuturePledge<T> implements Pledge<T> {
   private final CompletableFuture<T> future;
 
   private FuturePledge(CompletableFuture<T> future) {
