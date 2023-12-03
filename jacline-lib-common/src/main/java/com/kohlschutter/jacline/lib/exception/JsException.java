@@ -26,6 +26,16 @@ public final class JsException extends RuntimeException {
   private static final long serialVersionUID = 1L;
   private final Object object;
 
+  /**
+   * Wraps the given JavaScript error object as an exception.
+   *
+   * @param o The object.
+   */
+  private JsException(Object o) {
+    super(o.toString());
+    this.object = o;
+  }
+
   public static Exception wrap(Object o) {
     if (o == null) {
       return null;
@@ -52,16 +62,6 @@ public final class JsException extends RuntimeException {
     } else {
       return o;
     }
-  }
-
-  /**
-   * Wraps the given JavaScript error object as an exception.
-   *
-   * @param o The object.
-   */
-  private JsException(Object o) {
-    super(o.toString());
-    this.object = o;
   }
 
   /**

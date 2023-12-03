@@ -84,14 +84,16 @@ public final class HelloWorld implements Codable {
   /**
    * Decodes an encoded object of this type via {@link KeyDecoder}.
    *
-   * @param obj The encoded object.
+   * @param provider The decoder provider, or {@code null} for default.
+   * @param encoded The encoded object.
    * @return A new {@link HelloWorld} instance.
    * @throws DecodingException on error.
    */
   @JsExport
-  public static HelloWorld decode(KeyDecoderProvider provider, Object obj)
+  public static HelloWorld decode(KeyDecoderProvider provider, Object encoded)
       throws DecodingException {
-    try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).load(CODED_TYPE, obj)) {
+    try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).load(CODED_TYPE,
+        encoded)) {
       checkSanity(dec);
 
       HelloWorld hw = new HelloWorld();
@@ -105,8 +107,16 @@ public final class HelloWorld implements Codable {
     }
   }
 
-  static HelloWorld decodeDefault(Object obj) throws DecodingException {
-    return decode(KeyDecoder::load, obj);
+  /**
+   * Decodes an encoded object of this type via {@link KeyDecoder} and the default provider; for
+   * testing.
+   * 
+   * @param encoded The encoded object.
+   * @return A new {@link HelloWorld} instance.
+   * @throws DecodingException on error.
+   */
+  public static HelloWorld decodeDefault(Object encoded) throws DecodingException {
+    return decode(null, encoded);
   }
 
   /**

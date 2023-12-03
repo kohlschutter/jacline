@@ -43,12 +43,12 @@ public class JSON {
 
   @JsOverlay
   public static String stringify(Object obj) {
-    return _stringify(obj);
+    return nativeStringify(obj);
   }
 
   @JsMethod(name = "stringify")
   @JsImplementationProvidedSeparately
-  private static String _stringify(Object obj, Object... moreArgs) {
+  private static String nativeStringify(Object obj, Object... unused) {
     return VanillaJSON.stringify(obj);
   }
 

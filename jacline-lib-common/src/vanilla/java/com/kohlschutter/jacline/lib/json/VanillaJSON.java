@@ -26,6 +26,7 @@ final class VanillaJSON {
   private static final CodingSupportProviderJsonImpl JSON_CODING =
       new CodingSupportProviderJsonImpl();
 
+  @SuppressWarnings({"PMD.CognitiveComplexity"})
   public static String stringify(Object obj) {
     if (obj == null) {
       return "null";
@@ -62,6 +63,7 @@ final class VanillaJSON {
     }
   }
 
+  @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.NcssCount"})
   private static Collection<?> toCollection(Object array) {
     Class<?> arrayClass = array.getClass();
 

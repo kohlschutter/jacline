@@ -42,6 +42,11 @@ public final class Decodables {
   }
 
   @JsExport
+  public boolean hasDecoder(String type) {
+    return MAP.containsKey(type);
+  }
+
+  @JsExport
   public static Decoder<?> getDecoder(String type) {
     return Objects.requireNonNull(MAP.get(type), () -> {
       return "Decoder not found: " + type;
