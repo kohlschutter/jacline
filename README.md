@@ -34,10 +34,13 @@ Particularly, jacline sports the following highlights:
   - `@JsEntryPoint`: Enables the definition of entry points in Java, calling all static initializers
   upon application start, even for library dependencies.
   - `@JsIgnoreType`: Declares that a type should be ignored entirely for transpilation purposes.
+  - `@JsPatch`: Declares that a type's Javascript implementation is being modified or replaced with
+  a provided JavaScript patch module.
   - `@JsImplementationProvidedSeparately`: Declares that a method of a type that is marked with
-  `@JsType(isNative=true)` is being provided with a default implementation for vanilla Java, whereas
-  the JavaScript-specific implementation is provided separately in some JavaScript file
-  ("Common-Sourcing").
+  `@JsType(isNative=true)` or `@JsPatch` is being provided with a default implementation for vanilla
+  Java, whereas the JavaScript-specific implementation is provided separately in some JavaScript
+  file ("Common-Sourcing"). Bodies of methods annotated with this implementation are erased during
+  transpilation. 
   - `@JsServiceProvider`: Registers a class as an implementation for one or more interfaces, which
   can then later be used via `java.util.ServiceLoader`.
 - Provides all required and recommended JavaScript library dependencies in the same repository as
@@ -45,8 +48,10 @@ Particularly, jacline sports the following highlights:
   [closure-library](https://github.com/google/closure-library) as well as j2cl's jre.js,
 [jsinterop-base](https://github.com/google/jsinterop-base),
 [elemental2](https://github.com/google/elemental2))
-- Provides optional library code utilizing jacline's additional features, such as JSON-based
-  class encoding/decoding that works both in vanilla Java/JVM and JavaScript.
+- Provides optional library code utilizing jacline's additional features that work both in vanilla
+  Java (on the JVM) and JavaScript:
+  - JSON-based class encoding/decoding
+  - `Pledge`, which can be both a `Promise` (JavaScript) or a `CompletableFuture` (JVM)
 - Allows for a simple integration with [Dumbo](https://github.com/kohlschuetter/dumbo).
 
 ## Limitations
