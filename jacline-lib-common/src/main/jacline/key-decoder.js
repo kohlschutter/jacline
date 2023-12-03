@@ -56,8 +56,4 @@ class KeyDecoder {
     }
 }
 
-KeyDecoder.prototype[""] = function() {
-    this.close();
-};
-
 exports = KeyDecoder;
