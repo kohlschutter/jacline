@@ -17,6 +17,8 @@
  */
 package com.kohlschutter.jacline.lib.exception;
 
+import java.util.concurrent.CompletionException;
+
 /**
  * Wraps an arbitrary object in an exception.
  *
@@ -24,7 +26,7 @@ package com.kohlschutter.jacline.lib.exception;
  */
 public final class JsException extends RuntimeException {
   private static final long serialVersionUID = 1L;
-  private final Object object;
+  private final transient Object object;
 
   /**
    * Wraps the given JavaScript error object as an exception.
@@ -32,14 +34,12 @@ public final class JsException extends RuntimeException {
    * @param o The object.
    */
   private JsException(Object o) {
-    super(o.toString());
+    super(String.valueOf(o));
     this.object = o;
   }
 
   public static Exception wrap(Object o) {
-    if (o == null) {
-      return null;
-    } else if (o instanceof Exception) {
+    if (o instanceof Exception) {
       return ((Exception) o);
     } else {
       return new JsException(o);
@@ -57,7 +57,14 @@ public final class JsException extends RuntimeException {
   }
 
   public static Object unwrap(Object o) {
-    if (o instanceof JsException) {
+    if (o instanceof CompletionException) {
+      Throwable cause = ((CompletionException) o).getCause();
+      if (cause != null) {
+        return unwrap(cause);
+      } else {
+        return o;
+      }
+    } else if (o instanceof JsException) {
       return ((JsException) o).getObject();
     } else {
       return o;

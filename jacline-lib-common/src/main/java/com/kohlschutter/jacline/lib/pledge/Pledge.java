@@ -36,7 +36,7 @@ import jsinterop.annotations.JsType;
  * @param <T> The expected return type.
  * @author Christian Kohlschütter
  */
-@JsType(isNative = true, namespace = "kohlschutter.promise", name = "Pledge")
+@JsType(isNative = true, namespace = "kohlschutter.pledge", name = "Pledge")
 @JsImport
 @JsPatched
 public interface Pledge<T> {
@@ -67,23 +67,45 @@ public interface Pledge<T> {
   Pledge<Void> lastly(JsRunnable action);
 
   @JsImplementationProvidedSeparately
-  static <T> Pledge<T> resolveObject(T obj) {
+  static <T> Pledge<T> ofResult(T obj) {
     return FuturePledge.supplyCompleted(obj);
   }
 
   @JsImplementationProvidedSeparately
-  static <T> Pledge<T> resolveThenable(Thenable<T> thenable) {
+  static <T> Pledge<T> ofThenable(Thenable<T> thenable) {
     return FuturePledge.supplyAsyncThenable(thenable);
   }
 
   @JsImplementationProvidedSeparately
-  static <T> Pledge<T> reject(Object obj) {
-    return FuturePledge.<T> supplyRejected(obj);
+  static <T> Pledge<T> ofRejected(Object obj) {
+    return FuturePledge.<T>supplyRejected(obj);
+  }
+
+  @JsImplementationProvidedSeparately
+  static <T> Pledge<T[]> allOf(Class<T> resultType, Pledge<T>[] pledges) {
+    return FuturePledge.<T>supplyAllOf(resultType, pledges);
+  }
+
+  @JsImplementationProvidedSeparately
+  static <T> Pledge<T> firstToSettle(Pledge<T>[] pledges) {
+    return FuturePledge.<T>firstToSettle(pledges);
+  }
+
+  @JsImplementationProvidedSeparately
+  static <T> Pledge<T> firstToSucceed(Pledge<T>[] pledges) {
+    return FuturePledge.<T>firstToSucceed(pledges);
+  }
+
+  @SafeVarargs
+  @SuppressWarnings("cast")
+  @JsOverlay
+  static <T> Pledge<T>[] group(Pledge<T>... pledges) {
+    return (Pledge<T>[]) pledges;
   }
 
   @JsImplementationProvidedSeparately
   static Throwable asThrowable(Object o) {
-    return o == null || o instanceof Throwable ? (Throwable) o : JsException.wrap(o);
+    return o instanceof Throwable ? (Throwable) o : JsException.wrap(o);
   }
 
   @JsImplementationProvidedSeparately

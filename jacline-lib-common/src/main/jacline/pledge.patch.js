@@ -1,20 +1,35 @@
-goog.module("kohlschutter.promise.Pledge$impl$patched");
+goog.module("kohlschutter.pledge.Pledge$impl$patched");
 
-var Pledge = goog.require("kohlschutter.promise.Pledge$impl");
+var Pledge = goog.require("kohlschutter.pledge.Pledge$impl");
 
-/**  @suppress {checkTypes} @return {Pledge<T_1>} */
-Pledge.resolveObject = function(obj) {
+/**  @suppress {checkTypes} @template T_1 @return {Pledge<T_1>} */
+Pledge.ofResolved = function(obj) {
     return Promise.resolve(obj);
 };
 
-/**  @suppress {checkTypes} @return {Pledge<T_1>} */
-Pledge.resolveThenable = function(obj) {
-    return Promise.resolve(obj);
+/**  @suppress {checkTypes} @template T_1 @return {Pledge<T_1>} */
+Pledge.ofThenable = function(thenable) {
+    return Promise.resolve(thenable);
 };
 
-/**  @suppress {checkTypes} @return {Pledge<T_1>} */
-Pledge.reject = function(obj) {
-    return Promise.reject(obj);
+/**  @suppress {checkTypes} @template T_1 @return {Pledge<T_1>} */
+Pledge.ofRejected = function(err) {
+    return Promise.reject(err);
+};
+
+/**  @suppress {checkTypes} @template T_1 return {Pledge<T_1>} */
+Pledge.allOf = function(_, pledges) {
+    return Promise.all(pledges);
+};
+
+/**  @suppress {checkTypes} @template T_1 @return {Pledge<T_1>} */
+Pledge.firstToSettle = function(pledges) {
+    return Promise.race(pledges);
+};
+
+/**  @suppress {checkTypes} @template T_1 @return {Pledge<T_1>} */
+Pledge.firstToSucceed = function(pledges) {
+    return Promise.any(pledges);
 };
 
 /**  @suppress {checkTypes} */
