@@ -1,6 +1,6 @@
 goog.module("kohlschutter.coding.KeyDecoder");
 
-const DecodingException = goog.require("com.kohlschutter.jacline.lib.common.DecodingException");
+const DecodingException = goog.require("com.kohlschutter.jacline.lib.coding.DecodingException");
 
 // FIXME type checking
 class KeyDecoder {
