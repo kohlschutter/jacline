@@ -23,8 +23,6 @@ import java.util.Objects;
 
 import org.junit.jupiter.api.Test;
 
-import com.kohlschutter.jacline.lib.coding.Decodables;
-
 public class DecodablesTest {
   @Test
   public void testDecodables() throws Exception {

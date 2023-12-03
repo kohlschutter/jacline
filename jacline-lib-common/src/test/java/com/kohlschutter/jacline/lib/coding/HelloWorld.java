@@ -22,13 +22,6 @@ import java.io.IOException;
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.annotations.JsExport;
 import com.kohlschutter.jacline.annotations.JsServiceProvider;
-import com.kohlschutter.jacline.lib.coding.Decodables;
-import com.kohlschutter.jacline.lib.coding.DecodingException;
-import com.kohlschutter.jacline.lib.coding.Encodable;
-import com.kohlschutter.jacline.lib.coding.KeyDecoder;
-import com.kohlschutter.jacline.lib.coding.KeyEncoder;
-import com.kohlschutter.jacline.lib.coding.StandardArrayDecoders;
-import com.kohlschutter.jacline.lib.coding.StandardArrayEncoders;
 
 import jsinterop.annotations.JsType;
 

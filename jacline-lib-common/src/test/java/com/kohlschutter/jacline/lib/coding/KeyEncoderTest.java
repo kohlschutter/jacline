@@ -24,10 +24,6 @@ import java.io.StringReader;
 
 import org.junit.jupiter.api.Test;
 
-import com.kohlschutter.jacline.lib.coding.DecodingException;
-import com.kohlschutter.jacline.lib.coding.KeyEncoder;
-import com.kohlschutter.jacline.lib.coding.StandardArrayEncoders;
-
 public class KeyEncoderTest {
 
   @Test
