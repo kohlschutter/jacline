@@ -1,5 +1,5 @@
 /*
- * jacline sample: json
+ * jacline-lib-common
  *
  * Copyright 2023 Christian Kohlschütter
  *
@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.kohlschutter.jacline.samples.helloworld;
+package com.kohlschutter.jacline.lib.coding;
 
 import java.io.IOException;
 

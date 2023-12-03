@@ -1,5 +1,5 @@
 /*
- * jacline sample: json
+ * jacline-lib-common
  *
  * Copyright 2023 Christian Kohlschütter
  *
@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.kohlschutter.jacline.samples.json;
+package com.kohlschutter.jacline.lib.coding;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -25,9 +25,23 @@ import java.io.StringReader;
 import org.junit.jupiter.api.Test;
 
 import com.kohlschutter.jacline.lib.coding.DecodingException;
-import com.kohlschutter.jacline.samples.helloworld.HelloWorld;
+import com.kohlschutter.jacline.lib.coding.KeyEncoder;
+import com.kohlschutter.jacline.lib.coding.StandardArrayEncoders;
 
-public class HelloWorldTest {
+public class KeyEncoderTest {
+
+  @Test
+  public void testEncoder() {
+    KeyEncoder enc = KeyEncoder.begin("Dummy");
+    enc.encodeString("hello", "world");
+    enc.beginEncodeObject("obj", null).encodeBoolean("indiana", true).encodeNumber("pi", 4).end()
+        .encodeString("hello", "world").encodeArray("array", StandardArrayEncoders::strings,
+            new Object[] {false, 1, 2.0, "three"});
+
+    assertEquals("{\"javaClass\":\"Dummy\",\"hello\":\"world\",\"obj\":{\"indiana\":true,\"pi\":4},"
+        + "\"array\":[\"false\",\"1\",\"2.0\",\"three\"]}", enc.getEncoded().toString());
+  }
+
   @Test
   public void testEncodeJsonHelloWorld() throws Exception {
     HelloWorld hw = new HelloWorld();
