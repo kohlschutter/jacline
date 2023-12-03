@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
  * The {@code $impl$patched} module can either modify/decorate the default implementation, or
  * replace it entirely.
  * </p>
- * 
+ *
  * @author Christian Kohlschütter
  */
 @Retention(RetentionPolicy.RUNTIME)
