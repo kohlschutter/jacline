@@ -243,7 +243,22 @@ or (for Gradle)
 ./gradlew refreshVersions
 ```
 
-## Licensing
+## Who
+
+jacline has been created by [Christian Kohlschütter](https://kohlschuetter.github.io/blog/).
+
+### Maintenance status
+
+jacline is being maintained, especially as it's still being developed.
+
+### Getting involved
+
+If you encounter a bug, please file a [bug report](https://github.com/kohlschutter/jacline/issues).
+
+If you want to contribute, please open a [pull
+request](https://github.com/kohlschutter/jacline/pulls) or reach out directly.
+
+### License
 
 jacline is released under the Apache 2.0 License.
 
