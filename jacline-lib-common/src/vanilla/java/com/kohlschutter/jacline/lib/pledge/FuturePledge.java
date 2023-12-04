@@ -52,6 +52,19 @@ final class FuturePledge<T> implements Pledge<T> {
     return pledge;
   }
 
+  static <T> Pledge<T> supplyAsyncThenable(ThenableCallback<T> thenable) {
+    CompletableFuture<T> future = new CompletableFuture<T>();
+    FuturePledge<T> pledge = FuturePledge.ofCompletableFuture(future);
+
+    JsConsumerCallback<T> onFulfilled = (o) -> {
+      future.complete(o);
+    };
+
+    ForkJoinPool.commonPool().submit(() -> thenable.then(onFulfilled));
+
+    return pledge;
+  }
+
   static <T> FuturePledge<T> supplyAsync(Supplier<T> supplier) {
     return ofCompletableFuture(CompletableFuture.supplyAsync(supplier));
   }

@@ -17,10 +17,14 @@
  */
 package com.kohlschutter.jacline.lib.pledge;
 
-import jsinterop.annotations.JsFunction;
+import com.kohlschutter.jacline.annotations.JsExport;
+import com.kohlschutter.jacline.lib.function.JsConsumerCallback;
 
-@JsFunction
+import jsinterop.annotations.JsMethod;
+
 @FunctionalInterface
 public interface ThenableCallback<T> {
-  void call(T arg);
+  @JsExport
+  @JsMethod(name = "then")
+  void then(JsConsumerCallback<T> onFulfilled);
 }

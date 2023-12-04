@@ -48,7 +48,7 @@ public class PledgeTest {
   public void testThenable() throws Exception {
     CompletableFuture<Integer> result = new CompletableFuture<>();
 
-    Pledge.<Integer>ofThenable((success, fail) -> {
+    Pledge.<Integer> ofThenable((success, fail) -> {
       success.consume(1);
     }).then((i) -> {
       return i + 22;
@@ -65,7 +65,7 @@ public class PledgeTest {
   public void testThenableFail() throws Exception {
     CompletableFuture<Integer> result = new CompletableFuture<>();
 
-    Pledge.<Integer>ofThenable((success, fail) -> {
+    Pledge.<Integer> ofThenable((success, fail) -> {
       fail.consume("not an exception");
     }).then((i) -> {
       return i + 22;
@@ -88,7 +88,7 @@ public class PledgeTest {
   public void testRejected() throws Exception {
     CompletableFuture<Number> result = new CompletableFuture<>();
 
-    Pledge.<Number>ofRejected("Rejected for some reason").thenAccept((i) -> {
+    Pledge.<Number> ofRejected("Rejected for some reason").thenAccept((i) -> {
       result.complete(i);
     }).exceptionallyAccept((e) -> {
       result.completeExceptionally(Pledge.asThrowable(e));
@@ -105,7 +105,7 @@ public class PledgeTest {
   @Test
   public void testFirstToSettle() throws Exception {
     Pledge<String> pledge1 = Pledge.ofRejected("rejected");
-    Pledge<String> pledge2 = Pledge.ofThenable((resolve, err) -> {
+    Pledge<String> pledge2 = Pledge.ofCallback((resolve) -> {
       ExecutorHelper.executeDelayed(resolve, 0, "quick");
     });
     Pledge<String> pledge3 = Pledge.ofThenable((resolve, err) -> {
@@ -177,7 +177,7 @@ public class PledgeTest {
   public void testFirstToSettleEmpty() throws Exception {
     CompletableFuture<String> result = new CompletableFuture<>();
 
-    Pledge.firstToSettle(Pledge.<String>group()).thenAccept((t) -> {
+    Pledge.firstToSettle(Pledge.<String> group()).thenAccept((t) -> {
       result.complete(t);
     }).exceptionallyAccept((t) -> {
       t = Pledge.asObject(t);
@@ -195,7 +195,7 @@ public class PledgeTest {
   public void testFirstToSucceedEmpty() throws Exception {
     CompletableFuture<String> result = new CompletableFuture<>();
 
-    Pledge.firstToSucceed(Pledge.<String>group()).thenAccept((t) -> {
+    Pledge.firstToSucceed(Pledge.<String> group()).thenAccept((t) -> {
       result.complete(t);
     }).exceptionallyAccept((t) -> {
       t = Pledge.asObject(t);

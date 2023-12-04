@@ -13,6 +13,11 @@ Pledge.ofThenable = function(thenable) {
 };
 
 /**  @suppress {checkTypes} @template T_1 @return {Pledge<T_1>} */
+Pledge.ofCallback = function(thenable) {
+    return Promise.resolve(thenable);
+};
+
+/**  @suppress {checkTypes} @template T_1 @return {Pledge<T_1>} */
 Pledge.ofRejected = function(err) {
     return Promise.reject(err);
 };

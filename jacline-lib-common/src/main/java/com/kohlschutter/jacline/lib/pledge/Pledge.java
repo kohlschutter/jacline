@@ -77,23 +77,28 @@ public interface Pledge<T> {
   }
 
   @JsImplementationProvidedSeparately
+  static <T> Pledge<T> ofCallback(ThenableCallback<T> thenable) {
+    return FuturePledge.supplyAsyncThenable(thenable);
+  }
+
+  @JsImplementationProvidedSeparately
   static <T> Pledge<T> ofRejected(Object obj) {
-    return FuturePledge.<T>supplyRejected(obj);
+    return FuturePledge.<T> supplyRejected(obj);
   }
 
   @JsImplementationProvidedSeparately
   static <T> Pledge<T[]> allOf(Class<T> resultType, Pledge<T>[] pledges) {
-    return FuturePledge.<T>supplyAllOf(resultType, pledges);
+    return FuturePledge.<T> supplyAllOf(resultType, pledges);
   }
 
   @JsImplementationProvidedSeparately
   static <T> Pledge<T> firstToSettle(Pledge<T>[] pledges) {
-    return FuturePledge.<T>firstToSettle(pledges);
+    return FuturePledge.<T> firstToSettle(pledges);
   }
 
   @JsImplementationProvidedSeparately
   static <T> Pledge<T> firstToSucceed(Pledge<T>[] pledges) {
-    return FuturePledge.<T>firstToSucceed(pledges);
+    return FuturePledge.<T> firstToSucceed(pledges);
   }
 
   @SafeVarargs
