@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public final class CommonLogServiceProviderSlf4jImpl implements CommonLogServiceProvider {
 
+  @SuppressWarnings("PMD.AvoidFieldNameMatchingMethodName")
   private static final Logger LOG = LoggerFactory.getLogger(CommonLog.class);
 
   public CommonLogServiceProviderSlf4jImpl() {
