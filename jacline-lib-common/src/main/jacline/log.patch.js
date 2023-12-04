@@ -3,6 +3,7 @@ goog.module("kohlschutter.log.Log$impl$patched");
 var CommonLog = goog.require("kohlschutter.log.Log$impl");
 
 function logTo(target, message, args) {
+    message = message.replaceAll("%", "%%"); // disallow JavaScript console escapes
     if (args.length == 0) {
         target(message);
         return;
