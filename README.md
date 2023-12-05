@@ -49,12 +49,17 @@ Particularly, jacline sports the following highlights:
   [closure-library](https://github.com/google/closure-library) as well as j2cl's jre.js,
 [jsinterop-base](https://github.com/google/jsinterop-base),
 [elemental2](https://github.com/google/elemental2))
-- Provides optional library code utilizing jacline's additional features that work both in vanilla
-  Java (on the JVM) and JavaScript:
-  - JSON-based class encoding/decoding, future-proofed for other serialization formats, similar
-  to `NSSecureCoding`
-  - `Pledge`, which can be both a `Promise` (JavaScript) or a `CompletableFuture` (JVM)
-  - Common logging facility, for `console` (JavaScript) and `slf4j` (JVM, exchangable via Java SPI)
+- Provides [optional library code](jacline-lib-common/src/main/java/com/kohlschutter/jacline/lib/)
+utilizing jacline's additional features that work both in vanilla
+  Java (on the JVM) and JavaScript, such as:
+  - JSON-based class
+    [encoding/decoding](jacline-lib-common/src/test/java/com/kohlschutter/jacline/lib/coding/),
+    future-proofed for other serialization formats, similar to `NSSecureCoding`
+  - [`Pledge`](jacline-lib-common/src/test/java/com/kohlschutter/jacline/lib/pledge/), which can be
+    both a `Promise` (JavaScript) or a `CompletableFuture` (JVM)
+  - Common
+    [logging](jacline-lib-common/src/main/java/com/kohlschutter/jacline/lib/log/) facility, for
+    `console` (JavaScript) and `slf4j` (JVM, exchangable via Java SPI)
 - Designed for seamless integration with [Dumbo](https://github.com/kohlschuetter/dumbo).
 
 ## Limitations
