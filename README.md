@@ -55,7 +55,7 @@ utilizing jacline's additional features that work both in vanilla
   - JSON-based class
     [encoding/decoding](jacline-lib-common/src/test/java/com/kohlschutter/jacline/lib/coding/),
     future-proofed for other serialization formats, similar to `NSSecureCoding`
-  - [`Pledge`](jacline-lib-common/src/test/java/com/kohlschutter/jacline/lib/pledge/), which can be
+  - [`Pledge`](jacline-lib-common/src/main/java/com/kohlschutter/jacline/lib/pledge/), which can be
     both a `Promise` (JavaScript) or a `CompletableFuture` (JVM)
   - Common
     [logging](jacline-lib-common/src/main/java/com/kohlschutter/jacline/lib/log/) facility, for
