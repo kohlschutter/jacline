@@ -24,8 +24,9 @@ Particularly, jacline sports the following highlights:
 - Extends the "Super-Sourcing" paradigm with "Common-Sourcing", i.e., having the same Java source
   definitions for JavaScript/JVM targets along with the occasional native JavaScript file that
   replaces the vanilla Java implementation for the JavaScript context.
-- Enables "Closeable" support (e.g.  in try-with-resources) for native JavaScript class
-  implementations.
+- Enables
+  "[Closeable](jacline-lib-common/src/main/java/com/kohlschutter/jacline/lib/io/JsCloseable.java)"
+  support (e.g.  in try-with-resources) for native JavaScript class implementations.
 - Provides a simplified Service Provider Interface implementation ("ServiceLoader")
 - Improves the interaction with outside JavaScript code using custom annotations, such as:
   - `@JsImport`: Declares that the annotated interface has an implementation that is supplied by some
