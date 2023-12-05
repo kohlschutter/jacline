@@ -2,17 +2,16 @@
 
 # jacline
 
-jacline is a Java-to-Javascript transpiler, using a forked version of j2cl in combination with Google Closure Compiler, plus other libraries providing APIs combining the Java SDK and the Browser world.
+jacline is a Java-to-Javascript transpiler, using a forked version of j2cl in combination with Google Closure Compiler, plus other libraries providing APIs combining the Java world with the browser world.
 
 ## When JAva-to-CLosure Is Not Enough
 
 [j2cl](https://github.com/google/j2cl) is great technology, encumbered with Google-specific layers
-of process (read: complexity) that, in my opinion, prevents the wide-scale adoption by the Java
+of complexity/process that, in my opinion, prevents the wide-scale adoption by the Java
 community.
 
 jacline builds its foundation on a fork of j2cl that is "un[bazel](https://bazel.build)ed" and
-"[Maven](https://maven.apache.org)ized", furthermore incorporating a few changes that didn't yet
-make it into mainline j2cl.
+"[Maven](https://maven.apache.org)ized", furthermore incorporating several fixes and additions.
 
 Particularly, jacline sports the following highlights:
 
@@ -24,8 +23,9 @@ Particularly, jacline sports the following highlights:
 - Extends the "Super-Sourcing" paradigm with "Common-Sourcing", i.e., having the same Java source
   definitions for JavaScript/JVM targets along with the occasional native JavaScript file that
   replaces the vanilla Java implementation for the JavaScript context.
-- Enables "Closeable" support (e.g.  in try-with-resources) for native JavaScript class implementations.
-- Provides a simplified Service Provider Interface implementation via ServiceLoader
+- Enables "Closeable" support (e.g.  in try-with-resources) for native JavaScript class
+  implementations.
+- Provides a simplified Service Provider Interface implementation ("ServiceLoader")
 - Improves the interaction with outside JavaScript code using custom annotations, such as:
   - `@JsImport`: Declares that the annotated interface has an implementation that is supplied by some
   external JavaScript code.
@@ -50,7 +50,7 @@ Particularly, jacline sports the following highlights:
 [elemental2](https://github.com/google/elemental2))
 - Provides optional library code utilizing jacline's additional features that work both in vanilla
   Java (on the JVM) and JavaScript:
-  - JSON-based class encoding/decoding, and future-proofed for other serialization formats, similar
+  - JSON-based class encoding/decoding, future-proofed for other serialization formats, similar
   to `NSSecureCoding`
   - `Pledge`, which can be both a `Promise` (JavaScript) or a `CompletableFuture` (JVM)
   - Common logging facility, for `console` (JavaScript) and `slf4j` (JVM, exchangable via Java SPI)
@@ -64,6 +64,10 @@ Particularly, jacline sports the following highlights:
 - jacline is still work in progress, but fully functional.
 
 ## Examples
+
+### Before you begin
+
+Currently, you first need to build jacline from source: `mvn clean install`
 
 ### helloworld
 
@@ -82,9 +86,9 @@ JavaScript code (under `jacline/`).  The transpilation is configured and trigger
 
 Now try to modify the source code for
 [HelloWorld.java](samples/helloworld/src/main/java/com/kohlschutter/jacline/samples/helloworld/HelloWorld.java),
-enabling the two `@JsExport` statements, then run `mvn clean install` again.
+enabling the two commented `@JsExport` statements, then run `mvn clean install` again.
 
-Notice that the generated code is now bigger, but you can call the Java class from JavaScript!
+Notice that the generated code is now longer, but you can call the Java class from JavaScript!
 
 To do so, paste the code into a blank page in your browser (or open `target/classes/index.html` in
 your browser), then open the JavaScript console and type the fully qualified class name to access
