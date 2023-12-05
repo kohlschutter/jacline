@@ -94,7 +94,8 @@ public final class JsonKeyEncoder implements KeyEncoder {
   }
 
   @Override
-  public KeyEncoder encodeArray(String key, ArrayEncoder encoder, Object[] array) {
+  public KeyEncoder encodeArray(String key, ArrayEncoder encoder, Object[] array)
+      throws CodingException {
     if (array == null) {
       builder.addNull(key);
     } else {

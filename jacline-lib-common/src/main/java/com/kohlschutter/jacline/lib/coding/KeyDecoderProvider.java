@@ -22,5 +22,5 @@ import jsinterop.annotations.JsFunction;
 @JsFunction
 @FunctionalInterface
 public interface KeyDecoderProvider {
-  KeyDecoder load(String expectedCodedType, Object encoded) throws DecodingException;
+  KeyDecoder load(String expectedCodedType, Object encoded) throws CodingException;
 }

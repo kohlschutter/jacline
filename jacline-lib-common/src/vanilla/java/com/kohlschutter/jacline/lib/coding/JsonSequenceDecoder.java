@@ -42,7 +42,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
   private final int length;
   private final Iterator<JsonValue> iterator;
 
-  public JsonSequenceDecoder(Object encoded) throws DecodingException {
+  public JsonSequenceDecoder(Object encoded) throws CodingException {
     Stream<JsonValue> stream;
 
     if (encoded instanceof JsonArray) {
@@ -58,7 +58,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
       }
       if (parser.hasNext()) {
         if (parser.next() != Event.START_ARRAY) {
-          throw new DecodingException("Not an array");
+          throw new CodingException("Not an array");
         }
         JsonArray array = parser.getArray();
         length = array.size();
@@ -91,7 +91,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
 
   @Override
   public SequenceDecoder strings(int count, SequenceConsumer<String> forEach)
-      throws DecodingException {
+      throws CodingException {
     count = checkCount(count);
     for (int i = 0; i < count; i++, pos++) {
       JsonValue next = iterator.next();
@@ -105,7 +105,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
           val = ((JsonString) next).getString();
           break;
         default:
-          throw new DecodingException("Wrong type: " + next.getValueType()
+          throw new CodingException("Wrong type: " + next.getValueType()
               + "; expected array, but got: " + next);
       }
 
@@ -117,7 +117,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
 
   @Override
   public SequenceDecoder booleans(int count, SequenceConsumer<Boolean> forEach)
-      throws DecodingException {
+      throws CodingException {
     count = checkCount(count);
     for (int i = 0; i < count; i++, pos++) {
       JsonValue next = iterator.next();
@@ -134,7 +134,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
           val = true;
           break;
         default:
-          throw new DecodingException("Wrong type: " + next.getValueType()
+          throw new CodingException("Wrong type: " + next.getValueType()
               + "; expected array, but got: " + next);
       }
 
@@ -146,7 +146,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
 
   @Override
   public SequenceDecoder numbers(int count, SequenceConsumer<Number> forEach)
-      throws DecodingException {
+      throws CodingException {
     count = checkCount(count);
     for (int i = 0; i < count; i++, pos++) {
       JsonValue next = iterator.next();
@@ -160,7 +160,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
           val = ((JsonNumber) next).numberValue();
           break;
         default:
-          throw new DecodingException("Wrong type: " + next.getValueType()
+          throw new CodingException("Wrong type: " + next.getValueType()
               + "; expected array, but got: " + next);
       }
 
@@ -172,7 +172,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
 
   @Override
   public <T> SequenceDecoder arrays(int count, ArrayDecoder<T> decoder,
-      SequenceConsumer<T[]> forEach) throws DecodingException {
+      SequenceConsumer<T[]> forEach) throws CodingException {
     count = checkCount(count);
     for (int i = 0; i < count; i++, pos++) {
       JsonValue next = iterator.next();
@@ -188,7 +188,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
           break;
         }
         default:
-          throw new DecodingException("Wrong type: " + next.getValueType()
+          throw new CodingException("Wrong type: " + next.getValueType()
               + "; expected array, but got: " + next);
       }
 
@@ -201,7 +201,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
   @SuppressWarnings("null")
   @Override
   public <T> SequenceDecoder objects(int count, ObjectDecoder<T> decoder,
-      SequenceConsumer<T> forEach) throws DecodingException {
+      SequenceConsumer<T> forEach) throws CodingException {
     count = checkCount(count);
     for (int i = 0; i < count; i++, pos++) {
       JsonValue next = iterator.next();
@@ -217,7 +217,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
           break;
         }
         default:
-          throw new DecodingException("Wrong type: " + next.getValueType()
+          throw new CodingException("Wrong type: " + next.getValueType()
               + "; expected array, but got: " + next);
       }
 

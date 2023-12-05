@@ -33,6 +33,7 @@ public interface ArrayEncoder {
    *
    * @param array The array to encode.
    * @return The encoded object.
+   * @throws CodingException on error.
    */
-  Object encode(Object[] array);
+  Object encode(Object[] array) throws CodingException;
 }

@@ -23,9 +23,9 @@ import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.annotations.JsExport;
 import com.kohlschutter.jacline.annotations.JsServiceProvider;
 import com.kohlschutter.jacline.lib.coding.Codable;
+import com.kohlschutter.jacline.lib.coding.CodingException;
 import com.kohlschutter.jacline.lib.coding.CodingProviders;
 import com.kohlschutter.jacline.lib.coding.Decodables;
-import com.kohlschutter.jacline.lib.coding.DecodingException;
 import com.kohlschutter.jacline.lib.coding.KeyDecoder;
 import com.kohlschutter.jacline.lib.coding.KeyDecoderProvider;
 import com.kohlschutter.jacline.lib.coding.KeyEncoder;
@@ -82,7 +82,7 @@ public final class HelloWorld implements Codable {
 
   @Override
   @JsExport
-  public Object encode(KeyEncoderProvider provider) {
+  public Object encode(KeyEncoderProvider provider) throws CodingException {
     KeyEncoder enc = CodingProviders.decorateEncoderProvider(provider).begin(CODED_TYPE);
     enc.encodeString("message", message);
     enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", false).encodeNumber(
@@ -97,11 +97,10 @@ public final class HelloWorld implements Codable {
    * @param provider The {@link KeyDecoderProvider}, or {@code null} for default.
    * @param obj The encoded object.
    * @return A new {@link HelloWorld} instance.
-   * @throws DecodingException on error.
+   * @throws CodingException on error.
    */
   @JsExport
-  public static HelloWorld decode(KeyDecoderProvider provider, Object obj)
-      throws DecodingException {
+  public static HelloWorld decode(KeyDecoderProvider provider, Object obj) throws CodingException {
     try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).load(CODED_TYPE, obj)) {
       checkSanity(dec);
 
@@ -112,7 +111,7 @@ public final class HelloWorld implements Codable {
 
       return hw;
     } catch (IOException e) {
-      throw new DecodingException(e);
+      throw new CodingException(e);
     }
   }
 
@@ -122,9 +121,9 @@ public final class HelloWorld implements Codable {
    *
    * @param encoded The encoded object.
    * @return A new {@link HelloWorld} instance.
-   * @throws DecodingException on error.
+   * @throws CodingException on error.
    */
-  public static HelloWorld decodeDefault(Object encoded) throws DecodingException {
+  public static HelloWorld decodeDefault(Object encoded) throws CodingException {
     return decode(KeyDecoder::load, encoded);
   }
 
@@ -133,9 +132,9 @@ public final class HelloWorld implements Codable {
    * the target object.
    *
    * @param dec The {@link KeyDecoder} instance.
-   * @throws DecodingException on error.
+   * @throws CodingException on error.
    */
-  private static void checkSanity(KeyDecoder dec) throws DecodingException {
+  private static void checkSanity(KeyDecoder dec) throws CodingException {
     dec.objectForKey("obj", (encoded) -> {
       KeyDecoder objectDecoder = KeyDecoder.load("SomeObjectType", encoded);
 
@@ -143,9 +142,9 @@ public final class HelloWorld implements Codable {
 
       if (Math.abs(3.141 - pi.floatValue()) > 0.001f) {
         if (objectDecoder.booleanForKey("indiana")) {
-          throw new DecodingException("Not again, Indiana!");
+          throw new CodingException("Not again, Indiana!");
         } else {
-          throw new DecodingException("Not my reality");
+          throw new CodingException("Not my reality");
         }
       }
       return pi.floatValue(); // return value is not used

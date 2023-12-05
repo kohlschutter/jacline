@@ -24,20 +24,20 @@ import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, namespace = "kohlschutter.coding", name = "KeyDecoder")
 public interface KeyDecoder extends JsCloseable {
-  String stringForKey(String key);
+  String stringForKey(String key) throws CodingException;
 
-  Boolean booleanForKey(String key);
+  Boolean booleanForKey(String key) throws CodingException;
 
-  Number numberForKey(String key);
+  Number numberForKey(String key) throws CodingException;
 
-  <T> T[] arrayForKey(String key, ArrayDecoder<T> decoder) throws DecodingException;
+  <T> T[] arrayForKey(String key, ArrayDecoder<T> decoder) throws CodingException;
 
-  <T> T objectForKey(String key, ObjectDecoder<T> decoder) throws DecodingException;
+  <T> T objectForKey(String key, ObjectDecoder<T> decoder) throws CodingException;
 
-  boolean hasKey(String key);
+  boolean hasKey(String key) throws CodingException;
 
   @JsImplementationProvidedSeparately
-  static KeyDecoder load(String expectedCodedType, Object encoded) throws DecodingException {
+  static KeyDecoder load(String expectedCodedType, Object encoded) throws CodingException {
     return CodingServiceProvider.getDefault().keyDecoder(expectedCodedType, encoded);
   }
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kohlschutter.jacline.lib.coding.Codable;
+import com.kohlschutter.jacline.lib.coding.CodingException;
 import com.kohlschutter.jacline.lib.coding.CodingSupportProviderJsonImpl;
 import com.kohlschutter.jacline.lib.exception.JsException;
 
@@ -49,7 +50,11 @@ final class VanillaJSON {
     } else if (obj.getClass().isArray()) {
       return buildArray(toCollection(obj)).toString();
     } else if (obj instanceof Codable) {
-      return ((Codable) obj).encode(JSON_CODING::keyEncoder).toString();
+      try {
+        return ((Codable) obj).encode(JSON_CODING::keyEncoder).toString();
+      } catch (CodingException e) {
+        return obj.toString();
+      }
     } else if (obj instanceof Map) {
       Map<String, Object> outMap = new HashMap<>();
       for (Map.Entry<?, ?> en : ((Map<?, ?>) obj).entrySet()) {

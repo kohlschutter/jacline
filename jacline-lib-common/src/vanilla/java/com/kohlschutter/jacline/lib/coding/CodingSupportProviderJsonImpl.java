@@ -6,7 +6,7 @@ import com.kohlschutter.jacline.annotations.JsIgnoreType;
 public class CodingSupportProviderJsonImpl implements CodingServiceProvider {
 
   @Override
-  public KeyDecoder keyDecoder(String expectedCodedType, Object encoded) throws DecodingException {
+  public KeyDecoder keyDecoder(String expectedCodedType, Object encoded) throws CodingException {
     return new JsonKeyDecoder(expectedCodedType, encoded);
   }
 
@@ -16,7 +16,7 @@ public class CodingSupportProviderJsonImpl implements CodingServiceProvider {
   }
 
   @Override
-  public SequenceDecoder sequenceDecoder(Object encoded) throws DecodingException {
+  public SequenceDecoder sequenceDecoder(Object encoded) throws CodingException {
     return new JsonSequenceDecoder(encoded);
   }
 

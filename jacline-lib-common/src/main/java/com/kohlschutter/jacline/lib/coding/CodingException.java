@@ -19,32 +19,32 @@ package com.kohlschutter.jacline.lib.coding;
 
 import jsinterop.annotations.JsMethod;
 
-public class DecodingException extends Exception {
+public class CodingException extends Exception {
   private static final long serialVersionUID = 1L;
 
-  public DecodingException() {
+  public CodingException() {
     super();
   }
 
-  public DecodingException(String message, Throwable cause) {
+  public CodingException(String message, Throwable cause) {
     super(message, cause);
   }
 
-  public DecodingException(String message) {
+  public CodingException(String message) {
     super(message);
   }
 
-  public DecodingException(Throwable cause) {
+  public CodingException(Throwable cause) {
     super(cause);
   }
 
   @JsMethod
-  public static DecodingException withMessage(String message) {
-    return new DecodingException(message);
+  public static CodingException withMessage(String message) {
+    return new CodingException(message);
   }
 
   @JsMethod
-  public static DecodingException withUnexpectedType(String expected, String found) {
-    return new DecodingException("Unexpected type: " + found + "; expected: " + expected);
+  public static CodingException withUnexpectedType(String expected, String found) {
+    return new CodingException("Unexpected type: " + found + "; expected: " + expected);
   }
 }

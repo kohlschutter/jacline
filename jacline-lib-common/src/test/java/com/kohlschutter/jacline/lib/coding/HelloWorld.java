@@ -72,7 +72,7 @@ public final class HelloWorld implements Codable {
 
   @Override
   @JsExport
-  public Object encode(KeyEncoderProvider provider) {
+  public Object encode(KeyEncoderProvider provider) throws CodingException {
     KeyEncoder enc = CodingProviders.decorateEncoderProvider(provider).begin(CODED_TYPE);
     enc.encodeString("message", message);
     enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", false).encodeNumber(
@@ -87,11 +87,11 @@ public final class HelloWorld implements Codable {
    * @param provider The decoder provider, or {@code null} for default.
    * @param encoded The encoded object.
    * @return A new {@link HelloWorld} instance.
-   * @throws DecodingException on error.
+   * @throws CodingException on error.
    */
   @JsExport
   public static HelloWorld decode(KeyDecoderProvider provider, Object encoded)
-      throws DecodingException {
+      throws CodingException {
     try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).load(CODED_TYPE,
         encoded)) {
       checkSanity(dec);
@@ -103,7 +103,7 @@ public final class HelloWorld implements Codable {
 
       return hw;
     } catch (IOException e) {
-      throw new DecodingException(e);
+      throw new CodingException(e);
     }
   }
 
@@ -113,9 +113,9 @@ public final class HelloWorld implements Codable {
    *
    * @param encoded The encoded object.
    * @return A new {@link HelloWorld} instance.
-   * @throws DecodingException on error.
+   * @throws CodingException on error.
    */
-  public static HelloWorld decodeDefault(Object encoded) throws DecodingException {
+  public static HelloWorld decodeDefault(Object encoded) throws CodingException {
     return decode(null, encoded);
   }
 
@@ -124,9 +124,9 @@ public final class HelloWorld implements Codable {
    * the target object.
    *
    * @param dec The {@link KeyDecoder} instance.
-   * @throws DecodingException on error.
+   * @throws CodingException on error.
    */
-  private static void checkSanity(KeyDecoder dec) throws DecodingException {
+  private static void checkSanity(KeyDecoder dec) throws CodingException {
     dec.objectForKey("obj", (encoded) -> {
       KeyDecoder objectDecoder = KeyDecoder.load("SomeObjectType", encoded);
 
@@ -134,9 +134,9 @@ public final class HelloWorld implements Codable {
 
       if (Math.abs(3.141 - pi.floatValue()) > 0.001f) {
         if (objectDecoder.booleanForKey("indiana")) {
-          throw new DecodingException("Not again, Indiana!");
+          throw new CodingException("Not again, Indiana!");
         } else {
-          throw new DecodingException("Not my reality");
+          throw new CodingException("Not my reality");
         }
       }
       return pi.floatValue(); // return value is not used

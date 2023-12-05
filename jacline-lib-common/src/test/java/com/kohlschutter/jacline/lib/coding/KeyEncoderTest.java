@@ -27,7 +27,7 @@ import org.junit.jupiter.api.Test;
 public class KeyEncoderTest {
 
   @Test
-  public void testEncoder() {
+  public void testEncoder() throws Exception {
     KeyEncoder enc = KeyEncoder.begin("Dummy");
     enc.encodeString("hello", "world");
     enc.beginEncodeObject("obj", null).encodeBoolean("indiana", true).encodeNumber("pi", 4).end()
@@ -84,6 +84,6 @@ public class KeyEncoderTest {
         + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":true," + "\"pi\":4" + "},"
         + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}";
 
-    assertThrows(DecodingException.class, () -> HelloWorld.decodeDefault(json));
+    assertThrows(CodingException.class, () -> HelloWorld.decodeDefault(json));
   }
 }

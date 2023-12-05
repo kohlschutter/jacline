@@ -38,11 +38,11 @@ public interface CodingServiceProvider {
     return first.isPresent() ? Objects.requireNonNull(first.get()) : null;
   }
 
-  KeyDecoder keyDecoder(String expectedCodedType, Object encoded) throws DecodingException;
+  KeyDecoder keyDecoder(String expectedCodedType, Object encoded) throws CodingException;
 
-  KeyEncoder keyEncoder(String type);
+  KeyEncoder keyEncoder(String type) throws CodingException;
 
-  SequenceDecoder sequenceDecoder(Object encoded) throws DecodingException;
+  SequenceDecoder sequenceDecoder(Object encoded) throws CodingException;
 
-  SequenceEncoder sequenceEncoder();
+  SequenceEncoder sequenceEncoder() throws CodingException;
 }

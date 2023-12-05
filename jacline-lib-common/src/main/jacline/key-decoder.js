@@ -1,6 +1,6 @@
 goog.module("kohlschutter.coding.KeyDecoder");
 
-const DecodingException = goog.require("com.kohlschutter.jacline.lib.coding.DecodingException");
+const CodingException = goog.require("com.kohlschutter.jacline.lib.coding.CodingException");
 const JsCloseable = goog.require('com.kohlschutter.jacline.lib.io.JsCloseable');
 
 // FIXME type checking
@@ -52,7 +52,7 @@ class KeyDecoder {
     static load(expectedType, o) {
         if (expectedType) {
             if (o["javaClass"] != expectedType) {
-                throw DecodingException.withUnexpectedType(expectedType, o["javaClass"]);
+                throw CodingException.withUnexpectedType(expectedType, o["javaClass"]);
             }
         }
         return new KeyDecoder(o);

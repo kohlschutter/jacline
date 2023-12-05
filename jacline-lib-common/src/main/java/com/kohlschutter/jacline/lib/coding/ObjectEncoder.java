@@ -22,5 +22,5 @@ import jsinterop.annotations.JsFunction;
 @JsFunction
 @FunctionalInterface
 public interface ObjectEncoder {
-  Object encode(Object obj);
+  Object encode(Object obj) throws CodingException;
 }

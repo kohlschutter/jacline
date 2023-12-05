@@ -24,7 +24,7 @@ import java.io.StringReader;
 
 import org.junit.jupiter.api.Test;
 
-import com.kohlschutter.jacline.lib.coding.DecodingException;
+import com.kohlschutter.jacline.lib.coding.CodingException;
 
 public class HelloWorldTest {
   @Test
@@ -73,6 +73,6 @@ public class HelloWorldTest {
         + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":true," + "\"pi\":4" + "},"
         + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}";
 
-    assertThrows(DecodingException.class, () -> HelloWorld.decodeDefault(json));
+    assertThrows(CodingException.class, () -> HelloWorld.decodeDefault(json));
   }
 }

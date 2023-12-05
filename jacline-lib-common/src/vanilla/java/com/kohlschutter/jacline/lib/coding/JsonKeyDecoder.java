@@ -35,7 +35,7 @@ public final class JsonKeyDecoder implements KeyDecoder {
   private final JsonParser parser;
   private final JsonObject object;
 
-  public JsonKeyDecoder(String expectedCodedType, Object encoded) throws DecodingException {
+  public JsonKeyDecoder(String expectedCodedType, Object encoded) throws CodingException {
     if (encoded == null) {
       parser = null;
       object = null;
@@ -51,7 +51,7 @@ public final class JsonKeyDecoder implements KeyDecoder {
       if (parser.hasNext()) {
         Event next = parser.next();
         if (next != Event.START_OBJECT) {
-          throw new DecodingException("Not an object");
+          throw new CodingException("Not an object");
         }
         object = parser.getObject();
       } else {
@@ -62,7 +62,7 @@ public final class JsonKeyDecoder implements KeyDecoder {
     if (expectedCodedType != null && object != null) {
       String javaClass = stringForKey("javaClass");
       if (!expectedCodedType.equals(javaClass)) {
-        throw DecodingException.withUnexpectedType(expectedCodedType, javaClass);
+        throw CodingException.withUnexpectedType(expectedCodedType, javaClass);
       }
     }
   }
@@ -88,7 +88,7 @@ public final class JsonKeyDecoder implements KeyDecoder {
 
   @Override
   @SuppressWarnings("PMD.ReturnEmptyCollectionRatherThanNull")
-  public <T> T[] arrayForKey(String key, ArrayDecoder<T> decoder) throws DecodingException {
+  public <T> T[] arrayForKey(String key, ArrayDecoder<T> decoder) throws CodingException {
     if (isNull(key)) {
       return null;
     }
@@ -98,7 +98,7 @@ public final class JsonKeyDecoder implements KeyDecoder {
 
   @SuppressWarnings("null")
   @Override
-  public <T> T objectForKey(String key, ObjectDecoder<T> decoder) throws DecodingException {
+  public <T> T objectForKey(String key, ObjectDecoder<T> decoder) throws CodingException {
     if (isNull(key)) {
       return null;
     }

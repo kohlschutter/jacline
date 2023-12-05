@@ -40,5 +40,5 @@ public interface Codable {
    *
    * @return The encoded representation.
    */
-  Object encode(KeyEncoderProvider provider);
+  Object encode(KeyEncoderProvider provider) throws CodingException;
 }

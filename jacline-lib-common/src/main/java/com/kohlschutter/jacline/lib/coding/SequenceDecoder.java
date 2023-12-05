@@ -29,27 +29,27 @@ public interface SequenceDecoder extends JsCloseable {
   @FunctionalInterface
   @JsFunction
   interface SequenceConsumer<T> {
-    void consume(T t) throws DecodingException;
+    void consume(T t) throws CodingException;
   }
 
   int size();
 
   int position();
 
-  SequenceDecoder strings(int count, SequenceConsumer<String> forEach) throws DecodingException;
+  SequenceDecoder strings(int count, SequenceConsumer<String> forEach) throws CodingException;
 
-  SequenceDecoder booleans(int count, SequenceConsumer<Boolean> forEach) throws DecodingException;
+  SequenceDecoder booleans(int count, SequenceConsumer<Boolean> forEach) throws CodingException;
 
-  SequenceDecoder numbers(int count, SequenceConsumer<Number> forEach) throws DecodingException;
+  SequenceDecoder numbers(int count, SequenceConsumer<Number> forEach) throws CodingException;
 
   <T> SequenceDecoder arrays(int count, ArrayDecoder<T> decoder, SequenceConsumer<T[]> forEach)
-      throws DecodingException;
+      throws CodingException;
 
   <T> SequenceDecoder objects(int count, ObjectDecoder<T> decoder, SequenceConsumer<T> forEach)
-      throws DecodingException;
+      throws CodingException;
 
   @JsImplementationProvidedSeparately
-  static SequenceDecoder load(Object encoded) throws DecodingException {
+  static SequenceDecoder load(Object encoded) throws CodingException {
     return CodingServiceProvider.getDefault().sequenceDecoder(encoded);
   }
 }

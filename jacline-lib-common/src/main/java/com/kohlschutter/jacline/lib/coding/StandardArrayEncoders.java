@@ -21,7 +21,7 @@ import jsinterop.annotations.JsType;
 
 @JsType
 public class StandardArrayEncoders {
-  public static Object strings(Object[] array) {
+  public static Object strings(Object[] array) throws CodingException {
     SequenceEncoder sec = SequenceEncoder.begin();
     for (Object obj : array) {
       sec.encodeStrings(obj == null ? null : obj.toString());

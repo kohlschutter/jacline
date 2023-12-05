@@ -31,8 +31,10 @@ public final class CodingProviders {
    *
    * @param provider The original {@link KeyEncoderProvider}, or {@code null} (for default).
    * @return Some {@link KeyEncoderProvider}.
+   * @throws CodingException on error.
    */
-  public static KeyEncoderProvider decorateEncoderProvider(KeyEncoderProvider provider) {
+  public static KeyEncoderProvider decorateEncoderProvider(KeyEncoderProvider provider)
+      throws CodingException {
     if (provider == null) {
       return KeyEncoder::begin;
     } else {
@@ -45,17 +47,14 @@ public final class CodingProviders {
    *
    * @param provider The original {@link KeyDecoderProvider}, or {@code null} (for default).
    * @return Some {@link KeyDecoderProvider}.
+   * @throws CodingException on error.
    */
-  public static KeyDecoderProvider decorateDecoderProvider(KeyDecoderProvider provider) {
+  public static KeyDecoderProvider decorateDecoderProvider(KeyDecoderProvider provider)
+      throws CodingException {
     if (provider == null) {
       return KeyDecoder::load;
     } else {
       return provider;
     }
-  }
-
-  public static String getTypeFromEncoded(Object obj) {
-    // TODO Auto-generated method stub
-    return null;
   }
 }

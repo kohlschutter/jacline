@@ -22,5 +22,5 @@ import jsinterop.annotations.JsFunction;
 @JsFunction
 @FunctionalInterface
 public interface KeyEncoderProvider {
-  KeyEncoder begin(String type);
+  KeyEncoder begin(String type) throws CodingException;
 }

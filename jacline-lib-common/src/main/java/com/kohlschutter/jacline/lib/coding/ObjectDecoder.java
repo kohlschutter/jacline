@@ -22,5 +22,5 @@ import jsinterop.annotations.JsFunction;
 @JsFunction
 @FunctionalInterface
 public interface ObjectDecoder<T> {
-  T decode(Object serialized) throws DecodingException;
+  T decode(Object serialized) throws CodingException;
 }

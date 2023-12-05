@@ -33,7 +33,7 @@ public interface ArrayDecoder<T> {
    *
    * @param serialized The serialized representation.
    * @return The array.
-   * @throws DecodingException on error.
+   * @throws CodingException on error.
    */
-  T[] decode(Object serialized) throws DecodingException;
+  T[] decode(Object serialized) throws CodingException;
 }
