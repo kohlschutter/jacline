@@ -61,7 +61,6 @@ utilizing jacline's additional features that work both in vanilla
   - Common
     [logging](jacline-lib-common/src/main/java/com/kohlschutter/jacline/lib/log/) facility, for
     `console` (JavaScript) and `slf4j` (JVM, exchangable via Java SPI)
-- Designed for seamless integration with [Dumbo](https://github.com/kohlschuetter/dumbo).
 
 ## Limitations
 
