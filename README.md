@@ -18,7 +18,7 @@ Particularly, jacline sports the following highlights:
 - Provides a Maven plugin to simplify developing from the command line and IDEs like Eclipse
 - Can be referenced as dependencies by Maven, Gradle, etc.
 - Can be built from source with Maven and especially without "bazel"/"bazelisk"
-- Follows semantic versioning that is consistent for the entire codebase
+- Provides consistent versioning for the entire codebase
 - Embeds/reuses transpiled JavaScript into a META-INF folder included in regular Java libraries
 - Extends the "Super-Sourcing" paradigm with "Common-Sourcing", i.e., having the same Java source
   definitions for JavaScript/JVM targets along with the occasional native JavaScript file that
