@@ -10,8 +10,9 @@ jacline is a Java-to-Javascript transpiler, using a forked version of j2cl in co
 of complexity/process that, in my opinion, prevents the wide-scale adoption by the Java
 community.
 
-jacline builds its foundation on a fork of j2cl that is "un[bazel](https://bazel.build)ed" and
-"[Maven](https://maven.apache.org)ized", furthermore incorporating several fixes and additions.
+jacline builds its foundation on a [fork](https://github.com/kohlschutter/j2cl/tree/master) of j2cl
+that is "un[bazel](https://bazel.build)ed" and "[Maven](https://maven.apache.org)ized", furthermore
+incorporating several fixes and additions.
 
 Particularly, jacline sports the following highlights:
 
