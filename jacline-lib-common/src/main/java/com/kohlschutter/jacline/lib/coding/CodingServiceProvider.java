@@ -33,6 +33,7 @@ public interface CodingServiceProvider {
   }
 
   private static CodingServiceProvider findDefault() {
+    @SuppressWarnings("null")
     Optional<com.kohlschutter.jacline.lib.coding.CodingServiceProvider> first = ServiceLoader.load(
         CodingServiceProvider.class).findFirst();
     return first.isPresent() ? Objects.requireNonNull(first.get()) : null;

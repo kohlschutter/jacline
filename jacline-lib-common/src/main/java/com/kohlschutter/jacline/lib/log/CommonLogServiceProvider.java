@@ -33,6 +33,7 @@ public interface CommonLogServiceProvider {
   }
 
   private static CommonLogServiceProvider findDefault() {
+    @SuppressWarnings("null")
     Optional<CommonLogServiceProvider> first = ServiceLoader.load(CommonLogServiceProvider.class)
         .findFirst();
     return first.isPresent() ? Objects.requireNonNull(first.get()) : null;
