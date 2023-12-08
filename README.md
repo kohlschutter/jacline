@@ -21,13 +21,18 @@ Particularly, jacline sports the following highlights:
 - Can be built from source with Maven and especially without "bazel"/"bazelisk"
 - Provides consistent versioning for the entire codebase
 - Embeds/reuses transpiled JavaScript into a META-INF folder included in regular Java libraries
-- Extends the "Super-Sourcing" paradigm with "Common-Sourcing", i.e., having the same Java source
+- Replaces the
+  [Super-Sourcing](https://github.com/kohlschutter/j2cl/blob/08ed00f64137303d2908a397e29987786be25c72/docs/best-practices.md)
+  paradigm with "Common-Sourcing", i.e., having the same Java source
   definitions for JavaScript/JVM targets along with the occasional native JavaScript file that
-  replaces the vanilla Java implementation for the JavaScript context.
+  replaces the vanilla Java implementation for the JavaScript context. No separate `-j2cl` jars
+  need to be produced just to support jacline!
+- Provides a Service Provider Interface implementation ("ServiceLoader") that further
+  simplifies sharing code between vanilla JVM java and jacline-transpiled JavaScript, and
+  additionally helps decoupling your code.
 - Enables
   "[Closeable](jacline-lib-common/src/main/java/com/kohlschutter/jacline/lib/io/JsCloseable.java)"
   support (e.g.  in try-with-resources) for native JavaScript class implementations.
-- Provides a simplified Service Provider Interface implementation ("ServiceLoader")
 - Improves the interaction with outside JavaScript code using custom annotations, such as:
   - `@JsImport`: Declares that the annotated interface has an implementation that is supplied by some
   external JavaScript code.
