@@ -1,4 +1,10 @@
 #!/bin/sh
+#
+# Updates the jacline-j2cl project with the content from the ../j2cl submodule
+#
+# Copyright 2023 by Christian Kohlschütter
+# SPDX-License-Identifier: Apache-2.0
+#
 
 set -e
 cd "$(dirname $0)"
