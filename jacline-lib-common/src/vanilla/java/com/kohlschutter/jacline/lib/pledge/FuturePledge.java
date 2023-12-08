@@ -19,6 +19,7 @@ import com.kohlschutter.jacline.lib.function.JsRunnable;
  * @param <T> The return type.
  * @author Christian Kohlschütter
  */
+@SuppressWarnings("PMD.CouplingBetweenObjects")
 final class FuturePledge<T> implements Pledge<T> {
   private final CompletableFuture<T> future;
 
