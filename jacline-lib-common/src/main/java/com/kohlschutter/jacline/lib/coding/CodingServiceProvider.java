@@ -26,7 +26,7 @@ public interface CodingServiceProvider {
 
   static CodingServiceProvider getDefault() {
     if (DEFAULT == null) {
-      throw new IllegalStateException("Could not find any " + CodingServiceProvider.class);
+      throw new IllegalStateException("Could not find any default implementation");
     } else {
       return DEFAULT;
     }

@@ -26,7 +26,7 @@ public interface CommonLogServiceProvider {
 
   static CommonLogServiceProvider getDefault() {
     if (DEFAULT == null) {
-      throw new IllegalStateException("Could not find any " + CommonLogServiceProvider.class);
+      throw new IllegalStateException("Could not find any default implementation");
     } else {
       return DEFAULT;
     }
