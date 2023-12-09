@@ -26,7 +26,7 @@ Particularly, jacline sports the following highlights:
   paradigm with "Common-Sourcing", i.e., having the same Java source
   definitions for JavaScript/JVM targets along with the occasional native JavaScript file that
   replaces the vanilla Java implementation for the JavaScript context. No separate `-j2cl` jars
-  need to be produced just to support jacline!
+  need to be produced just to support JavaScript!
 - Provides a Service Provider Interface implementation ("ServiceLoader") that further
   simplifies sharing code between vanilla JVM java and jacline-transpiled JavaScript, and
   additionally helps decoupling your code.
