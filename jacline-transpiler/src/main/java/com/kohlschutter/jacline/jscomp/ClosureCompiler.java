@@ -38,19 +38,26 @@ import com.google.javascript.jscomp.CompilerOptions.Environment;
 import com.google.javascript.jscomp.DependencyOptions;
 import com.google.javascript.jscomp.ModuleIdentifier;
 import com.google.javascript.jscomp.SourceFile;
+import com.google.javascript.jscomp.SourceMap.DetailLevel;
+import com.google.javascript.jscomp.SourceMap.Format;
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 
 public class ClosureCompiler implements Closeable {
   private static List<SourceFile> builtinExterns;
 
+  private final Path sourceMapWorkDir;
+  private final URI sourceMapPrefix;
+
   @SuppressWarnings("PMD.AssignmentToNonFinalStatic")
   @SuppressFBWarnings({
       "ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD", "EI_EXPOSE_REP", "CT_CONSTRUCTOR_THROW"})
-  public ClosureCompiler() throws IOException {
+  public ClosureCompiler(Path sourceMapWorkDir, URI sourceMapPrefix) throws IOException {
+    this.sourceMapPrefix = sourceMapPrefix;
     if (builtinExterns == null) {
       builtinExterns = Collections.unmodifiableList(CommandLineRunner.getBuiltinExterns(
           Environment.BROWSER));
     }
+    this.sourceMapWorkDir = sourceMapWorkDir;
   }
 
   @Override
@@ -59,7 +66,8 @@ public class ClosureCompiler implements Closeable {
   }
 
   public ClosureCompilerRun prepareCompile(ClosureCompilerSources compilerSources,
-      boolean disableStderr, Consumer<CompilerOptions> optionsModifier) throws IOException {
+      boolean disableStderr, Consumer<CompilerOptions> optionsModifier, String outputFileName)
+      throws IOException {
 
     List<Path> entryPoints = resolveFiles(compilerSources.getEntryPoints());
     List<Path> otherSources = resolveFiles(compilerSources.getOtherFiles());
@@ -88,6 +96,8 @@ public class ClosureCompiler implements Closeable {
           entryPointsList));
     }
 
+    SourceMapLocationMapping sourceMapLocationMapping = enableSourceMaps(options);
+
     if (optionsModifier != null) {
       optionsModifier.accept(options);
     }
@@ -97,7 +107,24 @@ public class ClosureCompiler implements Closeable {
       compiler.setSuppressReport(true);
     }
 
-    return new ClosureCompilerRun(compiler, builtinExterns, filesMap, options);
+    return new ClosureCompilerRun(compiler, builtinExterns, filesMap, options, outputFileName,
+        sourceMapLocationMapping);
+  }
+
+  private SourceMapLocationMapping enableSourceMaps(CompilerOptions options) throws IOException {
+    if (sourceMapWorkDir == null) {
+      return null;
+    }
+    options.setSourceMapFormat(Format.V3);
+    options.setApplyInputSourceMaps(true);
+    options.setAlwaysGatherSourceMapInfo(true);
+    options.setSourceMapDetailLevel(DetailLevel.ALL);
+    options.setParseInlineSourceMaps(true);
+    SourceMapLocationMapping sourceMapLocationMapping = new SourceMapLocationMapping(
+        sourceMapWorkDir, sourceMapPrefix);
+    options.setSourceMapLocationMappings(List.of(sourceMapLocationMapping));
+
+    return sourceMapLocationMapping;
   }
 
   private void addSourceFiles(List<Path> paths, Map<Path, SourceFile> filesMap) throws IOException {
@@ -133,5 +160,9 @@ public class ClosureCompiler implements Closeable {
     }
 
     return out;
+  }
+
+  public Path getSourceMapWorkDir() {
+    return sourceMapWorkDir;
   }
 }

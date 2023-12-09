@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.FileVisitOption;
@@ -117,11 +119,30 @@ public class JaclineCompileMojo extends AbstractMojo {
   @Parameter(readonly = true, defaultValue = "${project.basedir}")
   File projectBaseDir;
 
+  @Parameter(readonly = true, defaultValue = "${project.build.outputDirectory}")
+  String outputFileDir;
+
   @Parameter(required = true, defaultValue = "jacline-generated.js")
   String outputFile;
 
-  @Parameter(readonly = true, defaultValue = "${project.build.outputDirectory}")
-  String outputFileDir;
+  /**
+   * When {@code true}, sourcemap files are created in addition to the JavaScript files.
+   */
+  @Parameter(required = true, defaultValue = "false")
+  boolean createSourceMaps;
+
+  /**
+   * The output directory for sourcemap files. It is guaranteed that the actual files start with a
+   * path of {@code sourcemaps/jacline/}.
+   */
+  @Parameter(required = true, defaultValue = "${project.build.directory}/jacline-sourcemap")
+  String sourceMapOutputDirectory;
+
+  /**
+   * The URL prefix used in sourcemap references.
+   */
+  @Parameter(required = true, defaultValue = "/sourcemaps/jacline/")
+  String sourceMapUrlPrefix;
 
   @Parameter(defaultValue = "true")
   boolean deleteJaclineMetaInfDirectory;
@@ -195,7 +216,8 @@ public class JaclineCompileMojo extends AbstractMojo {
           log.info(s.toString());
         }
       }
-    } catch (DependencyResolutionRequiredException | JaclineException | IOException e) {
+    } catch (DependencyResolutionRequiredException | JaclineException | URISyntaxException
+        | IOException e) {
       throw new MojoExecutionException("Execution failed: " + e.toString(), e);
     }
   }
@@ -262,7 +284,7 @@ public class JaclineCompileMojo extends AbstractMojo {
 
   private void transpile(JaclineJ2ClTranspiler transpiler, CompilerOutput to)
       throws DependencyResolutionRequiredException, IOException, JaclineException,
-      MojoExecutionException {
+      MojoExecutionException, URISyntaxException {
     TranspilerSources sources = TranspilerSources.newInstanceWithDefaultJreClasses();
 
     for (String s : project.getCompileClasspathElements()) {
@@ -298,7 +320,7 @@ public class JaclineCompileMojo extends AbstractMojo {
   @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.NPathComplexity"})
   @SuppressFBWarnings("QBA_QUESTIONABLE_BOOLEAN_ASSIGNMENT")
   private void closureCompile(Path transpiledOut) throws IOException,
-      DependencyResolutionRequiredException, MojoExecutionException {
+      DependencyResolutionRequiredException, MojoExecutionException, URISyntaxException {
     ClosureCompilerSources cs = new ClosureCompilerSources();
 
     cs.addSource(transpiledOut);
@@ -354,29 +376,38 @@ public class JaclineCompileMojo extends AbstractMojo {
       return;
     }
 
-    try (ClosureCompiler jc = new ClosureCompiler()) {
-      Problems problems = new Problems();
+    Path sourceMapOutputPath = createSourceMaps ? toPathIfPossible(sourceMapOutputDirectory) : null;
+    if (sourceMapOutputPath != null) {
+      log.info("Writing sourcemap files to: " + sourceMapOutputPath);
+    }
 
-      ClosureCompilerRun runConfig = jc.prepareCompile(cs, true, (opt) -> {
-        opt.setErrorHandler((level, error) -> {
-          String msg = error.toString();
+    URI sourceMapPrefixUri = new URI(this.sourceMapUrlPrefix);
+    if (sourceMapOutputPath != null) {
+      log.info("Using sourcemap prefix: " + sourceMapPrefixUri);
+    }
 
-          switch (level) {
-            case ERROR:
-              log.error(msg);
-              problems.addError(msg);
-              break;
-            case WARNING:
-              log.warn(msg);
-              problems.addWarning(msg);
-              break;
-            default:
-              log.info(msg);
-              problems.addInfoMessage(msg);
-              break;
-          }
-        });
-      });
+    Problems problems = new Problems();
+    try (ClosureCompiler jc = new ClosureCompiler(sourceMapOutputPath, sourceMapPrefixUri);
+        ClosureCompilerRun runConfig = jc.prepareCompile(cs, true, (opt) -> {
+          opt.setErrorHandler((level, error) -> {
+            String msg = error.toString();
+
+            switch (level) {
+              case ERROR:
+                log.error(msg);
+                problems.addError(msg);
+                break;
+              case WARNING:
+                log.warn(msg);
+                problems.addWarning(msg);
+                break;
+              default:
+                log.info(msg);
+                problems.addInfoMessage(msg);
+                break;
+            }
+          });
+        }, outputFile)) {
 
       try (ClosureCompilationResult result = runConfig.compile()) {
         File outFile = absolutePath(outputFile, outputFileDir).toFile();
@@ -402,13 +433,28 @@ public class JaclineCompileMojo extends AbstractMojo {
           };
         }
 
-        log.info("Writing output to: " + outputFile);
-        mkdirs(outFile.getParentFile());
-        try (PrintWriter out = new PrintWriter(new OutputStreamWriter(new FileOutputStream(outFile),
-            StandardCharsets.UTF_8))) {
-          out.println(source);
-        }
+        log.info("Writing output to: " + outFile);
+        writeStringToFile(source, outFile);
       }
+    }
+  }
+
+  private Path toPathIfPossible(String path) {
+    if (path == null) {
+      return null;
+    }
+    if (path.startsWith("/")) {
+      return Path.of(path);
+    } else {
+      return Path.of(outputFileDir).resolve(path);
+    }
+  }
+
+  private static void writeStringToFile(String source, File outFile) throws IOException {
+    mkdirs(outFile.getParentFile());
+    try (PrintWriter out = new PrintWriter(new OutputStreamWriter(new FileOutputStream(outFile),
+        StandardCharsets.UTF_8))) {
+      out.print(source);
     }
   }
 

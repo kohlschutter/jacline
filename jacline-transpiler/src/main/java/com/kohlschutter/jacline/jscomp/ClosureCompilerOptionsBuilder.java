@@ -17,6 +17,8 @@
  */
 package com.kohlschutter.jacline.jscomp;
 
+import java.io.IOException;
+
 import com.google.javascript.jscomp.CheckLevel;
 import com.google.javascript.jscomp.CommandLineRunner;
 import com.google.javascript.jscomp.CompilerOptions;
@@ -37,7 +39,7 @@ public final class ClosureCompilerOptionsBuilder {
   private ClosureCompilerOptionsBuilder() {
   }
 
-  public static CompilerOptions newDefaultOptions() {
+  public static CompilerOptions newDefaultOptions() throws IOException {
     CommandLineRunnerOptionsAccess clr = new CommandLineRunnerOptionsAccess(new String[] {
         "--dependency_mode=PRUNE", //
         "--compilation_level=ADVANCED", //

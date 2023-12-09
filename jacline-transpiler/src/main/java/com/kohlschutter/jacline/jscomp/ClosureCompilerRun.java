@@ -17,6 +17,8 @@
  */
 package com.kohlschutter.jacline.jscomp;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,19 +31,24 @@ import com.google.javascript.jscomp.Result;
 import com.google.javascript.jscomp.SourceFile;
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 
-public final class ClosureCompilerRun {
+public final class ClosureCompilerRun implements Closeable {
   private final CompilerImpl compiler;
   private final List<SourceFile> builtinExterns;
   private final CompilerOptions options;
   private final Map<Path, SourceFile> filesMap;
   private final Map<String, List<Path>> matchingPaths = new HashMap<>();
+  private final String outputFileName;
+  private final SourceMapLocationMapping slm;
 
   ClosureCompilerRun(CompilerImpl compiler, List<SourceFile> builtinExterns,
-      Map<Path, SourceFile> filesMap, CompilerOptions options) {
+      Map<Path, SourceFile> filesMap, CompilerOptions options, String outputFileName,
+      SourceMapLocationMapping sourceMapLocationMapping) {
     this.compiler = compiler;
     this.builtinExterns = builtinExterns;
     this.filesMap = filesMap;
     this.options = options;
+    this.outputFileName = outputFileName;
+    this.slm = sourceMapLocationMapping;
 
     for (Map.Entry<Path, SourceFile> en : filesMap.entrySet()) {
       Path path = en.getKey();
@@ -50,13 +57,32 @@ public final class ClosureCompilerRun {
     }
   }
 
-  public ClosureCompilationResult compile() {
+  public ClosureCompilationResult compile() throws IOException {
+    compiler.setTranspiledFiles(true);
     Result result = compiler.compile(builtinExterns, new ArrayList<>(filesMap.values()), options);
     if (result.success) {
-      return ClosureCompilationResult.ofSource(compiler.toSource());
+      String source = compiler.toSource();
+
+      if (slm != null) {
+        StringBuilder sb = new StringBuilder();
+        if (result.sourceMap != null) {
+          result.sourceMap.appendTo(sb, simpleName(outputFileName));
+        }
+        String appendToSource = slm.initMainSourceMap(outputFileName, sb.toString());
+        if (appendToSource != null) {
+          source += "\n" + appendToSource;
+        }
+      }
+
+      return ClosureCompilationResult.ofSource(source);
     } else {
       return ClosureCompilationResult.ofFailure();
     }
+  }
+
+  private static String simpleName(String s) {
+    int index = s.lastIndexOf('/');
+    return s.substring(index + 1);
   }
 
   public List<Path> getPossiblePaths(String sourceFileName) {
@@ -71,5 +97,12 @@ public final class ClosureCompilerRun {
   @SuppressFBWarnings("EI_EXPOSE_REP")
   public CompilerOptions getOptions() {
     return options;
+  }
+
+  @Override
+  public void close() throws IOException {
+    if (slm != null) {
+      slm.close();
+    }
   }
 }
