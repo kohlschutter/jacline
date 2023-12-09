@@ -34,14 +34,17 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.jspecify.nullness.Nullable;
 
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import com.google.javascript.jscomp.SourceMap.LocationMapping;
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.IOUtil;
 
+@SuppressFBWarnings("CT_CONSTRUCTOR_THROW")
 public class SourceMapLocationMapping implements LocationMapping, Closeable {
   private static final String META_INF_JACLINE = "/META-INF/jacline/";
   private static final String TARGET = "/target/classes";
@@ -49,22 +52,20 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
 
   private static final HashFunction SHA_256 = Hashing.sha256();
 
-  private Map<String, FileSystem> fileSystems = new HashMap<>();
-  private Map<String, String> prefixHash = new HashMap<>();
-  private List<FileSystem> fileSystemsToClose = new ArrayList<>();
+  private final Map<String, FileSystem> fileSystems = new HashMap<>();
+  private final Map<String, String> prefixHash = new HashMap<>();
+  private final List<FileSystem> fileSystemsToClose = new ArrayList<>();
 
-  private String mainSourceMapContents;
   private final Path sourceMapWorkDir;
   private final String hostPrefix;
 
   public SourceMapLocationMapping(Path sourceMapWorkDir, URI prefix) throws IOException {
     this.sourceMapWorkDir = sourceMapWorkDir;
+    hostPrefix = stripTrailingSlash(prefix.resolve("/").toASCIIString());
     if (Files.exists(sourceMapWorkDir)) {
       IOUtil.deleteRecursively(sourceMapWorkDir.resolve("sourcemaps/jacline"));
     }
     Files.createDirectories(sourceMapWorkDir);
-
-    hostPrefix = stripTrailingSlash(prefix.resolve("/").toASCIIString());
   }
 
   private static String stripTrailingSlash(String s) {
@@ -129,8 +130,9 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
     return base.resolve(path);
   }
 
+  @SuppressFBWarnings("NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE")
   private void addFile(Path sourceFile, String mappedPath) throws IOException {
-    Path targetPath = resolveRelativePath(sourceMapWorkDir, mappedPath);
+    Path targetPath = resolveRelativePath(Objects.requireNonNull(sourceMapWorkDir), mappedPath);
     Files.createDirectories(targetPath.getParent());
 
     try {
@@ -140,9 +142,10 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
     }
   }
 
-  private void addFile(String source, String mappedPath) {
-    Path targetPath = resolveRelativePath(sourceMapWorkDir, mappedPath);
-    targetPath.toFile().getParentFile().mkdirs();
+  @SuppressFBWarnings("NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE")
+  private void addFile(String source, String mappedPath) throws IOException {
+    Path targetPath = resolveRelativePath(Objects.requireNonNull(sourceMapWorkDir), mappedPath);
+    Files.createDirectories(targetPath.getParent());
 
     try (Writer out = Files.newBufferedWriter(targetPath)) {
       out.write(source);
@@ -228,7 +231,9 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
       } catch (FileSystemAlreadyExistsException e1) {
         fs = FileSystems.getFileSystem(u);
       } catch (IOException e1) {
-        throw new IllegalStateException(e);
+        IllegalStateException ex = new IllegalStateException(e);
+        ex.addSuppressed(e1);
+        throw ex;
       }
     }
     if (close) {
@@ -253,11 +258,8 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
     }
   }
 
-  public String getMainSourceMapContents() {
-    return mainSourceMapContents;
-  }
-
-  public String initMainSourceMap(String outputFileName, String sourceMapContents) {
+  public String initMainSourceMap(String outputFileName, String sourceMapContents)
+      throws IOException {
     String mapped = "/sourcemaps/jacline/by-content/" + SHA_256.hashString(sourceMapContents,
         StandardCharsets.UTF_8) + "/" + projectNameFromLastPathElement(outputFileName) + ".map";
     addFile(sourceMapContents, mapped);

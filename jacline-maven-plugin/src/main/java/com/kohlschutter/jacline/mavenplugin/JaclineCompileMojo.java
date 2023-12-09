@@ -73,7 +73,8 @@ import com.kohlschutter.jacline.jscomp.ClosureCompilerSources;
  */
 @Mojo(name = "compile", defaultPhase = LifecyclePhase.COMPILE, threadSafe = true, //
     requiresDependencyCollection = ResolutionScope.COMPILE, requiresDependencyResolution = ResolutionScope.COMPILE)
-@SuppressWarnings({"null", "PMD.GuardLogStatement", "PMD.CouplingBetweenObjects"})
+@SuppressWarnings({
+    "null", "PMD.GuardLogStatement", "PMD.CouplingBetweenObjects", "PMD.CyclomaticComplexity"})
 public class JaclineCompileMojo extends AbstractMojo {
   private static final Pattern FILE_DEDUP_SUFFIX = Pattern.compile("(\\-[0-9]+)?(\\.[a-z]+)$");
 
