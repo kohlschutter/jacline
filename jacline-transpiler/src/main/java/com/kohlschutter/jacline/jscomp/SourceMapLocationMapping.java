@@ -233,7 +233,7 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
       } catch (IOException e1) {
         IllegalStateException ex = new IllegalStateException(e);
         ex.addSuppressed(e1);
-        throw ex;
+        throw ex; // NOPMD.PreserveStackTrace
       }
     }
     if (close) {
