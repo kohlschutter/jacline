@@ -67,6 +67,7 @@ Particularly, jacline sports the following highlights:
   - Common
     [logging](jacline-lib-common/src/main/java/com/kohlschutter/jacline/lib/log/) facility, for
     `console` (JavaScript) and `slf4j` (JVM, exchangable via Java SPI)
+- Simplifies the creation of sourcemap files (via Maven configuration properties)
 
 ## Limitations
 
@@ -192,6 +193,10 @@ Then, in the `<build><plugins>` section, add the following plugin:
                     <outputFile>
                         jacline-generated.js
                     </outputFile>
+
+                    <!-- Create sourcemap files (off by default) -->
+                    <createSourceMaps>true</createSourceMaps>
+                    <sourceMapOutputDirectory>${project.build.directory}/jacline-sourcemap</sourceMapOutputDirectory>
                 </configuration>
             </execution>
         </executions>
