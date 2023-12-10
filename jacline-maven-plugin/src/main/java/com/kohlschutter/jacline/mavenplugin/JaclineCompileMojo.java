@@ -42,6 +42,7 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.AbstractMojo;
@@ -99,16 +100,21 @@ public class JaclineCompileMojo extends AbstractMojo {
   boolean createLibrary = true;
 
   /**
-   * The output directory.
+   * The target directory for jacline metadata.
    */
-  @Parameter(defaultValue = "")
   String jaclineMetaInfDirectory;
 
-  /**
-   * The output directory.
-   */
   @Parameter(readonly = true, defaultValue = "${project.build.outputDirectory}/META-INF/jacline")
   String jaclineMetaInfDirectoryDefault;
+
+  /**
+   * The work directory.
+   */
+  @Parameter(defaultValue = "")
+  String jaclineWorkDirectory;
+
+  @Parameter(readonly = true, defaultValue = "${project.build.directory}/jacline")
+  String jaclineWorkDirectoryDefault;
 
   /**
    * The source directories containing the sources to be transpiled.
@@ -159,6 +165,13 @@ public class JaclineCompileMojo extends AbstractMojo {
   @Parameter(defaultValue = "true")
   boolean deleteJaclineMetaInfDirectory;
 
+  /**
+   * Controls whether to include pre-transpilation source files (e.g., .java files) in
+   * META-INF/jacline.
+   */
+  @Parameter(required = true, defaultValue = "true")
+  boolean includeSourcesInMetaInf;
+
   private String projectBaseDirAbsoluteString;
 
   @SuppressWarnings("PMD.ProperLogger")
@@ -180,26 +193,33 @@ public class JaclineCompileMojo extends AbstractMojo {
 
     projectBaseDirAbsoluteString = projectBaseDir.getAbsolutePath();
 
+    if (jaclineWorkDirectory == null || jaclineWorkDirectory.isBlank()) {
+      jaclineWorkDirectory = jaclineWorkDirectoryDefault;
+    }
     if (jaclineMetaInfDirectory == null || jaclineMetaInfDirectory.isBlank()) {
       jaclineMetaInfDirectory = jaclineMetaInfDirectoryDefault;
     }
 
     Path jaclineMetaInfDirectoryPath = Path.of(jaclineMetaInfDirectory);
+    Path jaclineWorkDirectoryPath = Path.of(jaclineWorkDirectory);
 
-    if (deleteJaclineMetaInfDirectory) {
-      // This is usually necessary to prevent "Duplicate module" errors
-      // IMPORTANT: We'll always clear ./generated in code below
-      try {
+    // This is usually necessary to prevent "Duplicate module" errors
+    // IMPORTANT: We'll always clear ./generated in code below
+    try {
+      if (deleteJaclineMetaInfDirectory) {
         if (Files.exists(jaclineMetaInfDirectoryPath)) {
           IOUtil.deleteRecursively(jaclineMetaInfDirectoryPath);
         }
-      } catch (IOException e) {
-        throw new MojoExecutionException("Could not delete " + jaclineMetaInfDirectory, e);
       }
+      if (Files.exists(jaclineWorkDirectoryPath)) {
+        IOUtil.deleteRecursively(jaclineWorkDirectoryPath);
+      }
+    } catch (IOException e) {
+      throw new MojoExecutionException("Could not delete " + jaclineWorkDirectory, e);
     }
 
-    try (CompilerOutput to = CompilerOutput.newInstanceWithTargetDirectory(
-        jaclineMetaInfDirectoryPath.resolve("generated")); //
+    try (CompilerOutput to = CompilerOutput.newInstanceWithTargetDirectory(jaclineWorkDirectoryPath
+        .resolve("generated")); //
         JaclineJ2ClTranspiler transpiler = new JaclineJ2ClTranspiler();) {
       try {
 
@@ -209,13 +229,13 @@ public class JaclineCompileMojo extends AbstractMojo {
           return;
         }
 
-        writeMetadata(jaclineMetaInfDirectoryPath);
+        writeMetadata(jaclineWorkDirectoryPath);
 
         if (!createLibrary) {
-          log.info("Not creating library contents under " + jaclineMetaInfDirectory);
-          IOUtil.deleteRecursively(Path.of(jaclineMetaInfDirectory));
+          log.info("Not creating library contents under " + jaclineWorkDirectory);
+          IOUtil.deleteRecursively(Path.of(jaclineWorkDirectory));
         } else {
-          copyJavaScriptFiles(javascriptSourceRoots, entryPoints, Path.of(jaclineMetaInfDirectory,
+          copyJavaScriptFiles(javascriptSourceRoots, entryPoints, Path.of(jaclineWorkDirectory,
               "sources"));
         }
 
@@ -238,6 +258,26 @@ public class JaclineCompileMojo extends AbstractMojo {
     } catch (DependencyResolutionRequiredException | JaclineException | URISyntaxException
         | IOException e) {
       throw new MojoExecutionException("Execution failed: " + e.toString(), e);
+    }
+
+    try (Stream<Path> stream = Files.walk(jaclineWorkDirectoryPath)) {
+      stream.forEach((src) -> {
+        if (!includeSourcesInMetaInf && src.getName(src.getNameCount() - 1).toString().endsWith(
+            ".java")) {
+          return;
+        }
+        copy(src, jaclineMetaInfDirectoryPath.resolve(jaclineWorkDirectoryPath.relativize(src)));
+      });
+    } catch (IOException | RuntimeException e) {
+      throw new MojoExecutionException("Execution failed: " + e.toString(), e);
+    }
+  }
+
+  private static void copy(Path source, Path dest) {
+    try {
+      Files.copy(source, dest);
+    } catch (IOException e) {
+      throw new IllegalStateException(e);
     }
   }
 
