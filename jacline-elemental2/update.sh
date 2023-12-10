@@ -12,7 +12,7 @@ fi
 
 alias bazel=bazelisk
 cd elemental2
-#bazel build java/...
+bazel build java/...
 cd ..
 
 fromBase=elemental2/bazel-bin/java/elemental2
