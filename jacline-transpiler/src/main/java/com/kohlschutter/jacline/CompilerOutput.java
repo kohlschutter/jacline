@@ -28,6 +28,7 @@ import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 public class CompilerOutput implements Closeable {
   protected final Path outputDir;
 
+  private boolean skipped;
   private boolean successful;
 
   private final Problems problems = new Problems();
@@ -69,6 +70,14 @@ public class CompilerOutput implements Closeable {
 
   public boolean isSuccessful() {
     return successful;
+  }
+
+  public boolean isSkipped() {
+    return skipped;
+  }
+
+  public void markSkipped() {
+    skipped = true;
   }
 
   public void complete(boolean success, List<String> errorMessages, List<String> warningMessages,

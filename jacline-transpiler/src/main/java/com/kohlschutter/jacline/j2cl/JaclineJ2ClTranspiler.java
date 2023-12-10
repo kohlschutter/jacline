@@ -64,6 +64,7 @@ public class JaclineJ2ClTranspiler implements Closeable {
     ).collect(Collectors.toList());
 
     if (sourceFileInfos.isEmpty() && nativeSourceFileInfos.isEmpty()) {
+      output.markSkipped();
       output.getProblems().addWarning("Nothing to compile");
       return;
     }

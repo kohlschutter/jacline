@@ -193,6 +193,10 @@ public class JaclineCompileMojo extends AbstractMojo {
 
         transpile(transpiler, to);
 
+        if (to.isSkipped()) {
+          return;
+        }
+
         if (!createLibrary) {
           log.info("Not creating library contents under " + jaclineMetaInfDirectory);
           IOUtil.deleteRecursively(Path.of(jaclineMetaInfDirectory));
@@ -302,7 +306,10 @@ public class JaclineCompileMojo extends AbstractMojo {
     }
 
     transpiler.transpile(sources, to);
-    closureCompile(to.getOutputPath());
+
+    if (!to.isSkipped()) {
+      closureCompile(to.getOutputPath());
+    }
   }
 
   private Path absolutePath(String path) {
