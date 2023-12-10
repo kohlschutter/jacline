@@ -216,6 +216,7 @@ public class JaclineCompileMojo extends AbstractMojo {
       if (Files.exists(jaclineWorkDirectoryPath)) {
         IOUtil.deleteRecursively(jaclineWorkDirectoryPath);
       }
+      Files.createDirectories(jaclineMetaInfDirectoryPath);
     } catch (IOException e) {
       throw new MojoExecutionException("Could not delete " + jaclineWorkDirectory, e);
     }
@@ -277,7 +278,7 @@ public class JaclineCompileMojo extends AbstractMojo {
 
   private static void copy(Path source, Path dest) {
     try {
-      Files.copy(source, dest);
+      Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
     } catch (IOException e) {
       throw new IllegalStateException(e);
     }
