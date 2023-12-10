@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"PerformanceObserver$$Overlay.impl.java.js",
-"lineCount":26,
-"mappings":"A;;;;;MAWa,Q;;QACb,sE;EAAAA,+G;;;QADa,O;EAAAC,2B;EAAAA,wB;EACbA,4H;;;;;;;;;;AADa;;",
-"sources":["PerformanceObserver.java"],
-"names":["elemental2.dom.PerformanceObserver$$Overlay.<synthetic: getter>","elemental2.dom.PerformanceObserver$$Overlay.<clinit>"]
-}

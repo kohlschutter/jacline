@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"Int8Array$$Overlay.impl.java.js",
-"lineCount":90,
-"mappings":"A;;;;;;;MAiBa,Q;;QAiFoB,oH,4BAAyBA,M,qCAA2BC,K,WAAQC,O;EAAQC,mB;EACrGA,uH;;;QAG8B,kG,4BAAyBH,M,qCAA2BC,K;EAAME,mB;EACxFA,8G;;;QAG8B,6D,4BAAyBH,M;EAAOG,mB;EAC9DA,uG;;;QAGiC,oH,0BAAwBH,M,qCAA2BC,K,WAAQC,O;EAAQC,mB;EACpGA,uH;;;QAG8B,kG,0BAAwBH,M,qCAA2BC,K;EAAME,mB;EACvFA,8G;;;QAG8B,6D,0BAAwBH,M;EAAOG,mB;EAC7DA,uG;;;QAGiC,0G,gBAAYH,M,qCAA2BC,K,WAAQC,O;EAAQC,mB;EACxFA,uH;;;QAG8B,wF,gBAAYH,M,qCAA2BC,K;EAAME,mB;EAC3EA,8G;;;QAG8B,mD,gBAAYH,M;EAAOG,mB;EACjDA,uG;;;QAGiC,wG,sBAAcH,M,qCAA2BC,K,WAAQC,O;EAAQC,mB;EAC1FA,wP;;;QAG8B,sF,sBAAcH,M,qCAA2BC,K;EAAME,mB;EAC7EA,6N;;;QAG8B,iD,sBAAcH,M;EAAOG,mB;EACnDA,iL;;;QAnDA,2D;EAAAC,oG;;;QA3Ea,O;EAAAC,2B;EAAAA,wB;EA2EbA,qG;;;;;;;;;;;;AA3Ea;;",
-"sources":["Int8Array.java"],
-"names":["source","mapFn","thisArg","elemental2.core.Int8Array$$Overlay.from","elemental2.core.Int8Array$$Overlay.<synthetic: getter>","elemental2.core.Int8Array$$Overlay.<clinit>"]
-}

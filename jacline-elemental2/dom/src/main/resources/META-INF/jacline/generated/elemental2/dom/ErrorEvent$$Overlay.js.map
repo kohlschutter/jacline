@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"ErrorEvent$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MASa,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["ErrorEvent.java"],
-"names":["elemental2.dom.ErrorEvent$$Overlay.<clinit>"]
-}

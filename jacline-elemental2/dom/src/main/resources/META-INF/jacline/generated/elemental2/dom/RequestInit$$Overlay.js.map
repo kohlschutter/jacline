@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"RequestInit$$Overlay.impl.java.js",
-"lineCount":71,
-"mappings":"A;;;;;;MAmBiB,Q;;QA4FE,oC;EAAQA,mB;EAC3BA,uL;;;QA6Ba,iF,kDAAoBC,I;EAApBC,mB;EACbA,8F;;;QAGa,qF,sDAAwBD,I;EAAxBC,mB;EACbA,8F;;;QAGa,yE,2CAAaD,I;EAAbC,mB;EACbA,8F;;;QAGa,6E,+CAAiBD,I;EAAjBC,mB;EACbA,8F;;;QAKa,mF,qDAAuBD,I;EAAvBC,mB;EACbA,8F;;;QAGa,sE,8CAAeD,I;EAAfC,mB;EACbA,8F;;;QAGa,oF,sDAAwBD,I;EAAxBC,mB;EACbA,8F;;;QASa,+E,8CAAmBC,O;EAAnBC,mB;EACbA,oG;;;QAGa,gF,4DAAoCD,O;EAApCC,mB;EACbA,oG;;;QAGa,qF,8DAAiCD,O;EAAjCC,mB;EACbA,oG;;;QAGa,yF,4DAAsBD,O;EAAtBC,mB;EACbA,0M;;;QA3KiB,O;EAAAC,2B;EAAAA;",
-"sources":["RequestInit.java"],
-"names":["elemental2.dom.RequestInit$$Overlay.create","body","elemental2.dom.RequestInit$$Overlay.setBody__$devirt","headers","elemental2.dom.RequestInit$$Overlay.setHeaders__$devirt","elemental2.dom.RequestInit$$Overlay.<clinit>"]
-}

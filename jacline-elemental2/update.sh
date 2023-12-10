@@ -25,7 +25,7 @@ for module in promise core dom; do
   mkdir -p "$javaOut" "$restOut"
 
   cp -r "$fromBase/$module/${module}-j2cl.js/"* "$javaOut"/
-  cp -r "$fromBase/$module/${module}-j2cl.js/"* "$restOut"/
+  #cp -r "$fromBase/$module/${module}-j2cl.js/"* "$restOut"/
 
   chmod 755 $(find ${src} -type d)
   chmod 644 $(find ${src} -type f)

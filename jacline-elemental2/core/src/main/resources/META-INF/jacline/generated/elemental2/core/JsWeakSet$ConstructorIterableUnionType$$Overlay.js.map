@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"JsWeakSet$ConstructorIterableUnionType$$Overlay.impl.java.js",
-"lineCount":32,
-"mappings":"A;;;;;;;MAWiB,Q;;QAE6B,8E,UAAUA,C;EAAEC,mB;EAC1DA,yE;;;QAGuB,qG;EAAAC,mB;EACvBA,yH;;;QAG0B,2G;EAAAC,mB;EAC1BA,8F;;;QAGgB,qF;EAAAC,mB;EAChBA,8C;;;QAfiB,O;EAAAC,2B;EAAAA;",
-"sources":["JsWeakSet.java"],
-"names":["o","elemental2.core.JsWeakSet$ConstructorIterableUnionType$$Overlay.of","elemental2.core.JsWeakSet$ConstructorIterableUnionType$$Overlay.asJsArray__$devirt","elemental2.core.JsWeakSet$ConstructorIterableUnionType$$Overlay.asJsIterable__$devirt","elemental2.core.JsWeakSet$ConstructorIterableUnionType$$Overlay.isJsArray__$devirt","elemental2.core.JsWeakSet$ConstructorIterableUnionType$$Overlay.<clinit>"]
-}

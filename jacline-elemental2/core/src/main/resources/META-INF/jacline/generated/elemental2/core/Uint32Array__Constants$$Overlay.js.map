@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"Uint32Array__Constants$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MAIO,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["Uint32Array__Constants.java"],
-"names":["elemental2.core.Uint32Array__Constants$$Overlay.<clinit>"]
-}

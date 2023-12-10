@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"TransformStreamTransformer$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MAYiB,Q;;QAciB,mD;EAAQA,mB;EAC1CA,sM;;;QAfiB,O;EAAAC,2B;EAAAA;",
-"sources":["TransformStreamTransformer.java"],
-"names":["elemental2.dom.TransformStreamTransformer$$Overlay.create","elemental2.dom.TransformStreamTransformer$$Overlay.<clinit>"]
-}

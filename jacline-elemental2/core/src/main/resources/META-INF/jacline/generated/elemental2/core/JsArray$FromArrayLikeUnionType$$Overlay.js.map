@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"JsArray$FromArrayLikeUnionType$$Overlay.impl.java.js",
-"lineCount":36,
-"mappings":"A;;;;;;MAkBiB,Q;;QAEqB,sE,UAAUA,C;EAAEC,mB;EAClDA,yE;;;QAGuB,oG;EAAAC,mB;EACvBA,4F;;;QAGsB,mG;EAAAC,mB;EACtBA,0F;;;QAGe,qF;EAAAC,mB;EACfA,mE;;;QAGgB,4E;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["JsArray.java"],
-"names":["o","elemental2.core.JsArray$FromArrayLikeUnionType$$Overlay.of","elemental2.core.JsArray$FromArrayLikeUnionType$$Overlay.asJsArrayLike__$devirt","elemental2.core.JsArray$FromArrayLikeUnionType$$Overlay.asJsIterable__$devirt","elemental2.core.JsArray$FromArrayLikeUnionType$$Overlay.asString__$devirt","elemental2.core.JsArray$FromArrayLikeUnionType$$Overlay.isString__$devirt","elemental2.core.JsArray$FromArrayLikeUnionType$$Overlay.<clinit>"]
-}

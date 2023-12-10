@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"MediaStreamConstraints$GetVideoUnionType$$Overlay.impl.java.js",
-"lineCount":31,
-"mappings":"A;;;;;;MAgCiB,Q;;QAE+B,+E,UAAUA,C;EAAEC,mB;EAC5DA,yE;;;QAGgB,sF;EAAAC,mB;EAChBA,2D;;;QAG8B,iI;EAAAC,mB;EAC9BA,oG;;;QAGgB,sF;EAAAC,mB;EAChBA,qC;;;QAfiB,O;EAAAC,2B;EAAAA;",
-"sources":["MediaStreamConstraints.java"],
-"names":["o","elemental2.dom.MediaStreamConstraints$GetVideoUnionType$$Overlay.of","elemental2.dom.MediaStreamConstraints$GetVideoUnionType$$Overlay.asBoolean__$devirt","elemental2.dom.MediaStreamConstraints$GetVideoUnionType$$Overlay.asMediaTrackConstraints__$devirt","elemental2.dom.MediaStreamConstraints$GetVideoUnionType$$Overlay.isBoolean__$devirt","elemental2.dom.MediaStreamConstraints$GetVideoUnionType$$Overlay.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"RTCPeerConnection$GetStatsUnionType$$Overlay.impl.java.js",
-"lineCount":32,
-"mappings":"A;;;;;;;MAmFiB,Q;;QAE0B,0E,UAAUA,C;EAAEC,mB;EACvDA,yE;;;QAGgC,oG;EAAAC,mB;EAChCA,oI;;;QAGuB,8G;EAAAC,mB;EACvBA,6F;;;QAGgB,iF;EAAAC,mB;EAChBA,8C;;;QAfiB,O;EAAAC,2B;EAAAA;",
-"sources":["RTCPeerConnection.java"],
-"names":["o","elemental2.dom.RTCPeerConnection$GetStatsUnionType$$Overlay.of","elemental2.dom.RTCPeerConnection$GetStatsUnionType$$Overlay.asPromise__$devirt","elemental2.dom.RTCPeerConnection$GetStatsUnionType$$Overlay.asRTCStatsReport__$devirt","elemental2.dom.RTCPeerConnection$GetStatsUnionType$$Overlay.isPromise__$devirt","elemental2.dom.RTCPeerConnection$GetStatsUnionType$$Overlay.<clinit>"]
-}

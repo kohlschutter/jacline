@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"RTCDataChannelInitDictionary_$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MASiB,Q;;QAEoB,sD;EAAQA,mB;EAC7CA,yM;;;QAHiB,O;EAAAC,2B;EAAAA;",
-"sources":["RTCDataChannelInitDictionary_.java"],
-"names":["elemental2.dom.RTCDataChannelInitDictionary_$$Overlay.create","elemental2.dom.RTCDataChannelInitDictionary_$$Overlay.<clinit>"]
-}

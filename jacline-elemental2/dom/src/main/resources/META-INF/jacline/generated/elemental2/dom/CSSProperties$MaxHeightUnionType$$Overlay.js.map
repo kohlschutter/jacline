@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"CSSProperties$MaxHeightUnionType$$Overlay.impl.java.js",
-"lineCount":37,
-"mappings":"A;;;;;;;MA4hBiB,Q;;QAEuB,uE,UAAUA,C;EAAEC,mB;EACpDA,yE;;;QAGe,4E;EAAAC,mB;EACfA,yD;;;QAGe,sF;EAAAC,mB;EACfA,mE;;;QAGgB,6E;EAAAC,mB;EAChBA,oC;;;QAGgB,6E;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["CSSProperties.java"],
-"names":["o","elemental2.dom.CSSProperties$MaxHeightUnionType$$Overlay.of","elemental2.dom.CSSProperties$MaxHeightUnionType$$Overlay.asDouble__$devirt","elemental2.dom.CSSProperties$MaxHeightUnionType$$Overlay.asString__$devirt","elemental2.dom.CSSProperties$MaxHeightUnionType$$Overlay.isDouble__$devirt","elemental2.dom.CSSProperties$MaxHeightUnionType$$Overlay.isString__$devirt","elemental2.dom.CSSProperties$MaxHeightUnionType$$Overlay.<clinit>"]
-}

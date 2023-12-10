@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"XPathException$$Overlay.impl.java.js",
-"lineCount":33,
-"mappings":"A;;;;;MAKa,Q;;QACb,oE;EAAAA,6G;;;QAEA,sD;EAAAA,+F;;;QAHa,O;EAAAC,2B;EAAAA,wB;EACbA,wH;EAEAA,4F;;;;;;;;;;AAHa;oF;AAAA;;",
-"sources":["XPathException.java"],
-"names":["elemental2.dom.XPathException$$Overlay.<synthetic: getter>","elemental2.dom.XPathException$$Overlay.<clinit>"]
-}

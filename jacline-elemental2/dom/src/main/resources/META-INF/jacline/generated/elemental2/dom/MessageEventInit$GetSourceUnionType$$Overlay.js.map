@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"MessageEventInit$GetSourceUnionType$$Overlay.impl.java.js",
-"lineCount":49,
-"mappings":"A;;;;;;;;;MAiBiB,Q;;QAE0B,0E,UAAUA,C;EAAEC,mB;EACvDA,yE;;;QAGoB,wG;EAAAC,mB;EACpBA,4H;;;QAGsB,4G;EAAAC,mB;EACtBA,gI;;;QAGe,8F;EAAAC,mB;EACfA,kH;;;QAGgB,qF;EAAAC,mB;EAChBA,kD;;;QAGgB,uF;EAAAC,mB;EAChBA,oD;;;QAGgB,gF;EAAAC,mB;EAChBA,6C;;;QA3BiB,O;EAAAC,2B;EAAAA;",
-"sources":["MessageEventInit.java"],
-"names":["o","elemental2.dom.MessageEventInit$GetSourceUnionType$$Overlay.of","elemental2.dom.MessageEventInit$GetSourceUnionType$$Overlay.asMessagePort__$devirt","elemental2.dom.MessageEventInit$GetSourceUnionType$$Overlay.asServiceWorker__$devirt","elemental2.dom.MessageEventInit$GetSourceUnionType$$Overlay.asWindow__$devirt","elemental2.dom.MessageEventInit$GetSourceUnionType$$Overlay.isMessagePort__$devirt","elemental2.dom.MessageEventInit$GetSourceUnionType$$Overlay.isServiceWorker__$devirt","elemental2.dom.MessageEventInit$GetSourceUnionType$$Overlay.isWindow__$devirt","elemental2.dom.MessageEventInit$GetSourceUnionType$$Overlay.<clinit>"]
-}

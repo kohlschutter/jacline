@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"DeviceMotionEvent$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MASa,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["DeviceMotionEvent.java"],
-"names":["elemental2.dom.DeviceMotionEvent$$Overlay.<clinit>"]
-}

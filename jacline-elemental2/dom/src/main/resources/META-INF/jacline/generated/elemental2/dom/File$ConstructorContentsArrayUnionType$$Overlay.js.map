@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"File$ConstructorContentsArrayUnionType$$Overlay.impl.java.js",
-"lineCount":49,
-"mappings":"A;;;;;;;;;MAgBiB,Q;;QAE6B,6E,UAAUA,C;EAAEC,mB;EAC1DA,yE;;;QAGoB,4G;EAAAC,mB;EACpBA,4H;;;QAGa,6F;EAAAC,mB;EACbA,8G;;;QAGe,4F;EAAAC,mB;EACfA,mE;;;QAGgB,wF;EAAAC,mB;EAChBA,kD;;;QAGgB,iF;EAAAC,mB;EAChBA,2C;;;QAGgB,mF;EAAAC,mB;EAChBA,wC;;;QA3BiB,O;EAAAC,2B;EAAAA;",
-"sources":["File.java"],
-"names":["o","elemental2.dom.File$ConstructorContentsArrayUnionType$$Overlay.of","elemental2.dom.File$ConstructorContentsArrayUnionType$$Overlay.asArrayBuffer__$devirt","elemental2.dom.File$ConstructorContentsArrayUnionType$$Overlay.asBlob__$devirt","elemental2.dom.File$ConstructorContentsArrayUnionType$$Overlay.asString__$devirt","elemental2.dom.File$ConstructorContentsArrayUnionType$$Overlay.isArrayBuffer__$devirt","elemental2.dom.File$ConstructorContentsArrayUnionType$$Overlay.isBlob__$devirt","elemental2.dom.File$ConstructorContentsArrayUnionType$$Overlay.isString__$devirt","elemental2.dom.File$ConstructorContentsArrayUnionType$$Overlay.<clinit>"]
-}

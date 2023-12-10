@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"MessagePort$$Overlay.impl.java.js",
-"lineCount":17,
-"mappings":"A;;;;;;;MAea,Q;;QAYK,gH,wCAAmBA,O,6BAAuBC,Q;EAA1CC,mB;EAClBA,mI;;;QAba,O;EAAAC,2B;EAAAA;",
-"sources":["MessagePort.java"],
-"names":["message","transfer","elemental2.dom.MessagePort$$Overlay.postMessage__$devirt","elemental2.dom.MessagePort$$Overlay.<clinit>"]
-}

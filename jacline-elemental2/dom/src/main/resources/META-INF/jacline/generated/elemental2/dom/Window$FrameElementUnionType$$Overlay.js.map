@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"Window$FrameElementUnionType$$Overlay.impl.java.js",
-"lineCount":38,
-"mappings":"A;;;;;;;;MA6EiB,Q;;QAEmB,mE,UAAUA,C;EAAEC,mB;EAChDA,yE;;;QAG0B,6G;EAAAC,mB;EAC1BA,wI;;;QAG0B,6G;EAAAC,mB;EAC1BA,wI;;;QAGgB,oF;EAAAC,mB;EAChBA,wD;;;QAGgB,oF;EAAAC,mB;EAChBA,wD;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["Window.java"],
-"names":["o","elemental2.dom.Window$FrameElementUnionType$$Overlay.of","elemental2.dom.Window$FrameElementUnionType$$Overlay.asHTMLIFrameElement__$devirt","elemental2.dom.Window$FrameElementUnionType$$Overlay.asHTMLObjectElement__$devirt","elemental2.dom.Window$FrameElementUnionType$$Overlay.isHTMLIFrameElement__$devirt","elemental2.dom.Window$FrameElementUnionType$$Overlay.isHTMLObjectElement__$devirt","elemental2.dom.Window$FrameElementUnionType$$Overlay.<clinit>"]
-}

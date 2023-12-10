@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"TransitionEventInit$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MAUiB,Q;;QAEU,4C;EAAQA,mB;EACnCA,+L;;;QAHiB,O;EAAAC,2B;EAAAA;",
-"sources":["TransitionEventInit.java"],
-"names":["elemental2.dom.TransitionEventInit$$Overlay.create","elemental2.dom.TransitionEventInit$$Overlay.<clinit>"]
-}

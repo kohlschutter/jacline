@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"DOMException__Constants$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MAIO,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["DOMException__Constants.java"],
-"names":["elemental2.dom.DOMException__Constants$$Overlay.<clinit>"]
-}

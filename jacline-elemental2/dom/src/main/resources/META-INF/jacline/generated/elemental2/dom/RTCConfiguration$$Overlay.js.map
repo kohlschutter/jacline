@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"RTCConfiguration$$Overlay.impl.java.js",
-"lineCount":26,
-"mappings":"A;;;;;;MAaiB,Q;;QA+CO,yC;EAAQA,mB;EAChCA,4L;;;QAqBa,wG,iEAAiCC,Y;EAAjCC,mB;EACbA,kI;;;QAKa,oI,oDAA6DC,U;EAA7DC,mB;EACbA,iH;;;QA5EiB,O;EAAAC,2B;EAAAA;",
-"sources":["RTCConfiguration.java"],
-"names":["elemental2.dom.RTCConfiguration$$Overlay.create","certificates","elemental2.dom.RTCConfiguration$$Overlay.setCertificates__$devirt","iceServers","elemental2.dom.RTCConfiguration$$Overlay.setIceServers__$devirt","elemental2.dom.RTCConfiguration$$Overlay.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"HTMLDialogElement$$Overlay.impl.java.js",
-"lineCount":32,
-"mappings":"A;;;;;;;MAWa,Q;;QAqDK,+E,oDAAaA,M;EAAbC,mB;EAClBA,+F;;;QAGkB,kF,uDAAgBD,M;EAAhBC,mB;EAClBA,+F;;;QAKkB,oF,oDAAkBD,M;EAAlBE,mB;EAClBA,oG;;;QAGkB,uF,uDAAqBF,M;EAArBE,mB;EAClBA,oG;;;QApEa,O;EAAAC,2B;EAAAA;",
-"sources":["HTMLDialogElement.java"],
-"names":["anchor","elemental2.dom.HTMLDialogElement$$Overlay.show__$devirt","elemental2.dom.HTMLDialogElement$$Overlay.showModal__$devirt","elemental2.dom.HTMLDialogElement$$Overlay.<clinit>"]
-}

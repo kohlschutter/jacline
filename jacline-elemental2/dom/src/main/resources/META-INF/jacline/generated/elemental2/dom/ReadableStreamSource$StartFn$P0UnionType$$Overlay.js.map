@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"ReadableStreamSource$StartFn$P0UnionType$$Overlay.impl.java.js",
-"lineCount":25,
-"mappings":"A;;;;;MAmDiB,Q;;QAE+B,+E,UAAUA,C;EAAEC,mB;EAC5DA,yE;;;QAGqC,+I;EAAAC,mB;EACrCA,2G;;;QAG+C,qJ;EAAAC,mB;EAC/CA,qH;;;QAXiB,O;EAAAC,2B;EAAAA;",
-"sources":["ReadableStreamSource.java"],
-"names":["o","elemental2.dom.ReadableStreamSource$StartFn$P0UnionType$$Overlay.of","elemental2.dom.ReadableStreamSource$StartFn$P0UnionType$$Overlay.asReadableByteStreamController__$devirt","elemental2.dom.ReadableStreamSource$StartFn$P0UnionType$$Overlay.asReadableStreamDefaultController__$devirt","elemental2.dom.ReadableStreamSource$StartFn$P0UnionType$$Overlay.<clinit>"]
-}

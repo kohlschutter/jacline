@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"BigInt$ConstructorArgUnionType$$Overlay.impl.java.js",
-"lineCount":42,
-"mappings":"A;;;;;;;MAeiB,Q;;QAEqB,sE,UAAUA,C;EAAEC,mB;EAClDA,yE;;;QAGe,2E;EAAAC,mB;EACfA,yD;;;QAGiB,8F;EAAAC,mB;EACjBA,qF;;;QAGe,qF;EAAAC,mB;EACfA,mE;;;QAGgB,4E;EAAAC,mB;EAChBA,oC;;;QAGgB,4E;EAAAC,mB;EAChBA,wC;;;QAvBiB,O;EAAAC,2B;EAAAA;",
-"sources":["BigInt.java"],
-"names":["o","elemental2.core.BigInt$ConstructorArgUnionType$$Overlay.of","elemental2.core.BigInt$ConstructorArgUnionType$$Overlay.asDouble__$devirt","elemental2.core.BigInt$ConstructorArgUnionType$$Overlay.asJsBigint__$devirt","elemental2.core.BigInt$ConstructorArgUnionType$$Overlay.asString__$devirt","elemental2.core.BigInt$ConstructorArgUnionType$$Overlay.isDouble__$devirt","elemental2.core.BigInt$ConstructorArgUnionType$$Overlay.isString__$devirt","elemental2.core.BigInt$ConstructorArgUnionType$$Overlay.<clinit>"]
-}

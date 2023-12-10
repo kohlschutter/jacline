@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"VTTCue$PositionUnionType$$Overlay.impl.java.js",
-"lineCount":37,
-"mappings":"A;;;;;;;MAqCiB,Q;;QAEe,+D,UAAUA,C;EAAEC,mB;EAC5CA,yE;;;QAGe,oE;EAAAC,mB;EACfA,yD;;;QAGe,8E;EAAAC,mB;EACfA,mE;;;QAGgB,qE;EAAAC,mB;EAChBA,oC;;;QAGgB,qE;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["VTTCue.java"],
-"names":["o","elemental2.dom.VTTCue$PositionUnionType$$Overlay.of","elemental2.dom.VTTCue$PositionUnionType$$Overlay.asDouble__$devirt","elemental2.dom.VTTCue$PositionUnionType$$Overlay.asString__$devirt","elemental2.dom.VTTCue$PositionUnionType$$Overlay.isDouble__$devirt","elemental2.dom.VTTCue$PositionUnionType$$Overlay.isString__$devirt","elemental2.dom.VTTCue$PositionUnionType$$Overlay.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"DomGlobal$FetchInputUnionType$$Overlay.impl.java.js",
-"lineCount":49,
-"mappings":"A;;;;;;;;;MA+HiB,Q;;QAEoB,oE,UAAUA,C;EAAEC,mB;EACjDA,yE;;;QAGgB,0F;EAAAC,mB;EAChBA,oH;;;QAGe,mF;EAAAC,mB;EACfA,mE;;;QAGY,kF;EAAAC,mB;EACZA,4G;;;QAGgB,2E;EAAAC,mB;EAChBA,8C;;;QAGgB,0E;EAAAC,mB;EAChBA,wC;;;QAGgB,uE;EAAAC,mB;EAChBA,0C;;;QA3BiB,O;EAAAC,2B;EAAAA;",
-"sources":["DomGlobal.java"],
-"names":["o","elemental2.dom.DomGlobal$FetchInputUnionType$$Overlay.of","elemental2.dom.DomGlobal$FetchInputUnionType$$Overlay.asRequest__$devirt","elemental2.dom.DomGlobal$FetchInputUnionType$$Overlay.asString__$devirt","elemental2.dom.DomGlobal$FetchInputUnionType$$Overlay.asURL__$devirt","elemental2.dom.DomGlobal$FetchInputUnionType$$Overlay.isRequest__$devirt","elemental2.dom.DomGlobal$FetchInputUnionType$$Overlay.isString__$devirt","elemental2.dom.DomGlobal$FetchInputUnionType$$Overlay.isURL__$devirt","elemental2.dom.DomGlobal$FetchInputUnionType$$Overlay.<clinit>"]
-}

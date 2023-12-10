@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"TypedArray$ReduceCallbackFn$P0UnionType$$Overlay.impl.java.js",
-"lineCount":36,
-"mappings":"A;;;;;;MA4CiB,Q;;QAE8B,+E,UAAUA,C;EAAEC,mB;EAC3DA,yE;;;QAGe,oF;EAAAC,mB;EACfA,yD;;;QAGa,4F;EAAAC,mB;EACbA,+D;;;QAGY,2F;EAAAC,mB;EACZA,+D;;;QAGgB,qF;EAAAC,mB;EAChBA,oC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["TypedArray.java"],
-"names":["o","elemental2.core.TypedArray$ReduceCallbackFn$P0UnionType$$Overlay.of","elemental2.core.TypedArray$ReduceCallbackFn$P0UnionType$$Overlay.asDouble__$devirt","elemental2.core.TypedArray$ReduceCallbackFn$P0UnionType$$Overlay.asINIT__$devirt","elemental2.core.TypedArray$ReduceCallbackFn$P0UnionType$$Overlay.asRET__$devirt","elemental2.core.TypedArray$ReduceCallbackFn$P0UnionType$$Overlay.isDouble__$devirt","elemental2.core.TypedArray$ReduceCallbackFn$P0UnionType$$Overlay.<clinit>"]
-}

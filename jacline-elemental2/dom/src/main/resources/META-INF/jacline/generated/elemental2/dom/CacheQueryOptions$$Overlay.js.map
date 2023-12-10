@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"CacheQueryOptions$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MASiB,Q;;QAEQ,0C;EAAQA,mB;EACjCA,6L;;;QAHiB,O;EAAAC,2B;EAAAA;",
-"sources":["CacheQueryOptions.java"],
-"names":["elemental2.dom.CacheQueryOptions$$Overlay.create","elemental2.dom.CacheQueryOptions$$Overlay.<clinit>"]
-}

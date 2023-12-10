@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"Int8Array__Constants$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MAIO,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["Int8Array__Constants.java"],
-"names":["elemental2.core.Int8Array__Constants$$Overlay.<clinit>"]
-}

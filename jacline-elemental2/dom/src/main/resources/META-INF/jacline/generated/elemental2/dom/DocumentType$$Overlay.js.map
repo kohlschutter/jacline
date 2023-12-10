@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"DocumentType$$Overlay.impl.java.js",
-"lineCount":43,
-"mappings":"A;;;;;;;;MASa,Q;;QA2EK,gF,mDAAcA,K;EAAdC,mB;EAClBA,mL;;;QAGkB,6E,sDAAgBD,K;EAAhBC,mB;EAClBA,mL;;;QAIkB,iF,mDAAeD,K;EAAfE,mB;EAClBA,oL;;;QAGkB,8E,sDAAiBF,K;EAAjBE,mB;EAClBA,oL;;;QAIkB,sF,mDAAoBF,K;EAApBG,mB;EAClBA,yL;;;QAIkB,mF,sDAAsBH,K;EAAtBG,mB;EAClBA,yL;;;QAnGa,O;EAAAC,2B;EAAAA;",
-"sources":["DocumentType.java"],
-"names":["nodes","elemental2.dom.DocumentType$$Overlay.after__$devirt","elemental2.dom.DocumentType$$Overlay.before__$devirt","elemental2.dom.DocumentType$$Overlay.replaceWith__$devirt","elemental2.dom.DocumentType$$Overlay.<clinit>"]
-}

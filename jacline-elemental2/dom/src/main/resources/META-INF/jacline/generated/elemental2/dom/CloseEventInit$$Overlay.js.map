@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"CloseEventInit$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MAUiB,Q;;QAEK,uC;EAAQA,mB;EAC9BA,0L;;;QAHiB,O;EAAAC,2B;EAAAA;",
-"sources":["CloseEventInit.java"],
-"names":["elemental2.dom.CloseEventInit$$Overlay.create","elemental2.dom.CloseEventInit$$Overlay.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"PushSubscriptionOptionsInit$$Overlay.impl.java.js",
-"lineCount":31,
-"mappings":"A;;;;;;MAYiB,Q;;QAiCkB,oD;EAAQA,mB;EAC3CA,uM;;;QAOa,iH,kEAAoCC,oB;EAApCC,mB;EACbA,8H;;;QAGa,qH,sEAAwCD,oB;EAAxCC,mB;EACbA,8H;;;QAKa,sG,8DAA+BD,oB;EAA/BC,mB;EACbA,8H;;;QApDiB,O;EAAAC,2B;EAAAA;",
-"sources":["PushSubscriptionOptionsInit.java"],
-"names":["elemental2.dom.PushSubscriptionOptionsInit$$Overlay.create","applicationServerKey","elemental2.dom.PushSubscriptionOptionsInit$$Overlay.setApplicationServerKey__$devirt","elemental2.dom.PushSubscriptionOptionsInit$$Overlay.<clinit>"]
-}

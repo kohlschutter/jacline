@@ -94,6 +94,25 @@
                     <failOnWarnings>false</failOnWarnings>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-maven-plugin</artifactId>
+                <version>${jacline.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-jacline-compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <phase>compile</phase>
+                        <configuration>
+                            <transpileSourceRoots>
+                                <transpileSourceRoot>src/main/java</transpileSourceRoot>
+                            </transpileSourceRoots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

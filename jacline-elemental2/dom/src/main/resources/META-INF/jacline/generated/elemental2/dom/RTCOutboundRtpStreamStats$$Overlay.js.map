@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"RTCOutboundRtpStreamStats$$Overlay.impl.java.js",
-"lineCount":8,
-"mappings":"A;;;MAQiB,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["RTCOutboundRtpStreamStats.java"],
-"names":["elemental2.dom.RTCOutboundRtpStreamStats$$Overlay.<clinit>"]
-}

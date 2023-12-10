@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"RTCRtpCodecCapability$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MASiB,Q;;QAEY,8C;EAAQA,mB;EACrCA,iM;;;QAHiB,O;EAAAC,2B;EAAAA;",
-"sources":["RTCRtpCodecCapability.java"],
-"names":["elemental2.dom.RTCRtpCodecCapability$$Overlay.create","elemental2.dom.RTCRtpCodecCapability$$Overlay.<clinit>"]
-}

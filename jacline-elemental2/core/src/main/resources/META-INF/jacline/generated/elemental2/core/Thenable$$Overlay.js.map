@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"Thenable$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MASiB,Q;;QAED,kC;EAAQA,mB;EACxBA,oL;;;QAHiB,O;EAAAC,2B;EAAAA;",
-"sources":["Thenable.java"],
-"names":["elemental2.core.Thenable$$Overlay.create","elemental2.core.Thenable$$Overlay.<clinit>"]
-}

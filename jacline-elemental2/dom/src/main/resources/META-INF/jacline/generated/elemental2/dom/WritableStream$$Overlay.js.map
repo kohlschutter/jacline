@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"WritableStream$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MAca,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["WritableStream.java"],
-"names":["elemental2.dom.WritableStream$$Overlay.<clinit>"]
-}

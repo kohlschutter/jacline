@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"RTCDTMFToneChangeEventInit$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MASiB,Q;;QAEiB,mD;EAAQA,mB;EAC1CA,sM;;;QAHiB,O;EAAAC,2B;EAAAA;",
-"sources":["RTCDTMFToneChangeEventInit.java"],
-"names":["elemental2.dom.RTCDTMFToneChangeEventInit$$Overlay.create","elemental2.dom.RTCDTMFToneChangeEventInit$$Overlay.<clinit>"]
-}

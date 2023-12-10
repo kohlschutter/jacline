@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"DomGlobal$PostMessageTargetOriginOrOptionsOrTransferUnionType$$Overlay.impl.java.js",
-"lineCount":43,
-"mappings":"A;;;;;;;;MAoNiB,Q;;QAEoD,oG,UAAUA,C;EAAEC,mB;EACjFA,yE;;;QAG8B,2H;EAAAC,mB;EAC9BA,gI;;;QAGe,mH;EAAAC,mB;EACfA,mE;;;QAGmC,gK;EAAAC,mB;EACnCA,yG;;;QAGgB,2G;EAAAC,mB;EAChBA,8C;;;QAGgB,0G;EAAAC,mB;EAChBA,wC;;;QAvBiB,O;EAAAC,2B;EAAAA;",
-"sources":["DomGlobal.java"],
-"names":["o","elemental2.dom.DomGlobal$PostMessageTargetOriginOrOptionsOrTransferUnionType$$Overlay.of","elemental2.dom.DomGlobal$PostMessageTargetOriginOrOptionsOrTransferUnionType$$Overlay.asJsArray__$devirt","elemental2.dom.DomGlobal$PostMessageTargetOriginOrOptionsOrTransferUnionType$$Overlay.asString__$devirt","elemental2.dom.DomGlobal$PostMessageTargetOriginOrOptionsOrTransferUnionType$$Overlay.asStructuredSerializeOptions__$devirt","elemental2.dom.DomGlobal$PostMessageTargetOriginOrOptionsOrTransferUnionType$$Overlay.isJsArray__$devirt","elemental2.dom.DomGlobal$PostMessageTargetOriginOrOptionsOrTransferUnionType$$Overlay.isString__$devirt","elemental2.dom.DomGlobal$PostMessageTargetOriginOrOptionsOrTransferUnionType$$Overlay.<clinit>"]
-}

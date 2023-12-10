@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"JsArray$FromMapFn$P0UnionType$$Overlay.impl.java.js",
-"lineCount":31,
-"mappings":"A;;;;;;MA2CiB,Q;;QAEoB,qE,UAAUA,C;EAAEC,mB;EACjDA,yE;;;QAGe,oF;EAAAC,mB;EACfA,mE;;;QAGU,+E;EAAAC,mB;EACVA,+D;;;QAGgB,2E;EAAAC,mB;EAChBA,wC;;;QAfiB,O;EAAAC,2B;EAAAA;",
-"sources":["JsArray.java"],
-"names":["o","elemental2.core.JsArray$FromMapFn$P0UnionType$$Overlay.of","elemental2.core.JsArray$FromMapFn$P0UnionType$$Overlay.asString__$devirt","elemental2.core.JsArray$FromMapFn$P0UnionType$$Overlay.asT__$devirt","elemental2.core.JsArray$FromMapFn$P0UnionType$$Overlay.isString__$devirt","elemental2.core.JsArray$FromMapFn$P0UnionType$$Overlay.<clinit>"]
-}

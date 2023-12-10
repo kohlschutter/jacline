@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"FontFaceSetLoadEventInit$$Overlay.impl.java.js",
-"lineCount":21,
-"mappings":"A;;;;;;MAUiB,Q;;QAEe,iD;EAAQA,mB;EACxCA,oM;;;QAKa,uG,mEAAwBC,S;EAAxBC,mB;EACbA,sH;;;QATiB,O;EAAAC,2B;EAAAA;",
-"sources":["FontFaceSetLoadEventInit.java"],
-"names":["elemental2.dom.FontFaceSetLoadEventInit$$Overlay.create","fontfaces","elemental2.dom.FontFaceSetLoadEventInit$$Overlay.setFontfaces__$devirt","elemental2.dom.FontFaceSetLoadEventInit$$Overlay.<clinit>"]
-}

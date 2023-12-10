@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"RTCRtpStreamStats$$Overlay.impl.java.js",
-"lineCount":8,
-"mappings":"A;;;MAOiB,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["RTCRtpStreamStats.java"],
-"names":["elemental2.dom.RTCRtpStreamStats$$Overlay.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"MutationObserver$MutationObserverCallbackFn$$Overlay.impl.java.js",
-"lineCount":15,
-"mappings":"A;;;;;MAciB,Q;;QAGF,yK,mGAA0BA,E,0BAAoBC,E;EAA9CC,mB;EACfA,qH;;;QAJiB,O;EAAAC,2B;EAAAA;",
-"sources":["MutationObserver.java"],
-"names":["p0","p1","elemental2.dom.MutationObserver$MutationObserverCallbackFn$$Overlay.onInvoke__$devirt","elemental2.dom.MutationObserver$MutationObserverCallbackFn$$Overlay.<clinit>"]
-}

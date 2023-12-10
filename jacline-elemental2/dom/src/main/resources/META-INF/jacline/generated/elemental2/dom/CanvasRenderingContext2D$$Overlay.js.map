@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"CanvasRenderingContext2D$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MAMa,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["CanvasRenderingContext2D.java"],
-"names":["elemental2.dom.CanvasRenderingContext2D$$Overlay.<clinit>"]
-}

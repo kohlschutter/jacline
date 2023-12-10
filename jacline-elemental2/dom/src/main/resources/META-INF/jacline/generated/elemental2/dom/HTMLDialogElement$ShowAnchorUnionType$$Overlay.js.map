@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"HTMLDialogElement$ShowAnchorUnionType$$Overlay.impl.java.js",
-"lineCount":38,
-"mappings":"A;;;;;;;;MAaiB,Q;;QAE4B,4E,UAAUA,C;EAAEC,mB;EACzDA,yE;;;QAGgB,kG;EAAAC,mB;EAChBA,oH;;;QAGmB,wG;EAAAC,mB;EACnBA,0H;;;QAGgB,mF;EAAAC,mB;EAChBA,8C;;;QAGgB,sF;EAAAC,mB;EAChBA,iD;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["HTMLDialogElement.java"],
-"names":["o","elemental2.dom.HTMLDialogElement$ShowAnchorUnionType$$Overlay.of","elemental2.dom.HTMLDialogElement$ShowAnchorUnionType$$Overlay.asElement__$devirt","elemental2.dom.HTMLDialogElement$ShowAnchorUnionType$$Overlay.asMouseEvent__$devirt","elemental2.dom.HTMLDialogElement$ShowAnchorUnionType$$Overlay.isElement__$devirt","elemental2.dom.HTMLDialogElement$ShowAnchorUnionType$$Overlay.isMouseEvent__$devirt","elemental2.dom.HTMLDialogElement$ShowAnchorUnionType$$Overlay.<clinit>"]
-}

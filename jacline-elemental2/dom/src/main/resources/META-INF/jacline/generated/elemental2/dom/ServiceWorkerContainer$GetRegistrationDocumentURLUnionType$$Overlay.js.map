@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"ServiceWorkerContainer$GetRegistrationDocumentURLUnionType$$Overlay.impl.java.js",
-"lineCount":38,
-"mappings":"A;;;;;;;;MAuBiB,Q;;QAEiD,iG,UAAUA,C;EAAEC,mB;EAC9EA,yE;;;QAGe,gH;EAAAC,mB;EACfA,mE;;;QAGY,+G;EAAAC,mB;EACZA,4G;;;QAGgB,uG;EAAAC,mB;EAChBA,wC;;;QAGgB,oG;EAAAC,mB;EAChBA,0C;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["ServiceWorkerContainer.java"],
-"names":["o","elemental2.dom.ServiceWorkerContainer$GetRegistrationDocumentURLUnionType$$Overlay.of","elemental2.dom.ServiceWorkerContainer$GetRegistrationDocumentURLUnionType$$Overlay.asString__$devirt","elemental2.dom.ServiceWorkerContainer$GetRegistrationDocumentURLUnionType$$Overlay.asURL__$devirt","elemental2.dom.ServiceWorkerContainer$GetRegistrationDocumentURLUnionType$$Overlay.isString__$devirt","elemental2.dom.ServiceWorkerContainer$GetRegistrationDocumentURLUnionType$$Overlay.isURL__$devirt","elemental2.dom.ServiceWorkerContainer$GetRegistrationDocumentURLUnionType$$Overlay.<clinit>"]
-}

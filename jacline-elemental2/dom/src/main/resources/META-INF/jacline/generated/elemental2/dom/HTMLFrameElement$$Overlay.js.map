@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"HTMLFrameElement$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MAOa,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["HTMLFrameElement.java"],
-"names":["elemental2.dom.HTMLFrameElement$$Overlay.<clinit>"]
-}

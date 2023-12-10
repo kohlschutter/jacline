@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"DOMMatrixReadOnly$ConstructorInitUnionType$$Overlay.impl.java.js",
-"lineCount":38,
-"mappings":"A;;;;;;;;MAmBiB,Q;;QAEiC,iF,UAAUA,C;EAAEC,mB;EAC9DA,yE;;;QAGwB,wG;EAAAC,mB;EACxBA,2H;;;QAGe,gG;EAAAC,mB;EACfA,mE;;;QAGgB,wF;EAAAC,mB;EAChBA,8C;;;QAGgB,uF;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["DOMMatrixReadOnly.java"],
-"names":["o","elemental2.dom.DOMMatrixReadOnly$ConstructorInitUnionType$$Overlay.of","elemental2.dom.DOMMatrixReadOnly$ConstructorInitUnionType$$Overlay.asJsArray__$devirt","elemental2.dom.DOMMatrixReadOnly$ConstructorInitUnionType$$Overlay.asString__$devirt","elemental2.dom.DOMMatrixReadOnly$ConstructorInitUnionType$$Overlay.isJsArray__$devirt","elemental2.dom.DOMMatrixReadOnly$ConstructorInitUnionType$$Overlay.isString__$devirt","elemental2.dom.DOMMatrixReadOnly$ConstructorInitUnionType$$Overlay.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"JsArray$$Overlay.impl.java.js",
-"lineCount":83,
-"mappings":"A;;;;;;;;MAgBa,Q;;QA4DqB,8D,iBAAcA,K;EAAMC,mB;EACtDA,6F;;;QAMwC,gH,sBAAoBC,S,gCAAoDC,K,WAAQC,K;EAAMC,mB;EAC9HA,4I;;;QAGqC,8F,sBAAoBH,S,gCAAoDC,K;EAAME,mB;EACnHA,qI;;;QAGqC,2D,sBAAoBH,S;EAAUG,mB;EACnEA,8H;;;QAGwC,gH,oBAAmBH,S,gCAAoDC,K,WAAQC,K;EAAMC,mB;EAC7HA,4I;;;QAGqC,8F,oBAAmBH,S,gCAAoDC,K;EAAME,mB;EAClHA,qI;;;QAGqC,2D,oBAAmBH,S;EAAUG,mB;EAClEA,8H;;;QAGwC,sG,gBAAYH,S,gCAAoDC,K,WAAQC,K;EAAMC,mB;EACtHA,4I;;;QAGqC,oF,gBAAYH,S,gCAAoDC,K;EAAME,mB;EAC3GA,qI;;;QAGqC,iD,gBAAYH,S;EAAUG,mB;EAC3DA,8H;;;QAGwC,8G,iBAASH,S,gCAAoDC,K,WAAQC,K;EAAMC,mB;EACnHA,uQ;;;QAGqC,4F,iBAASH,S,gCAAoDC,K;EAAME,mB;EACxGA,8O;;;QAGqC,yD,iBAASH,S;EAAUG,mB;EACxDA,oM;;;QASiB,+F,4CAAYC,S;EAAZC,mB;EACjBA,mI;;;QA1Ha,O;EAAAC,2B;EAAAA;",
-"sources":["JsArray.java"],
-"names":["array","elemental2.core.JsArray$$Overlay.asJsArray","arrayLike","mapFn","this_","elemental2.core.JsArray$$Overlay.from","reference","elemental2.core.JsArray$$Overlay.asArray__$devirt","elemental2.core.JsArray$$Overlay.<clinit>"]
-}

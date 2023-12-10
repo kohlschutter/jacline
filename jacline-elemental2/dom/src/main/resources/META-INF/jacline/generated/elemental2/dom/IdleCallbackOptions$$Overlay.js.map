@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"IdleCallbackOptions$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MAQiB,Q;;QAEU,4C;EAAQA,mB;EACnCA,+L;;;QAHiB,O;EAAAC,2B;EAAAA;",
-"sources":["IdleCallbackOptions.java"],
-"names":["elemental2.dom.IdleCallbackOptions$$Overlay.create","elemental2.dom.IdleCallbackOptions$$Overlay.<clinit>"]
-}

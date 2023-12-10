@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"MediaTrackConstraintSet$GetFrameRateUnionType$$Overlay.impl.java.js",
-"lineCount":31,
-"mappings":"A;;;;;;MAqJiB,Q;;QAEoC,oF,UAAUA,C;EAAEC,mB;EACjEA,yE;;;QAG6B,oI;EAAAC,mB;EAC7BA,mG;;;QAGe,yF;EAAAC,mB;EACfA,yD;;;QAGgB,0F;EAAAC,mB;EAChBA,oC;;;QAfiB,O;EAAAC,2B;EAAAA;",
-"sources":["MediaTrackConstraintSet.java"],
-"names":["o","elemental2.dom.MediaTrackConstraintSet$GetFrameRateUnionType$$Overlay.of","elemental2.dom.MediaTrackConstraintSet$GetFrameRateUnionType$$Overlay.asConstrainDoubleRange__$devirt","elemental2.dom.MediaTrackConstraintSet$GetFrameRateUnionType$$Overlay.asDouble__$devirt","elemental2.dom.MediaTrackConstraintSet$GetFrameRateUnionType$$Overlay.isDouble__$devirt","elemental2.dom.MediaTrackConstraintSet$GetFrameRateUnionType$$Overlay.<clinit>"]
-}

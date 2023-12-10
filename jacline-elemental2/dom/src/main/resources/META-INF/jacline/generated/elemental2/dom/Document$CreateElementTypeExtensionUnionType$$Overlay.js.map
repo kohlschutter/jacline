@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"Document$CreateElementTypeExtensionUnionType$$Overlay.impl.java.js",
-"lineCount":31,
-"mappings":"A;;;;;;MA6EiB,Q;;QAEmC,mF,UAAUA,C;EAAEC,mB;EAChEA,yE;;;QAGgD,gK;EAAAC,mB;EAChDA,gF;;;QAGe,kG;EAAAC,mB;EACfA,mE;;;QAGgB,yF;EAAAC,mB;EAChBA,wC;;;QAfiB,O;EAAAC,2B;EAAAA;",
-"sources":["Document.java"],
-"names":["o","elemental2.dom.Document$CreateElementTypeExtensionUnionType$$Overlay.of","elemental2.dom.Document$CreateElementTypeExtensionUnionType$$Overlay.asCreateElementTypeExtensionType__$devirt","elemental2.dom.Document$CreateElementTypeExtensionUnionType$$Overlay.asString__$devirt","elemental2.dom.Document$CreateElementTypeExtensionUnionType$$Overlay.isString__$devirt","elemental2.dom.Document$CreateElementTypeExtensionUnionType$$Overlay.<clinit>"]
-}

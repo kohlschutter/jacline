@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"Navigator$$Overlay.impl.java.js",
-"lineCount":32,
-"mappings":"A;;;;;;;MAsBa,Q;;QA0EK,wH,4CAA+BA,M,iBAAcC,G,iBAAWC,K;EAAxDC,mB;EAClBA,8H;;;QAGkB,0H,4CAA+BH,M,aAAWC,G,iBAAWC,K;EAArDC,mB;EAClBA,8H;;;QASkB,wG,4CAAiCH,M,iBAAcC,G;EAA/CG,mB;EAClBA,yH;;;QAGkB,0G,4CAAiCJ,M,aAAWC,G;EAA5CG,mB;EAClBA,yH;;;QA7Fa,O;EAAAC,2B;EAAAA;",
-"sources":["Navigator.java"],
-"names":["scheme","url","title","elemental2.dom.Navigator$$Overlay.registerProtocolHandler__$devirt","elemental2.dom.Navigator$$Overlay.unregisterProtocolHandler__$devirt","elemental2.dom.Navigator$$Overlay.<clinit>"]
-}

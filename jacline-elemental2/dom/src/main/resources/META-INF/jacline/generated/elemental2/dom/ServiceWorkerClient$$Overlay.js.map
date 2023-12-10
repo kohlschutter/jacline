@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"ServiceWorkerClient$$Overlay.impl.java.js",
-"lineCount":27,
-"mappings":"A;;;;;;;MAaa,Q;;QAkC6B,qG,sDAAgBA,G;EAAhBC,mB;EAC1CA,uG;;;QAG0C,uG,kDAAaD,G;EAAbC,mB;EAC1CA,uG;;;QAIkB,wH,gDAAmBC,O,6BAAuBC,Q;EAA1CC,mB;EAClBA,mI;;;QA5Ca,O;EAAAC,2B;EAAAA;",
-"sources":["ServiceWorkerClient.java"],
-"names":["url","elemental2.dom.ServiceWorkerClient$$Overlay.navigate__$devirt","message","transfer","elemental2.dom.ServiceWorkerClient$$Overlay.postMessage__$devirt","elemental2.dom.ServiceWorkerClient$$Overlay.<clinit>"]
-}

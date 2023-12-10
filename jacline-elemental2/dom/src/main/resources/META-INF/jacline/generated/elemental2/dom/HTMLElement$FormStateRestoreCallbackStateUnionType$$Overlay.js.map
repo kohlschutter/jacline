@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"HTMLElement$FormStateRestoreCallbackStateUnionType$$Overlay.impl.java.js",
-"lineCount":49,
-"mappings":"A;;;;;;;;;MAuEiB,Q;;QAEyC,yF,UAAUA,C;EAAEC,mB;EACtEA,yE;;;QAGa,yG;EAAAC,mB;EACbA,8G;;;QAGuF,gH;EAAAC,mB;EACvFA,4H;;;QAGe,wG;EAAAC,mB;EACfA,mE;;;QAGgB,6F;EAAAC,mB;EAChBA,2C;;;QAGgB,gG;EAAAC,mB;EAChBA,8C;;;QAGgB,+F;EAAAC,mB;EAChBA,wC;;;QA3BiB,O;EAAAC,2B;EAAAA;",
-"sources":["HTMLElement.java"],
-"names":["o","elemental2.dom.HTMLElement$FormStateRestoreCallbackStateUnionType$$Overlay.of","elemental2.dom.HTMLElement$FormStateRestoreCallbackStateUnionType$$Overlay.asFile__$devirt","elemental2.dom.HTMLElement$FormStateRestoreCallbackStateUnionType$$Overlay.asJsArray__$devirt","elemental2.dom.HTMLElement$FormStateRestoreCallbackStateUnionType$$Overlay.asString__$devirt","elemental2.dom.HTMLElement$FormStateRestoreCallbackStateUnionType$$Overlay.isFile__$devirt","elemental2.dom.HTMLElement$FormStateRestoreCallbackStateUnionType$$Overlay.isJsArray__$devirt","elemental2.dom.HTMLElement$FormStateRestoreCallbackStateUnionType$$Overlay.isString__$devirt","elemental2.dom.HTMLElement$FormStateRestoreCallbackStateUnionType$$Overlay.<clinit>"]
-}

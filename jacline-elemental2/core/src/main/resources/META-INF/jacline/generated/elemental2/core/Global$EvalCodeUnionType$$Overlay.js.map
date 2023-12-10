@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"Global$EvalCodeUnionType$$Overlay.impl.java.js",
-"lineCount":38,
-"mappings":"A;;;;;;;;MAeiB,Q;;QAEe,gE,UAAUA,C;EAAEC,mB;EAC5CA,yE;;;QAGe,+E;EAAAC,mB;EACfA,mE;;;QAGsB,mG;EAAAC,mB;EACtBA,gI;;;QAGgB,sE;EAAAC,mB;EAChBA,wC;;;QAGgB,6E;EAAAC,mB;EAChBA,oD;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["Global.java"],
-"names":["o","elemental2.core.Global$EvalCodeUnionType$$Overlay.of","elemental2.core.Global$EvalCodeUnionType$$Overlay.asString__$devirt","elemental2.core.Global$EvalCodeUnionType$$Overlay.asTrustedScript__$devirt","elemental2.core.Global$EvalCodeUnionType$$Overlay.isString__$devirt","elemental2.core.Global$EvalCodeUnionType$$Overlay.isTrustedScript__$devirt","elemental2.core.Global$EvalCodeUnionType$$Overlay.<clinit>"]
-}

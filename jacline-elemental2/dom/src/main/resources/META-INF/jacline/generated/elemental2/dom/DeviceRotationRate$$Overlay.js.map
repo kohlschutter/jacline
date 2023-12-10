@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"DeviceRotationRate$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MAIa,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["DeviceRotationRate.java"],
-"names":["elemental2.dom.DeviceRotationRate$$Overlay.<clinit>"]
-}

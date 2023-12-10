@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"MediaStreamConstraints$$Overlay.impl.java.js",
-"lineCount":36,
-"mappings":"A;;;;;;MAWiB,Q;;QAwCa,+C;EAAQA,mB;EACtCA,kM;;;QAWa,sG,uEAA+BC,K;EAA/BC,mB;EACbA,gG;;;QAGa,yE,yDAAiBD,K;EAAjBC,mB;EACbA,gG;;;QAOa,sG,uEAA+BC,K;EAA/BC,mB;EACbA,gG;;;QAGa,yE,yDAAiBD,K;EAAjBC,mB;EACbA,gG;;;QArEiB,O;EAAAC,2B;EAAAA;",
-"sources":["MediaStreamConstraints.java"],
-"names":["elemental2.dom.MediaStreamConstraints$$Overlay.create","audio","elemental2.dom.MediaStreamConstraints$$Overlay.setAudio__$devirt","video","elemental2.dom.MediaStreamConstraints$$Overlay.setVideo__$devirt","elemental2.dom.MediaStreamConstraints$$Overlay.<clinit>"]
-}

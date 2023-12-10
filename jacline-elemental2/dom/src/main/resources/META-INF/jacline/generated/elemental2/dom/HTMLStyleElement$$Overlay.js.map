@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"HTMLStyleElement$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MASa,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["HTMLStyleElement.java"],
-"names":["elemental2.dom.HTMLStyleElement$$Overlay.<clinit>"]
-}

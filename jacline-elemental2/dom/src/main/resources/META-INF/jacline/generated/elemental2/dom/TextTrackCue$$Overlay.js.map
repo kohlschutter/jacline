@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"TextTrackCue$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MAKa,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["TextTrackCue.java"],
-"names":["elemental2.dom.TextTrackCue$$Overlay.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"Atomics$NotifyTypedArrayUnionType$$Overlay.impl.java.js",
-"lineCount":38,
-"mappings":"A;;;;;;;;MA+SiB,Q;;QAEwB,yE,UAAUA,C;EAAEC,mB;EACrDA,yE;;;QAGsB,4G;EAAAC,mB;EACtBA,gI;;;QAGmB,sG;EAAAC,mB;EACnBA,0H;;;QAGgB,sF;EAAAC,mB;EAChBA,oD;;;QAGgB,mF;EAAAC,mB;EAChBA,iD;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["Atomics.java"],
-"names":["o","elemental2.core.Atomics$NotifyTypedArrayUnionType$$Overlay.of","elemental2.core.Atomics$NotifyTypedArrayUnionType$$Overlay.asBigInt64Array__$devirt","elemental2.core.Atomics$NotifyTypedArrayUnionType$$Overlay.asInt32Array__$devirt","elemental2.core.Atomics$NotifyTypedArrayUnionType$$Overlay.isBigInt64Array__$devirt","elemental2.core.Atomics$NotifyTypedArrayUnionType$$Overlay.isInt32Array__$devirt","elemental2.core.Atomics$NotifyTypedArrayUnionType$$Overlay.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"MimeType$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MAMa,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["MimeType.java"],
-"names":["elemental2.dom.MimeType$$Overlay.<clinit>"]
-}

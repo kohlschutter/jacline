@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"DOMMatrixInit$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MASiB,Q;;QAEI,sC;EAAQA,mB;EAC7BA,yL;;;QAHiB,O;EAAAC,2B;EAAAA;",
-"sources":["DOMMatrixInit.java"],
-"names":["elemental2.dom.DOMMatrixInit$$Overlay.create","elemental2.dom.DOMMatrixInit$$Overlay.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"ReadableStreamSource$$Overlay.impl.java.js",
-"lineCount":16,
-"mappings":"A;;;;;;MAgBiB,Q;;QA4DW,6C;EAAQA,mB;EACpCA,gM;;;QA7DiB,O;EAAAC,2B;EAAAA;",
-"sources":["ReadableStreamSource.java"],
-"names":["elemental2.dom.ReadableStreamSource$$Overlay.create","elemental2.dom.ReadableStreamSource$$Overlay.<clinit>"]
-}

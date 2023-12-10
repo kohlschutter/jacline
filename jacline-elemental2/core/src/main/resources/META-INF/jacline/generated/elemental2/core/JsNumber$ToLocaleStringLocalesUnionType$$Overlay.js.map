@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"JsNumber$ToLocaleStringLocalesUnionType$$Overlay.impl.java.js",
-"lineCount":38,
-"mappings":"A;;;;;;;;MAciB,Q;;QAE8B,+E,UAAUA,C;EAAEC,mB;EAC3DA,yE;;;QAGwB,sG;EAAAC,mB;EACxBA,2H;;;QAGe,8F;EAAAC,mB;EACfA,mE;;;QAGgB,sF;EAAAC,mB;EAChBA,8C;;;QAGgB,qF;EAAAC,mB;EAChBA,wC;;;QAnBiB,O;EAAAC,2B;EAAAA;",
-"sources":["JsNumber.java"],
-"names":["o","elemental2.core.JsNumber$ToLocaleStringLocalesUnionType$$Overlay.of","elemental2.core.JsNumber$ToLocaleStringLocalesUnionType$$Overlay.asJsArray__$devirt","elemental2.core.JsNumber$ToLocaleStringLocalesUnionType$$Overlay.asString__$devirt","elemental2.core.JsNumber$ToLocaleStringLocalesUnionType$$Overlay.isJsArray__$devirt","elemental2.core.JsNumber$ToLocaleStringLocalesUnionType$$Overlay.isString__$devirt","elemental2.core.JsNumber$ToLocaleStringLocalesUnionType$$Overlay.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"RTCRtpTransceiverInit$$Overlay.impl.java.js",
-"lineCount":26,
-"mappings":"A;;;;;;MAYiB,Q;;QAEY,8C;EAAQA,mB;EACrCA,iM;;;QAaa,wH,gFAA4CC,a;EAA5CC,mB;EACbA,8I;;;QAKa,qG,mEAAyBC,O;EAAzBC,mB;EACbA,qH;;;QAvBiB,O;EAAAC,2B;EAAAA;",
-"sources":["RTCRtpTransceiverInit.java"],
-"names":["elemental2.dom.RTCRtpTransceiverInit$$Overlay.create","sendEncodings","elemental2.dom.RTCRtpTransceiverInit$$Overlay.setSendEncodings__$devirt","streams","elemental2.dom.RTCRtpTransceiverInit$$Overlay.setStreams__$devirt","elemental2.dom.RTCRtpTransceiverInit$$Overlay.<clinit>"]
-}

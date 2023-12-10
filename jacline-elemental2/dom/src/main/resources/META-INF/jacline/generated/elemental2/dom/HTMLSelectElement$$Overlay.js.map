@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"HTMLSelectElement$$Overlay.impl.java.js",
-"lineCount":10,
-"mappings":"A;;;;;MAaa,Q;;QAAA,O;EAAAA,2B;EAAAA;",
-"sources":["HTMLSelectElement.java"],
-"names":["elemental2.dom.HTMLSelectElement$$Overlay.<clinit>"]
-}

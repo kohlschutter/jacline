@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"HTMLOptionsCollection$$Overlay.impl.java.js",
-"lineCount":62,
-"mappings":"A;;;;;;;MAYa,Q;;QAkDK,gJ,kDAA8CA,O,qBAAoBC,M;EAAlEC,mB;EAClBA,uG;;;QAGkB,4H,kDAA8CF,O,gBAAeC,M;EAA7DC,mB;EAClBA,uG;;;QAIkB,uJ,oEAAwBF,O,WAAiDC,M;EAAzEC,mB;EAClBA,uG;;;QAGkB,0H,oEAAwBF,O,qBAAoBC,M;EAA5CC,mB;EAClBA,gL;;;QAGkB,sG,oEAAwBF,O,gBAAeC,M;EAAvCC,mB;EAClBA,gL;;;QAGkB,8F,oEAAwBF,O;EAAxBE,mB;EAClBA,+F;;;QAGkB,qJ,kEAAsBF,O,WAAiDC,M;EAAvEC,mB;EAClBA,uG;;;QAGkB,wH,kEAAsBF,O,qBAAoBC,M;EAA1CC,mB;EAClBA,gL;;;QAGkB,oG,kEAAsBF,O,gBAAeC,M;EAArCC,mB;EAClBA,gL;;;QAGkB,4F,kEAAsBF,O;EAAtBE,mB;EAClBA,+F;;;QAxFa,O;EAAAC,2B;EAAAA;",
-"sources":["HTMLOptionsCollection.java"],
-"names":["element","before","elemental2.dom.HTMLOptionsCollection$$Overlay.add__$devirt","elemental2.dom.HTMLOptionsCollection$$Overlay.<clinit>"]
-}
