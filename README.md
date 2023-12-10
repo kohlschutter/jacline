@@ -78,10 +78,6 @@ Particularly, jacline sports the following highlights:
 
 ## Examples
 
-### Before you begin
-
-Currently, you first need to build jacline from source: `mvn clean install`
-
 ### helloworld
 
 Very much like the original j2cl helloworld sample, try our [helloworld sample for
@@ -144,7 +140,7 @@ First, define a property `jacline.version` in your POM.
 
 ```xml
     <properties>
-            <jacline.version>1.0.0-SNAPSHOT</jacline.version>
+            <jacline.version>1.0.0</jacline.version>
     </properties>
 ```
 
