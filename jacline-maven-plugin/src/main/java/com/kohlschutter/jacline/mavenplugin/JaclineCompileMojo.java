@@ -17,12 +17,15 @@
  */
 package com.kohlschutter.jacline.mavenplugin;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
@@ -35,6 +38,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -76,6 +80,13 @@ import com.kohlschutter.jacline.jscomp.ClosureCompilerSources;
 @SuppressWarnings({
     "null", "PMD.GuardLogStatement", "PMD.CouplingBetweenObjects", "PMD.CyclomaticComplexity"})
 public class JaclineCompileMojo extends AbstractMojo {
+  private static final String PROPS_JACLINE_FORMAT = "jacline.format";
+  private static final String PROPS_JACLINE_VERSION = "jacline.version";
+  private static final String PROPS_JACLINE_COMMIT = "jacline.commit";
+  private static final String JACLINE_FORMAT_V1 = "1";
+  private static final String PROPS_GIT_BUILD_VERSION = "git.build.version";
+  private static final String PROPS_GIT_COMMIT_ID_DESCRIBE = "git.commit.id.describe";
+
   private static final Pattern FILE_DEDUP_SUFFIX = Pattern.compile("(\\-[0-9]+)?(\\.[a-z]+)$");
 
   @Parameter(defaultValue = "${project}", required = true, readonly = true)
@@ -173,21 +184,22 @@ public class JaclineCompileMojo extends AbstractMojo {
       jaclineMetaInfDirectory = jaclineMetaInfDirectoryDefault;
     }
 
+    Path jaclineMetaInfDirectoryPath = Path.of(jaclineMetaInfDirectory);
+
     if (deleteJaclineMetaInfDirectory) {
       // This is usually necessary to prevent "Duplicate module" errors
       // IMPORTANT: We'll always clear ./generated in code below
       try {
-        Path p = Path.of(jaclineMetaInfDirectory);
-        if (Files.exists(p)) {
-          IOUtil.deleteRecursively(p);
+        if (Files.exists(jaclineMetaInfDirectoryPath)) {
+          IOUtil.deleteRecursively(jaclineMetaInfDirectoryPath);
         }
       } catch (IOException e) {
         throw new MojoExecutionException("Could not delete " + jaclineMetaInfDirectory, e);
       }
     }
 
-    try (CompilerOutput to = CompilerOutput.newInstanceWithTargetDirectory(Path.of(
-        jaclineMetaInfDirectory, "generated")); //
+    try (CompilerOutput to = CompilerOutput.newInstanceWithTargetDirectory(
+        jaclineMetaInfDirectoryPath.resolve("generated")); //
         JaclineJ2ClTranspiler transpiler = new JaclineJ2ClTranspiler();) {
       try {
 
@@ -196,6 +208,8 @@ public class JaclineCompileMojo extends AbstractMojo {
         if (to.isSkipped()) {
           return;
         }
+
+        writeMetadata(jaclineMetaInfDirectoryPath);
 
         if (!createLibrary) {
           log.info("Not creating library contents under " + jaclineMetaInfDirectory);
@@ -225,6 +239,47 @@ public class JaclineCompileMojo extends AbstractMojo {
         | IOException e) {
       throw new MojoExecutionException("Execution failed: " + e.toString(), e);
     }
+  }
+
+  private void writeMetadata(Path jaclineMetaInfDirectoryPath) throws IOException {
+    Properties gitProps = loadGitProperties();
+
+    Properties props = new Properties();
+    props.put(PROPS_JACLINE_FORMAT, JACLINE_FORMAT_V1);
+    props.put(PROPS_JACLINE_VERSION, gitProps.get(PROPS_GIT_BUILD_VERSION));
+    props.put(PROPS_JACLINE_COMMIT, gitProps.get(PROPS_GIT_COMMIT_ID_DESCRIBE));
+    try (Writer out = Files.newBufferedWriter(jaclineMetaInfDirectoryPath.resolve(
+        "jacline.properties"))) {
+      out.write("# https://github.com/kohlschutter/jacline\n");
+      props.store(new BufferedWriter(out) {
+        @Override
+        public void write(String str) throws IOException {
+          if (!str.isEmpty() && str.charAt(0) == '#') {
+            str = "#"; // strip time from properties file
+          }
+          super.write(str);
+        }
+      }, null);
+    }
+  }
+
+  private Properties loadGitProperties() throws IOException {
+    Properties gitProps = new Properties();
+    try (InputStream in = JaclineCompileMojo.class.getResourceAsStream(
+        "/META-INF/maven/com.kohlschutter.jacline/jacline-maven-plugin/git.properties")) {
+      if (in != null) {
+        gitProps.load(in);
+      }
+    }
+
+    if (!gitProps.containsKey(PROPS_GIT_BUILD_VERSION)) {
+      gitProps.put(PROPS_GIT_BUILD_VERSION, "unknown");
+    }
+    if (!gitProps.containsKey(PROPS_GIT_COMMIT_ID_DESCRIBE)) {
+      gitProps.put(PROPS_GIT_COMMIT_ID_DESCRIBE, "unknown");
+    }
+
+    return gitProps;
   }
 
   @SuppressWarnings("PMD.CognitiveComplexity")
