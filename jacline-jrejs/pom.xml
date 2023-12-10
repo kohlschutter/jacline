@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.kohlschutter.jacline</groupId>
         <artifactId>jacline</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -210,7 +210,7 @@
                             <classesDirectory>${project.build.directory}</classesDirectory>
                             <includes>
                                 <include>
-                                    jacline-jrejs-1.0.0-SNAPSHOT-bootstrap.jar</include>
+                                    jacline-jrejs-${project.version}-bootstrap.jar</include>
                             </includes>
                             <archive>
                                 <addMavenDescriptor>false</addMavenDescriptor>
