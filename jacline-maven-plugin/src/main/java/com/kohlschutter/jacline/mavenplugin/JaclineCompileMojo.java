@@ -79,7 +79,8 @@ import com.kohlschutter.jacline.jscomp.ClosureCompilerSources;
 @Mojo(name = "compile", defaultPhase = LifecyclePhase.COMPILE, threadSafe = true, //
     requiresDependencyCollection = ResolutionScope.COMPILE, requiresDependencyResolution = ResolutionScope.COMPILE)
 @SuppressWarnings({
-    "null", "PMD.GuardLogStatement", "PMD.CouplingBetweenObjects", "PMD.CyclomaticComplexity"})
+    "null", "PMD.GuardLogStatement", "PMD.CouplingBetweenObjects", "PMD.CyclomaticComplexity",
+    "PMD.ExcessiveImports"})
 public class JaclineCompileMojo extends AbstractMojo {
   private static final String PROPS_JACLINE_FORMAT = "jacline.format";
   private static final String PROPS_JACLINE_VERSION = "jacline.version";
@@ -185,6 +186,7 @@ public class JaclineCompileMojo extends AbstractMojo {
   }
 
   @Override
+  @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.NPathComplexity"})
   public void execute() throws MojoExecutionException, MojoFailureException {
     this.log = getLog();
     if (entryPoints == null) {
@@ -289,17 +291,18 @@ public class JaclineCompileMojo extends AbstractMojo {
     props.put(PROPS_JACLINE_VERSION, gitProps.get(PROPS_GIT_BUILD_VERSION));
     props.put(PROPS_JACLINE_COMMIT, gitProps.get(PROPS_GIT_COMMIT_ID_DESCRIBE));
     try (Writer out = Files.newBufferedWriter(jaclineMetaInfDirectoryPath.resolve(
-        "jacline.properties"))) {
-      out.write("# https://github.com/kohlschutter/jacline\n");
-      props.store(new BufferedWriter(out) {
-        @Override
-        public void write(String str) throws IOException {
-          if (!str.isEmpty() && str.charAt(0) == '#') {
-            str = "#"; // strip time from properties file
+        "jacline.properties")); //
+        BufferedWriter out2 = new BufferedWriter(out) {
+          @Override
+          public void write(String str) throws IOException {
+            if (!str.isEmpty() && str.charAt(0) == '#') {
+              str = "#"; // strip time from properties file
+            }
+            super.write(str);
           }
-          super.write(str);
-        }
-      }, null);
+        }) {
+      out.write("# https://github.com/kohlschutter/jacline\n");
+      props.store(out2, null);
     }
   }
 
