@@ -17,7 +17,7 @@ cd ..
 
 fromBase=elemental2/bazel-bin/java/elemental2
 
-for module in promise core dom; do
+for module in promise core dom indexeddb media svg webassembly webgl webstorage; do
   src="${module}/src"
   javaOut=${src}/main/java
   restOut=${src}/main/resources/META-INF/jacline/generated/

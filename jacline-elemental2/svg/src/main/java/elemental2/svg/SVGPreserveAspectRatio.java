@@ -1,0 +1,37 @@
+package elemental2.svg;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsPackage;
+@JsType(isNative = true,namespace = JsPackage.GLOBAL)
+public class SVGPreserveAspectRatio{
+@JsOverlay
+public static final double SVG_MEETORSLICE_MEET=SVGPreserveAspectRatio__Constants.SVG_MEETORSLICE_MEET;
+@JsOverlay
+public static final double SVG_MEETORSLICE_SLICE=SVGPreserveAspectRatio__Constants.SVG_MEETORSLICE_SLICE;
+@JsOverlay
+public static final double SVG_MEETORSLICE_UNKNOWN=SVGPreserveAspectRatio__Constants.SVG_MEETORSLICE_UNKNOWN;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_NONE=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_NONE;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_UNKNOWN=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_UNKNOWN;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_XMAXYMAX=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_XMAXYMAX;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_XMAXYMID=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_XMAXYMID;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_XMAXYMIN=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_XMAXYMIN;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_XMIDYMAX=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_XMIDYMAX;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_XMIDYMID=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_XMIDYMID;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_XMIDYMIN=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_XMIDYMIN;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_XMINYMAX=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_XMINYMAX;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_XMINYMID=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_XMINYMID;
+@JsOverlay
+public static final double SVG_PRESERVEASPECTRATIO_XMINYMIN=SVGPreserveAspectRatio__Constants.SVG_PRESERVEASPECTRATIO_XMINYMIN;
+public int align;
+public int meetOrSlice;
+}

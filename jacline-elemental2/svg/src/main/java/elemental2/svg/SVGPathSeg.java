@@ -1,0 +1,50 @@
+package elemental2.svg;
+import jsinterop.annotations.JsOverlay;
+import java.lang.String;
+import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsPackage;
+@JsType(isNative = true,namespace = JsPackage.GLOBAL)
+public class SVGPathSeg{
+@JsOverlay
+public static final double PATHSEG_ARC_ABS=SVGPathSeg__Constants.PATHSEG_ARC_ABS;
+@JsOverlay
+public static final double PATHSEG_ARC_REL=SVGPathSeg__Constants.PATHSEG_ARC_REL;
+@JsOverlay
+public static final double PATHSEG_CLOSEPATH=SVGPathSeg__Constants.PATHSEG_CLOSEPATH;
+@JsOverlay
+public static final double PATHSEG_CURVETO_CUBIC_ABS=SVGPathSeg__Constants.PATHSEG_CURVETO_CUBIC_ABS;
+@JsOverlay
+public static final double PATHSEG_CURVETO_CUBIC_REL=SVGPathSeg__Constants.PATHSEG_CURVETO_CUBIC_REL;
+@JsOverlay
+public static final double PATHSEG_CURVETO_CUBIC_SMOOTH_ABS=SVGPathSeg__Constants.PATHSEG_CURVETO_CUBIC_SMOOTH_ABS;
+@JsOverlay
+public static final double PATHSEG_CURVETO_CUBIC_SMOOTH_REL=SVGPathSeg__Constants.PATHSEG_CURVETO_CUBIC_SMOOTH_REL;
+@JsOverlay
+public static final double PATHSEG_CURVETO_QUADRATIC_ABS=SVGPathSeg__Constants.PATHSEG_CURVETO_QUADRATIC_ABS;
+@JsOverlay
+public static final double PATHSEG_CURVETO_QUADRATIC_REL=SVGPathSeg__Constants.PATHSEG_CURVETO_QUADRATIC_REL;
+@JsOverlay
+public static final double PATHSEG_CURVETO_QUADRATIC_SMOOTH_ABS=SVGPathSeg__Constants.PATHSEG_CURVETO_QUADRATIC_SMOOTH_ABS;
+@JsOverlay
+public static final double PATHSEG_CURVETO_QUADRATIC_SMOOTH_REL=SVGPathSeg__Constants.PATHSEG_CURVETO_QUADRATIC_SMOOTH_REL;
+@JsOverlay
+public static final double PATHSEG_LINETO_ABS=SVGPathSeg__Constants.PATHSEG_LINETO_ABS;
+@JsOverlay
+public static final double PATHSEG_LINETO_HORIZONTAL_ABS=SVGPathSeg__Constants.PATHSEG_LINETO_HORIZONTAL_ABS;
+@JsOverlay
+public static final double PATHSEG_LINETO_HORIZONTAL_REL=SVGPathSeg__Constants.PATHSEG_LINETO_HORIZONTAL_REL;
+@JsOverlay
+public static final double PATHSEG_LINETO_REL=SVGPathSeg__Constants.PATHSEG_LINETO_REL;
+@JsOverlay
+public static final double PATHSEG_LINETO_VERTICAL_ABS=SVGPathSeg__Constants.PATHSEG_LINETO_VERTICAL_ABS;
+@JsOverlay
+public static final double PATHSEG_LINETO_VERTICAL_REL=SVGPathSeg__Constants.PATHSEG_LINETO_VERTICAL_REL;
+@JsOverlay
+public static final double PATHSEG_MOVETO_ABS=SVGPathSeg__Constants.PATHSEG_MOVETO_ABS;
+@JsOverlay
+public static final double PATHSEG_MOVETO_REL=SVGPathSeg__Constants.PATHSEG_MOVETO_REL;
+@JsOverlay
+public static final double PATHSEG_UNKNOWN=SVGPathSeg__Constants.PATHSEG_UNKNOWN;
+public double pathSegType;
+public String pathSegTypeAsLetter;
+}
