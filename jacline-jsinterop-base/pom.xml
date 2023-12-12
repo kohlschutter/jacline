@@ -95,6 +95,25 @@
                     <failOnWarnings>false</failOnWarnings>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-maven-plugin</artifactId>
+                <version>${jacline.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-jacline-compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <phase>compile</phase>
+                        <configuration>
+                            <transpileSourceRoots>
+                                <transpileSourceRoot>src/main/java</transpileSourceRoot>
+                            </transpileSourceRoots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
@@ -107,6 +126,18 @@
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-gcl-base</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kohlschutter.jacline</groupId>
+	    <artifactId>jacline-jrejs</artifactId>
+	    <!-- Use the previous release version to avoid dependency cycle -->
+            <version>${jacline.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.kohlschutter.jacline</groupId>
+                    <artifactId>jacline-jsinterop-base</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>
