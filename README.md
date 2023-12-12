@@ -2,7 +2,9 @@
 
 # jacline
 
-jacline is a Java-to-Javascript transpiler, using a forked version of j2cl in combination with Google Closure Compiler, plus other libraries providing APIs combining the Java world with the browser world.
+jacline is a Java-to-Javascript transpiler, using a forked version of j2cl in combination with
+Google Closure Compiler, plus other libraries providing APIs that combine the Java world with the
+browser world.
 
 ## When JAva-to-CLosure Is Not Enough
 
