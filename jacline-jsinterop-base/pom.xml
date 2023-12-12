@@ -129,8 +129,8 @@
         </dependency>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
-	    <artifactId>jacline-jrejs</artifactId>
-	    <!-- Use the previous release version to avoid dependency cycle -->
+            <artifactId>jacline-jrejs</artifactId>
+            <!-- Use the previous release version to avoid dependency cycle -->
             <version>${jacline.version}</version>
             <exclusions>
                 <exclusion>
@@ -138,6 +138,8 @@
                     <artifactId>jacline-jsinterop-base</artifactId>
                 </exclusion>
             </exclusions>
+            <!-- For building only -->
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
