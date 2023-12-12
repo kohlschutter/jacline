@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"ServiceLoader.impl.java.js",
-"lineCount":120,
-"mappings":"A;;;;;;;;;;;;;;;;;;;;;;;;;;MAWmB,a;;CAAA,W;EAAAA,Q;EAAAA;OAGM,mCAHNA,C;EAAAA;OAIwB,2CAJxBA,C;;;QAYT,uC,iBAAuBC,O,+BAAoCC,e;EAA3DC,oC;EAAAA,yG;EAAAA,iB;;;CAAA,oE,iBAAuBF,O,+BAAoCC,e;EAAiBE,qC;EAClFA,mD;EACAA,mE;;;CAIiB,8B;EACjBC;GACEA,oFADFA;;GAGEA,IAAiDC,EAAjDD,iHAHFA;GAIEA,+FAJFA;G;;;QAuBoC,wF,mBAAgCJ,O,yBAC/CM,c;EAAgBC,wB;EACrCA,mPAAyDC,CAAzDD;GAAyDE,IAAAD,GAAAC,oDAAzDF;GAA8DE,iFAA9DF;uC;;;QAKiC,gD,mBAAcP,O;EAASU,wB;EACxDA,2P;;;CAIiB,+B;EACjBC;GACEA,yEADFA;;GAGEA,wJAHFA;G;;;CAaY,Q;EACZC,2K;;;;CArEe,4C;EAAAC,gG;;;;CAAA,oC;EAAAC,uH;;;QAAA,O;EAAAC,gC;EAAAA,6B;EAAAA,qB;EAAAA,mB;EACjBA,6I;;;;;;;;;;;;;;;;;;;;;AADiB;cAC4C,gDAD5C;",
-"sources":["ServiceLoader.java"],
-"names":["java.util.ServiceLoader.<synthetic: ctor_js>","service","implementations","java.util.ServiceLoader.<synthetic: ctor_create>","java.util.ServiceLoader.<init>","java.util.ServiceLoader.iterator","it","implementation","java.util.ServiceLoader.jaclineRegisterService","k","java.util.ServiceLoader.<lambda in jaclineRegisterService>","java.util.ServiceLoader.load","java.util.ServiceLoader.findFirst","java.util.ServiceLoader.toString","java.util.ServiceLoader.forEach","java.util.ServiceLoader.spliterator","java.util.ServiceLoader.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"StringConcatFactory.impl.java.js",
-"lineCount":29,
-"mappings":"A;;;;;;;;MAEmB,mB;;CAAA,W;EAAAA,Q;;;QAAA,S;EAAAC,8B;EAAAA,0C;EAAAA,8D;EAAAA,iB;;;CAAA,iD;EAAAC,qC;;;QAAA,O;EAAAC,sC;EAAAA,mC;EAAAA;",
-"sources":["StringConcatFactory.java"],
-"names":["java.lang.invoke.StringConcatFactory.<synthetic: ctor_js>","java.lang.invoke.StringConcatFactory.<synthetic: ctor_create>","java.lang.invoke.StringConcatFactory.<init>","java.lang.invoke.StringConcatFactory.<clinit>"]
-}

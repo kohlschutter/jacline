@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"EventListener.impl.java.js",
-"lineCount":12,
-"mappings":"A;;;;;;;MAqBiB,a;;QAAA,O;EAAAA,gC;EAAAA;",
-"sources":["EventListener.java"],
-"names":["java.util.EventListener.<clinit>"]
-}

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"ArrayListBase$1.impl.java.js",
-"lineCount":71,
-"mappings":"A;;;;;;;;;;;;;;MA6D6B,E;;CAAA,W;EAAAA,Q;EAAAA;8C;EAAAA;OACnB,8BADmBA,K;EAAAA;OACZ,iCADYA,K;;;QAAA,gC;EAAAC,a;EAAAA,yB;EAAAA,uF;EAAAA,iB;;;CAAA,+D;EAAAC,0D;EAAAA,qC;EAAAA,gD;;;CAIR,kB;EACbC,yH;;;CAIO,wB;EAAOC,yB;EACdA,+E;EAEAA,mL;EACAA,4H;;;CAIU,c;EACVC,uG;EAEAA,gK;EACAA,iD;;;;CArBqB,qD;EAAAC,yG;;;CAAA,wC;EACvBJ,wC;EAAAA,iD;;;QADuB,O;EAAAK,qB;EAAAA,kB;EAAAA,qB;EAAAA;",
-"sources":["ArrayListBase.java"],
-"names":["java.util.ArrayListBase$1.<synthetic: ctor_js>","java.util.ArrayListBase$1.<synthetic: ctor_create>","java.util.ArrayListBase$1.<init>","java.util.ArrayListBase$1.hasNext","java.util.ArrayListBase$1.next","java.util.ArrayListBase$1.remove","java.util.ArrayListBase$1.forEachRemaining","java.util.ArrayListBase$1.<clinit>"]
-}

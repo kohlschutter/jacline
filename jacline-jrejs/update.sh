@@ -16,7 +16,7 @@ fi
 
 cd ../j2cl
 alias bazel=bazelisk
-#bazel build "jre/java/..."
+bazel build "jre/java/..."
 cd - >/dev/null
 
 bazelBin=../j2cl/bazel-bin
@@ -29,7 +29,7 @@ rm -rf src/main/resources
 mkdir -p "$javaOut" "$restOut" "$sharedOut"
 
 cp -r ${bazelBin}/jre/java/jre.js/* "$javaOut"/
-cp -r ${bazelBin}/jre/java/jre.js/* "$restOut"/
+#cp -r ${bazelBin}/jre/java/jre.js/* "$restOut"/
 
 cp ../j2cl/jre/java/module-info.java "$javaOut"/
 
@@ -46,7 +46,12 @@ mkdir -p "$sharedOut"/javaemul/internal/annotations
 mv "$javaOut"/javaemul/internal/{ArrayStamper,JsUtils}.java "$sharedOut"/javaemul/internal/
 mv "$javaOut"/javaemul/internal/annotations/Wasm.java "$sharedOut"/javaemul/internal/annotations/
 
-rm -f $(find "$javaOut" -type f -not -name "*.java")
+rm -f $(find "$javaOut" -type f -not -name "*.java" -and -not -name "*.native_js")
+
+for f in $(find "$javaOut" -name "*.native_js"); do
+  new=$(echo "$f" | sed -E 's|native_js|native.js|g')
+  mv -vf "$f" "$new"
+done
 
 for f in $(cd src/fixes/java ; find . -type f ); do
   origFile="src/main/java/$f"

@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"PrimitiveLists$Byte$$Overlay.impl.java.js",
-"lineCount":22,
-"mappings":"A;;;;;;;MA+BsB,Q;;QAOE,6E;EAAAA,mB;EAClBA,oE;;;QAQkB,uE;EAAAC,mB;EAClBA,oE;;;QAjBgB,O;EAAAC,2B;EAAAA;",
-"sources":["PrimitiveLists.java"],
-"names":["javaemul.internal.PrimitiveLists$Byte$$Overlay.internalArray__$devirt","javaemul.internal.PrimitiveLists$Byte$$Overlay.toArray__$devirt","javaemul.internal.PrimitiveLists$Byte$$Overlay.<clinit>"]
-}

@@ -219,6 +219,27 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-maven-plugin</artifactId>
+                <version>${jacline.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-jacline-compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <phase>compile</phase>
+                        <configuration>
+                            <transpileSourceRoots>
+                                <transpileSourceRoot>src/main/java</transpileSourceRoot>
+                                <transpileSourceRoot>src/shared/java</transpileSourceRoot>
+                                <transpileSourceRoot>src/fixes/java</transpileSourceRoot>
+                            </transpileSourceRoots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
         <resources>
