@@ -37,6 +37,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -365,7 +366,8 @@ public class JaclineCompileMojo extends AbstractMojo {
         }
         String simpleName = f.getName(f.getNameCount() - 1).toString();
 
-        AtomicInteger ai = sameFileMap.computeIfAbsent(simpleName, (k) -> new AtomicInteger(0));
+        AtomicInteger ai = sameFileMap.computeIfAbsent(sameFileMapKeyForName(simpleName), (
+            k) -> new AtomicInteger(0));
         if (ai.get() != 0) {
           Matcher matcher = FILE_DEDUP_SUFFIX.matcher(simpleName);
           if (!matcher.find()) {
@@ -375,7 +377,7 @@ public class JaclineCompileMojo extends AbstractMojo {
           String baseName = matcher.replaceFirst(""); // strip .js suffix
           do {
             simpleName = baseName + "-" + ai.incrementAndGet() + suffix;
-          } while (sameFileMap.containsKey(simpleName));
+          } while (sameFileMap.containsKey(sameFileMapKeyForName(simpleName)));
           sameFileMap.put(simpleName, new AtomicInteger(0));
         } else {
           ai.incrementAndGet();
@@ -384,6 +386,10 @@ public class JaclineCompileMojo extends AbstractMojo {
         Files.copy(f, outDir.resolve(simpleName), StandardCopyOption.REPLACE_EXISTING);
       }
     }
+  }
+
+  private static String sameFileMapKeyForName(String simpleName) {
+    return simpleName.toLowerCase(Locale.ENGLISH);
   }
 
   private void transpile(JaclineJ2ClTranspiler transpiler, CompilerOutput to)
