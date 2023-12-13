@@ -39,8 +39,16 @@ import java.util.regex.Pattern;
 final class BootstrapJarSupport {
   private static final Pattern PAT_JREJS = Pattern.compile(
       "/jacline-jrejs-[0-9\\.]+(-SNAPSHOT)?\\.jar$");
+  private static final Pattern PAT_JREJS_BOOTSTRAP = Pattern.compile(
+      "/jacline-jrejs-[0-9\\.]+(-SNAPSHOT)?-bootstrap\\.jar$");
+  private static final Pattern PAT_JREJS_BOOTSTRAP_EMBEDDED = Pattern.compile(
+      "/jacline-jrejs-[0-9\\.]+(-SNAPSHOT)?-bootstrap-embedded\\.jar$");
+  private static final Pattern PAT_INTEROP_BASE = Pattern.compile(
+      "/jacline-jsinterop-base/([0-9\\.]+(-SNAPSHOT)?)/jacline-jsinterop-base-([0-9\\.]+(-SNAPSHOT)?)\\.jar$");
 
   private static String jreJsPath = null;
+
+  private String additionalPathToCheck = null;
 
   private BootstrapJarSupport() {
 
@@ -52,8 +60,12 @@ final class BootstrapJarSupport {
   public static synchronized String jrejsLibraryPath() {
     if (jreJsPath != null) {
       return jreJsPath;
+    } else {
+      return (jreJsPath = new BootstrapJarSupport().findJrejsLibraryPath());
     }
+  }
 
+  private String findJrejsLibraryPath() {
     // Always permit an override. You never know...
     String overrideBootstrapJar = System.getProperty("jacline.j2cl.bootstrap.jar", "");
     if (!overrideBootstrapJar.isEmpty()) {
@@ -98,103 +110,133 @@ final class BootstrapJarSupport {
     // use a temporary path, and delete that file upon VM shutdown.
     //
     for (Path p : classpathElements) {
-      String s = p.toString();
-
-      if (s.endsWith("/jacline-jrejs/target-eclipse/classes")) {
-        // we're running from within Eclipse, and we're developing jacline-jrejs
-        // This assumes that we have run "mvn clean install" on jacline-jrejs before
-        try {
-          Optional<Path> jar = Files.find(p.resolve("../../target/"), 1, (f, a) -> {
-            return a.isRegularFile() && f.toString().endsWith("-bootstrap.jar");
-          }).findFirst();
-          if (jar.isPresent() && Files.isReadable(jar.get())) {
-            return (jreJsPath = jar.get().toString());
-          }
-        } catch (IOException ignore) {
-          // ignore
+      String found = checkClasspathElement(p);
+      if (found != null) {
+        return found;
+      }
+    }
+    if (additionalPathToCheck != null) {
+      Path pathToCheck = Path.of(additionalPathToCheck);
+      if (Files.exists(pathToCheck)) {
+        String found = checkClasspathElement(pathToCheck);
+        if (found != null) {
+          return found;
         }
       }
-
-      if (!PAT_JREJS.matcher(s).find()) {
-        continue;
-      }
-
-      String bootstrapJar = s.substring(0, s.length() - 4) + "-bootstrap.jar";
-      Path bootstrapJarPath = Path.of(bootstrapJar);
-      if (Files.isReadable(bootstrapJarPath)) {
-        long size;
-        try {
-          size = Files.size(bootstrapJarPath);
-        } catch (IOException e) {
-          continue;
-        }
-        if (size > 0) {
-          return (jreJsPath = bootstrapJarPath.toString());
-        }
-      }
-
-      int lastSlash = bootstrapJar.lastIndexOf('/');
-      String embeddedJar = bootstrapJar.substring(lastSlash);
-      String targetDir = bootstrapJar.substring(0, lastSlash);
-
-      URL embeddedJarUrl = BootstrapJarSupport.class.getResource(embeddedJar);
-      if (embeddedJarUrl == null) {
-        throw new IllegalStateException("Could not find embedded bootstrap jar in classpath: "
-            + embeddedJar);
-      }
-
-      Path targetPath = Path.of(targetDir);
-
-      boolean reuseFile = false;
-      boolean reuseDir;
-      Path tempFile = null;
-
-      String pathToReturn;
-      try {
-        try {
-          tempFile = Files.createTempFile(targetPath, "jaclineTmp-", ".jar");
-          reuseDir = true;
-        } catch (IOException e) {
-          reuseDir = false;
-          try {
-            tempFile = Files.createTempFile("jaclineTmp-", ".jar");
-          } catch (IOException e1) {
-            IllegalStateException ise = new IllegalStateException(
-                "Cannot create temporary files needed for bootstrap classpath", e);
-            ise.addSuppressed(e1);
-            throw ise;
-          }
-        }
-        pathToReturn = tempFile.toString();
-
-        try (InputStream in = embeddedJarUrl.openStream();
-            OutputStream out = Files.newOutputStream(tempFile)) {
-          in.transferTo(out);
-        } catch (IOException e) {
-          throw new IllegalStateException("Could not copy bootstrap jar from classpath", e);
-        }
-        if (reuseDir) {
-          try {
-            Files.move(tempFile, bootstrapJarPath, StandardCopyOption.ATOMIC_MOVE);
-            reuseFile = true;
-            pathToReturn = bootstrapJarPath.toString();
-          } catch (IOException e) {
-            // ignore
-          }
-        }
-
-      } finally {
-        if (!reuseFile) {
-          if (tempFile != null) {
-            tempFile.toFile().deleteOnExit();
-          }
-        }
-      }
-
-      return (jreJsPath = pathToReturn);
     }
 
     // Looks like our expectations failed
     throw new IllegalStateException("Could not locate jacline-jrejs bootstrap.jar");
+  }
+
+  private String checkClasspathElement(Path p) {
+    String s = p.toString();
+
+    if (s.endsWith("/jacline-jrejs/target-eclipse/classes") //
+        || s.endsWith("/jacline-jrejs/target/classes")) {
+      // we're running from within Eclipse, and/or we're developing jacline-jrejs
+      // This assumes that we have run "mvn clean install" on jacline-jrejs before
+      try {
+        Optional<Path> jar = Files.find(p.resolve("../../target/"), 1, (f, a) -> {
+          return a.isRegularFile() && f.toString().endsWith("-bootstrap.jar");
+        }).findFirst();
+        if (jar.isPresent() && Files.isReadable(jar.get())) {
+          return jar.get().toString();
+        }
+      } catch (IOException ignore) {
+        // ignore
+      }
+    }
+
+    if (PAT_JREJS_BOOTSTRAP.matcher(s).find()) {
+      // found it in the classpath
+      return s;
+    } else if (PAT_JREJS_BOOTSTRAP_EMBEDDED.matcher(s).find()) {
+      // found bootstrap-embedded in classpath
+      additionalPathToCheck = s.replaceAll("-bootstrap-embedded", "-bootstrap");
+      return null; // continue search
+    } else if (!PAT_JREJS.matcher(s).find()) {
+      if (PAT_INTEROP_BASE.matcher(s).find()) {
+        // derive jacline-jrejs location from other jacline dependencies in classpath
+        additionalPathToCheck = s.replaceAll("jacline-jsinterop-base", "jacline-jrejs");
+      }
+
+      return null; // continue search
+    }
+
+    String bootstrapJar = s.substring(0, s.length() - 4) + "-bootstrap.jar";
+    Path bootstrapJarPath = Path.of(bootstrapJar);
+    if (Files.isReadable(bootstrapJarPath)) {
+      long size;
+      try {
+        size = Files.size(bootstrapJarPath);
+      } catch (IOException e) {
+        return null;
+      }
+      if (size > 0) {
+        return bootstrapJarPath.toString();
+      }
+    }
+
+    int lastSlash = bootstrapJar.lastIndexOf('/');
+    String embeddedJar = bootstrapJar.substring(lastSlash);
+    String targetDir = bootstrapJar.substring(0, lastSlash);
+
+    URL embeddedJarUrl = BootstrapJarSupport.class.getResource(embeddedJar);
+    if (embeddedJarUrl == null) {
+      throw new IllegalStateException("Could not find embedded bootstrap jar in classpath: "
+          + embeddedJar);
+    }
+
+    Path targetPath = Path.of(targetDir);
+
+    boolean reuseFile = false;
+    boolean reuseDir;
+    Path tempFile = null;
+
+    String pathToReturn;
+    try {
+      try {
+        tempFile = Files.createTempFile(targetPath, "jaclineTmp-", ".jar");
+        reuseDir = true;
+      } catch (IOException e) {
+        reuseDir = false;
+        try {
+          tempFile = Files.createTempFile("jaclineTmp-", ".jar");
+        } catch (IOException e1) {
+          IllegalStateException ise = new IllegalStateException(
+              "Cannot create temporary files needed for bootstrap classpath", e);
+          ise.addSuppressed(e1);
+          throw ise;
+        }
+      }
+      pathToReturn = tempFile.toString();
+
+      try (InputStream in = embeddedJarUrl.openStream();
+          OutputStream out = Files.newOutputStream(tempFile)) {
+        in.transferTo(out);
+      } catch (IOException e) {
+        throw new IllegalStateException("Could not copy bootstrap jar from classpath", e);
+      }
+      if (reuseDir) {
+        try {
+          Files.move(tempFile, bootstrapJarPath, StandardCopyOption.ATOMIC_MOVE);
+          reuseFile = true;
+          pathToReturn = bootstrapJarPath.toString();
+        } catch (IOException e) {
+          // ignore
+          e.printStackTrace();
+        }
+      }
+
+    } finally {
+      if (!reuseFile) {
+        if (tempFile != null) {
+          tempFile.toFile().deleteOnExit();
+        }
+      }
+    }
+
+    return pathToReturn;
   }
 }

@@ -43,11 +43,6 @@
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-jrejs</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.kohlschutter.jacline</groupId>
-            <artifactId>jacline-jrejs</artifactId>
-            <version>${project.version}</version>
             <classifier>bootstrap-embedded</classifier>
         </dependency>
 

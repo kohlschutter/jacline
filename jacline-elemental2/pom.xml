@@ -138,11 +138,11 @@
         <module>promise</module>
         <module>core</module>
         <module>dom</module>
-	<module>indexeddb</module>
-	<module>media</module>
-	<module>svg</module>
-	<module>webassembly</module>
-	<module>webgl</module>
-	<module>webstorage</module>
+        <module>indexeddb</module>
+        <module>media</module>
+        <module>svg</module>
+        <module>webassembly</module>
+        <module>webgl</module>
+        <module>webstorage</module>
     </modules>
 </project>
