@@ -224,7 +224,7 @@ public class DuplicatedTypesUnifier implements ModelVisitor {
       Map<String, Type> syntheticTypesByKey =
           syntheticTypesByEnclosingType.get(syntheticType.getEnclosingType());
 
-      Type existingSyntheticType = syntheticTypesByKey.get(typeKey);
+      Type existingSyntheticType = syntheticTypesByKey == null ? null : syntheticTypesByKey.get(typeKey);
 
       if (existingSyntheticType != null && existingSyntheticType != syntheticType) {
         // A type with the same structure is already generated.
@@ -237,6 +237,9 @@ public class DuplicatedTypesUnifier implements ModelVisitor {
           visitInnerSyntheticTypes(syntheticType);
         }
       } else {
+        if (syntheticTypesByKey == null) {
+          syntheticTypesByKey = new HashMap<>();
+        }
         syntheticTypesByKey.put(typeKey, syntheticType);
       }
     }
