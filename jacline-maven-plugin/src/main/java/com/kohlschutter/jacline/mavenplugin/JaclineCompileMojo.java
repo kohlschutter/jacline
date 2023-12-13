@@ -364,10 +364,14 @@ public class JaclineCompileMojo extends AbstractMojo {
         if (entryPointPaths.contains(f)) {
           continue;
         }
-        String simpleName = f.getName(f.getNameCount() - 1).toString();
 
-        AtomicInteger ai = sameFileMap.computeIfAbsent(sameFileMapKeyForName(simpleName), (
-            k) -> new AtomicInteger(0));
+        Path relativePath = rp.relativize(f);
+        Path relativeParent = relativePath.getParent();
+
+        String simpleName = relativePath.getName(relativePath.getNameCount() - 1).toString();
+
+        AtomicInteger ai = sameFileMap.computeIfAbsent(sameFileMapKeyForName(relativePath
+            .toString()), (k) -> new AtomicInteger(0));
         if (ai.get() != 0) {
           Matcher matcher = FILE_DEDUP_SUFFIX.matcher(simpleName);
           if (!matcher.find()) {
@@ -377,13 +381,16 @@ public class JaclineCompileMojo extends AbstractMojo {
           String baseName = matcher.replaceFirst(""); // strip .js suffix
           do {
             simpleName = baseName + "-" + ai.incrementAndGet() + suffix;
-          } while (sameFileMap.containsKey(sameFileMapKeyForName(simpleName)));
+            relativePath = relativeParent.resolve(simpleName);
+          } while (sameFileMap.containsKey(sameFileMapKeyForName(relativePath.toString())));
           sameFileMap.put(simpleName, new AtomicInteger(0));
         } else {
           ai.incrementAndGet();
         }
 
-        Files.copy(f, outDir.resolve(simpleName), StandardCopyOption.REPLACE_EXISTING);
+        Path targetPath = outDir.resolve(relativePath.toString());
+        Files.createDirectories(targetPath.getParent());
+        Files.copy(f, targetPath, StandardCopyOption.REPLACE_EXISTING);
       }
     }
   }
