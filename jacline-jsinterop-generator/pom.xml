@@ -15,12 +15,29 @@
     <artifactId>jacline-jsinterop-generator</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <auto.value.version>1.5.4</auto.value.version>
+    </properties>
+
     <description>Base classes and utilities that provide access to JavaScript
         language constructs
         that are not available in pure Java.</description>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <annotationProcessorPath>
+                            <groupId>com.google.auto.value</groupId>
+                            <artifactId>auto-value</artifactId>
+                            <version>${auto.value.version}</version>
+                        </annotationProcessorPath>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -135,7 +152,7 @@
         <dependency>
             <groupId>com.google.auto.value</groupId>
             <artifactId>auto-value</artifactId>
-            <version>1.5.4</version>
+            <version>${auto.value.version}</version>
         </dependency>
         <dependency>
             <groupId>args4j</groupId>
@@ -147,6 +164,5 @@
             <artifactId>jacline-j2cl</artifactId>
             <version>${project.version}</version>
         </dependency>
-
     </dependencies>
 </project>
