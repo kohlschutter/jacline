@@ -83,7 +83,11 @@ abstract class AbstractClosureVisitor {
     } else if (isModule(type)) {
       acceptModule(var);
     } else if (isTypedef(var)) {
+      try {
       acceptTypedef(var);
+      } catch (UnsupportedOperationException e) {
+        System.err.println(e+": "+var);
+      }
     } else if (type.isEnumType()) {
       acceptEnumType(toEnumType(type));
     } else if (isTypeAlias(var)) {
@@ -281,8 +285,12 @@ abstract class AbstractClosureVisitor {
       }
       endVisitMethod(method);
     } else {
+      try {
       if (visitField(member, isStatic)) {
         acceptType(propertyType);
+      }
+      } catch (NullPointerException e) {
+        System.err.println(e);
       }
     }
 
