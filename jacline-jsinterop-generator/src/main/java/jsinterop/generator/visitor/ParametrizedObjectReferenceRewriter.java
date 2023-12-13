@@ -89,8 +89,8 @@ public class ParametrizedObjectReferenceRewriter implements ModelVisitor {
       return;
     }
 
-    checkKeyType(keyType instanceof UnionTypeReference, keyType, typeName);
-    checkKeyType(isDoubleAndString(((UnionTypeReference) keyType).getTypes()), keyType, typeName);
+//    checkKeyType(keyType instanceof UnionTypeReference, keyType, typeName);
+//    checkKeyType(isDoubleAndString(((UnionTypeReference) keyType).getTypes()), keyType, typeName);
   }
 
   private static boolean isJsPropertyMapReference(TypeReference reference) {
