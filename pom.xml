@@ -33,6 +33,7 @@
         <module>jacline-gcl-base</module>
         <module>jacline-jsinterop-base</module>
         <module>jacline-jrejs</module>
+        <module>jacline-jsinterop-generator</module>
         <module>jacline-elemental2</module>
         <module>jacline-j2cl</module>
         <module>jacline-transpiler</module>
