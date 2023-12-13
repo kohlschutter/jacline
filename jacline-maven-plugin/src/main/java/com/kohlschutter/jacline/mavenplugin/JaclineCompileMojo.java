@@ -389,8 +389,13 @@ public class JaclineCompileMojo extends AbstractMojo {
         }
 
         Path targetPath = outDir.resolve(relativePath.toString());
-        Files.createDirectories(targetPath.getParent());
-        Files.copy(f, targetPath, StandardCopyOption.REPLACE_EXISTING);
+        if (targetPath != null) {
+          Path parentPath = targetPath.getParent();
+          if (parentPath != null) {
+            Files.createDirectories(parentPath);
+          }
+          Files.copy(f, targetPath, StandardCopyOption.REPLACE_EXISTING);
+        }
       }
     }
   }
