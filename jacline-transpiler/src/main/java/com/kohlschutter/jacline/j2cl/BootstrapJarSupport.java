@@ -129,6 +129,9 @@ final class BootstrapJarSupport {
     throw new IllegalStateException("Could not locate jacline-jrejs bootstrap.jar");
   }
 
+  @SuppressWarnings({
+      "PMD.NcssCount", "PMD.CognitiveComplexity", "PMD.CyclomaticComplexity",
+      "PMD.NPathComplexity"})
   private String checkClasspathElement(Path p) {
     String s = p.toString();
 
@@ -207,7 +210,7 @@ final class BootstrapJarSupport {
           IllegalStateException ise = new IllegalStateException(
               "Cannot create temporary files needed for bootstrap classpath", e);
           ise.addSuppressed(e1);
-          throw ise;
+          throw ise; // NOPMD.PreserveStackTrace
         }
       }
       pathToReturn = tempFile.toString();
