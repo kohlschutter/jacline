@@ -1,6 +1,6 @@
 # Noteworthy Changes
 
-## 1.0.1 (2023-12-XX)
+## 1.0.1 (2023-12-17)
 
 - Dependencies with transpiled JavaScript code are now transpiled by Jacline itself (jsinterop-base, jrejs, elemental2)
 - Add remaining elemental2 modules (indexeddb, media, svg, webassembly, webgl, webstorage)
