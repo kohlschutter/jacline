@@ -20,6 +20,33 @@
         <jacline.version>1.0.0</jacline.version>
     </properties>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/kohlschutter/jacline</url>
+        <connection>scm:git:git@github.com:kohlschutter/jacline.git</connection>
+        <developerConnection>scm:git:git@github.com:kohlschutter/jacline.git</developerConnection>
+    </scm>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <site>
+            <id>github.com/kohlschutter/jacline</id>
+            <url>gitsite:git@github.com/kohlschutter/jacline.git</url>
+        </site>
+    </distributionManagement>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/kohlschutter/jacline/issues</url>
+    </issueManagement>
+
     <dependencies>
         <dependency>
             <groupId>com.kohlschutter</groupId>
