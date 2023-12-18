@@ -142,7 +142,7 @@ First, define a property `jacline.version` in your POM.
 
 ```xml
     <properties>
-            <jacline.version>1.0.0</jacline.version>
+            <jacline.version>1.0.1</jacline.version>
     </properties>
 ```
 
