@@ -7,7 +7,7 @@
         <!-- In your projects, please remove/replace with your own parent -->
         <groupId>com.kohlschutter.jacline</groupId>
         <artifactId>jacline</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
