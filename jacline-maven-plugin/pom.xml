@@ -29,7 +29,6 @@
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-transpiler</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!--

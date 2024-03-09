@@ -32,12 +32,10 @@
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-j2cl</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-gcl-base</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>

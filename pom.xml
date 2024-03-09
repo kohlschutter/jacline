@@ -7,7 +7,8 @@
     <parent>
         <groupId>com.kohlschutter</groupId>
         <artifactId>kohlschutter-parent</artifactId>
-        <version>1.6.6</version>
+        <version>1.7.0-SNAPSHOT</version>
+        <relativePath>../kohlschutter-parent/pom.xml</relativePath>
     </parent>
 
     <groupId>com.kohlschutter.jacline</groupId>
@@ -17,7 +18,8 @@
 
     <properties>
         <kohlschutter.java.release>11</kohlschutter.java.release>
-        <jacline.version>1.0.0</jacline.version>
+        <jacline.previous.version>1.0.1</jacline.previous.version>
+        <jacline.version>${jacline.previous.version}</jacline.version>
     </properties>
 
     <licenses>
@@ -46,6 +48,68 @@
         <system>GitHub</system>
         <url>https://github.com/kohlschutter/jacline/issues</url>
     </issueManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.kohlschutter.jacline</groupId>
+                    <artifactId>jacline-maven-plugin</artifactId>
+                    <version>${jacline.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-annotations</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-gcl-base</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-jsinterop-base</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-jrejs</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-jsinterop-generator</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-j2cl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-transpiler</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-maven-plugin</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kohlschutter.jacline</groupId>
+                <artifactId>jacline-lib-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>

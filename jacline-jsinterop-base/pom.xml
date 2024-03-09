@@ -98,7 +98,6 @@
             <plugin>
                 <groupId>com.kohlschutter.jacline</groupId>
                 <artifactId>jacline-maven-plugin</artifactId>
-                <version>${jacline.version}</version>
                 <executions>
                     <execution>
                         <id>default-jacline-compile</id>
@@ -120,18 +119,16 @@
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-annotations</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-gcl-base</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-jrejs</artifactId>
             <!-- Use the previous release version to avoid dependency cycle -->
-            <version>${jacline.version}</version>
+            <version>${jacline.previous.version}</version><!--$NO-MVN-MAN-VER$-->
             <exclusions>
                 <exclusion>
                     <groupId>com.kohlschutter.jacline</groupId>

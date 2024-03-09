@@ -127,7 +127,6 @@
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-annotations</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
