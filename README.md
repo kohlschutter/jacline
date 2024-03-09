@@ -44,10 +44,10 @@ Particularly, jacline sports the following highlights:
   upon application start, even for library dependencies.  This means there is no need for JavaScript
   entry point files at all!
   - `@JsIgnoreType`: Declares that a type should be ignored entirely for transpilation purposes.
-  - `@JsPatch`: Declares that a type's Javascript implementation is being modified or replaced with
+  - `@JsPatched`: Declares that a type's Javascript implementation is being modified or replaced with
   a provided JavaScript patch module.
   - `@JsImplementationProvidedSeparately`: Declares that a method of a type that is marked with
-  `@JsType(isNative=true)` or `@JsPatch` is being provided with a default implementation for vanilla
+  `@JsType(isNative=true)` or `@JsPatched` is being provided with a default implementation for vanilla
   Java, whereas the JavaScript-specific implementation is provided separately in some JavaScript
   file ("Common-Sourcing").  Bodies of methods annotated with this implementation are considered
   empty/no-ops for transpilation purposes.
