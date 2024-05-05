@@ -23,7 +23,7 @@ import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * Maintains a known state.
- * 
+ *
  * @param <V> The type of the known state.
  * @author Christian Kohlschütter
  */
@@ -41,7 +41,7 @@ public final class KnownState<V> {
   /**
    * Updates the known state, and calls the given consumer only if the new state is different from
    * the currently known state.
-   * 
+   *
    * @param val The new state.
    * @param onNewValue The function to call if the state has changed.
    */
@@ -54,7 +54,7 @@ public final class KnownState<V> {
 
   /**
    * Updates the known state.
-   * 
+   *
    * @param value The new state.
    */
   public void setValue(V value) {
@@ -63,7 +63,7 @@ public final class KnownState<V> {
 
   /**
    * Checks if the known state is equivalent to the given state.
-   * 
+   *
    * @param val The state to check.
    * @return {@code true} if equivalent.
    */

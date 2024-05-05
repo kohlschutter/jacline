@@ -23,7 +23,7 @@ import elemental2.dom.DomGlobal;
 
 /**
  * Helper to schedule some delayed task, which may be rescheduled/replaced by some other operation.
- * 
+ *
  * @author Christian Kohlschütter
  */
 final class JsExclusiveOp implements ExclusiveOp {

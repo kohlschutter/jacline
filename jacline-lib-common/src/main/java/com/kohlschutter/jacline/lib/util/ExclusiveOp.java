@@ -21,7 +21,7 @@ package com.kohlschutter.jacline.lib.util;
  * Helper to schedule some exclusive operation, which may be requested via multiple
  * delayed/asynchronous tasks. If there are multiple concurrent requests, only the most recently
  * requested operation should be permitted.
- * 
+ *
  * @author Christian Kohlschütter
  */
 public interface ExclusiveOp {
@@ -52,14 +52,14 @@ public interface ExclusiveOp {
   /**
    * Begins a separately scheduled operation, and returns some ID that can be later checked with
    * {@link #isCurrent(Object)}.
-   * 
+   *
    * @return The reservation id;
    */
   Object reserve();
 
   /**
    * Checks if the given reservation ID is valid.
-   * 
+   *
    * @param reservationId The reservation id.
    * @return {@code true} if valid.
    */
