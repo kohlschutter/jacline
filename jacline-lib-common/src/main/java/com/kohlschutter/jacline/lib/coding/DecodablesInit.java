@@ -17,6 +17,7 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
+import java.util.Objects;
 import java.util.ServiceLoader;
 
 final class DecodablesInit {
@@ -24,9 +25,10 @@ final class DecodablesInit {
   }
 
   static void init() {
-    for (@SuppressWarnings("unused")
+    for (
     Codable en : ServiceLoader.load(Codable.class)) {
       // trigger static initializers
+      Objects.requireNonNull(en);
     }
   }
 }
