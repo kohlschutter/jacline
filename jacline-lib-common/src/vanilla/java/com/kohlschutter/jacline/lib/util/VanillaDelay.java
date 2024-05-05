@@ -13,6 +13,10 @@ final class VanillaDelay {
   private static final ScheduledExecutorService EXECUTOR = Executors.newScheduledThreadPool(0);
   private final ScheduledFuture<?> schedule;
 
+  VanillaDelay() {
+    schedule = null;
+  }
+
   VanillaDelay(int delay, Callable<?> op) {
     schedule = EXECUTOR.schedule(op, delay, TimeUnit.MILLISECONDS);
   }
@@ -22,6 +26,10 @@ final class VanillaDelay {
   }
 
   boolean cancel() {
-    return schedule.cancel(false);
+    if (schedule != null) {
+      return schedule.cancel(false);
+    } else {
+      return false;
+    }
   }
 }

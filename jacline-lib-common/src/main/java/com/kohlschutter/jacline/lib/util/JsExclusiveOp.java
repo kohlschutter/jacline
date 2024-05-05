@@ -17,24 +17,53 @@
  */
 package com.kohlschutter.jacline.lib.util;
 
+import java.util.Objects;
+
+import elemental2.dom.DomGlobal;
+
 /**
  * Helper to schedule some delayed task, which may be rescheduled/replaced by some other operation.
  * 
  * @author Christian Kohlschütter
  */
-public interface ExclusiveDelay {
+final class JsExclusiveOp implements ExclusiveOp {
+  private volatile double timeoutID = -1;
+  private volatile int id = 0;
+
+  JsExclusiveOp() {
+  }
 
   /**
    * Cancels the scheduled operation.
    */
-  void cancel();
+  @Override
+  public synchronized void cancel() {
+    if (timeoutID != -1) {
+      DomGlobal.clearTimeout(timeoutID);
+      timeoutID = -1;
+      ++id;
+    }
+  }
 
   /**
    * Schedules an operation immediately (with zero delay).
    *
    * @param callback The operation.
    */
-  void schedule(Runnable callback);
+  @Override
+  public void schedule(Runnable callback) {
+    schedule(0, callback);
+  }
+
+  @Override
+  public synchronized Object reserve() {
+    return ++id;
+  }
+
+  @Override
+  public synchronized boolean isCurrent(Object expectedId) {
+    return Objects.equals(id, expectedId);
+  }
 
   /**
    * Schedules an operation with the given delay (in milliseconds).
@@ -42,11 +71,16 @@ public interface ExclusiveDelay {
    * @param delay The delay, in milliseconds.
    * @param callback The operation.
    */
-  void schedule(double delay, Runnable callback);
+  @Override
+  public synchronized void schedule(double delay, Runnable callback) {
+    cancel();
 
-  static ExclusiveDelay newInstance() {
-    return JaclineUtil.isJavaScriptEnvironment()
-        ? new ExclusiveJsDelay()
-        : new ExclusiveVanillaDelay();
+    int expectedId = ++id;
+    timeoutID = DomGlobal.setTimeout((x) -> {
+      if (timeoutID != -1 && id == expectedId) {
+        callback.run();
+        timeoutID = -1;
+      }
+    }, delay);
   }
 }

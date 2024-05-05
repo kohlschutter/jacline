@@ -25,10 +25,10 @@ import com.kohlschutter.jacline.annotations.JsIgnoreType;
  * @author Christian Kohlschütter
  */
 @JsIgnoreType
-final class ExclusiveVanillaDelay implements ExclusiveDelay {
+final class VanillaExclusiveOp implements ExclusiveOp {
   private volatile VanillaDelay vanillaDelay = null;
 
-  ExclusiveVanillaDelay() {
+  VanillaExclusiveOp() {
   }
 
   /**
@@ -67,5 +67,18 @@ final class ExclusiveVanillaDelay implements ExclusiveDelay {
       callback.run();
       this.vanillaDelay = null;
     });
+  }
+
+  @Override
+  public Object reserve() {
+    cancel();
+    VanillaDelay reservation = new VanillaDelay();
+    this.vanillaDelay = reservation;
+    return reservation;
+  }
+
+  @Override
+  public boolean isCurrent(Object reservation) {
+    return reservation != null && this.vanillaDelay == reservation;
   }
 }
