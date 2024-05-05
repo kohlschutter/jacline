@@ -28,7 +28,7 @@ import elemental2.dom.DomGlobal;
  */
 final class JsExclusiveOp implements ExclusiveOp {
   private volatile double timeoutID = -1;
-  private volatile int id = 0;
+  private int id = 0;
 
   JsExclusiveOp() {
   }
