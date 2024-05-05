@@ -42,7 +42,7 @@ public final class Decodables {
   }
 
   @JsExport
-  public boolean hasDecoder(String type) {
+  public static boolean hasDecoder(String type) {
     return MAP.containsKey(type);
   }
 
