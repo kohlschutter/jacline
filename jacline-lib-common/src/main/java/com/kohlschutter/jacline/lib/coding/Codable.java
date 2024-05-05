@@ -23,7 +23,9 @@ import com.kohlschutter.jacline.annotations.JsServiceProvider;
  * Marks an object capable to be encoded via {@link KeyEncoder}, and decoded via {@link KeyDecoder}.
  * <p>
  * Implementations should also provide a public static method {@code #decode(Object)} and register
- * the decoder via {@link Decodables#setDecoder} from a <em>static initializer</em> block.
+ * the decoder via: {@code
+ *  private static final String CODED_TYPE = Dumbo.registerCodable(TheClass.class,
+ *  TheClass::decode) }
  * <p>
  * In order to ensure that the static initializer is run before {@link Decodables} tries to resolve
  * the decoder, the implementation should be registered as a service provider for this interface
