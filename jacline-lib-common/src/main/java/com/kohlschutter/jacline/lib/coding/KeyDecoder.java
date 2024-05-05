@@ -20,6 +20,7 @@ package com.kohlschutter.jacline.lib.coding;
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
 import com.kohlschutter.jacline.lib.io.JsCloseable;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, namespace = "kohlschutter.coding", name = "KeyDecoder")
@@ -29,6 +30,16 @@ public interface KeyDecoder extends JsCloseable {
   Boolean booleanForKey(String key) throws CodingException;
 
   Number numberForKey(String key) throws CodingException;
+
+  @JsOverlay
+  default int intForKey(String key) throws CodingException {
+    Number num = numberForKey(key);
+    if (num == null) {
+      return 0;
+    } else {
+      return num.intValue();
+    }
+  }
 
   <T> T[] arrayForKey(String key, ArrayDecoder<T> decoder) throws CodingException;
 
