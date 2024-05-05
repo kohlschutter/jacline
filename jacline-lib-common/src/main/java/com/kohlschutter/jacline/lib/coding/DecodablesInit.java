@@ -25,8 +25,7 @@ final class DecodablesInit {
   }
 
   static void init() {
-    for (
-    Codable en : ServiceLoader.load(Codable.class)) {
+    for (Codable en : ServiceLoader.load(Codable.class)) {
       // trigger static initializers
       Objects.requireNonNull(en);
     }
