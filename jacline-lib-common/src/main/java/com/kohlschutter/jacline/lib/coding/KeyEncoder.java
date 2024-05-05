@@ -18,12 +18,13 @@
 package com.kohlschutter.jacline.lib.coding;
 
 import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
+import com.kohlschutter.jacline.annotations.JsPatched;
 
 import jsinterop.annotations.JsType;
 
-@JsType(isNative = true, namespace = "kohlschutter.coding", name = "KeyEncoder")
+@JsType
+@JsPatched
 public interface KeyEncoder {
-
   /**
    * Encodes a string (or {@code null}) for the given key.
    *
