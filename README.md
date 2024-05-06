@@ -69,6 +69,7 @@ Particularly, jacline sports the following highlights:
   - Common
     [logging](jacline-lib-common/src/main/java/com/kohlschutter/jacline/lib/log/) facility, for
     `console` (JavaScript) and `slf4j` (JVM, exchangable via Java SPI)
+- Enables the suppression of certain Closure warnings by translating Java `@SuppressWarnings` to the corresponding JavaScript `@suppress` annotation.
 - Simplifies the creation of sourcemap files (via Maven configuration properties)
 
 ## Limitations
