@@ -17,9 +17,11 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
+import java.io.IOException;
+
 import jsinterop.annotations.JsMethod;
 
-public class CodingException extends Exception {
+public class CodingException extends IOException {
   private static final long serialVersionUID = 1L;
 
   public CodingException() {
