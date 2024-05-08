@@ -37,7 +37,7 @@ final class JsExclusiveOp implements ExclusiveOp {
    * Cancels the scheduled operation.
    */
   @Override
-  public synchronized void cancel() {
+  public void cancel() {
     if (timeoutID != -1) {
       DomGlobal.clearTimeout(timeoutID);
       timeoutID = -1;
@@ -56,12 +56,12 @@ final class JsExclusiveOp implements ExclusiveOp {
   }
 
   @Override
-  public synchronized Object reserve() {
+  public Object reserve() {
     return ++id;
   }
 
   @Override
-  public synchronized boolean isCurrent(Object expectedId) {
+  public boolean isCurrent(Object expectedId) {
     return Objects.equals(id, expectedId);
   }
 
@@ -72,7 +72,7 @@ final class JsExclusiveOp implements ExclusiveOp {
    * @param callback The operation.
    */
   @Override
-  public synchronized void schedule(double delay, Runnable callback) {
+  public void schedule(double delay, Runnable callback) {
     cancel();
 
     int expectedId = ++id;

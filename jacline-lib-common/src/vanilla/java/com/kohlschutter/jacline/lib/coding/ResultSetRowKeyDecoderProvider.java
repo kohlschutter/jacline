@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
+
 /**
  * A {@link KeyDecoderProvider} that can decode objects from a {@link ResultSet} row.
  * 
@@ -28,6 +30,7 @@ public class ResultSetRowKeyDecoderProvider implements KeyDecoderProvider {
    * 
    * @return The default instance.
    */
+  @SuppressFBWarnings("MS_EXPOSE_REP")
   public static ResultSetRowKeyDecoderProvider getDefaultInstance() {
     return DEFAULT;
   }
