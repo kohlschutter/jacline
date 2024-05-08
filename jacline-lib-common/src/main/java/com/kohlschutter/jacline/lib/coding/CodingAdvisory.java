@@ -2,6 +2,8 @@ package com.kohlschutter.jacline.lib.coding;
 
 import java.util.Arrays;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
+
 import jsinterop.annotations.JsType;
 
 /**
@@ -27,8 +29,9 @@ public class CodingAdvisory {
     return level;
   }
 
+  @SuppressFBWarnings("EI_EXPOSE_REP")
   public String[] getKeys() {
-    return keys; 
+    return keys;
   }
 
   public String getReason() {
