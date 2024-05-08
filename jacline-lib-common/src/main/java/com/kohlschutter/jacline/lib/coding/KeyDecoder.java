@@ -47,6 +47,8 @@ public interface KeyDecoder extends JsCloseable {
 
   boolean hasKey(String key) throws CodingException;
 
+  void markAdvisory(CodingAdvisory advisory) throws CodingException;
+
   @JsImplementationProvidedSeparately
   static KeyDecoder load(String expectedCodedType, Object encoded) throws CodingException {
     return CodingServiceProvider.getDefault().keyDecoder(expectedCodedType, encoded);

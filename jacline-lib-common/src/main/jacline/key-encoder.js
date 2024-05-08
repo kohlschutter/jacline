@@ -26,6 +26,8 @@ class KeyEncoder {
         this.obj[key] = value;
         return this;
     }
+    markAdvisory(_) {
+    }
     encodeArray(key, encoder, value) {
         this.obj[key] = value == null ? null : encoder(value);
         return this;

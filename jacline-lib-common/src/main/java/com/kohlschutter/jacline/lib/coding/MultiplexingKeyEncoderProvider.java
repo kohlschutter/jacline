@@ -67,6 +67,14 @@ public final class MultiplexingKeyEncoderProvider implements KeyEncoderProvider 
     }
 
     @Override
+    public void markAdvisory(CodingAdvisory advisory)
+        throws CodingException {
+      for (KeyEncoder ke : encoders) {
+        ke.markAdvisory(advisory);
+      }
+    }
+
+    @Override
     public KeyEncoder beginEncodeObject(String key, String type) throws CodingException {
       KeyEncoder[] objectEncoders = new KeyEncoder[encoders.length];
       for (int i = 0, n = encoders.length; i < n; i++) {

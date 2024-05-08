@@ -131,6 +131,10 @@ public class ResultSetRowKeyDecoderProvider implements KeyDecoderProvider {
       public <T> T[] arrayForKey(String key, ArrayDecoder<T> decoder) throws CodingException {
         throw new CodingException("Not yet implemented");
       }
+
+      @Override
+      public void markAdvisory(CodingAdvisory advisory) throws CodingException {
+      }
     };
   }
 }

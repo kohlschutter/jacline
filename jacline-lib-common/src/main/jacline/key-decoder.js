@@ -40,6 +40,9 @@ class KeyDecoder {
         return dp(this.o[k]);
     }
 
+    markAdvisory(_) {
+    }
+
     objectForKey(k, decoder) {
         var obj = this.o[k];
         if (obj) {

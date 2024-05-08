@@ -117,4 +117,8 @@ public final class JsonKeyDecoder implements KeyDecoder {
       parser.close();
     }
   }
+
+  @Override
+  public void markAdvisory(CodingAdvisory advisory) throws CodingException {
+  }
 }

@@ -127,4 +127,8 @@ public final class JsonKeyEncoder implements KeyEncoder {
   public JsonObject getEncoded() {
     return builder.build();
   }
+
+  @Override
+  public void markAdvisory(CodingAdvisory advisory) throws CodingException {
+  }
 }

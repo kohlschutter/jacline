@@ -93,6 +93,8 @@ public interface KeyEncoder {
    */
   Object getEncoded() throws CodingException;
 
+  void markAdvisory(CodingAdvisory advisory) throws CodingException;
+
   @JsImplementationProvidedSeparately
   static KeyEncoder begin(String type) throws CodingException {
     return CodingServiceProvider.getDefault().keyEncoder(type);
