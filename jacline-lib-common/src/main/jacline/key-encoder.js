@@ -1,5 +1,7 @@
 goog.module("kohlschutter.coding.KeyEncoder");
 
+var JaclineUtil = goog.require('com.kohlschutter.jacline.lib.util.JaclineUtil$impl');
+
 // FIXME type checking
 class KeyEncoder {
     constructor(...args) {
@@ -14,18 +16,30 @@ class KeyEncoder {
         return e;
     }
 
+    static unbox(v) { // hacky way to unbox j2cl Number and Boolean objects
+        if(typeof v == "object") {
+            for (var i in v) {
+                return v[i];
+            }
+        }
+        return v;
+    }
+
     encodeString(key, value) {
         this.obj[key] = value;
         return this;
     }
     encodeBoolean(key, value) {
+        value = KeyEncoder.unbox(JaclineUtil.m_toJsonBoolean__java_lang_Boolean__java_lang_Object(value));
         this.obj[key] = value;
         return this;
     }
     encodeNumber(key, value) {
+        value = KeyEncoder.unbox(JaclineUtil.m_toJsonNumber__java_lang_Number__java_lang_Object(value));
         this.obj[key] = value;
         return this;
     }
+
     markAdvisory(_) {
     }
     encodeArray(key, encoder, value) {
@@ -38,7 +52,9 @@ class KeyEncoder {
     }
 
     end() {
-        this.obj["javaClass"] = this.type;
+        if (this.type != null) {
+            this.obj["javaClass"] = this.type;
+        }
         var p = this.parent;
         if (p == null) {
             return this;

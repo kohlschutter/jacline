@@ -39,4 +39,36 @@ public final class JaclineUtil {
   public static boolean isJavaScriptEnvironment() {
     return false;
   }
+
+  public static Object toJsonBoolean(Boolean b) {
+    if (b == null) {
+      return null;
+    } else {
+      return b.booleanValue();
+    }
+  }
+
+  public static Object toJsonNumber(Number n) {
+    if (n == null) {
+      return null;
+    } else if (n instanceof Integer) {
+      return ((Integer) n).intValue();
+    } else if (n instanceof Double) {
+      return ((Float) n).doubleValue();
+    } else if (n instanceof Short) {
+      return ((Short) n).shortValue();
+    } else if (n instanceof Float) {
+      return ((Float) n).floatValue();
+    } else if (n instanceof Long) {
+      return ((Long) n).longValue();
+    } else if (n instanceof Byte) {
+      return ((Byte) n).byteValue();
+      // } else if (n instanceof BigDecimal) {
+      // return ((BigDecimal)n).toString();
+      // } else if (n instanceof BigInteger) {
+      // return ((BigInteger)n).toString();
+    } else {
+      return n.doubleValue();
+    }
+  }
 }
