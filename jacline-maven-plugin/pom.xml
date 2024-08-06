@@ -30,6 +30,10 @@
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-transpiler</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kohlschutter.jacline</groupId>
+            <artifactId>jacline-closure</artifactId>
+        </dependency>
 
         <!--
         <dependency>

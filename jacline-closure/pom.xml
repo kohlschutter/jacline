@@ -10,14 +10,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>jacline-j2cl</artifactId>
+    <artifactId>jacline-closure</artifactId>
 
     <properties>
-        <kohlschutter.java.release>17</kohlschutter.java.release>
         <kohlschutter.project.notice.file>${project.parent.basedir}/NOTICE</kohlschutter.project.notice.file>
-        <xlint.compiler.arg></xlint.compiler.arg>
-        <spotbugs.disabled>true</spotbugs.disabled>
-        <checkstyle.disabled>false</checkstyle.disabled>
     </properties>
 
     <build>
@@ -34,13 +30,56 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>src/j2cl/java</source>
-                                <source>src/jacline/java</source>
-                                <source>src/libworker_protocol_proto/java</source>
-                                <source>src/libast/java</source>
-                                <source>src/libsummary_proto/java</source>
-                                <source>src/liblibrary_info_proto/java</source>
+                                <source>
+                                    src/extra/java</source>
                             </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-externs-zip</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>externs</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <outputDirectory>
+                                ${project.build.outputDirectory}/com/google/javascript/jscomp</outputDirectory>
+                            <descriptors>
+                                <descriptor>src/main/assembly/externs.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>io.github.blackrock</groupId>
+                <artifactId>protoc-maven-plugin</artifactId>
+                <version>2.0.1</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <addProtoSources>none</addProtoSources>
+                            <includeMavenTypes>direct</includeMavenTypes>
+                            <includeDirectories>
+                                <include>${project.basedir}/protoc-include</include>
+                            </includeDirectories>
+                            <inputDirectories>
+                                <include>src/main/java</include>
+                            </inputDirectories>
+                            <outputDirectorySuffix>protobuf</outputDirectorySuffix>
                         </configuration>
                     </execution>
                 </executions>
@@ -125,31 +164,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.kohlschutter.jacline</groupId>
-            <artifactId>jacline-annotations</artifactId>
+            <groupId>com.kohlschutter</groupId>
+            <artifactId>kohlschutter-test-util</artifactId>
+            <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>args4j</groupId>
-            <artifactId>args4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.auto</groupId>
-            <artifactId>auto-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.auto.service</groupId>
-            <artifactId>auto-service</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.escapevelocity</groupId>
-            <artifactId>escapevelocity</artifactId>
-            <version>1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.auto.value</groupId>
-            <artifactId>auto-value</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -163,52 +182,49 @@
             <artifactId>protobuf-java-util</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.jdt</groupId>
-            <artifactId>org.eclipse.jdt.core</artifactId>
-            <version>3.36.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
         <dependency>
-            <!--
-            <groupId>com.google.javascript</groupId>
-            <artifactId>closure-compiler</artifactId>
-            <version>v20231112</version>
-        -->
-            <groupId>com.kohlschutter.jacline</groupId>
-            <artifactId>jacline-closure</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.jsinterop</groupId>
-            <artifactId>jsinterop-annotations</artifactId>
-            <version>2.1.0</version>
+            <groupId>org.jspecify</groupId>
+            <artifactId>jspecify</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.kohlschutter.jdk.compiler</groupId>
-            <artifactId>standalone-jdk11</artifactId>
-            <version>1.1.3</version>
+            <groupId>args4j</groupId>
+            <artifactId>args4j</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.auto</groupId>
+            <artifactId>auto-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.auto.value</groupId>
+            <artifactId>auto-value</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.google.truth</groupId>
             <artifactId>truth</artifactId>
         </dependency>
-
-        <!-- Test-only dependencies below -->
         <dependency>
-            <groupId>com.kohlschutter</groupId>
-            <artifactId>kohlschutter-test-util</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava-testlib</artifactId>
-            <version>32.1.3-jre</version>
-            <scope>test</scope>
+            <groupId>com.google.re2j</groupId>
+            <artifactId>re2j</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.github.java-diff-utils</groupId>
+            <artifactId>java-diff-utils</artifactId>
+            <version>4.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.10.14</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

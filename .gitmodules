@@ -10,3 +10,7 @@
 [submodule "jacline-jsinterop-base/jsinterop-base"]
 	path = jacline-jsinterop-base/jsinterop-base
 	url = https://github.com/google/jsinterop-base.git
+[submodule "closure-compiler"]
+	path = closure-compiler
+	url = git@github.com:kohlschutter/closure-compiler.git
+	branch = v20240609-wip

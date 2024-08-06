@@ -31,6 +31,10 @@
     <dependencies>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
+            <artifactId>jacline-closure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-j2cl</artifactId>
         </dependency>
         <dependency>
@@ -43,7 +47,7 @@
             <version>${project.version}</version>
             <classifier>bootstrap-embedded</classifier>
         </dependency>
-
+        <!--
         <dependency>
             <groupId>org.clojure</groupId>
             <artifactId>google-closure-library</artifactId>
@@ -54,7 +58,7 @@
             <artifactId>google-closure-library-third-party</artifactId>
             <version>0.0-20230227-c7c0a541</version>
         </dependency>
-
+        -->
         <dependency>
             <groupId>com.kohlschutter</groupId>
             <artifactId>kohlschutter-test-util</artifactId>

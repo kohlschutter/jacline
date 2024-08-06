@@ -21,10 +21,10 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.javascript.jscomp.AbstractCompiler;
 import com.google.javascript.jscomp.CodePrinter.LicenseTracker;
 import com.google.javascript.jscomp.Compiler;
-import com.google.javascript.jscomp.jarjar.com.google.common.collect.ImmutableSet;
 import com.google.javascript.rhino.Node;
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 

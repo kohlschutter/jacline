@@ -1,0 +1,18 @@
+<assembly>
+  <id>externs</id>
+  <includeBaseDirectory>false</includeBaseDirectory>
+
+  <formats>
+    <format>zip</format>
+  </formats>
+  <fileSets>
+    <fileSet>
+      <outputDirectory>.</outputDirectory>
+      <directory>${project.basedir}/../closure-compiler/externs/
+      </directory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+</assembly>
