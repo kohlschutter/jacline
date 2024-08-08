@@ -17,6 +17,8 @@ public double clientY;
 public boolean ctrlKey;
 public DataTransfer dataTransfer;
 public boolean metaKey;
+public double movementX;
+public double movementY;
 public double offsetX;
 public double offsetY;
 public double pageX;

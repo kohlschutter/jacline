@@ -4,6 +4,7 @@ import elemental2.dom.DOMTokenList;
 import java.lang.Double;
 import elemental2.dom.HTMLCollection;
 import elemental2.dom.TrustedScriptURL;
+import elemental2.dom.PointerLockOptions;
 import elemental2.dom.Event;
 import elemental2.promise.Promise;
 import jsinterop.base.JsPropertyMap;
@@ -654,6 +655,8 @@ replaceWith(Js.<Element.ReplaceWithNodesUnionType[]>uncheckedCast(nodes));
 }
 public native Promise<Void> requestFullscreen();
 public native Promise<Void> requestFullscreen(FullscreenOptions options);
+public native Promise<Void> requestPointerLock();
+public native Promise<Void> requestPointerLock(PointerLockOptions options);
 public native void scrollIntoView();
 @JsOverlay
 public final void scrollIntoView(ScrollIntoViewOptions top){
