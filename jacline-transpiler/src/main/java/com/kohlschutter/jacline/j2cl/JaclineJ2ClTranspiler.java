@@ -19,7 +19,9 @@ package com.kohlschutter.jacline.j2cl;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.FileTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,7 +47,33 @@ public class JaclineJ2ClTranspiler implements Closeable {
   public void close() throws IOException {
   }
 
-  public void transpile(TranspilerSources sources, CompilerOutput output) throws IOException,
+  private static long getLastModMax(List<FileInfo> allSources) throws IOException {
+    long lastModMax = 0;
+    long now = System.currentTimeMillis();
+
+    for (FileInfo fi : allSources) {
+      String path = fi.originalPath();
+      if (path == null || path.isEmpty()) {
+        continue;
+      }
+      Path p = Path.of(path);
+      if (!Files.exists(p)) {
+        continue;
+      }
+      FileTime ft = Files.getLastModifiedTime(p);
+      long millis = ft.toMillis();
+      if (millis < 0) {
+        continue;
+      } else if (millis > now) {
+        millis = now;
+      } else if (millis > lastModMax) {
+        lastModMax = millis;
+      }
+    }
+    return lastModMax;
+  }
+
+  public long transpile(TranspilerSources sources, CompilerOutput output) throws IOException,
       JaclineException {
     output.setStage("j2js");
 
@@ -66,7 +94,7 @@ public class JaclineJ2ClTranspiler implements Closeable {
     if (sourceFileInfos.isEmpty() && nativeSourceFileInfos.isEmpty()) {
       output.markSkipped();
       output.getProblems().addWarning("Nothing to compile");
-      return;
+      return 0;
     }
 
     try (Output out = OutputUtils.initOutput(output.getOutputPath(), problems)) {
@@ -100,5 +128,7 @@ public class JaclineJ2ClTranspiler implements Closeable {
         throw new JaclineException(output.getProblemSnapshot());
       }
     }
+
+    return getLastModMax(allSources);
   }
 }
