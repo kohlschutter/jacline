@@ -46,12 +46,15 @@ public class ClosureCompiler implements Closeable {
   private static List<SourceFile> builtinExterns;
 
   private final Path sourceMapWorkDir;
+  private final URI urlBase;
   private final URI sourceMapPrefix;
 
   @SuppressWarnings("PMD.AssignmentToNonFinalStatic")
   @SuppressFBWarnings({
       "ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD", "EI_EXPOSE_REP", "CT_CONSTRUCTOR_THROW"})
-  public ClosureCompiler(Path sourceMapWorkDir, URI sourceMapPrefix) throws IOException {
+  public ClosureCompiler(Path sourceMapWorkDir, URI urlBase, URI sourceMapPrefix)
+      throws IOException {
+    this.urlBase = urlBase;
     this.sourceMapPrefix = sourceMapPrefix;
     if (builtinExterns == null) {
       builtinExterns = Collections.unmodifiableList(CommandLineRunner.getBuiltinExterns(
@@ -106,7 +109,8 @@ public class ClosureCompiler implements Closeable {
     if (disableStderr) {
       compiler.setSuppressReport(true);
     }
-
+//    options.setCodingConvention(CodingConventions.getDefault());
+    
     return new ClosureCompilerRun(compiler, builtinExterns, filesMap, options, outputFileName,
         sourceMapLocationMapping);
   }
@@ -121,7 +125,7 @@ public class ClosureCompiler implements Closeable {
     options.setSourceMapDetailLevel(DetailLevel.ALL);
     options.setParseInlineSourceMaps(true);
     SourceMapLocationMapping sourceMapLocationMapping = new SourceMapLocationMapping(
-        sourceMapWorkDir, sourceMapPrefix);
+        sourceMapWorkDir, urlBase, sourceMapPrefix);
     options.setSourceMapLocationMappings(List.of(sourceMapLocationMapping));
 
     return sourceMapLocationMapping;

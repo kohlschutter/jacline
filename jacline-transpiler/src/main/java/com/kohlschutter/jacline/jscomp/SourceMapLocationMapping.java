@@ -56,11 +56,16 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
   private final Map<String, String> prefixHash = new HashMap<>();
   private final List<FileSystem> fileSystemsToClose = new ArrayList<>();
 
+  private final URI basePrefix;
   private final Path sourceMapWorkDir;
   private final String hostPrefix;
+  private final URI prefix;
 
-  public SourceMapLocationMapping(Path sourceMapWorkDir, URI prefix) throws IOException {
+  public SourceMapLocationMapping(Path sourceMapWorkDir, URI basePrefix, URI prefix)
+      throws IOException {
     this.sourceMapWorkDir = sourceMapWorkDir;
+    this.basePrefix = basePrefix;
+    this.prefix = prefix;
     hostPrefix = stripTrailingSlash(prefix.resolve("/").toASCIIString());
     if (Files.exists(sourceMapWorkDir)) {
       IOUtil.deleteRecursively(sourceMapWorkDir.resolve("sourcemaps/jacline"));
@@ -103,13 +108,13 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
     String localPath;
 
     if (index >= 0) {
-      String prefix = location.substring(0, index);
+      String locationPrefix = location.substring(0, index);
       localPath = location.substring(index + META_INF_JACLINE.length());
-      mappedPrefix = prefixHash.computeIfAbsent(prefix, this::idForPrefix);
+      mappedPrefix = prefixHash.computeIfAbsent(locationPrefix, this::idForPrefix);
     } else {
-      String prefix = location.substring(0, lastSlash);
+      String locationPrefix = location.substring(0, lastSlash);
       localPath = location.substring(lastSlash + 1);
-      mappedPrefix = prefixHash.computeIfAbsent(prefix, this::idForPrefix);
+      mappedPrefix = prefixHash.computeIfAbsent(locationPrefix, this::idForPrefix);
     }
 
     String mappedPath = "/sourcemaps/jacline/" + mappedPrefix + "/" + localPath;
@@ -154,13 +159,13 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
     }
   }
 
-  private String idForPrefix(String prefix) {
-    String hash = SHA_256.hashString(prefix, StandardCharsets.UTF_8).toString();
+  private String idForPrefix(String pathPrefix) {
+    String hash = SHA_256.hashString(pathPrefix, StandardCharsets.UTF_8).toString();
 
     String projectName;
-    projectName = projectNameFromTargetPath(prefix);
+    projectName = projectNameFromTargetPath(pathPrefix);
     if (projectName == null) {
-      projectName = projectNameFromLastPathElement(prefix);
+      projectName = projectNameFromLastPathElement(pathPrefix);
     }
 
     String id;
@@ -173,20 +178,20 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
     return id;
   }
 
-  private String projectNameFromLastPathElement(String prefix) {
-    int index = prefix.lastIndexOf('/');
+  private String projectNameFromLastPathElement(String pathPrefix) {
+    int index = pathPrefix.lastIndexOf('/');
     if (index == -1) {
       return null;
     }
     int end;
-    if (prefix.endsWith(".jar!")) {
-      end = prefix.length() - 5;
-    } else if (prefix.endsWith("!")) {
-      end = prefix.length() - 1;
+    if (pathPrefix.endsWith(".jar!")) {
+      end = pathPrefix.length() - 5;
+    } else if (pathPrefix.endsWith("!")) {
+      end = pathPrefix.length() - 1;
     } else {
-      end = prefix.length();
+      end = pathPrefix.length();
     }
-    String id = prefix.substring(index + 1, end);
+    String id = pathPrefix.substring(index + 1, end);
     if (id.isEmpty()) {
       return null;
     } else {
@@ -260,9 +265,19 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
 
   public String initMainSourceMap(String outputFileName, String sourceMapContents)
       throws IOException {
-    String mapped = "/sourcemaps/jacline/by-content/" + SHA_256.hashString(sourceMapContents,
-        StandardCharsets.UTF_8) + "/" + projectNameFromLastPathElement(outputFileName) + ".map";
-    addFile(sourceMapContents, mapped);
+
+    String path = "by-content/" + SHA_256.hashString(sourceMapContents, StandardCharsets.UTF_8)
+        + "/" + projectNameFromLastPathElement(outputFileName) + ".map";
+
+    String path1 = prefix.resolve(path).toString();
+
+    addFile(sourceMapContents, path1);
+    String path2 = path1;
+    if (path2.startsWith("/")) {
+      path2 = path2.substring(1);
+    }
+
+    String mapped = basePrefix.resolve(path2).toString();
 
     return "//# sourceMappingURL=" + mapped;
   }

@@ -30,6 +30,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.FileSystems;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,6 +43,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -57,8 +60,6 @@ import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.google.javascript.jscomp.jarjar.com.google.re2j.Matcher;
-import com.google.javascript.jscomp.jarjar.com.google.re2j.Pattern;
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.CompilerOutput;
 import com.kohlschutter.jacline.IOUtil;
@@ -163,6 +164,12 @@ public class JaclineCompileMojo extends AbstractMojo {
    */
   @Parameter(required = true, defaultValue = "/sourcemaps/jacline/")
   String sourceMapUrlPrefix;
+
+  /**
+   * The URL base for all not-fully-qualified URLs (relative and path-only absolute).
+   */
+  @Parameter(required = true, defaultValue = "/")
+  String urlBase;
 
   @Parameter(defaultValue = "true")
   boolean deleteJaclineMetaInfDirectory;
@@ -476,90 +483,115 @@ public class JaclineCompileMojo extends AbstractMojo {
     List<String> compileClasspathElements = project.getCompileClasspathElements();
     cs.addSourcesFromClasspath(compileClasspathElements);
 
-    for (Path p : cs.getOtherFiles()) {
-      boolean isSubDir = false;
-      if (p.endsWith("META-INF/jacline") || (p.endsWith("jacline/generated") && (isSubDir =
-          true))) {
+    Map<Path, Path> tmpPaths = new HashMap<>();
+    try {
+      for (Path p : cs.getOtherFiles()) {
+        boolean isSubDir = false;
+        if (p.endsWith("META-INF/jacline") || (p.endsWith("jacline/generated") && (isSubDir =
+            true))) {
 
-        // META-INF/jacline/generated/generated-entrypoints.js
-        Path generatedEntryPoints = isSubDir ? p.resolve("generated-entrypoints.js") : p.resolve(
-            "generated/generated-entrypoints.js");
-        if (Files.exists(generatedEntryPoints)) {
-          haveEntryPoints = true;
-          if (cs.addEntryPoint(generatedEntryPoints)) {
-            if (log.isInfoEnabled()) {
-              log.info("Adding generated entry points: " + generatedEntryPoints.toUri());
+          // META-INF/jacline/generated/generated-entrypoints.js
+          Path generatedEntryPoints = isSubDir ? p.resolve("generated-entrypoints.js") : p.resolve(
+              "generated/generated-entrypoints.js");
+          if (Files.exists(generatedEntryPoints)) {
+            haveEntryPoints = true;
+
+            if (!FileSystems.getDefault().equals(generatedEntryPoints.getFileSystem()) && !tmpPaths
+                .containsKey(generatedEntryPoints)) {
+              Path tmpPath = Files.createTempFile("jacline", ".tmp.js");
+              Files.delete(tmpPath);
+              Files.copy(generatedEntryPoints, tmpPath);
+              if (log.isInfoEnabled()) {
+                log.info("Using " + tmpPath + " instead of " + generatedEntryPoints.toUri());
+              }
+              tmpPaths.put(generatedEntryPoints, tmpPath);
+              generatedEntryPoints = tmpPath;
+            }
+
+            if (cs.addEntryPoint(generatedEntryPoints)) {
+              if (log.isInfoEnabled()) {
+                log.info("Adding generated entry points: " + generatedEntryPoints.toUri());
+              }
             }
           }
-        }
 
+        }
       }
-    }
 
-    if (!haveSourceRoots && !haveEntryPoints) {
-      log.info("Nothing to do for the closure-compiler");
-      return;
-    }
+      if (!haveSourceRoots && !haveEntryPoints) {
+        log.info("Nothing to do for the closure-compiler");
+        return;
+      }
 
-    Path sourceMapOutputPath = createSourceMaps ? toPathIfPossible(sourceMapOutputDirectory) : null;
-    if (sourceMapOutputPath != null) {
-      log.info("Writing sourcemap files to: " + sourceMapOutputPath);
-    }
+      Path sourceMapOutputPath = createSourceMaps ? toPathIfPossible(sourceMapOutputDirectory)
+          : null;
+      if (sourceMapOutputPath != null) {
+        log.info("Writing sourcemap files to: " + sourceMapOutputPath);
+      }
 
-    URI sourceMapPrefixUri = new URI(this.sourceMapUrlPrefix);
-    if (sourceMapOutputPath != null) {
+      URI urlBaseUri = new URI(this.urlBase.endsWith("/") ? this.urlBase : this.urlBase + "/");
+      log.info("Using URL base: " + urlBaseUri);
+
+      URI sourceMapPrefixUri = new URI(this.sourceMapUrlPrefix);
       log.info("Using sourcemap prefix: " + sourceMapPrefixUri);
-    }
 
-    Problems problems = new Problems();
-    try (ClosureCompiler jc = new ClosureCompiler(sourceMapOutputPath, sourceMapPrefixUri);
-        ClosureCompilerRun runConfig = jc.prepareCompile(cs, true, (opt) -> {
-          opt.setErrorHandler((level, error) -> {
-            String msg = error.toString();
+      Problems problems = new Problems();
+      try (ClosureCompiler jc = new ClosureCompiler(sourceMapOutputPath, urlBaseUri,
+          sourceMapPrefixUri); ClosureCompilerRun runConfig = jc.prepareCompile(cs, true, (opt) -> {
+            opt.setErrorHandler((level, error) -> {
+              String msg = error.toString();
 
-            switch (level) {
-              case ERROR:
-                log.error(msg);
-                problems.addError(msg);
-                break;
-              case WARNING:
-                log.warn(msg);
-                problems.addWarning(msg);
-                break;
-              default:
-                log.info(msg);
-                problems.addInfoMessage(msg);
-                break;
-            }
-          });
-        }, outputFile)) {
+              switch (level) {
+                case ERROR:
+                  log.error(msg);
+                  problems.addError(msg);
+                  break;
+                case WARNING:
+                  log.warn(msg);
+                  problems.addWarning(msg);
+                  break;
+                default:
+                  log.info(msg);
+                  problems.addInfoMessage(msg);
+                  break;
+              }
+            });
+          }, outputFile)) {
 
-      try (ClosureCompilationResult result = runConfig.compile()) {
-        File outFile = absolutePath(outputFile, outputFileDir).toFile();
+        try (ClosureCompilationResult result = runConfig.compile()) {
+          File outFile = absolutePath(outputFile, outputFileDir).toFile();
 
-        String source = result.getSource();
-        if (source == null) {
-          log.error("Closure compiler failed to build output file: " + outputFile);
-          throw new MojoExecutionException("Closure compilation failure") {
+          String source = result.getSource();
+          if (source == null) {
+            log.error("Closure compiler failed to build output file: " + outputFile);
+            throw new MojoExecutionException("Closure compilation failure") {
 
-            private static final long serialVersionUID = 1L;
+              private static final long serialVersionUID = 1L;
 
-            @Override
-            public void printStackTrace(PrintStream s) {
-              super.printStackTrace(s);
-              problems.consumeMessages((msg) -> s.println("\t" + msg));
-            }
+              @Override
+              public void printStackTrace(PrintStream s) {
+                super.printStackTrace(s);
+                problems.consumeMessages((msg) -> s.println("\t" + msg));
+              }
 
-            @Override
-            public void printStackTrace(PrintWriter s) {
-              super.printStackTrace(s);
-              problems.consumeMessages((msg) -> s.println("\t" + msg));
-            }
-          };
+              @Override
+              public void printStackTrace(PrintWriter s) {
+                super.printStackTrace(s);
+                problems.consumeMessages((msg) -> s.println("\t" + msg));
+              }
+            };
+          }
+
+          log.info("Writing output to: " + outFile);
+          writeStringToFile(source, outFile);
         }
-
-        log.info("Writing output to: " + outFile);
-        writeStringToFile(source, outFile);
+      }
+    } finally {
+      for (Path p : tmpPaths.values()) {
+        if (log.isInfoEnabled()) {
+          log.info("Deleting temporary file: " + p);
+        }
+        Files.delete(p);
       }
     }
   }
