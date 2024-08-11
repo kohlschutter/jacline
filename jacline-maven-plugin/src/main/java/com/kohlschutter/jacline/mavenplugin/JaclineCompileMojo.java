@@ -33,8 +33,10 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.FileSystems;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
+import java.nio.file.NotLinkException;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.FileTime;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -48,6 +50,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -60,6 +63,8 @@ import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.jdt.annotation.NonNull;
 
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.CompilerOutput;
 import com.kohlschutter.jacline.IOUtil;
@@ -84,6 +89,8 @@ import com.kohlschutter.jacline.jscomp.ClosureCompilerSources;
     "null", "PMD.GuardLogStatement", "PMD.CouplingBetweenObjects", "PMD.CyclomaticComplexity",
     "PMD.ExcessiveImports"})
 public class JaclineCompileMojo extends AbstractMojo {
+  private static final HashFunction SHA_256 = Hashing.sha256();
+
   private static final String PROPS_JACLINE_FORMAT = "jacline.format";
   private static final String PROPS_JACLINE_VERSION = "jacline.version";
   private static final String PROPS_JACLINE_COMMIT = "jacline.commit";
@@ -429,11 +436,17 @@ public class JaclineCompileMojo extends AbstractMojo {
       sources.addSource(p);
     }
 
-    transpiler.transpile(sources, to);
+    long lastModifiedSource = transpiler.transpile(sources, to);
+    if (lastModifiedSource == 0) {
+      return;
+    }
 
     if (!to.isSkipped()) {
       closureCompile(to.getOutputPath());
     }
+
+    initDownstreamDeps();
+    touchDownstreamProjects(lastModifiedSource);
   }
 
   private Path absolutePath(String path) {
@@ -453,6 +466,7 @@ public class JaclineCompileMojo extends AbstractMojo {
   @SuppressFBWarnings("QBA_QUESTIONABLE_BOOLEAN_ASSIGNMENT")
   private void closureCompile(Path transpiledOut) throws IOException,
       DependencyResolutionRequiredException, MojoExecutionException, URISyntaxException {
+
     ClosureCompilerSources cs = new ClosureCompilerSources();
 
     cs.addSource(transpiledOut);
@@ -586,6 +600,7 @@ public class JaclineCompileMojo extends AbstractMojo {
           writeStringToFile(source, outFile);
         }
       }
+
     } finally {
       for (Path p : tmpPaths.values()) {
         if (log.isInfoEnabled()) {
@@ -621,5 +636,110 @@ public class JaclineCompileMojo extends AbstractMojo {
         throw new IOException("Could not create directory: " + file);
       }
     }
+  }
+
+  /**
+   * Tell jacline-maven-plugin about downstream dependencies, so we can trigger project updates for
+   * those when some upstream dependency's jacline code changes
+   * 
+   * @throws IOException
+   */
+  private void initDownstreamDeps() throws IOException {
+    Path pomFilePath = project.getFile().toPath();
+    if (!Files.exists(pomFilePath)) {
+      return;
+    }
+
+    Path pomFilePathParent = pomFilePath.getParent();
+    if (pomFilePathParent == null) {
+      return;
+    }
+    Path srcPath = pomFilePathParent.resolve("src");
+    if (!Files.exists(srcPath)) {
+      return;
+    }
+
+    Path touchPath = pomFilePath;
+    Path touchPathParent = pomFilePath.getParent();
+    if (touchPathParent == null) {
+      return;
+    }
+
+    Path mySettingsPath = touchPathParent.resolve(".settings");
+    if (Files.isDirectory(mySettingsPath)) {
+      Path downstreamDepsPath = mySettingsPath.resolve("com.kohlschutter.jacline/downstream-deps");
+      Files.createDirectories(downstreamDepsPath);
+    }
+
+    String myId = SHA_256.hashString(pomFilePath.toString(), StandardCharsets.UTF_8).toString();
+
+    for (Artifact art : project.getArtifacts()) {
+      File f = art.getFile();
+      if (f == null || !f.isDirectory()) {
+        continue;
+      }
+
+      Path settingsPath = f.toPath().resolve("../../.settings");
+      if (!Files.isDirectory(settingsPath)) {
+        // artifact is not an Eclipse project
+        continue;
+      }
+
+      Path downstreamDepsPath = settingsPath.resolve("com.kohlschutter.jacline/downstream-deps");
+      Files.createDirectories(downstreamDepsPath);
+
+      Path linkPath = downstreamDepsPath.resolve(myId);
+      try {
+        Files.deleteIfExists(linkPath);
+        try {
+          Files.createSymbolicLink(linkPath, touchPath);
+        } catch (FileAlreadyExistsException e) {
+          // ignore
+        }
+      } catch (IOException e) {
+        log.warn("Could not link downstream dependency: " + pomFilePath + " to " + linkPath, e);
+      }
+    }
+  }
+
+  private void touchDownstreamProjects(long updatedTimeMillis) throws IOException {
+    Path p = Path.of(outputFileDir).resolve(
+        "../../.settings/com.kohlschutter.jacline/downstream-deps");
+    if (!Files.isDirectory(p)) {
+      return;
+    }
+
+    FileTime updatedTime = FileTime.fromMillis(updatedTimeMillis);
+    Files.list(p).forEach((path) -> {
+      Path linkedPath = null;
+      try {
+        linkedPath = Files.readSymbolicLink(path);
+        if (!Files.exists(linkedPath)) {
+          log.info("Deleting outdated link: " + path);
+          Files.deleteIfExists(path);
+          return;
+        }
+
+        if (!Files.exists(linkedPath.getParent().resolve("target-eclipse/jacline/generated"))) {
+          return;
+        }
+
+        Path touchPath = linkedPath;
+
+        Path classpathFile = linkedPath.getParent().resolve(".classpath");
+        if (Files.exists(classpathFile)) {
+          touchPath = classpathFile;
+        }
+
+        FileTime mod = Files.getLastModifiedTime(touchPath);
+        if (mod.compareTo(updatedTime) < 0) {
+          Files.setLastModifiedTime(touchPath, updatedTime);
+        }
+      } catch (NotLinkException e) {
+        log.warn("Not a symbolic link: " + path, e);
+      } catch (IOException e) {
+        log.warn("Could not touch via " + linkedPath, e);
+      }
+    });
   }
 }
