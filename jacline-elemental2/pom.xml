@@ -97,7 +97,7 @@
             <plugin>
                 <groupId>com.kohlschutter.jacline</groupId>
                 <artifactId>jacline-maven-plugin</artifactId>
-                <version>${jacline.version}</version>
+                <version>${jacline.version}</version><!--$NO-MVN-MAN-VER$-->
                 <executions>
                     <execution>
                         <id>default-jacline-compile</id>
@@ -120,17 +120,14 @@
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-annotations</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-jsinterop-base</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-jrejs</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
