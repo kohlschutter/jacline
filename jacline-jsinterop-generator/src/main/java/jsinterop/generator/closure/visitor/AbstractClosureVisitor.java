@@ -83,11 +83,7 @@ abstract class AbstractClosureVisitor {
     } else if (isModule(type)) {
       acceptModule(var);
     } else if (isTypedef(var)) {
-      try {
       acceptTypedef(var);
-      } catch (UnsupportedOperationException e) {
-        System.err.println(e+": "+var);
-      }
     } else if (type.isEnumType()) {
       acceptEnumType(toEnumType(type));
     } else if (isTypeAlias(var)) {
@@ -174,6 +170,12 @@ abstract class AbstractClosureVisitor {
   }
 
   private void acceptTypedef(StaticTypedSlot typedef) {
+      try {
+          typedef.getScope();
+      } catch (UnsupportedOperationException e) {
+          return;
+      }
+
     // The type linked to symbol is not the type represented in the @typedef annotations.
     JSType realType = checkNotNull(getJsTypeRegistry().getType(
         typedef.getScope(), typedef.getName()));
@@ -286,11 +288,11 @@ abstract class AbstractClosureVisitor {
       endVisitMethod(method);
     } else {
       try {
-      if (visitField(member, isStatic)) {
-        acceptType(propertyType);
-      }
+        if (visitField(member, isStatic)) {
+          acceptType(propertyType);
+        }
       } catch (NullPointerException e) {
-        System.err.println(e);
+        e.printStackTrace();
       }
     }
 
