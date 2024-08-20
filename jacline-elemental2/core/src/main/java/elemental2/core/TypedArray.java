@@ -21,14 +21,22 @@ Object onInvoke(double p0,double p1,TypedArray p2);
 }
 @JsFunction
 public interface FilterCallbackFn{
-boolean onInvoke(double p0,double p1,TypedArray p2);
+Object onInvoke(double p0,double p1,TypedArray p2);
 }
 @JsFunction
 public interface FindCallbackFn{
-boolean onInvoke(double p0,double p1,TypedArray p2);
+Object onInvoke(double p0,double p1,TypedArray p2);
 }
 @JsFunction
 public interface FindIndexCallbackFn{
+Object onInvoke(double p0,double p1,TypedArray p2);
+}
+@JsFunction
+public interface FindLastCallbackFn{
+boolean onInvoke(double p0,double p1,TypedArray p2);
+}
+@JsFunction
+public interface FindLastIndexCallbackFn{
 boolean onInvoke(double p0,double p1,TypedArray p2);
 }
 @JsFunction
@@ -118,7 +126,7 @@ return (Object)this instanceof JsArray;
 }
 @JsFunction
 public interface SomeCallbackFn{
-boolean onInvoke(double p0,double p1,TypedArray p2);
+Object onInvoke(double p0,double p1,TypedArray p2);
 }
 @JsFunction
 public interface SortCompareFunctionFn{
@@ -141,6 +149,10 @@ public native <S>double find(TypedArray.FindCallbackFn callback,S thisArg);
 public native double find(TypedArray.FindCallbackFn callback);
 public native <S>int findIndex(TypedArray.FindIndexCallbackFn callback,S thisArg);
 public native int findIndex(TypedArray.FindIndexCallbackFn callback);
+public native <S>double findLast(TypedArray.FindLastCallbackFn callback,S thisArg);
+public native double findLast(TypedArray.FindLastCallbackFn callback);
+public native <S>int findLastIndex(TypedArray.FindLastIndexCallbackFn callback,S thisArg);
+public native int findLastIndex(TypedArray.FindLastIndexCallbackFn callback);
 public native <S>void forEach(TypedArray.ForEachCallbackFn callback,S thisArg);
 public native void forEach(TypedArray.ForEachCallbackFn callback);
 public native boolean includes(double searchElement,int fromIndex);

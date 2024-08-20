@@ -74,9 +74,63 @@ return (Object)this instanceof Double;
 }
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
+public interface GetCursorUnionType{
+@JsOverlay
+static MediaTrackConstraintSet.GetCursorUnionType of(Object o){
+return Js.cast(o);
+}
+@JsOverlay
+default ConstrainDOMStringParameters asConstrainDOMStringParameters(){
+return Js.cast(this);
+}
+@JsOverlay
+default JsArray<String> asJsArray(){
+return Js.cast(this);
+}
+@JsOverlay
+default String asString(){
+return Js.asString(this);
+}
+@JsOverlay
+default boolean isJsArray(){
+return (Object)this instanceof JsArray;
+}
+@JsOverlay
+default boolean isString(){
+return (Object)this instanceof String;
+}
+}
+@JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetDeviceIdUnionType{
 @JsOverlay
 static MediaTrackConstraintSet.GetDeviceIdUnionType of(Object o){
+return Js.cast(o);
+}
+@JsOverlay
+default ConstrainDOMStringParameters asConstrainDOMStringParameters(){
+return Js.cast(this);
+}
+@JsOverlay
+default JsArray<String> asJsArray(){
+return Js.cast(this);
+}
+@JsOverlay
+default String asString(){
+return Js.asString(this);
+}
+@JsOverlay
+default boolean isJsArray(){
+return (Object)this instanceof JsArray;
+}
+@JsOverlay
+default boolean isString(){
+return (Object)this instanceof String;
+}
+}
+@JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
+public interface GetDisplaySurfaceUnionType{
+@JsOverlay
+static MediaTrackConstraintSet.GetDisplaySurfaceUnionType of(Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -231,6 +285,25 @@ return (Object)this instanceof Double;
 }
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
+public interface GetLogicalSurfaceUnionType{
+@JsOverlay
+static MediaTrackConstraintSet.GetLogicalSurfaceUnionType of(Object o){
+return Js.cast(o);
+}
+@JsOverlay
+default boolean asBoolean(){
+return Js.asBoolean(this);
+}
+@JsOverlay
+default ConstrainBooleanParameters asConstrainBooleanParameters(){
+return Js.cast(this);
+}
+@JsOverlay
+default boolean isBoolean(){
+return (Object)this instanceof Boolean;
+}
+}
+@JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetNoiseSuppressionUnionType{
 @JsOverlay
 static MediaTrackConstraintSet.GetNoiseSuppressionUnionType of(Object o){
@@ -277,6 +350,25 @@ return (Object)this instanceof String;
 }
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
+public interface GetRestrictOwnAudioUnionType{
+@JsOverlay
+static MediaTrackConstraintSet.GetRestrictOwnAudioUnionType of(Object o){
+return Js.cast(o);
+}
+@JsOverlay
+default boolean asBoolean(){
+return Js.asBoolean(this);
+}
+@JsOverlay
+default ConstrainBooleanParameters asConstrainBooleanParameters(){
+return Js.cast(this);
+}
+@JsOverlay
+default boolean isBoolean(){
+return (Object)this instanceof Boolean;
+}
+}
+@JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetSampleRateUnionType{
 @JsOverlay
 static MediaTrackConstraintSet.GetSampleRateUnionType of(Object o){
@@ -312,6 +404,25 @@ return Js.asInt(this);
 @JsOverlay
 default boolean isInt(){
 return (Object)this instanceof Double;
+}
+}
+@JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
+public interface GetSuppressLocalAudioPlaybackUnionType{
+@JsOverlay
+static MediaTrackConstraintSet.GetSuppressLocalAudioPlaybackUnionType of(Object o){
+return Js.cast(o);
+}
+@JsOverlay
+default boolean asBoolean(){
+return Js.asBoolean(this);
+}
+@JsOverlay
+default ConstrainBooleanParameters asConstrainBooleanParameters(){
+return Js.cast(this);
+}
+@JsOverlay
+default boolean isBoolean(){
+return (Object)this instanceof Boolean;
 }
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
@@ -363,7 +474,11 @@ MediaTrackConstraintSet.GetAutoGainControlUnionType getAutoGainControl();
 @JsProperty
 MediaTrackConstraintSet.GetChannelCountUnionType getChannelCount();
 @JsProperty
+MediaTrackConstraintSet.GetCursorUnionType getCursor();
+@JsProperty
 MediaTrackConstraintSet.GetDeviceIdUnionType getDeviceId();
+@JsProperty
+MediaTrackConstraintSet.GetDisplaySurfaceUnionType getDisplaySurface();
 @JsProperty
 MediaTrackConstraintSet.GetEchoCancellationUnionType getEchoCancellation();
 @JsProperty
@@ -377,13 +492,19 @@ MediaTrackConstraintSet.GetHeightUnionType getHeight();
 @JsProperty
 MediaTrackConstraintSet.GetLatencyUnionType getLatency();
 @JsProperty
+MediaTrackConstraintSet.GetLogicalSurfaceUnionType getLogicalSurface();
+@JsProperty
 MediaTrackConstraintSet.GetNoiseSuppressionUnionType getNoiseSuppression();
 @JsProperty
 MediaTrackConstraintSet.GetResizeModeUnionType getResizeMode();
 @JsProperty
+MediaTrackConstraintSet.GetRestrictOwnAudioUnionType getRestrictOwnAudio();
+@JsProperty
 MediaTrackConstraintSet.GetSampleRateUnionType getSampleRate();
 @JsProperty
 MediaTrackConstraintSet.GetSampleSizeUnionType getSampleSize();
+@JsProperty
+MediaTrackConstraintSet.GetSuppressLocalAudioPlaybackUnionType getSuppressLocalAudioPlayback();
 @JsProperty
 MediaTrackConstraintSet.GetVolumeUnionType getVolume();
 @JsProperty
@@ -419,6 +540,24 @@ default void setChannelCount(int channelCount){
 setChannelCount(Js.<MediaTrackConstraintSet.GetChannelCountUnionType>uncheckedCast(channelCount));
 }
 @JsOverlay
+default void setCursor(ConstrainDOMStringParameters cursor){
+setCursor(Js.<MediaTrackConstraintSet.GetCursorUnionType>uncheckedCast(cursor));
+}
+@JsProperty
+void setCursor(MediaTrackConstraintSet.GetCursorUnionType cursor);
+@JsOverlay
+default void setCursor(JsArray<String> cursor){
+setCursor(Js.<MediaTrackConstraintSet.GetCursorUnionType>uncheckedCast(cursor));
+}
+@JsOverlay
+default void setCursor(String cursor){
+setCursor(Js.<MediaTrackConstraintSet.GetCursorUnionType>uncheckedCast(cursor));
+}
+@JsOverlay
+default void setCursor(String[] cursor){
+setCursor(Js.<JsArray<String>>uncheckedCast(cursor));
+}
+@JsOverlay
 default void setDeviceId(ConstrainDOMStringParameters deviceId){
 setDeviceId(Js.<MediaTrackConstraintSet.GetDeviceIdUnionType>uncheckedCast(deviceId));
 }
@@ -435,6 +574,24 @@ setDeviceId(Js.<MediaTrackConstraintSet.GetDeviceIdUnionType>uncheckedCast(devic
 @JsOverlay
 default void setDeviceId(String[] deviceId){
 setDeviceId(Js.<JsArray<String>>uncheckedCast(deviceId));
+}
+@JsOverlay
+default void setDisplaySurface(ConstrainDOMStringParameters displaySurface){
+setDisplaySurface(Js.<MediaTrackConstraintSet.GetDisplaySurfaceUnionType>uncheckedCast(displaySurface));
+}
+@JsProperty
+void setDisplaySurface(MediaTrackConstraintSet.GetDisplaySurfaceUnionType displaySurface);
+@JsOverlay
+default void setDisplaySurface(JsArray<String> displaySurface){
+setDisplaySurface(Js.<MediaTrackConstraintSet.GetDisplaySurfaceUnionType>uncheckedCast(displaySurface));
+}
+@JsOverlay
+default void setDisplaySurface(String displaySurface){
+setDisplaySurface(Js.<MediaTrackConstraintSet.GetDisplaySurfaceUnionType>uncheckedCast(displaySurface));
+}
+@JsOverlay
+default void setDisplaySurface(String[] displaySurface){
+setDisplaySurface(Js.<JsArray<String>>uncheckedCast(displaySurface));
 }
 @JsOverlay
 default void setEchoCancellation(ConstrainBooleanParameters echoCancellation){
@@ -513,6 +670,16 @@ default void setLatency(double latency){
 setLatency(Js.<MediaTrackConstraintSet.GetLatencyUnionType>uncheckedCast(latency));
 }
 @JsOverlay
+default void setLogicalSurface(ConstrainBooleanParameters logicalSurface){
+setLogicalSurface(Js.<MediaTrackConstraintSet.GetLogicalSurfaceUnionType>uncheckedCast(logicalSurface));
+}
+@JsProperty
+void setLogicalSurface(MediaTrackConstraintSet.GetLogicalSurfaceUnionType logicalSurface);
+@JsOverlay
+default void setLogicalSurface(boolean logicalSurface){
+setLogicalSurface(Js.<MediaTrackConstraintSet.GetLogicalSurfaceUnionType>uncheckedCast(logicalSurface));
+}
+@JsOverlay
 default void setNoiseSuppression(ConstrainBooleanParameters noiseSuppression){
 setNoiseSuppression(Js.<MediaTrackConstraintSet.GetNoiseSuppressionUnionType>uncheckedCast(noiseSuppression));
 }
@@ -541,6 +708,16 @@ default void setResizeMode(String[] resizeMode){
 setResizeMode(Js.<JsArray<String>>uncheckedCast(resizeMode));
 }
 @JsOverlay
+default void setRestrictOwnAudio(ConstrainBooleanParameters restrictOwnAudio){
+setRestrictOwnAudio(Js.<MediaTrackConstraintSet.GetRestrictOwnAudioUnionType>uncheckedCast(restrictOwnAudio));
+}
+@JsProperty
+void setRestrictOwnAudio(MediaTrackConstraintSet.GetRestrictOwnAudioUnionType restrictOwnAudio);
+@JsOverlay
+default void setRestrictOwnAudio(boolean restrictOwnAudio){
+setRestrictOwnAudio(Js.<MediaTrackConstraintSet.GetRestrictOwnAudioUnionType>uncheckedCast(restrictOwnAudio));
+}
+@JsOverlay
 default void setSampleRate(ConstrainLongRange sampleRate){
 setSampleRate(Js.<MediaTrackConstraintSet.GetSampleRateUnionType>uncheckedCast(sampleRate));
 }
@@ -559,6 +736,16 @@ void setSampleSize(MediaTrackConstraintSet.GetSampleSizeUnionType sampleSize);
 @JsOverlay
 default void setSampleSize(int sampleSize){
 setSampleSize(Js.<MediaTrackConstraintSet.GetSampleSizeUnionType>uncheckedCast(sampleSize));
+}
+@JsOverlay
+default void setSuppressLocalAudioPlayback(ConstrainBooleanParameters suppressLocalAudioPlayback){
+setSuppressLocalAudioPlayback(Js.<MediaTrackConstraintSet.GetSuppressLocalAudioPlaybackUnionType>uncheckedCast(suppressLocalAudioPlayback));
+}
+@JsProperty
+void setSuppressLocalAudioPlayback(MediaTrackConstraintSet.GetSuppressLocalAudioPlaybackUnionType suppressLocalAudioPlayback);
+@JsOverlay
+default void setSuppressLocalAudioPlayback(boolean suppressLocalAudioPlayback){
+setSuppressLocalAudioPlayback(Js.<MediaTrackConstraintSet.GetSuppressLocalAudioPlaybackUnionType>uncheckedCast(suppressLocalAudioPlayback));
 }
 @JsOverlay
 default void setVolume(ConstrainDoubleRange volume){

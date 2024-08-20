@@ -1,4 +1,5 @@
 package elemental2.webassembly;
+import elemental2.webassembly.webassembly.Tag;
 import elemental2.promise.Promise;
 import elemental2.core.ArrayBuffer;
 import jsinterop.base.JsPropertyMap;
@@ -137,6 +138,7 @@ default boolean isArrayBufferView(){
 return (Object)this instanceof ArrayBufferView;
 }
 }
+public static Tag JSTag;
 @JsOverlay
 public static final Promise<Module> compile(ArrayBuffer bytes){
 return compile(Js.<WebAssembly.CompileBytesUnionType>uncheckedCast(bytes));

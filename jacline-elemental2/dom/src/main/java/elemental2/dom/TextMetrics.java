@@ -7,5 +7,12 @@ public double actualBoundingBoxAscent;
 public double actualBoundingBoxDescent;
 public double actualBoundingBoxLeft;
 public double actualBoundingBoxRight;
+public double alphabeticBaseline;
+public double emHeightAscent;
+public double emHeightDescent;
+public double fontBoundingBoxAscent;
+public double fontBoundingBoxDescent;
+public double hangingBaseline;
+public double ideographicBaseline;
 public double width;
 }

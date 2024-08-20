@@ -86,11 +86,15 @@ int getFrameHeight();
 @JsProperty
 int getFrameWidth();
 @JsProperty
+double getFramesAssembledFromMultiplePackets();
+@JsProperty
 int getFramesDecoded();
 @JsProperty
 double getFramesPerSecond();
 @JsProperty
 int getFramesReceived();
+@JsProperty
+int getFreezeCount();
 @JsProperty
 double getHeaderBytesReceived();
 @JsProperty
@@ -128,9 +132,13 @@ double getRemovedSamplesForAcceleration();
 @JsProperty
 double getSilentConcealedSamples();
 @JsProperty
+double getTotalAssemblyTime();
+@JsProperty
 double getTotalAudioEnergy();
 @JsProperty
 double getTotalDecodeTime();
+@JsProperty
+double getTotalFreezesDuration();
 @JsProperty
 double getTotalInterframeDelay();
 @JsProperty

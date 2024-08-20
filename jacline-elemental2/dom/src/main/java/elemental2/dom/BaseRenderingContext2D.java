@@ -213,6 +213,52 @@ return (Object)this instanceof String;
 }
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
+public interface IsPointInPathPathOrXUnionType{
+@JsOverlay
+static BaseRenderingContext2D.IsPointInPathPathOrXUnionType of(Object o){
+return Js.cast(o);
+}
+@JsOverlay
+default double asDouble(){
+return Js.asDouble(this);
+}
+@JsOverlay
+default Path2D asPath2D(){
+return Js.cast(this);
+}
+@JsOverlay
+default boolean isDouble(){
+return (Object)this instanceof Double;
+}
+@JsOverlay
+default boolean isPath2D(){
+return (Object)this instanceof Path2D;
+}
+}
+@JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
+public interface IsPointInPathYOrFillRuleUnionType{
+@JsOverlay
+static BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType of(Object o){
+return Js.cast(o);
+}
+@JsOverlay
+default double asDouble(){
+return Js.asDouble(this);
+}
+@JsOverlay
+default String asString(){
+return Js.asString(this);
+}
+@JsOverlay
+default boolean isDouble(){
+return (Object)this instanceof Double;
+}
+@JsOverlay
+default boolean isString(){
+return (Object)this instanceof String;
+}
+}
+@JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface SetFillColorAUnionType{
 @JsOverlay
 static BaseRenderingContext2D.SetFillColorAUnionType of(Object o){
@@ -256,6 +302,29 @@ return (Object)this instanceof Double;
 @JsOverlay
 default boolean isString(){
 return (Object)this instanceof String;
+}
+}
+@JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
+public interface SetTransformM11OrMatrixUnionType{
+@JsOverlay
+static BaseRenderingContext2D.SetTransformM11OrMatrixUnionType of(Object o){
+return Js.cast(o);
+}
+@JsOverlay
+default DOMMatrixReadOnly asDOMMatrixReadOnly(){
+return Js.cast(this);
+}
+@JsOverlay
+default double asDouble(){
+return Js.asDouble(this);
+}
+@JsOverlay
+default boolean isDOMMatrixReadOnly(){
+return (Object)this instanceof DOMMatrixReadOnly;
+}
+@JsOverlay
+default boolean isDouble(){
+return (Object)this instanceof Double;
 }
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
@@ -555,8 +624,81 @@ public native String getTextAlign();
 @JsProperty
 public native String getTextBaseline();
 public native DOMMatrixReadOnly getTransform();
-public native boolean isPointInPath(double x,double y,String fillRule);
-public native boolean isPointInPath(double x,double y);
+public native boolean isPointInPath(BaseRenderingContext2D.IsPointInPathPathOrXUnionType pathOrX,double xOrY,BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType yOrFillRule,String fillRule);
+public native boolean isPointInPath(BaseRenderingContext2D.IsPointInPathPathOrXUnionType pathOrX,double xOrY,BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType yOrFillRule);
+@JsOverlay
+public final boolean isPointInPath(BaseRenderingContext2D.IsPointInPathPathOrXUnionType pathOrX,double xOrY,String yOrFillRule,String fillRule){
+return isPointInPath(pathOrX,xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule),fillRule);
+}
+@JsOverlay
+public final boolean isPointInPath(BaseRenderingContext2D.IsPointInPathPathOrXUnionType pathOrX,double xOrY,String yOrFillRule){
+return isPointInPath(pathOrX,xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule));
+}
+@JsOverlay
+public final boolean isPointInPath(BaseRenderingContext2D.IsPointInPathPathOrXUnionType pathOrX,double xOrY,double yOrFillRule,String fillRule){
+return isPointInPath(pathOrX,xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule),fillRule);
+}
+@JsOverlay
+public final boolean isPointInPath(BaseRenderingContext2D.IsPointInPathPathOrXUnionType pathOrX,double xOrY,double yOrFillRule){
+return isPointInPath(pathOrX,xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule));
+}
+public native boolean isPointInPath(BaseRenderingContext2D.IsPointInPathPathOrXUnionType pathOrX,double xOrY);
+@JsOverlay
+public final boolean isPointInPath(Path2D pathOrX,double xOrY,BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType yOrFillRule,String fillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,yOrFillRule,fillRule);
+}
+@JsOverlay
+public final boolean isPointInPath(Path2D pathOrX,double xOrY,BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType yOrFillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,yOrFillRule);
+}
+@JsOverlay
+public final boolean isPointInPath(Path2D pathOrX,double xOrY,String yOrFillRule,String fillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule),fillRule);
+}
+@JsOverlay
+public final boolean isPointInPath(Path2D pathOrX,double xOrY,String yOrFillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule));
+}
+@JsOverlay
+public final boolean isPointInPath(Path2D pathOrX,double xOrY,double yOrFillRule,String fillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule),fillRule);
+}
+@JsOverlay
+public final boolean isPointInPath(Path2D pathOrX,double xOrY,double yOrFillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule));
+}
+@JsOverlay
+public final boolean isPointInPath(Path2D pathOrX,double xOrY){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY);
+}
+@JsOverlay
+public final boolean isPointInPath(double pathOrX,double xOrY,BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType yOrFillRule,String fillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,yOrFillRule,fillRule);
+}
+@JsOverlay
+public final boolean isPointInPath(double pathOrX,double xOrY,BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType yOrFillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,yOrFillRule);
+}
+@JsOverlay
+public final boolean isPointInPath(double pathOrX,double xOrY,String yOrFillRule,String fillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule),fillRule);
+}
+@JsOverlay
+public final boolean isPointInPath(double pathOrX,double xOrY,String yOrFillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule));
+}
+@JsOverlay
+public final boolean isPointInPath(double pathOrX,double xOrY,double yOrFillRule,String fillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule),fillRule);
+}
+@JsOverlay
+public final boolean isPointInPath(double pathOrX,double xOrY,double yOrFillRule){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY,Js.<BaseRenderingContext2D.IsPointInPathYOrFillRuleUnionType>uncheckedCast(yOrFillRule));
+}
+@JsOverlay
+public final boolean isPointInPath(double pathOrX,double xOrY){
+return isPointInPath(Js.<BaseRenderingContext2D.IsPointInPathPathOrXUnionType>uncheckedCast(pathOrX),xOrY);
+}
 public native boolean isPointInStroke(double x,double y);
 public native void lineTo(double x,double y);
 public native TextMetrics measureText(String text);
@@ -571,6 +713,8 @@ public native void rect(double x,double y,double w,double h);
 public native void resetTransform();
 public native void restore();
 public native void rotate(double angle);
+public native void roundRect(double x,double y,double w,double h,CanvasPathMethods.RoundRectRadiiUnionType radii);
+public native void roundRect(double x,double y,double w,double h);
 public native void save();
 public native void scale(double x,double y);
 @Deprecated
@@ -714,7 +858,60 @@ setStrokeColor(Js.<BaseRenderingContext2D.SetStrokeColorAUnionType>uncheckedCast
 public native void setTextAlign(String textAlign);
 @JsProperty
 public native void setTextBaseline(String textBaseline);
-public native void setTransform(double m11,double m12,double m21,double m22,double dx,double dy);
+@JsOverlay
+public final void setTransform(DOMMatrixReadOnly m11OrMatrix,double m12,double m21,double m22,double dx,double dy){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx,dy);
+}
+@JsOverlay
+public final void setTransform(DOMMatrixReadOnly m11OrMatrix,double m12,double m21,double m22,double dx){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx);
+}
+@JsOverlay
+public final void setTransform(DOMMatrixReadOnly m11OrMatrix,double m12,double m21,double m22){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22);
+}
+@JsOverlay
+public final void setTransform(DOMMatrixReadOnly m11OrMatrix,double m12,double m21){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21);
+}
+@JsOverlay
+public final void setTransform(DOMMatrixReadOnly m11OrMatrix,double m12){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12);
+}
+@JsOverlay
+public final void setTransform(DOMMatrixReadOnly m11OrMatrix){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix));
+}
+public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21,double m22,double dx,double dy);
+public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21,double m22,double dx);
+public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21,double m22);
+public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21);
+public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix,double m12);
+public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix);
+@JsOverlay
+public final void setTransform(double m11OrMatrix,double m12,double m21,double m22,double dx,double dy){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx,dy);
+}
+@JsOverlay
+public final void setTransform(double m11OrMatrix,double m12,double m21,double m22,double dx){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx);
+}
+@JsOverlay
+public final void setTransform(double m11OrMatrix,double m12,double m21,double m22){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22);
+}
+@JsOverlay
+public final void setTransform(double m11OrMatrix,double m12,double m21){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21);
+}
+@JsOverlay
+public final void setTransform(double m11OrMatrix,double m12){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12);
+}
+@JsOverlay
+public final void setTransform(double m11OrMatrix){
+setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix));
+}
 public native void stroke();
 public native void stroke(Path2D optStroke);
 public native void strokeRect(double x,double y,double w,double h);

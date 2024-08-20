@@ -24,8 +24,8 @@ import elemental2.dom.Comment;
 import elemental2.dom.HTMLScriptElement;
 import elemental2.dom.DocumentType;
 import java.lang.Deprecated;
-import elemental2.dom.NodeIterator;
 import elemental2.dom.Window;
+import elemental2.dom.NodeIterator;
 import elemental2.dom.TrustedHTML;
 import jsinterop.base.JsConstructorFn;
 import elemental2.dom.Touch;
@@ -231,9 +231,14 @@ return (Object)this instanceof TrustedHTML;
 }
 }
 public Element activeElement;
+public String characterSet;
 public int childElementCount;
 public HTMLCollection children;
+public String compatMode;
+public String contentType;
 public HTMLScriptElement currentScript;
+public Window defaultView;
+public String designMode;
 public DocumentType doctype;
 public HTMLHtmlElement documentElement;
 public String documentURI;

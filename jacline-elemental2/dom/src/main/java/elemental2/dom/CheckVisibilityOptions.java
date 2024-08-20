@@ -1,4 +1,4 @@
-package elemental2.webassembly;
+package elemental2.dom;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
@@ -6,21 +6,17 @@ import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import jsinterop.base.JsPropertyMap;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public interface MemoryDescriptor{
+public interface CheckVisibilityOptions{
 @JsOverlay
-static MemoryDescriptor create(){
+static CheckVisibilityOptions create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-int getInitial();
+boolean isCheckOpacity();
 @JsProperty
-int getMaximum();
+boolean isCheckVisibilityCSS();
 @JsProperty
-boolean isShared();
+void setCheckOpacity(boolean checkOpacity);
 @JsProperty
-void setInitial(int initial);
-@JsProperty
-void setMaximum(int maximum);
-@JsProperty
-void setShared(boolean shared);
+void setCheckVisibilityCSS(boolean checkVisibilityCSS);
 }

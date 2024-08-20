@@ -43,6 +43,22 @@ Object onInvoke(T p0,int p1);
 }
 @JsFunction
 public interface FindIndexPredicateFn<T>{
+Object onInvoke(T p0,double p1,JsArray<T> p2);
+@JsOverlay
+default Object onInvoke(T p0,double p1,T[] p2){
+return onInvoke(p0,p1,Js.<JsArray<T>>uncheckedCast(p2));
+}
+}
+@JsFunction
+public interface FindLastIndexPredicateFn<T>{
+boolean onInvoke(T p0,double p1,JsArray<T> p2);
+@JsOverlay
+default boolean onInvoke(T p0,double p1,T[] p2){
+return onInvoke(p0,p1,Js.<JsArray<T>>uncheckedCast(p2));
+}
+}
+@JsFunction
+public interface FindLastPredicateFn<T>{
 boolean onInvoke(T p0,double p1,JsArray<T> p2);
 @JsOverlay
 default boolean onInvoke(T p0,double p1,T[] p2){
@@ -51,9 +67,9 @@ return onInvoke(p0,p1,Js.<JsArray<T>>uncheckedCast(p2));
 }
 @JsFunction
 public interface FindPredicateFn<T>{
-boolean onInvoke(T p0,double p1,JsArray<T> p2);
+Object onInvoke(T p0,double p1,JsArray<T> p2);
 @JsOverlay
-default boolean onInvoke(T p0,double p1,T[] p2){
+default Object onInvoke(T p0,double p1,T[] p2){
 return onInvoke(p0,p1,Js.<JsArray<T>>uncheckedCast(p2));
 }
 }
@@ -96,6 +112,10 @@ JsArray<T> filter(ReadonlyArray.FilterCallbackFn<? super T> callback);
 T find(ReadonlyArray.FindPredicateFn<T> predicateFn);
 <S>int findIndex(ReadonlyArray.FindIndexPredicateFn<T> predicateFn,S this_);
 int findIndex(ReadonlyArray.FindIndexPredicateFn<T> predicateFn);
+<S>T findLast(ReadonlyArray.FindLastPredicateFn<T> predicateFn,S this_);
+T findLast(ReadonlyArray.FindLastPredicateFn<T> predicateFn);
+<S>int findLastIndex(ReadonlyArray.FindLastIndexPredicateFn<T> predicateFn,S this_);
+int findLastIndex(ReadonlyArray.FindLastIndexPredicateFn<T> predicateFn);
 <S>JsArray<S> flat();
 <S>JsArray<S> flat(double depth);
 <THIS, S>JsArray<S> flatMap(ReadonlyArray.FlatMapCallbackFn<S, T> callback,THIS thisArg);

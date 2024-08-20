@@ -45,4 +45,6 @@ public native void lineTo(double x,double y);
 public native void moveTo(double x,double y);
 public native void quadraticCurveTo(double cpx,double cpy,double x,double y);
 public native void rect(double x,double y,double w,double h);
+public native void roundRect(double x,double y,double w,double h,CanvasPathMethods.RoundRectRadiiUnionType radii);
+public native void roundRect(double x,double y,double w,double h);
 }

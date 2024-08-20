@@ -69,6 +69,7 @@ public native void setRangeText(String replacement,int start);
 public native void setRangeText(String replacement);
 public native void setSelectionRange(int start,int end,String direction);
 public native void setSelectionRange(int start,int end);
+public native void showPicker();
 public native void stepDown();
 public native void stepDown(int n);
 public native void stepUp();

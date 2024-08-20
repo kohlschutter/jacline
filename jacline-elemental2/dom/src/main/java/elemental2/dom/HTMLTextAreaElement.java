@@ -22,6 +22,8 @@ public String name;
 public String placeholder;
 public boolean readOnly;
 public int rows;
+public double selectionEnd;
+public double selectionStart;
 public int tabIndex;
 public int textLength;
 public String type;
@@ -35,4 +37,9 @@ public native void focus();
 public native boolean reportValidity();
 public native void select();
 public native void setCustomValidity(String message);
+public native void setRangeText(String replacement,double start,double end,String selectionMode);
+public native void setRangeText(String replacement,double start,double end);
+public native void setRangeText(String replacement,double start);
+public native void setRangeText(String replacement);
+public native void setSelectionRange(double selectionStart,double selectionEnd);
 }

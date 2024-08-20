@@ -1,26 +1,31 @@
-package elemental2.webassembly;
+package elemental2.dom;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
+import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import jsinterop.base.JsPropertyMap;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public interface MemoryDescriptor{
+public interface PropertyDefinition{
 @JsOverlay
-static MemoryDescriptor create(){
+static PropertyDefinition create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-int getInitial();
+String getInitialValue();
 @JsProperty
-int getMaximum();
+String getName();
 @JsProperty
-boolean isShared();
+String getSyntax();
 @JsProperty
-void setInitial(int initial);
+boolean isInherits();
 @JsProperty
-void setMaximum(int maximum);
+void setInherits(boolean inherits);
 @JsProperty
-void setShared(boolean shared);
+void setInitialValue(String initialValue);
+@JsProperty
+void setName(String name);
+@JsProperty
+void setSyntax(String syntax);
 }

@@ -35,7 +35,11 @@ double getColorTemperature();
 @JsProperty
 double getContrast();
 @JsProperty
+String getCursor();
+@JsProperty
 String getDeviceId();
+@JsProperty
+String getDisplaySurface();
 @JsProperty
 double getExposureCompensation();
 @JsProperty
@@ -79,7 +83,13 @@ boolean isAutoGainControl();
 @JsProperty
 boolean isEchoCancellation();
 @JsProperty
+boolean isLogicalSurface();
+@JsProperty
 boolean isNoiseSuppression();
+@JsProperty
+boolean isRestrictOwnAudio();
+@JsProperty
+boolean isSuppressLocalAudioPlayback();
 @JsProperty
 boolean isTorch();
 @JsProperty
@@ -95,7 +105,11 @@ void setColorTemperature(double colorTemperature);
 @JsProperty
 void setContrast(double contrast);
 @JsProperty
+void setCursor(String cursor);
+@JsProperty
 void setDeviceId(String deviceId);
+@JsProperty
+void setDisplaySurface(String displaySurface);
 @JsProperty
 void setEchoCancellation(boolean echoCancellation);
 @JsProperty
@@ -117,6 +131,8 @@ void setIso(double iso);
 @JsProperty
 void setLatency(double latency);
 @JsProperty
+void setLogicalSurface(boolean logicalSurface);
+@JsProperty
 void setNoiseSuppression(boolean noiseSuppression);
 @JsProperty
 void setPointsOfInterest(JsArray<MediaTrackSettings.PointsOfInterestFieldType> pointsOfInterest);
@@ -127,6 +143,8 @@ setPointsOfInterest(Js.<JsArray<MediaTrackSettings.PointsOfInterestFieldType>>un
 @JsProperty
 void setResizeMode(String resizeMode);
 @JsProperty
+void setRestrictOwnAudio(boolean restrictOwnAudio);
+@JsProperty
 void setSampleRate(double sampleRate);
 @JsProperty
 void setSampleSize(int sampleSize);
@@ -134,6 +152,8 @@ void setSampleSize(int sampleSize);
 void setSaturation(double saturation);
 @JsProperty
 void setSharpness(double sharpness);
+@JsProperty
+void setSuppressLocalAudioPlayback(boolean suppressLocalAudioPlayback);
 @JsProperty
 void setTorch(boolean torch);
 @JsProperty

@@ -1,26 +1,20 @@
-package elemental2.webassembly;
+package elemental2.dom;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
+import elemental2.dom.HTMLElement;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
+import elemental2.dom.EventInit;
 import jsinterop.base.JsPropertyMap;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public interface MemoryDescriptor{
+public interface SubmitEventInit extends EventInit{
 @JsOverlay
-static MemoryDescriptor create(){
+static SubmitEventInit create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-int getInitial();
+HTMLElement getSubmitter();
 @JsProperty
-int getMaximum();
-@JsProperty
-boolean isShared();
-@JsProperty
-void setInitial(int initial);
-@JsProperty
-void setMaximum(int maximum);
-@JsProperty
-void setShared(boolean shared);
+void setSubmitter(HTMLElement submitter);
 }

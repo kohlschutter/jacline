@@ -1,27 +1,29 @@
 package elemental2.dom;
-import java.lang.Void;
 import elemental2.dom.URL;
 import elemental2.dom.ShareData;
-import elemental2.dom.PluginArray;
-import elemental2.dom.MimeTypeArray;
-import elemental2.promise.Promise;
 import elemental2.dom.NavigatorStorage;
+import elemental2.promise.Promise;
 import elemental2.dom.Clipboard;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
 import elemental2.dom.BatteryManager;
 import elemental2.dom.Geolocation;
-import jsinterop.annotations.JsOverlay;
 import elemental2.dom.ServiceWorkerContainer;
-import java.lang.Object;
 import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import elemental2.dom.UserActivation;
+import elemental2.dom.NavigatorBadge;
+import java.lang.Void;
+import elemental2.dom.PluginArray;
+import elemental2.dom.MimeTypeArray;
+import elemental2.core.JsArray;
+import jsinterop.annotations.JsOverlay;
+import java.lang.Object;
 import elemental2.dom.StorageManager;
 import elemental2.dom.MediaDevices;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public class Navigator implements NavigatorStorage{
+public class Navigator implements NavigatorBadge, NavigatorStorage{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface RegisterProtocolHandlerUrlUnionType{
 @JsOverlay
@@ -77,6 +79,7 @@ public double deviceMemory;
 public Geolocation geolocation;
 public int hardwareConcurrency;
 public String language;
+public JsArray<String> languages;
 public MediaDevices mediaDevices;
 public MimeTypeArray mimeTypes;
 public boolean onLine;
@@ -87,8 +90,10 @@ public ServiceWorkerContainer serviceWorker;
 public StorageManager storage;
 public UserActivation userActivation;
 public String userAgent;
+public boolean webdriver;
 public native boolean canShare();
 public native boolean canShare(ShareData data);
+public native Promise<Void> clearAppBadge();
 public native Promise<BatteryManager> getBattery();
 @JsProperty
 public native StorageManager getStorage();
@@ -103,6 +108,8 @@ registerProtocolHandler(scheme,Js.<Navigator.RegisterProtocolHandlerUrlUnionType
 public final void registerProtocolHandler(String scheme,URL url,String title){
 registerProtocolHandler(scheme,Js.<Navigator.RegisterProtocolHandlerUrlUnionType>uncheckedCast(url),title);
 }
+public native Promise<Void> setAppBadge();
+public native Promise<Void> setAppBadge(double contents);
 @JsProperty
 public native void setStorage(StorageManager storage);
 public native Promise<Void> share();

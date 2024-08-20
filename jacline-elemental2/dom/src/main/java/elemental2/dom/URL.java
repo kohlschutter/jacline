@@ -12,6 +12,52 @@ import elemental2.dom.Blob;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class URL{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
+public interface CanParseBaseUnionType{
+@JsOverlay
+static URL.CanParseBaseUnionType of(Object o){
+return Js.cast(o);
+}
+@JsOverlay
+default String asString(){
+return Js.asString(this);
+}
+@JsOverlay
+default URL asURL(){
+return Js.cast(this);
+}
+@JsOverlay
+default boolean isString(){
+return (Object)this instanceof String;
+}
+@JsOverlay
+default boolean isURL(){
+return (Object)this instanceof URL;
+}
+}
+@JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
+public interface CanParseUrlUnionType{
+@JsOverlay
+static URL.CanParseUrlUnionType of(Object o){
+return Js.cast(o);
+}
+@JsOverlay
+default String asString(){
+return Js.asString(this);
+}
+@JsOverlay
+default URL asURL(){
+return Js.cast(this);
+}
+@JsOverlay
+default boolean isString(){
+return (Object)this instanceof String;
+}
+@JsOverlay
+default boolean isURL(){
+return (Object)this instanceof URL;
+}
+}
+@JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorBaseUnionType{
 @JsOverlay
 static URL.ConstructorBaseUnionType of(Object o){
@@ -110,6 +156,48 @@ return (Object)this instanceof String;
 default boolean isURL(){
 return (Object)this instanceof URL;
 }
+}
+public static native boolean canParse(URL.CanParseUrlUnionType url,URL.CanParseBaseUnionType base);
+@JsOverlay
+public static final boolean canParse(URL.CanParseUrlUnionType url,String base){
+return canParse(url,Js.<URL.CanParseBaseUnionType>uncheckedCast(base));
+}
+@JsOverlay
+public static final boolean canParse(URL.CanParseUrlUnionType url,URL base){
+return canParse(url,Js.<URL.CanParseBaseUnionType>uncheckedCast(base));
+}
+public static native boolean canParse(URL.CanParseUrlUnionType url);
+@JsOverlay
+public static final boolean canParse(String url,URL.CanParseBaseUnionType base){
+return canParse(Js.<URL.CanParseUrlUnionType>uncheckedCast(url),base);
+}
+@JsOverlay
+public static final boolean canParse(String url,String base){
+return canParse(Js.<URL.CanParseUrlUnionType>uncheckedCast(url),Js.<URL.CanParseBaseUnionType>uncheckedCast(base));
+}
+@JsOverlay
+public static final boolean canParse(String url,URL base){
+return canParse(Js.<URL.CanParseUrlUnionType>uncheckedCast(url),Js.<URL.CanParseBaseUnionType>uncheckedCast(base));
+}
+@JsOverlay
+public static final boolean canParse(String url){
+return canParse(Js.<URL.CanParseUrlUnionType>uncheckedCast(url));
+}
+@JsOverlay
+public static final boolean canParse(URL url,URL.CanParseBaseUnionType base){
+return canParse(Js.<URL.CanParseUrlUnionType>uncheckedCast(url),base);
+}
+@JsOverlay
+public static final boolean canParse(URL url,String base){
+return canParse(Js.<URL.CanParseUrlUnionType>uncheckedCast(url),Js.<URL.CanParseBaseUnionType>uncheckedCast(base));
+}
+@JsOverlay
+public static final boolean canParse(URL url,URL base){
+return canParse(Js.<URL.CanParseUrlUnionType>uncheckedCast(url),Js.<URL.CanParseBaseUnionType>uncheckedCast(base));
+}
+@JsOverlay
+public static final boolean canParse(URL url){
+return canParse(Js.<URL.CanParseUrlUnionType>uncheckedCast(url));
 }
 @JsOverlay
 public static final String createObjectURL(Blob obj){

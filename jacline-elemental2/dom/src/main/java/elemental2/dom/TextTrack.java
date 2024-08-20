@@ -11,6 +11,7 @@ import elemental2.dom.EventTarget;
 public class TextTrack implements EventTarget{
 public TextTrackCueList activeCues;
 public TextTrackCueList cues;
+public String id;
 public String mode;
 public native void addCue(TextTrackCue cue);
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType useCapture);

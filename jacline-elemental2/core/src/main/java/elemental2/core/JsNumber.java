@@ -84,7 +84,7 @@ public JsNumber(Object value){}
 public native String toExponential();
 public native String toExponential(double fractionDigits);
 public native String toFixed();
-public native String toFixed(Object digits);
+public native String toFixed(int digits);
 public native String toLocaleString();
 @JsOverlay
 public final String toLocaleString(JsArray<String> locales,JsObject options){

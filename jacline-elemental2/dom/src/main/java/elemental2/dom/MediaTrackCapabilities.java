@@ -21,7 +21,11 @@ MediaSettingsRange getColorTemperature();
 @JsProperty
 MediaSettingsRange getContrast();
 @JsProperty
+JsArray<String> getCursor();
+@JsProperty
 String getDeviceId();
+@JsProperty
+String getDisplaySurface();
 @JsProperty
 JsArray<Boolean> getEchoCancellation();
 @JsProperty
@@ -61,6 +65,8 @@ double getWidth();
 @JsProperty
 MediaSettingsRange getZoom();
 @JsProperty
+boolean isLogicalSurface();
+@JsProperty
 boolean isTorch();
 @JsProperty
 void setAspectRatio(double aspectRatio);
@@ -73,7 +79,15 @@ void setColorTemperature(MediaSettingsRange colorTemperature);
 @JsProperty
 void setContrast(MediaSettingsRange contrast);
 @JsProperty
+void setCursor(JsArray<String> cursor);
+@JsOverlay
+default void setCursor(String[] cursor){
+setCursor(Js.<JsArray<String>>uncheckedCast(cursor));
+}
+@JsProperty
 void setDeviceId(String deviceId);
+@JsProperty
+void setDisplaySurface(String displaySurface);
 @JsProperty
 void setEchoCancellation(JsArray<Boolean> echoCancellation);
 @JsOverlay
@@ -110,6 +124,8 @@ void setHeight(double height);
 void setIso(MediaSettingsRange iso);
 @JsProperty
 void setLatency(double latency);
+@JsProperty
+void setLogicalSurface(boolean logicalSurface);
 @JsProperty
 void setResizeMode(JsArray<String> resizeMode);
 @JsOverlay
