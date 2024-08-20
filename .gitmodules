@@ -14,3 +14,6 @@
 	path = closure-compiler
 	url = git@github.com:kohlschutter/closure-compiler.git
 	branch = v20240609-wip
+[submodule "jacline-jsinterop-generator/jsinterop-generator"]
+	path = jacline-jsinterop-generator/jsinterop-generator
+	url = git@github.com:kohlschutter/jsinterop-generator.git

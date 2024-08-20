@@ -6,10 +6,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-if [[ ! -d jsinterop-generator ]]; then
-  #git clone https://github.com/google/jsinterop-generator.git
-  git clone https://github.com/kohlschutter/jsinterop-generator.git
-fi
+git submodule update --init
 alias bazel=bazelisk
 cd jsinterop-generator
 bazel build ...
