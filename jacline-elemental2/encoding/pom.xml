@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.kohlschutter.jacline</groupId>
+        <artifactId>jacline-elemental2</artifactId>
+        <version>1.0.2-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>jacline-elemental2-encoding</artifactId>
+    <packaging>jar</packaging>
+
+    <description>Thin Java abstractions for the native Encoding API.</description>
+
+    <properties>
+        <kohlschutter.project.notice.file>
+            ${project.parent.basedir}/NOTICE</kohlschutter.project.notice.file>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.kohlschutter.jacline</groupId>
+            <artifactId>jacline-elemental2-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kohlschutter.jacline</groupId>
+            <artifactId>jacline-elemental2-dom</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -135,6 +135,7 @@
         <module>promise</module>
         <module>core</module>
         <module>dom</module>
+        <module>encoding</module>
         <module>indexeddb</module>
         <module>media</module>
         <module>svg</module>
