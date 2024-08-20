@@ -139,6 +139,7 @@
         <module>media</module>
         <module>svg</module>
         <module>webassembly</module>
+        <module>webcrypto</module>
         <module>webgl</module>
         <module>webstorage</module>
     </modules>
