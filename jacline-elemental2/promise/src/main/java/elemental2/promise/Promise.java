@@ -16,6 +16,7 @@
  */
 package elemental2.promise;
 
+import jsinterop.annotations.JsAsync;
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
@@ -148,4 +149,15 @@ public class Promise<T> implements IThenable<T> {
 
   @JsMethod(name = "finally")
   public native Promise<T> finally_(FinallyOnFinallyCallbackFn onFinally);
+  
+  /**
+   * Will be converted to a native Javascript "await" call. Use from a method annotated with
+   * {@link JsAsync}.
+   * 
+   * @param <T> The type.
+   * @param promise The promise/thenable.
+   * @return The promised object.
+   */
+  @JsMethod(namespace = JsPackage.GLOBAL)
+  public static native <T> T await(IThenable<T> promise);
 }
