@@ -6,7 +6,7 @@
 	url = https://github.com/google/jsinterop-base.git
 [submodule "jacline-elemental2/elemental2"]
 	path = jacline-elemental2/elemental2
-	url = https://github.com/google/elemental2.git
+	url = git@github.com:kohlschutter/elemental2.git
 [submodule "jacline-jsinterop-base/jsinterop-base"]
 	path = jacline-jsinterop-base/jsinterop-base
 	url = https://github.com/google/jsinterop-base.git

@@ -6,9 +6,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-if [[ ! -d elemental2 ]]; then
-  git clone https://github.com/google/elemental2.git
-fi
+git submodule update --init
 
 alias bazel=bazelisk
 cd elemental2
