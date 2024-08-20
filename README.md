@@ -71,6 +71,7 @@ Particularly, jacline sports the following highlights:
     `console` (JavaScript) and `slf4j` (JVM, exchangable via Java SPI)
 - Enables the suppression of certain Closure warnings by translating Java `@SuppressWarnings` to the corresponding JavaScript `@suppress` annotation.
 - Simplifies the creation of sourcemap files (via Maven configuration properties)
+- Improved Elemental2 API, based upon newer extern files, plus support for the WebCrypto API and Text Encoding API.
 
 ## Limitations
 
