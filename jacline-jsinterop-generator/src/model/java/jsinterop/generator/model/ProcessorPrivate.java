@@ -129,7 +129,6 @@ abstract class ProcessorPrivate implements Processor {
   abstract boolean shouldProcessMethodInvocation(MethodInvocation methodInvocation);
   abstract boolean shouldProcessParameter(Parameter parameter);
   abstract boolean shouldProcessParametrizedTypeReference(ParametrizedTypeReference parametrizedTypeReference);
-  abstract boolean shouldProcessPredefinedTypeReference(PredefinedTypeReference predefinedTypeReference);
   abstract boolean shouldProcessProgram(Program program);
   abstract boolean shouldProcessReturnStatement(ReturnStatement returnStatement);
   abstract boolean shouldProcessStatement(Statement statement);
@@ -154,7 +153,6 @@ abstract class ProcessorPrivate implements Processor {
   abstract Expression postProcessMethodInvocation(MethodInvocation methodInvocation);
   abstract Parameter postProcessParameter(Parameter parameter);
   abstract TypeReference postProcessParametrizedTypeReference(ParametrizedTypeReference parametrizedTypeReference);
-  abstract TypeReference postProcessPredefinedTypeReference(PredefinedTypeReference predefinedTypeReference);
   abstract Program postProcessProgram(Program program);
   abstract Statement postProcessReturnStatement(ReturnStatement returnStatement);
   abstract Statement postProcessStatement(Statement statement);

@@ -58,10 +58,6 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return shouldProcessAbstractTypeReference(parametrizedTypeReference);
   }
 
-  public boolean shouldProcessPredefinedTypeReference(PredefinedTypeReference predefinedTypeReference) {
-    return shouldProcessTypeReference(predefinedTypeReference);
-  }
-
   public boolean shouldProcessProgram(Program program) {
     return true;
   }
@@ -168,11 +164,6 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   }
 
   @Override
-  final TypeReference postProcessPredefinedTypeReference(PredefinedTypeReference predefinedTypeReference) {
-    return rewritePredefinedTypeReference(predefinedTypeReference);
-  }
-
-  @Override
   final Program postProcessProgram(Program program) {
     return rewriteProgram(program);
   }
@@ -272,10 +263,6 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
 
   public TypeReference  rewriteParametrizedTypeReference(ParametrizedTypeReference parametrizedTypeReference) {
     return rewriteAbstractTypeReference(parametrizedTypeReference);
-  }
-
-  public TypeReference  rewritePredefinedTypeReference(PredefinedTypeReference predefinedTypeReference) {
-    return rewriteTypeReference(predefinedTypeReference);
   }
 
   public Program  rewriteProgram(Program program) {

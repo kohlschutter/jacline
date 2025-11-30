@@ -73,11 +73,6 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
-  final boolean shouldProcessPredefinedTypeReference(PredefinedTypeReference predefinedTypeReference) {
-    return enterPredefinedTypeReference(predefinedTypeReference);
-  }
-
-  @Override
   final boolean shouldProcessProgram(Program program) {
     return enterProgram(program);
   }
@@ -207,12 +202,6 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
-  final TypeReference postProcessPredefinedTypeReference(PredefinedTypeReference predefinedTypeReference) {
-    exitPredefinedTypeReference(predefinedTypeReference);
-    return predefinedTypeReference;
-  }
-
-  @Override
   final Program postProcessProgram(Program program) {
     exitProgram(program);
     return program;
@@ -322,10 +311,6 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     return enterAbstractTypeReference(parametrizedTypeReference);
   }
 
-  public boolean enterPredefinedTypeReference(PredefinedTypeReference predefinedTypeReference) {
-    return enterTypeReference(predefinedTypeReference);
-  }
-
   public boolean enterProgram(Program program) {
     return true;
   }
@@ -400,9 +385,6 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
   public void exitParametrizedTypeReference(ParametrizedTypeReference parametrizedTypeReference) {
     exitAbstractTypeReference(parametrizedTypeReference);
-  }
-  public void exitPredefinedTypeReference(PredefinedTypeReference predefinedTypeReference) {
-    exitTypeReference(predefinedTypeReference);
   }
   public void exitProgram(Program program) {
   }
