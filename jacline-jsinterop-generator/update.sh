@@ -9,7 +9,7 @@
 git submodule update --init
 alias bazel=bazelisk
 cd jsinterop-generator
-bazel build ...
+bazel build ... || true
 cd ..
 
 rm -rf src/main/resources
