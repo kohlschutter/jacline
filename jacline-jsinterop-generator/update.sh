@@ -6,7 +6,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-git submodule update --init
+#git submodule update --init
 alias bazel=bazelisk
 cd jsinterop-generator
 bazel build ... || true
