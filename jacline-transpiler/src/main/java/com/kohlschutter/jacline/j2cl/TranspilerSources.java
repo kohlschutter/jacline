@@ -30,8 +30,8 @@ import java.util.function.Predicate;
 
 public final class TranspilerSources {
   private final List<Path> sourceFiles = new ArrayList<>();
-  private final Set<String> bootclasspath = new LinkedHashSet<>();
-  private final Set<String> classpath = new LinkedHashSet<>();
+  private final Set<Path> bootclasspath = new LinkedHashSet<>();
+  private final Set<Path> classpath = new LinkedHashSet<>();
 
   private TranspilerSources() {
   }
@@ -64,11 +64,11 @@ public final class TranspilerSources {
   }
 
   public void addBootClasspathElement(String p) {
-    bootclasspath.add(p);
+    bootclasspath.add(Path.of(p));
   }
 
   public void addClasspathElement(String p) {
-    classpath.add(p);
+    classpath.add(Path.of(p));
   }
 
   public void addSource(Path path) throws IOException {
@@ -92,8 +92,8 @@ public final class TranspilerSources {
     return Collections.unmodifiableList(sourceFiles);
   }
 
-  public List<String> getEffectiveClasspath(boolean onlyAddExisting) {
-    List<String> list = new ArrayList<>(bootclasspath.size() + classpath.size());
+  public List<Path> getEffectiveClasspath(boolean onlyAddExisting) {
+    List<Path> list = new ArrayList<>(bootclasspath.size() + classpath.size());
     if (onlyAddExisting) {
       addAllExisting(list, bootclasspath);
       addAllExisting(list, classpath);
@@ -104,9 +104,9 @@ public final class TranspilerSources {
     return list;
   }
 
-  private static void addAllExisting(List<String> list, Set<String> paths) {
-    for (String p : paths) {
-      if (Files.exists(Path.of(p))) {
+  private static void addAllExisting(List<Path> list, Set<Path> paths) {
+    for (Path p : paths) {
+      if (Files.exists(p)) {
         list.add(p);
       }
     }
