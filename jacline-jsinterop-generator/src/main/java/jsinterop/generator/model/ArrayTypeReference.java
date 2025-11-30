@@ -22,14 +22,27 @@ import java.util.Objects;
 
 /** Models reference to a type Array. */
 @Visitable
-public class ArrayTypeReference implements TypeReference, DelegableTypeReference {
+public class ArrayTypeReference extends TypeReference implements DelegableTypeReference {
   @Visitable TypeReference arrayType;
 
   public ArrayTypeReference(TypeReference arrayType) {
+    this(arrayType, false);
+  }
+
+  public ArrayTypeReference(TypeReference arrayType, boolean isNullable) {
+    super(isNullable);
     this.arrayType = arrayType;
   }
 
-  public ArrayTypeReference() {}
+  @Override
+  public TypeReference toNonNullableTypeReference() {
+    return new ArrayTypeReference(this.arrayType, false);
+  }
+
+  @Override
+  public TypeReference toNullableTypeReference() {
+    return new ArrayTypeReference(this.arrayType, true);
+  }
 
   @Override
   public String getImport() {

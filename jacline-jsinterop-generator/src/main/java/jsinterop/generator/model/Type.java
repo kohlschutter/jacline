@@ -277,12 +277,7 @@ public class Type extends Entity implements HasTypeParameters {
   }
 
   public String getJavaRelativeQualifiedTypeName() {
-    String packageName = getTopLevelParentType().getPackageName();
-    if (packageName == null) {
-      // FIXME add warning
-      return getJavaFqn();
-    }
-    return getJavaFqn().substring(packageName.length() + 1);
+    return getJavaFqn().substring(getTopLevelParentType().getPackageName().length() + 1);
   }
 
   public void removeFields(List<Field> fieldsToRemove) {

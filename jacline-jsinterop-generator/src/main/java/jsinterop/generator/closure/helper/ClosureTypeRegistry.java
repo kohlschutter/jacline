@@ -17,18 +17,19 @@ package jsinterop.generator.closure.helper;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
-import static java.util.stream.Collectors.toList;
+import static com.google.common.collect.ImmutableList.toImmutableList;
 import static jsinterop.generator.helper.AbstractTypeRegistry.ReferenceContext.IN_TYPE_ARGUMENTS;
 import static jsinterop.generator.helper.AbstractTypeRegistry.ReferenceContext.REGULAR;
-import static jsinterop.generator.model.PredefinedTypeReference.BOOLEAN;
-import static jsinterop.generator.model.PredefinedTypeReference.BOOLEAN_OBJECT;
-import static jsinterop.generator.model.PredefinedTypeReference.DOUBLE;
-import static jsinterop.generator.model.PredefinedTypeReference.DOUBLE_OBJECT;
-import static jsinterop.generator.model.PredefinedTypeReference.JS_BIGINT;
-import static jsinterop.generator.model.PredefinedTypeReference.OBJECT;
-import static jsinterop.generator.model.PredefinedTypeReference.STRING;
-import static jsinterop.generator.model.PredefinedTypeReference.VOID;
-import static jsinterop.generator.model.PredefinedTypeReference.VOID_OBJECT;
+import static jsinterop.generator.model.PredefinedTypes.BOOLEAN;
+import static jsinterop.generator.model.PredefinedTypes.BOOLEAN_OBJECT;
+import static jsinterop.generator.model.PredefinedTypes.DOUBLE;
+import static jsinterop.generator.model.PredefinedTypes.DOUBLE_OBJECT;
+import static jsinterop.generator.model.PredefinedTypes.JS_BIGINT;
+import static jsinterop.generator.model.PredefinedTypes.JS_CONSTRUCTOR_FN;
+import static jsinterop.generator.model.PredefinedTypes.OBJECT;
+import static jsinterop.generator.model.PredefinedTypes.STRING;
+import static jsinterop.generator.model.PredefinedTypes.VOID;
+import static jsinterop.generator.model.PredefinedTypes.VOID_OBJECT;
 
 import com.google.common.collect.ImmutableList;
 import com.google.javascript.rhino.jstype.EnumElementType;
@@ -41,6 +42,7 @@ import com.google.javascript.rhino.jstype.ProxyObjectType;
 import com.google.javascript.rhino.jstype.TemplateType;
 import com.google.javascript.rhino.jstype.TemplatizedType;
 import com.google.javascript.rhino.jstype.UnionType;
+import com.google.javascript.rhino.jstype.Visitor;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
@@ -49,7 +51,7 @@ import jsinterop.generator.helper.AbstractTypeRegistry;
 import jsinterop.generator.model.ArrayTypeReference;
 import jsinterop.generator.model.JavaTypeReference;
 import jsinterop.generator.model.ParametrizedTypeReference;
-import jsinterop.generator.model.PredefinedTypeReference;
+import jsinterop.generator.model.PredefinedTypes;
 import jsinterop.generator.model.Type;
 import jsinterop.generator.model.TypeReference;
 import jsinterop.generator.model.TypeVariableReference;
@@ -88,7 +90,19 @@ public class ClosureTypeRegistry extends AbstractTypeRegistry<JSType> {
   }
 
   public TypeReference createTypeReference(JSType jsType, ReferenceContext referenceContext) {
-    return new TypeReferenceCreator(referenceContext).resolveTypeReference(jsType);
+    return new TypeReferenceCreator(referenceContext, isNullable(jsType))
+        .resolveTypeReference(jsType);
+  }
+
+  private static boolean isNullable(JSType jsType) {
+    if (jsType instanceof UnionType) {
+      return jsType.toMaybeUnionType().getAlternates().stream()
+          .anyMatch(ClosureTypeRegistry::isNullable);
+    }
+    return jsType.isNullable()
+        // TemplateType.isNullable() always returns true but a template type should only be
+        // considered as nullable if they are marked as nullable:  `?T` (seen as T|null)
+        && !(jsType instanceof TemplateType);
   }
 
   /**
@@ -99,51 +113,55 @@ public class ClosureTypeRegistry extends AbstractTypeRegistry<JSType> {
     jsTypeByThisTemplateType.put(thisTemplateType, jsType);
   }
 
-  private class TypeReferenceCreator extends AbstractNoOpVisitor<TypeReference> {
+  private class TypeReferenceCreator extends Visitor.WithDefaultCase<TypeReference> {
     private final ReferenceContext referenceContext;
+    private final boolean isNullable;
 
-    TypeReferenceCreator(ReferenceContext referenceContext) {
+    TypeReferenceCreator(ReferenceContext referenceContext, boolean isNullable) {
       this.referenceContext = referenceContext;
+      this.isNullable = isNullable;
+    }
+
+    @Override
+    protected TypeReference caseDefault(JSType type) {
+      return null;
     }
 
     private TypeReference resolveTypeReference(JSType type) {
       if (type.isVoidType() || type.isNullType()) {
         return type.visit(this);
       }
-
-      // Nullable type and optional type are represented in closure by an union type with
-      // respectively Null and Undefined. We don't use this information (yet), so we remove Null
-      // or Undefined before to visit the type.
       return type.restrictByNotNullOrUndefined().visit(this);
     }
 
     private List<TypeReference> resolveTypeReferences(List<? extends JSType> types) {
-      return types.stream().map(this::resolveTypeReference).collect(toList());
+      return types.stream().map(this::resolveTypeReference).collect(toImmutableList());
     }
 
     @Override
     public TypeReference caseNoType(NoType type) {
-      return OBJECT;
+      return OBJECT.getReference(isNullable);
     }
 
     @Override
     public TypeReference caseEnumElementType(EnumElementType type) {
-      return new JavaTypeReference(checkNotNull(getJavaType(type)));
+      return new JavaTypeReference(checkNotNull(getJavaType(type)), isNullable);
     }
 
     @Override
     public TypeReference caseAllType() {
-      return OBJECT;
+      return OBJECT.getReference(isNullable);
     }
 
     @Override
     public TypeReference caseBooleanType() {
-      return referenceContext == REGULAR ? BOOLEAN : BOOLEAN_OBJECT;
+      return (referenceContext == REGULAR && !isNullable ? BOOLEAN : BOOLEAN_OBJECT)
+          .getReference(isNullable);
     }
 
     @Override
     public TypeReference caseNoObjectType() {
-      return OBJECT;
+      return OBJECT.getReference(isNullable);
     }
 
     @Override
@@ -151,28 +169,29 @@ public class ClosureTypeRegistry extends AbstractTypeRegistry<JSType> {
       if (type.isConstructor() && type.getDisplayName() == null) {
         // We use upper bounded wildcard type because constructor function are always producers.
         return new ParametrizedTypeReference(
-            PredefinedTypeReference.JS_CONSTRUCTOR_FN,
+            JS_CONSTRUCTOR_FN.getReference(isNullable),
             ImmutableList.of(
                 WildcardTypeReference.createWildcardUpperBound(
-                    resolveTypeReference(type.getTypeOfThis()))));
+                    new TypeReferenceCreator(IN_TYPE_ARGUMENTS, false)
+                        .resolveTypeReference(type.getTypeOfThis()))));
       }
-      return new JavaTypeReference(checkNotNull(getJavaType(type)));
+      return new JavaTypeReference(checkNotNull(getJavaType(type)), isNullable);
     }
 
     @Override
     public TypeReference caseObjectType(ObjectType type) {
       String typeFqn = type.getNormalizedReferenceName();
 
-      if (PredefinedTypeReference.isPredefinedType(typeFqn)) {
-        return PredefinedTypeReference.getPredefinedType(typeFqn);
+      if (PredefinedTypes.isPredefinedType(typeFqn)) {
+        return PredefinedTypes.getPredefinedType(typeFqn).getReference(isNullable);
       }
 
-      return new JavaTypeReference(checkNotNull(getJavaType(type)));
+      return new JavaTypeReference(checkNotNull(getJavaType(type)), isNullable);
     }
 
     @Override
     public TypeReference caseUnknownType() {
-      return OBJECT;
+      return OBJECT.getReference(isNullable);
     }
 
     @Override
@@ -187,33 +206,40 @@ public class ClosureTypeRegistry extends AbstractTypeRegistry<JSType> {
 
     @Override
     public TypeReference caseNumberType() {
-      return referenceContext == REGULAR ? DOUBLE : DOUBLE_OBJECT;
+      return (referenceContext == REGULAR && !isNullable ? DOUBLE : DOUBLE_OBJECT)
+          .getReference(isNullable);
     }
 
     @Override
     public TypeReference caseBigIntType() {
-      return JS_BIGINT;
+      return JS_BIGINT.getReference(isNullable);
     }
 
     @Override
     public TypeReference caseStringType() {
-      return STRING;
+      return STRING.getReference(isNullable);
     }
 
     @Override
     public TypeReference caseSymbolType() {
       // TODO(b/73255220): add support for symbol type.
-      return OBJECT;
+      return OBJECT.getReference(isNullable);
     }
 
     @Override
     public TypeReference caseVoidType() {
-      return referenceContext == REGULAR ? VOID : VOID_OBJECT;
+      return (referenceContext == REGULAR && !isNullable ? VOID : VOID_OBJECT)
+          .getReference(isNullable);
     }
 
     @Override
     public TypeReference caseUnionType(UnionType type) {
-      return new UnionTypeReference(resolveTypeReferences(type.getAlternates()));
+      return new UnionTypeReference(
+          // In our type model the UnionTypeReference will carry the nullability information. The
+          // alternates are always considered as non-nullable.
+          new TypeReferenceCreator(referenceContext, false)
+              .resolveTypeReferences(type.getAlternates()),
+          isNullable);
     }
 
     @Override
@@ -229,7 +255,7 @@ public class ClosureTypeRegistry extends AbstractTypeRegistry<JSType> {
         return createMethodDefiningTypeReferenceFrom(templateType);
       }
 
-      return new TypeVariableReference(templateType.getReferenceName(), null);
+      return new TypeVariableReference(templateType.getReferenceName(), null, isNullable);
     }
 
     private TypeReference createMethodDefiningTypeReferenceFrom(TemplateType templateType) {
@@ -248,7 +274,9 @@ public class ClosureTypeRegistry extends AbstractTypeRegistry<JSType> {
         return typeReference;
       } else if (jsType.isArrayType()) {
         checkState(templateKeys.size() == 1, templateKeys);
-        return new ArrayTypeReference(resolveTypeReference(templateKeys.get(0)));
+        TypeReference mainTypeReference = resolveTypeReference(templateKeys.get(0));
+
+        return new ArrayTypeReference(mainTypeReference, isNullable);
       } else {
         return createParametrizedTypeReference(jsType, templateKeys);
       }
@@ -256,12 +284,11 @@ public class ClosureTypeRegistry extends AbstractTypeRegistry<JSType> {
 
     private ParametrizedTypeReference createParametrizedTypeReference(
         JSType referencedType, List<? extends JSType> templatesTypes) {
-      TypeReference templatizedType = resolveTypeReference(referencedType);
-
-      List<TypeReference> templates =
-          new TypeReferenceCreator(IN_TYPE_ARGUMENTS).resolveTypeReferences(templatesTypes);
-
-      return new ParametrizedTypeReference(templatizedType, templates);
+      return new ParametrizedTypeReference(
+          resolveTypeReference(referencedType),
+          templatesTypes.stream()
+              .map(t -> createTypeReference(t, IN_TYPE_ARGUMENTS))
+              .collect(toImmutableList()));
     }
   }
 }

@@ -20,13 +20,18 @@ package jsinterop.generator.model;
 import com.google.j2cl.common.visitor.Processor;
 import com.google.j2cl.common.visitor.Visitable;
 
-/** Model a reference to a Java type created from a typescript type. */
+/** Model a reference to a declared type. */
 @Visitable
 public class JavaTypeReference extends AbstractTypeReference {
   private Type typeDeclaration;
   public String comment;
 
   public JavaTypeReference(Type typeDeclaration) {
+    this(typeDeclaration, false);
+  }
+
+  public JavaTypeReference(Type typeDeclaration, boolean isNullable) {
+    super(isNullable);
     this.typeDeclaration = typeDeclaration;
   }
 
@@ -63,6 +68,16 @@ public class JavaTypeReference extends AbstractTypeReference {
   @Override
   public String getJniSignature() {
     return "L" + typeDeclaration.getJavaFqn().replace('.', '/') + ";";
+  }
+
+  @Override
+  public TypeReference toNonNullableTypeReference() {
+    return new JavaTypeReference(this.typeDeclaration, false);
+  }
+
+  @Override
+  public TypeReference toNullableTypeReference() {
+    return new JavaTypeReference(this.typeDeclaration, true);
   }
 
   @Override

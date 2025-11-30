@@ -39,7 +39,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import jsinterop.generator.closure.helper.ClosureTypeRegistry;
 import jsinterop.generator.closure.helper.GenerationContext;
-import jsinterop.generator.model.PredefinedTypeReference;
+import jsinterop.generator.model.PredefinedTypes;
 import jsinterop.generator.model.Type;
 
 abstract class AbstractClosureVisitor {
@@ -177,13 +177,25 @@ abstract class AbstractClosureVisitor {
       }
 
     // The type linked to symbol is not the type represented in the @typedef annotations.
-    JSType realType = checkNotNull(getJsTypeRegistry().getType(
-        typedef.getScope(), typedef.getName()));
+    JSType realType = null;
+    String name = null;
+
+    if (typedef instanceof Property) {
+      // In the namespaced typedef scenario, use the fully qualified name (including namespace) of
+      // the node to accurately retrieve the corresponding type information.
+      Property namespacedTypeDef = (Property) typedef;
+      realType = getJsTypeRegistry().getType(null, namespacedTypeDef.getNode().getQualifiedName());
+      name = namespacedTypeDef.getNode().getQualifiedName();
+    } else {
+      realType = getJsTypeRegistry().getType(typedef.getScope(), typedef.getName());
+      name = typedef.getName();
+    }
+    realType = realType.restrictByNotNullOrUndefined();
 
     if (realType.isRecordType()) {
-      acceptRecordType(toRecordType(realType), typedef.getName());
+      acceptRecordType(toRecordType(realType), name);
     } else if (isAnonymousFunctionType(realType)) {
-      acceptFunctionType(toFunctionType(realType), typedef.getName());
+      acceptFunctionType(toFunctionType(realType), name);
     } else {
       // we are in a case where typedef is used as an alias and doesnt define any RecordType or
       // FunctionType.
@@ -211,7 +223,7 @@ abstract class AbstractClosureVisitor {
   }
 
   private void acceptClassOrInterface(FunctionType type) {
-    if (PredefinedTypeReference.isPredefinedType(type.getNormalizedReferenceName())) {
+    if (PredefinedTypes.isPredefinedType(type.getNormalizedReferenceName())) {
       // Don't traverse types that map to existing Java abstractions (e.g. JsPropertyMap from
       // JsInterop-base).
       return;

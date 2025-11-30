@@ -17,7 +17,7 @@
 
 package jsinterop.generator.model;
 
-import static jsinterop.generator.model.PredefinedTypeReference.OBJECT;
+import static jsinterop.generator.model.PredefinedTypes.OBJECT;
 
 import com.google.j2cl.common.visitor.Processor;
 import com.google.j2cl.common.visitor.Visitable;
@@ -37,16 +37,16 @@ import java.util.Objects;
  * Foo}) or neither ({@code ?}) but not both.
  */
 @Visitable
-public class WildcardTypeReference implements TypeReference {
+public class WildcardTypeReference extends TypeReference {
   public static WildcardTypeReference createWildcardUpperBound(TypeReference upperBound) {
-    if (upperBound.equals(PredefinedTypeReference.OBJECT)) {
+    if (upperBound.isReferenceTo(OBJECT)) {
       return createUnboundedWildcard();
     }
     return new WildcardTypeReference(upperBound, null);
   }
 
   public static WildcardTypeReference createWildcardLowerBound(TypeReference lowerBound) {
-    if (lowerBound.equals(PredefinedTypeReference.OBJECT)) {
+    if (lowerBound.isReferenceTo(OBJECT)) {
       return createUnboundedWildcard();
     }
     return new WildcardTypeReference(null, lowerBound);
@@ -60,6 +60,12 @@ public class WildcardTypeReference implements TypeReference {
   private TypeReference lowerBound;
 
   private WildcardTypeReference(TypeReference upperBound, TypeReference lowerBound) {
+    this(upperBound, lowerBound, false);
+  }
+
+  private WildcardTypeReference(
+      TypeReference upperBound, TypeReference lowerBound, boolean isNullable) {
+    super(isNullable);
     this.upperBound = upperBound;
     this.lowerBound = lowerBound;
   }
@@ -81,7 +87,9 @@ public class WildcardTypeReference implements TypeReference {
   }
 
   public TypeReference getBound() {
-    return (lowerBound != null) ? lowerBound : (upperBound != null) ? upperBound : OBJECT;
+    return (lowerBound != null)
+        ? lowerBound
+        : (upperBound != null) ? upperBound : OBJECT.getReference(false);
   }
 
   @Override
@@ -90,12 +98,17 @@ public class WildcardTypeReference implements TypeReference {
   }
 
   @Override
-  public String getImport() {
-    return null;
+  public TypeReference toNonNullableTypeReference() {
+    return new WildcardTypeReference(this.upperBound, this.lowerBound, false);
   }
 
   @Override
-  public String getComment() {
+  public TypeReference toNullableTypeReference() {
+    return new WildcardTypeReference(this.upperBound, this.lowerBound, true);
+  }
+
+  @Override
+  public String getImport() {
     return null;
   }
 

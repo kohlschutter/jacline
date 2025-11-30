@@ -16,15 +16,15 @@
 package jsinterop.generator.visitor;
 
 import static com.google.common.base.Preconditions.checkState;
-import static jsinterop.generator.model.PredefinedTypeReference.DOUBLE_OBJECT;
-import static jsinterop.generator.model.PredefinedTypeReference.JS_PROPERTY_MAP;
-import static jsinterop.generator.model.PredefinedTypeReference.STRING;
+import static jsinterop.generator.model.PredefinedTypes.DOUBLE_OBJECT;
+import static jsinterop.generator.model.PredefinedTypes.JS_PROPERTY_MAP;
+import static jsinterop.generator.model.PredefinedTypes.OBJECT;
+import static jsinterop.generator.model.PredefinedTypes.STRING;
 
 import java.util.List;
 import jsinterop.generator.model.AbstractRewriter;
 import jsinterop.generator.model.ModelVisitor;
 import jsinterop.generator.model.ParametrizedTypeReference;
-import jsinterop.generator.model.PredefinedTypeReference;
 import jsinterop.generator.model.Program;
 import jsinterop.generator.model.TypeReference;
 import jsinterop.generator.model.UnionTypeReference;
@@ -54,12 +54,12 @@ public class ParametrizedObjectReferenceRewriter implements ModelVisitor {
             // Fixup the parameterization for references to parametrized Object which are abstracted
             // in Java as JsProperty maps. The conversion removes the first type parameter which is
             // implicit in JsPropertyMap.
-            if (isJsPropertyMapReference(mainTypeReference)
-                || isObjectTypeReference(mainTypeReference)) {
+            if (mainTypeReference.isReferenceTo(JS_PROPERTY_MAP)
+                || isNativeObjectTypeReference(mainTypeReference)) {
               validateIObjectOrParametrizedObjectReference(parametrizedTypeReference);
 
               return new ParametrizedTypeReference(
-                  JS_PROPERTY_MAP,
+                  JS_PROPERTY_MAP.getReference(mainTypeReference.isNullable()),
                   parametrizedTypeReference.getActualTypeArguments().subList(1, 2));
             }
 
@@ -81,33 +81,32 @@ public class ParametrizedObjectReferenceRewriter implements ModelVisitor {
 
     TypeReference keyType = actualTypeArguments.get(0);
 
-    if (STRING.getJavaTypeFqn().equals(keyType.getJavaTypeFqn())
-        || (isObjectTypeReference(typeReference.getMainType())
-            // Closure allows Object to be parametrized with one type parameter(value).
-            // In this case, the key is hardcoded to Object
-            && PredefinedTypeReference.OBJECT.getJavaTypeFqn().equals(keyType.getJavaTypeFqn()))) {
-      return;
+    if (keyType instanceof UnionTypeReference) {
+      checkKeyType(
+          isObjectOrDoubleOrString(((UnionTypeReference) keyType).getTypes()), keyType, typeName);
+    } else {
+      checkKeyType(
+          keyType.isReferenceTo(STRING)
+              || (isNativeObjectTypeReference(typeReference.getMainType())
+                  // Closure allows Object to be parametrized with one type parameter(value).
+                  // In this case, the key is hardcoded to Object
+                  && keyType.isReferenceTo(OBJECT)),
+          keyType,
+          typeName);
     }
-
-//    checkKeyType(keyType instanceof UnionTypeReference, keyType, typeName);
-//    checkKeyType(isDoubleAndString(((UnionTypeReference) keyType).getTypes()), keyType, typeName);
   }
 
-  private static boolean isJsPropertyMapReference(TypeReference reference) {
-    return JS_PROPERTY_MAP.equals(reference);
-  }
-
-  private static boolean isObjectTypeReference(TypeReference reference) {
+  private static boolean isNativeObjectTypeReference(TypeReference reference) {
     return "Object".equals(reference.getJsDocAnnotationString());
   }
 
-  private static boolean isDoubleAndString(List<TypeReference> typesReferences) {
+  private static boolean isObjectOrDoubleOrString(List<TypeReference> typesReferences) {
     return typesReferences.stream()
-            .map(TypeReference::getJavaTypeFqn)
-            .filter(
-                t -> STRING.getJavaTypeFqn().equals(t) || DOUBLE_OBJECT.getJavaTypeFqn().equals(t))
-            .count()
-        == 2;
+        .allMatch(
+            t ->
+                t.isReferenceTo(STRING)
+                    || t.isReferenceTo(DOUBLE_OBJECT)
+                    || t.isReferenceTo(OBJECT));
   }
 
   private static void checkKeyType(boolean condition, TypeReference keyType, String typeName) {

@@ -19,8 +19,9 @@ package jsinterop.generator.visitor;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static jsinterop.generator.model.EntityKind.CONSTRUCTOR;
-import static jsinterop.generator.model.PredefinedTypeReference.CLASS;
-import static jsinterop.generator.model.PredefinedTypeReference.JS_CONSTRUCTOR_FN;
+import static jsinterop.generator.model.PredefinedTypes.CLASS;
+import static jsinterop.generator.model.PredefinedTypes.JS;
+import static jsinterop.generator.model.PredefinedTypes.JS_CONSTRUCTOR_FN;
 
 import jsinterop.generator.helper.ModelHelper;
 import jsinterop.generator.model.Expression;
@@ -29,9 +30,7 @@ import jsinterop.generator.model.Method;
 import jsinterop.generator.model.MethodInvocation;
 import jsinterop.generator.model.Parameter;
 import jsinterop.generator.model.ParametrizedTypeReference;
-import jsinterop.generator.model.PredefinedTypeReference;
 import jsinterop.generator.model.TypeQualifier;
-import jsinterop.generator.model.TypeReference;
 
 /**
  * Creates a JsOverlay method that accepts {@code java.lang.Class} as parameter and delegate to
@@ -66,11 +65,14 @@ public class JsConstructorFnParameterJsOverlayCreator extends AbstractJsOverlayM
   }
 
   private static Parameter toJavaLangClass(int unusedParameterIndex, Parameter originalParameter) {
-    if (isDirectJsConstructorReference(originalParameter.getType())) {
+    if (originalParameter.getType().isReferenceTo(JS_CONSTRUCTOR_FN)) {
+      // We should not have a non parametrized reference to JsConstructorFn at this point.
+      checkArgument(originalParameter.getType() instanceof ParametrizedTypeReference);
+
       return originalParameter.toBuilder()
           .setType(
               new ParametrizedTypeReference(
-                  CLASS,
+                  CLASS.getReference(originalParameter.getType().isNullable()),
                   ((ParametrizedTypeReference) originalParameter.getType())
                       .getActualTypeArguments()))
           .build();
@@ -81,28 +83,16 @@ public class JsConstructorFnParameterJsOverlayCreator extends AbstractJsOverlayM
 
   private static Expression callAsJsConstructorFn(
       Parameter originalParameter, Parameter overloadParameter) {
-    checkArgument(isDirectJsConstructorReference(originalParameter.getType()));
-    checkArgument(isParametrizedReferenceTo(overloadParameter.getType(), CLASS));
+    checkArgument(originalParameter.getType().isReferenceTo(JS_CONSTRUCTOR_FN));
+    checkArgument(overloadParameter.getType().isReferenceTo(CLASS));
 
     // will generate: Js.asConstructorFn(parameter)
     // We need to add the local type argument to ensure to call the original method.
     return MethodInvocation.builder()
-        .setInvocationTarget(new TypeQualifier(PredefinedTypeReference.JS))
+        .setInvocationTarget(new TypeQualifier(JS.getReference(false)))
         .setMethodName("asConstructorFn")
         .setArgumentTypes(overloadParameter.getType())
         .setArguments(new LiteralExpression(overloadParameter.getName()))
         .build();
-  }
-
-  private static boolean isDirectJsConstructorReference(TypeReference typeReference) {
-    // JsConstructorFn is a generic type and all references to this type is done
-    // with a ParametrizedTypeReference
-    return isParametrizedReferenceTo(typeReference, JS_CONSTRUCTOR_FN);
-  }
-
-  private static boolean isParametrizedReferenceTo(
-      TypeReference typeReference, PredefinedTypeReference target) {
-    return typeReference instanceof ParametrizedTypeReference
-        && ((ParametrizedTypeReference) typeReference).getMainType() == target;
   }
 }

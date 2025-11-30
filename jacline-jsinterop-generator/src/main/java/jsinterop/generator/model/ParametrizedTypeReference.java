@@ -36,12 +36,25 @@ public class ParametrizedTypeReference extends AbstractTypeReference
 
   public ParametrizedTypeReference(
       TypeReference mainType, Collection<TypeReference> actualTypeArguments) {
+    super(mainType.isNullable());
     this.mainType = mainType;
     setActualTypeArguments(actualTypeArguments);
   }
 
   public List<TypeReference> getActualTypeArguments() {
     return actualTypeArguments;
+  }
+
+  @Override
+  public TypeReference toNonNullableTypeReference() {
+    return new ParametrizedTypeReference(
+        this.mainType.toNonNullableTypeReference(), this.getActualTypeArguments());
+  }
+
+  @Override
+  public TypeReference toNullableTypeReference() {
+    return new ParametrizedTypeReference(
+        this.mainType.toNullableTypeReference(), this.getActualTypeArguments());
   }
 
   @Override
@@ -110,6 +123,11 @@ public class ParametrizedTypeReference extends AbstractTypeReference
   @Override
   public boolean isInstanceofAllowed() {
     return mainType.isInstanceofAllowed();
+  }
+
+  @Override
+  public boolean isReferenceTo(PredefinedTypes predefinedType) {
+    return mainType.isReferenceTo(predefinedType);
   }
 
   @Override
