@@ -16,6 +16,8 @@
 package java.lang;
 
 import javaemul.internal.annotations.HasNoSideEffects;
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsNonNull;
 
 /** Wraps a primitive <code>int</code> as an object. */
 public final class Integer extends Number implements Comparable<Integer> {
@@ -28,17 +30,20 @@ public final class Integer extends Number implements Comparable<Integer> {
 
   /** Use nested class to avoid clinit on outer. */
   private static class BoxedValues {
-    // Box values according to JLS - between -128 and 127
-    private static Integer[] boxedValues = new Integer[256];
+    private static final Integer[] boxedValues;
+
+    static {
+      // Box values according to JLS - between -128 and 127
+      Integer[] values = new Integer[256];
+      for (int i = 0; i < 256; i++) {
+        values[i] = new Integer(i - 128);
+      }
+      boxedValues = values;
+    }
 
     @HasNoSideEffects
     private static Integer get(int i) {
-      int rebase = i + 128;
-      Integer result = boxedValues[rebase];
-      if (result == null) {
-        result = boxedValues[rebase] = new Integer(i);
-      }
-      return result;
+      return boxedValues[i + 128];
     }
   }
 
@@ -237,7 +242,8 @@ public final class Integer extends Number implements Comparable<Integer> {
     return IntegralToString.intToString(i, radix);
   }
 
-  public static Integer valueOf(int i) {
+  @JsMethod
+  public static @JsNonNull Integer valueOf(int i) {
     if (i > -129 && i < 128) {
       return BoxedValues.get(i);
     }
@@ -293,6 +299,7 @@ public final class Integer extends Number implements Comparable<Integer> {
   }
 
   @Override
+  @JsMethod
   public int intValue() {
     return value;
   }

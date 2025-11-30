@@ -19,12 +19,14 @@ import static javaemul.internal.InternalPreconditions.checkStringElementIndex;
 
 /**
  * A base class to share implementation between {@link StringBuffer} and {@link StringBuilder}.
- * <p>
- * Most methods will give expected performance results. Exception is {@link #setCharAt(int, char)},
- * which is O(n), and thus should not be used many times on the same <code>StringBuffer</code>.
+ *
+ * <p>Most methods will give expected performance results. Exception is {@link #setCharAt(int,
+ * char)}, which is O(n), and thus should not be used many times on the same <code>StringBuffer
+ * </code>.
  */
 abstract class AbstractStringBuilder implements CharSequence, Appendable {
 
+  // TODO(b/258835054): Consider using NativeString directly.
   String string;
 
   AbstractStringBuilder(String string) {
@@ -38,10 +40,11 @@ abstract class AbstractStringBuilder implements CharSequence, Appendable {
 
   public void setLength(int newLength) {
     int oldLength = length();
-    if (newLength < oldLength) {
+    int delta = newLength - oldLength;
+    if (delta < 0) {
       string = string.substring(0, newLength);
-    } else if (newLength > oldLength) {
-      string += String.valueOf(new char[newLength - oldLength]);
+    } else if (delta > 0) {
+      string += "\0".repeat(delta);
     }
   }
 
@@ -108,6 +111,14 @@ abstract class AbstractStringBuilder implements CharSequence, Appendable {
   @Override
   public String toString() {
     return string;
+  }
+
+  void append0(char[] x, int start, int len) {
+    string += String.valueOf(x, start, len);
+  }
+
+  void append0(String x) {
+    string += x;
   }
 
   void appendCodePoint0(int x) {

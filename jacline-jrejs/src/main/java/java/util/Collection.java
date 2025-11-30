@@ -21,13 +21,17 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 import javaemul.internal.CollectionHelper;
+import javaemul.internal.JsUtils;
+import javaemul.internal.annotations.UncheckedCast;
 import jsinterop.annotations.JsIgnore;
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsNonNull;
 import jsinterop.annotations.JsType;
 
 /**
- * General-purpose interface for storing collections of objects.
- * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html">
- * the official Java API doc</a> for details.
+ * General-purpose interface for storing collections of objects. See <a
+ * href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html">the official Java API
+ * doc</a> for details.
  *
  * @param <E> element type
  */
@@ -64,7 +68,7 @@ public interface Collection<E> extends Iterable<E> {
   default boolean removeIf(Predicate<? super E> filter) {
     checkNotNull(filter);
     boolean removed = false;
-    for (Iterator<E> it = iterator(); it.hasNext();) {
+    for (Iterator<E> it = iterator(); it.hasNext(); ) {
       if (filter.test(it.next())) {
         it.remove();
         removed = true;
@@ -88,6 +92,7 @@ public interface Collection<E> extends Iterable<E> {
     return StreamSupport.stream(spliterator(), false);
   }
 
+  @JsIgnore
   default Object[] toArray() {
     return CollectionHelper.toArray(this);
   }
@@ -95,5 +100,11 @@ public interface Collection<E> extends Iterable<E> {
   @JsIgnore
   default <T> T[] toArray(T[] a) {
     return CollectionHelper.toArray(this, a);
+  }
+
+  @UncheckedCast
+  @JsMethod(name = "toArray")
+  default E @JsNonNull [] _private_jsToArray__() {
+    return JsUtils.uncheckedCast(toArray());
   }
 }

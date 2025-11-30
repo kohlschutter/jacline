@@ -16,6 +16,7 @@
 package javaemul.internal;
 
 import static javaemul.internal.InternalPreconditions.checkCriticalArrayBounds;
+import static javaemul.internal.InternalPreconditions.checkCriticalArrayCopyIndices;
 
 import java.util.Comparator;
 import javaemul.internal.annotations.DoNotAutobox;
@@ -29,9 +30,10 @@ public final class ArrayHelper {
 
   public static final int ARRAY_PROCESS_BATCH_SIZE = 10000;
 
+
   public static <T> T clone(T array) {
-    Object result = asNativeArray(array).slice();
-    return ArrayStamper.stampJavaTypeInfo(JsUtils.uncheckedCast(result), array);
+    Object[] result = asNativeArray(array).slice();
+    return (T) ArrayStamper.stampJavaTypeInfo(result, array);
   }
 
   public static <T> T clone(T array, int fromIndex, int toIndex) {
@@ -49,7 +51,7 @@ public final class ArrayHelper {
         }
       }
     }
-    return ArrayStamper.stampJavaTypeInfo(JsUtils.uncheckedCast(result), array);
+    return (T) ArrayStamper.stampJavaTypeInfo(result, array);
   }
 
   /**
@@ -89,6 +91,10 @@ public final class ArrayHelper {
     asNativeArray(array).push(o);
   }
 
+  public static String join(Object[] array, Object separator) {
+    return asNativeArray(array).join(separator);
+  }
+
   public static void fill(Object array, @DoNotAutobox Object value, int fromIndex, int toIndex) {
     checkCriticalArrayBounds(fromIndex, toIndex, getLength(array));
     asNativeArray(array).fill(value, fromIndex, toIndex);
@@ -116,6 +122,9 @@ public final class ArrayHelper {
   }
 
   private static void copy(Object[] src, int srcOfs, Object[] dest, int destOfs, int len) {
+    // Critical check since we may cause infinite loop below otherwise.
+    checkCriticalArrayCopyIndices(src, srcOfs, dest, destOfs, len);
+
     if (len == 0) {
       return;
     }
@@ -134,10 +143,10 @@ public final class ArrayHelper {
   }
 
   public static <T> T concat(T a, T b) {
-    Object[] result = asNativeArray(a).slice();
-    ArrayStamper.stampJavaTypeInfo(result, a);
+    Object result = clone(a);
+    setLength(result, getLength(a) + getLength(b));
     copy(b, 0, result, getLength(a), getLength(b));
-    return JsUtils.uncheckedCast(result);
+    return (T) result;
   }
 
   public static boolean equals(double[] array1, double[] array2) {
@@ -290,6 +299,8 @@ public final class ArrayHelper {
     NativeArray(int length) {}
 
     native void push(Object item);
+
+    native String join(Object separator);
 
     native Object[] slice();
 

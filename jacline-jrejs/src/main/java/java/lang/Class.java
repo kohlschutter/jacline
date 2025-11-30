@@ -14,13 +14,13 @@
 package java.lang;
 
 import java.io.Serializable;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
-import java.util.Objects;
-
 import javaemul.internal.Constructor;
+import javaemul.internal.JsUtils;
+import javaemul.internal.annotations.HasNoSideEffects;
 import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOptional;
 
 /**
  * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Class.html">the official Java API
@@ -34,6 +34,15 @@ public final class Class<T> implements Type, Serializable {
    * literals.
    */
   @JsMethod
+  @HasNoSideEffects
+  private static Class<?> $get(Constructor ctor, @JsOptional Double opt_dimensionCount) {
+    int dimensionCount = JsUtils.coerceToInt(opt_dimensionCount);
+    return ctor.cache("$$class/" + dimensionCount, () -> new Class(ctor, dimensionCount));
+  }
+
+  // Native overloads provided so passing dimensionCount is not required from Java call-sites.
+
+  @JsMethod
   public static native Class<?> $get(Constructor ctor, int dimensionCount);
 
   @JsMethod
@@ -44,9 +53,7 @@ public final class Class<T> implements Type, Serializable {
    */
   private final Constructor ctor;
 
-  /**
-   * Dimension count for the underlying array type; or {@code 0} if this is not for an array.
-   */
+  /** Dimension count for the underlying array type; or {@code 0} if this is not for an array. */
   private final int dimensionCount;
 
   @JsConstructor
@@ -144,14 +151,5 @@ public final class Class<T> implements Type, Serializable {
       return null;
     }
     return $get(primitiveCtor);
-  }
-  
-  public boolean isAnnotationPresent(Class<? extends Annotation> annotationClass) {
-    Objects.requireNonNull(annotationClass);
-    return false; // no runtime access to annotations
-  }
-  public <A extends Annotation> A getDeclaredAnnotation(Class<A> annotationClass) {
-    Objects.requireNonNull(annotationClass);
-    return null; // no runtime access to annotations
   }
 }

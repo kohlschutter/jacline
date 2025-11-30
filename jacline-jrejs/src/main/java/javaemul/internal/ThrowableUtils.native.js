@@ -28,9 +28,6 @@ ThrowableUtils.setJavaThrowable = function(error, throwable) {
         cause: {
           get: () => throwable.getCause() && throwable.getCause().backingJsObject
         },
-        suppressed: {
-          get: () => throwable.getSuppressed().map(t => t.backingJsObject)
-        }
       });
     } catch (ignored) {}
   }

@@ -18,11 +18,12 @@ package java.util.logging;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
+import javaemul.internal.annotations.HasNoSideEffects;
 
 /**
- *  An emulation of the java.util.logging.Logger class. See
- *  <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html">
- *  The Java API doc for details</a>
+ * An emulation of the java.util.logging.Logger class. See <a
+ * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html">The Java API doc for
+ * details</a>
  */
 public class Logger {
   public static final String GLOBAL_LOGGER_NAME = "global";
@@ -32,6 +33,8 @@ public class Logger {
   private static final boolean INFO_ENABLED;
   private static final boolean WARNING_ENABLED;
   private static final boolean SEVERE_ENABLED;
+
+  private static boolean handlersAdded;
 
   static {
     // '==' instead of equals makes it compile out faster.
@@ -56,6 +59,7 @@ public class Logger {
     return getLogger(GLOBAL_LOGGER_NAME);
   }
 
+  @HasNoSideEffects
   public static Logger getLogger(String name) {
     // Use shortcut if logging is disabled to avoid parent logger creations in LogManager
     if (LOGGING_OFF) {
@@ -67,7 +71,7 @@ public class Logger {
   private List<Handler> handlers;
   private Level level;
   private String name;
-  private Logger parent;  // Should never be null except in the RootLogger
+  private Logger parent; // Should never be null except in the RootLogger
   private boolean useParentHandlers;
 
   protected Logger(String name, @SuppressWarnings("unused") String resourceName) {
@@ -84,6 +88,7 @@ public class Logger {
     if (LOGGING_OFF) {
       return;
     }
+    handlersAdded = true;
     handlers.add(handler);
   }
 
@@ -210,6 +215,11 @@ public class Logger {
   }
 
   public boolean isLoggable(Level messageLevel) {
+    if (!handlersAdded) {
+      // Shortcut if no handlers ever added. This also let the optimizers prune the related code.
+      // Ideally the app should just disable the logging in such cases but...
+      return false;
+    }
     if (ALL_ENABLED) {
       return messageLevel.intValue() >= getEffectiveLevel().intValue();
     } else if (INFO_ENABLED) {
@@ -303,10 +313,7 @@ public class Logger {
   }
 
   private void actuallyLog(LogRecord record) {
-    for (Handler handler : getHandlers()) {
-      handler.publish(record);
-    }
-    Logger logger = getUseParentHandlers() ? getParent() : null;
+    Logger logger = this;
     while (logger != null) {
       for (Handler handler : logger.getHandlers()) {
         handler.publish(record);
@@ -331,12 +338,19 @@ public class Logger {
   // public void log(Level level, String msg, Object param1) {}
   // public void log(Level level, String msg, Object[] params) {}
   // public void logp(Level level, String sourceClass, String sourceMethod, String msg) {}
-  // public void logp(Level level, String sourceClass, String sourceMethod, String msg, Object param1) {}
-  // public void logp(Level level, String sourceClass, String sourceMethod, String msg, Object[] params) {}
-  // public void logp(Level level, String sourceClass, String sourceMethod, String msg, Throwable thrown) {}
-  // public void logrb(Level level, String sourceClass, String sourceMethod, String bundleName, String msg) {}
-  // public void logrb(Level level, String sourceClass, String sourceMethod, String bundleName, String msg, Object param1) {}
-  // public void logrb(Level level, String sourceClass, String sourceMethod, String bundleName, String msg, Object[] params) {}
-  // public void logrb(Level level, String sourceClass, String sourceMethod, String bundleName, String msg, Throwable thrown) {}
+  // public void logp(Level level, String sourceClass, String sourceMethod, String msg, Object
+  // param1) {}
+  // public void logp(Level level, String sourceClass, String sourceMethod, String msg, Object[]
+  // params) {}
+  // public void logp(Level level, String sourceClass, String sourceMethod, String msg, Throwable
+  // thrown) {}
+  // public void logrb(Level level, String sourceClass, String sourceMethod, String bundleName,
+  // String msg) {}
+  // public void logrb(Level level, String sourceClass, String sourceMethod, String bundleName,
+  // String msg, Object param1) {}
+  // public void logrb(Level level, String sourceClass, String sourceMethod, String bundleName,
+  // String msg, Object[] params) {}
+  // public void logrb(Level level, String sourceClass, String sourceMethod, String bundleName,
+  // String msg, Throwable thrown) {}
   // public void throwing(String sourceClass, String sourceMethod, Throwable thrown) {}
 }

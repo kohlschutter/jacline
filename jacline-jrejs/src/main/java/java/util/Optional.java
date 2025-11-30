@@ -23,10 +23,11 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
- * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">
- * the official Java API doc</a> for details.
+ * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">the official Java
+ * API doc</a> for details.
  *
  * @param <T> type of the wrapped reference
  */
@@ -123,11 +124,23 @@ public final class Optional<T> {
     return isPresent() ? ref : other.get();
   }
 
+  public T orElseThrow() {
+    return get();
+  }
+
   public <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier) throws X {
     if (isPresent()) {
       return ref;
     }
     throw exceptionSupplier.get();
+  }
+
+  public Stream<T> stream() {
+    if (isPresent()) {
+      return Stream.of(ref);
+    } else {
+      return Stream.empty();
+    }
   }
 
   @Override

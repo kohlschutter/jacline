@@ -15,5 +15,6 @@ package java.lang.invoke;
 
 /** Exists solely to make javac happy. */
 class MethodHandles {
+  /** Exists solely to make javac happy. */
   static class Lookup {}
 }

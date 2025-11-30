@@ -15,15 +15,16 @@
  */
 package java.util;
 
+import static javaemul.internal.InternalPreconditions.checkCriticalElement;
+
 import java.util.function.IntConsumer;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
-
-import static javaemul.internal.InternalPreconditions.checkCriticalElement;
+import java.util.stream.IntStream;
 
 /**
- * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalInt.html">
- * the official Java API doc</a> for details.
+ * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalInt.html">the official
+ * Java API doc</a> for details.
  */
 public final class OptionalInt {
 
@@ -54,6 +55,10 @@ public final class OptionalInt {
     return present;
   }
 
+  public boolean isEmpty() {
+    return !present;
+  }
+
   public int getAsInt() {
     checkCriticalElement(present);
     return ref;
@@ -65,6 +70,14 @@ public final class OptionalInt {
     }
   }
 
+  public void ifPresentOrElse(IntConsumer action, Runnable emptyAction) {
+    if (present) {
+      action.accept(ref);
+    } else {
+      emptyAction.run();
+    }
+  }
+
   public int orElse(int other) {
     return present ? ref : other;
   }
@@ -73,11 +86,23 @@ public final class OptionalInt {
     return present ? ref : other.getAsInt();
   }
 
+  public int orElseThrow() {
+    return getAsInt();
+  }
+
   public <X extends Throwable> int orElseThrow(Supplier<X> exceptionSupplier) throws X {
     if (present) {
       return ref;
     }
     throw exceptionSupplier.get();
+  }
+
+  public IntStream stream() {
+    if (present) {
+      return IntStream.of(ref);
+    } else {
+      return IntStream.empty();
+    }
   }
 
   @Override

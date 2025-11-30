@@ -17,32 +17,40 @@ package javaemul.internal;
 
 import javaemul.internal.annotations.DoNotAutobox;
 import javaemul.internal.annotations.UncheckedCast;
-import javaemul.internal.annotations.Wasm;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
 
 /** Provides an interface for simple JavaScript idioms that can not be expressed in Java. */
-@SuppressWarnings("unusable-by-js")
 public final class JsUtils {
 
   @JsMethod(namespace = JsPackage.GLOBAL, name = "typeof")
-  @Wasm("nop") // Unused in Wasm.
   public static native String typeOf(Object obj);
 
-  @JsMethod
-  @Wasm("nop") // Unused in Wasm.
-  public static native boolean isUndefined(Object value);
+  @JsMethod(namespace = "nativebootstrap.Util", name = "$isUndefined")
+  public static native boolean isUndefined(@DoNotAutobox Object value);
+
+  @JsProperty(namespace = JsPackage.GLOBAL, name = "undefined")
+  public static native Object undefined();
+
+  @UncheckedCast
+  @JsMethod(namespace = "nativebootstrap.Util", name = "$coerceToNull")
+  public static native <T> T coerceToNull(@DoNotAutobox T value);
 
   @JsMethod
   @UncheckedCast
-  @Wasm("nop") // Unused in Wasm.
   public static native <T> T uncheckedCast(@DoNotAutobox Object o);
 
   @JsMethod
+  public static native int coerceToInt(Double o);
+
+  @JsMethod
   @UncheckedCast
-  @Wasm("nop") // Unused in Wasm.
   public static native <T> T getProperty(Object map, String key);
+
+  @JsMethod
+  @UncheckedCast
+  public static native void setProperty(Object map, String key, Object value);
 
   private JsUtils() {}
 }
-

@@ -18,6 +18,7 @@ package java.util.stream;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.LongSummaryStatistics;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.StringJoiner;
@@ -40,22 +42,21 @@ import java.util.function.ToIntFunction;
 import java.util.function.ToLongFunction;
 
 /**
- * See <a
- * href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html">the
+ * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html">the
  * official Java API doc</a> for details.
  */
 public final class Collectors {
-  public static <T> Collector<T,?,Double> averagingDouble(ToDoubleFunction<? super T> mapper) {
+  public static <T> Collector<T, ?, Double> averagingDouble(ToDoubleFunction<? super T> mapper) {
     // TODO simplify to only collect average if possible
     return collectingAndThen(summarizingDouble(mapper), DoubleSummaryStatistics::getAverage);
   }
 
-  public static <T> Collector<T,?,Double> averagingInt(ToIntFunction<? super T> mapper) {
+  public static <T> Collector<T, ?, Double> averagingInt(ToIntFunction<? super T> mapper) {
     // TODO simplify to only collect average if possible
     return collectingAndThen(summarizingInt(mapper), IntSummaryStatistics::getAverage);
   }
 
-  public static <T> Collector<T,?,Double> averagingLong(ToLongFunction<? super T> mapper) {
+  public static <T> Collector<T, ?, Double> averagingLong(ToLongFunction<? super T> mapper) {
     // TODO simplify to only collect average if possible
     return collectingAndThen(summarizingLong(mapper), LongSummaryStatistics::getAverage);
   }
@@ -69,7 +70,7 @@ public final class Collectors {
         downstream.finisher().andThen(finisher));
   }
 
-  public static <T> Collector<T,?,Long> counting() {
+  public static <T> Collector<T, ?, Long> counting() {
     // Using Long::sum here fails in JDT
     return reducing(0L, item -> 1L, (a, b) -> (Long) a.longValue() + b.longValue());
   }
@@ -90,11 +91,15 @@ public final class Collectors {
       Function<? super T, ? extends K> classifier,
       Supplier<M> mapFactory,
       Collector<? super T, A, D> downstream) {
-    return groupingBy0(() -> {
-      // cannot use LinkedHashMap::new because javac cannot infer correct
-      // return type of method reference
-      return new LinkedHashMap<>();
-    }, classifier, mapFactory, downstream);
+    return groupingBy0(
+        () -> {
+          // cannot use LinkedHashMap::new because javac cannot infer correct
+          // return type of method reference
+          return new LinkedHashMap<>();
+        },
+        classifier,
+        mapFactory,
+        downstream);
   }
 
   private static <T, K, D, A, M extends Map<K, D>> Collector<T, ?, M> groupingBy0(
@@ -112,7 +117,6 @@ public final class Collectors {
             m.put(k, l);
           }
           l.add(o);
-
         },
         (m1, m2) -> mergeAll(m1, m2, Collectors::addAll),
         m -> {
@@ -124,27 +128,23 @@ public final class Collectors {
         });
   }
 
-//  not supported
-//  public static <T,K> Collector<T,?,ConcurrentMap<K,List<T>>> groupingByConcurrent(
-//      Function<? super T,? extends K> classifier)
-//  public static <T,K,A,D> Collector<T,?,ConcurrentMap<K,D>> groupingByConcurrent(
-//      Function<? super T,? extends K> classifier, Collector<? super T,A,D> downstream)
-//  public static <T,K,A,D,M extends ConcurrentMap<K,D>> Collector<T,?,M> groupingByConcurrent(
-//      Function<? super T,? extends K> classifier, Supplier<M> mapFactory,
-//      Collector<? super T,A,D> downstream)
+  //  not supported
+  //  public static <T,K> Collector<T,?,ConcurrentMap<K,List<T>>> groupingByConcurrent(
+  //      Function<? super T,? extends K> classifier)
+  //  public static <T,K,A,D> Collector<T,?,ConcurrentMap<K,D>> groupingByConcurrent(
+  //      Function<? super T,? extends K> classifier, Collector<? super T,A,D> downstream)
+  //  public static <T,K,A,D,M extends ConcurrentMap<K,D>> Collector<T,?,M> groupingByConcurrent(
+  //      Function<? super T,? extends K> classifier, Supplier<M> mapFactory,
+  //      Collector<? super T,A,D> downstream)
 
-  public static Collector<CharSequence,?,String> joining() {
+  public static Collector<CharSequence, ?, String> joining() {
     // specific implementation rather than calling joining("") since we don't need to worry about
     // appending delimiters between empty strings
     return Collector.of(
-        StringBuilder::new,
-        StringBuilder::append,
-        StringBuilder::append,
-        StringBuilder::toString
-    );
+        StringBuilder::new, StringBuilder::append, StringBuilder::append, StringBuilder::toString);
   }
 
-  public static Collector<CharSequence,?,String> joining(CharSequence delimiter) {
+  public static Collector<CharSequence, ?, String> joining(CharSequence delimiter) {
     return joining(delimiter, "", "");
   }
 
@@ -154,8 +154,7 @@ public final class Collectors {
         () -> new StringJoiner(delimiter, prefix, suffix),
         StringJoiner::add,
         StringJoiner::merge,
-        StringJoiner::toString
-    );
+        StringJoiner::toString);
   }
 
   public static <T, U, A, R> Collector<T, ?, R> mapping(
@@ -170,11 +169,44 @@ public final class Collectors {
         downstream.finisher());
   }
 
-  public static <T> Collector<T,?,Optional<T>> maxBy(Comparator<? super T> comparator) {
+  public static <T, U, A, R> Collector<T, ?, R> flatMapping(
+      Function<? super T, ? extends Stream<? extends U>> mapper,
+      Collector<? super U, A, R> downstream) {
+    return new CollectorImpl<>(
+        downstream.supplier(),
+        (A a, T t) -> {
+          try (Stream<? extends U> stream = mapper.apply(t)) {
+            if (stream == null) {
+              return;
+            }
+            stream.forEach(
+                u -> {
+                  downstream.accumulator().accept(a, u);
+                });
+          }
+        },
+        downstream.combiner(),
+        downstream.finisher());
+  }
+
+  public static <T, A, R> Collector<T, ?, R> filtering(
+      Predicate<? super T> predicate, Collector<? super T, A, R> downstream) {
+    return new CollectorImpl<>(
+        downstream.supplier(),
+        (a, t) -> {
+          if (predicate.test(t)) {
+            downstream.accumulator().accept(a, t);
+          }
+        },
+        downstream.combiner(),
+        downstream.finisher());
+  }
+
+  public static <T> Collector<T, ?, Optional<T>> maxBy(Comparator<? super T> comparator) {
     return reducing(BinaryOperator.maxBy(comparator));
   }
 
-  public static <T> Collector<T,?,Optional<T>> minBy(final Comparator<? super T> comparator) {
+  public static <T> Collector<T, ?, Optional<T>> minBy(final Comparator<? super T> comparator) {
     return reducing(BinaryOperator.minBy(comparator));
   }
 
@@ -197,19 +229,22 @@ public final class Collectors {
     };
   }
 
-  public static <T> Collector<T,?,Optional<T>> reducing(BinaryOperator<T> op) {
-    return reducing(Optional.empty(), Optional::of, (a, b) -> {
-      if (!a.isPresent()) {
-        return b;
-      }
-      if (!b.isPresent()) {
-        return a;
-      }
-      return Optional.of(op.apply(a.get(), b.get()));
-    });
+  public static <T> Collector<T, ?, Optional<T>> reducing(BinaryOperator<T> op) {
+    return reducing(
+        Optional.empty(),
+        Optional::of,
+        (a, b) -> {
+          if (!a.isPresent()) {
+            return b;
+          }
+          if (!b.isPresent()) {
+            return a;
+          }
+          return Optional.of(op.apply(a.get(), b.get()));
+        });
   }
 
-  public static <T> Collector<T,?,T> reducing(T identity, BinaryOperator<T> op) {
+  public static <T> Collector<T, ?, T> reducing(T identity, BinaryOperator<T> op) {
     return reducing(identity, Function.identity(), op);
   }
 
@@ -217,14 +252,13 @@ public final class Collectors {
   public static <T, U> Collector<T, ?, U> reducing(
       final U identity, final Function<? super T, ? extends U> mapper, BinaryOperator<U> op) {
     return Collector.of(
-      () -> new Object[]{identity},
-      (u, t) -> u[0] = op.apply((U) u[0], mapper.apply(t)),
-      (Object[] u1, Object[] u2) -> {
-        u1[0] = op.apply((U) u1[0], (U) u2[0]);
-        return u1;
-      },
-      (Object[] a) -> (U) a[0]
-    );
+        () -> new Object[] {identity},
+        (u, t) -> u[0] = op.apply((U) u[0], mapper.apply(t)),
+        (Object[] u1, Object[] u2) -> {
+          u1[0] = op.apply((U) u1[0], (U) u2[0]);
+          return u1;
+        },
+        (Object[] a) -> (U) a[0]);
   }
 
   public static <T> Collector<T, ?, DoubleSummaryStatistics> summarizingDouble(
@@ -236,8 +270,8 @@ public final class Collectors {
           t.combine(u);
           return t;
         },
-        Collector.Characteristics.UNORDERED, Collector.Characteristics.IDENTITY_FINISH
-    );
+        Collector.Characteristics.UNORDERED,
+        Collector.Characteristics.IDENTITY_FINISH);
   }
 
   public static <T> Collector<T, ?, IntSummaryStatistics> summarizingInt(
@@ -249,8 +283,8 @@ public final class Collectors {
           t.combine(u);
           return t;
         },
-        Collector.Characteristics.UNORDERED, Collector.Characteristics.IDENTITY_FINISH
-    );
+        Collector.Characteristics.UNORDERED,
+        Collector.Characteristics.IDENTITY_FINISH);
   }
 
   public static <T> Collector<T, ?, LongSummaryStatistics> summarizingLong(
@@ -262,22 +296,23 @@ public final class Collectors {
           t.combine(u);
           return t;
         },
-        Collector.Characteristics.UNORDERED, Collector.Characteristics.IDENTITY_FINISH
-    );
+        Collector.Characteristics.UNORDERED,
+        Collector.Characteristics.IDENTITY_FINISH);
   }
 
-  public static <T> Collector<T,?,Double> summingDouble(final ToDoubleFunction<? super T> mapper) {
+  public static <T> Collector<T, ?, Double> summingDouble(
+      final ToDoubleFunction<? super T> mapper) {
     // TODO simplify to only collect sum if possible
     return collectingAndThen(summarizingDouble(mapper), DoubleSummaryStatistics::getSum);
   }
 
-  public static <T> Collector<T,?,Integer> summingInt(ToIntFunction<? super T> mapper) {
+  public static <T> Collector<T, ?, Integer> summingInt(ToIntFunction<? super T> mapper) {
     // TODO simplify to only collect sum if possible
     return collectingAndThen(
         summarizingInt(mapper), intSummaryStatistics -> (int) intSummaryStatistics.getSum());
   }
 
-  public static <T> Collector<T,?,Long> summingLong(ToLongFunction<? super T> mapper) {
+  public static <T> Collector<T, ?, Long> summingLong(ToLongFunction<? super T> mapper) {
     // TODO simplify to only collect sum if possible
     return collectingAndThen(summarizingLong(mapper), LongSummaryStatistics::getSum);
   }
@@ -289,22 +324,26 @@ public final class Collectors {
         Collection::add,
         // TODO switch to a lambda reference once #9333 is fixed
         (c1, c2) -> addAll(c1, c2),
-        Collector.Characteristics.IDENTITY_FINISH
-    );
+        Collector.Characteristics.IDENTITY_FINISH);
   }
 
-//  not supported
-//  public static <T,K,U> Collector<T,?,ConcurrentMap<K,U>> toConcurrentMap(
-//      Function<? super T,? extends K> keyMapper, Function<? super T,? extends U> valueMapper)
-//  public static <T,K,U> Collector<T,?,ConcurrentMap<K,U>> toConcurrentMap(
-//      Function<? super T,? extends K> keyMapper, Function<? super T,? extends U> valueMapper,
-//      BinaryOperator<U> mergeFunction)
-//  public static <T,K,U,M extends ConcurrentMap<K,U>> Collector<T,?,M> toConcurrentMap(
-//      Function<? super T,? extends K> keyMapper, Function<? super T,? extends U> valueMapper,
-//      BinaryOperator<U> mergeFunction, Supplier<M> mapSupplier)
+  //  not supported
+  //  public static <T,K,U> Collector<T,?,ConcurrentMap<K,U>> toConcurrentMap(
+  //      Function<? super T,? extends K> keyMapper, Function<? super T,? extends U> valueMapper)
+  //  public static <T,K,U> Collector<T,?,ConcurrentMap<K,U>> toConcurrentMap(
+  //      Function<? super T,? extends K> keyMapper, Function<? super T,? extends U> valueMapper,
+  //      BinaryOperator<U> mergeFunction)
+  //  public static <T,K,U,M extends ConcurrentMap<K,U>> Collector<T,?,M> toConcurrentMap(
+  //      Function<? super T,? extends K> keyMapper, Function<? super T,? extends U> valueMapper,
+  //      BinaryOperator<U> mergeFunction, Supplier<M> mapSupplier)
 
-  public static <T> Collector<T,?,List<T>> toList() {
+  public static <T> Collector<T, ?, List<T>> toList() {
     return toCollection(ArrayList::new);
+  }
+
+  public static <T> Collector<T, ?, List<T>> toUnmodifiableList() {
+    Collector<T, ?, List<T>> mapping = mapping(Objects::requireNonNull, toList());
+    return collectingAndThen(mapping, Collections::unmodifiableList);
   }
 
   public static <T, K, U> Collector<T, ?, Map<K, U>> toMap(
@@ -325,6 +364,21 @@ public final class Collectors {
     return toMap(keyMapper, valueMapper, mergeFunction, HashMap::new);
   }
 
+  public static <T, K, U> Collector<T, ?, Map<K, U>> toUnmodifiableMap(
+      Function<? super T, ? extends K> keyMapper, Function<? super T, ? extends U> valueMapper) {
+    return collectingAndThen(
+        toMap(disallowNulls(keyMapper), disallowNulls(valueMapper)), Collections::unmodifiableMap);
+  }
+
+  public static <T, K, U> Collector<T, ?, Map<K, U>> toUnmodifiableMap(
+      Function<? super T, ? extends K> keyMapper,
+      Function<? super T, ? extends U> valueMapper,
+      BinaryOperator<U> mergeFunction) {
+    return collectingAndThen(
+        toMap(disallowNulls(keyMapper), disallowNulls(valueMapper), mergeFunction),
+        Collections::unmodifiableMap);
+  }
+
   public static <T, K, U, M extends Map<K, U>> Collector<T, ?, M> toMap(
       final Function<? super T, ? extends K> keyMapper,
       final Function<? super T, ? extends U> valueMapper,
@@ -334,18 +388,14 @@ public final class Collectors {
         mapSupplier,
         (map, item) -> {
           K key = keyMapper.apply(item);
-          U newValue = valueMapper.apply(item);
-          if (map.containsKey(key)) {
-            map.put(key, mergeFunction.apply(map.get(key), newValue));
-          } else {
-            map.put(key, newValue);
-          }
+          U value = valueMapper.apply(item);
+          map.merge(key, value, mergeFunction);
         },
         (m1, m2) -> mergeAll(m1, m2, mergeFunction),
         Collector.Characteristics.IDENTITY_FINISH);
   }
 
-  public static <T> Collector<T,?,Set<T>> toSet() {
+  public static <T> Collector<T, ?, Set<T>> toSet() {
     return Collector.<T, HashSet<T>, Set<T>>of(
         HashSet::new,
         HashSet::add,
@@ -353,8 +403,13 @@ public final class Collectors {
         (c1, c2) -> addAll(c1, c2),
         // this is Function.identity, but Java doesn't like it here to change types.
         s -> s,
-        Collector.Characteristics.UNORDERED, Collector.Characteristics.IDENTITY_FINISH
-    );
+        Collector.Characteristics.UNORDERED,
+        Collector.Characteristics.IDENTITY_FINISH);
+  }
+
+  public static <T> Collector<T, ?, Set<T>> toUnmodifiableSet() {
+    Collector<T, ?, Set<T>> mapping = mapping(Objects::requireNonNull, toSet());
+    return collectingAndThen(mapping, Collections::unmodifiableSet);
   }
 
   private static <T, D, A> D streamAndCollect(Collector<? super T, A, D> downstream, List<T> list) {
@@ -378,5 +433,9 @@ public final class Collectors {
     return collection;
   }
 
-  private Collectors() { }
+  private static <T, R> Function<T, R> disallowNulls(Function<T, R> func) {
+    return x -> Objects.requireNonNull(func.apply(x));
+  }
+
+  private Collectors() {}
 }

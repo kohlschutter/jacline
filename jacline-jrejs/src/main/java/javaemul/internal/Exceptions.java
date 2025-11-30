@@ -15,6 +15,9 @@
  */
 package javaemul.internal;
 
+import javaemul.internal.ThrowableUtils.JsObject;
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 /** Provides helper methods to deal with Exceptions. */
@@ -42,11 +45,14 @@ public class Exceptions {
     return currentException;
   }
 
-  public static Throwable toJava(Object e) {
+  @JsMethod(name = "Error", namespace = JsPackage.GLOBAL)
+  public static native JsObject createJsError(String errorMessage);
+
+  public static Throwable toJava(JsObject e) {
     return Throwable.of(e);
   }
 
-  public static Object toJs(Throwable t) {
+  public static JsObject toJs(Throwable t) {
     return t.getBackingJsObject();
   }
 }

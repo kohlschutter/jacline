@@ -17,9 +17,7 @@ package java.lang;
 
 import javaemul.internal.annotations.HasNoSideEffects;
 
-/**
- * Wraps a primitive <code>short</code> as an object.
- */
+/** Wraps a primitive <code>short</code> as an object. */
 public final class Short extends Number implements Comparable<Short> {
 
   public static final short MIN_VALUE = (short) 0x8000;
@@ -28,21 +26,22 @@ public final class Short extends Number implements Comparable<Short> {
   public static final int BYTES = SIZE / Byte.SIZE;
   public static final Class<Short> TYPE = short.class;
 
-  /**
-   * Use nested class to avoid clinit on outer.
-   */
+  /** Use nested class to avoid clinit on outer. */
   private static class BoxedValues {
-    // Box values according to JLS - between -128 and 127
-    private static Short[] boxedValues = new Short[256];
+    private static final Short[] boxedValues;
+
+    static {
+      // Box values according to JLS - between -128 and 127
+      Short[] values = new Short[256];
+      for (int i = 0; i < 256; i++) {
+        values[i] = new Short((short) (i - 128));
+      }
+      boxedValues = values;
+    }
 
     @HasNoSideEffects
     private static Short get(short s) {
-      int rebase = s + 128;
-      Short result = BoxedValues.boxedValues[rebase];
-      if (result == null) {
-        result = BoxedValues.boxedValues[rebase] = new Short(s);
-      }
-      return result;
+      return boxedValues[s + 128];
     }
   }
 
@@ -62,8 +61,7 @@ public final class Short extends Number implements Comparable<Short> {
     return parseShort(s, 10);
   }
 
-  public static short parseShort(String s, int radix)
-      throws NumberFormatException {
+  public static short parseShort(String s, int radix) throws NumberFormatException {
     return (short) __parseAndValidateInt(s, radix, MIN_VALUE, MAX_VALUE);
   }
 

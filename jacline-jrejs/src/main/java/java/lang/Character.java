@@ -64,8 +64,8 @@ import javaemul.internal.annotations.HasNoSideEffects;
  */
 public final class Character implements Comparable<Character>, Serializable {
   /**
-   * Helper class to share code between implementations, by making a char
-   * array look like a CharSequence.
+   * Helper class to share code between implementations, by making a char array look like a
+   * CharSequence.
    */
   static class CharSequenceAdapter implements CharSequence {
     private char[] charArray;
@@ -94,25 +94,26 @@ public final class Character implements Comparable<Character>, Serializable {
 
     @Override
     public java.lang.CharSequence subSequence(int start, int end) {
-      return new CharSequenceAdapter(charArray, this.start + start,
-          this.start + end);
+      return new CharSequenceAdapter(charArray, this.start + start, this.start + end);
     }
   }
 
-  /**
-   * Use nested class to avoid clinit on outer.
-   */
+  /** Use nested class to avoid clinit on outer. */
   private static class BoxedValues {
-    // Box values according to JLS - from \u0000 to \u007f
-    private static Character[] boxedValues = new Character[128];
+    private static final Character[] boxedValues;
+
+    static {
+      // Box values according to JLS - from \u0000 to \u007f
+      Character[] values = new Character[128];
+      for (char i = 0; i < 128; i++) {
+        values[i] = new Character(i);
+      }
+      boxedValues = values;
+    }
 
     @HasNoSideEffects
     private static Character get(char c) {
-      Character result = BoxedValues.boxedValues[c];
-      if (result == null) {
-        result = BoxedValues.boxedValues[c] = new Character(c);
-      }
-      return result;
+      return boxedValues[c];
     }
   }
 
@@ -170,13 +171,11 @@ public final class Character implements Comparable<Character>, Serializable {
     return codePointCount(new CharSequenceAdapter(a), offset, offset + count);
   }
 
-  public static int codePointCount(CharSequence seq, int beginIndex,
-      int endIndex) {
+  public static int codePointCount(CharSequence seq, int beginIndex, int endIndex) {
     int count = 0;
     for (int idx = beginIndex; idx < endIndex; ) {
       char ch = seq.charAt(idx++);
-      if (isHighSurrogate(ch) && idx < endIndex
-          && (isLowSurrogate(seq.charAt(idx)))) {
+      if (isHighSurrogate(ch) && idx < endIndex && (isLowSurrogate(seq.charAt(idx)))) {
         // skip the second char of surrogate pairs
         ++idx;
       }
@@ -289,9 +288,7 @@ public final class Character implements Comparable<Character>, Serializable {
     return ch >= MIN_SURROGATE && ch <= MAX_SURROGATE;
   }
 
-  /**
-   * Deprecated - see isWhitespace(char).
-   */
+  /** Deprecated - see isWhitespace(char). */
   @Deprecated
   public static boolean isSpace(char c) {
     switch (c) {
@@ -367,14 +364,12 @@ public final class Character implements Comparable<Character>, Serializable {
     return codePoint >= MIN_CODE_POINT && codePoint <= MAX_CODE_POINT;
   }
 
-  public static int offsetByCodePoints(char[] a, int start, int count, int index,
-      int codePointOffset) {
-    return offsetByCodePoints(new CharSequenceAdapter(a, start, count), index,
-        codePointOffset);
+  public static int offsetByCodePoints(
+      char[] a, int start, int count, int index, int codePointOffset) {
+    return offsetByCodePoints(new CharSequenceAdapter(a, start, count), index, codePointOffset);
   }
 
-  public static int offsetByCodePoints(CharSequence seq, int index,
-      int codePointOffset) {
+  public static int offsetByCodePoints(CharSequence seq, int index, int codePointOffset) {
     if (codePointOffset < 0) {
       // move backwards
       while (codePointOffset < 0) {
@@ -404,12 +399,11 @@ public final class Character implements Comparable<Character>, Serializable {
 
     if (codePoint >= MIN_SUPPLEMENTARY_CODE_POINT) {
       return new char[] {
-          getHighSurrogate(codePoint),
-          getLowSurrogate(codePoint),
+        highSurrogate(codePoint), lowSurrogate(codePoint),
       };
     } else {
       return new char[] {
-          (char) codePoint,
+        (char) codePoint,
       };
     }
   }
@@ -418,8 +412,8 @@ public final class Character implements Comparable<Character>, Serializable {
     checkArgument(isValidCodePoint(codePoint));
 
     if (codePoint >= MIN_SUPPLEMENTARY_CODE_POINT) {
-      dst[dstIndex++] = getHighSurrogate(codePoint);
-      dst[dstIndex] = getLowSurrogate(codePoint);
+      dst[dstIndex++] = highSurrogate(codePoint);
+      dst[dstIndex] = lowSurrogate(codePoint);
       return 2;
     } else {
       dst[dstIndex] = (char) codePoint;
@@ -470,7 +464,8 @@ public final class Character implements Comparable<Character>, Serializable {
   static int codePointAt(CharSequence cs, int index, int limit) {
     char hiSurrogate = cs.charAt(index++);
     char loSurrogate;
-    if (Character.isHighSurrogate(hiSurrogate) && index < limit
+    if (Character.isHighSurrogate(hiSurrogate)
+        && index < limit
         && Character.isLowSurrogate(loSurrogate = cs.charAt(index))) {
       return Character.toCodePoint(hiSurrogate, loSurrogate);
     }
@@ -480,7 +475,8 @@ public final class Character implements Comparable<Character>, Serializable {
   static int codePointBefore(CharSequence cs, int index, int start) {
     char loSurrogate = cs.charAt(--index);
     char highSurrogate;
-    if (isLowSurrogate(loSurrogate) && index > start
+    if (isLowSurrogate(loSurrogate)
+        && index > start
         && isHighSurrogate(highSurrogate = cs.charAt(index - 1))) {
       return toCodePoint(highSurrogate, loSurrogate);
     }
@@ -498,27 +494,25 @@ public final class Character implements Comparable<Character>, Serializable {
   }
 
   /**
-   * Computes the high surrogate character of the UTF16 representation of a
-   * non-BMP code point. See {@link getLowSurrogate}.
+   * Computes the high surrogate character of the UTF16 representation of a non-BMP code point. See
+   * {@link lowSurrogate}.
    *
-   * @param codePoint requested codePoint, required to be >=
-   *          MIN_SUPPLEMENTARY_CODE_POINT
+   * @param codePoint requested codePoint, required to be >= MIN_SUPPLEMENTARY_CODE_POINT
    * @return high surrogate character
    */
-  static char getHighSurrogate(int codePoint) {
-    return (char) (MIN_HIGH_SURROGATE
-        + (((codePoint - MIN_SUPPLEMENTARY_CODE_POINT) >> 10) & 1023));
+  public static char highSurrogate(int codePoint) {
+    return (char)
+        (MIN_HIGH_SURROGATE + (((codePoint - MIN_SUPPLEMENTARY_CODE_POINT) >> 10) & 1023));
   }
 
   /**
-   * Computes the low surrogate character of the UTF16 representation of a
-   * non-BMP code point. See {@link getHighSurrogate}.
+   * Computes the low surrogate character of the UTF16 representation of a non-BMP code point. See
+   * {@link highSurrogate}.
    *
-   * @param codePoint requested codePoint, required to be >=
-   *          MIN_SUPPLEMENTARY_CODE_POINT
+   * @param codePoint requested codePoint, required to be >= MIN_SUPPLEMENTARY_CODE_POINT
    * @return low surrogate character
    */
-  static char getLowSurrogate(int codePoint) {
+  public static char lowSurrogate(int codePoint) {
     return (char) (MIN_LOW_SURROGATE + ((codePoint - MIN_SUPPLEMENTARY_CODE_POINT) & 1023));
   }
 

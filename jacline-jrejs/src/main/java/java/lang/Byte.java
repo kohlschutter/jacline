@@ -17,9 +17,7 @@ package java.lang;
 
 import javaemul.internal.annotations.HasNoSideEffects;
 
-/**
- * Wraps native <code>byte</code> as an object.
- */
+/** Wraps native <code>byte</code> as an object. */
 public final class Byte extends Number implements Comparable<Byte> {
 
   public static final byte MIN_VALUE = (byte) 0x80;
@@ -28,21 +26,22 @@ public final class Byte extends Number implements Comparable<Byte> {
   public static final int BYTES = SIZE / Byte.SIZE;
   public static final Class<Byte> TYPE = byte.class;
 
-  /**
-   * Use nested class to avoid clinit on outer.
-   */
+  /** Use nested class to avoid clinit on outer. */
   private static class BoxedValues {
-    // Box all values according to JLS
-    private static Byte[] boxedValues = new Byte[256];
+    private static final Byte[] boxedValues;
+
+    static {
+      // Box all values according to JLS
+      Byte[] values = new Byte[256];
+      for (int i = 0; i < 256; i++) {
+        values[i] = new Byte((byte) (i - 128));
+      }
+      boxedValues = values;
+    }
 
     @HasNoSideEffects
     private static Byte get(byte b) {
-      int rebase = b + 128;
-      Byte result = BoxedValues.boxedValues[rebase];
-      if (result == null) {
-        result = BoxedValues.boxedValues[rebase] = new Byte(b);
-      }
-      return result;
+      return boxedValues[b + 128];
     }
   }
 
@@ -62,8 +61,7 @@ public final class Byte extends Number implements Comparable<Byte> {
     return parseByte(s, 10);
   }
 
-  public static byte parseByte(String s, int radix)
-      throws NumberFormatException {
+  public static byte parseByte(String s, int radix) throws NumberFormatException {
     return (byte) __parseAndValidateInt(s, radix, MIN_VALUE, MAX_VALUE);
   }
 
