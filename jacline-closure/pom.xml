@@ -13,6 +13,7 @@
     <artifactId>jacline-closure</artifactId>
 
     <properties>
+        <kohlschutter.java.release>21</kohlschutter.java.release>
         <kohlschutter.project.notice.file>${project.parent.basedir}/NOTICE</kohlschutter.project.notice.file>
     </properties>
 
@@ -71,6 +72,7 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
+                            <protocArtifact>com.google.protobuf:protoc:4.33.1</protocArtifact>
                             <addProtoSources>none</addProtoSources>
                             <includeMavenTypes>direct</includeMavenTypes>
                             <includeDirectories>
