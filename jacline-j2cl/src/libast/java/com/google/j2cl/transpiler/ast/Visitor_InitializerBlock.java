@@ -42,8 +42,11 @@ public class Visitor_InitializerBlock {
   static void visitMembers(Processor processor, InitializerBlock initializerBlock) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Member.visitMembers(processorImpl, initializerBlock);
-      initializerBlock.block = (Block) Preconditions.checkNotNull(
-      initializerBlock.block.acceptInternal(processorImpl),
-          "Field \"block\" in class \"InitializerBlock\" cannot be null");
+      initializerBlock.body = (Block) Preconditions.checkNotNull(
+      initializerBlock.body.acceptInternal(processorImpl),
+          "Field \"body\" in class \"InitializerBlock\" cannot be null");
+      initializerBlock.methodDescriptor = (MethodDescriptor) Preconditions.checkNotNull(
+      initializerBlock.methodDescriptor.acceptInternal(processorImpl),
+          "Field \"methodDescriptor\" in class \"InitializerBlock\" cannot be null");
   }
 }

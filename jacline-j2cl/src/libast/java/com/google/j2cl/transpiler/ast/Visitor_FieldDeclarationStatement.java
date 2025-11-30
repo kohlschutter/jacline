@@ -45,5 +45,8 @@ public class Visitor_FieldDeclarationStatement {
       fieldDeclarationStatement.expression = (Expression) Preconditions.checkNotNull(
       fieldDeclarationStatement.expression.acceptInternal(processorImpl),
           "Field \"expression\" in class \"FieldDeclarationStatement\" cannot be null");
+      fieldDeclarationStatement.fieldDescriptor = (FieldDescriptor) Preconditions.checkNotNull(
+      fieldDeclarationStatement.fieldDescriptor.acceptInternal(processorImpl),
+          "Field \"fieldDescriptor\" in class \"FieldDeclarationStatement\" cannot be null");
   }
 }

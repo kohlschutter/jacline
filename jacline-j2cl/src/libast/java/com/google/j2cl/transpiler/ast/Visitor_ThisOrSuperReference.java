@@ -42,5 +42,8 @@ public class Visitor_ThisOrSuperReference {
   static void visitMembers(Processor processor, ThisOrSuperReference thisOrSuperReference) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Expression.visitMembers(processorImpl, thisOrSuperReference);
+      thisOrSuperReference.typeDescriptor = (DeclaredTypeDescriptor) Preconditions.checkNotNull(
+      thisOrSuperReference.typeDescriptor.acceptInternal(processorImpl),
+          "Field \"typeDescriptor\" in class \"ThisOrSuperReference\" cannot be null");
   }
 }

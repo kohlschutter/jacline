@@ -42,6 +42,9 @@ public class Visitor_ArrayLiteral {
   static void visitMembers(Processor processor, ArrayLiteral arrayLiteral) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Expression.visitMembers(processorImpl, arrayLiteral);
+      arrayLiteral.typeDescriptor = (ArrayTypeDescriptor) Preconditions.checkNotNull(
+      arrayLiteral.typeDescriptor.acceptInternal(processorImpl),
+          "Field \"typeDescriptor\" in class \"ArrayLiteral\" cannot be null");
       ListVisitor.visit(
           arrayLiteral.valueExpressions,
           n -> (Expression) n.acceptInternal(processorImpl));

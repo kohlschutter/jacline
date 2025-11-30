@@ -42,5 +42,8 @@ public class Visitor_Variable {
   static void visitMembers(Processor processor, Variable variable) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_NameDeclaration.visitMembers(processorImpl, variable);
+      variable.typeDescriptor = (TypeDescriptor) Preconditions.checkNotNull(
+      variable.typeDescriptor.acceptInternal(processorImpl),
+          "Field \"typeDescriptor\" in class \"Variable\" cannot be null");
   }
 }

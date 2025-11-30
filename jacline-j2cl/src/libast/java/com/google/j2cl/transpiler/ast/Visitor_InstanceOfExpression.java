@@ -45,5 +45,11 @@ public class Visitor_InstanceOfExpression {
       instanceOfExpression.expression = (Expression) Preconditions.checkNotNull(
       instanceOfExpression.expression.acceptInternal(processorImpl),
           "Field \"expression\" in class \"InstanceOfExpression\" cannot be null");
+      instanceOfExpression.testTypeDescriptor = (TypeDescriptor) Preconditions.checkNotNull(
+      instanceOfExpression.testTypeDescriptor.acceptInternal(processorImpl),
+          "Field \"testTypeDescriptor\" in class \"InstanceOfExpression\" cannot be null");
+    if (instanceOfExpression.pattern != null) {
+      instanceOfExpression.pattern = (Pattern) instanceOfExpression.pattern.acceptInternal(processorImpl);
+    }
   }
 }

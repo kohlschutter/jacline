@@ -42,9 +42,9 @@ public class Visitor_SwitchCase {
   static void visitMembers(Processor processor, SwitchCase switchCase) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Node.visitMembers(processorImpl, switchCase);
-    if (switchCase.caseExpression != null) {
-      switchCase.caseExpression = (Expression) switchCase.caseExpression.acceptInternal(processorImpl);
-    }
+      ListVisitor.visit(
+          switchCase.caseExpressions,
+          n -> (Expression) n.acceptInternal(processorImpl));
       ListVisitor.visit(
           switchCase.statements,
           n -> (Statement) n.acceptInternal(processorImpl));

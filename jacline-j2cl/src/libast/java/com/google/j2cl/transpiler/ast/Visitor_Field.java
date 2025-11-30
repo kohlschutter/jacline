@@ -42,6 +42,9 @@ public class Visitor_Field {
   static void visitMembers(Processor processor, Field field) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Member.visitMembers(processorImpl, field);
+      field.fieldDescriptor = (FieldDescriptor) Preconditions.checkNotNull(
+      field.fieldDescriptor.acceptInternal(processorImpl),
+          "Field \"fieldDescriptor\" in class \"Field\" cannot be null");
     if (field.initializer != null) {
       field.initializer = (Expression) field.initializer.acceptInternal(processorImpl);
     }

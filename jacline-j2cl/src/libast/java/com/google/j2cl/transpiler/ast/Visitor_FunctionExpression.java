@@ -48,5 +48,8 @@ public class Visitor_FunctionExpression {
       functionExpression.body = (Block) Preconditions.checkNotNull(
       functionExpression.body.acceptInternal(processorImpl),
           "Field \"body\" in class \"FunctionExpression\" cannot be null");
+      functionExpression.typeDescriptor = (TypeDescriptor) Preconditions.checkNotNull(
+      functionExpression.typeDescriptor.acceptInternal(processorImpl),
+          "Field \"typeDescriptor\" in class \"FunctionExpression\" cannot be null");
   }
 }

@@ -42,5 +42,8 @@ public class Visitor_TypeLiteral {
   static void visitMembers(Processor processor, TypeLiteral typeLiteral) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Literal.visitMembers(processorImpl, typeLiteral);
+      typeLiteral.referencedTypeDescriptor = (TypeDescriptor) Preconditions.checkNotNull(
+      typeLiteral.referencedTypeDescriptor.acceptInternal(processorImpl),
+          "Field \"referencedTypeDescriptor\" in class \"TypeLiteral\" cannot be null");
   }
 }

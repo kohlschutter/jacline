@@ -32,16 +32,16 @@ public class Visitor_ForEachStatement {
   }
 
   static void pushContext(Processor processor, ForEachStatement forEachStatement) {
-    Visitor_Statement.pushContext(processor, forEachStatement);
+    Visitor_LoopStatement.pushContext(processor, forEachStatement);
   }
 
   static void popContext(Processor processor, ForEachStatement forEachStatement) {
-    Visitor_Statement.popContext(processor, forEachStatement);
+    Visitor_LoopStatement.popContext(processor, forEachStatement);
   }
 
   static void visitMembers(Processor processor, ForEachStatement forEachStatement) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
-    Visitor_Statement.visitMembers(processorImpl, forEachStatement);
+    Visitor_LoopStatement.visitMembers(processorImpl, forEachStatement);
       forEachStatement.loopVariable = (Variable) Preconditions.checkNotNull(
       forEachStatement.loopVariable.acceptInternal(processorImpl),
           "Field \"loopVariable\" in class \"ForEachStatement\" cannot be null");

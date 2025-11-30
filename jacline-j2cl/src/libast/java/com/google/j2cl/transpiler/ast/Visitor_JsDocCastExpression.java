@@ -45,5 +45,8 @@ public class Visitor_JsDocCastExpression {
       jsDocCastExpression.expression = (Expression) Preconditions.checkNotNull(
       jsDocCastExpression.expression.acceptInternal(processorImpl),
           "Field \"expression\" in class \"JsDocCastExpression\" cannot be null");
+      jsDocCastExpression.castTypeDescriptor = (TypeDescriptor) Preconditions.checkNotNull(
+      jsDocCastExpression.castTypeDescriptor.acceptInternal(processorImpl),
+          "Field \"castTypeDescriptor\" in class \"JsDocCastExpression\" cannot be null");
   }
 }

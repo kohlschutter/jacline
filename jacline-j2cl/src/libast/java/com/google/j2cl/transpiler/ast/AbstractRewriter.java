@@ -18,16 +18,20 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return shouldProcessExpression(arrayLiteral);
   }
 
+  public boolean shouldProcessArrayTypeDescriptor(ArrayTypeDescriptor arrayTypeDescriptor) {
+    return shouldProcessTypeDescriptor(arrayTypeDescriptor);
+  }
+
   public boolean shouldProcessAssertStatement(AssertStatement assertStatement) {
     return shouldProcessStatement(assertStatement);
   }
 
-  public boolean shouldProcessAwaitExpression(AwaitExpression awaitExpression) {
-    return shouldProcessExpression(awaitExpression);
-  }
-
   public boolean shouldProcessBinaryExpression(BinaryExpression binaryExpression) {
     return shouldProcessExpression(binaryExpression);
+  }
+
+  public boolean shouldProcessBindingPattern(BindingPattern bindingPattern) {
+    return shouldProcessPattern(bindingPattern);
   }
 
   public boolean shouldProcessBlock(Block block) {
@@ -38,8 +42,12 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return shouldProcessLiteral(booleanLiteral);
   }
 
+  public boolean shouldProcessBreakOrContinueStatement(BreakOrContinueStatement breakOrContinueStatement) {
+    return shouldProcessStatement(breakOrContinueStatement);
+  }
+
   public boolean shouldProcessBreakStatement(BreakStatement breakStatement) {
-    return shouldProcessStatement(breakStatement);
+    return shouldProcessBreakOrContinueStatement(breakStatement);
   }
 
   public boolean shouldProcessCastExpression(CastExpression castExpression) {
@@ -59,11 +67,19 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   }
 
   public boolean shouldProcessContinueStatement(ContinueStatement continueStatement) {
-    return shouldProcessStatement(continueStatement);
+    return shouldProcessBreakOrContinueStatement(continueStatement);
+  }
+
+  public boolean shouldProcessDeclaredTypeDescriptor(DeclaredTypeDescriptor declaredTypeDescriptor) {
+    return shouldProcessTypeDescriptor(declaredTypeDescriptor);
   }
 
   public boolean shouldProcessDoWhileStatement(DoWhileStatement doWhileStatement) {
     return shouldProcessLoopStatement(doWhileStatement);
+  }
+
+  public boolean shouldProcessEmbeddedStatement(EmbeddedStatement embeddedStatement) {
+    return shouldProcessExpression(embeddedStatement);
   }
 
   public boolean shouldProcessExpression(Expression expression) {
@@ -90,8 +106,12 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return shouldProcessStatement(fieldDeclarationStatement);
   }
 
+  public boolean shouldProcessFieldDescriptor(FieldDescriptor fieldDescriptor) {
+    return shouldProcessMemberDescriptor(fieldDescriptor);
+  }
+
   public boolean shouldProcessForEachStatement(ForEachStatement forEachStatement) {
-    return shouldProcessStatement(forEachStatement);
+    return shouldProcessLoopStatement(forEachStatement);
   }
 
   public boolean shouldProcessForStatement(ForStatement forStatement) {
@@ -114,12 +134,20 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return shouldProcessExpression(instanceOfExpression);
   }
 
+  public boolean shouldProcessIntersectionTypeDescriptor(IntersectionTypeDescriptor intersectionTypeDescriptor) {
+    return shouldProcessTypeDescriptor(intersectionTypeDescriptor);
+  }
+
   public boolean shouldProcessInvocation(Invocation invocation) {
     return shouldProcessMemberReference(invocation);
   }
 
-  public boolean shouldProcessJavaScriptConstructorReference(JavaScriptConstructorReference javaScriptConstructorReference) {
-    return shouldProcessExpression(javaScriptConstructorReference);
+  public boolean shouldProcessJsAwaitExpression(JsAwaitExpression jsAwaitExpression) {
+    return shouldProcessExpression(jsAwaitExpression);
+  }
+
+  public boolean shouldProcessJsConstructorReference(JsConstructorReference jsConstructorReference) {
+    return shouldProcessExpression(jsConstructorReference);
   }
 
   public boolean shouldProcessJsDocCastExpression(JsDocCastExpression jsDocCastExpression) {
@@ -128,6 +156,14 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
 
   public boolean shouldProcessJsDocExpression(JsDocExpression jsDocExpression) {
     return shouldProcessExpression(jsDocExpression);
+  }
+
+  public boolean shouldProcessJsForInStatement(JsForInStatement jsForInStatement) {
+    return shouldProcessLoopStatement(jsForInStatement);
+  }
+
+  public boolean shouldProcessJsYieldExpression(JsYieldExpression jsYieldExpression) {
+    return shouldProcessExpression(jsYieldExpression);
   }
 
   public boolean shouldProcessLabel(Label label) {
@@ -154,12 +190,20 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return shouldProcessStatement(localClassDeclarationStatement);
   }
 
+  public boolean shouldProcessLocalFunctionDeclarationStatement(LocalFunctionDeclarationStatement localFunctionDeclarationStatement) {
+    return shouldProcessStatement(localFunctionDeclarationStatement);
+  }
+
   public boolean shouldProcessLoopStatement(LoopStatement loopStatement) {
     return shouldProcessStatement(loopStatement);
   }
 
   public boolean shouldProcessMember(Member member) {
     return shouldProcessNode(member);
+  }
+
+  public boolean shouldProcessMemberDescriptor(MemberDescriptor memberDescriptor) {
+    return true;
   }
 
   public boolean shouldProcessMemberReference(MemberReference memberReference) {
@@ -172,6 +216,10 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
 
   public boolean shouldProcessMethodCall(MethodCall methodCall) {
     return shouldProcessInvocation(methodCall);
+  }
+
+  public boolean shouldProcessMethodDescriptor(MethodDescriptor methodDescriptor) {
+    return shouldProcessMemberDescriptor(methodDescriptor);
   }
 
   public boolean shouldProcessMethodReference(MethodReference methodReference) {
@@ -206,12 +254,20 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return shouldProcessLiteral(numberLiteral);
   }
 
+  public boolean shouldProcessPattern(Pattern pattern) {
+    return shouldProcessNode(pattern);
+  }
+
   public boolean shouldProcessPostfixExpression(PostfixExpression postfixExpression) {
     return shouldProcessUnaryExpression(postfixExpression);
   }
 
   public boolean shouldProcessPrefixExpression(PrefixExpression prefixExpression) {
     return shouldProcessUnaryExpression(prefixExpression);
+  }
+
+  public boolean shouldProcessPrimitiveTypeDescriptor(PrimitiveTypeDescriptor primitiveTypeDescriptor) {
+    return shouldProcessTypeDescriptor(primitiveTypeDescriptor);
   }
 
   public boolean shouldProcessReturnStatement(ReturnStatement returnStatement) {
@@ -232,6 +288,10 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
 
   public boolean shouldProcessSwitchCase(SwitchCase switchCase) {
     return shouldProcessNode(switchCase);
+  }
+
+  public boolean shouldProcessSwitchExpression(SwitchExpression switchExpression) {
+    return shouldProcessExpression(switchExpression);
   }
 
   public boolean shouldProcessSwitchStatement(SwitchStatement switchStatement) {
@@ -262,12 +322,24 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return shouldProcessNode(type);
   }
 
+  public boolean shouldProcessTypeDeclaration(TypeDeclaration typeDeclaration) {
+    return true;
+  }
+
+  public boolean shouldProcessTypeDescriptor(TypeDescriptor typeDescriptor) {
+    return true;
+  }
+
   public boolean shouldProcessTypeLiteral(TypeLiteral typeLiteral) {
     return shouldProcessLiteral(typeLiteral);
   }
 
   public boolean shouldProcessUnaryExpression(UnaryExpression unaryExpression) {
     return shouldProcessExpression(unaryExpression);
+  }
+
+  public boolean shouldProcessUnionTypeDescriptor(UnionTypeDescriptor unionTypeDescriptor) {
+    return shouldProcessTypeDescriptor(unionTypeDescriptor);
   }
 
   public boolean shouldProcessVariable(Variable variable) {
@@ -288,6 +360,10 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
 
   public boolean shouldProcessWhileStatement(WhileStatement whileStatement) {
     return shouldProcessLoopStatement(whileStatement);
+  }
+
+  public boolean shouldProcessYieldStatement(YieldStatement yieldStatement) {
+    return shouldProcessStatement(yieldStatement);
   }
   @Override
   final Node postProcessArrayAccess(ArrayAccess arrayAccess) {
@@ -310,18 +386,23 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   }
 
   @Override
+  final TypeDescriptor postProcessArrayTypeDescriptor(ArrayTypeDescriptor arrayTypeDescriptor) {
+    return rewriteArrayTypeDescriptor(arrayTypeDescriptor);
+  }
+
+  @Override
   final Node postProcessAssertStatement(AssertStatement assertStatement) {
     return rewriteAssertStatement(assertStatement);
   }
 
   @Override
-  final Node postProcessAwaitExpression(AwaitExpression awaitExpression) {
-    return rewriteAwaitExpression(awaitExpression);
+  final Node postProcessBinaryExpression(BinaryExpression binaryExpression) {
+    return rewriteBinaryExpression(binaryExpression);
   }
 
   @Override
-  final Node postProcessBinaryExpression(BinaryExpression binaryExpression) {
-    return rewriteBinaryExpression(binaryExpression);
+  final Node postProcessBindingPattern(BindingPattern bindingPattern) {
+    return rewriteBindingPattern(bindingPattern);
   }
 
   @Override
@@ -332,6 +413,11 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   @Override
   final Node postProcessBooleanLiteral(BooleanLiteral booleanLiteral) {
     return rewriteBooleanLiteral(booleanLiteral);
+  }
+
+  @Override
+  final Node postProcessBreakOrContinueStatement(BreakOrContinueStatement breakOrContinueStatement) {
+    return rewriteBreakOrContinueStatement(breakOrContinueStatement);
   }
 
   @Override
@@ -365,8 +451,18 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   }
 
   @Override
+  final TypeDescriptor postProcessDeclaredTypeDescriptor(DeclaredTypeDescriptor declaredTypeDescriptor) {
+    return rewriteDeclaredTypeDescriptor(declaredTypeDescriptor);
+  }
+
+  @Override
   final Node postProcessDoWhileStatement(DoWhileStatement doWhileStatement) {
     return rewriteDoWhileStatement(doWhileStatement);
+  }
+
+  @Override
+  final Node postProcessEmbeddedStatement(EmbeddedStatement embeddedStatement) {
+    return rewriteEmbeddedStatement(embeddedStatement);
   }
 
   @Override
@@ -400,6 +496,11 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   }
 
   @Override
+  final MemberDescriptor postProcessFieldDescriptor(FieldDescriptor fieldDescriptor) {
+    return rewriteFieldDescriptor(fieldDescriptor);
+  }
+
+  @Override
   final Node postProcessForEachStatement(ForEachStatement forEachStatement) {
     return rewriteForEachStatement(forEachStatement);
   }
@@ -430,13 +531,23 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   }
 
   @Override
+  final TypeDescriptor postProcessIntersectionTypeDescriptor(IntersectionTypeDescriptor intersectionTypeDescriptor) {
+    return rewriteIntersectionTypeDescriptor(intersectionTypeDescriptor);
+  }
+
+  @Override
   final Node postProcessInvocation(Invocation invocation) {
     return rewriteInvocation(invocation);
   }
 
   @Override
-  final Node postProcessJavaScriptConstructorReference(JavaScriptConstructorReference javaScriptConstructorReference) {
-    return rewriteJavaScriptConstructorReference(javaScriptConstructorReference);
+  final Node postProcessJsAwaitExpression(JsAwaitExpression jsAwaitExpression) {
+    return rewriteJsAwaitExpression(jsAwaitExpression);
+  }
+
+  @Override
+  final Node postProcessJsConstructorReference(JsConstructorReference jsConstructorReference) {
+    return rewriteJsConstructorReference(jsConstructorReference);
   }
 
   @Override
@@ -447,6 +558,16 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   @Override
   final Node postProcessJsDocExpression(JsDocExpression jsDocExpression) {
     return rewriteJsDocExpression(jsDocExpression);
+  }
+
+  @Override
+  final Node postProcessJsForInStatement(JsForInStatement jsForInStatement) {
+    return rewriteJsForInStatement(jsForInStatement);
+  }
+
+  @Override
+  final Node postProcessJsYieldExpression(JsYieldExpression jsYieldExpression) {
+    return rewriteJsYieldExpression(jsYieldExpression);
   }
 
   @Override
@@ -480,6 +601,11 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   }
 
   @Override
+  final Node postProcessLocalFunctionDeclarationStatement(LocalFunctionDeclarationStatement localFunctionDeclarationStatement) {
+    return rewriteLocalFunctionDeclarationStatement(localFunctionDeclarationStatement);
+  }
+
+  @Override
   final Node postProcessLoopStatement(LoopStatement loopStatement) {
     return rewriteLoopStatement(loopStatement);
   }
@@ -487,6 +613,11 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   @Override
   final Node postProcessMember(Member member) {
     return rewriteMember(member);
+  }
+
+  @Override
+  final MemberDescriptor postProcessMemberDescriptor(MemberDescriptor memberDescriptor) {
+    return rewriteMemberDescriptor(memberDescriptor);
   }
 
   @Override
@@ -502,6 +633,11 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   @Override
   final Node postProcessMethodCall(MethodCall methodCall) {
     return rewriteMethodCall(methodCall);
+  }
+
+  @Override
+  final MemberDescriptor postProcessMethodDescriptor(MethodDescriptor methodDescriptor) {
+    return rewriteMethodDescriptor(methodDescriptor);
   }
 
   @Override
@@ -545,6 +681,11 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   }
 
   @Override
+  final Node postProcessPattern(Pattern pattern) {
+    return rewritePattern(pattern);
+  }
+
+  @Override
   final Node postProcessPostfixExpression(PostfixExpression postfixExpression) {
     return rewritePostfixExpression(postfixExpression);
   }
@@ -552,6 +693,11 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   @Override
   final Node postProcessPrefixExpression(PrefixExpression prefixExpression) {
     return rewritePrefixExpression(prefixExpression);
+  }
+
+  @Override
+  final TypeDescriptor postProcessPrimitiveTypeDescriptor(PrimitiveTypeDescriptor primitiveTypeDescriptor) {
+    return rewritePrimitiveTypeDescriptor(primitiveTypeDescriptor);
   }
 
   @Override
@@ -577,6 +723,11 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   @Override
   final Node postProcessSwitchCase(SwitchCase switchCase) {
     return rewriteSwitchCase(switchCase);
+  }
+
+  @Override
+  final Node postProcessSwitchExpression(SwitchExpression switchExpression) {
+    return rewriteSwitchExpression(switchExpression);
   }
 
   @Override
@@ -615,6 +766,16 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   }
 
   @Override
+  final TypeDeclaration postProcessTypeDeclaration(TypeDeclaration typeDeclaration) {
+    return rewriteTypeDeclaration(typeDeclaration);
+  }
+
+  @Override
+  final TypeDescriptor postProcessTypeDescriptor(TypeDescriptor typeDescriptor) {
+    return rewriteTypeDescriptor(typeDescriptor);
+  }
+
+  @Override
   final Node postProcessTypeLiteral(TypeLiteral typeLiteral) {
     return rewriteTypeLiteral(typeLiteral);
   }
@@ -622,6 +783,11 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   @Override
   final Node postProcessUnaryExpression(UnaryExpression unaryExpression) {
     return rewriteUnaryExpression(unaryExpression);
+  }
+
+  @Override
+  final TypeDescriptor postProcessUnionTypeDescriptor(UnionTypeDescriptor unionTypeDescriptor) {
+    return rewriteUnionTypeDescriptor(unionTypeDescriptor);
   }
 
   @Override
@@ -649,6 +815,11 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return rewriteWhileStatement(whileStatement);
   }
 
+  @Override
+  final Node postProcessYieldStatement(YieldStatement yieldStatement) {
+    return rewriteYieldStatement(yieldStatement);
+  }
+
 
   public Node  rewriteArrayAccess(ArrayAccess arrayAccess) {
     return rewriteExpression(arrayAccess);
@@ -666,16 +837,20 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return rewriteExpression(arrayLiteral);
   }
 
+  public TypeDescriptor  rewriteArrayTypeDescriptor(ArrayTypeDescriptor arrayTypeDescriptor) {
+    return rewriteTypeDescriptor(arrayTypeDescriptor);
+  }
+
   public Node  rewriteAssertStatement(AssertStatement assertStatement) {
     return rewriteStatement(assertStatement);
   }
 
-  public Node  rewriteAwaitExpression(AwaitExpression awaitExpression) {
-    return rewriteExpression(awaitExpression);
-  }
-
   public Node  rewriteBinaryExpression(BinaryExpression binaryExpression) {
     return rewriteExpression(binaryExpression);
+  }
+
+  public Node  rewriteBindingPattern(BindingPattern bindingPattern) {
+    return rewritePattern(bindingPattern);
   }
 
   public Node  rewriteBlock(Block block) {
@@ -686,8 +861,12 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return rewriteLiteral(booleanLiteral);
   }
 
+  public Node  rewriteBreakOrContinueStatement(BreakOrContinueStatement breakOrContinueStatement) {
+    return rewriteStatement(breakOrContinueStatement);
+  }
+
   public Node  rewriteBreakStatement(BreakStatement breakStatement) {
-    return rewriteStatement(breakStatement);
+    return rewriteBreakOrContinueStatement(breakStatement);
   }
 
   public Node  rewriteCastExpression(CastExpression castExpression) {
@@ -707,11 +886,19 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
   }
 
   public Node  rewriteContinueStatement(ContinueStatement continueStatement) {
-    return rewriteStatement(continueStatement);
+    return rewriteBreakOrContinueStatement(continueStatement);
+  }
+
+  public TypeDescriptor  rewriteDeclaredTypeDescriptor(DeclaredTypeDescriptor declaredTypeDescriptor) {
+    return rewriteTypeDescriptor(declaredTypeDescriptor);
   }
 
   public Node  rewriteDoWhileStatement(DoWhileStatement doWhileStatement) {
     return rewriteLoopStatement(doWhileStatement);
+  }
+
+  public Node  rewriteEmbeddedStatement(EmbeddedStatement embeddedStatement) {
+    return rewriteExpression(embeddedStatement);
   }
 
   public Node  rewriteExpression(Expression expression) {
@@ -738,8 +925,12 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return rewriteStatement(fieldDeclarationStatement);
   }
 
+  public MemberDescriptor  rewriteFieldDescriptor(FieldDescriptor fieldDescriptor) {
+    return rewriteMemberDescriptor(fieldDescriptor);
+  }
+
   public Node  rewriteForEachStatement(ForEachStatement forEachStatement) {
-    return rewriteStatement(forEachStatement);
+    return rewriteLoopStatement(forEachStatement);
   }
 
   public Node  rewriteForStatement(ForStatement forStatement) {
@@ -762,12 +953,20 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return rewriteExpression(instanceOfExpression);
   }
 
+  public TypeDescriptor  rewriteIntersectionTypeDescriptor(IntersectionTypeDescriptor intersectionTypeDescriptor) {
+    return rewriteTypeDescriptor(intersectionTypeDescriptor);
+  }
+
   public Node  rewriteInvocation(Invocation invocation) {
     return rewriteMemberReference(invocation);
   }
 
-  public Node  rewriteJavaScriptConstructorReference(JavaScriptConstructorReference javaScriptConstructorReference) {
-    return rewriteExpression(javaScriptConstructorReference);
+  public Node  rewriteJsAwaitExpression(JsAwaitExpression jsAwaitExpression) {
+    return rewriteExpression(jsAwaitExpression);
+  }
+
+  public Node  rewriteJsConstructorReference(JsConstructorReference jsConstructorReference) {
+    return rewriteExpression(jsConstructorReference);
   }
 
   public Node  rewriteJsDocCastExpression(JsDocCastExpression jsDocCastExpression) {
@@ -776,6 +975,14 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
 
   public Node  rewriteJsDocExpression(JsDocExpression jsDocExpression) {
     return rewriteExpression(jsDocExpression);
+  }
+
+  public Node  rewriteJsForInStatement(JsForInStatement jsForInStatement) {
+    return rewriteLoopStatement(jsForInStatement);
+  }
+
+  public Node  rewriteJsYieldExpression(JsYieldExpression jsYieldExpression) {
+    return rewriteExpression(jsYieldExpression);
   }
 
   public Node  rewriteLabel(Label label) {
@@ -802,12 +1009,20 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return rewriteStatement(localClassDeclarationStatement);
   }
 
+  public Node  rewriteLocalFunctionDeclarationStatement(LocalFunctionDeclarationStatement localFunctionDeclarationStatement) {
+    return rewriteStatement(localFunctionDeclarationStatement);
+  }
+
   public Node  rewriteLoopStatement(LoopStatement loopStatement) {
     return rewriteStatement(loopStatement);
   }
 
   public Node  rewriteMember(Member member) {
     return rewriteNode(member);
+  }
+
+  public MemberDescriptor  rewriteMemberDescriptor(MemberDescriptor memberDescriptor) {
+    return memberDescriptor;
   }
 
   public Node  rewriteMemberReference(MemberReference memberReference) {
@@ -820,6 +1035,10 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
 
   public Node  rewriteMethodCall(MethodCall methodCall) {
     return rewriteInvocation(methodCall);
+  }
+
+  public MemberDescriptor  rewriteMethodDescriptor(MethodDescriptor methodDescriptor) {
+    return rewriteMemberDescriptor(methodDescriptor);
   }
 
   public Node  rewriteMethodReference(MethodReference methodReference) {
@@ -854,12 +1073,20 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return rewriteLiteral(numberLiteral);
   }
 
+  public Node  rewritePattern(Pattern pattern) {
+    return rewriteNode(pattern);
+  }
+
   public Node  rewritePostfixExpression(PostfixExpression postfixExpression) {
     return rewriteUnaryExpression(postfixExpression);
   }
 
   public Node  rewritePrefixExpression(PrefixExpression prefixExpression) {
     return rewriteUnaryExpression(prefixExpression);
+  }
+
+  public TypeDescriptor  rewritePrimitiveTypeDescriptor(PrimitiveTypeDescriptor primitiveTypeDescriptor) {
+    return rewriteTypeDescriptor(primitiveTypeDescriptor);
   }
 
   public Node  rewriteReturnStatement(ReturnStatement returnStatement) {
@@ -880,6 +1107,10 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
 
   public Node  rewriteSwitchCase(SwitchCase switchCase) {
     return rewriteNode(switchCase);
+  }
+
+  public Node  rewriteSwitchExpression(SwitchExpression switchExpression) {
+    return rewriteExpression(switchExpression);
   }
 
   public Node  rewriteSwitchStatement(SwitchStatement switchStatement) {
@@ -910,12 +1141,24 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
     return rewriteNode(type);
   }
 
+  public TypeDeclaration  rewriteTypeDeclaration(TypeDeclaration typeDeclaration) {
+    return typeDeclaration;
+  }
+
+  public TypeDescriptor  rewriteTypeDescriptor(TypeDescriptor typeDescriptor) {
+    return typeDescriptor;
+  }
+
   public Node  rewriteTypeLiteral(TypeLiteral typeLiteral) {
     return rewriteLiteral(typeLiteral);
   }
 
   public Node  rewriteUnaryExpression(UnaryExpression unaryExpression) {
     return rewriteExpression(unaryExpression);
+  }
+
+  public TypeDescriptor  rewriteUnionTypeDescriptor(UnionTypeDescriptor unionTypeDescriptor) {
+    return rewriteTypeDescriptor(unionTypeDescriptor);
   }
 
   public Node  rewriteVariable(Variable variable) {
@@ -936,5 +1179,9 @@ public abstract class AbstractRewriter extends ProcessorPrivate {
 
   public Node  rewriteWhileStatement(WhileStatement whileStatement) {
     return rewriteLoopStatement(whileStatement);
+  }
+
+  public Node  rewriteYieldStatement(YieldStatement yieldStatement) {
+    return rewriteStatement(yieldStatement);
   }
 }

@@ -32,18 +32,15 @@ public class Visitor_ContinueStatement {
   }
 
   static void pushContext(Processor processor, ContinueStatement continueStatement) {
-    Visitor_Statement.pushContext(processor, continueStatement);
+    Visitor_BreakOrContinueStatement.pushContext(processor, continueStatement);
   }
 
   static void popContext(Processor processor, ContinueStatement continueStatement) {
-    Visitor_Statement.popContext(processor, continueStatement);
+    Visitor_BreakOrContinueStatement.popContext(processor, continueStatement);
   }
 
   static void visitMembers(Processor processor, ContinueStatement continueStatement) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
-    Visitor_Statement.visitMembers(processorImpl, continueStatement);
-    if (continueStatement.labelReference != null) {
-      continueStatement.labelReference = (LabelReference) continueStatement.labelReference.acceptInternal(processorImpl);
-    }
+    Visitor_BreakOrContinueStatement.visitMembers(processorImpl, continueStatement);
   }
 }

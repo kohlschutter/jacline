@@ -45,5 +45,8 @@ public class Visitor_Invocation {
       ListVisitor.visit(
           invocation.arguments,
           n -> (Expression) n.acceptInternal(processorImpl));
+      ListVisitor.visit(
+          invocation.typeArguments,
+          n -> (TypeDescriptor) n.acceptInternal(processorImpl));
   }
 }

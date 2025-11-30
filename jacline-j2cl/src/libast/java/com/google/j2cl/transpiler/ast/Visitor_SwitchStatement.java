@@ -42,9 +42,9 @@ public class Visitor_SwitchStatement {
   static void visitMembers(Processor processor, SwitchStatement switchStatement) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Statement.visitMembers(processorImpl, switchStatement);
-      switchStatement.switchExpression = (Expression) Preconditions.checkNotNull(
-      switchStatement.switchExpression.acceptInternal(processorImpl),
-          "Field \"switchExpression\" in class \"SwitchStatement\" cannot be null");
+      switchStatement.expression = (Expression) Preconditions.checkNotNull(
+      switchStatement.expression.acceptInternal(processorImpl),
+          "Field \"expression\" in class \"SwitchStatement\" cannot be null");
       ListVisitor.visit(
           switchStatement.cases,
           n -> (SwitchCase) n.acceptInternal(processorImpl));

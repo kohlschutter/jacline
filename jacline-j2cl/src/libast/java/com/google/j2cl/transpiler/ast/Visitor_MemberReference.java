@@ -45,5 +45,8 @@ public class Visitor_MemberReference {
     if (memberReference.qualifier != null) {
       memberReference.qualifier = (Expression) memberReference.qualifier.acceptInternal(processorImpl);
     }
+      memberReference.target = (MemberDescriptor) Preconditions.checkNotNull(
+      memberReference.target.acceptInternal(processorImpl),
+          "Field \"target\" in class \"MemberReference\" cannot be null");
   }
 }

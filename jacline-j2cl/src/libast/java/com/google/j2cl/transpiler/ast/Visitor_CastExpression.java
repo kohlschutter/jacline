@@ -45,5 +45,8 @@ public class Visitor_CastExpression {
       castExpression.expression = (Expression) Preconditions.checkNotNull(
       castExpression.expression.acceptInternal(processorImpl),
           "Field \"expression\" in class \"CastExpression\" cannot be null");
+      castExpression.castTypeDescriptor = (TypeDescriptor) Preconditions.checkNotNull(
+      castExpression.castTypeDescriptor.acceptInternal(processorImpl),
+          "Field \"castTypeDescriptor\" in class \"CastExpression\" cannot be null");
   }
 }

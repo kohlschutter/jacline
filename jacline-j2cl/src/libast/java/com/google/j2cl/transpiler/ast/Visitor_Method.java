@@ -42,6 +42,9 @@ public class Visitor_Method {
   static void visitMembers(Processor processor, Method method) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Member.visitMembers(processorImpl, method);
+      method.methodDescriptor = (MethodDescriptor) Preconditions.checkNotNull(
+      method.methodDescriptor.acceptInternal(processorImpl),
+          "Field \"methodDescriptor\" in class \"Method\" cannot be null");
       ListVisitor.visit(
           method.parameters,
           n -> (Variable) n.acceptInternal(processorImpl));

@@ -42,6 +42,9 @@ public class Visitor_ConditionalExpression {
   static void visitMembers(Processor processor, ConditionalExpression conditionalExpression) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Expression.visitMembers(processorImpl, conditionalExpression);
+      conditionalExpression.typeDescriptor = (TypeDescriptor) Preconditions.checkNotNull(
+      conditionalExpression.typeDescriptor.acceptInternal(processorImpl),
+          "Field \"typeDescriptor\" in class \"ConditionalExpression\" cannot be null");
       conditionalExpression.conditionExpression = (Expression) Preconditions.checkNotNull(
       conditionalExpression.conditionExpression.acceptInternal(processorImpl),
           "Field \"conditionExpression\" in class \"ConditionalExpression\" cannot be null");

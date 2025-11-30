@@ -23,18 +23,23 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final boolean shouldProcessArrayTypeDescriptor(ArrayTypeDescriptor arrayTypeDescriptor) {
+    return enterArrayTypeDescriptor(arrayTypeDescriptor);
+  }
+
+  @Override
   final boolean shouldProcessAssertStatement(AssertStatement assertStatement) {
     return enterAssertStatement(assertStatement);
   }
 
   @Override
-  final boolean shouldProcessAwaitExpression(AwaitExpression awaitExpression) {
-    return enterAwaitExpression(awaitExpression);
+  final boolean shouldProcessBinaryExpression(BinaryExpression binaryExpression) {
+    return enterBinaryExpression(binaryExpression);
   }
 
   @Override
-  final boolean shouldProcessBinaryExpression(BinaryExpression binaryExpression) {
-    return enterBinaryExpression(binaryExpression);
+  final boolean shouldProcessBindingPattern(BindingPattern bindingPattern) {
+    return enterBindingPattern(bindingPattern);
   }
 
   @Override
@@ -45,6 +50,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   @Override
   final boolean shouldProcessBooleanLiteral(BooleanLiteral booleanLiteral) {
     return enterBooleanLiteral(booleanLiteral);
+  }
+
+  @Override
+  final boolean shouldProcessBreakOrContinueStatement(BreakOrContinueStatement breakOrContinueStatement) {
+    return enterBreakOrContinueStatement(breakOrContinueStatement);
   }
 
   @Override
@@ -78,8 +88,18 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final boolean shouldProcessDeclaredTypeDescriptor(DeclaredTypeDescriptor declaredTypeDescriptor) {
+    return enterDeclaredTypeDescriptor(declaredTypeDescriptor);
+  }
+
+  @Override
   final boolean shouldProcessDoWhileStatement(DoWhileStatement doWhileStatement) {
     return enterDoWhileStatement(doWhileStatement);
+  }
+
+  @Override
+  final boolean shouldProcessEmbeddedStatement(EmbeddedStatement embeddedStatement) {
+    return enterEmbeddedStatement(embeddedStatement);
   }
 
   @Override
@@ -113,6 +133,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final boolean shouldProcessFieldDescriptor(FieldDescriptor fieldDescriptor) {
+    return enterFieldDescriptor(fieldDescriptor);
+  }
+
+  @Override
   final boolean shouldProcessForEachStatement(ForEachStatement forEachStatement) {
     return enterForEachStatement(forEachStatement);
   }
@@ -143,13 +168,23 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final boolean shouldProcessIntersectionTypeDescriptor(IntersectionTypeDescriptor intersectionTypeDescriptor) {
+    return enterIntersectionTypeDescriptor(intersectionTypeDescriptor);
+  }
+
+  @Override
   final boolean shouldProcessInvocation(Invocation invocation) {
     return enterInvocation(invocation);
   }
 
   @Override
-  final boolean shouldProcessJavaScriptConstructorReference(JavaScriptConstructorReference javaScriptConstructorReference) {
-    return enterJavaScriptConstructorReference(javaScriptConstructorReference);
+  final boolean shouldProcessJsAwaitExpression(JsAwaitExpression jsAwaitExpression) {
+    return enterJsAwaitExpression(jsAwaitExpression);
+  }
+
+  @Override
+  final boolean shouldProcessJsConstructorReference(JsConstructorReference jsConstructorReference) {
+    return enterJsConstructorReference(jsConstructorReference);
   }
 
   @Override
@@ -160,6 +195,16 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   @Override
   final boolean shouldProcessJsDocExpression(JsDocExpression jsDocExpression) {
     return enterJsDocExpression(jsDocExpression);
+  }
+
+  @Override
+  final boolean shouldProcessJsForInStatement(JsForInStatement jsForInStatement) {
+    return enterJsForInStatement(jsForInStatement);
+  }
+
+  @Override
+  final boolean shouldProcessJsYieldExpression(JsYieldExpression jsYieldExpression) {
+    return enterJsYieldExpression(jsYieldExpression);
   }
 
   @Override
@@ -193,6 +238,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final boolean shouldProcessLocalFunctionDeclarationStatement(LocalFunctionDeclarationStatement localFunctionDeclarationStatement) {
+    return enterLocalFunctionDeclarationStatement(localFunctionDeclarationStatement);
+  }
+
+  @Override
   final boolean shouldProcessLoopStatement(LoopStatement loopStatement) {
     return enterLoopStatement(loopStatement);
   }
@@ -200,6 +250,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   @Override
   final boolean shouldProcessMember(Member member) {
     return enterMember(member);
+  }
+
+  @Override
+  final boolean shouldProcessMemberDescriptor(MemberDescriptor memberDescriptor) {
+    return enterMemberDescriptor(memberDescriptor);
   }
 
   @Override
@@ -215,6 +270,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   @Override
   final boolean shouldProcessMethodCall(MethodCall methodCall) {
     return enterMethodCall(methodCall);
+  }
+
+  @Override
+  final boolean shouldProcessMethodDescriptor(MethodDescriptor methodDescriptor) {
+    return enterMethodDescriptor(methodDescriptor);
   }
 
   @Override
@@ -258,6 +318,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final boolean shouldProcessPattern(Pattern pattern) {
+    return enterPattern(pattern);
+  }
+
+  @Override
   final boolean shouldProcessPostfixExpression(PostfixExpression postfixExpression) {
     return enterPostfixExpression(postfixExpression);
   }
@@ -265,6 +330,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   @Override
   final boolean shouldProcessPrefixExpression(PrefixExpression prefixExpression) {
     return enterPrefixExpression(prefixExpression);
+  }
+
+  @Override
+  final boolean shouldProcessPrimitiveTypeDescriptor(PrimitiveTypeDescriptor primitiveTypeDescriptor) {
+    return enterPrimitiveTypeDescriptor(primitiveTypeDescriptor);
   }
 
   @Override
@@ -290,6 +360,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   @Override
   final boolean shouldProcessSwitchCase(SwitchCase switchCase) {
     return enterSwitchCase(switchCase);
+  }
+
+  @Override
+  final boolean shouldProcessSwitchExpression(SwitchExpression switchExpression) {
+    return enterSwitchExpression(switchExpression);
   }
 
   @Override
@@ -328,6 +403,16 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final boolean shouldProcessTypeDeclaration(TypeDeclaration typeDeclaration) {
+    return enterTypeDeclaration(typeDeclaration);
+  }
+
+  @Override
+  final boolean shouldProcessTypeDescriptor(TypeDescriptor typeDescriptor) {
+    return enterTypeDescriptor(typeDescriptor);
+  }
+
+  @Override
   final boolean shouldProcessTypeLiteral(TypeLiteral typeLiteral) {
     return enterTypeLiteral(typeLiteral);
   }
@@ -335,6 +420,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   @Override
   final boolean shouldProcessUnaryExpression(UnaryExpression unaryExpression) {
     return enterUnaryExpression(unaryExpression);
+  }
+
+  @Override
+  final boolean shouldProcessUnionTypeDescriptor(UnionTypeDescriptor unionTypeDescriptor) {
+    return enterUnionTypeDescriptor(unionTypeDescriptor);
   }
 
   @Override
@@ -363,6 +453,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final boolean shouldProcessYieldStatement(YieldStatement yieldStatement) {
+    return enterYieldStatement(yieldStatement);
+  }
+
+  @Override
   final Node postProcessArrayAccess(ArrayAccess arrayAccess) {
     exitArrayAccess(arrayAccess);
     return arrayAccess;
@@ -387,21 +482,27 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final TypeDescriptor postProcessArrayTypeDescriptor(ArrayTypeDescriptor arrayTypeDescriptor) {
+    exitArrayTypeDescriptor(arrayTypeDescriptor);
+    return arrayTypeDescriptor;
+  }
+
+  @Override
   final Node postProcessAssertStatement(AssertStatement assertStatement) {
     exitAssertStatement(assertStatement);
     return assertStatement;
   }
 
   @Override
-  final Node postProcessAwaitExpression(AwaitExpression awaitExpression) {
-    exitAwaitExpression(awaitExpression);
-    return awaitExpression;
-  }
-
-  @Override
   final Node postProcessBinaryExpression(BinaryExpression binaryExpression) {
     exitBinaryExpression(binaryExpression);
     return binaryExpression;
+  }
+
+  @Override
+  final Node postProcessBindingPattern(BindingPattern bindingPattern) {
+    exitBindingPattern(bindingPattern);
+    return bindingPattern;
   }
 
   @Override
@@ -414,6 +515,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   final Node postProcessBooleanLiteral(BooleanLiteral booleanLiteral) {
     exitBooleanLiteral(booleanLiteral);
     return booleanLiteral;
+  }
+
+  @Override
+  final Node postProcessBreakOrContinueStatement(BreakOrContinueStatement breakOrContinueStatement) {
+    exitBreakOrContinueStatement(breakOrContinueStatement);
+    return breakOrContinueStatement;
   }
 
   @Override
@@ -453,9 +560,21 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final TypeDescriptor postProcessDeclaredTypeDescriptor(DeclaredTypeDescriptor declaredTypeDescriptor) {
+    exitDeclaredTypeDescriptor(declaredTypeDescriptor);
+    return declaredTypeDescriptor;
+  }
+
+  @Override
   final Node postProcessDoWhileStatement(DoWhileStatement doWhileStatement) {
     exitDoWhileStatement(doWhileStatement);
     return doWhileStatement;
+  }
+
+  @Override
+  final Node postProcessEmbeddedStatement(EmbeddedStatement embeddedStatement) {
+    exitEmbeddedStatement(embeddedStatement);
+    return embeddedStatement;
   }
 
   @Override
@@ -495,6 +614,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final MemberDescriptor postProcessFieldDescriptor(FieldDescriptor fieldDescriptor) {
+    exitFieldDescriptor(fieldDescriptor);
+    return fieldDescriptor;
+  }
+
+  @Override
   final Node postProcessForEachStatement(ForEachStatement forEachStatement) {
     exitForEachStatement(forEachStatement);
     return forEachStatement;
@@ -531,15 +656,27 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final TypeDescriptor postProcessIntersectionTypeDescriptor(IntersectionTypeDescriptor intersectionTypeDescriptor) {
+    exitIntersectionTypeDescriptor(intersectionTypeDescriptor);
+    return intersectionTypeDescriptor;
+  }
+
+  @Override
   final Node postProcessInvocation(Invocation invocation) {
     exitInvocation(invocation);
     return invocation;
   }
 
   @Override
-  final Node postProcessJavaScriptConstructorReference(JavaScriptConstructorReference javaScriptConstructorReference) {
-    exitJavaScriptConstructorReference(javaScriptConstructorReference);
-    return javaScriptConstructorReference;
+  final Node postProcessJsAwaitExpression(JsAwaitExpression jsAwaitExpression) {
+    exitJsAwaitExpression(jsAwaitExpression);
+    return jsAwaitExpression;
+  }
+
+  @Override
+  final Node postProcessJsConstructorReference(JsConstructorReference jsConstructorReference) {
+    exitJsConstructorReference(jsConstructorReference);
+    return jsConstructorReference;
   }
 
   @Override
@@ -552,6 +689,18 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   final Node postProcessJsDocExpression(JsDocExpression jsDocExpression) {
     exitJsDocExpression(jsDocExpression);
     return jsDocExpression;
+  }
+
+  @Override
+  final Node postProcessJsForInStatement(JsForInStatement jsForInStatement) {
+    exitJsForInStatement(jsForInStatement);
+    return jsForInStatement;
+  }
+
+  @Override
+  final Node postProcessJsYieldExpression(JsYieldExpression jsYieldExpression) {
+    exitJsYieldExpression(jsYieldExpression);
+    return jsYieldExpression;
   }
 
   @Override
@@ -591,6 +740,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final Node postProcessLocalFunctionDeclarationStatement(LocalFunctionDeclarationStatement localFunctionDeclarationStatement) {
+    exitLocalFunctionDeclarationStatement(localFunctionDeclarationStatement);
+    return localFunctionDeclarationStatement;
+  }
+
+  @Override
   final Node postProcessLoopStatement(LoopStatement loopStatement) {
     exitLoopStatement(loopStatement);
     return loopStatement;
@@ -600,6 +755,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   final Node postProcessMember(Member member) {
     exitMember(member);
     return member;
+  }
+
+  @Override
+  final MemberDescriptor postProcessMemberDescriptor(MemberDescriptor memberDescriptor) {
+    exitMemberDescriptor(memberDescriptor);
+    return memberDescriptor;
   }
 
   @Override
@@ -618,6 +779,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   final Node postProcessMethodCall(MethodCall methodCall) {
     exitMethodCall(methodCall);
     return methodCall;
+  }
+
+  @Override
+  final MemberDescriptor postProcessMethodDescriptor(MethodDescriptor methodDescriptor) {
+    exitMethodDescriptor(methodDescriptor);
+    return methodDescriptor;
   }
 
   @Override
@@ -669,6 +836,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final Node postProcessPattern(Pattern pattern) {
+    exitPattern(pattern);
+    return pattern;
+  }
+
+  @Override
   final Node postProcessPostfixExpression(PostfixExpression postfixExpression) {
     exitPostfixExpression(postfixExpression);
     return postfixExpression;
@@ -678,6 +851,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   final Node postProcessPrefixExpression(PrefixExpression prefixExpression) {
     exitPrefixExpression(prefixExpression);
     return prefixExpression;
+  }
+
+  @Override
+  final TypeDescriptor postProcessPrimitiveTypeDescriptor(PrimitiveTypeDescriptor primitiveTypeDescriptor) {
+    exitPrimitiveTypeDescriptor(primitiveTypeDescriptor);
+    return primitiveTypeDescriptor;
   }
 
   @Override
@@ -708,6 +887,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   final Node postProcessSwitchCase(SwitchCase switchCase) {
     exitSwitchCase(switchCase);
     return switchCase;
+  }
+
+  @Override
+  final Node postProcessSwitchExpression(SwitchExpression switchExpression) {
+    exitSwitchExpression(switchExpression);
+    return switchExpression;
   }
 
   @Override
@@ -753,6 +938,18 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   @Override
+  final TypeDeclaration postProcessTypeDeclaration(TypeDeclaration typeDeclaration) {
+    exitTypeDeclaration(typeDeclaration);
+    return typeDeclaration;
+  }
+
+  @Override
+  final TypeDescriptor postProcessTypeDescriptor(TypeDescriptor typeDescriptor) {
+    exitTypeDescriptor(typeDescriptor);
+    return typeDescriptor;
+  }
+
+  @Override
   final Node postProcessTypeLiteral(TypeLiteral typeLiteral) {
     exitTypeLiteral(typeLiteral);
     return typeLiteral;
@@ -762,6 +959,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   final Node postProcessUnaryExpression(UnaryExpression unaryExpression) {
     exitUnaryExpression(unaryExpression);
     return unaryExpression;
+  }
+
+  @Override
+  final TypeDescriptor postProcessUnionTypeDescriptor(UnionTypeDescriptor unionTypeDescriptor) {
+    exitUnionTypeDescriptor(unionTypeDescriptor);
+    return unionTypeDescriptor;
   }
 
   @Override
@@ -794,6 +997,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     return whileStatement;
   }
 
+  @Override
+  final Node postProcessYieldStatement(YieldStatement yieldStatement) {
+    exitYieldStatement(yieldStatement);
+    return yieldStatement;
+  }
+
   public boolean enterArrayAccess(ArrayAccess arrayAccess) {
     return enterExpression(arrayAccess);
   }
@@ -810,16 +1019,20 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     return enterExpression(arrayLiteral);
   }
 
+  public boolean enterArrayTypeDescriptor(ArrayTypeDescriptor arrayTypeDescriptor) {
+    return enterTypeDescriptor(arrayTypeDescriptor);
+  }
+
   public boolean enterAssertStatement(AssertStatement assertStatement) {
     return enterStatement(assertStatement);
   }
 
-  public boolean enterAwaitExpression(AwaitExpression awaitExpression) {
-    return enterExpression(awaitExpression);
-  }
-
   public boolean enterBinaryExpression(BinaryExpression binaryExpression) {
     return enterExpression(binaryExpression);
+  }
+
+  public boolean enterBindingPattern(BindingPattern bindingPattern) {
+    return enterPattern(bindingPattern);
   }
 
   public boolean enterBlock(Block block) {
@@ -830,8 +1043,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     return enterLiteral(booleanLiteral);
   }
 
+  public boolean enterBreakOrContinueStatement(BreakOrContinueStatement breakOrContinueStatement) {
+    return enterStatement(breakOrContinueStatement);
+  }
+
   public boolean enterBreakStatement(BreakStatement breakStatement) {
-    return enterStatement(breakStatement);
+    return enterBreakOrContinueStatement(breakStatement);
   }
 
   public boolean enterCastExpression(CastExpression castExpression) {
@@ -851,11 +1068,19 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
 
   public boolean enterContinueStatement(ContinueStatement continueStatement) {
-    return enterStatement(continueStatement);
+    return enterBreakOrContinueStatement(continueStatement);
+  }
+
+  public boolean enterDeclaredTypeDescriptor(DeclaredTypeDescriptor declaredTypeDescriptor) {
+    return enterTypeDescriptor(declaredTypeDescriptor);
   }
 
   public boolean enterDoWhileStatement(DoWhileStatement doWhileStatement) {
     return enterLoopStatement(doWhileStatement);
+  }
+
+  public boolean enterEmbeddedStatement(EmbeddedStatement embeddedStatement) {
+    return enterExpression(embeddedStatement);
   }
 
   public boolean enterExpression(Expression expression) {
@@ -882,8 +1107,12 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     return enterStatement(fieldDeclarationStatement);
   }
 
+  public boolean enterFieldDescriptor(FieldDescriptor fieldDescriptor) {
+    return enterMemberDescriptor(fieldDescriptor);
+  }
+
   public boolean enterForEachStatement(ForEachStatement forEachStatement) {
-    return enterStatement(forEachStatement);
+    return enterLoopStatement(forEachStatement);
   }
 
   public boolean enterForStatement(ForStatement forStatement) {
@@ -906,12 +1135,20 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     return enterExpression(instanceOfExpression);
   }
 
+  public boolean enterIntersectionTypeDescriptor(IntersectionTypeDescriptor intersectionTypeDescriptor) {
+    return enterTypeDescriptor(intersectionTypeDescriptor);
+  }
+
   public boolean enterInvocation(Invocation invocation) {
     return enterMemberReference(invocation);
   }
 
-  public boolean enterJavaScriptConstructorReference(JavaScriptConstructorReference javaScriptConstructorReference) {
-    return enterExpression(javaScriptConstructorReference);
+  public boolean enterJsAwaitExpression(JsAwaitExpression jsAwaitExpression) {
+    return enterExpression(jsAwaitExpression);
+  }
+
+  public boolean enterJsConstructorReference(JsConstructorReference jsConstructorReference) {
+    return enterExpression(jsConstructorReference);
   }
 
   public boolean enterJsDocCastExpression(JsDocCastExpression jsDocCastExpression) {
@@ -920,6 +1157,14 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
 
   public boolean enterJsDocExpression(JsDocExpression jsDocExpression) {
     return enterExpression(jsDocExpression);
+  }
+
+  public boolean enterJsForInStatement(JsForInStatement jsForInStatement) {
+    return enterLoopStatement(jsForInStatement);
+  }
+
+  public boolean enterJsYieldExpression(JsYieldExpression jsYieldExpression) {
+    return enterExpression(jsYieldExpression);
   }
 
   public boolean enterLabel(Label label) {
@@ -946,12 +1191,20 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     return enterStatement(localClassDeclarationStatement);
   }
 
+  public boolean enterLocalFunctionDeclarationStatement(LocalFunctionDeclarationStatement localFunctionDeclarationStatement) {
+    return enterStatement(localFunctionDeclarationStatement);
+  }
+
   public boolean enterLoopStatement(LoopStatement loopStatement) {
     return enterStatement(loopStatement);
   }
 
   public boolean enterMember(Member member) {
     return enterNode(member);
+  }
+
+  public boolean enterMemberDescriptor(MemberDescriptor memberDescriptor) {
+    return true;
   }
 
   public boolean enterMemberReference(MemberReference memberReference) {
@@ -964,6 +1217,10 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
 
   public boolean enterMethodCall(MethodCall methodCall) {
     return enterInvocation(methodCall);
+  }
+
+  public boolean enterMethodDescriptor(MethodDescriptor methodDescriptor) {
+    return enterMemberDescriptor(methodDescriptor);
   }
 
   public boolean enterMethodReference(MethodReference methodReference) {
@@ -998,12 +1255,20 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     return enterLiteral(numberLiteral);
   }
 
+  public boolean enterPattern(Pattern pattern) {
+    return enterNode(pattern);
+  }
+
   public boolean enterPostfixExpression(PostfixExpression postfixExpression) {
     return enterUnaryExpression(postfixExpression);
   }
 
   public boolean enterPrefixExpression(PrefixExpression prefixExpression) {
     return enterUnaryExpression(prefixExpression);
+  }
+
+  public boolean enterPrimitiveTypeDescriptor(PrimitiveTypeDescriptor primitiveTypeDescriptor) {
+    return enterTypeDescriptor(primitiveTypeDescriptor);
   }
 
   public boolean enterReturnStatement(ReturnStatement returnStatement) {
@@ -1024,6 +1289,10 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
 
   public boolean enterSwitchCase(SwitchCase switchCase) {
     return enterNode(switchCase);
+  }
+
+  public boolean enterSwitchExpression(SwitchExpression switchExpression) {
+    return enterExpression(switchExpression);
   }
 
   public boolean enterSwitchStatement(SwitchStatement switchStatement) {
@@ -1054,12 +1323,24 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     return enterNode(type);
   }
 
+  public boolean enterTypeDeclaration(TypeDeclaration typeDeclaration) {
+    return true;
+  }
+
+  public boolean enterTypeDescriptor(TypeDescriptor typeDescriptor) {
+    return true;
+  }
+
   public boolean enterTypeLiteral(TypeLiteral typeLiteral) {
     return enterLiteral(typeLiteral);
   }
 
   public boolean enterUnaryExpression(UnaryExpression unaryExpression) {
     return enterExpression(unaryExpression);
+  }
+
+  public boolean enterUnionTypeDescriptor(UnionTypeDescriptor unionTypeDescriptor) {
+    return enterTypeDescriptor(unionTypeDescriptor);
   }
 
   public boolean enterVariable(Variable variable) {
@@ -1082,6 +1363,10 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     return enterLoopStatement(whileStatement);
   }
 
+  public boolean enterYieldStatement(YieldStatement yieldStatement) {
+    return enterStatement(yieldStatement);
+  }
+
   public void exitArrayAccess(ArrayAccess arrayAccess) {
     exitExpression(arrayAccess);
   }
@@ -1094,14 +1379,17 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   public void exitArrayLiteral(ArrayLiteral arrayLiteral) {
     exitExpression(arrayLiteral);
   }
+  public void exitArrayTypeDescriptor(ArrayTypeDescriptor arrayTypeDescriptor) {
+    exitTypeDescriptor(arrayTypeDescriptor);
+  }
   public void exitAssertStatement(AssertStatement assertStatement) {
     exitStatement(assertStatement);
   }
-  public void exitAwaitExpression(AwaitExpression awaitExpression) {
-    exitExpression(awaitExpression);
-  }
   public void exitBinaryExpression(BinaryExpression binaryExpression) {
     exitExpression(binaryExpression);
+  }
+  public void exitBindingPattern(BindingPattern bindingPattern) {
+    exitPattern(bindingPattern);
   }
   public void exitBlock(Block block) {
     exitStatement(block);
@@ -1109,8 +1397,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   public void exitBooleanLiteral(BooleanLiteral booleanLiteral) {
     exitLiteral(booleanLiteral);
   }
+  public void exitBreakOrContinueStatement(BreakOrContinueStatement breakOrContinueStatement) {
+    exitStatement(breakOrContinueStatement);
+  }
   public void exitBreakStatement(BreakStatement breakStatement) {
-    exitStatement(breakStatement);
+    exitBreakOrContinueStatement(breakStatement);
   }
   public void exitCastExpression(CastExpression castExpression) {
     exitExpression(castExpression);
@@ -1125,10 +1416,16 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
     exitExpression(conditionalExpression);
   }
   public void exitContinueStatement(ContinueStatement continueStatement) {
-    exitStatement(continueStatement);
+    exitBreakOrContinueStatement(continueStatement);
+  }
+  public void exitDeclaredTypeDescriptor(DeclaredTypeDescriptor declaredTypeDescriptor) {
+    exitTypeDescriptor(declaredTypeDescriptor);
   }
   public void exitDoWhileStatement(DoWhileStatement doWhileStatement) {
     exitLoopStatement(doWhileStatement);
+  }
+  public void exitEmbeddedStatement(EmbeddedStatement embeddedStatement) {
+    exitExpression(embeddedStatement);
   }
   public void exitExpression(Expression expression) {
     exitNode(expression);
@@ -1148,8 +1445,11 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   public void exitFieldDeclarationStatement(FieldDeclarationStatement fieldDeclarationStatement) {
     exitStatement(fieldDeclarationStatement);
   }
+  public void exitFieldDescriptor(FieldDescriptor fieldDescriptor) {
+    exitMemberDescriptor(fieldDescriptor);
+  }
   public void exitForEachStatement(ForEachStatement forEachStatement) {
-    exitStatement(forEachStatement);
+    exitLoopStatement(forEachStatement);
   }
   public void exitForStatement(ForStatement forStatement) {
     exitLoopStatement(forStatement);
@@ -1166,17 +1466,29 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   public void exitInstanceOfExpression(InstanceOfExpression instanceOfExpression) {
     exitExpression(instanceOfExpression);
   }
+  public void exitIntersectionTypeDescriptor(IntersectionTypeDescriptor intersectionTypeDescriptor) {
+    exitTypeDescriptor(intersectionTypeDescriptor);
+  }
   public void exitInvocation(Invocation invocation) {
     exitMemberReference(invocation);
   }
-  public void exitJavaScriptConstructorReference(JavaScriptConstructorReference javaScriptConstructorReference) {
-    exitExpression(javaScriptConstructorReference);
+  public void exitJsAwaitExpression(JsAwaitExpression jsAwaitExpression) {
+    exitExpression(jsAwaitExpression);
+  }
+  public void exitJsConstructorReference(JsConstructorReference jsConstructorReference) {
+    exitExpression(jsConstructorReference);
   }
   public void exitJsDocCastExpression(JsDocCastExpression jsDocCastExpression) {
     exitExpression(jsDocCastExpression);
   }
   public void exitJsDocExpression(JsDocExpression jsDocExpression) {
     exitExpression(jsDocExpression);
+  }
+  public void exitJsForInStatement(JsForInStatement jsForInStatement) {
+    exitLoopStatement(jsForInStatement);
+  }
+  public void exitJsYieldExpression(JsYieldExpression jsYieldExpression) {
+    exitExpression(jsYieldExpression);
   }
   public void exitLabel(Label label) {
     exitNameDeclaration(label);
@@ -1196,11 +1508,16 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   public void exitLocalClassDeclarationStatement(LocalClassDeclarationStatement localClassDeclarationStatement) {
     exitStatement(localClassDeclarationStatement);
   }
+  public void exitLocalFunctionDeclarationStatement(LocalFunctionDeclarationStatement localFunctionDeclarationStatement) {
+    exitStatement(localFunctionDeclarationStatement);
+  }
   public void exitLoopStatement(LoopStatement loopStatement) {
     exitStatement(loopStatement);
   }
   public void exitMember(Member member) {
     exitNode(member);
+  }
+  public void exitMemberDescriptor(MemberDescriptor memberDescriptor) {
   }
   public void exitMemberReference(MemberReference memberReference) {
     exitExpression(memberReference);
@@ -1210,6 +1527,9 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
   public void exitMethodCall(MethodCall methodCall) {
     exitInvocation(methodCall);
+  }
+  public void exitMethodDescriptor(MethodDescriptor methodDescriptor) {
+    exitMemberDescriptor(methodDescriptor);
   }
   public void exitMethodReference(MethodReference methodReference) {
     exitExpression(methodReference);
@@ -1234,11 +1554,17 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   public void exitNumberLiteral(NumberLiteral numberLiteral) {
     exitLiteral(numberLiteral);
   }
+  public void exitPattern(Pattern pattern) {
+    exitNode(pattern);
+  }
   public void exitPostfixExpression(PostfixExpression postfixExpression) {
     exitUnaryExpression(postfixExpression);
   }
   public void exitPrefixExpression(PrefixExpression prefixExpression) {
     exitUnaryExpression(prefixExpression);
+  }
+  public void exitPrimitiveTypeDescriptor(PrimitiveTypeDescriptor primitiveTypeDescriptor) {
+    exitTypeDescriptor(primitiveTypeDescriptor);
   }
   public void exitReturnStatement(ReturnStatement returnStatement) {
     exitStatement(returnStatement);
@@ -1254,6 +1580,9 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
   public void exitSwitchCase(SwitchCase switchCase) {
     exitNode(switchCase);
+  }
+  public void exitSwitchExpression(SwitchExpression switchExpression) {
+    exitExpression(switchExpression);
   }
   public void exitSwitchStatement(SwitchStatement switchStatement) {
     exitStatement(switchStatement);
@@ -1276,11 +1605,18 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   public void exitType(Type type) {
     exitNode(type);
   }
+  public void exitTypeDeclaration(TypeDeclaration typeDeclaration) {
+  }
+  public void exitTypeDescriptor(TypeDescriptor typeDescriptor) {
+  }
   public void exitTypeLiteral(TypeLiteral typeLiteral) {
     exitLiteral(typeLiteral);
   }
   public void exitUnaryExpression(UnaryExpression unaryExpression) {
     exitExpression(unaryExpression);
+  }
+  public void exitUnionTypeDescriptor(UnionTypeDescriptor unionTypeDescriptor) {
+    exitTypeDescriptor(unionTypeDescriptor);
   }
   public void exitVariable(Variable variable) {
     exitNameDeclaration(variable);
@@ -1296,5 +1632,8 @@ public abstract class AbstractVisitor extends ProcessorPrivate {
   }
   public void exitWhileStatement(WhileStatement whileStatement) {
     exitLoopStatement(whileStatement);
+  }
+  public void exitYieldStatement(YieldStatement yieldStatement) {
+    exitStatement(yieldStatement);
   }
 }

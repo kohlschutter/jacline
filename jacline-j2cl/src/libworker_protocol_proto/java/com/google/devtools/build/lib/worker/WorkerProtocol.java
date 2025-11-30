@@ -133,7 +133,7 @@ public final class WorkerProtocol {
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
+//        makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -922,7 +922,7 @@ public final class WorkerProtocol {
           inputs_ = java.util.Collections.unmodifiableList(inputs_);
         }
         this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
+//        makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -2022,7 +2022,7 @@ public final class WorkerProtocol {
             e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
+//        makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor

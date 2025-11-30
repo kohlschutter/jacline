@@ -32,18 +32,15 @@ public class Visitor_BreakStatement {
   }
 
   static void pushContext(Processor processor, BreakStatement breakStatement) {
-    Visitor_Statement.pushContext(processor, breakStatement);
+    Visitor_BreakOrContinueStatement.pushContext(processor, breakStatement);
   }
 
   static void popContext(Processor processor, BreakStatement breakStatement) {
-    Visitor_Statement.popContext(processor, breakStatement);
+    Visitor_BreakOrContinueStatement.popContext(processor, breakStatement);
   }
 
   static void visitMembers(Processor processor, BreakStatement breakStatement) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
-    Visitor_Statement.visitMembers(processorImpl, breakStatement);
-    if (breakStatement.labelReference != null) {
-      breakStatement.labelReference = (LabelReference) breakStatement.labelReference.acceptInternal(processorImpl);
-    }
+    Visitor_BreakOrContinueStatement.visitMembers(processorImpl, breakStatement);
   }
 }

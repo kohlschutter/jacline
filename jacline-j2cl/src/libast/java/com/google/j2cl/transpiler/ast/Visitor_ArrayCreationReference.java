@@ -42,5 +42,11 @@ public class Visitor_ArrayCreationReference {
   static void visitMembers(Processor processor, ArrayCreationReference arrayCreationReference) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Expression.visitMembers(processorImpl, arrayCreationReference);
+      arrayCreationReference.targetTypeDescriptor = (ArrayTypeDescriptor) Preconditions.checkNotNull(
+      arrayCreationReference.targetTypeDescriptor.acceptInternal(processorImpl),
+          "Field \"targetTypeDescriptor\" in class \"ArrayCreationReference\" cannot be null");
+      arrayCreationReference.interfaceMethodDescriptor = (MethodDescriptor) Preconditions.checkNotNull(
+      arrayCreationReference.interfaceMethodDescriptor.acceptInternal(processorImpl),
+          "Field \"interfaceMethodDescriptor\" in class \"ArrayCreationReference\" cannot be null");
   }
 }

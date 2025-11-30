@@ -42,6 +42,9 @@ public class Visitor_NewArray {
   static void visitMembers(Processor processor, NewArray newArray) {
     ProcessorPrivate processorImpl = (ProcessorPrivate) processor;
     Visitor_Expression.visitMembers(processorImpl, newArray);
+      newArray.typeDescriptor = (ArrayTypeDescriptor) Preconditions.checkNotNull(
+      newArray.typeDescriptor.acceptInternal(processorImpl),
+          "Field \"typeDescriptor\" in class \"NewArray\" cannot be null");
       ListVisitor.visit(
           newArray.dimensionExpressions,
           n -> (Expression) n.acceptInternal(processorImpl));

@@ -45,5 +45,8 @@ public class Visitor_MethodReference {
     if (methodReference.qualifier != null) {
       methodReference.qualifier = (Expression) methodReference.qualifier.acceptInternal(processorImpl);
     }
+      ListVisitor.visit(
+          methodReference.typeArguments,
+          n -> (TypeDescriptor) n.acceptInternal(processorImpl));
   }
 }
