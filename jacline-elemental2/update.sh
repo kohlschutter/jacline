@@ -6,27 +6,29 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-git submodule update --init
+#git submodule update --init
 
 alias bazel=bazelisk
 cd elemental2
 bazel build java/...
-cd ..
+cd -
 
 fromBase=elemental2/bazel-bin/java/elemental2
 
-for module in promise core dom encoding indexeddb media svg webassembly webcrypto webgl webstorage; do
+for module in promise core dom indexeddb media svg webassembly webcrypto webgl webstorage; do
   src="${module}/src"
   javaOut=${src}/main/java
   restOut=${src}/main/resources/META-INF/jacline/generated/
   rm -rf "$javaOut" "$restOut"
   mkdir -p "$javaOut" "$restOut"
 
-  cp -r "$fromBase/$module/${module}-j2cl.js/"* "$javaOut"/
+  cp -r "$fromBase/$module/${module}-j2cl.js"/* "$javaOut"/
   #cp -r "$fromBase/$module/${module}-j2cl.js/"* "$restOut"/
 
   chmod 755 $(find ${src} -type d)
   chmod 644 $(find ${src} -type f)
 
   rm -f $(find "$javaOut" -type f -not -name "*.java")
+
+  sed -i "" -E 's|@NullMarked|/*@NullMarked*/|g' $(find "$javaOut" -name "*.java")
 done
