@@ -11,7 +11,8 @@ cd "$(dirname $0)"
 cd ../j2cl
 bazelBinDir=$(pwd)/bazel-bin
 alias bazel=bazelisk
-./build_test.sh || true
+#./build_test.sh || true
+bazel build  {jre,transpiler,tools}/java/...
 cd - >/dev/null
 srcDir=$(pwd)/src
 
