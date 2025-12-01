@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import elemental2.media.AudioParam;
 import elemental2.media.ConstantSourceOptions;
 import elemental2.media.AudioNode;
@@ -11,8 +12,8 @@ public class ConstantSourceNode extends AudioNode{
 public AudioParam offset;
 public ConstantSourceNode(BaseAudioContext context,ConstantSourceOptions options){}
 public ConstantSourceNode(BaseAudioContext context){}
-public native Object start();
-public native Object start(double when);
-public native Object stop();
-public native Object stop(double when);
+public native @Nullable Object start();
+public native @Nullable Object start(double when);
+public native @Nullable Object stop();
+public native @Nullable Object stop(double when);
 }

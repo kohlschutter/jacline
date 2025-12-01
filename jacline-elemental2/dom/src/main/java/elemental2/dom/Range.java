@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.TrustedHTML;
 import jsinterop.base.Js;
 import elemental2.dom.Node;
@@ -44,40 +45,40 @@ public static final int START_TO_END=Range__Constants.START_TO_END;
 @JsOverlay
 public static final int START_TO_START=Range__Constants.START_TO_START;
 public boolean collapsed;
-public Node commonAncestorContainer;
-public Node endContainer;
-public int endOffset;
-public Node startContainer;
-public int startOffset;
-public native DocumentFragment cloneContents();
-public native Range cloneRange();
+public @Nullable Node commonAncestorContainer;
+public @Nullable Node endContainer;
+public double endOffset;
+public @Nullable Node startContainer;
+public double startOffset;
+public native @Nullable DocumentFragment cloneContents();
+public native @Nullable Range cloneRange();
 public native void collapse(boolean toStart);
-public native int compareBoundaryPoints(int how,Range sourceRange);
-public native double comparePoint(Node p0,double p1);
-public native DocumentFragment createContextualFragment(Range.CreateContextualFragmentP0UnionType p0);
+public native int compareBoundaryPoints(int how,@Nullable Range sourceRange);
+public native double comparePoint(@Nullable Node p0,double p1);
+public native @Nullable DocumentFragment createContextualFragment(Range.CreateContextualFragmentP0UnionType p0);
 @JsOverlay
-public final DocumentFragment createContextualFragment(String p0){
+public final @Nullable DocumentFragment createContextualFragment(String p0){
 return createContextualFragment(Js.<Range.CreateContextualFragmentP0UnionType>uncheckedCast(p0));
 }
 @JsOverlay
-public final DocumentFragment createContextualFragment(TrustedHTML p0){
+public final @Nullable DocumentFragment createContextualFragment(TrustedHTML p0){
 return createContextualFragment(Js.<Range.CreateContextualFragmentP0UnionType>uncheckedCast(p0));
 }
 public native double deleteContents();
 public native void detach();
-public native DocumentFragment extractContents();
+public native @Nullable DocumentFragment extractContents();
 public native DOMRect getBoundingClientRect();
 public native ClientRectList getClientRects();
-public native DocumentFragment insertNode(Node newNode);
-public native boolean intersectsNode(Node p0);
-public native boolean isPointInRange(Node p0,double p1);
-public native void selectNode(Node refNode);
-public native void selectNodeContents(Node refNode);
-public native void setEnd(Node refNode,int offset);
-public native void setEndAfter(Node refNode);
-public native void setEndBefore(Node refNode);
-public native void setStart(Node refNode,int offset);
-public native void setStartAfter(Node refNode);
-public native void setStartBefore(Node refNode);
-public native void surroundContents(Node newParent);
+public native @Nullable DocumentFragment insertNode(@Nullable Node newNode);
+public native boolean intersectsNode(@Nullable Node p0);
+public native boolean isPointInRange(@Nullable Node p0,double p1);
+public native void selectNode(@Nullable Node refNode);
+public native void selectNodeContents(@Nullable Node refNode);
+public native void setEnd(@Nullable Node refNode,int offset);
+public native void setEndAfter(@Nullable Node refNode);
+public native void setEndBefore(@Nullable Node refNode);
+public native void setStart(@Nullable Node refNode,int offset);
+public native void setStartAfter(@Nullable Node refNode);
+public native void setStartBefore(@Nullable Node refNode);
+public native void surroundContents(@Nullable Node newParent);
 }

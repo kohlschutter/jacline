@@ -1,4 +1,5 @@
 package elemental2.indexeddb;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
@@ -13,15 +14,15 @@ public interface IDBObjectStoreParameters{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetKeyPathUnionType{
 @JsOverlay
-static IDBObjectStoreParameters.GetKeyPathUnionType of(Object o){
+static IDBObjectStoreParameters.@Nullable GetKeyPathUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<String> asJsArray(){
+default @Nullable JsArray<String> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -38,20 +39,20 @@ static IDBObjectStoreParameters create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-IDBObjectStoreParameters.GetKeyPathUnionType getKeyPath();
+IDBObjectStoreParameters.@Nullable GetKeyPathUnionType getKeyPath();
 @JsProperty
 boolean isAutoIncrement();
 @JsProperty
 void setAutoIncrement(boolean autoIncrement);
 @JsProperty
-void setKeyPath(IDBObjectStoreParameters.GetKeyPathUnionType keyPath);
+void setKeyPath(IDBObjectStoreParameters.@Nullable GetKeyPathUnionType keyPath);
 @JsOverlay
 default void setKeyPath(JsArray<String> keyPath){
-setKeyPath(Js.<IDBObjectStoreParameters.GetKeyPathUnionType>uncheckedCast(keyPath));
+setKeyPath(Js.<IDBObjectStoreParameters.@Nullable GetKeyPathUnionType>uncheckedCast(keyPath));
 }
 @JsOverlay
 default void setKeyPath(String keyPath){
-setKeyPath(Js.<IDBObjectStoreParameters.GetKeyPathUnionType>uncheckedCast(keyPath));
+setKeyPath(Js.<IDBObjectStoreParameters.@Nullable GetKeyPathUnionType>uncheckedCast(keyPath));
 }
 @JsOverlay
 default void setKeyPath(String[] keyPath){

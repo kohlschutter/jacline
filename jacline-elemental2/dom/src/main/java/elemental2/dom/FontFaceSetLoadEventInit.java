@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.FontFace;
 import jsinterop.annotations.JsOverlay;
@@ -14,11 +15,11 @@ static FontFaceSetLoadEventInit create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-JsArray<FontFace> getFontfaces();
+@Nullable JsArray<FontFace> getFontfaces();
 @JsOverlay
-default void setFontfaces(FontFace[] fontfaces){
-setFontfaces(Js.<JsArray<FontFace>>uncheckedCast(fontfaces));
+default void setFontfaces(FontFace@Nullable [] fontfaces){
+setFontfaces(Js.<@Nullable JsArray<FontFace>>uncheckedCast(fontfaces));
 }
 @JsProperty
-void setFontfaces(JsArray<FontFace> fontfaces);
+void setFontfaces(@Nullable JsArray<FontFace> fontfaces);
 }

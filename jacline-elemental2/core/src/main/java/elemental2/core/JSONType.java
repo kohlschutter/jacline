@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import java.lang.Double;
 import jsinterop.annotations.JsFunction;
@@ -12,24 +13,24 @@ import elemental2.core.JsArray;
 public class JSONType{
 @JsFunction
 public interface ParseReviverFn{
-Object onInvoke(String p0,Object p1);
+@Nullable Object onInvoke(String p0,@Nullable Object p1);
 }
 @JsFunction
 public interface StringifyReplacerFn{
-Object onInvoke(String p0,Object p1);
+@Nullable Object onInvoke(String p0,@Nullable Object p1);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface StringifyReplacerUnionType{
 @JsOverlay
-static JSONType.StringifyReplacerUnionType of(Object o){
+static JSONType.@Nullable StringifyReplacerUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<String> asJsArray(){
+default @Nullable JsArray<String> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default JSONType.StringifyReplacerFn asStringifyReplacerFn(){
+default JSONType.@Nullable StringifyReplacerFn asStringifyReplacerFn(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -64,65 +65,65 @@ default boolean isString(){
 return (Object)this instanceof String;
 }
 }
-public native Object parse(String jsonStr,JSONType.ParseReviverFn reviver);
-public native Object parse(String jsonStr);
+public native @Nullable Object parse(String jsonStr,JSONType.ParseReviverFn reviver);
+public native @Nullable Object parse(String jsonStr);
 @JsOverlay
-public final String stringify(Object jsonObj,JsArray<String> replacer,String space){
-return stringify(jsonObj,Js.<JSONType.StringifyReplacerUnionType>uncheckedCast(replacer),Js.<JSONType.StringifySpaceUnionType>uncheckedCast(space));
+public final String stringify(@Nullable Object jsonObj,JsArray<String> replacer,String space){
+return stringify(jsonObj,Js.<JSONType.@Nullable StringifyReplacerUnionType>uncheckedCast(replacer),Js.<JSONType.StringifySpaceUnionType>uncheckedCast(space));
 }
 @JsOverlay
-public final String stringify(Object jsonObj,JsArray<String> replacer,JSONType.StringifySpaceUnionType space){
-return stringify(jsonObj,Js.<JSONType.StringifyReplacerUnionType>uncheckedCast(replacer),space);
+public final String stringify(@Nullable Object jsonObj,JsArray<String> replacer,JSONType.StringifySpaceUnionType space){
+return stringify(jsonObj,Js.<JSONType.@Nullable StringifyReplacerUnionType>uncheckedCast(replacer),space);
 }
 @JsOverlay
-public final String stringify(Object jsonObj,JsArray<String> replacer,int space){
-return stringify(jsonObj,Js.<JSONType.StringifyReplacerUnionType>uncheckedCast(replacer),Js.<JSONType.StringifySpaceUnionType>uncheckedCast(space));
+public final String stringify(@Nullable Object jsonObj,JsArray<String> replacer,int space){
+return stringify(jsonObj,Js.<JSONType.@Nullable StringifyReplacerUnionType>uncheckedCast(replacer),Js.<JSONType.StringifySpaceUnionType>uncheckedCast(space));
 }
 @JsOverlay
-public final String stringify(Object jsonObj,JsArray<String> replacer){
-return stringify(jsonObj,Js.<JSONType.StringifyReplacerUnionType>uncheckedCast(replacer));
+public final String stringify(@Nullable Object jsonObj,JsArray<String> replacer){
+return stringify(jsonObj,Js.<JSONType.@Nullable StringifyReplacerUnionType>uncheckedCast(replacer));
 }
 @JsOverlay
-public final String stringify(Object jsonObj,String[] replacer,String space){
+public final String stringify(@Nullable Object jsonObj,String[] replacer,String space){
 return stringify(jsonObj,Js.<JsArray<String>>uncheckedCast(replacer),space);
 }
 @JsOverlay
-public final String stringify(Object jsonObj,String[] replacer,JSONType.StringifySpaceUnionType space){
+public final String stringify(@Nullable Object jsonObj,String[] replacer,JSONType.StringifySpaceUnionType space){
 return stringify(jsonObj,Js.<JsArray<String>>uncheckedCast(replacer),space);
 }
 @JsOverlay
-public final String stringify(Object jsonObj,String[] replacer,int space){
+public final String stringify(@Nullable Object jsonObj,String[] replacer,int space){
 return stringify(jsonObj,Js.<JsArray<String>>uncheckedCast(replacer),space);
 }
 @JsOverlay
-public final String stringify(Object jsonObj,String[] replacer){
+public final String stringify(@Nullable Object jsonObj,String[] replacer){
 return stringify(jsonObj,Js.<JsArray<String>>uncheckedCast(replacer));
 }
 @JsOverlay
-public final String stringify(Object jsonObj,JSONType.StringifyReplacerFn replacer,String space){
-return stringify(jsonObj,Js.<JSONType.StringifyReplacerUnionType>uncheckedCast(replacer),Js.<JSONType.StringifySpaceUnionType>uncheckedCast(space));
+public final String stringify(@Nullable Object jsonObj,JSONType.StringifyReplacerFn replacer,String space){
+return stringify(jsonObj,Js.<JSONType.@Nullable StringifyReplacerUnionType>uncheckedCast(replacer),Js.<JSONType.StringifySpaceUnionType>uncheckedCast(space));
 }
 @JsOverlay
-public final String stringify(Object jsonObj,JSONType.StringifyReplacerFn replacer,JSONType.StringifySpaceUnionType space){
-return stringify(jsonObj,Js.<JSONType.StringifyReplacerUnionType>uncheckedCast(replacer),space);
+public final String stringify(@Nullable Object jsonObj,JSONType.StringifyReplacerFn replacer,JSONType.StringifySpaceUnionType space){
+return stringify(jsonObj,Js.<JSONType.@Nullable StringifyReplacerUnionType>uncheckedCast(replacer),space);
 }
 @JsOverlay
-public final String stringify(Object jsonObj,JSONType.StringifyReplacerFn replacer,int space){
-return stringify(jsonObj,Js.<JSONType.StringifyReplacerUnionType>uncheckedCast(replacer),Js.<JSONType.StringifySpaceUnionType>uncheckedCast(space));
+public final String stringify(@Nullable Object jsonObj,JSONType.StringifyReplacerFn replacer,int space){
+return stringify(jsonObj,Js.<JSONType.@Nullable StringifyReplacerUnionType>uncheckedCast(replacer),Js.<JSONType.StringifySpaceUnionType>uncheckedCast(space));
 }
 @JsOverlay
-public final String stringify(Object jsonObj,JSONType.StringifyReplacerFn replacer){
-return stringify(jsonObj,Js.<JSONType.StringifyReplacerUnionType>uncheckedCast(replacer));
+public final String stringify(@Nullable Object jsonObj,JSONType.StringifyReplacerFn replacer){
+return stringify(jsonObj,Js.<JSONType.@Nullable StringifyReplacerUnionType>uncheckedCast(replacer));
 }
 @JsOverlay
-public final String stringify(Object jsonObj,JSONType.StringifyReplacerUnionType replacer,String space){
+public final String stringify(@Nullable Object jsonObj,JSONType.@Nullable StringifyReplacerUnionType replacer,String space){
 return stringify(jsonObj,replacer,Js.<JSONType.StringifySpaceUnionType>uncheckedCast(space));
 }
-public native String stringify(Object jsonObj,JSONType.StringifyReplacerUnionType replacer,JSONType.StringifySpaceUnionType space);
+public native String stringify(@Nullable Object jsonObj,JSONType.@Nullable StringifyReplacerUnionType replacer,JSONType.StringifySpaceUnionType space);
 @JsOverlay
-public final String stringify(Object jsonObj,JSONType.StringifyReplacerUnionType replacer,int space){
+public final String stringify(@Nullable Object jsonObj,JSONType.@Nullable StringifyReplacerUnionType replacer,int space){
 return stringify(jsonObj,replacer,Js.<JSONType.StringifySpaceUnionType>uncheckedCast(space));
 }
-public native String stringify(Object jsonObj,JSONType.StringifyReplacerUnionType replacer);
-public native String stringify(Object jsonObj);
+public native String stringify(@Nullable Object jsonObj,JSONType.@Nullable StringifyReplacerUnionType replacer);
+public native String stringify(@Nullable Object jsonObj);
 }

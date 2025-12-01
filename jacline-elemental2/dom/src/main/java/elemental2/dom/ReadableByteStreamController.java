@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsProperty;
 import elemental2.core.ArrayBufferView;
 import elemental2.dom.ReadableStreamBYOBRequest;
@@ -9,7 +10,7 @@ import jsinterop.annotations.JsPackage;
 public interface ReadableByteStreamController{
 void close();
 void enqueue(ArrayBufferView chunk);
-void error(Object err);
+void error(@Nullable Object err);
 @JsProperty
 ReadableStreamBYOBRequest getByobRequest();
 @JsProperty

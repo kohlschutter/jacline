@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import elemental2.media.WorkletGlobalScope;
 import jsinterop.annotations.JsFunction;
 import java.lang.Object;
@@ -9,10 +10,10 @@ import jsinterop.annotations.JsPackage;
 public class AudioWorkletGlobalScope implements WorkletGlobalScope{
 @JsFunction
 public interface RegisterProcessorProcessorCtorFn{
-Object onInvoke();
+@Nullable Object onInvoke();
 }
 public double currentFrame;
 public double currentTime;
 public double sampleRate;
-public native Object registerProcessor(String name,AudioWorkletGlobalScope.RegisterProcessorProcessorCtorFn processorCtor);
+public native @Nullable Object registerProcessor(String name,AudioWorkletGlobalScope.RegisterProcessorProcessorCtorFn processorCtor);
 }

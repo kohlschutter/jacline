@@ -1,8 +1,10 @@
 package elemental2.dom;
 import elemental2.dom.Element;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.DOMImplementation;
 import java.lang.Double;
 import elemental2.dom.HTMLCollection;
+import elemental2.promise.Promise;
 import elemental2.dom.FontFaceSet;
 import jsinterop.base.JsPropertyMap;
 import elemental2.dom.CaretPosition;
@@ -14,6 +16,7 @@ import elemental2.dom.ProcessingInstruction;
 import jsinterop.base.JsArrayLike;
 import elemental2.dom.NodeFilter;
 import elemental2.dom.Text;
+import jsinterop.annotations.JsFunction;
 import elemental2.dom.Selection;
 import elemental2.dom.NodeList;
 import java.lang.String;
@@ -22,6 +25,7 @@ import jsinterop.annotations.JsPackage;
 import elemental2.dom.Attr;
 import elemental2.dom.Comment;
 import elemental2.dom.HTMLScriptElement;
+import java.lang.Void;
 import elemental2.dom.DocumentType;
 import java.lang.Deprecated;
 import elemental2.dom.Window;
@@ -38,6 +42,7 @@ import elemental2.dom.HTMLHtmlElement;
 import jsinterop.annotations.JsOverlay;
 import elemental2.dom.DocumentFragment;
 import java.lang.Object;
+import elemental2.dom.ViewTransition;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class Document extends Node{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
@@ -184,6 +189,10 @@ default boolean isString(){
 return (Object)this instanceof String;
 }
 }
+@JsFunction
+public interface StartViewTransitionUpdateCallbackFn{
+Promise<Void> onInvoke();
+}
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface WriteTextUnionType{
 @JsOverlay
@@ -230,45 +239,45 @@ default boolean isTrustedHTML(){
 return (Object)this instanceof TrustedHTML;
 }
 }
-public Element activeElement;
+public @Nullable Element activeElement;
 public String characterSet;
 public int childElementCount;
 public HTMLCollection children;
 public String compatMode;
 public String contentType;
-public HTMLScriptElement currentScript;
-public Window defaultView;
+public @Nullable HTMLScriptElement currentScript;
+public @Nullable Window defaultView;
 public String designMode;
-public DocumentType doctype;
+public @Nullable DocumentType doctype;
 public HTMLHtmlElement documentElement;
 public String documentURI;
-public Element firstElementChild;
+public @Nullable Element firstElementChild;
 public FontFaceSet fonts;
-public Element fullscreenElement;
+public @Nullable Element fullscreenElement;
 public boolean fullscreenEnabled;
-public HTMLHeadElement head;
+public @Nullable HTMLHeadElement head;
 public boolean hidden;
-public DOMImplementation implementation;
+public @Nullable DOMImplementation implementation;
 public String inputEncoding;
-public Element lastElementChild;
+public @Nullable Element lastElementChild;
 public boolean mozFullScreen;
-public Element mozFullScreenElement;
+public @Nullable Element mozFullScreenElement;
 public boolean mozFullScreenEnabled;
 public boolean mozHidden;
 public String mozVisibilityState;
-public Element msFullscreenElement;
+public @Nullable Element msFullscreenElement;
 public boolean msFullscreenEnabled;
 public boolean msHidden;
 public String msVisibilityState;
-public Object open;
-public Element pointerLockElement;
+public @Nullable Object open;
+public @Nullable Element pointerLockElement;
 public boolean prerendering;
 public String readyState;
-public Element scrollingElement;
+public @Nullable Element scrollingElement;
 public String visibilityState;
-public Element webkitCurrentFullScreenElement;
+public @Nullable Element webkitCurrentFullScreenElement;
 public boolean webkitFullScreenKeyboardInputAllowed;
-public Element webkitFullscreenElement;
+public @Nullable Element webkitFullscreenElement;
 public boolean webkitFullscreenEnabled;
 public boolean webkitHidden;
 public boolean webkitIsFullScreen;
@@ -276,7 +285,8 @@ public String webkitVisibilityState;
 public String xmlEncoding;
 public boolean xmlStandalone;
 public String xmlVersion;
-public native Node adoptNode(Node externalNode);
+public native @Nullable Node adoptNode(@Nullable Node externalNode);
+public native void append();
 public native void append(Document.AppendNodesUnionType... nodes);
 @JsOverlay
 public final void append(Node... nodes){
@@ -286,10 +296,10 @@ append(Js.<Document.AppendNodesUnionType[]>uncheckedCast(nodes));
 public final void append(String... nodes){
 append(Js.<Document.AppendNodesUnionType[]>uncheckedCast(nodes));
 }
-public native CaretPosition caretPositionFromPoint(int x,int y);
+public native @Nullable CaretPosition caretPositionFromPoint(int x,int y);
 public native void close();
 public native Attr createAttribute(String name);
-public native Attr createAttributeNS(String namespaceURI,String qualifiedName);
+public native Attr createAttributeNS(@Nullable String namespaceURI,String qualifiedName);
 public native CDATASection createCDATASection(String data);
 public native Comment createComment(String data);
 public native DocumentFragment createDocumentFragment();
@@ -303,12 +313,12 @@ public final Element createElement(String tagName,String typeExtension){
 return createElement(tagName,Js.<Document.CreateElementTypeExtensionUnionType>uncheckedCast(typeExtension));
 }
 public native Element createElement(String tagName);
-public native Element createElementNS(String namespaceURI,String qualifiedName,String typeExtension);
-public native Element createElementNS(String namespaceURI,String qualifiedName);
-public native NodeIterator createNodeIterator(Node root,double whatToShow,NodeFilter filter,boolean entityReferenceExpansion);
-public native NodeIterator createNodeIterator(Node root,double whatToShow,NodeFilter filter);
-public native NodeIterator createNodeIterator(Node root,double whatToShow);
-public native NodeIterator createNodeIterator(Node root);
+public native Element createElementNS(@Nullable String namespaceURI,String qualifiedName,String typeExtension);
+public native Element createElementNS(@Nullable String namespaceURI,String qualifiedName);
+public native NodeIterator createNodeIterator(@Nullable Node root,double whatToShow,@Nullable NodeFilter filter,boolean entityReferenceExpansion);
+public native NodeIterator createNodeIterator(@Nullable Node root,double whatToShow,@Nullable NodeFilter filter);
+public native NodeIterator createNodeIterator(@Nullable Node root,double whatToShow);
+public native NodeIterator createNodeIterator(@Nullable Node root);
 public native ProcessingInstruction createProcessingInstruction(String target,String data);
 public native Text createTextNode(Document.CreateTextNodeDataUnionType data);
 @JsOverlay
@@ -319,31 +329,32 @@ return createTextNode(Js.<Document.CreateTextNodeDataUnionType>uncheckedCast(dat
 public final Text createTextNode(double data){
 return createTextNode(Js.<Document.CreateTextNodeDataUnionType>uncheckedCast(data));
 }
-public native Touch createTouch(Window view,EventTarget target,int identifier,double pageX,double pageY,double screenX,double screenY);
-public native TouchList createTouchList(JsArray<Touch> touches);
+public native @Nullable Touch createTouch(@Nullable Window view,@Nullable EventTarget target,int identifier,double pageX,double pageY,double screenX,double screenY);
+public native @Nullable TouchList createTouchList(@Nullable JsArray<@Nullable Touch> touches);
 @JsOverlay
-public final TouchList createTouchList(Touch[] touches){
-return createTouchList(Js.<JsArray<Touch>>uncheckedCast(touches));
+public final @Nullable TouchList createTouchList(@Nullable Touch@Nullable [] touches){
+return createTouchList(Js.<@Nullable JsArray<@Nullable Touch>>uncheckedCast(touches));
 }
-public native TreeWalker createTreeWalker(Node root,double whatToShow,NodeFilter filter,boolean entityReferenceExpansion);
-public native TreeWalker createTreeWalker(Node root,double whatToShow,NodeFilter filter);
-public native TreeWalker createTreeWalker(Node root,double whatToShow);
-public native TreeWalker createTreeWalker(Node root);
-public native Element elementFromPoint(double x,double y);
+public native TreeWalker createTreeWalker(@Nullable Node root,double whatToShow,@Nullable NodeFilter filter,boolean entityReferenceExpansion);
+public native TreeWalker createTreeWalker(@Nullable Node root,double whatToShow,@Nullable NodeFilter filter);
+public native TreeWalker createTreeWalker(@Nullable Node root,double whatToShow);
+public native TreeWalker createTreeWalker(@Nullable Node root);
+public native @Nullable Element elementFromPoint(double x,double y);
 public native JsArrayLike<Element> elementsFromPoint(double x,double y);
 public native void exitFullscreen();
 public native void exitPointerLock();
-public native Element getElementById(String s);
+public native @Nullable Element getElementById(String s);
 public native HTMLCollection<Element> getElementsByClassName(String name);
 public native NodeList<Element> getElementsByTagName(String tagname);
 public native NodeList<Element> getElementsByTagNameNS(String namespace,String name);
-public native Selection getSelection();
+public native @Nullable Selection getSelection();
 public native boolean hasFocus();
 public native Node importNode(Node externalNode,boolean deep);
 public native Node importNode(Node externalNode);
-public native Object mozCancelFullScreen();
+public native @Nullable Object mozCancelFullScreen();
 public native void msExitFullscreen();
-public native Object postMessage(String message);
+public native @Nullable Object postMessage(String message);
+public native void prepend();
 @JsOverlay
 public final void prepend(Node... nodes){
 prepend(Js.<Document.PrependNodesUnionType[]>uncheckedCast(nodes));
@@ -353,14 +364,15 @@ public native void prepend(Document.PrependNodesUnionType... nodes);
 public final void prepend(String... nodes){
 prepend(Js.<Document.PrependNodesUnionType[]>uncheckedCast(nodes));
 }
-public native Element querySelector(String selectors);
+public native @Nullable Element querySelector(String selectors);
 public native NodeList<Element> querySelectorAll(String selectors);
 @Deprecated
-public native Object register(String type,Document.RegisterOptionsType options);
+public native @Nullable Object register(String type,Document.RegisterOptionsType options);
 @Deprecated
 public native JsConstructorFn<? extends Element> registerElement(String type,Document.RegisterElementOptionsType options);
 @Deprecated
 public native JsConstructorFn<? extends Element> registerElement(String type);
+public native void replaceChildren();
 @JsOverlay
 public final void replaceChildren(Node... nodes){
 replaceChildren(Js.<Document.ReplaceChildrenNodesUnionType[]>uncheckedCast(nodes));
@@ -370,7 +382,8 @@ public native void replaceChildren(Document.ReplaceChildrenNodesUnionType... nod
 public final void replaceChildren(String... nodes){
 replaceChildren(Js.<Document.ReplaceChildrenNodesUnionType[]>uncheckedCast(nodes));
 }
-public native Object webkitCancelFullScreen();
+public native ViewTransition startViewTransition(Document.StartViewTransitionUpdateCallbackFn updateCallback);
+public native @Nullable Object webkitCancelFullScreen();
 @JsOverlay
 public final void write(String text){
 write(Js.<Document.WriteTextUnionType>uncheckedCast(text));

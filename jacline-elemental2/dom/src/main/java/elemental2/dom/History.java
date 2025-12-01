@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.URL;
 import jsinterop.annotations.JsOverlay;
@@ -56,28 +57,28 @@ return (Object)this instanceof URL;
 }
 public int length;
 public String scrollRestoration;
-public Object state;
+public @Nullable Object state;
 public native void back();
 public native void forward();
 public native void go(int delta);
-public native void pushState(Object data,String title,History.PushStateUrlUnionType url);
+public native void pushState(@Nullable Object data,String title,History.PushStateUrlUnionType url);
 @JsOverlay
-public final void pushState(Object data,String title,String url){
+public final void pushState(@Nullable Object data,String title,String url){
 pushState(data,title,Js.<History.PushStateUrlUnionType>uncheckedCast(url));
 }
 @JsOverlay
-public final void pushState(Object data,String title,URL url){
+public final void pushState(@Nullable Object data,String title,URL url){
 pushState(data,title,Js.<History.PushStateUrlUnionType>uncheckedCast(url));
 }
-public native void pushState(Object data,String title);
-public native void replaceState(Object data,String title,History.ReplaceStateUrlUnionType url);
+public native void pushState(@Nullable Object data,String title);
+public native void replaceState(@Nullable Object data,String title,History.ReplaceStateUrlUnionType url);
 @JsOverlay
-public final void replaceState(Object data,String title,String url){
+public final void replaceState(@Nullable Object data,String title,String url){
 replaceState(data,title,Js.<History.ReplaceStateUrlUnionType>uncheckedCast(url));
 }
 @JsOverlay
-public final void replaceState(Object data,String title,URL url){
+public final void replaceState(@Nullable Object data,String title,URL url){
 replaceState(data,title,Js.<History.ReplaceStateUrlUnionType>uncheckedCast(url));
 }
-public native void replaceState(Object data,String title);
+public native void replaceState(@Nullable Object data,String title);
 }

@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import elemental2.media.AudioWorkerNodeProcessor;
 import elemental2.dom.Event;
 import elemental2.core.Float32Array;
@@ -16,6 +17,6 @@ public JsObject parameters;
 public double playbackTime;
 public AudioProcessEvent(){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 }

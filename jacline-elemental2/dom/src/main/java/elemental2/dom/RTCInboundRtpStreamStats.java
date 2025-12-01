@@ -1,20 +1,21 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
+import java.lang.Double;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
-import java.lang.Double;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
 import java.lang.String;
 import jsinterop.annotations.JsType;
-import jsinterop.annotations.JsPackage;
 import elemental2.dom.RTCReceivedRtpStreamStats;
+import jsinterop.annotations.JsPackage;
 import elemental2.core.JsDate;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetEstimatedPlayoutTimestampUnionType{
 @JsOverlay
-static RTCInboundRtpStreamStats.GetEstimatedPlayoutTimestampUnionType of(Object o){
+static RTCInboundRtpStreamStats.@Nullable GetEstimatedPlayoutTimestampUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -22,7 +23,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsDate asJsDate(){
+default @Nullable JsDate asJsDate(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -37,7 +38,7 @@ return (Object)this instanceof JsDate;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetLastPacketReceivedTimestampUnionType{
 @JsOverlay
-static RTCInboundRtpStreamStats.GetLastPacketReceivedTimestampUnionType of(Object o){
+static RTCInboundRtpStreamStats.@Nullable GetLastPacketReceivedTimestampUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -45,7 +46,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsDate asJsDate(){
+default @Nullable JsDate asJsDate(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -68,11 +69,13 @@ double getConcealedSamples();
 @JsProperty
 double getConcealmentEvents();
 @JsProperty
+double getCorruptionMeasurements();
+@JsProperty
 String getDecoderImplementation();
 @JsProperty
 double getDelayedPacketOutageSamples();
 @JsProperty
-RTCInboundRtpStreamStats.GetEstimatedPlayoutTimestampUnionType getEstimatedPlayoutTimestamp();
+RTCInboundRtpStreamStats.@Nullable GetEstimatedPlayoutTimestampUnionType getEstimatedPlayoutTimestamp();
 @JsProperty
 double getFecPacketsDiscarded();
 @JsProperty
@@ -114,7 +117,7 @@ int getKeyFramesDecoded();
 @JsProperty
 String getKind();
 @JsProperty
-RTCInboundRtpStreamStats.GetLastPacketReceivedTimestampUnionType getLastPacketReceivedTimestamp();
+RTCInboundRtpStreamStats.@Nullable GetLastPacketReceivedTimestampUnionType getLastPacketReceivedTimestamp();
 @JsProperty
 String getMid();
 @JsProperty
@@ -136,17 +139,21 @@ double getTotalAssemblyTime();
 @JsProperty
 double getTotalAudioEnergy();
 @JsProperty
+double getTotalCorruptionProbability();
+@JsProperty
 double getTotalDecodeTime();
 @JsProperty
 double getTotalFreezesDuration();
 @JsProperty
-double getTotalInterframeDelay();
+double getTotalInterFrameDelay();
 @JsProperty
 double getTotalProcessingDelay();
 @JsProperty
 double getTotalSamplesDuration();
 @JsProperty
 double getTotalSamplesReceived();
+@JsProperty
+double getTotalSquaredCorruptionProbability();
 @JsProperty
 double getTotalSquaredInterFrameDelay();
 @JsProperty

@@ -1,5 +1,6 @@
 package elemental2.core;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
@@ -13,7 +14,7 @@ static Thenable create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-Object getThen();
+@Nullable Object getThen();
 @JsProperty
-void setThen(Object then);
+void setThen(@Nullable Object then);
 }

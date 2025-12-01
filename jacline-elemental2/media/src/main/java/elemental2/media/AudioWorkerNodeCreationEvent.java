@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import elemental2.media.AudioWorkerNodeProcessor;
 import elemental2.dom.Event;
 import java.lang.String;
@@ -13,6 +14,6 @@ public AudioWorkerNodeProcessor node;
 public JsArray outputs;
 public AudioWorkerNodeCreationEvent(){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 }

@@ -1,5 +1,6 @@
 package elemental2.svg;
 import elemental2.dom.Element;
+import org.jspecify.annotations.Nullable;
 import elemental2.svg.SVGLangSpace;
 import jsinterop.annotations.JsProperty;
 import elemental2.svg.SVGMatrix;
@@ -78,25 +79,25 @@ public native SVGRect createSVGRect();
 public native SVGTransform createSVGTransform();
 public native SVGTransform createSVGTransformFromMatrix();
 public native SVGTransform createSVGTransformFromMatrix(SVGMatrix matrix);
-public native Object deselectAll();
-public native Object forceRedraw();
+public native @Nullable Object deselectAll();
+public native @Nullable Object forceRedraw();
 public native SVGRect getBBox();
 public native SVGMatrix getCTM();
 @JsProperty
 public native SVGAnimatedString getClassName();
 public native double getCurrentTime();
-public native Element getElementById();
-public native Element getElementById(String elementId);
-public native NodeList<Object> getEnclosureList();
-public native NodeList<Object> getEnclosureList(SVGRect rect,SVGElement referenceElement);
-public native NodeList<Object> getEnclosureList(SVGRect rect);
+public native @Nullable Element getElementById();
+public native @Nullable Element getElementById(String elementId);
+public native NodeList<@Nullable Object> getEnclosureList();
+public native NodeList<@Nullable Object> getEnclosureList(SVGRect rect,SVGElement referenceElement);
+public native NodeList<@Nullable Object> getEnclosureList(SVGRect rect);
 @JsProperty
 public native SVGAnimatedBoolean getExternalResourcesRequired();
 @JsProperty
 public native SVGElement getFarthestViewportElement();
-public native NodeList<Object> getIntersectionList();
-public native NodeList<Object> getIntersectionList(SVGRect rect,SVGElement referenceElement);
-public native NodeList<Object> getIntersectionList(SVGRect rect);
+public native NodeList<@Nullable Object> getIntersectionList();
+public native NodeList<@Nullable Object> getIntersectionList(SVGRect rect,SVGElement referenceElement);
+public native NodeList<@Nullable Object> getIntersectionList(SVGRect rect);
 @JsProperty
 public native SVGElement getNearestViewportElement();
 public native CSSValue getPresentationAttribute();
@@ -122,7 +123,7 @@ public native String getXmlspace();
 public native int getZoomAndPan();
 public native boolean hasExtension();
 public native boolean hasExtension(String extension);
-public native Object pauseAnimations();
+public native @Nullable Object pauseAnimations();
 @JsProperty
 public native void setClassName(SVGAnimatedString className);
 public native void setCurrentTime();
@@ -151,8 +152,8 @@ public native void setXmlspace(String xmlspace);
 public native void setZoomAndPan(int zoomAndPan);
 public native int suspendRedraw();
 public native int suspendRedraw(int maxWaitMilliseconds);
-public native Object unpauseAnimations();
+public native @Nullable Object unpauseAnimations();
 public native void unsuspendRedraw();
 public native void unsuspendRedraw(int suspendHandleId);
-public native Object unsuspendRedrawAll();
+public native @Nullable Object unsuspendRedrawAll();
 }

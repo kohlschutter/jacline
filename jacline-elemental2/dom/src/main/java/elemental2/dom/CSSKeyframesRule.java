@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.Object;
 import java.lang.String;
 import jsinterop.annotations.JsType;
@@ -10,7 +11,7 @@ import elemental2.dom.CSSRuleList;
 public class CSSKeyframesRule extends CSSRule{
 public CSSRuleList cssRules;
 public String name;
-public native Object appendRule(String rule);
-public native Object deleteRule(String key);
-public native CSSKeyframeRule findRule(String key);
+public native @Nullable Object appendRule(String rule);
+public native @Nullable Object deleteRule(String key);
+public native @Nullable CSSKeyframeRule findRule(String key);
 }

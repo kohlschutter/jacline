@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.FontFace;
 import elemental2.dom.FontFaceSetLoadEventInit;
 import elemental2.dom.Event;
@@ -12,10 +13,10 @@ public class FontFaceSetLoadEvent extends Event{
 public JsArray<FontFace> fontfaces;
 public FontFaceSetLoadEvent(String type,FontFaceSetLoadEventInit eventInitDict){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 public FontFaceSetLoadEvent(String type){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 }

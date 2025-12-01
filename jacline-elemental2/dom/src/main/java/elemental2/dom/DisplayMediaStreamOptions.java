@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.MediaTrackConstraints;
 import jsinterop.base.JsPropertyMap;
 import elemental2.dom.CaptureController;
@@ -15,7 +16,7 @@ public interface DisplayMediaStreamOptions{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetAudioUnionType{
 @JsOverlay
-static DisplayMediaStreamOptions.GetAudioUnionType of(Object o){
+static DisplayMediaStreamOptions.@Nullable GetAudioUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -23,7 +24,7 @@ default boolean asBoolean(){
 return Js.asBoolean(this);
 }
 @JsOverlay
-default MediaTrackConstraints asMediaTrackConstraints(){
+default @Nullable MediaTrackConstraints asMediaTrackConstraints(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -34,7 +35,7 @@ return (Object)this instanceof Boolean;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetVideoUnionType{
 @JsOverlay
-static DisplayMediaStreamOptions.GetVideoUnionType of(Object o){
+static DisplayMediaStreamOptions.@Nullable GetVideoUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -42,7 +43,7 @@ default boolean asBoolean(){
 return Js.asBoolean(this);
 }
 @JsOverlay
-default MediaTrackConstraints asMediaTrackConstraints(){
+default @Nullable MediaTrackConstraints asMediaTrackConstraints(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -55,7 +56,7 @@ static DisplayMediaStreamOptions create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-DisplayMediaStreamOptions.GetAudioUnionType getAudio();
+DisplayMediaStreamOptions.@Nullable GetAudioUnionType getAudio();
 @JsProperty
 CaptureController getController();
 @JsProperty
@@ -65,18 +66,18 @@ String getSurfaceSwitching();
 @JsProperty
 String getSystemAudio();
 @JsProperty
-DisplayMediaStreamOptions.GetVideoUnionType getVideo();
+DisplayMediaStreamOptions.@Nullable GetVideoUnionType getVideo();
 @JsProperty
 boolean isPreferCurrentTab();
 @JsProperty
-void setAudio(DisplayMediaStreamOptions.GetAudioUnionType audio);
+void setAudio(DisplayMediaStreamOptions.@Nullable GetAudioUnionType audio);
 @JsOverlay
 default void setAudio(MediaTrackConstraints audio){
-setAudio(Js.<DisplayMediaStreamOptions.GetAudioUnionType>uncheckedCast(audio));
+setAudio(Js.<DisplayMediaStreamOptions.@Nullable GetAudioUnionType>uncheckedCast(audio));
 }
 @JsOverlay
 default void setAudio(boolean audio){
-setAudio(Js.<DisplayMediaStreamOptions.GetAudioUnionType>uncheckedCast(audio));
+setAudio(Js.<DisplayMediaStreamOptions.@Nullable GetAudioUnionType>uncheckedCast(audio));
 }
 @JsProperty
 void setController(CaptureController controller);
@@ -89,13 +90,13 @@ void setSurfaceSwitching(String surfaceSwitching);
 @JsProperty
 void setSystemAudio(String systemAudio);
 @JsProperty
-void setVideo(DisplayMediaStreamOptions.GetVideoUnionType video);
+void setVideo(DisplayMediaStreamOptions.@Nullable GetVideoUnionType video);
 @JsOverlay
 default void setVideo(MediaTrackConstraints video){
-setVideo(Js.<DisplayMediaStreamOptions.GetVideoUnionType>uncheckedCast(video));
+setVideo(Js.<DisplayMediaStreamOptions.@Nullable GetVideoUnionType>uncheckedCast(video));
 }
 @JsOverlay
 default void setVideo(boolean video){
-setVideo(Js.<DisplayMediaStreamOptions.GetVideoUnionType>uncheckedCast(video));
+setVideo(Js.<DisplayMediaStreamOptions.@Nullable GetVideoUnionType>uncheckedCast(video));
 }
 }

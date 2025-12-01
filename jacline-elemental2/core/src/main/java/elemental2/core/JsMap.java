@@ -1,43 +1,44 @@
 package elemental2.core;
-import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.ReadonlyMap;
-import jsinterop.base.Js;
 import elemental2.core.JsIterable;
+import elemental2.core.JsArray;
+import jsinterop.annotations.JsProperty;
+import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import elemental2.core.JsIteratorIterable;
-import elemental2.core.JsArray;
 @JsType(isNative = true,name = "Map",namespace = JsPackage.GLOBAL)
-public class JsMap<KEY, VALUE> implements ReadonlyMap<KEY, VALUE>{
+public class JsMap<K extends @Nullable Object, V extends @Nullable Object> implements ReadonlyMap<K, V>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
-public interface ConstructorIterableJsIterableTypeParameterArrayUnionType<KEY, VALUE>{
+public interface ConstructorIterableJsIterableTypeParameterArrayUnionType<K extends @Nullable Object, V extends @Nullable Object>{
 @JsOverlay
-static JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType of(Object o){
+static <K extends @Nullable Object, V extends @Nullable Object> JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<K, V> of(Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default KEY asKEY(){
+default K asK(){
 return Js.cast(this);
 }
 @JsOverlay
-default VALUE asVALUE(){
+default V asV(){
 return Js.cast(this);
 }
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
-public interface ConstructorIterableUnionType<KEY, VALUE>{
+public interface ConstructorIterableUnionType<K extends @Nullable Object, V extends @Nullable Object>{
 @JsOverlay
-static JsMap.ConstructorIterableUnionType of(Object o){
+static <K extends @Nullable Object, V extends @Nullable Object> JsMap.@Nullable ConstructorIterableUnionType<K, V> of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<JsArray<JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<KEY, VALUE>>> asJsArray(){
+default @Nullable JsArray<JsArray<JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<K, V>>> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsIterable<JsArray<JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<KEY, VALUE>>> asJsIterable(){
+default @Nullable JsIterable<JsArray<JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<K, V>>, @Nullable Object, @Nullable Object> asJsIterable(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -47,20 +48,20 @@ return (Object)this instanceof JsArray;
 }
 public int size;
 public JsMap(){}
-public JsMap(JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<KEY, VALUE>[][] iterable){}
-public JsMap(JsMap.ConstructorIterableUnionType<KEY, VALUE> iterable){}
-public JsMap(JsArray<JsArray<JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<KEY, VALUE>>> iterable){}
-public JsMap(JsIterable<JsArray<JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<KEY, VALUE>>> iterable){}
+public JsMap(JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<K, V>[][] iterable){}
+public JsMap(JsMap.@Nullable ConstructorIterableUnionType<K, V> iterable){}
+public JsMap(JsArray<JsArray<JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<K, V>>> iterable){}
+public JsMap(JsIterable<JsArray<JsMap.ConstructorIterableJsIterableTypeParameterArrayUnionType<K, V>>, @Nullable Object, @Nullable Object> iterable){}
 public native void clear();
-public native boolean delete(KEY key);
-public native JsIteratorIterable<JsArray<ReadonlyMap.EntriesJsIteratorIterableTypeParameterArrayUnionType<KEY, VALUE>>> entries();
-public native <THIS>void forEach(ReadonlyMap.ForEachCallbackFn<? super KEY, ? super VALUE> callback,THIS thisArg);
-public native void forEach(ReadonlyMap.ForEachCallbackFn<? super KEY, ? super VALUE> callback);
-public native VALUE get(KEY key);
+public native boolean delete(K key);
+public native JsIteratorIterable<JsArray<ReadonlyMap.EntriesJsIteratorIterableTypeParameterArrayUnionType<K, V>>, @Nullable Object, @Nullable Object> entries();
+public native <THIS extends @Nullable Object> void forEach(ReadonlyMap.ForEachCallbackFn<? super K, ? super V> callback,THIS thisArg);
+public native void forEach(ReadonlyMap.ForEachCallbackFn<? super K, ? super V> callback);
+public native V get(K key);
 @JsProperty
 public native double getSize();
-public native boolean has(KEY key);
-public native JsIteratorIterable<KEY> keys();
-public native JsMap<KEY, VALUE> set(KEY key,VALUE value);
-public native JsIteratorIterable<VALUE> values();
+public native boolean has(K key);
+public native JsIteratorIterable<K, @Nullable Object, @Nullable Object> keys();
+public native JsMap<K, V> set(K key,V value);
+public native JsIteratorIterable<V, @Nullable Object, @Nullable Object> values();
 }

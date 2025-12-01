@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.MessagePort;
 import elemental2.media.AudioNode;
 import jsinterop.base.JsPropertyMap;
@@ -17,7 +18,7 @@ import jsinterop.annotations.JsPackage;
 public class AudioWorkletNode extends AudioNode{
 @JsFunction
 public interface OnprocesserrorFn{
-Object onInvoke();
+@Nullable Object onInvoke();
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnprocesserrorUnionType{

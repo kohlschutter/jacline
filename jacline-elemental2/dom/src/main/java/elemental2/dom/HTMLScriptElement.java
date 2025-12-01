@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsFunction;
 import elemental2.dom.HTMLElement;
 import elemental2.dom.Event;
@@ -10,18 +11,19 @@ import jsinterop.annotations.JsPackage;
 public class HTMLScriptElement extends HTMLElement{
 @JsFunction
 public interface OnreadystatechangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 public boolean async;
 public String attributionSrc;
 public String charset;
-public String crossOrigin;
+public @Nullable String crossOrigin;
 public boolean defer;
 public String event;
+public String fetchPriority;
 public String htmlFor;
 public String integrity;
 public boolean noModule;
-public HTMLScriptElement.OnreadystatechangeFn onreadystatechange;
+public HTMLScriptElement.@Nullable OnreadystatechangeFn onreadystatechange;
 public String referrerPolicy;
 public String src;
 public String text;

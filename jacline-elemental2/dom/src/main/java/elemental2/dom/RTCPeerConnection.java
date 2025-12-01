@@ -1,4 +1,6 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
+import elemental2.dom.RTCDataChannelInitInterface_;
 import elemental2.dom.Event;
 import elemental2.dom.MediaStreamEvent;
 import elemental2.promise.Promise;
@@ -40,7 +42,7 @@ import elemental2.dom.RTCDataChannelInitDictionary_;
 public class RTCPeerConnection implements EventTarget{
 @JsFunction
 public interface AddIceCandidateErrorCallbackFn{
-Object onInvoke(DOMException p0);
+@Nullable Object onInvoke(@Nullable DOMException p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface AddTransceiverTrackOrKindUnionType{
@@ -68,15 +70,19 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface CreateDataChannelDataChannelDictUnionType{
 @JsOverlay
-static RTCPeerConnection.CreateDataChannelDataChannelDictUnionType of(Object o){
+static RTCPeerConnection.@Nullable CreateDataChannelDataChannelDictUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default RTCDataChannelInitDictionary_ asRTCDataChannelInitDictionary_(){
+default @Nullable RTCDataChannelInitDictionary_ asRTCDataChannelInitDictionary_(){
 return Js.cast(this);
 }
 @JsOverlay
-default RTCDataChannelInitRecord_ asRTCDataChannelInitRecord_(){
+default @Nullable RTCDataChannelInitInterface_ asRTCDataChannelInitInterface_(){
+return Js.cast(this);
+}
+@JsOverlay
+default @Nullable RTCDataChannelInitRecord_ asRTCDataChannelInitRecord_(){
 return Js.cast(this);
 }
 }
@@ -101,75 +107,75 @@ return (Object)this instanceof Promise;
 }
 @JsFunction
 public interface OnaddstreamFn{
-Object onInvoke(MediaStreamEvent p0);
+@Nullable Object onInvoke(MediaStreamEvent p0);
 }
 @JsFunction
 public interface OnconnectionstatechangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OndatachannelFn{
-Object onInvoke(RTCDataChannelEvent p0);
+@Nullable Object onInvoke(RTCDataChannelEvent p0);
 }
 @JsFunction
 public interface OnicecandidateFn{
-Object onInvoke(RTCPeerConnectionIceEvent p0);
+@Nullable Object onInvoke(RTCPeerConnectionIceEvent p0);
 }
 @JsFunction
 public interface OnicecandidateerrorFn{
-Object onInvoke(RTCPeerConnectionIceErrorEvent p0);
+@Nullable Object onInvoke(RTCPeerConnectionIceErrorEvent p0);
 }
 @JsFunction
 public interface OniceconnectionstatechangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnicegatheringstatechangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnnegotiationneededFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnremovestreamFn{
-Object onInvoke(MediaStreamEvent p0);
+@Nullable Object onInvoke(MediaStreamEvent p0);
 }
 @JsFunction
 public interface OnsignalingstatechangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OntrackFn{
-Object onInvoke(RTCTrackEvent p0);
+@Nullable Object onInvoke(RTCTrackEvent p0);
 }
-public static native Promise<RTCCertificate> generateCertificate(Object keygenAlgorithm);
+public static native @Nullable Promise<@Nullable RTCCertificate> generateCertificate(@Nullable Object keygenAlgorithm);
 public boolean canTrickleIceCandidates;
 public String connectionState;
-public RTCSessionDescription currentLocalDescription;
-public RTCSessionDescription currentRemoteDescription;
+public @Nullable RTCSessionDescription currentLocalDescription;
+public @Nullable RTCSessionDescription currentRemoteDescription;
 public String iceConnectionState;
 public String iceGatheringState;
-public RTCSessionDescription localDescription;
-public RTCPeerConnection.OnaddstreamFn onaddstream;
-public RTCPeerConnection.OnconnectionstatechangeFn onconnectionstatechange;
-public RTCPeerConnection.OndatachannelFn ondatachannel;
-public RTCPeerConnection.OnicecandidateFn onicecandidate;
-public RTCPeerConnection.OnicecandidateerrorFn onicecandidateerror;
-public RTCPeerConnection.OniceconnectionstatechangeFn oniceconnectionstatechange;
-public RTCPeerConnection.OnicegatheringstatechangeFn onicegatheringstatechange;
-public RTCPeerConnection.OnnegotiationneededFn onnegotiationneeded;
-public RTCPeerConnection.OnremovestreamFn onremovestream;
-public RTCPeerConnection.OnsignalingstatechangeFn onsignalingstatechange;
-public RTCPeerConnection.OntrackFn ontrack;
-public RTCSessionDescription pendingLocalDescription;
-public RTCSessionDescription pendingRemoteDescription;
-public RTCSessionDescription remoteDescription;
-public RTCSctpTransport sctp;
+public @Nullable RTCSessionDescription localDescription;
+public RTCPeerConnection.@Nullable OnaddstreamFn onaddstream;
+public RTCPeerConnection.@Nullable OnconnectionstatechangeFn onconnectionstatechange;
+public RTCPeerConnection.@Nullable OndatachannelFn ondatachannel;
+public RTCPeerConnection.@Nullable OnicecandidateFn onicecandidate;
+public RTCPeerConnection.@Nullable OnicecandidateerrorFn onicecandidateerror;
+public RTCPeerConnection.@Nullable OniceconnectionstatechangeFn oniceconnectionstatechange;
+public RTCPeerConnection.@Nullable OnicegatheringstatechangeFn onicegatheringstatechange;
+public RTCPeerConnection.@Nullable OnnegotiationneededFn onnegotiationneeded;
+public RTCPeerConnection.@Nullable OnremovestreamFn onremovestream;
+public RTCPeerConnection.@Nullable OnsignalingstatechangeFn onsignalingstatechange;
+public RTCPeerConnection.@Nullable OntrackFn ontrack;
+public @Nullable RTCSessionDescription pendingLocalDescription;
+public @Nullable RTCSessionDescription pendingRemoteDescription;
+public @Nullable RTCSessionDescription remoteDescription;
+public @Nullable RTCSctpTransport sctp;
 public String signalingState;
-public RTCPeerConnection(RTCConfiguration configuration,JsObject constraints){}
-public RTCPeerConnection(RTCConfiguration configuration,Object constraints){}
-public RTCPeerConnection(RTCConfiguration configuration){}
+public RTCPeerConnection(@Nullable RTCConfiguration configuration,JsObject constraints){}
+public RTCPeerConnection(@Nullable RTCConfiguration configuration,Object constraints){}
+public RTCPeerConnection(@Nullable RTCConfiguration configuration){}
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType useCapture);
 public native void addEventListener(String type,EventListener listener);
 public native Promise addIceCandidate(RTCIceCandidate candidate,RTCVoidCallback successCallback,RTCPeerConnection.AddIceCandidateErrorCallbackFn errorCallback);
@@ -181,11 +187,11 @@ public final void addStream(MediaStream stream,Object constraints){
 addStream(stream,Js.<JsObject>uncheckedCast(constraints));
 }
 public native void addStream(MediaStream stream);
-public native RTCRtpSender addTrack(MediaStreamTrack track,MediaStream stream,MediaStream... var_args);
-public native RTCRtpTransceiver addTransceiver(RTCPeerConnection.AddTransceiverTrackOrKindUnionType trackOrKind,RTCRtpTransceiverInit init);
+public native RTCRtpSender addTrack(MediaStreamTrack track,MediaStream stream,@Nullable MediaStream... var_args);
+public native RTCRtpTransceiver addTransceiver(RTCPeerConnection.AddTransceiverTrackOrKindUnionType trackOrKind,@Nullable RTCRtpTransceiverInit init);
 public native RTCRtpTransceiver addTransceiver(RTCPeerConnection.AddTransceiverTrackOrKindUnionType trackOrKind);
 @JsOverlay
-public final RTCRtpTransceiver addTransceiver(MediaStreamTrack trackOrKind,RTCRtpTransceiverInit init){
+public final RTCRtpTransceiver addTransceiver(MediaStreamTrack trackOrKind,@Nullable RTCRtpTransceiverInit init){
 return addTransceiver(Js.<RTCPeerConnection.AddTransceiverTrackOrKindUnionType>uncheckedCast(trackOrKind),init);
 }
 @JsOverlay
@@ -193,14 +199,14 @@ public final RTCRtpTransceiver addTransceiver(MediaStreamTrack trackOrKind){
 return addTransceiver(Js.<RTCPeerConnection.AddTransceiverTrackOrKindUnionType>uncheckedCast(trackOrKind));
 }
 @JsOverlay
-public final RTCRtpTransceiver addTransceiver(String trackOrKind,RTCRtpTransceiverInit init){
+public final RTCRtpTransceiver addTransceiver(String trackOrKind,@Nullable RTCRtpTransceiverInit init){
 return addTransceiver(Js.<RTCPeerConnection.AddTransceiverTrackOrKindUnionType>uncheckedCast(trackOrKind),init);
 }
 @JsOverlay
 public final RTCRtpTransceiver addTransceiver(String trackOrKind){
 return addTransceiver(Js.<RTCPeerConnection.AddTransceiverTrackOrKindUnionType>uncheckedCast(trackOrKind));
 }
-public native Object close();
+public native @Nullable Object close();
 public native Promise<RTCSessionDescription> createAnswer();
 public native Promise<RTCSessionDescription> createAnswer(JsObject successCallbackOrConstraints,RTCPeerConnectionErrorCallback errorCallback,JsObject constraints);
 public native Promise<RTCSessionDescription> createAnswer(JsObject successCallbackOrConstraints,RTCPeerConnectionErrorCallback errorCallback);
@@ -217,16 +223,20 @@ return createAnswer(Js.<JsObject>uncheckedCast(successCallbackOrConstraints),err
 public final Promise<RTCSessionDescription> createAnswer(Object successCallbackOrConstraints){
 return createAnswer(Js.<JsObject>uncheckedCast(successCallbackOrConstraints));
 }
-public native RTCDataChannel createDataChannel(String label,RTCPeerConnection.CreateDataChannelDataChannelDictUnionType dataChannelDict);
+public native RTCDataChannel createDataChannel(@Nullable String label,RTCPeerConnection.@Nullable CreateDataChannelDataChannelDictUnionType dataChannelDict);
 @JsOverlay
-public final RTCDataChannel createDataChannel(String label,RTCDataChannelInitDictionary_ dataChannelDict){
-return createDataChannel(label,Js.<RTCPeerConnection.CreateDataChannelDataChannelDictUnionType>uncheckedCast(dataChannelDict));
+public final RTCDataChannel createDataChannel(@Nullable String label,RTCDataChannelInitDictionary_ dataChannelDict){
+return createDataChannel(label,Js.<RTCPeerConnection.@Nullable CreateDataChannelDataChannelDictUnionType>uncheckedCast(dataChannelDict));
 }
 @JsOverlay
-public final RTCDataChannel createDataChannel(String label,RTCDataChannelInitRecord_ dataChannelDict){
-return createDataChannel(label,Js.<RTCPeerConnection.CreateDataChannelDataChannelDictUnionType>uncheckedCast(dataChannelDict));
+public final RTCDataChannel createDataChannel(@Nullable String label,RTCDataChannelInitInterface_ dataChannelDict){
+return createDataChannel(label,Js.<RTCPeerConnection.@Nullable CreateDataChannelDataChannelDictUnionType>uncheckedCast(dataChannelDict));
 }
-public native RTCDataChannel createDataChannel(String label);
+@JsOverlay
+public final RTCDataChannel createDataChannel(@Nullable String label,RTCDataChannelInitRecord_ dataChannelDict){
+return createDataChannel(label,Js.<RTCPeerConnection.@Nullable CreateDataChannelDataChannelDictUnionType>uncheckedCast(dataChannelDict));
+}
+public native RTCDataChannel createDataChannel(@Nullable String label);
 public native Promise<RTCSessionDescription> createOffer();
 public native Promise<RTCSessionDescription> createOffer(JsObject successCallbackOrConstraintsOrOfferOptions,RTCPeerConnectionErrorCallback errorCallback,JsObject constraints);
 public native Promise<RTCSessionDescription> createOffer(JsObject successCallbackOrConstraintsOrOfferOptions,RTCPeerConnectionErrorCallback errorCallback);
@@ -250,9 +260,9 @@ public native JsArray<RTCRtpReceiver> getReceivers();
 public native JsArray<MediaStream> getRemoteStreams();
 public native JsArray<RTCRtpSender> getSenders();
 public native RTCPeerConnection.GetStatsUnionType getStats();
-public native RTCPeerConnection.GetStatsUnionType getStats(RTCStatsCallback successCallback,MediaStreamTrack selector);
+public native RTCPeerConnection.GetStatsUnionType getStats(RTCStatsCallback successCallback,@Nullable MediaStreamTrack selector);
 public native RTCPeerConnection.GetStatsUnionType getStats(RTCStatsCallback successCallback);
-public native MediaStream getStreamById(String streamId);
+public native @Nullable MediaStream getStreamById(String streamId);
 public native JsArray<RTCRtpTransceiver> getTransceivers();
 public native void removeEventListener(String type,EventListener listener,EventTarget.RemoveEventListenerOptionsUnionType useCapture);
 public native void removeEventListener(String type,EventListener listener);
@@ -268,10 +278,10 @@ public native Promise<RTCSessionDescription> setRemoteDescription(RTCSessionDesc
 public native Promise<RTCSessionDescription> setRemoteDescription(RTCSessionDescription description,RTCVoidCallback successCallback);
 public native Promise<RTCSessionDescription> setRemoteDescription(RTCSessionDescription description);
 public native void updateIce();
-public native void updateIce(RTCConfiguration configuration,JsObject constraints);
+public native void updateIce(@Nullable RTCConfiguration configuration,@Nullable JsObject constraints);
 @JsOverlay
-public final void updateIce(RTCConfiguration configuration,Object constraints){
-updateIce(configuration,Js.<JsObject>uncheckedCast(constraints));
+public final void updateIce(@Nullable RTCConfiguration configuration,@Nullable Object constraints){
+updateIce(configuration,Js.<@Nullable JsObject>uncheckedCast(constraints));
 }
-public native void updateIce(RTCConfiguration configuration);
+public native void updateIce(@Nullable RTCConfiguration configuration);
 }

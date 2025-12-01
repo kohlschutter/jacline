@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.HTMLFormElement;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.HTMLElement;
 import java.lang.String;
 import jsinterop.annotations.JsType;
@@ -8,7 +9,7 @@ import jsinterop.annotations.JsPackage;
 public class HTMLOptionElement extends HTMLElement{
 public boolean defaultSelected;
 public boolean disabled;
-public HTMLFormElement form;
+public @Nullable HTMLFormElement form;
 public int index;
 public String label;
 public boolean selected;

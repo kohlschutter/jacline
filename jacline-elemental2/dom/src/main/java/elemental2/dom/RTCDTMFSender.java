@@ -1,6 +1,8 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsFunction;
+import java.lang.Boolean;
 import java.lang.Object;
 import elemental2.dom.RTCDTMFToneChangeEvent;
 import java.lang.String;
@@ -10,19 +12,19 @@ import jsinterop.annotations.JsPackage;
 public interface RTCDTMFSender{
 @JsFunction
 public interface OntonechangeFn{
-Object onInvoke(RTCDTMFToneChangeEvent p0);
+@Nullable Object onInvoke(RTCDTMFToneChangeEvent p0);
 }
 @JsProperty
-RTCDTMFSender.OntonechangeFn getOntonechange();
+@Nullable Boolean getCanInsertDTMF();
+@JsProperty
+RTCDTMFSender.@Nullable OntonechangeFn getOntonechange();
 @JsProperty
 String getToneBuffer();
-Object insertDTMF(String tones,double duration,double interToneGap);
-Object insertDTMF(String tones,double duration);
-Object insertDTMF(String tones);
+@Nullable Object insertDTMF(String tones,double duration,double interToneGap);
+@Nullable Object insertDTMF(String tones,double duration);
+@Nullable Object insertDTMF(String tones);
 @JsProperty
-boolean isCanInsertDTMF();
+void setCanInsertDTMF(@Nullable Boolean canInsertDTMF);
 @JsProperty
-void setCanInsertDTMF(boolean canInsertDTMF);
-@JsProperty
-void setOntonechange(RTCDTMFSender.OntonechangeFn ontonechange);
+void setOntonechange(RTCDTMFSender.@Nullable OntonechangeFn ontonechange);
 }

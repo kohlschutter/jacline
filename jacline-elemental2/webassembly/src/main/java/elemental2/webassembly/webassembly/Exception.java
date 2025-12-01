@@ -1,4 +1,5 @@
 package elemental2.webassembly.webassembly;
+import org.jspecify.annotations.Nullable;
 import elemental2.webassembly.webassembly.Tag;
 import elemental2.webassembly.WebAssemblyExceptionOptions;
 import java.lang.String;
@@ -8,6 +9,6 @@ import elemental2.core.JsArray;
 @JsType(isNative = true,name = "WebAssembly.Exception",namespace = JsPackage.GLOBAL)
 public class Exception{
 public String stack;
-public Exception(Tag tag,JsArray payload,WebAssemblyExceptionOptions options){}
+public Exception(Tag tag,JsArray payload,@Nullable WebAssemblyExceptionOptions options){}
 public Exception(Tag tag,JsArray payload){}
 }

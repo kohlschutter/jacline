@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.FormData;
 import elemental2.dom.FormDataEventInit;
 import elemental2.dom.Event;
@@ -9,12 +10,12 @@ import elemental2.dom.EventInit;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class FormDataEvent extends Event{
 public FormData formData;
-public FormDataEvent(String type,FormDataEventInit eventInitDict){
+public FormDataEvent(String type,@Nullable FormDataEventInit eventInitDict){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 public FormDataEvent(String type){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 }

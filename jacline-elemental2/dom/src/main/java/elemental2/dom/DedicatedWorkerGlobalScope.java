@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.Transferable;
 import elemental2.dom.WorkerGlobalScope;
 import elemental2.core.JsArray;
@@ -15,20 +16,20 @@ import elemental2.dom.StructuredSerializeOptions;
 public interface DedicatedWorkerGlobalScope extends WorkerGlobalScope{
 @JsFunction
 public interface OnmessageFn{
-void onInvoke(MessageEvent<Object> p0);
+void onInvoke(MessageEvent<@Nullable Object> p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface WebkitPostMessageTransferOrOptionsUnionType{
 @JsOverlay
-static DedicatedWorkerGlobalScope.WebkitPostMessageTransferOrOptionsUnionType of(Object o){
+static DedicatedWorkerGlobalScope.@Nullable WebkitPostMessageTransferOrOptionsUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<Transferable> asJsArray(){
+default @Nullable JsArray<Transferable> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default StructuredSerializeOptions asStructuredSerializeOptions(){
+default @Nullable StructuredSerializeOptions asStructuredSerializeOptions(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -37,23 +38,23 @@ return (Object)this instanceof JsArray;
 }
 }
 @JsProperty
-DedicatedWorkerGlobalScope.OnmessageFn getOnmessage();
-void postMessage(Object message,WorkerGlobalScope.PostMessageTransferOrOptionsUnionType transferOrOptions);
-void postMessage(Object message);
+DedicatedWorkerGlobalScope.@Nullable OnmessageFn getOnmessage();
+void postMessage(@Nullable Object message,WorkerGlobalScope.@Nullable PostMessageTransferOrOptionsUnionType transferOrOptions);
+void postMessage(@Nullable Object message);
 @JsProperty
-void setOnmessage(DedicatedWorkerGlobalScope.OnmessageFn onmessage);
+void setOnmessage(DedicatedWorkerGlobalScope.@Nullable OnmessageFn onmessage);
 @JsOverlay
-default void webkitPostMessage(Object message,JsArray<Transferable> transferOrOptions){
-webkitPostMessage(message,Js.<DedicatedWorkerGlobalScope.WebkitPostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
+default void webkitPostMessage(@Nullable Object message,JsArray<Transferable> transferOrOptions){
+webkitPostMessage(message,Js.<DedicatedWorkerGlobalScope.@Nullable WebkitPostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
 }
 @JsOverlay
-default void webkitPostMessage(Object message,StructuredSerializeOptions transferOrOptions){
-webkitPostMessage(message,Js.<DedicatedWorkerGlobalScope.WebkitPostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
+default void webkitPostMessage(@Nullable Object message,StructuredSerializeOptions transferOrOptions){
+webkitPostMessage(message,Js.<DedicatedWorkerGlobalScope.@Nullable WebkitPostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
 }
 @JsOverlay
-default void webkitPostMessage(Object message,Transferable[] transferOrOptions){
+default void webkitPostMessage(@Nullable Object message,Transferable[] transferOrOptions){
 webkitPostMessage(message,Js.<JsArray<Transferable>>uncheckedCast(transferOrOptions));
 }
-void webkitPostMessage(Object message,DedicatedWorkerGlobalScope.WebkitPostMessageTransferOrOptionsUnionType transferOrOptions);
-void webkitPostMessage(Object message);
+void webkitPostMessage(@Nullable Object message,DedicatedWorkerGlobalScope.@Nullable WebkitPostMessageTransferOrOptionsUnionType transferOrOptions);
+void webkitPostMessage(@Nullable Object message);
 }

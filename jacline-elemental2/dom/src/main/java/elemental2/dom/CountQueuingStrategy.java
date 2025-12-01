@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
@@ -20,5 +21,5 @@ double getHighWaterMark();
 void setHighWaterMark(double highWaterMark);
 }
 public CountQueuingStrategy(CountQueuingStrategy.CountQueuingStrategyConfigType config){}
-public native int size(Object chunk);
+public native int size(@Nullable Object chunk);
 }

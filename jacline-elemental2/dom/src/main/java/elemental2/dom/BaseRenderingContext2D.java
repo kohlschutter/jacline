@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.Element;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.HTMLVideoElement;
 import java.lang.Double;
 import elemental2.dom.HTMLCanvasElement;
@@ -52,15 +53,15 @@ return (Object)this instanceof OffscreenCanvas;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ClipOptFillRuleOrPathUnionType{
 @JsOverlay
-static BaseRenderingContext2D.ClipOptFillRuleOrPathUnionType of(Object o){
+static BaseRenderingContext2D.@Nullable ClipOptFillRuleOrPathUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Path2D asPath2D(){
+default @Nullable Path2D asPath2D(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -75,27 +76,27 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface CreatePatternImageUnionType{
 @JsOverlay
-static BaseRenderingContext2D.CreatePatternImageUnionType of(Object o){
+static BaseRenderingContext2D.@Nullable CreatePatternImageUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default HTMLCanvasElement asHTMLCanvasElement(){
+default @Nullable HTMLCanvasElement asHTMLCanvasElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default HTMLImageElement asHTMLImageElement(){
+default @Nullable HTMLImageElement asHTMLImageElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default HTMLVideoElement asHTMLVideoElement(){
+default @Nullable HTMLVideoElement asHTMLVideoElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default ImageBitmap asImageBitmap(){
+default @Nullable ImageBitmap asImageBitmap(){
 return Js.cast(this);
 }
 @JsOverlay
-default OffscreenCanvas asOffscreenCanvas(){
+default @Nullable OffscreenCanvas asOffscreenCanvas(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -118,27 +119,27 @@ return (Object)this instanceof OffscreenCanvas;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface DrawImageImageUnionType{
 @JsOverlay
-static BaseRenderingContext2D.DrawImageImageUnionType of(Object o){
+static BaseRenderingContext2D.@Nullable DrawImageImageUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default HTMLCanvasElement asHTMLCanvasElement(){
+default @Nullable HTMLCanvasElement asHTMLCanvasElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default HTMLImageElement asHTMLImageElement(){
+default @Nullable HTMLImageElement asHTMLImageElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default HTMLVideoElement asHTMLVideoElement(){
+default @Nullable HTMLVideoElement asHTMLVideoElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default ImageBitmap asImageBitmap(){
+default @Nullable ImageBitmap asImageBitmap(){
 return Js.cast(this);
 }
 @JsOverlay
-default OffscreenCanvas asOffscreenCanvas(){
+default @Nullable OffscreenCanvas asOffscreenCanvas(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -161,15 +162,15 @@ return (Object)this instanceof OffscreenCanvas;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface FillOptFillRuleOrPathUnionType{
 @JsOverlay
-static BaseRenderingContext2D.FillOptFillRuleOrPathUnionType of(Object o){
+static BaseRenderingContext2D.@Nullable FillOptFillRuleOrPathUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Path2D asPath2D(){
+default @Nullable Path2D asPath2D(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -307,11 +308,11 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface SetTransformM11OrMatrixUnionType{
 @JsOverlay
-static BaseRenderingContext2D.SetTransformM11OrMatrixUnionType of(Object o){
+static BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default DOMMatrixReadOnly asDOMMatrixReadOnly(){
+default @Nullable DOMMatrixReadOnly asDOMMatrixReadOnly(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -389,217 +390,218 @@ public native void beginPath();
 public native void bezierCurveTo(double cp1x,double cp1y,double cp2x,double cp2y,double x,double y);
 public native void clearRect(double x,double y,double w,double h);
 public native void clip();
-public native void clip(BaseRenderingContext2D.ClipOptFillRuleOrPathUnionType optFillRuleOrPath,String optFillRule);
-public native void clip(BaseRenderingContext2D.ClipOptFillRuleOrPathUnionType optFillRuleOrPath);
+public native void clip(BaseRenderingContext2D.@Nullable ClipOptFillRuleOrPathUnionType optFillRuleOrPath,String optFillRule);
+public native void clip(BaseRenderingContext2D.@Nullable ClipOptFillRuleOrPathUnionType optFillRuleOrPath);
 @JsOverlay
 public final void clip(Path2D optFillRuleOrPath,String optFillRule){
-clip(Js.<BaseRenderingContext2D.ClipOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath),optFillRule);
+clip(Js.<BaseRenderingContext2D.@Nullable ClipOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath),optFillRule);
 }
 @JsOverlay
 public final void clip(Path2D optFillRuleOrPath){
-clip(Js.<BaseRenderingContext2D.ClipOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath));
+clip(Js.<BaseRenderingContext2D.@Nullable ClipOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath));
 }
 @JsOverlay
 public final void clip(String optFillRuleOrPath,String optFillRule){
-clip(Js.<BaseRenderingContext2D.ClipOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath),optFillRule);
+clip(Js.<BaseRenderingContext2D.@Nullable ClipOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath),optFillRule);
 }
 @JsOverlay
 public final void clip(String optFillRuleOrPath){
-clip(Js.<BaseRenderingContext2D.ClipOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath));
+clip(Js.<BaseRenderingContext2D.@Nullable ClipOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath));
 }
 public native void closePath();
+public native CanvasGradient createConicGradient(double startAngle,double x,double y);
 public native ImageData createImageData(int sw,int sh);
 public native CanvasGradient createLinearGradient(double x0,double y0,double x1,double y1);
-public native CanvasPattern createPattern(BaseRenderingContext2D.CreatePatternImageUnionType image,String repetition);
+public native @Nullable CanvasPattern createPattern(BaseRenderingContext2D.@Nullable CreatePatternImageUnionType image,String repetition);
 @JsOverlay
-public final CanvasPattern createPattern(HTMLCanvasElement image,String repetition){
-return createPattern(Js.<BaseRenderingContext2D.CreatePatternImageUnionType>uncheckedCast(image),repetition);
+public final @Nullable CanvasPattern createPattern(HTMLCanvasElement image,String repetition){
+return createPattern(Js.<BaseRenderingContext2D.@Nullable CreatePatternImageUnionType>uncheckedCast(image),repetition);
 }
 @JsOverlay
-public final CanvasPattern createPattern(HTMLImageElement image,String repetition){
-return createPattern(Js.<BaseRenderingContext2D.CreatePatternImageUnionType>uncheckedCast(image),repetition);
+public final @Nullable CanvasPattern createPattern(HTMLImageElement image,String repetition){
+return createPattern(Js.<BaseRenderingContext2D.@Nullable CreatePatternImageUnionType>uncheckedCast(image),repetition);
 }
 @JsOverlay
-public final CanvasPattern createPattern(HTMLVideoElement image,String repetition){
-return createPattern(Js.<BaseRenderingContext2D.CreatePatternImageUnionType>uncheckedCast(image),repetition);
+public final @Nullable CanvasPattern createPattern(HTMLVideoElement image,String repetition){
+return createPattern(Js.<BaseRenderingContext2D.@Nullable CreatePatternImageUnionType>uncheckedCast(image),repetition);
 }
 @JsOverlay
-public final CanvasPattern createPattern(ImageBitmap image,String repetition){
-return createPattern(Js.<BaseRenderingContext2D.CreatePatternImageUnionType>uncheckedCast(image),repetition);
+public final @Nullable CanvasPattern createPattern(ImageBitmap image,String repetition){
+return createPattern(Js.<BaseRenderingContext2D.@Nullable CreatePatternImageUnionType>uncheckedCast(image),repetition);
 }
 @JsOverlay
-public final CanvasPattern createPattern(OffscreenCanvas image,String repetition){
-return createPattern(Js.<BaseRenderingContext2D.CreatePatternImageUnionType>uncheckedCast(image),repetition);
+public final @Nullable CanvasPattern createPattern(OffscreenCanvas image,String repetition){
+return createPattern(Js.<BaseRenderingContext2D.@Nullable CreatePatternImageUnionType>uncheckedCast(image),repetition);
 }
 public native CanvasGradient createRadialGradient(double x0,double y0,double r0,double x1,double y1,double r1);
-public native void drawFocusIfNeeded(Element element);
-public native void drawImage(BaseRenderingContext2D.DrawImageImageUnionType image,double dx,double dy,double dw,double dh,double sx,double sy,double sw,double sh);
-public native void drawImage(BaseRenderingContext2D.DrawImageImageUnionType image,double dx,double dy,double dw,double dh,double sx,double sy,double sw);
-public native void drawImage(BaseRenderingContext2D.DrawImageImageUnionType image,double dx,double dy,double dw,double dh,double sx,double sy);
-public native void drawImage(BaseRenderingContext2D.DrawImageImageUnionType image,double dx,double dy,double dw,double dh,double sx);
-public native void drawImage(BaseRenderingContext2D.DrawImageImageUnionType image,double dx,double dy,double dw,double dh);
-public native void drawImage(BaseRenderingContext2D.DrawImageImageUnionType image,double dx,double dy,double dw);
-public native void drawImage(BaseRenderingContext2D.DrawImageImageUnionType image,double dx,double dy);
+public native void drawFocusIfNeeded(@Nullable Element element);
+public native void drawImage(BaseRenderingContext2D.@Nullable DrawImageImageUnionType image,double dx,double dy,double dw,double dh,double sx,double sy,double sw,double sh);
+public native void drawImage(BaseRenderingContext2D.@Nullable DrawImageImageUnionType image,double dx,double dy,double dw,double dh,double sx,double sy,double sw);
+public native void drawImage(BaseRenderingContext2D.@Nullable DrawImageImageUnionType image,double dx,double dy,double dw,double dh,double sx,double sy);
+public native void drawImage(BaseRenderingContext2D.@Nullable DrawImageImageUnionType image,double dx,double dy,double dw,double dh,double sx);
+public native void drawImage(BaseRenderingContext2D.@Nullable DrawImageImageUnionType image,double dx,double dy,double dw,double dh);
+public native void drawImage(BaseRenderingContext2D.@Nullable DrawImageImageUnionType image,double dx,double dy,double dw);
+public native void drawImage(BaseRenderingContext2D.@Nullable DrawImageImageUnionType image,double dx,double dy);
 @JsOverlay
 public final void drawImage(HTMLCanvasElement image,double dx,double dy,double dw,double dh,double sx,double sy,double sw,double sh){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw,sh);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw,sh);
 }
 @JsOverlay
 public final void drawImage(HTMLCanvasElement image,double dx,double dy,double dw,double dh,double sx,double sy,double sw){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw);
 }
 @JsOverlay
 public final void drawImage(HTMLCanvasElement image,double dx,double dy,double dw,double dh,double sx,double sy){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy);
 }
 @JsOverlay
 public final void drawImage(HTMLCanvasElement image,double dx,double dy,double dw,double dh,double sx){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx);
 }
 @JsOverlay
 public final void drawImage(HTMLCanvasElement image,double dx,double dy,double dw,double dh){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh);
 }
 @JsOverlay
 public final void drawImage(HTMLCanvasElement image,double dx,double dy,double dw){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw);
 }
 @JsOverlay
 public final void drawImage(HTMLCanvasElement image,double dx,double dy){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy);
 }
 @JsOverlay
 public final void drawImage(HTMLImageElement image,double dx,double dy,double dw,double dh,double sx,double sy,double sw,double sh){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw,sh);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw,sh);
 }
 @JsOverlay
 public final void drawImage(HTMLImageElement image,double dx,double dy,double dw,double dh,double sx,double sy,double sw){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw);
 }
 @JsOverlay
 public final void drawImage(HTMLImageElement image,double dx,double dy,double dw,double dh,double sx,double sy){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy);
 }
 @JsOverlay
 public final void drawImage(HTMLImageElement image,double dx,double dy,double dw,double dh,double sx){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx);
 }
 @JsOverlay
 public final void drawImage(HTMLImageElement image,double dx,double dy,double dw,double dh){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh);
 }
 @JsOverlay
 public final void drawImage(HTMLImageElement image,double dx,double dy,double dw){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw);
 }
 @JsOverlay
 public final void drawImage(HTMLImageElement image,double dx,double dy){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy);
 }
 @JsOverlay
 public final void drawImage(HTMLVideoElement image,double dx,double dy,double dw,double dh,double sx,double sy,double sw,double sh){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw,sh);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw,sh);
 }
 @JsOverlay
 public final void drawImage(HTMLVideoElement image,double dx,double dy,double dw,double dh,double sx,double sy,double sw){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw);
 }
 @JsOverlay
 public final void drawImage(HTMLVideoElement image,double dx,double dy,double dw,double dh,double sx,double sy){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy);
 }
 @JsOverlay
 public final void drawImage(HTMLVideoElement image,double dx,double dy,double dw,double dh,double sx){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx);
 }
 @JsOverlay
 public final void drawImage(HTMLVideoElement image,double dx,double dy,double dw,double dh){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh);
 }
 @JsOverlay
 public final void drawImage(HTMLVideoElement image,double dx,double dy,double dw){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw);
 }
 @JsOverlay
 public final void drawImage(HTMLVideoElement image,double dx,double dy){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy);
 }
 @JsOverlay
 public final void drawImage(ImageBitmap image,double dx,double dy,double dw,double dh,double sx,double sy,double sw,double sh){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw,sh);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw,sh);
 }
 @JsOverlay
 public final void drawImage(ImageBitmap image,double dx,double dy,double dw,double dh,double sx,double sy,double sw){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw);
 }
 @JsOverlay
 public final void drawImage(ImageBitmap image,double dx,double dy,double dw,double dh,double sx,double sy){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy);
 }
 @JsOverlay
 public final void drawImage(ImageBitmap image,double dx,double dy,double dw,double dh,double sx){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx);
 }
 @JsOverlay
 public final void drawImage(ImageBitmap image,double dx,double dy,double dw,double dh){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh);
 }
 @JsOverlay
 public final void drawImage(ImageBitmap image,double dx,double dy,double dw){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw);
 }
 @JsOverlay
 public final void drawImage(ImageBitmap image,double dx,double dy){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy);
 }
 @JsOverlay
 public final void drawImage(OffscreenCanvas image,double dx,double dy,double dw,double dh,double sx,double sy,double sw,double sh){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw,sh);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw,sh);
 }
 @JsOverlay
 public final void drawImage(OffscreenCanvas image,double dx,double dy,double dw,double dh,double sx,double sy,double sw){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy,sw);
 }
 @JsOverlay
 public final void drawImage(OffscreenCanvas image,double dx,double dy,double dw,double dh,double sx,double sy){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx,sy);
 }
 @JsOverlay
 public final void drawImage(OffscreenCanvas image,double dx,double dy,double dw,double dh,double sx){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh,sx);
 }
 @JsOverlay
 public final void drawImage(OffscreenCanvas image,double dx,double dy,double dw,double dh){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw,dh);
 }
 @JsOverlay
 public final void drawImage(OffscreenCanvas image,double dx,double dy,double dw){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy,dw);
 }
 @JsOverlay
 public final void drawImage(OffscreenCanvas image,double dx,double dy){
-drawImage(Js.<BaseRenderingContext2D.DrawImageImageUnionType>uncheckedCast(image),dx,dy);
+drawImage(Js.<BaseRenderingContext2D.@Nullable DrawImageImageUnionType>uncheckedCast(image),dx,dy);
 }
 public native void ellipse(double x,double y,double radiusX,double radiusY,double rotation,double startAngle,double endAngle,boolean anticlockwise);
 public native void ellipse(double x,double y,double radiusX,double radiusY,double rotation,double startAngle,double endAngle);
 public native void fill();
-public native void fill(BaseRenderingContext2D.FillOptFillRuleOrPathUnionType optFillRuleOrPath,String optFillRule);
-public native void fill(BaseRenderingContext2D.FillOptFillRuleOrPathUnionType optFillRuleOrPath);
+public native void fill(BaseRenderingContext2D.@Nullable FillOptFillRuleOrPathUnionType optFillRuleOrPath,String optFillRule);
+public native void fill(BaseRenderingContext2D.@Nullable FillOptFillRuleOrPathUnionType optFillRuleOrPath);
 @JsOverlay
 public final void fill(Path2D optFillRuleOrPath,String optFillRule){
-fill(Js.<BaseRenderingContext2D.FillOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath),optFillRule);
+fill(Js.<BaseRenderingContext2D.@Nullable FillOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath),optFillRule);
 }
 @JsOverlay
 public final void fill(Path2D optFillRuleOrPath){
-fill(Js.<BaseRenderingContext2D.FillOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath));
+fill(Js.<BaseRenderingContext2D.@Nullable FillOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath));
 }
 @JsOverlay
 public final void fill(String optFillRuleOrPath,String optFillRule){
-fill(Js.<BaseRenderingContext2D.FillOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath),optFillRule);
+fill(Js.<BaseRenderingContext2D.@Nullable FillOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath),optFillRule);
 }
 @JsOverlay
 public final void fill(String optFillRuleOrPath){
-fill(Js.<BaseRenderingContext2D.FillOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath));
+fill(Js.<BaseRenderingContext2D.@Nullable FillOptFillRuleOrPathUnionType>uncheckedCast(optFillRuleOrPath));
 }
 public native void fillRect(double x,double y,double w,double h);
 public native void fillText(String text,double x,double y,double maxWidth);
@@ -703,11 +705,11 @@ public native boolean isPointInStroke(double x,double y);
 public native void lineTo(double x,double y);
 public native TextMetrics measureText(String text);
 public native void moveTo(double x,double y);
-public native void putImageData(ImageData imagedata,int dx,int dy,int dirtyX,int dirtyY,int dirtyWidth,int dirtyHeight);
-public native void putImageData(ImageData imagedata,int dx,int dy,int dirtyX,int dirtyY,int dirtyWidth);
-public native void putImageData(ImageData imagedata,int dx,int dy,int dirtyX,int dirtyY);
-public native void putImageData(ImageData imagedata,int dx,int dy,int dirtyX);
-public native void putImageData(ImageData imagedata,int dx,int dy);
+public native void putImageData(@Nullable ImageData imagedata,int dx,int dy,int dirtyX,int dirtyY,int dirtyWidth,int dirtyHeight);
+public native void putImageData(@Nullable ImageData imagedata,int dx,int dy,int dirtyX,int dirtyY,int dirtyWidth);
+public native void putImageData(@Nullable ImageData imagedata,int dx,int dy,int dirtyX,int dirtyY);
+public native void putImageData(@Nullable ImageData imagedata,int dx,int dy,int dirtyX);
+public native void putImageData(@Nullable ImageData imagedata,int dx,int dy);
 public native void quadraticCurveTo(double cpx,double cpy,double x,double y);
 public native void rect(double x,double y,double w,double h);
 public native void resetTransform();
@@ -785,7 +787,7 @@ public native void setFont(String font);
 public native void setLetterSpacing(String letterSpacing);
 @JsProperty
 public native void setLineCap(String lineCap);
-public native void setLineDash(JsArray<Double> segments);
+public native void setLineDash(@Nullable JsArray<Double> segments);
 @JsProperty
 public native void setLineJoin(String lineJoin);
 @JsProperty
@@ -860,60 +862,60 @@ public native void setTextAlign(String textAlign);
 public native void setTextBaseline(String textBaseline);
 @JsOverlay
 public final void setTransform(DOMMatrixReadOnly m11OrMatrix,double m12,double m21,double m22,double dx,double dy){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx,dy);
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx,dy);
 }
 @JsOverlay
 public final void setTransform(DOMMatrixReadOnly m11OrMatrix,double m12,double m21,double m22,double dx){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx);
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx);
 }
 @JsOverlay
 public final void setTransform(DOMMatrixReadOnly m11OrMatrix,double m12,double m21,double m22){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22);
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22);
 }
 @JsOverlay
 public final void setTransform(DOMMatrixReadOnly m11OrMatrix,double m12,double m21){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21);
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21);
 }
 @JsOverlay
 public final void setTransform(DOMMatrixReadOnly m11OrMatrix,double m12){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12);
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12);
 }
 @JsOverlay
 public final void setTransform(DOMMatrixReadOnly m11OrMatrix){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix));
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix));
 }
-public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21,double m22,double dx,double dy);
-public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21,double m22,double dx);
-public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21,double m22);
-public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21);
-public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix,double m12);
-public native void setTransform(BaseRenderingContext2D.SetTransformM11OrMatrixUnionType m11OrMatrix);
+public native void setTransform(BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21,double m22,double dx,double dy);
+public native void setTransform(BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21,double m22,double dx);
+public native void setTransform(BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21,double m22);
+public native void setTransform(BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType m11OrMatrix,double m12,double m21);
+public native void setTransform(BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType m11OrMatrix,double m12);
+public native void setTransform(BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType m11OrMatrix);
 @JsOverlay
 public final void setTransform(double m11OrMatrix,double m12,double m21,double m22,double dx,double dy){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx,dy);
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx,dy);
 }
 @JsOverlay
 public final void setTransform(double m11OrMatrix,double m12,double m21,double m22,double dx){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx);
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22,dx);
 }
 @JsOverlay
 public final void setTransform(double m11OrMatrix,double m12,double m21,double m22){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22);
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21,m22);
 }
 @JsOverlay
 public final void setTransform(double m11OrMatrix,double m12,double m21){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21);
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12,m21);
 }
 @JsOverlay
 public final void setTransform(double m11OrMatrix,double m12){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12);
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix),m12);
 }
 @JsOverlay
 public final void setTransform(double m11OrMatrix){
-setTransform(Js.<BaseRenderingContext2D.SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix));
+setTransform(Js.<BaseRenderingContext2D.@Nullable SetTransformM11OrMatrixUnionType>uncheckedCast(m11OrMatrix));
 }
 public native void stroke();
-public native void stroke(Path2D optStroke);
+public native void stroke(@Nullable Path2D optStroke);
 public native void strokeRect(double x,double y,double w,double h);
 public native void strokeText(String text,double x,double y,double maxWidth);
 public native void strokeText(String text,double x,double y);

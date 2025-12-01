@@ -15,5 +15,7 @@ JsArray<ResizeObserverSize> getContentBoxSize();
 @JsProperty
 DOMRectReadOnly getContentRect();
 @JsProperty
+JsArray<ResizeObserverSize> getDevicePixelContentBoxSize();
+@JsProperty
 Element getTarget();
 }

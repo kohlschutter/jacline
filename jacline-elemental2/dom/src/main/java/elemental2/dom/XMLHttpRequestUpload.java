@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.XMLHttpRequestEventTarget;
 import elemental2.dom.ProgressEvent;
 import jsinterop.annotations.JsFunction;
@@ -10,5 +11,5 @@ public class XMLHttpRequestUpload extends XMLHttpRequestEventTarget{
 public interface OnprogressFn{
 void onInvoke(ProgressEvent p0);
 }
-public XMLHttpRequestUpload.OnprogressFn onprogress;
+public XMLHttpRequestUpload.@Nullable OnprogressFn onprogress;
 }

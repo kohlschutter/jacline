@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import java.lang.Double;
 import jsinterop.annotations.JsOverlay;
@@ -32,10 +33,10 @@ void setFont(String font);
 void setLetterSpacing(String letterSpacing);
 @JsProperty
 void setLineCap(String lineCap);
-void setLineDash(JsArray<Double> segments);
+void setLineDash(@Nullable JsArray<Double> segments);
 @JsOverlay
-default void setLineDash(double[] segments){
-setLineDash(Js.<JsArray<Double>>uncheckedCast(segments));
+default void setLineDash(double@Nullable [] segments){
+setLineDash(Js.<@Nullable JsArray<Double>>uncheckedCast(segments));
 }
 @JsProperty
 void setLineJoin(String lineJoin);

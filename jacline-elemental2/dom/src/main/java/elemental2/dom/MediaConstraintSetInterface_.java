@@ -1,23 +1,25 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
+import java.lang.Boolean;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public interface MediaConstraintSetInterface_{
 @JsProperty(name = "DtlsSrtpKeyAgreement")
-boolean isDtlsSrtpKeyAgreement();
+@Nullable Boolean getDtlsSrtpKeyAgreement();
 @JsProperty(name = "OfferToReceiveAudio")
-boolean isOfferToReceiveAudio();
+@Nullable Boolean getOfferToReceiveAudio();
 @JsProperty(name = "OfferToReceiveVideo")
-boolean isOfferToReceiveVideo();
+@Nullable Boolean getOfferToReceiveVideo();
 @JsProperty(name = "RtpDataChannels")
-boolean isRtpDataChannels();
+@Nullable Boolean getRtpDataChannels();
 @JsProperty(name = "DtlsSrtpKeyAgreement")
-void setDtlsSrtpKeyAgreement(boolean DtlsSrtpKeyAgreement);
+void setDtlsSrtpKeyAgreement(@Nullable Boolean DtlsSrtpKeyAgreement);
 @JsProperty(name = "OfferToReceiveAudio")
-void setOfferToReceiveAudio(boolean OfferToReceiveAudio);
+void setOfferToReceiveAudio(@Nullable Boolean OfferToReceiveAudio);
 @JsProperty(name = "OfferToReceiveVideo")
-void setOfferToReceiveVideo(boolean OfferToReceiveVideo);
+void setOfferToReceiveVideo(@Nullable Boolean OfferToReceiveVideo);
 @JsProperty(name = "RtpDataChannels")
-void setRtpDataChannels(boolean RtpDataChannels);
+void setRtpDataChannels(@Nullable Boolean RtpDataChannels);
 }

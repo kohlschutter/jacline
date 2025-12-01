@@ -1,19 +1,21 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
+import java.lang.Double;
+import jsinterop.base.JsPropertyMap;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
-import java.lang.Double;
 import jsinterop.annotations.JsOverlay;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
-import jsinterop.base.JsPropertyMap;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public interface RTCRtpEncodingParameters{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetRidUnionType{
 @JsOverlay
-static RTCRtpEncodingParameters.GetRidUnionType of(Object o){
+static RTCRtpEncodingParameters.@Nullable GetRidUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -21,7 +23,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -38,55 +40,55 @@ static RTCRtpEncodingParameters create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-double getCodecPayloadType();
+@Nullable Boolean getActive();
 @JsProperty
-String getDtx();
+@Nullable Boolean getAdaptivePtime();
 @JsProperty
-double getMaxBitrate();
+@Nullable Double getCodecPayloadType();
 @JsProperty
-double getMaxFramerate();
+@Nullable String getDtx();
 @JsProperty
-String getNetworkPriority();
+@Nullable Double getMaxBitrate();
 @JsProperty
-String getPriority();
+@Nullable Double getMaxFramerate();
 @JsProperty
-double getPtime();
+@Nullable String getNetworkPriority();
 @JsProperty
-RTCRtpEncodingParameters.GetRidUnionType getRid();
+@Nullable String getPriority();
 @JsProperty
-double getScaleResolutionDownBy();
+@Nullable Double getPtime();
 @JsProperty
-boolean isActive();
+RTCRtpEncodingParameters.@Nullable GetRidUnionType getRid();
 @JsProperty
-boolean isAdaptivePtime();
+@Nullable Double getScaleResolutionDownBy();
 @JsProperty
-void setActive(boolean active);
+void setActive(@Nullable Boolean active);
 @JsProperty
-void setAdaptivePtime(boolean adaptivePtime);
+void setAdaptivePtime(@Nullable Boolean adaptivePtime);
 @JsProperty
-void setCodecPayloadType(double codecPayloadType);
+void setCodecPayloadType(@Nullable Double codecPayloadType);
 @JsProperty
-void setDtx(String dtx);
+void setDtx(@Nullable String dtx);
 @JsProperty
-void setMaxBitrate(double maxBitrate);
+void setMaxBitrate(@Nullable Double maxBitrate);
 @JsProperty
-void setMaxFramerate(double maxFramerate);
+void setMaxFramerate(@Nullable Double maxFramerate);
 @JsProperty
-void setNetworkPriority(String networkPriority);
+void setNetworkPriority(@Nullable String networkPriority);
 @JsProperty
-void setPriority(String priority);
+void setPriority(@Nullable String priority);
 @JsProperty
-void setPtime(double ptime);
+void setPtime(@Nullable Double ptime);
 @JsProperty
-void setRid(RTCRtpEncodingParameters.GetRidUnionType rid);
+void setRid(RTCRtpEncodingParameters.@Nullable GetRidUnionType rid);
 @JsOverlay
 default void setRid(String rid){
-setRid(Js.<RTCRtpEncodingParameters.GetRidUnionType>uncheckedCast(rid));
+setRid(Js.<RTCRtpEncodingParameters.@Nullable GetRidUnionType>uncheckedCast(rid));
 }
 @JsOverlay
 default void setRid(double rid){
-setRid(Js.<RTCRtpEncodingParameters.GetRidUnionType>uncheckedCast(rid));
+setRid(Js.<RTCRtpEncodingParameters.@Nullable GetRidUnionType>uncheckedCast(rid));
 }
 @JsProperty
-void setScaleResolutionDownBy(double scaleResolutionDownBy);
+void setScaleResolutionDownBy(@Nullable Double scaleResolutionDownBy);
 }

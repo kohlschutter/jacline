@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.Transferable;
 import elemental2.dom.Event;
 import elemental2.core.JsArray;
@@ -16,19 +17,24 @@ import jsinterop.annotations.JsPackage;
 public class MessagePort implements Transferable, EventTarget{
 @JsFunction
 public interface OnmessageFn{
-void onInvoke(MessageEvent<Object> p0);
+void onInvoke(MessageEvent<@Nullable Object> p0);
 }
-public MessagePort.OnmessageFn onmessage;
+@JsFunction
+public interface OnmessageerrorFn{
+void onInvoke(MessageEvent<@Nullable Object> p0);
+}
+public MessagePort.@Nullable OnmessageFn onmessage;
+public MessagePort.@Nullable OnmessageerrorFn onmessageerror;
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType options);
 public native void addEventListener(String type,EventListener listener);
 public native void close();
 public native boolean dispatchEvent(Event evt);
-public native void postMessage(Object message,JsArray<Transferable> transfer);
+public native void postMessage(@Nullable Object message,@Nullable JsArray<Transferable> transfer);
 @JsOverlay
-public final void postMessage(Object message,Transferable[] transfer){
-postMessage(message,Js.<JsArray<Transferable>>uncheckedCast(transfer));
+public final void postMessage(@Nullable Object message,Transferable@Nullable [] transfer){
+postMessage(message,Js.<@Nullable JsArray<Transferable>>uncheckedCast(transfer));
 }
-public native void postMessage(Object message);
+public native void postMessage(@Nullable Object message);
 public native void removeEventListener(String type,EventListener listener,EventTarget.RemoveEventListenerOptionsUnionType options);
 public native void removeEventListener(String type,EventListener listener);
 public native void start();

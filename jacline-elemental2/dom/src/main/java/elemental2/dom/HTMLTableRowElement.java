@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.HTMLCollection;
 import elemental2.dom.HTMLElement;
 import elemental2.dom.HTMLTableCellElement;
@@ -9,7 +10,7 @@ import jsinterop.annotations.JsPackage;
 public class HTMLTableRowElement extends HTMLElement{
 public String align;
 public String bgColor;
-public HTMLCollection<HTMLTableCellElement> cells;
+public @Nullable HTMLCollection<HTMLTableCellElement> cells;
 public String ch;
 public String chOff;
 public int rowIndex;

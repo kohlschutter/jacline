@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.JsIterable;
 import java.lang.Double;
 import elemental2.core.ArrayBuffer;
@@ -19,15 +20,15 @@ public class Float64Array extends TypedArray{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorLengthUnionType{
 @JsOverlay
-static Float64Array.ConstructorLengthUnionType of(Object o){
+static Float64Array.@Nullable ConstructorLengthUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default ArrayBufferView asArrayBufferView(){
+default @Nullable ArrayBufferView asArrayBufferView(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -35,11 +36,11 @@ default int asInt(){
 return Js.asInt(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default SharedArrayBuffer asSharedArrayBuffer(){
+default @Nullable SharedArrayBuffer asSharedArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -65,7 +66,7 @@ return (Object)this instanceof SharedArrayBuffer;
 }
 @JsFunction
 public interface FromMapFn{
-double onInvoke(Object element,int index);
+double onInvoke(@Nullable Object element,int index);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface FromSourceUnionType{
@@ -78,7 +79,7 @@ default JsArrayLike<Double> asJsArrayLike(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsIterable<Double> asJsIterable(){
+default JsIterable<Double, @Nullable Object, @Nullable Object> asJsIterable(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -92,11 +93,11 @@ return (Object)this instanceof String;
 }
 @JsOverlay
 public static final int BYTES_PER_ELEMENT=Float64Array__Constants.BYTES_PER_ELEMENT;
-public static native <S>Float64Array from(Float64Array.FromSourceUnionType source,Float64Array.FromMapFn mapFn,S thisArg);
+public static native <S extends @Nullable Object> Float64Array from(Float64Array.FromSourceUnionType source,Float64Array.FromMapFn mapFn,S thisArg);
 public static native Float64Array from(Float64Array.FromSourceUnionType source,Float64Array.FromMapFn mapFn);
 public static native Float64Array from(Float64Array.FromSourceUnionType source);
 @JsOverlay
-public static final <S>Float64Array from(JsArrayLike<Double> source,Float64Array.FromMapFn mapFn,S thisArg){
+public static final <S extends @Nullable Object> Float64Array from(JsArrayLike<Double> source,Float64Array.FromMapFn mapFn,S thisArg){
 return from(Js.<Float64Array.FromSourceUnionType>uncheckedCast(source),mapFn,thisArg);
 }
 @JsOverlay
@@ -108,19 +109,19 @@ public static final Float64Array from(JsArrayLike<Double> source){
 return from(Js.<Float64Array.FromSourceUnionType>uncheckedCast(source));
 }
 @JsOverlay
-public static final <S>Float64Array from(JsIterable<Double> source,Float64Array.FromMapFn mapFn,S thisArg){
+public static final <S extends @Nullable Object> Float64Array from(JsIterable<Double, @Nullable Object, @Nullable Object> source,Float64Array.FromMapFn mapFn,S thisArg){
 return from(Js.<Float64Array.FromSourceUnionType>uncheckedCast(source),mapFn,thisArg);
 }
 @JsOverlay
-public static final Float64Array from(JsIterable<Double> source,Float64Array.FromMapFn mapFn){
+public static final Float64Array from(JsIterable<Double, @Nullable Object, @Nullable Object> source,Float64Array.FromMapFn mapFn){
 return from(Js.<Float64Array.FromSourceUnionType>uncheckedCast(source),mapFn);
 }
 @JsOverlay
-public static final Float64Array from(JsIterable<Double> source){
+public static final Float64Array from(JsIterable<Double, @Nullable Object, @Nullable Object> source){
 return from(Js.<Float64Array.FromSourceUnionType>uncheckedCast(source));
 }
 @JsOverlay
-public static final <S>Float64Array from(String source,Float64Array.FromMapFn mapFn,S thisArg){
+public static final <S extends @Nullable Object> Float64Array from(String source,Float64Array.FromMapFn mapFn,S thisArg){
 return from(Js.<Float64Array.FromSourceUnionType>uncheckedCast(source),mapFn,thisArg);
 }
 @JsOverlay
@@ -132,7 +133,7 @@ public static final Float64Array from(String source){
 return from(Js.<Float64Array.FromSourceUnionType>uncheckedCast(source));
 }
 @JsOverlay
-public static final <S>Float64Array from(double[] source,Float64Array.FromMapFn mapFn,S thisArg){
+public static final <S extends @Nullable Object> Float64Array from(double[] source,Float64Array.FromMapFn mapFn,S thisArg){
 return from(Js.<JsArrayLike<Double>>uncheckedCast(source),mapFn,thisArg);
 }
 @JsOverlay
@@ -150,9 +151,9 @@ public Float64Array(ArrayBuffer length){}
 public Float64Array(ArrayBufferView length,int byteOffset,int length0){}
 public Float64Array(ArrayBufferView length,int byteOffset){}
 public Float64Array(ArrayBufferView length){}
-public Float64Array(Float64Array.ConstructorLengthUnionType length,int byteOffset,int length0){}
-public Float64Array(Float64Array.ConstructorLengthUnionType length,int byteOffset){}
-public Float64Array(Float64Array.ConstructorLengthUnionType length){}
+public Float64Array(Float64Array.@Nullable ConstructorLengthUnionType length,int byteOffset,int length0){}
+public Float64Array(Float64Array.@Nullable ConstructorLengthUnionType length,int byteOffset){}
+public Float64Array(Float64Array.@Nullable ConstructorLengthUnionType length){}
 public Float64Array(JsArray<Double> length,int byteOffset,int length0){}
 public Float64Array(JsArray<Double> length,int byteOffset){}
 public Float64Array(JsArray<Double> length){}

@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
@@ -15,11 +16,11 @@ static PromiseRejectionEventInit create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-Promise<Object> getPromise();
+Promise<@Nullable Object> getPromise();
 @JsProperty
-Object getReason();
+@Nullable Object getReason();
 @JsProperty
-void setPromise(Promise<Object> promise);
+void setPromise(Promise<@Nullable Object> promise);
 @JsProperty
-void setReason(Object reason);
+void setReason(@Nullable Object reason);
 }

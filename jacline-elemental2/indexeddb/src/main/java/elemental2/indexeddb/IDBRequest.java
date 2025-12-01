@@ -1,4 +1,5 @@
 package elemental2.indexeddb;
+import org.jspecify.annotations.Nullable;
 import java.lang.Deprecated;
 import elemental2.dom.DOMError;
 import elemental2.indexeddb.IDBCursor;
@@ -17,19 +18,19 @@ import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public class IDBRequest<T> implements EventTarget{
+public class IDBRequest<T extends @Nullable Object> implements EventTarget{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ErrorUnionType{
 @JsOverlay
-static IDBRequest.ErrorUnionType of(Object o){
+static IDBRequest.@Nullable ErrorUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default DOMError asDOMError(){
+default @Nullable DOMError asDOMError(){
 return Js.cast(this);
 }
 @JsOverlay
-default DOMException asDOMException(){
+default @Nullable DOMException asDOMException(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -43,28 +44,28 @@ return (Object)this instanceof DOMException;
 }
 @JsFunction
 public interface OnerrorFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnsuccessFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface SourceUnionType{
 @JsOverlay
-static IDBRequest.SourceUnionType of(Object o){
+static IDBRequest.@Nullable SourceUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default IDBCursor asIDBCursor(){
+default @Nullable IDBCursor asIDBCursor(){
 return Js.cast(this);
 }
 @JsOverlay
-default IDBIndex asIDBIndex(){
+default @Nullable IDBIndex asIDBIndex(){
 return Js.cast(this);
 }
 @JsOverlay
-default IDBObjectStore asIDBObjectStore(){
+default @Nullable IDBObjectStore asIDBObjectStore(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -80,15 +81,15 @@ default boolean isIDBObjectStore(){
 return (Object)this instanceof IDBObjectStore;
 }
 }
-public IDBRequest.ErrorUnionType error;
+public IDBRequest.@Nullable ErrorUnionType error;
 @Deprecated
 public double errorCode;
 public IDBRequest.OnerrorFn onerror;
 public IDBRequest.OnsuccessFn onsuccess;
 public String readyState;
 public T result;
-public IDBRequest.SourceUnionType source;
-public IDBTransaction transaction;
+public IDBRequest.@Nullable SourceUnionType source;
+public @Nullable IDBTransaction transaction;
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType options);
 public native void addEventListener(String type,EventListener listener);
 public native boolean dispatchEvent(Event evt);

@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.HTMLFormElement;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.HTMLElement;
 import java.lang.String;
 import jsinterop.annotations.JsType;
@@ -8,5 +9,5 @@ import jsinterop.annotations.JsPackage;
 public class HTMLLegendElement extends HTMLElement{
 public String accessKey;
 public String align;
-public HTMLFormElement form;
+public @Nullable HTMLFormElement form;
 }

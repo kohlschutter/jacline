@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsFunction;
 import elemental2.core.Transferable;
@@ -13,13 +14,13 @@ import elemental2.core.JsArray;
 public class AudioWorkerNode extends AudioNode{
 @JsFunction
 public interface OnmessageFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
-public AudioWorkerNode.OnmessageFn onmessage;
-public native Object postMessage(Object message,JsArray<Transferable> transfer);
+public AudioWorkerNode.@Nullable OnmessageFn onmessage;
+public native @Nullable Object postMessage(@Nullable Object message,JsArray<Transferable> transfer);
 @JsOverlay
-public final Object postMessage(Object message,Transferable[] transfer){
+public final @Nullable Object postMessage(@Nullable Object message,Transferable[] transfer){
 return postMessage(message,Js.<JsArray<Transferable>>uncheckedCast(transfer));
 }
-public native Object postMessage(Object message);
+public native @Nullable Object postMessage(@Nullable Object message);
 }

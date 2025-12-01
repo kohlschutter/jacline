@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.EventListener;
 import jsinterop.base.JsArrayLike;
 import elemental2.dom.TextTrack;
@@ -13,7 +14,7 @@ public int length;
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType useCapture);
 public native void addEventListener(String type,EventListener listener);
 public native boolean dispatchEvent(Event evt);
-public native TextTrack getTrackById(String id);
+public native @Nullable TextTrack getTrackById(String id);
 public native void removeEventListener(String type,EventListener listener,EventTarget.RemoveEventListenerOptionsUnionType options);
 public native void removeEventListener(String type,EventListener listener);
 }

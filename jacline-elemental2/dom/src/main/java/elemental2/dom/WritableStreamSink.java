@@ -1,6 +1,8 @@
 package elemental2.dom;
-import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import elemental2.promise.IThenable;
+import jsinterop.base.JsPropertyMap;
+import jsinterop.annotations.JsProperty;
 import elemental2.dom.WritableStreamDefaultController;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsFunction;
@@ -8,27 +10,26 @@ import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
-import jsinterop.base.JsPropertyMap;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public interface WritableStreamSink<VALUE>{
+public interface WritableStreamSink<VALUE extends @Nullable Object>{
 @JsFunction
 public interface AbortFn{
-IThenable<Object> onInvoke(Object p0);
+IThenable<@Nullable Object> onInvoke(@Nullable Object p0);
 }
 @JsFunction
 public interface CloseFn{
-IThenable<Object> onInvoke();
+IThenable<@Nullable Object> onInvoke();
 }
 @JsFunction
 public interface StartFn{
-IThenable<Object> onInvoke(WritableStreamDefaultController p0);
+IThenable<@Nullable Object> onInvoke(WritableStreamDefaultController p0);
 }
 @JsFunction
-public interface WriteFn<VALUE>{
-IThenable<Object> onInvoke(VALUE p0,WritableStreamDefaultController p1);
+public interface WriteFn<VALUE extends @Nullable Object>{
+IThenable<@Nullable Object> onInvoke(VALUE p0,WritableStreamDefaultController p1);
 }
 @JsOverlay
-static WritableStreamSink create(){
+static <VALUE extends @Nullable Object> WritableStreamSink<VALUE> create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty

@@ -21,6 +21,7 @@ public double redirectStart;
 public double requestStart;
 public double responseEnd;
 public double responseStart;
+public double responseStatus;
 public double secureConnectionStart;
 public JsArray<PerformanceServerTiming> serverTiming;
 public int transferSize;

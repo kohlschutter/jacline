@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.MediaSettingsRange;
 import jsinterop.annotations.JsOverlay;
@@ -21,7 +22,7 @@ MediaSettingsRange getColorTemperature();
 @JsProperty
 MediaSettingsRange getContrast();
 @JsProperty
-JsArray<String> getCursor();
+@Nullable JsArray<String> getCursor();
 @JsProperty
 String getDeviceId();
 @JsProperty
@@ -79,10 +80,10 @@ void setColorTemperature(MediaSettingsRange colorTemperature);
 @JsProperty
 void setContrast(MediaSettingsRange contrast);
 @JsProperty
-void setCursor(JsArray<String> cursor);
+void setCursor(@Nullable JsArray<String> cursor);
 @JsOverlay
-default void setCursor(String[] cursor){
-setCursor(Js.<JsArray<String>>uncheckedCast(cursor));
+default void setCursor(String@Nullable [] cursor){
+setCursor(Js.<@Nullable JsArray<String>>uncheckedCast(cursor));
 }
 @JsProperty
 void setDeviceId(String deviceId);

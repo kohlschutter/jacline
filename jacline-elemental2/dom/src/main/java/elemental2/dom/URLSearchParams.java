@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.JsIterable;
 import jsinterop.base.JsPropertyMap;
 import elemental2.core.JsArray;
@@ -11,7 +12,7 @@ import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import elemental2.core.JsIteratorIterable;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public class URLSearchParams implements JsIterable<JsArray<String>>{
+public class URLSearchParams implements JsIterable<JsArray<String>, @Nullable Object, @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorInitUnionType{
 @JsOverlay
@@ -41,7 +42,7 @@ return (Object)this instanceof String;
 }
 @JsFunction
 public interface ForEachCallbackFn{
-Object onInvoke(String value,String key);
+@Nullable Object onInvoke(String value,String key);
 }
 public URLSearchParams(){}
 public URLSearchParams(URLSearchParams.ConstructorInitUnionType init){}
@@ -51,13 +52,13 @@ public URLSearchParams(String init){}
 public URLSearchParams(String[][] init){}
 public native void append(String name,String value);
 public native void delete(String name);
-public native JsIteratorIterable<JsArray<String>> entries();
+public native JsIteratorIterable<JsArray<String>, @Nullable Object, @Nullable Object> entries();
 public native void forEach(URLSearchParams.ForEachCallbackFn callback);
-public native String get(String name);
+public native @Nullable String get(String name);
 public native JsArray<String> getAll(String name);
 public native boolean has(String name);
-public native JsIteratorIterable<String> keys();
+public native JsIteratorIterable<String, @Nullable Object, @Nullable Object> keys();
 public native void set(String name,String value);
 public native void sort();
-public native JsIteratorIterable<String> values();
+public native JsIteratorIterable<String, @Nullable Object, @Nullable Object> values();
 }

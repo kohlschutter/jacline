@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.Notification;
 import java.lang.Deprecated;
 import elemental2.core.Function;
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsPackage;
 @Deprecated
 public class NotificationCenter{
 public native double checkPermission();
-public native Notification createHTMLNotification(String url);
-public native Notification createNotification(String iconUrl,String title,String body);
+public native @Nullable Notification createHTMLNotification(String url);
+public native @Nullable Notification createNotification(String iconUrl,String title,String body);
 public native void requestPermission();
-public native void requestPermission(Function callback);
+public native void requestPermission(@Nullable Function callback);
 }

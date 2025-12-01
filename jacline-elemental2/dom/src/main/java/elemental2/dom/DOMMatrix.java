@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.DOMMatrixInit;
 import java.lang.Double;
 import elemental2.core.Float32Array;
@@ -16,15 +17,15 @@ public class DOMMatrix extends DOMMatrixReadOnly{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorInitUnionType{
 @JsOverlay
-static DOMMatrix.ConstructorInitUnionType of(Object o){
+static DOMMatrix.@Nullable ConstructorInitUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -39,21 +40,21 @@ return (Object)this instanceof String;
 public static native DOMMatrix fromFloat32Array(Float32Array array32);
 public static native DOMMatrix fromFloat64Array(Float64Array array64);
 public static native DOMMatrix fromMatrix(DOMMatrixInit other);
-public DOMMatrix(DOMMatrix.ConstructorInitUnionType init){
+public DOMMatrix(DOMMatrix.@Nullable ConstructorInitUnionType init){
 // This super call is here only for the code to compile; it is never executed.
-super((DOMMatrixReadOnly.ConstructorInitUnionType)null);
+super((DOMMatrixReadOnly.@Nullable ConstructorInitUnionType)null);
 }
 public DOMMatrix(JsArray<Double> init){
 // This super call is here only for the code to compile; it is never executed.
-super((DOMMatrixReadOnly.ConstructorInitUnionType)null);
+super((DOMMatrixReadOnly.@Nullable ConstructorInitUnionType)null);
 }
 public DOMMatrix(String init){
 // This super call is here only for the code to compile; it is never executed.
-super((DOMMatrixReadOnly.ConstructorInitUnionType)null);
+super((DOMMatrixReadOnly.@Nullable ConstructorInitUnionType)null);
 }
 public DOMMatrix(double[] init){
 // This super call is here only for the code to compile; it is never executed.
-super((DOMMatrixReadOnly.ConstructorInitUnionType)null);
+super((DOMMatrixReadOnly.@Nullable ConstructorInitUnionType)null);
 }
 public native DOMMatrix invertSelf();
 public native DOMMatrix multiplySelf(DOMMatrixInit other);

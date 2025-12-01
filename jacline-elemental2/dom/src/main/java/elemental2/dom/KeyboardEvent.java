@@ -1,6 +1,7 @@
 package elemental2.dom;
 import elemental2.dom.KeyboardEventInit;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.Window;
 import java.lang.String;
 import jsinterop.annotations.JsType;
@@ -25,22 +26,22 @@ public int location;
 public boolean metaKey;
 public boolean repeat;
 public boolean shiftKey;
-public KeyboardEvent(String type,KeyboardEventInit eventInitDict){
+public KeyboardEvent(String type,@Nullable KeyboardEventInit eventInitDict){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(UIEventInit)null);
+super((String)null,(@Nullable UIEventInit)null);
 }
 public KeyboardEvent(String type){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(UIEventInit)null);
+super((String)null,(@Nullable UIEventInit)null);
 }
 public native boolean getModifierState(String keyIdentifierArg);
-public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,Window viewArg,String keyArg,int locationArg,boolean ctrlKey,boolean altKey,boolean shiftKey,boolean metaKey);
-public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,Window viewArg,String keyArg,int locationArg,boolean ctrlKey,boolean altKey,boolean shiftKey);
-public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,Window viewArg,String keyArg,int locationArg,boolean ctrlKey,boolean altKey);
-public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,Window viewArg,String keyArg,int locationArg,boolean ctrlKey);
-public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,Window viewArg,String keyArg,int locationArg);
-public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,Window viewArg,String keyArg);
-public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,Window viewArg);
+public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,@Nullable Window viewArg,String keyArg,int locationArg,boolean ctrlKey,boolean altKey,boolean shiftKey,boolean metaKey);
+public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,@Nullable Window viewArg,String keyArg,int locationArg,boolean ctrlKey,boolean altKey,boolean shiftKey);
+public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,@Nullable Window viewArg,String keyArg,int locationArg,boolean ctrlKey,boolean altKey);
+public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,@Nullable Window viewArg,String keyArg,int locationArg,boolean ctrlKey);
+public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,@Nullable Window viewArg,String keyArg,int locationArg);
+public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,@Nullable Window viewArg,String keyArg);
+public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,@Nullable Window viewArg);
 public native void initKeyboardEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg);
 public native void initKeyboardEvent(String typeArg,boolean canBubbleArg);
 public native void initKeyboardEvent(String typeArg);

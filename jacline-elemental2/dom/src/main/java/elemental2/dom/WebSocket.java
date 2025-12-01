@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.URL;
 import elemental2.dom.Event;
 import elemental2.dom.Blob;
@@ -160,10 +161,10 @@ public static final int CONNECTING=WebSocket__Constants.CONNECTING;
 public static final int OPEN=WebSocket__Constants.OPEN;
 public String binaryType;
 public int bufferedAmount;
-public WebSocket.OncloseFn onclose;
-public WebSocket.OnerrorFn onerror;
-public WebSocket.OnmessageFn onmessage;
-public WebSocket.OnopenFn onopen;
+public WebSocket.@Nullable OncloseFn onclose;
+public WebSocket.@Nullable OnerrorFn onerror;
+public WebSocket.@Nullable OnmessageFn onmessage;
+public WebSocket.@Nullable OnopenFn onopen;
 public int readyState;
 public String url;
 public WebSocket(WebSocket.ConstructorUrlUnionType url,WebSocket.ConstructorProtocolUnionType protocol){}

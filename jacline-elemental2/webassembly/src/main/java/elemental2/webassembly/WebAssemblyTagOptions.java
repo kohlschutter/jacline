@@ -1,5 +1,6 @@
 package elemental2.webassembly;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.String;
@@ -14,11 +15,11 @@ static WebAssemblyTagOptions create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-JsArray<String> getParameters();
+@Nullable JsArray<String> getParameters();
 @JsProperty
-void setParameters(JsArray<String> parameters);
+void setParameters(@Nullable JsArray<String> parameters);
 @JsOverlay
-default void setParameters(String[] parameters){
-setParameters(Js.<JsArray<String>>uncheckedCast(parameters));
+default void setParameters(String@Nullable [] parameters){
+setParameters(Js.<@Nullable JsArray<String>>uncheckedCast(parameters));
 }
 }

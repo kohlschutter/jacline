@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.Element;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.CSSInterface;
 import elemental2.dom.VisualViewport;
 import elemental2.dom.HTMLVideoElement;
@@ -188,20 +189,20 @@ return (Object)this instanceof URL;
 }
 @JsFunction
 public interface OpenDatabaseCallbackFn{
-Object onInvoke(Database p0);
+@Nullable Object onInvoke(@Nullable Database p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OpenDatabaseCallbackUnionType{
 @JsOverlay
-static DomGlobal.OpenDatabaseCallbackUnionType of(Object o){
+static DomGlobal.@Nullable OpenDatabaseCallbackUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default DatabaseCallback asDatabaseCallback(){
+default @Nullable DatabaseCallback asDatabaseCallback(){
 return Js.cast(this);
 }
 @JsOverlay
-default DomGlobal.OpenDatabaseCallbackFn asOpenDatabaseCallbackFn(){
+default DomGlobal.@Nullable OpenDatabaseCallbackFn asOpenDatabaseCallbackFn(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -243,7 +244,7 @@ static DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType of(Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -288,11 +289,11 @@ return (Object)this instanceof Double;
 }
 @JsFunction
 public interface SetImmediateCallbackFn{
-Object onInvoke();
+@Nullable Object onInvoke();
 }
 @JsFunction
 public interface SetIntervalCallbackFn{
-void onInvoke(Object... p0);
+void onInvoke(@Nullable Object... p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface SetIntervalCallbackUnionType{
@@ -327,7 +328,7 @@ return (Object)this instanceof TrustedScript;
 }
 @JsFunction
 public interface SetTimeoutCallbackFn{
-void onInvoke(Object... p0);
+void onInvoke(@Nullable Object... p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface SetTimeoutCallbackUnionType{
@@ -360,8 +361,8 @@ default boolean isTrustedScript(){
 return (Object)this instanceof TrustedScript;
 }
 }
-public static CSSInterface CSS;
-public static ApplicationCache applicationCache;
+public static @Nullable CSSInterface CSS;
+public static @Nullable ApplicationCache applicationCache;
 public static Console console;
 public static CustomElementRegistry customElements;
 @JsOverlay
@@ -384,7 +385,7 @@ public static TrustedTypePolicyFactory trustedTypes;
 @JsOverlay
 public static final VisualViewport visualViewport=DomGlobal__Constants.visualViewport;
 public static Window window;
-public static native void alert(Object message);
+public static native void alert(@Nullable Object message);
 public static native String atob(String encodedData);
 public static native String btoa(String stringToEncode);
 public static native void cancelAnimationFrame(int handle);
@@ -392,9 +393,9 @@ public static native void cancelIdleCallback(int handle);
 public static native void cancelRequestAnimationFrame(double handle);
 public static native void clearImmediate();
 public static native void clearImmediate(double immediateID);
-public static native void clearInterval(double intervalID);
-public static native void clearTimeout(double timeoutID);
-public static native boolean confirm(Object message);
+public static native void clearInterval(@Nullable Double intervalID);
+public static native void clearTimeout(@Nullable Double timeoutID);
+public static native boolean confirm(@Nullable Object message);
 @JsOverlay
 public static final Promise<ImageBitmap> createImageBitmap(Blob image,DomGlobal.CreateImageBitmapSxOrOptionsUnionType sxOrOptions,double sy,double sw,double sh,ImageBitmapOptions options){
 return createImageBitmap(Js.<DomGlobal.CreateImageBitmapImageUnionType>uncheckedCast(image),sxOrOptions,sy,sw,sh,options);
@@ -889,7 +890,7 @@ return createImageBitmap(Js.<DomGlobal.CreateImageBitmapImageUnionType>unchecked
 public static final Promise<ImageBitmap> createImageBitmap(OffscreenCanvas image){
 return createImageBitmap(Js.<DomGlobal.CreateImageBitmapImageUnionType>uncheckedCast(image));
 }
-public static native void dump(Object x);
+public static native void dump(@Nullable Object x);
 public static native Promise<Response> fetch(DomGlobal.FetchInputUnionType input,RequestInit init);
 public static native Promise<Response> fetch(DomGlobal.FetchInputUnionType input);
 @JsOverlay
@@ -916,7 +917,8 @@ return fetch(Js.<DomGlobal.FetchInputUnionType>uncheckedCast(input),init);
 public static final Promise<Response> fetch(URL input){
 return fetch(Js.<DomGlobal.FetchInputUnionType>uncheckedCast(input));
 }
-public static native boolean hasOwnProperty(Object propertyName);
+public static native boolean hasOwnProperty(@Nullable Object propertyName);
+public static native void importScripts();
 public static native void importScripts(DomGlobal.ImportScriptsUrlsUnionType... urls);
 @JsOverlay
 public static final void importScripts(String... urls){
@@ -932,106 +934,106 @@ importScripts(Js.<DomGlobal.ImportScriptsUrlsUnionType[]>uncheckedCast(urls));
 }
 @JsOverlay
 public static final Database openDatabase(String name,String version,String description,int size,DatabaseCallback callback){
-return openDatabase(name,version,description,size,Js.<DomGlobal.OpenDatabaseCallbackUnionType>uncheckedCast(callback));
+return openDatabase(name,version,description,size,Js.<DomGlobal.@Nullable OpenDatabaseCallbackUnionType>uncheckedCast(callback));
 }
 @JsOverlay
 public static final Database openDatabase(String name,String version,String description,int size,DomGlobal.OpenDatabaseCallbackFn callback){
-return openDatabase(name,version,description,size,Js.<DomGlobal.OpenDatabaseCallbackUnionType>uncheckedCast(callback));
+return openDatabase(name,version,description,size,Js.<DomGlobal.@Nullable OpenDatabaseCallbackUnionType>uncheckedCast(callback));
 }
-public static native Database openDatabase(String name,String version,String description,int size,DomGlobal.OpenDatabaseCallbackUnionType callback);
+public static native Database openDatabase(String name,String version,String description,int size,DomGlobal.@Nullable OpenDatabaseCallbackUnionType callback);
 public static native Database openDatabase(String name,String version,String description,int size);
 @JsOverlay
-public static final void postMessage(Object message,JsArray<Transferable> targetOriginOrOptionsOrTransfer,JsArray<Object> targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,JsArray<Transferable> targetOriginOrOptionsOrTransfer,JsArray<@Nullable Object> targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer),Js.<DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,JsArray<Transferable> targetOriginOrOptionsOrTransfer,DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,JsArray<Transferable> targetOriginOrOptionsOrTransfer,DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer),targetOriginOrPortsOrTransfer);
 }
 @JsOverlay
-public static final void postMessage(Object message,JsArray<Transferable> targetOriginOrOptionsOrTransfer,String targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,JsArray<Transferable> targetOriginOrOptionsOrTransfer,String targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer),Js.<DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,JsArray<Transferable> targetOriginOrOptionsOrTransfer){
+public static final void postMessage(@Nullable Object message,JsArray<Transferable> targetOriginOrOptionsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType targetOriginOrOptionsOrTransfer,JsArray<Object> targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType targetOriginOrOptionsOrTransfer,JsArray<@Nullable Object> targetOriginOrPortsOrTransfer){
 postMessage(message,targetOriginOrOptionsOrTransfer,Js.<DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType targetOriginOrOptionsOrTransfer,Object[] targetOriginOrPortsOrTransfer){
-postMessage(message,targetOriginOrOptionsOrTransfer,Js.<JsArray<Object>>uncheckedCast(targetOriginOrPortsOrTransfer));
+public static final void postMessage(@Nullable Object message,DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType targetOriginOrOptionsOrTransfer,@Nullable Object[] targetOriginOrPortsOrTransfer){
+postMessage(message,targetOriginOrOptionsOrTransfer,Js.<JsArray<@Nullable Object>>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
-public static native void postMessage(Object message,DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType targetOriginOrOptionsOrTransfer,DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType targetOriginOrPortsOrTransfer);
+public static native void postMessage(@Nullable Object message,DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType targetOriginOrOptionsOrTransfer,DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType targetOriginOrPortsOrTransfer);
 @JsOverlay
-public static final void postMessage(Object message,DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType targetOriginOrOptionsOrTransfer,String targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType targetOriginOrOptionsOrTransfer,String targetOriginOrPortsOrTransfer){
 postMessage(message,targetOriginOrOptionsOrTransfer,Js.<DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
-public static native void postMessage(Object message,DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType targetOriginOrOptionsOrTransfer);
+public static native void postMessage(@Nullable Object message,DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType targetOriginOrOptionsOrTransfer);
 @JsOverlay
-public static final void postMessage(Object message,String targetOriginOrOptionsOrTransfer,JsArray<Object> targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,String targetOriginOrOptionsOrTransfer,JsArray<@Nullable Object> targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer),Js.<DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,String targetOriginOrOptionsOrTransfer,Object[] targetOriginOrPortsOrTransfer){
-postMessage(message,targetOriginOrOptionsOrTransfer,Js.<JsArray<Object>>uncheckedCast(targetOriginOrPortsOrTransfer));
+public static final void postMessage(@Nullable Object message,String targetOriginOrOptionsOrTransfer,@Nullable Object[] targetOriginOrPortsOrTransfer){
+postMessage(message,targetOriginOrOptionsOrTransfer,Js.<JsArray<@Nullable Object>>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,String targetOriginOrOptionsOrTransfer,DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,String targetOriginOrOptionsOrTransfer,DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer),targetOriginOrPortsOrTransfer);
 }
 @JsOverlay
-public static final void postMessage(Object message,String targetOriginOrOptionsOrTransfer,String targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,String targetOriginOrOptionsOrTransfer,String targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer),Js.<DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,String targetOriginOrOptionsOrTransfer){
+public static final void postMessage(@Nullable Object message,String targetOriginOrOptionsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,StructuredSerializeOptions targetOriginOrOptionsOrTransfer,JsArray<Object> targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,StructuredSerializeOptions targetOriginOrOptionsOrTransfer,JsArray<@Nullable Object> targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer),Js.<DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,StructuredSerializeOptions targetOriginOrOptionsOrTransfer,Object[] targetOriginOrPortsOrTransfer){
-postMessage(message,targetOriginOrOptionsOrTransfer,Js.<JsArray<Object>>uncheckedCast(targetOriginOrPortsOrTransfer));
+public static final void postMessage(@Nullable Object message,StructuredSerializeOptions targetOriginOrOptionsOrTransfer,@Nullable Object[] targetOriginOrPortsOrTransfer){
+postMessage(message,targetOriginOrOptionsOrTransfer,Js.<JsArray<@Nullable Object>>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,StructuredSerializeOptions targetOriginOrOptionsOrTransfer,DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,StructuredSerializeOptions targetOriginOrOptionsOrTransfer,DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer),targetOriginOrPortsOrTransfer);
 }
 @JsOverlay
-public static final void postMessage(Object message,StructuredSerializeOptions targetOriginOrOptionsOrTransfer,String targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,StructuredSerializeOptions targetOriginOrOptionsOrTransfer,String targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer),Js.<DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,StructuredSerializeOptions targetOriginOrOptionsOrTransfer){
+public static final void postMessage(@Nullable Object message,StructuredSerializeOptions targetOriginOrOptionsOrTransfer){
 postMessage(message,Js.<DomGlobal.PostMessageTargetOriginOrOptionsOrTransferUnionType>uncheckedCast(targetOriginOrOptionsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,Transferable[] targetOriginOrOptionsOrTransfer,Object[] targetOriginOrPortsOrTransfer){
-postMessage(message,Js.<JsArray<Transferable>>uncheckedCast(targetOriginOrOptionsOrTransfer),Js.<JsArray<Object>>uncheckedCast(targetOriginOrPortsOrTransfer));
+public static final void postMessage(@Nullable Object message,Transferable[] targetOriginOrOptionsOrTransfer,@Nullable Object[] targetOriginOrPortsOrTransfer){
+postMessage(message,Js.<JsArray<Transferable>>uncheckedCast(targetOriginOrOptionsOrTransfer),Js.<JsArray<@Nullable Object>>uncheckedCast(targetOriginOrPortsOrTransfer));
 }
 @JsOverlay
-public static final void postMessage(Object message,Transferable[] targetOriginOrOptionsOrTransfer,DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,Transferable[] targetOriginOrOptionsOrTransfer,DomGlobal.PostMessageTargetOriginOrPortsOrTransferUnionType targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<JsArray<Transferable>>uncheckedCast(targetOriginOrOptionsOrTransfer),targetOriginOrPortsOrTransfer);
 }
 @JsOverlay
-public static final void postMessage(Object message,Transferable[] targetOriginOrOptionsOrTransfer,String targetOriginOrPortsOrTransfer){
+public static final void postMessage(@Nullable Object message,Transferable[] targetOriginOrOptionsOrTransfer,String targetOriginOrPortsOrTransfer){
 postMessage(message,Js.<JsArray<Transferable>>uncheckedCast(targetOriginOrOptionsOrTransfer),targetOriginOrPortsOrTransfer);
 }
 @JsOverlay
-public static final void postMessage(Object message,Transferable[] targetOriginOrOptionsOrTransfer){
+public static final void postMessage(@Nullable Object message,Transferable[] targetOriginOrOptionsOrTransfer){
 postMessage(message,Js.<JsArray<Transferable>>uncheckedCast(targetOriginOrOptionsOrTransfer));
 }
-public static native void postMessage(Object message);
-public static native String prompt(String message,String value);
-public static native String prompt(String message);
+public static native void postMessage(@Nullable Object message);
+public static native @Nullable String prompt(String message,String value);
+public static native @Nullable String prompt(String message);
 public static native void queueMicrotask(DomGlobal.QueueMicrotaskCallbackFn callback);
-public static native void reportError(Object error);
-public static native int requestAnimationFrame(FrameRequestCallback callback,Element element);
+public static native void reportError(@Nullable Object error);
+public static native int requestAnimationFrame(FrameRequestCallback callback,@Nullable Element element);
 public static native int requestAnimationFrame(FrameRequestCallback callback);
 @JsOverlay
 public static final int requestIdleCallback(DomGlobal.RequestIdleCallbackCallbackFn callback,IdleCallbackOptions options){
@@ -1043,19 +1045,19 @@ public static final int requestIdleCallback(DomGlobal.RequestIdleCallbackCallbac
 return requestIdleCallback(callback,Js.<DomGlobal.RequestIdleCallbackOptionsUnionType>uncheckedCast(options));
 }
 public static native int requestIdleCallback(DomGlobal.RequestIdleCallbackCallbackFn callback);
-public static native double setImmediate(DomGlobal.SetImmediateCallbackFn callback,Object... callbackParams);
+public static native double setImmediate(DomGlobal.SetImmediateCallbackFn callback,@Nullable Object... callbackParams);
 @JsOverlay
-public static final double setInterval(DomGlobal.SetIntervalCallbackFn callback,double delay,Object... callbackParams){
+public static final double setInterval(DomGlobal.SetIntervalCallbackFn callback,double delay,@Nullable Object... callbackParams){
 return setInterval(Js.<DomGlobal.SetIntervalCallbackUnionType>uncheckedCast(callback),delay,callbackParams);
 }
 @JsOverlay
 public static final double setInterval(DomGlobal.SetIntervalCallbackFn callback){
 return setInterval(Js.<DomGlobal.SetIntervalCallbackUnionType>uncheckedCast(callback));
 }
-public static native double setInterval(DomGlobal.SetIntervalCallbackUnionType callback,double delay,Object... callbackParams);
+public static native double setInterval(DomGlobal.SetIntervalCallbackUnionType callback,double delay,@Nullable Object... callbackParams);
 public static native double setInterval(DomGlobal.SetIntervalCallbackUnionType callback);
 @JsOverlay
-public static final double setInterval(String callback,double delay,Object... callbackParams){
+public static final double setInterval(String callback,double delay,@Nullable Object... callbackParams){
 return setInterval(Js.<DomGlobal.SetIntervalCallbackUnionType>uncheckedCast(callback),delay,callbackParams);
 }
 @JsOverlay
@@ -1063,7 +1065,7 @@ public static final double setInterval(String callback){
 return setInterval(Js.<DomGlobal.SetIntervalCallbackUnionType>uncheckedCast(callback));
 }
 @JsOverlay
-public static final double setInterval(TrustedScript callback,double delay,Object... callbackParams){
+public static final double setInterval(TrustedScript callback,double delay,@Nullable Object... callbackParams){
 return setInterval(Js.<DomGlobal.SetIntervalCallbackUnionType>uncheckedCast(callback),delay,callbackParams);
 }
 @JsOverlay
@@ -1071,17 +1073,17 @@ public static final double setInterval(TrustedScript callback){
 return setInterval(Js.<DomGlobal.SetIntervalCallbackUnionType>uncheckedCast(callback));
 }
 @JsOverlay
-public static final double setTimeout(DomGlobal.SetTimeoutCallbackFn callback,double delay,Object... callbackParams){
+public static final double setTimeout(DomGlobal.SetTimeoutCallbackFn callback,double delay,@Nullable Object... callbackParams){
 return setTimeout(Js.<DomGlobal.SetTimeoutCallbackUnionType>uncheckedCast(callback),delay,callbackParams);
 }
 @JsOverlay
 public static final double setTimeout(DomGlobal.SetTimeoutCallbackFn callback){
 return setTimeout(Js.<DomGlobal.SetTimeoutCallbackUnionType>uncheckedCast(callback));
 }
-public static native double setTimeout(DomGlobal.SetTimeoutCallbackUnionType callback,double delay,Object... callbackParams);
+public static native double setTimeout(DomGlobal.SetTimeoutCallbackUnionType callback,double delay,@Nullable Object... callbackParams);
 public static native double setTimeout(DomGlobal.SetTimeoutCallbackUnionType callback);
 @JsOverlay
-public static final double setTimeout(String callback,double delay,Object... callbackParams){
+public static final double setTimeout(String callback,double delay,@Nullable Object... callbackParams){
 return setTimeout(Js.<DomGlobal.SetTimeoutCallbackUnionType>uncheckedCast(callback),delay,callbackParams);
 }
 @JsOverlay
@@ -1089,13 +1091,13 @@ public static final double setTimeout(String callback){
 return setTimeout(Js.<DomGlobal.SetTimeoutCallbackUnionType>uncheckedCast(callback));
 }
 @JsOverlay
-public static final double setTimeout(TrustedScript callback,double delay,Object... callbackParams){
+public static final double setTimeout(TrustedScript callback,double delay,@Nullable Object... callbackParams){
 return setTimeout(Js.<DomGlobal.SetTimeoutCallbackUnionType>uncheckedCast(callback),delay,callbackParams);
 }
 @JsOverlay
 public static final double setTimeout(TrustedScript callback){
 return setTimeout(Js.<DomGlobal.SetTimeoutCallbackUnionType>uncheckedCast(callback));
 }
-public static native Object structuredClone(Object value,StructuredSerializeOptions options);
-public static native Object structuredClone(Object value);
+public static native @Nullable Object structuredClone(@Nullable Object value,StructuredSerializeOptions options);
+public static native @Nullable Object structuredClone(@Nullable Object value);
 }

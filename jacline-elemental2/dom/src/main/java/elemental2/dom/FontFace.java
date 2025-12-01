@@ -1,32 +1,33 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
+import elemental2.dom.FontFaceDescriptors;
+import elemental2.promise.Promise;
+import elemental2.core.ArrayBuffer;
 import jsinterop.base.Js;
 import elemental2.core.ArrayBufferView;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
 import java.lang.String;
-import elemental2.dom.FontFaceDescriptors;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
-import elemental2.promise.Promise;
-import elemental2.core.ArrayBuffer;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class FontFace{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorSourceUnionType{
 @JsOverlay
-static FontFace.ConstructorSourceUnionType of(Object o){
+static FontFace.@Nullable ConstructorSourceUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default ArrayBufferView asArrayBufferView(){
+default @Nullable ArrayBufferView asArrayBufferView(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -60,8 +61,8 @@ public FontFace(String fontFamily,ArrayBuffer source,FontFaceDescriptors descrip
 public FontFace(String fontFamily,ArrayBuffer source){}
 public FontFace(String fontFamily,ArrayBufferView source,FontFaceDescriptors descriptors){}
 public FontFace(String fontFamily,ArrayBufferView source){}
-public FontFace(String fontFamily,FontFace.ConstructorSourceUnionType source,FontFaceDescriptors descriptors){}
-public FontFace(String fontFamily,FontFace.ConstructorSourceUnionType source){}
+public FontFace(String fontFamily,FontFace.@Nullable ConstructorSourceUnionType source,FontFaceDescriptors descriptors){}
+public FontFace(String fontFamily,FontFace.@Nullable ConstructorSourceUnionType source){}
 public FontFace(String fontFamily,String source,FontFaceDescriptors descriptors){}
 public FontFace(String fontFamily,String source){}
 public native Promise<FontFace> load();

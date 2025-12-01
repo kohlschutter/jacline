@@ -4,7 +4,9 @@ import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,name = "Symbol",namespace = JsPackage.GLOBAL)
  class Symbol__Constants{
+ static Object asyncDispose;
  static Object asyncIterator;
+ static Object dispose;
  static Object hasInstance;
  static Object isConcatSpreadable;
  static Object iterator;

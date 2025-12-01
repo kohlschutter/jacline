@@ -1,4 +1,5 @@
 package elemental2.webcrypto.webcrypto;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.Uint32Array;
 import elemental2.core.BigUint64Array;
 import elemental2.core.Int16Array;
@@ -214,8 +215,8 @@ default Crypto.GetRandomValuesUnionType getRandomValues(Uint8ClampedArray typedA
 return getRandomValues(Js.<Crypto.GetRandomValuesTypedArrayUnionType>uncheckedCast(typedArray));
 }
 @JsProperty
-SubtleCrypto getSubtle();
+@Nullable SubtleCrypto getSubtle();
 String randomUUID();
 @JsProperty
-void setSubtle(SubtleCrypto subtle);
+void setSubtle(@Nullable SubtleCrypto subtle);
 }

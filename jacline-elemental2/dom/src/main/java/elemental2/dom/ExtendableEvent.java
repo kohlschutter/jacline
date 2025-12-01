@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.promise.IThenable;
 import elemental2.dom.ExtendableEventInit;
 import elemental2.dom.Event;
@@ -9,14 +10,14 @@ import jsinterop.annotations.JsPackage;
 import elemental2.dom.EventInit;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class ExtendableEvent extends Event{
-public ServiceWorker activeWorker;
+public @Nullable ServiceWorker activeWorker;
 public ExtendableEvent(String type,ExtendableEventInit eventInitDict){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 public ExtendableEvent(String type){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
-public native void waitUntil(IThenable f);
+public native void waitUntil(@Nullable IThenable f);
 }

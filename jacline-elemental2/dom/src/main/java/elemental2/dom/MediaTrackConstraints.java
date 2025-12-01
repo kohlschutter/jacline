@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.MediaTrackConstraintSet;
 import jsinterop.annotations.JsOverlay;
@@ -14,11 +15,11 @@ static MediaTrackConstraints create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-JsArray<MediaTrackConstraintSet> getAdvanced();
+@Nullable JsArray<MediaTrackConstraintSet> getAdvanced();
 @JsProperty
-void setAdvanced(JsArray<MediaTrackConstraintSet> advanced);
+void setAdvanced(@Nullable JsArray<MediaTrackConstraintSet> advanced);
 @JsOverlay
-default void setAdvanced(MediaTrackConstraintSet[] advanced){
-setAdvanced(Js.<JsArray<MediaTrackConstraintSet>>uncheckedCast(advanced));
+default void setAdvanced(MediaTrackConstraintSet@Nullable [] advanced){
+setAdvanced(Js.<@Nullable JsArray<MediaTrackConstraintSet>>uncheckedCast(advanced));
 }
 }

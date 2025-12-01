@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.Void;
 import elemental2.dom.TransformStream;
 import elemental2.promise.Promise;
@@ -12,7 +13,7 @@ import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import elemental2.dom.WritableStreamSink;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public class WritableStream<VALUE>{
+public class WritableStream<VALUE extends @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorQueuingStrategyUnionType{
 @JsOverlay
@@ -47,7 +48,7 @@ public WritableStream(WritableStreamSink<VALUE> underlyingSink,WritableStream.Co
 public WritableStream(WritableStreamSink<VALUE> underlyingSink,CountQueuingStrategy queuingStrategy){}
 public WritableStream(WritableStreamSink<VALUE> underlyingSink,TransformStream.TransformStreamWritableStrategyType queuingStrategy){}
 public WritableStream(WritableStreamSink<VALUE> underlyingSink){}
-public native Promise<Void> abort(Object reason);
+public native Promise<Void> abort(@Nullable Object reason);
 public native Promise<Void> close();
 public native WritableStreamDefaultWriter<VALUE> getWriter();
 }

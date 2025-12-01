@@ -1,5 +1,6 @@
 package elemental2.core;
 import elemental2.core.JsError;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.JsIterable;
 import java.lang.Object;
 import java.lang.String;
@@ -10,5 +11,5 @@ import elemental2.core.JsArray;
 public class AggregateError extends JsError{
 public JsArray<JsError> errors;
 public String message;
-public AggregateError(JsIterable<Object> errors,String message){}
+public AggregateError(JsIterable<@Nullable Object, @Nullable Object, @Nullable Object> errors,String message){}
 }

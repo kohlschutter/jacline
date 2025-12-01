@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.PerformanceMeasure;
 import elemental2.dom.Event;
 import elemental2.core.JsArray;
@@ -9,6 +10,7 @@ import jsinterop.base.Js;
 import elemental2.dom.PerformanceMark;
 import elemental2.dom.PerformanceEntry;
 import jsinterop.annotations.JsFunction;
+import elemental2.dom.EventCounts;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
 import java.lang.String;
@@ -20,15 +22,15 @@ public class Performance{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface MeasureStartOrMeasureOptionsUnionType{
 @JsOverlay
-static Performance.MeasureStartOrMeasureOptionsUnionType of(Object o){
+static Performance.@Nullable MeasureStartOrMeasureOptionsUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default PerformanceMeasureOptions asPerformanceMeasureOptions(){
+default @Nullable PerformanceMeasureOptions asPerformanceMeasureOptions(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -38,12 +40,13 @@ return (Object)this instanceof String;
 }
 @JsFunction
 public interface OnresourcetimingbufferfullFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
-public PerformanceNavigation navigation;
-public Performance.OnresourcetimingbufferfullFn onresourcetimingbufferfull;
+public EventCounts eventCounts;
+public @Nullable PerformanceNavigation navigation;
+public Performance.@Nullable OnresourcetimingbufferfullFn onresourcetimingbufferfull;
 public double timeOrigin;
-public PerformanceTiming timing;
+public @Nullable PerformanceTiming timing;
 public native void clearMarks();
 public native void clearMarks(String markName);
 public native void clearMeasures();
@@ -53,27 +56,27 @@ public native JsArray<PerformanceEntry> getEntries();
 public native JsArray<PerformanceEntry> getEntriesByName(String name,String entryType);
 public native JsArray<PerformanceEntry> getEntriesByName(String name);
 public native JsArray<PerformanceEntry> getEntriesByType(String entryType);
-public native PerformanceMark mark(String markName,PerformanceMarkOptions markOptions);
-public native PerformanceMark mark(String markName);
-public native PerformanceMeasure measure(String measureName,Performance.MeasureStartOrMeasureOptionsUnionType startOrMeasureOptions,String endMark);
-public native PerformanceMeasure measure(String measureName,Performance.MeasureStartOrMeasureOptionsUnionType startOrMeasureOptions);
+public native @Nullable PerformanceMark mark(String markName,@Nullable PerformanceMarkOptions markOptions);
+public native @Nullable PerformanceMark mark(String markName);
+public native @Nullable PerformanceMeasure measure(String measureName,Performance.@Nullable MeasureStartOrMeasureOptionsUnionType startOrMeasureOptions,String endMark);
+public native @Nullable PerformanceMeasure measure(String measureName,Performance.@Nullable MeasureStartOrMeasureOptionsUnionType startOrMeasureOptions);
 @JsOverlay
-public final PerformanceMeasure measure(String measureName,PerformanceMeasureOptions startOrMeasureOptions,String endMark){
-return measure(measureName,Js.<Performance.MeasureStartOrMeasureOptionsUnionType>uncheckedCast(startOrMeasureOptions),endMark);
+public final @Nullable PerformanceMeasure measure(String measureName,PerformanceMeasureOptions startOrMeasureOptions,String endMark){
+return measure(measureName,Js.<Performance.@Nullable MeasureStartOrMeasureOptionsUnionType>uncheckedCast(startOrMeasureOptions),endMark);
 }
 @JsOverlay
-public final PerformanceMeasure measure(String measureName,PerformanceMeasureOptions startOrMeasureOptions){
-return measure(measureName,Js.<Performance.MeasureStartOrMeasureOptionsUnionType>uncheckedCast(startOrMeasureOptions));
+public final @Nullable PerformanceMeasure measure(String measureName,PerformanceMeasureOptions startOrMeasureOptions){
+return measure(measureName,Js.<Performance.@Nullable MeasureStartOrMeasureOptionsUnionType>uncheckedCast(startOrMeasureOptions));
 }
 @JsOverlay
-public final PerformanceMeasure measure(String measureName,String startOrMeasureOptions,String endMark){
-return measure(measureName,Js.<Performance.MeasureStartOrMeasureOptionsUnionType>uncheckedCast(startOrMeasureOptions),endMark);
+public final @Nullable PerformanceMeasure measure(String measureName,String startOrMeasureOptions,String endMark){
+return measure(measureName,Js.<Performance.@Nullable MeasureStartOrMeasureOptionsUnionType>uncheckedCast(startOrMeasureOptions),endMark);
 }
 @JsOverlay
-public final PerformanceMeasure measure(String measureName,String startOrMeasureOptions){
-return measure(measureName,Js.<Performance.MeasureStartOrMeasureOptionsUnionType>uncheckedCast(startOrMeasureOptions));
+public final @Nullable PerformanceMeasure measure(String measureName,String startOrMeasureOptions){
+return measure(measureName,Js.<Performance.@Nullable MeasureStartOrMeasureOptionsUnionType>uncheckedCast(startOrMeasureOptions));
 }
-public native PerformanceMeasure measure(String measureName);
+public native @Nullable PerformanceMeasure measure(String measureName);
 public native double now();
 public native void setResourceTimingBufferSize(int maxSize);
 }

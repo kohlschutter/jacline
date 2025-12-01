@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.CSSStyleDeclaration;
 import jsinterop.annotations.JsOverlay;
 import java.lang.String;
@@ -22,8 +23,8 @@ public static final int STYLE_RULE=CSSRule__Constants.STYLE_RULE;
 @JsOverlay
 public static final int UNKNOWN_RULE=CSSRule__Constants.UNKNOWN_RULE;
 public String cssText;
-public CSSRule parentRule;
-public CSSStyleSheet parentStyleSheet;
-public CSSStyleDeclaration style;
+public @Nullable CSSRule parentRule;
+public @Nullable CSSStyleSheet parentStyleSheet;
+public @Nullable CSSStyleDeclaration style;
 public int type;
 }

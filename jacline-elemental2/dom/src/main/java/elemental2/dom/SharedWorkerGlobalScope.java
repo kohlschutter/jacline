@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsFunction;
 import elemental2.dom.WorkerGlobalScope;
@@ -11,14 +12,14 @@ import elemental2.dom.MessageEvent;
 public interface SharedWorkerGlobalScope extends WorkerGlobalScope{
 @JsFunction
 public interface OnconnectFn{
-Object onInvoke(MessageEvent p0);
+@Nullable Object onInvoke(MessageEvent p0);
 }
 @JsProperty
 String getName();
 @JsProperty
-SharedWorkerGlobalScope.OnconnectFn getOnconnect();
+SharedWorkerGlobalScope.@Nullable OnconnectFn getOnconnect();
 @JsProperty
 void setName(String name);
 @JsProperty
-void setOnconnect(SharedWorkerGlobalScope.OnconnectFn onconnect);
+void setOnconnect(SharedWorkerGlobalScope.@Nullable OnconnectFn onconnect);
 }

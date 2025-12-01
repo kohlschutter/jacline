@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsFunction;
@@ -12,15 +13,15 @@ import jsinterop.base.JsPropertyMap;
 public interface TrustedTypePolicyOptions{
 @JsFunction
 public interface CreateHTMLFn{
-String onInvoke(String p0,Object... p1);
+String onInvoke(String p0,@Nullable Object... p1);
 }
 @JsFunction
 public interface CreateScriptFn{
-String onInvoke(String p0,Object... p1);
+String onInvoke(String p0,@Nullable Object... p1);
 }
 @JsFunction
 public interface CreateScriptURLFn{
-String onInvoke(String p0,Object... p1);
+String onInvoke(String p0,@Nullable Object... p1);
 }
 @JsOverlay
 static TrustedTypePolicyOptions create(){

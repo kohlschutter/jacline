@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
@@ -10,7 +11,7 @@ String getId();
 @JsProperty
 String getKind();
 @JsProperty
-String getLabel();
+@Nullable String getLabel();
 @JsProperty
 boolean isFacing();
 }

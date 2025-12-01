@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.RTCSentRtpStreamStats;
 import java.lang.String;
 import jsinterop.annotations.JsType;
@@ -42,7 +43,7 @@ int getPliCount();
 @JsProperty
 double getQpSum();
 @JsProperty
-JsObject getQualityLimitationDurations();
+@Nullable JsObject getQualityLimitationDurations();
 @JsProperty
 String getQualityLimitationReason();
 @JsProperty

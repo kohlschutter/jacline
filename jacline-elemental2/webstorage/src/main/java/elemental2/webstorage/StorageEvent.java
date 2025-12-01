@@ -1,4 +1,5 @@
 package elemental2.webstorage;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.URL;
 import elemental2.webstorage.Storage;
 import elemental2.dom.Event;
@@ -36,25 +37,25 @@ return (Object)this instanceof URL;
 }
 }
 public String key;
-public String newValue;
-public String oldValue;
-public Storage storageArea;
+public @Nullable String newValue;
+public @Nullable String oldValue;
+public @Nullable Storage storageArea;
 public String url;
 public StorageEvent(String type,StorageEventInit eventInitDict){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 public StorageEvent(String type){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
-public native void initStorageEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,String keyArg,String oldValueArg,String newValueArg,StorageEvent.InitStorageEventUrlArgUnionType urlArg,Storage storageAreaArg);
+public native void initStorageEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,String keyArg,@Nullable String oldValueArg,@Nullable String newValueArg,StorageEvent.InitStorageEventUrlArgUnionType urlArg,@Nullable Storage storageAreaArg);
 @JsOverlay
-public final void initStorageEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,String keyArg,String oldValueArg,String newValueArg,String urlArg,Storage storageAreaArg){
+public final void initStorageEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,String keyArg,@Nullable String oldValueArg,@Nullable String newValueArg,String urlArg,@Nullable Storage storageAreaArg){
 initStorageEvent(typeArg,canBubbleArg,cancelableArg,keyArg,oldValueArg,newValueArg,Js.<StorageEvent.InitStorageEventUrlArgUnionType>uncheckedCast(urlArg),storageAreaArg);
 }
 @JsOverlay
-public final void initStorageEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,String keyArg,String oldValueArg,String newValueArg,URL urlArg,Storage storageAreaArg){
+public final void initStorageEvent(String typeArg,boolean canBubbleArg,boolean cancelableArg,String keyArg,@Nullable String oldValueArg,@Nullable String newValueArg,URL urlArg,@Nullable Storage storageAreaArg){
 initStorageEvent(typeArg,canBubbleArg,cancelableArg,keyArg,oldValueArg,newValueArg,Js.<StorageEvent.InitStorageEventUrlArgUnionType>uncheckedCast(urlArg),storageAreaArg);
 }
 }

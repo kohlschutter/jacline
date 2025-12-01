@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
@@ -22,7 +23,7 @@ public double m43;
 public double m44;
 public CSSMatrix(){}
 public CSSMatrix(String matrix){}
-public native CSSMatrix inverse();
+public native @Nullable CSSMatrix inverse();
 public native CSSMatrix multiply(CSSMatrix secondMatrix);
 public native CSSMatrix rotate();
 public native CSSMatrix rotate(double rotX,double rotY,double rotZ);

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.Node;
 import java.lang.String;
 import jsinterop.annotations.JsType;
@@ -8,9 +9,9 @@ import elemental2.dom.MediaList;
 public class StyleSheet{
 public boolean disabled;
 public String href;
-public MediaList media;
-public Node ownerNode;
-public StyleSheet parentStyleSheet;
+public @Nullable MediaList media;
+public @Nullable Node ownerNode;
+public @Nullable StyleSheet parentStyleSheet;
 public String title;
 public String type;
 }

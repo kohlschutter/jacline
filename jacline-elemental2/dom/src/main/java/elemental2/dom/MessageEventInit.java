@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.MessagePort;
 import elemental2.dom.Window;
 import jsinterop.base.JsPropertyMap;
@@ -13,23 +14,23 @@ import jsinterop.annotations.JsType;
 import elemental2.dom.EventInit;
 import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public interface MessageEventInit<T> extends EventInit{
+public interface MessageEventInit<T extends @Nullable Object> extends EventInit{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetSourceUnionType{
 @JsOverlay
-static MessageEventInit.GetSourceUnionType of(Object o){
+static MessageEventInit.@Nullable GetSourceUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default MessagePort asMessagePort(){
+default @Nullable MessagePort asMessagePort(){
 return Js.cast(this);
 }
 @JsOverlay
-default ServiceWorker asServiceWorker(){
+default @Nullable ServiceWorker asServiceWorker(){
 return Js.cast(this);
 }
 @JsOverlay
-default Window asWindow(){
+default @Nullable Window asWindow(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -46,7 +47,7 @@ return (Object)this instanceof Window;
 }
 }
 @JsOverlay
-static MessageEventInit create(){
+static <T extends @Nullable Object> MessageEventInit<T> create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
@@ -56,9 +57,9 @@ String getLastEventId();
 @JsProperty
 String getOrigin();
 @JsProperty
-JsArray<MessagePort> getPorts();
+JsArray<@Nullable MessagePort> getPorts();
 @JsProperty
-MessageEventInit.GetSourceUnionType getSource();
+MessageEventInit.@Nullable GetSourceUnionType getSource();
 @JsProperty
 void setData(T data);
 @JsProperty
@@ -66,23 +67,23 @@ void setLastEventId(String lastEventId);
 @JsProperty
 void setOrigin(String origin);
 @JsProperty
-void setPorts(JsArray<MessagePort> ports);
+void setPorts(JsArray<@Nullable MessagePort> ports);
 @JsOverlay
-default void setPorts(MessagePort[] ports){
-setPorts(Js.<JsArray<MessagePort>>uncheckedCast(ports));
+default void setPorts(@Nullable MessagePort[] ports){
+setPorts(Js.<JsArray<@Nullable MessagePort>>uncheckedCast(ports));
 }
 @JsProperty
-void setSource(MessageEventInit.GetSourceUnionType source);
+void setSource(MessageEventInit.@Nullable GetSourceUnionType source);
 @JsOverlay
 default void setSource(MessagePort source){
-setSource(Js.<MessageEventInit.GetSourceUnionType>uncheckedCast(source));
+setSource(Js.<MessageEventInit.@Nullable GetSourceUnionType>uncheckedCast(source));
 }
 @JsOverlay
 default void setSource(ServiceWorker source){
-setSource(Js.<MessageEventInit.GetSourceUnionType>uncheckedCast(source));
+setSource(Js.<MessageEventInit.@Nullable GetSourceUnionType>uncheckedCast(source));
 }
 @JsOverlay
 default void setSource(Window source){
-setSource(Js.<MessageEventInit.GetSourceUnionType>uncheckedCast(source));
+setSource(Js.<MessageEventInit.@Nullable GetSourceUnionType>uncheckedCast(source));
 }
 }

@@ -1,4 +1,5 @@
 package elemental2.indexeddb;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.DOMError;
 import elemental2.dom.Event;
 import elemental2.dom.DOMStringList;
@@ -39,23 +40,23 @@ return (Object)this instanceof DOMException;
 }
 @JsFunction
 public interface OnabortFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OncompleteFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnerrorFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 public IDBDatabase db;
 public IDBTransaction.ErrorUnionType error;
 public String mode;
 public DOMStringList objectStoreNames;
-public IDBTransaction.OnabortFn onabort;
-public IDBTransaction.OncompleteFn oncomplete;
-public IDBTransaction.OnerrorFn onerror;
+public IDBTransaction.@Nullable OnabortFn onabort;
+public IDBTransaction.@Nullable OncompleteFn oncomplete;
+public IDBTransaction.@Nullable OnerrorFn onerror;
 public native void abort();
 public native void commit();
 public native IDBObjectStore objectStore(String name);

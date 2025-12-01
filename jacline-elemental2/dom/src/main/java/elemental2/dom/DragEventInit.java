@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import elemental2.dom.MouseEventInit;
@@ -14,7 +15,7 @@ static DragEventInit create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-DataTransfer getDataTransfer();
+@Nullable DataTransfer getDataTransfer();
 @JsProperty
-void setDataTransfer(DataTransfer dataTransfer);
+void setDataTransfer(@Nullable DataTransfer dataTransfer);
 }

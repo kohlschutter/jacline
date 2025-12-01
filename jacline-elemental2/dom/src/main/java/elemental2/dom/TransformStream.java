@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.WritableStream;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.TransformStreamTransformer;
 import elemental2.dom.ITransformStream;
 import elemental2.dom.ReadableStream;
@@ -14,7 +15,7 @@ import java.lang.Object;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public class TransformStream<IN_VALUE, OUT_VALUE> implements ITransformStream<IN_VALUE, OUT_VALUE>{
+public class TransformStream<IN_VALUE extends @Nullable Object, OUT_VALUE extends @Nullable Object> implements ITransformStream<IN_VALUE, OUT_VALUE>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorReadableStrategyUnionType{
 @JsOverlay
@@ -73,7 +74,7 @@ return (Object)this instanceof CountQueuingStrategy;
 public interface TransformStreamWritableStrategyType{
 @JsFunction
 public interface SizeFn{
-double onInvoke(Object p0);
+double onInvoke(@Nullable Object p0);
 }
 @JsOverlay
 static TransformStream.TransformStreamWritableStrategyType create(){

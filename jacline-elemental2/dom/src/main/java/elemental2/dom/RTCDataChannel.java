@@ -1,5 +1,7 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.RTCErrorEvent;
+import java.lang.Double;
 import elemental2.dom.Event;
 import elemental2.dom.Blob;
 import elemental2.core.ArrayBuffer;
@@ -18,27 +20,27 @@ import jsinterop.annotations.JsPackage;
 public interface RTCDataChannel extends EventTarget{
 @JsFunction
 public interface OnbufferedamountlowFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OncloseFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnclosingFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnerrorFn{
-Object onInvoke(RTCErrorEvent p0);
+@Nullable Object onInvoke(RTCErrorEvent p0);
 }
 @JsFunction
 public interface OnmessageFn{
-Object onInvoke(MessageEvent<Object> p0);
+@Nullable Object onInvoke(MessageEvent<@Nullable Object> p0);
 }
 @JsFunction
 public interface OnopenFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface SendDataUnionType{
@@ -79,7 +81,7 @@ default boolean isString(){
 return (Object)this instanceof String;
 }
 }
-Object close();
+@Nullable Object close();
 @JsProperty
 String getBinaryType();
 @JsProperty
@@ -87,25 +89,25 @@ int getBufferedAmount();
 @JsProperty
 double getBufferedAmountLowThreshold();
 @JsProperty
-double getId();
+@Nullable Double getId();
 @JsProperty
 String getLabel();
 @JsProperty
-double getMaxPacketLifeTime();
+@Nullable Double getMaxPacketLifeTime();
 @JsProperty
-double getMaxRetransmits();
+@Nullable Double getMaxRetransmits();
 @JsProperty
-RTCDataChannel.OnbufferedamountlowFn getOnbufferedamountlow();
+RTCDataChannel.@Nullable OnbufferedamountlowFn getOnbufferedamountlow();
 @JsProperty
-RTCDataChannel.OncloseFn getOnclose();
+RTCDataChannel.@Nullable OncloseFn getOnclose();
 @JsProperty
-RTCDataChannel.OnclosingFn getOnclosing();
+RTCDataChannel.@Nullable OnclosingFn getOnclosing();
 @JsProperty
-RTCDataChannel.OnerrorFn getOnerror();
+RTCDataChannel.@Nullable OnerrorFn getOnerror();
 @JsProperty
-RTCDataChannel.OnmessageFn getOnmessage();
+RTCDataChannel.@Nullable OnmessageFn getOnmessage();
 @JsProperty
-RTCDataChannel.OnopenFn getOnopen();
+RTCDataChannel.@Nullable OnopenFn getOnopen();
 @JsProperty
 String getProtocol();
 @JsProperty
@@ -138,17 +140,17 @@ void setBinaryType(String binaryType);
 @JsProperty
 void setBufferedAmountLowThreshold(double bufferedAmountLowThreshold);
 @JsProperty
-void setOnbufferedamountlow(RTCDataChannel.OnbufferedamountlowFn onbufferedamountlow);
+void setOnbufferedamountlow(RTCDataChannel.@Nullable OnbufferedamountlowFn onbufferedamountlow);
 @JsProperty
-void setOnclose(RTCDataChannel.OncloseFn onclose);
+void setOnclose(RTCDataChannel.@Nullable OncloseFn onclose);
 @JsProperty
-void setOnclosing(RTCDataChannel.OnclosingFn onclosing);
+void setOnclosing(RTCDataChannel.@Nullable OnclosingFn onclosing);
 @JsProperty
-void setOnerror(RTCDataChannel.OnerrorFn onerror);
+void setOnerror(RTCDataChannel.@Nullable OnerrorFn onerror);
 @JsProperty
-void setOnmessage(RTCDataChannel.OnmessageFn onmessage);
+void setOnmessage(RTCDataChannel.@Nullable OnmessageFn onmessage);
 @JsProperty
-void setOnopen(RTCDataChannel.OnopenFn onopen);
+void setOnopen(RTCDataChannel.@Nullable OnopenFn onopen);
 @JsProperty
 void setReadyState(String readyState);
 }

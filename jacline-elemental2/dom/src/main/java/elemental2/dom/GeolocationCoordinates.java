@@ -1,6 +1,8 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
+import java.lang.Double;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
@@ -14,29 +16,29 @@ return Js.uncheckedCast(JsPropertyMap.of());
 @JsProperty
 double getAccuracy();
 @JsProperty
-double getAltitude();
+@Nullable Double getAltitude();
 @JsProperty
-double getAltitudeAccuracy();
+@Nullable Double getAltitudeAccuracy();
 @JsProperty
-double getHeading();
+@Nullable Double getHeading();
 @JsProperty
 double getLatitude();
 @JsProperty
 double getLongitude();
 @JsProperty
-double getSpeed();
+@Nullable Double getSpeed();
 @JsProperty
 void setAccuracy(double accuracy);
 @JsProperty
-void setAltitude(double altitude);
+void setAltitude(@Nullable Double altitude);
 @JsProperty
-void setAltitudeAccuracy(double altitudeAccuracy);
+void setAltitudeAccuracy(@Nullable Double altitudeAccuracy);
 @JsProperty
-void setHeading(double heading);
+void setHeading(@Nullable Double heading);
 @JsProperty
 void setLatitude(double latitude);
 @JsProperty
 void setLongitude(double longitude);
 @JsProperty
-void setSpeed(double speed);
+void setSpeed(@Nullable Double speed);
 }

@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import java.lang.Deprecated;
 import elemental2.media.PeriodicWave;
 import elemental2.dom.Event;
@@ -14,19 +15,19 @@ import jsinterop.annotations.JsPackage;
 public class OscillatorNode extends AudioNode{
 @JsFunction
 public interface OnendedFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 public AudioParam detune;
 public AudioParam frequency;
-public OscillatorNode.OnendedFn onended;
+public OscillatorNode.@Nullable OnendedFn onended;
 @Deprecated
 public double playbackState;
 public String type;
-public native Object setPeriodicWave(PeriodicWave periodicWave);
+public native @Nullable Object setPeriodicWave(PeriodicWave periodicWave);
 @Deprecated
-public native Object setWaveTable(WaveTable waveTable);
-public native Object start();
-public native Object start(double when);
-public native Object stop();
-public native Object stop(double when);
+public native @Nullable Object setWaveTable(WaveTable waveTable);
+public native @Nullable Object start();
+public native @Nullable Object start(double when);
+public native @Nullable Object stop();
+public native @Nullable Object stop(double when);
 }

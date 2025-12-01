@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import elemental2.media.GainNode;
 import java.lang.Double;
 import elemental2.dom.Event;
@@ -43,21 +44,21 @@ import elemental2.media.OscillatorNode;
 public class BaseAudioContext implements EventTarget{
 @JsFunction
 public interface DecodeAudioDataErrorCallbackFn{
-Object onInvoke(Object p0);
+@Nullable Object onInvoke(@Nullable Object p0);
 }
 @JsFunction
 public interface DecodeAudioDataSuccessCallbackFn{
-Object onInvoke(AudioBuffer p0);
+@Nullable Object onInvoke(AudioBuffer p0);
 }
 @JsFunction
 public interface OnstatechangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 public AudioWorklet audioWorklet;
 public double currentTime;
 public AudioDestinationNode destination;
 public AudioListener listener;
-public BaseAudioContext.OnstatechangeFn onstatechange;
+public BaseAudioContext.@Nullable OnstatechangeFn onstatechange;
 public double sampleRate;
 public String state;
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType options);

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.EventListener;
 import elemental2.core.JsIterable;
 import jsinterop.annotations.JsFunction;
@@ -12,15 +13,15 @@ import elemental2.dom.EventTarget;
 public class AbortSignal implements EventTarget{
 @JsFunction
 public interface OnabortFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 public static native AbortSignal abort();
-public static native AbortSignal abort(Object reason);
+public static native AbortSignal abort(@Nullable Object reason);
 public static native AbortSignal any(JsIterable signals);
 public static native AbortSignal timeout(double milliseconds);
 public boolean aborted;
-public AbortSignal.OnabortFn onabort;
-public Object reason;
+public AbortSignal.@Nullable OnabortFn onabort;
+public @Nullable Object reason;
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType options);
 public native void addEventListener(String type,EventListener listener);
 public native boolean dispatchEvent(Event evt);

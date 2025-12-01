@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.FormData;
 import elemental2.dom.URL;
 import elemental2.dom.Headers;
@@ -8,6 +9,7 @@ import elemental2.promise.Promise;
 import elemental2.core.ArrayBuffer;
 import jsinterop.annotations.JsProperty;
 import elemental2.dom.Body;
+import elemental2.core.Uint8Array;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
@@ -72,12 +74,13 @@ public Request(URL input,RequestInit init){}
 public Request(URL input){}
 public native Promise<ArrayBuffer> arrayBuffer();
 public native Promise<Blob> blob();
+public native Promise<Uint8Array> bytes();
 @JsMethod(name = "clone")
 public native Request clone_();
 public native Promise<FormData> formData();
 @JsProperty
 public native boolean isBodyUsed();
-public native Promise<Object> json();
+public native Promise<@Nullable Object> json();
 @JsProperty
 public native void setBodyUsed(boolean bodyUsed);
 public native Promise<String> text();

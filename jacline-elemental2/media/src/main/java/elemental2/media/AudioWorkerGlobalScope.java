@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import elemental2.media.AudioParam;
 import elemental2.media.AudioWorkerParamDescriptor;
 import jsinterop.annotations.JsFunction;
@@ -12,16 +13,16 @@ import elemental2.core.JsArray;
 public class AudioWorkerGlobalScope{
 @JsFunction
 public interface OnaudioprocessFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnnodecreateFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
-public AudioWorkerGlobalScope.OnaudioprocessFn onaudioprocess;
-public AudioWorkerGlobalScope.OnnodecreateFn onnodecreate;
+public AudioWorkerGlobalScope.@Nullable OnaudioprocessFn onaudioprocess;
+public AudioWorkerGlobalScope.@Nullable OnnodecreateFn onnodecreate;
 public JsArray<AudioWorkerParamDescriptor> parameters;
 public double sampleRate;
 public native AudioParam addParameter(String name,double defaultValue);
-public native Object removeParameter(String name);
+public native @Nullable Object removeParameter(String name);
 }

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.MimeType;
 import jsinterop.base.JsArrayLike;
 import java.lang.String;
@@ -8,6 +9,6 @@ import jsinterop.base.JsPropertyMap;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class MimeTypeArray implements JsArrayLike<MimeType>, JsPropertyMap<MimeType>{
 public int length;
-public native MimeType item(int index);
-public native MimeType namedItem(String name);
+public native @Nullable MimeType item(int index);
+public native @Nullable MimeType namedItem(String name);
 }

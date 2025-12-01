@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
@@ -14,14 +15,14 @@ static PerformanceMarkOptions create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-JsObject getDetail();
+@Nullable JsObject getDetail();
 @JsProperty
 double getStartTime();
 @JsProperty
-void setDetail(JsObject detail);
+void setDetail(@Nullable JsObject detail);
 @JsOverlay
-default void setDetail(Object detail){
-setDetail(Js.<JsObject>uncheckedCast(detail));
+default void setDetail(@Nullable Object detail){
+setDetail(Js.<@Nullable JsObject>uncheckedCast(detail));
 }
 @JsProperty
 void setStartTime(double startTime);

@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import elemental2.media.AudioNode;
 import java.lang.Object;
 import java.lang.String;
@@ -14,7 +15,7 @@ public double maxDistance;
 public String panningModel;
 public double refDistance;
 public double rolloffFactor;
-public native Object setOrientation(double x,double y,double z);
-public native Object setPosition(double x,double y,double z);
-public native Object setVelocity(double x,double y,double z);
+public native @Nullable Object setOrientation(double x,double y,double z);
+public native @Nullable Object setPosition(double x,double y,double z);
+public native @Nullable Object setVelocity(double x,double y,double z);
 }

@@ -1,14 +1,15 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
+import java.lang.Deprecated;
+import elemental2.media.AudioNode;
+import elemental2.media.AudioProcessingEvent;
 import elemental2.dom.EventListener;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsFunction;
-import java.lang.Deprecated;
 import jsinterop.annotations.JsOverlay;
-import elemental2.media.AudioNode;
 import java.lang.Object;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
-import elemental2.media.AudioProcessingEvent;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 @Deprecated
 public class ScriptProcessorNode extends AudioNode{
@@ -19,15 +20,15 @@ boolean onInvoke(AudioProcessingEvent p0);
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnaudioprocessUnionType{
 @JsOverlay
-static ScriptProcessorNode.OnaudioprocessUnionType of(Object o){
+static ScriptProcessorNode.@Nullable OnaudioprocessUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default EventListener asEventListener(){
+default @Nullable EventListener asEventListener(){
 return Js.cast(this);
 }
 @JsOverlay
-default ScriptProcessorNode.OnaudioprocessFn asOnaudioprocessFn(){
+default ScriptProcessorNode.@Nullable OnaudioprocessFn asOnaudioprocessFn(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -38,5 +39,5 @@ return (Object)this instanceof ScriptProcessorNode.OnaudioprocessFn;
 @Deprecated
 public int bufferSize;
 @Deprecated
-public ScriptProcessorNode.OnaudioprocessUnionType onaudioprocess;
+public ScriptProcessorNode.@Nullable OnaudioprocessUnionType onaudioprocess;
 }

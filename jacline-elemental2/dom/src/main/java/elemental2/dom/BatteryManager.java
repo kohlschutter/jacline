@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsFunction;
 import elemental2.dom.Event;
 import jsinterop.annotations.JsType;
@@ -30,13 +31,13 @@ double getDischargingTime();
 @JsProperty
 double getLevel();
 @JsProperty
-BatteryManager.OnchargingchangeFn getOnchargingchange();
+BatteryManager.@Nullable OnchargingchangeFn getOnchargingchange();
 @JsProperty
-BatteryManager.OnchargingtimechangeFn getOnchargingtimechange();
+BatteryManager.@Nullable OnchargingtimechangeFn getOnchargingtimechange();
 @JsProperty
-BatteryManager.OndischargingtimechangeFn getOndischargingtimechange();
+BatteryManager.@Nullable OndischargingtimechangeFn getOndischargingtimechange();
 @JsProperty
-BatteryManager.OnlevelchangeFn getOnlevelchange();
+BatteryManager.@Nullable OnlevelchangeFn getOnlevelchange();
 @JsProperty
 boolean isCharging();
 @JsProperty
@@ -48,11 +49,11 @@ void setDischargingTime(double dischargingTime);
 @JsProperty
 void setLevel(double level);
 @JsProperty
-void setOnchargingchange(BatteryManager.OnchargingchangeFn onchargingchange);
+void setOnchargingchange(BatteryManager.@Nullable OnchargingchangeFn onchargingchange);
 @JsProperty
-void setOnchargingtimechange(BatteryManager.OnchargingtimechangeFn onchargingtimechange);
+void setOnchargingtimechange(BatteryManager.@Nullable OnchargingtimechangeFn onchargingtimechange);
 @JsProperty
-void setOndischargingtimechange(BatteryManager.OndischargingtimechangeFn ondischargingtimechange);
+void setOndischargingtimechange(BatteryManager.@Nullable OndischargingtimechangeFn ondischargingtimechange);
 @JsProperty
-void setOnlevelchange(BatteryManager.OnlevelchangeFn onlevelchange);
+void setOnlevelchange(BatteryManager.@Nullable OnlevelchangeFn onlevelchange);
 }

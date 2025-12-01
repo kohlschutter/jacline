@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsMethod;
 import java.lang.Object;
@@ -8,7 +9,11 @@ import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class Symbol{
 @JsOverlay
+public static final Object asyncDispose=Symbol__Constants.asyncDispose;
+@JsOverlay
 public static final Object asyncIterator=Symbol__Constants.asyncIterator;
+@JsOverlay
+public static final Object dispose=Symbol__Constants.dispose;
 @JsOverlay
 public static final Object hasInstance=Symbol__Constants.hasInstance;
 @JsOverlay
@@ -36,5 +41,5 @@ public static native Object for_(String sym);
 public static native String keyFor(Object sym);
 public String description;
 public Symbol(){}
-public Symbol(Object description){}
+public Symbol(@Nullable Object description){}
 }

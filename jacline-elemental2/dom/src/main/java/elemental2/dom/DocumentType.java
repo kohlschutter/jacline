@@ -80,6 +80,7 @@ return (Object)this instanceof String;
 public String name;
 public String publicId;
 public String systemId;
+public native void after();
 public native void after(DocumentType.AfterNodesUnionType... nodes);
 @JsOverlay
 public final void after(Node... nodes){
@@ -89,6 +90,7 @@ after(Js.<DocumentType.AfterNodesUnionType[]>uncheckedCast(nodes));
 public final void after(String... nodes){
 after(Js.<DocumentType.AfterNodesUnionType[]>uncheckedCast(nodes));
 }
+public native void before();
 public native void before(DocumentType.BeforeNodesUnionType... nodes);
 @JsOverlay
 public final void before(Node... nodes){
@@ -99,6 +101,7 @@ public final void before(String... nodes){
 before(Js.<DocumentType.BeforeNodesUnionType[]>uncheckedCast(nodes));
 }
 public native void remove();
+public native void replaceWith();
 @JsOverlay
 public final void replaceWith(Node... nodes){
 replaceWith(Js.<DocumentType.ReplaceWithNodesUnionType[]>uncheckedCast(nodes));

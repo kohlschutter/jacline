@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.URL;
 import elemental2.dom.Event;
 import elemental2.dom.EventSourceInit;
@@ -55,17 +56,17 @@ public static final int CLOSED=EventSource__Constants.CLOSED;
 public static final int CONNECTING=EventSource__Constants.CONNECTING;
 @JsOverlay
 public static final int OPEN=EventSource__Constants.OPEN;
-public EventSource.OnerrorFn onerror;
-public EventSource.OnmessageFn onmessage;
-public EventSource.OnopenFn onopen;
+public EventSource.@Nullable OnerrorFn onerror;
+public EventSource.@Nullable OnmessageFn onmessage;
+public EventSource.@Nullable OnopenFn onopen;
 public int readyState;
 public String url;
 public boolean withCredentials;
-public EventSource(EventSource.ConstructorUrlUnionType url,EventSourceInit eventSourceInitDict){}
+public EventSource(EventSource.ConstructorUrlUnionType url,@Nullable EventSourceInit eventSourceInitDict){}
 public EventSource(EventSource.ConstructorUrlUnionType url){}
-public EventSource(String url,EventSourceInit eventSourceInitDict){}
+public EventSource(String url,@Nullable EventSourceInit eventSourceInitDict){}
 public EventSource(String url){}
-public EventSource(URL url,EventSourceInit eventSourceInitDict){}
+public EventSource(URL url,@Nullable EventSourceInit eventSourceInitDict){}
 public EventSource(URL url){}
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType options);
 public native void addEventListener(String type,EventListener listener);

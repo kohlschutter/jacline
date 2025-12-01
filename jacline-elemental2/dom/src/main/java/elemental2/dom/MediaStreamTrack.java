@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.Void;
 import elemental2.dom.MediaTrackConstraints;
 import elemental2.dom.Event;
@@ -17,19 +18,19 @@ import jsinterop.annotations.JsPackage;
 public class MediaStreamTrack implements EventTarget{
 @JsFunction
 public interface OnendedFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnmuteFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnoverconstrainedFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnunmuteFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 public String contentHint;
 public boolean enabled;
@@ -37,16 +38,16 @@ public String id;
 public String kind;
 public String label;
 public boolean muted;
-public MediaStreamTrack.OnendedFn onended;
-public MediaStreamTrack.OnmuteFn onmute;
-public MediaStreamTrack.OnoverconstrainedFn onoverconstrained;
-public MediaStreamTrack.OnunmuteFn onunmute;
+public MediaStreamTrack.@Nullable OnendedFn onended;
+public MediaStreamTrack.@Nullable OnmuteFn onmute;
+public MediaStreamTrack.@Nullable OnoverconstrainedFn onoverconstrained;
+public MediaStreamTrack.@Nullable OnunmuteFn onunmute;
 public String readyState;
 public boolean remote;
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType options);
 public native void addEventListener(String type,EventListener listener);
 public native Promise<Void> applyConstraints();
-public native Promise<Void> applyConstraints(MediaTrackConstraints constraints);
+public native Promise<Void> applyConstraints(@Nullable MediaTrackConstraints constraints);
 @JsMethod(name = "clone")
 public native MediaStreamTrack clone_();
 public native boolean dispatchEvent(Event evt);

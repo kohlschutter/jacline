@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.WorkerOptions;
 import jsinterop.annotations.JsFunction;
 import elemental2.dom.Event;
@@ -11,9 +12,9 @@ import elemental2.dom.Worker;
 public class ServiceWorker extends Worker{
 @JsFunction
 public interface OnstatechangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
-public ServiceWorker.OnstatechangeFn onstatechange;
+public ServiceWorker.@Nullable OnstatechangeFn onstatechange;
 public String scriptURL;
 public String state;
 public ServiceWorker(){

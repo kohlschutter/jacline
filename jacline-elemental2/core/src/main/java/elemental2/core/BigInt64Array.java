@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.JsIterable;
 import java.lang.Double;
 import jsinterop.base.JsBigint;
@@ -20,15 +21,15 @@ public class BigInt64Array extends TypedArray{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorLengthOrArrayOrBufferUnionType{
 @JsOverlay
-static BigInt64Array.ConstructorLengthOrArrayOrBufferUnionType of(Object o){
+static BigInt64Array.@Nullable ConstructorLengthOrArrayOrBufferUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default ArrayBufferView asArrayBufferView(){
+default @Nullable ArrayBufferView asArrayBufferView(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -36,11 +37,11 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<JsBigint> asJsArray(){
+default @Nullable JsArray<JsBigint> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default SharedArrayBuffer asSharedArrayBuffer(){
+default @Nullable SharedArrayBuffer asSharedArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -66,7 +67,7 @@ return (Object)this instanceof SharedArrayBuffer;
 }
 @JsFunction
 public interface FromMapFn{
-JsBigint onInvoke(Object element,int index);
+JsBigint onInvoke(@Nullable Object element,int index);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface FromSourceUnionType{
@@ -79,7 +80,7 @@ default JsArrayLike<JsBigint> asJsArrayLike(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsIterable<JsBigint> asJsIterable(){
+default JsIterable<JsBigint, @Nullable Object, @Nullable Object> asJsIterable(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -93,11 +94,11 @@ return (Object)this instanceof String;
 }
 @JsOverlay
 public static final double BYTES_PER_ELEMENT=BigInt64Array__Constants.BYTES_PER_ELEMENT;
-public static native <S>BigInt64Array from(BigInt64Array.FromSourceUnionType source,BigInt64Array.FromMapFn mapFn,S thisArg);
+public static native <S extends @Nullable Object> BigInt64Array from(BigInt64Array.FromSourceUnionType source,BigInt64Array.FromMapFn mapFn,S thisArg);
 public static native BigInt64Array from(BigInt64Array.FromSourceUnionType source,BigInt64Array.FromMapFn mapFn);
 public static native BigInt64Array from(BigInt64Array.FromSourceUnionType source);
 @JsOverlay
-public static final <S>BigInt64Array from(JsArrayLike<JsBigint> source,BigInt64Array.FromMapFn mapFn,S thisArg){
+public static final <S extends @Nullable Object> BigInt64Array from(JsArrayLike<JsBigint> source,BigInt64Array.FromMapFn mapFn,S thisArg){
 return from(Js.<BigInt64Array.FromSourceUnionType>uncheckedCast(source),mapFn,thisArg);
 }
 @JsOverlay
@@ -109,7 +110,7 @@ public static final BigInt64Array from(JsArrayLike<JsBigint> source){
 return from(Js.<BigInt64Array.FromSourceUnionType>uncheckedCast(source));
 }
 @JsOverlay
-public static final <S>BigInt64Array from(JsBigint[] source,BigInt64Array.FromMapFn mapFn,S thisArg){
+public static final <S extends @Nullable Object> BigInt64Array from(JsBigint[] source,BigInt64Array.FromMapFn mapFn,S thisArg){
 return from(Js.<JsArrayLike<JsBigint>>uncheckedCast(source),mapFn,thisArg);
 }
 @JsOverlay
@@ -121,19 +122,19 @@ public static final BigInt64Array from(JsBigint[] source){
 return from(Js.<JsArrayLike<JsBigint>>uncheckedCast(source));
 }
 @JsOverlay
-public static final <S>BigInt64Array from(JsIterable<JsBigint> source,BigInt64Array.FromMapFn mapFn,S thisArg){
+public static final <S extends @Nullable Object> BigInt64Array from(JsIterable<JsBigint, @Nullable Object, @Nullable Object> source,BigInt64Array.FromMapFn mapFn,S thisArg){
 return from(Js.<BigInt64Array.FromSourceUnionType>uncheckedCast(source),mapFn,thisArg);
 }
 @JsOverlay
-public static final BigInt64Array from(JsIterable<JsBigint> source,BigInt64Array.FromMapFn mapFn){
+public static final BigInt64Array from(JsIterable<JsBigint, @Nullable Object, @Nullable Object> source,BigInt64Array.FromMapFn mapFn){
 return from(Js.<BigInt64Array.FromSourceUnionType>uncheckedCast(source),mapFn);
 }
 @JsOverlay
-public static final BigInt64Array from(JsIterable<JsBigint> source){
+public static final BigInt64Array from(JsIterable<JsBigint, @Nullable Object, @Nullable Object> source){
 return from(Js.<BigInt64Array.FromSourceUnionType>uncheckedCast(source));
 }
 @JsOverlay
-public static final <S>BigInt64Array from(String source,BigInt64Array.FromMapFn mapFn,S thisArg){
+public static final <S extends @Nullable Object> BigInt64Array from(String source,BigInt64Array.FromMapFn mapFn,S thisArg){
 return from(Js.<BigInt64Array.FromSourceUnionType>uncheckedCast(source),mapFn,thisArg);
 }
 @JsOverlay
@@ -151,9 +152,9 @@ public BigInt64Array(ArrayBuffer lengthOrArrayOrBuffer){}
 public BigInt64Array(ArrayBufferView lengthOrArrayOrBuffer,double byteOffset,double bufferLength){}
 public BigInt64Array(ArrayBufferView lengthOrArrayOrBuffer,double byteOffset){}
 public BigInt64Array(ArrayBufferView lengthOrArrayOrBuffer){}
-public BigInt64Array(BigInt64Array.ConstructorLengthOrArrayOrBufferUnionType lengthOrArrayOrBuffer,double byteOffset,double bufferLength){}
-public BigInt64Array(BigInt64Array.ConstructorLengthOrArrayOrBufferUnionType lengthOrArrayOrBuffer,double byteOffset){}
-public BigInt64Array(BigInt64Array.ConstructorLengthOrArrayOrBufferUnionType lengthOrArrayOrBuffer){}
+public BigInt64Array(BigInt64Array.@Nullable ConstructorLengthOrArrayOrBufferUnionType lengthOrArrayOrBuffer,double byteOffset,double bufferLength){}
+public BigInt64Array(BigInt64Array.@Nullable ConstructorLengthOrArrayOrBufferUnionType lengthOrArrayOrBuffer,double byteOffset){}
+public BigInt64Array(BigInt64Array.@Nullable ConstructorLengthOrArrayOrBufferUnionType lengthOrArrayOrBuffer){}
 public BigInt64Array(JsArray<JsBigint> lengthOrArrayOrBuffer,double byteOffset,double bufferLength){}
 public BigInt64Array(JsArray<JsBigint> lengthOrArrayOrBuffer,double byteOffset){}
 public BigInt64Array(JsArray<JsBigint> lengthOrArrayOrBuffer){}

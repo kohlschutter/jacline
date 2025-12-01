@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.EventListener;
 import jsinterop.annotations.JsFunction;
 import elemental2.dom.Event;
@@ -11,17 +12,17 @@ import elemental2.dom.EventTarget;
 public class VisualViewport implements EventTarget{
 @JsFunction
 public interface OnresizeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnscrollFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 public double height;
 public double offsetLeft;
 public double offsetTop;
-public VisualViewport.OnresizeFn onresize;
-public VisualViewport.OnscrollFn onscroll;
+public VisualViewport.@Nullable OnresizeFn onresize;
+public VisualViewport.@Nullable OnscrollFn onscroll;
 public double pageLeft;
 public double pageTop;
 public double scale;

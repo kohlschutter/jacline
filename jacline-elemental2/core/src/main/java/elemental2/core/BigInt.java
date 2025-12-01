@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import java.lang.Double;
 import jsinterop.annotations.JsMethod;
 import jsinterop.base.JsBigint;
@@ -70,32 +71,32 @@ public BigInt(String arg){}
 public BigInt(double arg){}
 public native String toLocaleString();
 @JsOverlay
-public final String toLocaleString(JsArray<String> locales,JsObject options){
+public final String toLocaleString(JsArray<String> locales,@Nullable JsObject options){
 return toLocaleString(Js.<BigInt.ToLocaleStringLocalesUnionType>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleString(JsArray<String> locales,Object options){
-return toLocaleString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleString(JsArray<String> locales,@Nullable Object options){
+return toLocaleString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
 public final String toLocaleString(JsArray<String> locales){
 return toLocaleString(Js.<BigInt.ToLocaleStringLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
-public final String toLocaleString(String locales,JsObject options){
+public final String toLocaleString(String locales,@Nullable JsObject options){
 return toLocaleString(Js.<BigInt.ToLocaleStringLocalesUnionType>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleString(String[] locales,JsObject options){
+public final String toLocaleString(String[] locales,@Nullable JsObject options){
 return toLocaleString(Js.<JsArray<String>>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleString(String locales,Object options){
-return toLocaleString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleString(String locales,@Nullable Object options){
+return toLocaleString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
-public final String toLocaleString(String[] locales,Object options){
-return toLocaleString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleString(String[] locales,@Nullable Object options){
+return toLocaleString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
 public final String toLocaleString(String locales){
@@ -105,10 +106,10 @@ return toLocaleString(Js.<BigInt.ToLocaleStringLocalesUnionType>uncheckedCast(lo
 public final String toLocaleString(String[] locales){
 return toLocaleString(Js.<JsArray<String>>uncheckedCast(locales));
 }
-public native String toLocaleString(BigInt.ToLocaleStringLocalesUnionType locales,JsObject options);
+public native String toLocaleString(BigInt.ToLocaleStringLocalesUnionType locales,@Nullable JsObject options);
 @JsOverlay
-public final String toLocaleString(BigInt.ToLocaleStringLocalesUnionType locales,Object options){
-return toLocaleString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleString(BigInt.ToLocaleStringLocalesUnionType locales,@Nullable Object options){
+return toLocaleString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 public native String toLocaleString(BigInt.ToLocaleStringLocalesUnionType locales);
 public native String toString(double radix);

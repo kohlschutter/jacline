@@ -1,4 +1,5 @@
 package elemental2.indexeddb;
+import org.jspecify.annotations.Nullable;
 import java.lang.Double;
 import jsinterop.annotations.JsMethod;
 import elemental2.core.ArrayBuffer;
@@ -35,7 +36,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -90,7 +91,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -145,7 +146,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -200,7 +201,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -255,7 +256,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -332,7 +333,7 @@ public final void continuePrimaryKey(ArrayBuffer key,IDBCursor.ContinuePrimaryKe
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(ArrayBuffer key,JsArray<Object> primaryKey){
+public final void continuePrimaryKey(ArrayBuffer key,JsArray<@Nullable Object> primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
@@ -340,8 +341,8 @@ public final void continuePrimaryKey(ArrayBuffer key,JsDate primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(ArrayBuffer key,Object[] primaryKey){
-continuePrimaryKey(key,Js.<JsArray<Object>>uncheckedCast(primaryKey));
+public final void continuePrimaryKey(ArrayBuffer key,@Nullable Object[] primaryKey){
+continuePrimaryKey(key,Js.<JsArray<@Nullable Object>>uncheckedCast(primaryKey));
 }
 @JsOverlay
 public final void continuePrimaryKey(ArrayBuffer key,String primaryKey){
@@ -364,7 +365,7 @@ public final void continuePrimaryKey(ArrayBufferView key,IDBCursor.ContinuePrima
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(ArrayBufferView key,JsArray<Object> primaryKey){
+public final void continuePrimaryKey(ArrayBufferView key,JsArray<@Nullable Object> primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
@@ -372,8 +373,8 @@ public final void continuePrimaryKey(ArrayBufferView key,JsDate primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(ArrayBufferView key,Object[] primaryKey){
-continuePrimaryKey(key,Js.<JsArray<Object>>uncheckedCast(primaryKey));
+public final void continuePrimaryKey(ArrayBufferView key,@Nullable Object[] primaryKey){
+continuePrimaryKey(key,Js.<JsArray<@Nullable Object>>uncheckedCast(primaryKey));
 }
 @JsOverlay
 public final void continuePrimaryKey(ArrayBufferView key,String primaryKey){
@@ -393,7 +394,7 @@ continuePrimaryKey(key,Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>unche
 }
 public native void continuePrimaryKey(IDBCursor.ContinuePrimaryKeyKeyUnionType key,IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType primaryKey);
 @JsOverlay
-public final void continuePrimaryKey(IDBCursor.ContinuePrimaryKeyKeyUnionType key,JsArray<Object> primaryKey){
+public final void continuePrimaryKey(IDBCursor.ContinuePrimaryKeyKeyUnionType key,JsArray<@Nullable Object> primaryKey){
 continuePrimaryKey(key,Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
@@ -401,8 +402,8 @@ public final void continuePrimaryKey(IDBCursor.ContinuePrimaryKeyKeyUnionType ke
 continuePrimaryKey(key,Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(IDBCursor.ContinuePrimaryKeyKeyUnionType key,Object[] primaryKey){
-continuePrimaryKey(key,Js.<JsArray<Object>>uncheckedCast(primaryKey));
+public final void continuePrimaryKey(IDBCursor.ContinuePrimaryKeyKeyUnionType key,@Nullable Object[] primaryKey){
+continuePrimaryKey(key,Js.<JsArray<@Nullable Object>>uncheckedCast(primaryKey));
 }
 @JsOverlay
 public final void continuePrimaryKey(IDBCursor.ContinuePrimaryKeyKeyUnionType key,String primaryKey){
@@ -413,31 +414,31 @@ public final void continuePrimaryKey(IDBCursor.ContinuePrimaryKeyKeyUnionType ke
 continuePrimaryKey(key,Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(JsArray<Object> key,ArrayBuffer primaryKey){
+public final void continuePrimaryKey(JsArray<@Nullable Object> key,ArrayBuffer primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(JsArray<Object> key,ArrayBufferView primaryKey){
+public final void continuePrimaryKey(JsArray<@Nullable Object> key,ArrayBufferView primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(JsArray<Object> key,IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType primaryKey){
+public final void continuePrimaryKey(JsArray<@Nullable Object> key,IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(JsArray<Object> key,JsArray<Object> primaryKey){
+public final void continuePrimaryKey(JsArray<@Nullable Object> key,JsArray<@Nullable Object> primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(JsArray<Object> key,JsDate primaryKey){
+public final void continuePrimaryKey(JsArray<@Nullable Object> key,JsDate primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(JsArray<Object> key,String primaryKey){
+public final void continuePrimaryKey(JsArray<@Nullable Object> key,String primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(JsArray<Object> key,double primaryKey){
+public final void continuePrimaryKey(JsArray<@Nullable Object> key,double primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
@@ -453,7 +454,7 @@ public final void continuePrimaryKey(JsDate key,IDBCursor.ContinuePrimaryKeyPrim
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(JsDate key,JsArray<Object> primaryKey){
+public final void continuePrimaryKey(JsDate key,JsArray<@Nullable Object> primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
@@ -461,8 +462,8 @@ public final void continuePrimaryKey(JsDate key,JsDate primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(JsDate key,Object[] primaryKey){
-continuePrimaryKey(key,Js.<JsArray<Object>>uncheckedCast(primaryKey));
+public final void continuePrimaryKey(JsDate key,@Nullable Object[] primaryKey){
+continuePrimaryKey(key,Js.<JsArray<@Nullable Object>>uncheckedCast(primaryKey));
 }
 @JsOverlay
 public final void continuePrimaryKey(JsDate key,String primaryKey){
@@ -473,32 +474,32 @@ public final void continuePrimaryKey(JsDate key,double primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(Object[] key,ArrayBuffer primaryKey){
-continuePrimaryKey(Js.<JsArray<Object>>uncheckedCast(key),primaryKey);
+public final void continuePrimaryKey(@Nullable Object[] key,ArrayBuffer primaryKey){
+continuePrimaryKey(Js.<JsArray<@Nullable Object>>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(Object[] key,ArrayBufferView primaryKey){
-continuePrimaryKey(Js.<JsArray<Object>>uncheckedCast(key),primaryKey);
+public final void continuePrimaryKey(@Nullable Object[] key,ArrayBufferView primaryKey){
+continuePrimaryKey(Js.<JsArray<@Nullable Object>>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(Object[] key,IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType primaryKey){
-continuePrimaryKey(Js.<JsArray<Object>>uncheckedCast(key),primaryKey);
+public final void continuePrimaryKey(@Nullable Object[] key,IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType primaryKey){
+continuePrimaryKey(Js.<JsArray<@Nullable Object>>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(Object[] key,JsDate primaryKey){
-continuePrimaryKey(Js.<JsArray<Object>>uncheckedCast(key),primaryKey);
+public final void continuePrimaryKey(@Nullable Object[] key,JsDate primaryKey){
+continuePrimaryKey(Js.<JsArray<@Nullable Object>>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(Object[] key,Object[] primaryKey){
-continuePrimaryKey(Js.<JsArray<Object>>uncheckedCast(key),Js.<JsArray<Object>>uncheckedCast(primaryKey));
+public final void continuePrimaryKey(@Nullable Object[] key,@Nullable Object[] primaryKey){
+continuePrimaryKey(Js.<JsArray<@Nullable Object>>uncheckedCast(key),Js.<JsArray<@Nullable Object>>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(Object[] key,String primaryKey){
-continuePrimaryKey(Js.<JsArray<Object>>uncheckedCast(key),primaryKey);
+public final void continuePrimaryKey(@Nullable Object[] key,String primaryKey){
+continuePrimaryKey(Js.<JsArray<@Nullable Object>>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(Object[] key,double primaryKey){
-continuePrimaryKey(Js.<JsArray<Object>>uncheckedCast(key),primaryKey);
+public final void continuePrimaryKey(@Nullable Object[] key,double primaryKey){
+continuePrimaryKey(Js.<JsArray<@Nullable Object>>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
 public final void continuePrimaryKey(String key,ArrayBuffer primaryKey){
@@ -513,7 +514,7 @@ public final void continuePrimaryKey(String key,IDBCursor.ContinuePrimaryKeyPrim
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(String key,JsArray<Object> primaryKey){
+public final void continuePrimaryKey(String key,JsArray<@Nullable Object> primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
@@ -521,8 +522,8 @@ public final void continuePrimaryKey(String key,JsDate primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(String key,Object[] primaryKey){
-continuePrimaryKey(key,Js.<JsArray<Object>>uncheckedCast(primaryKey));
+public final void continuePrimaryKey(String key,@Nullable Object[] primaryKey){
+continuePrimaryKey(key,Js.<JsArray<@Nullable Object>>uncheckedCast(primaryKey));
 }
 @JsOverlay
 public final void continuePrimaryKey(String key,String primaryKey){
@@ -545,7 +546,7 @@ public final void continuePrimaryKey(double key,IDBCursor.ContinuePrimaryKeyPrim
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),primaryKey);
 }
 @JsOverlay
-public final void continuePrimaryKey(double key,JsArray<Object> primaryKey){
+public final void continuePrimaryKey(double key,JsArray<@Nullable Object> primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
@@ -553,8 +554,8 @@ public final void continuePrimaryKey(double key,JsDate primaryKey){
 continuePrimaryKey(Js.<IDBCursor.ContinuePrimaryKeyKeyUnionType>uncheckedCast(key),Js.<IDBCursor.ContinuePrimaryKeyPrimaryKeyUnionType>uncheckedCast(primaryKey));
 }
 @JsOverlay
-public final void continuePrimaryKey(double key,Object[] primaryKey){
-continuePrimaryKey(key,Js.<JsArray<Object>>uncheckedCast(primaryKey));
+public final void continuePrimaryKey(double key,@Nullable Object[] primaryKey){
+continuePrimaryKey(key,Js.<JsArray<@Nullable Object>>uncheckedCast(primaryKey));
 }
 @JsOverlay
 public final void continuePrimaryKey(double key,String primaryKey){
@@ -577,7 +578,7 @@ continue_(Js.<IDBCursor.Continue_KeyUnionType>uncheckedCast(key));
 @JsMethod(name = "continue")
 public native void continue_(IDBCursor.Continue_KeyUnionType key);
 @JsOverlay
-public final void continue_(JsArray<Object> key){
+public final void continue_(JsArray<@Nullable Object> key){
 continue_(Js.<IDBCursor.Continue_KeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
@@ -585,8 +586,8 @@ public final void continue_(JsDate key){
 continue_(Js.<IDBCursor.Continue_KeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
-public final void continue_(Object[] key){
-continue_(Js.<JsArray<Object>>uncheckedCast(key));
+public final void continue_(@Nullable Object[] key){
+continue_(Js.<JsArray<@Nullable Object>>uncheckedCast(key));
 }
 @JsOverlay
 public final void continue_(String key){
@@ -597,5 +598,5 @@ public final void continue_(double key){
 continue_(Js.<IDBCursor.Continue_KeyUnionType>uncheckedCast(key));
 }
 public native IDBRequest delete();
-public native IDBRequest update(Object value);
+public native IDBRequest update(@Nullable Object value);
 }

@@ -1,4 +1,5 @@
 package elemental2.indexeddb;
+import org.jspecify.annotations.Nullable;
 import java.lang.Double;
 import elemental2.indexeddb.IDBKeyRange;
 import elemental2.core.ArrayBuffer;
@@ -38,7 +39,7 @@ default IDBKeyRange asIDBKeyRange(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -101,7 +102,7 @@ default IDBKeyRange asIDBKeyRange(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -164,7 +165,7 @@ default IDBKeyRange asIDBKeyRange(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -227,7 +228,7 @@ default IDBKeyRange asIDBKeyRange(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -290,7 +291,7 @@ default IDBKeyRange asIDBKeyRange(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -333,15 +334,15 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OpenCursorRangeUnionType{
 @JsOverlay
-static IDBIndex.OpenCursorRangeUnionType of(Object o){
+static IDBIndex.@Nullable OpenCursorRangeUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default ArrayBufferView asArrayBufferView(){
+default @Nullable ArrayBufferView asArrayBufferView(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -349,19 +350,19 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default IDBKeyRange asIDBKeyRange(){
+default @Nullable IDBKeyRange asIDBKeyRange(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default @Nullable JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsDate asJsDate(){
+default @Nullable JsDate asJsDate(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -396,15 +397,15 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OpenKeyCursorRangeUnionType{
 @JsOverlay
-static IDBIndex.OpenKeyCursorRangeUnionType of(Object o){
+static IDBIndex.@Nullable OpenKeyCursorRangeUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default ArrayBufferView asArrayBufferView(){
+default @Nullable ArrayBufferView asArrayBufferView(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -412,19 +413,19 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default IDBKeyRange asIDBKeyRange(){
+default @Nullable IDBKeyRange asIDBKeyRange(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default @Nullable JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsDate asJsDate(){
+default @Nullable JsDate asJsDate(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -456,7 +457,7 @@ default boolean isString(){
 return (Object)this instanceof String;
 }
 }
-public Object keyPath;
+public @Nullable Object keyPath;
 public boolean multiEntry;
 public String name;
 public IDBObjectStore objectStore;
@@ -476,7 +477,7 @@ public final IDBRequest count(IDBKeyRange key){
 return count(Js.<IDBIndex.CountKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
-public final IDBRequest count(JsArray<Object> key){
+public final IDBRequest count(JsArray<@Nullable Object> key){
 return count(Js.<IDBIndex.CountKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
@@ -484,8 +485,8 @@ public final IDBRequest count(JsDate key){
 return count(Js.<IDBIndex.CountKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
-public final IDBRequest count(Object[] key){
-return count(Js.<JsArray<Object>>uncheckedCast(key));
+public final IDBRequest count(@Nullable Object[] key){
+return count(Js.<JsArray<@Nullable Object>>uncheckedCast(key));
 }
 @JsOverlay
 public final IDBRequest count(String key){
@@ -509,7 +510,7 @@ public final IDBRequest get(IDBKeyRange key){
 return get(Js.<IDBIndex.GetKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
-public final IDBRequest get(JsArray<Object> key){
+public final IDBRequest get(JsArray<@Nullable Object> key){
 return get(Js.<IDBIndex.GetKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
@@ -517,8 +518,8 @@ public final IDBRequest get(JsDate key){
 return get(Js.<IDBIndex.GetKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
-public final IDBRequest get(Object[] key){
-return get(Js.<JsArray<Object>>uncheckedCast(key));
+public final IDBRequest get(@Nullable Object[] key){
+return get(Js.<JsArray<@Nullable Object>>uncheckedCast(key));
 }
 @JsOverlay
 public final IDBRequest get(String key){
@@ -556,11 +557,11 @@ public final IDBRequest getAll(IDBKeyRange query){
 return getAll(Js.<IDBIndex.GetAllQueryUnionType>uncheckedCast(query));
 }
 @JsOverlay
-public final IDBRequest getAll(JsArray<Object> query,int count){
+public final IDBRequest getAll(JsArray<@Nullable Object> query,int count){
 return getAll(Js.<IDBIndex.GetAllQueryUnionType>uncheckedCast(query),count);
 }
 @JsOverlay
-public final IDBRequest getAll(JsArray<Object> query){
+public final IDBRequest getAll(JsArray<@Nullable Object> query){
 return getAll(Js.<IDBIndex.GetAllQueryUnionType>uncheckedCast(query));
 }
 @JsOverlay
@@ -572,12 +573,12 @@ public final IDBRequest getAll(JsDate query){
 return getAll(Js.<IDBIndex.GetAllQueryUnionType>uncheckedCast(query));
 }
 @JsOverlay
-public final IDBRequest getAll(Object[] query,int count){
-return getAll(Js.<JsArray<Object>>uncheckedCast(query),count);
+public final IDBRequest getAll(@Nullable Object[] query,int count){
+return getAll(Js.<JsArray<@Nullable Object>>uncheckedCast(query),count);
 }
 @JsOverlay
-public final IDBRequest getAll(Object[] query){
-return getAll(Js.<JsArray<Object>>uncheckedCast(query));
+public final IDBRequest getAll(@Nullable Object[] query){
+return getAll(Js.<JsArray<@Nullable Object>>uncheckedCast(query));
 }
 @JsOverlay
 public final IDBRequest getAll(String query,int count){
@@ -623,11 +624,11 @@ public final IDBRequest getAllKeys(IDBKeyRange query){
 return getAllKeys(Js.<IDBIndex.GetAllKeysQueryUnionType>uncheckedCast(query));
 }
 @JsOverlay
-public final IDBRequest getAllKeys(JsArray<Object> query,int count){
+public final IDBRequest getAllKeys(JsArray<@Nullable Object> query,int count){
 return getAllKeys(Js.<IDBIndex.GetAllKeysQueryUnionType>uncheckedCast(query),count);
 }
 @JsOverlay
-public final IDBRequest getAllKeys(JsArray<Object> query){
+public final IDBRequest getAllKeys(JsArray<@Nullable Object> query){
 return getAllKeys(Js.<IDBIndex.GetAllKeysQueryUnionType>uncheckedCast(query));
 }
 @JsOverlay
@@ -639,12 +640,12 @@ public final IDBRequest getAllKeys(JsDate query){
 return getAllKeys(Js.<IDBIndex.GetAllKeysQueryUnionType>uncheckedCast(query));
 }
 @JsOverlay
-public final IDBRequest getAllKeys(Object[] query,int count){
-return getAllKeys(Js.<JsArray<Object>>uncheckedCast(query),count);
+public final IDBRequest getAllKeys(@Nullable Object[] query,int count){
+return getAllKeys(Js.<JsArray<@Nullable Object>>uncheckedCast(query),count);
 }
 @JsOverlay
-public final IDBRequest getAllKeys(Object[] query){
-return getAllKeys(Js.<JsArray<Object>>uncheckedCast(query));
+public final IDBRequest getAllKeys(@Nullable Object[] query){
+return getAllKeys(Js.<JsArray<@Nullable Object>>uncheckedCast(query));
 }
 @JsOverlay
 public final IDBRequest getAllKeys(String query,int count){
@@ -676,7 +677,7 @@ public final IDBRequest getKey(IDBKeyRange key){
 return getKey(Js.<IDBIndex.GetKeyKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
-public final IDBRequest getKey(JsArray<Object> key){
+public final IDBRequest getKey(JsArray<@Nullable Object> key){
 return getKey(Js.<IDBIndex.GetKeyKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
@@ -684,8 +685,8 @@ public final IDBRequest getKey(JsDate key){
 return getKey(Js.<IDBIndex.GetKeyKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
-public final IDBRequest getKey(Object[] key){
-return getKey(Js.<JsArray<Object>>uncheckedCast(key));
+public final IDBRequest getKey(@Nullable Object[] key){
+return getKey(Js.<JsArray<@Nullable Object>>uncheckedCast(key));
 }
 @JsOverlay
 public final IDBRequest getKey(String key){
@@ -698,135 +699,135 @@ return getKey(Js.<IDBIndex.GetKeyKeyUnionType>uncheckedCast(key));
 public native IDBRequest openCursor();
 @JsOverlay
 public final IDBRequest openCursor(ArrayBuffer range,String direction){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range),direction);
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openCursor(ArrayBuffer range){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range));
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
 public final IDBRequest openCursor(ArrayBufferView range,String direction){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range),direction);
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openCursor(ArrayBufferView range){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range));
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
 public final IDBRequest openCursor(IDBKeyRange range,String direction){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range),direction);
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openCursor(IDBKeyRange range){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range));
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
-public final IDBRequest openCursor(JsArray<Object> range,String direction){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range),direction);
+public final IDBRequest openCursor(JsArray<@Nullable Object> range,String direction){
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
-public final IDBRequest openCursor(JsArray<Object> range){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range));
+public final IDBRequest openCursor(JsArray<@Nullable Object> range){
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
 public final IDBRequest openCursor(JsDate range,String direction){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range),direction);
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openCursor(JsDate range){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range));
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
-public final IDBRequest openCursor(Object[] range,String direction){
-return openCursor(Js.<JsArray<Object>>uncheckedCast(range),direction);
+public final IDBRequest openCursor(@Nullable Object[] range,String direction){
+return openCursor(Js.<JsArray<@Nullable Object>>uncheckedCast(range),direction);
 }
 @JsOverlay
-public final IDBRequest openCursor(Object[] range){
-return openCursor(Js.<JsArray<Object>>uncheckedCast(range));
+public final IDBRequest openCursor(@Nullable Object[] range){
+return openCursor(Js.<JsArray<@Nullable Object>>uncheckedCast(range));
 }
-public native IDBRequest openCursor(IDBIndex.OpenCursorRangeUnionType range,String direction);
-public native IDBRequest openCursor(IDBIndex.OpenCursorRangeUnionType range);
+public native IDBRequest openCursor(IDBIndex.@Nullable OpenCursorRangeUnionType range,String direction);
+public native IDBRequest openCursor(IDBIndex.@Nullable OpenCursorRangeUnionType range);
 @JsOverlay
 public final IDBRequest openCursor(String range,String direction){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range),direction);
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openCursor(String range){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range));
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
 public final IDBRequest openCursor(double range,String direction){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range),direction);
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openCursor(double range){
-return openCursor(Js.<IDBIndex.OpenCursorRangeUnionType>uncheckedCast(range));
+return openCursor(Js.<IDBIndex.@Nullable OpenCursorRangeUnionType>uncheckedCast(range));
 }
 public native IDBRequest openKeyCursor();
 @JsOverlay
 public final IDBRequest openKeyCursor(ArrayBuffer range,String direction){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openKeyCursor(ArrayBuffer range){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range));
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
 public final IDBRequest openKeyCursor(ArrayBufferView range,String direction){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openKeyCursor(ArrayBufferView range){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range));
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
 public final IDBRequest openKeyCursor(IDBKeyRange range,String direction){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openKeyCursor(IDBKeyRange range){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range));
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
-public final IDBRequest openKeyCursor(JsArray<Object> range,String direction){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
+public final IDBRequest openKeyCursor(JsArray<@Nullable Object> range,String direction){
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
-public final IDBRequest openKeyCursor(JsArray<Object> range){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range));
+public final IDBRequest openKeyCursor(JsArray<@Nullable Object> range){
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
 public final IDBRequest openKeyCursor(JsDate range,String direction){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openKeyCursor(JsDate range){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range));
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
-public final IDBRequest openKeyCursor(Object[] range,String direction){
-return openKeyCursor(Js.<JsArray<Object>>uncheckedCast(range),direction);
+public final IDBRequest openKeyCursor(@Nullable Object[] range,String direction){
+return openKeyCursor(Js.<JsArray<@Nullable Object>>uncheckedCast(range),direction);
 }
 @JsOverlay
-public final IDBRequest openKeyCursor(Object[] range){
-return openKeyCursor(Js.<JsArray<Object>>uncheckedCast(range));
+public final IDBRequest openKeyCursor(@Nullable Object[] range){
+return openKeyCursor(Js.<JsArray<@Nullable Object>>uncheckedCast(range));
 }
-public native IDBRequest openKeyCursor(IDBIndex.OpenKeyCursorRangeUnionType range,String direction);
-public native IDBRequest openKeyCursor(IDBIndex.OpenKeyCursorRangeUnionType range);
+public native IDBRequest openKeyCursor(IDBIndex.@Nullable OpenKeyCursorRangeUnionType range,String direction);
+public native IDBRequest openKeyCursor(IDBIndex.@Nullable OpenKeyCursorRangeUnionType range);
 @JsOverlay
 public final IDBRequest openKeyCursor(String range,String direction){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openKeyCursor(String range){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range));
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range));
 }
 @JsOverlay
 public final IDBRequest openKeyCursor(double range,String direction){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range),direction);
 }
 @JsOverlay
 public final IDBRequest openKeyCursor(double range){
-return openKeyCursor(Js.<IDBIndex.OpenKeyCursorRangeUnionType>uncheckedCast(range));
+return openKeyCursor(Js.<IDBIndex.@Nullable OpenKeyCursorRangeUnionType>uncheckedCast(range));
 }
 }

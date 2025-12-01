@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
@@ -10,19 +11,19 @@ import elemental2.core.JsObject;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public interface MediaConstraintsInterface_{
 @JsProperty
-JsObject getMandatory();
+@Nullable JsObject getMandatory();
 @JsProperty
-JsArray<JsObject> getOptional();
+@Nullable JsArray<JsObject> getOptional();
 @JsProperty
-void setMandatory(JsObject mandatory);
+void setMandatory(@Nullable JsObject mandatory);
 @JsOverlay
-default void setMandatory(Object mandatory){
-setMandatory(Js.<JsObject>uncheckedCast(mandatory));
+default void setMandatory(@Nullable Object mandatory){
+setMandatory(Js.<@Nullable JsObject>uncheckedCast(mandatory));
 }
 @JsProperty
-void setOptional(JsArray<JsObject> optional);
+void setOptional(@Nullable JsArray<JsObject> optional);
 @JsOverlay
-default void setOptional(JsObject[] optional){
-setOptional(Js.<JsArray<JsObject>>uncheckedCast(optional));
+default void setOptional(JsObject@Nullable [] optional){
+setOptional(Js.<@Nullable JsArray<JsObject>>uncheckedCast(optional));
 }
 }

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.promise.IThenable;
 import java.lang.Deprecated;
 import jsinterop.annotations.JsMethod;
@@ -20,15 +21,15 @@ public class FetchEvent extends ExtendableEvent{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface RespondWithRUnionType{
 @JsOverlay
-static FetchEvent.RespondWithRUnionType of(Object o){
+static FetchEvent.@Nullable RespondWithRUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default IThenable<Response> asIThenable(){
+default @Nullable IThenable<@Nullable Response> asIThenable(){
 return Js.cast(this);
 }
 @JsOverlay
-default Response asResponse(){
+default @Nullable Response asResponse(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -38,11 +39,11 @@ return (Object)this instanceof Response;
 }
 @Deprecated
 public ServiceWorkerClient client;
-public String clientId;
+public @Nullable String clientId;
 public boolean isReload;
-public Promise<Response> preloadResponse;
+public Promise<@Nullable Response> preloadResponse;
 public Request request;
-public String resultingClientId;
+public @Nullable String resultingClientId;
 public FetchEvent(String type,FetchEventInit eventInitDict){
 // This super call is here only for the code to compile; it is never executed.
 super((String)null,(ExtendableEventInit)null);
@@ -55,12 +56,12 @@ super((String)null,(ExtendableEventInit)null);
 public native Promise<Response> default_();
 public native Promise<Response> forwardTo(String url);
 @JsOverlay
-public final void respondWith(IThenable<Response> r){
-respondWith(Js.<FetchEvent.RespondWithRUnionType>uncheckedCast(r));
+public final void respondWith(IThenable<@Nullable Response> r){
+respondWith(Js.<FetchEvent.@Nullable RespondWithRUnionType>uncheckedCast(r));
 }
-public native void respondWith(FetchEvent.RespondWithRUnionType r);
+public native void respondWith(FetchEvent.@Nullable RespondWithRUnionType r);
 @JsOverlay
 public final void respondWith(Response r){
-respondWith(Js.<FetchEvent.RespondWithRUnionType>uncheckedCast(r));
+respondWith(Js.<FetchEvent.@Nullable RespondWithRUnionType>uncheckedCast(r));
 }
 }

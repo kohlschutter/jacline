@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.JsIterable;
 import java.lang.Double;
 import java.lang.Deprecated;
@@ -15,7 +16,7 @@ import jsinterop.annotations.JsPackage;
 import elemental2.core.JsIteratorIterable;
 import elemental2.core.JsDate;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public interface RTCStatsReport extends JsIterable<JsArray<RTCStatsReport.JsIterableTypeParameterArrayUnionType>>{
+public interface RTCStatsReport extends JsIterable<JsArray<RTCStatsReport.JsIterableTypeParameterArrayUnionType>, @Nullable Object, @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface EntriesJsIteratorIterableTypeParameterArrayUnionType{
 @JsOverlay
@@ -37,12 +38,12 @@ return (Object)this instanceof String;
 }
 @JsFunction
 public interface ForEachCallbackFn{
-Object onInvoke(RTCStats p0,String p1,RTCStatsReport p2);
+@Nullable Object onInvoke(RTCStats p0,String p1,RTCStatsReport p2);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetTimestampUnionType{
 @JsOverlay
-static RTCStatsReport.GetTimestampUnionType of(Object o){
+static RTCStatsReport.@Nullable GetTimestampUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -50,7 +51,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsDate asJsDate(){
+default @Nullable JsDate asJsDate(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -81,27 +82,27 @@ default boolean isString(){
 return (Object)this instanceof String;
 }
 }
-JsIteratorIterable<JsArray<RTCStatsReport.EntriesJsIteratorIterableTypeParameterArrayUnionType>> entries(String key);
-<SCOPE>Object forEach(RTCStatsReport.ForEachCallbackFn callback,SCOPE thisObj);
-Object forEach(RTCStatsReport.ForEachCallbackFn callback);
+JsIteratorIterable<JsArray<RTCStatsReport.EntriesJsIteratorIterableTypeParameterArrayUnionType>, @Nullable Object, @Nullable Object> entries(String key);
+<SCOPE extends @Nullable Object> @Nullable Object forEach(RTCStatsReport.ForEachCallbackFn callback,SCOPE thisObj);
+@Nullable Object forEach(RTCStatsReport.ForEachCallbackFn callback);
 RTCStats get(String key);
 @JsProperty
 String getId();
 @Deprecated
 @JsProperty
-RTCStatsReport getLocal();
+@Nullable RTCStatsReport getLocal();
 @Deprecated
 @JsProperty
-RTCStatsReport getRemote();
+@Nullable RTCStatsReport getRemote();
 @JsProperty
 double getSize();
 @JsProperty
-RTCStatsReport.GetTimestampUnionType getTimestamp();
+RTCStatsReport.@Nullable GetTimestampUnionType getTimestamp();
 @JsProperty
 String getType();
 boolean has(String key);
-JsIteratorIterable<String> keys();
+JsIteratorIterable<String, @Nullable Object, @Nullable Object> keys();
 JsArray<String> names();
 String stat(String name);
-JsIteratorIterable<RTCStats> values();
+JsIteratorIterable<RTCStats, @Nullable Object, @Nullable Object> values();
 }

@@ -16,7 +16,19 @@ boolean isCheckOpacity();
 @JsProperty
 boolean isCheckVisibilityCSS();
 @JsProperty
+boolean isContentVisibilityAuto();
+@JsProperty
+boolean isOpacityProperty();
+@JsProperty
+boolean isVisibilityProperty();
+@JsProperty
 void setCheckOpacity(boolean checkOpacity);
 @JsProperty
 void setCheckVisibilityCSS(boolean checkVisibilityCSS);
+@JsProperty
+void setContentVisibilityAuto(boolean contentVisibilityAuto);
+@JsProperty
+void setOpacityProperty(boolean opacityProperty);
+@JsProperty
+void setVisibilityProperty(boolean visibilityProperty);
 }

@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.JsIterable;
 import java.lang.Deprecated;
 import elemental2.core.Function;
@@ -38,9 +39,9 @@ return (Object)this instanceof String;
 }
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
-public interface EntriesArrayArrayUnionType<T>{
+public interface EntriesArrayArrayUnionType<T extends @Nullable Object>{
 @JsOverlay
-static JsObject.EntriesArrayArrayUnionType of(Object o){
+static <T extends @Nullable Object> JsObject.EntriesArrayArrayUnionType<T> of(Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -125,41 +126,46 @@ default boolean isString(){
 return (Object)this instanceof String;
 }
 }
-public static native JsObject assign(JsObject target,JsObject... var_args);
+public static native JsObject assign(JsObject target,@Nullable JsObject... var_args);
+public static native JsObject assign(JsObject target);
 @JsOverlay
-public static final JsObject assign(Object target,Object... var_args){
-return assign(Js.<JsObject>uncheckedCast(target),Js.<JsObject[]>uncheckedCast(var_args));
-}
-public static native JsObject create(JsObject proto,JsPropertyMap<ObjectPropertyDescriptor<Object>> properties);
-public static native JsObject create(JsObject proto);
-@JsOverlay
-public static final JsObject create(Object proto,JsPropertyMap<ObjectPropertyDescriptor<Object>> properties){
-return create(Js.<JsObject>uncheckedCast(proto),properties);
+public static final JsObject assign(Object target,@Nullable Object... var_args){
+return assign(Js.<JsObject>uncheckedCast(target),Js.<@Nullable JsObject[]>uncheckedCast(var_args));
 }
 @JsOverlay
-public static final JsObject create(Object proto){
-return create(Js.<JsObject>uncheckedCast(proto));
+public static final JsObject assign(Object target){
+return assign(Js.<JsObject>uncheckedCast(target));
 }
-public static native <T>T defineProperties(T obj,JsPropertyMap<ObjectPropertyDescriptor<T>> props);
-public static native <T>T defineProperty(T obj,JsObject.DefinePropertyPropUnionType prop,ObjectPropertyDescriptor<T> descriptor);
+public static native JsObject create(@Nullable JsObject proto,@Nullable JsPropertyMap<ObjectPropertyDescriptor<@Nullable Object>> properties);
+public static native JsObject create(@Nullable JsObject proto);
 @JsOverlay
-public static final <T>T defineProperty(T obj,Object prop,ObjectPropertyDescriptor<T> descriptor){
+public static final JsObject create(@Nullable Object proto,@Nullable JsPropertyMap<ObjectPropertyDescriptor<@Nullable Object>> properties){
+return create(Js.<@Nullable JsObject>uncheckedCast(proto),properties);
+}
+@JsOverlay
+public static final JsObject create(@Nullable Object proto){
+return create(Js.<@Nullable JsObject>uncheckedCast(proto));
+}
+public static native <T extends @Nullable Object> T defineProperties(T obj,JsPropertyMap<ObjectPropertyDescriptor<T>> props);
+public static native <T extends @Nullable Object> T defineProperty(T obj,JsObject.DefinePropertyPropUnionType prop,ObjectPropertyDescriptor<T> descriptor);
+@JsOverlay
+public static final <T extends @Nullable Object> T defineProperty(T obj,Object prop,ObjectPropertyDescriptor<T> descriptor){
 return defineProperty(obj,Js.<JsObject.DefinePropertyPropUnionType>uncheckedCast(prop),descriptor);
 }
 @JsOverlay
-public static final <T>T defineProperty(T obj,String prop,ObjectPropertyDescriptor<T> descriptor){
+public static final <T extends @Nullable Object> T defineProperty(T obj,String prop,ObjectPropertyDescriptor<T> descriptor){
 return defineProperty(obj,Js.<JsObject.DefinePropertyPropUnionType>uncheckedCast(prop),descriptor);
 }
-public static native <T>JsArray<JsArray<JsObject.EntriesArrayArrayUnionType<T>>> entries(JsPropertyMap<T> obj);
-public static native <T>T freeze(T obj);
-public static native JsObject fromEntries(JsIterable<Object> iter);
-public static native <T>ObjectPropertyDescriptor<T> getOwnPropertyDescriptor(T obj,JsObject.GetOwnPropertyDescriptorPropUnionType prop);
+public static native <T extends @Nullable Object> JsArray<JsArray<JsObject.EntriesArrayArrayUnionType<T>>> entries(JsPropertyMap<T> obj);
+public static native <T extends @Nullable Object> T freeze(T obj);
+public static native JsObject fromEntries(JsIterable<@Nullable Object, @Nullable Object, @Nullable Object> iter);
+public static native <T extends @Nullable Object> ObjectPropertyDescriptor<T> getOwnPropertyDescriptor(T obj,JsObject.GetOwnPropertyDescriptorPropUnionType prop);
 @JsOverlay
-public static final <T>ObjectPropertyDescriptor<T> getOwnPropertyDescriptor(T obj,Object prop){
+public static final <T extends @Nullable Object> ObjectPropertyDescriptor<T> getOwnPropertyDescriptor(T obj,Object prop){
 return getOwnPropertyDescriptor(obj,Js.<JsObject.GetOwnPropertyDescriptorPropUnionType>uncheckedCast(prop));
 }
 @JsOverlay
-public static final <T>ObjectPropertyDescriptor<T> getOwnPropertyDescriptor(T obj,String prop){
+public static final <T extends @Nullable Object> ObjectPropertyDescriptor<T> getOwnPropertyDescriptor(T obj,String prop){
 return getOwnPropertyDescriptor(obj,Js.<JsObject.GetOwnPropertyDescriptorPropUnionType>uncheckedCast(prop));
 }
 public static native JsPropertyMap<ObjectPropertyDescriptor> getOwnPropertyDescriptors(JsObject obj);
@@ -177,9 +183,9 @@ public static native JsArray<Object> getOwnPropertySymbols(JsObject obj);
 public static final JsArray<Object> getOwnPropertySymbols(Object obj){
 return getOwnPropertySymbols(Js.<JsObject>uncheckedCast(obj));
 }
-public static native JsObject getPrototypeOf(JsObject obj);
+public static native @Nullable JsObject getPrototypeOf(JsObject obj);
 @JsOverlay
-public static final JsObject getPrototypeOf(Object obj){
+public static final @Nullable JsObject getPrototypeOf(Object obj){
 return getPrototypeOf(Js.<JsObject>uncheckedCast(obj));
 }
 public static native boolean hasOwn(JsObject obj,JsObject.HasOwnPropertyNameUnionType propertyName);
@@ -203,7 +209,7 @@ return hasOwn(Js.<JsObject>uncheckedCast(obj),propertyName);
 public static final boolean hasOwn(Object obj,String propertyName){
 return hasOwn(Js.<JsObject>uncheckedCast(obj),propertyName);
 }
-public static native boolean is(Object a,Object b);
+public static native boolean is(@Nullable Object a,@Nullable Object b);
 public static native boolean isExtensible(JsObject obj);
 @JsOverlay
 public static final boolean isExtensible(Object obj){
@@ -224,35 +230,35 @@ public static native JsArray<String> keys(JsObject obj);
 public static final JsArray<String> keys(Object obj){
 return keys(Js.<JsObject>uncheckedCast(obj));
 }
-public static native <T>T preventExtensions(T obj);
-public static native <T>T seal(T obj);
-public static native JsObject setPrototypeOf(JsObject obj,Object proto);
+public static native <T extends @Nullable Object> T preventExtensions(T obj);
+public static native <T extends @Nullable Object> T seal(T obj);
+public static native JsObject setPrototypeOf(JsObject obj,@Nullable Object proto);
 @JsOverlay
-public static final JsObject setPrototypeOf(Object obj,Object proto){
+public static final JsObject setPrototypeOf(Object obj,@Nullable Object proto){
 return setPrototypeOf(Js.<JsObject>uncheckedCast(obj),proto);
 }
-public static native <T>JsArray<T> values(JsPropertyMap<T> obj);
+public static native <T extends @Nullable Object> JsArray<T> values(JsPropertyMap<T> obj);
 @Deprecated
-public JsObject __parent__;
-public JsObject __proto__;
-public Function constructor;
+public @Nullable JsObject __parent__;
+public @Nullable JsObject __proto__;
+public @Nullable Function constructor;
 public JsObject(){}
-public JsObject(Object value){}
+public JsObject(@Nullable Object value){}
 @Deprecated
-public native void __defineGetter__(String sprop,Function fun);
+public native void __defineGetter__(String sprop,@Nullable Function fun);
 @Deprecated
-public native void __defineSetter__(String sprop,Function fun);
+public native void __defineSetter__(String sprop,@Nullable Function fun);
 @Deprecated
-public native Function __lookupGetter__(String sprop);
+public native @Nullable Function __lookupGetter__(String sprop);
 @Deprecated
-public native Function __lookupSetter__(String sprop);
+public native @Nullable Function __lookupSetter__(String sprop);
 @Deprecated
-public native Object __noSuchMethod__(Function fun);
-public native boolean hasOwnProperty(Object propertyName);
-public native boolean isPrototypeOf(JsObject other);
+public native @Nullable Object __noSuchMethod__(@Nullable Function fun);
+public native boolean hasOwnProperty(@Nullable Object propertyName);
+public native boolean isPrototypeOf(@Nullable JsObject other);
 @JsOverlay
-public final boolean isPrototypeOf(Object other){
-return isPrototypeOf(Js.<JsObject>uncheckedCast(other));
+public final boolean isPrototypeOf(@Nullable Object other){
+return isPrototypeOf(Js.<@Nullable JsObject>uncheckedCast(other));
 }
 @JsOverlay
 public final boolean propertyIsEnumerable(Object propertyName){
@@ -263,11 +269,11 @@ public native boolean propertyIsEnumerable(JsObject.PropertyIsEnumerableProperty
 public final boolean propertyIsEnumerable(String propertyName){
 return propertyIsEnumerable(Js.<JsObject.PropertyIsEnumerablePropertyNameUnionType>uncheckedCast(propertyName));
 }
-public native Object toJSON();
-public native Object toJSON(String key);
+public native @Nullable Object toJSON();
+public native @Nullable Object toJSON(String key);
 public native String toLocaleString();
 public native String toSource();
 @JsMethod(name = "toString")
 public native String toString_();
-public native Object valueOf();
+public native @Nullable Object valueOf();
 }

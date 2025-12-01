@@ -1,5 +1,6 @@
 package elemental2.media;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import elemental2.dom.HTMLMediaElement;
@@ -20,7 +21,7 @@ String getChannelCountMode();
 @JsProperty
 String getChannelInterpretation();
 @JsProperty
-HTMLMediaElement getMediaElement();
+@Nullable HTMLMediaElement getMediaElement();
 @JsProperty
 void setChannelCount(double channelCount);
 @JsProperty
@@ -28,5 +29,5 @@ void setChannelCountMode(String channelCountMode);
 @JsProperty
 void setChannelInterpretation(String channelInterpretation);
 @JsProperty
-void setMediaElement(HTMLMediaElement mediaElement);
+void setMediaElement(@Nullable HTMLMediaElement mediaElement);
 }

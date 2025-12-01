@@ -1,30 +1,31 @@
 package elemental2.dom;
-import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import elemental2.promise.IThenable;
+import elemental2.dom.TransformStreamDefaultController;
+import jsinterop.base.JsPropertyMap;
+import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsOverlay;
-import elemental2.dom.TransformStreamDefaultController;
 import java.lang.Object;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
-import jsinterop.base.JsPropertyMap;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public interface TransformStreamTransformer<IN_VALUE, OUT_VALUE>{
+public interface TransformStreamTransformer<IN_VALUE extends @Nullable Object, OUT_VALUE extends @Nullable Object>{
 @JsFunction
-public interface FlushFn<OUT_VALUE>{
-IThenable<Object> onInvoke(TransformStreamDefaultController<OUT_VALUE> p0);
+public interface FlushFn<OUT_VALUE extends @Nullable Object>{
+IThenable<@Nullable Object> onInvoke(TransformStreamDefaultController<OUT_VALUE> p0);
 }
 @JsFunction
-public interface StartFn<OUT_VALUE>{
-IThenable<Object> onInvoke(TransformStreamDefaultController<OUT_VALUE> p0);
+public interface StartFn<OUT_VALUE extends @Nullable Object>{
+IThenable<@Nullable Object> onInvoke(TransformStreamDefaultController<OUT_VALUE> p0);
 }
 @JsFunction
-public interface TransformFn<IN_VALUE, OUT_VALUE>{
-IThenable<Object> onInvoke(IN_VALUE p0,TransformStreamDefaultController<OUT_VALUE> p1);
+public interface TransformFn<IN_VALUE extends @Nullable Object, OUT_VALUE extends @Nullable Object>{
+IThenable<@Nullable Object> onInvoke(IN_VALUE p0,TransformStreamDefaultController<OUT_VALUE> p1);
 }
 @JsOverlay
-static TransformStreamTransformer create(){
+static <IN_VALUE extends @Nullable Object, OUT_VALUE extends @Nullable Object> TransformStreamTransformer<IN_VALUE, OUT_VALUE> create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty

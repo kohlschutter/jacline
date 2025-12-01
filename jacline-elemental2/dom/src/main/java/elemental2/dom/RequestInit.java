@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.FormData;
 import elemental2.dom.ReadableStream;
 import elemental2.dom.Headers;
@@ -21,35 +22,35 @@ public interface RequestInit{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetBodyUnionType{
 @JsOverlay
-static RequestInit.GetBodyUnionType of(Object o){
+static RequestInit.@Nullable GetBodyUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default ArrayBufferView asArrayBufferView(){
+default @Nullable ArrayBufferView asArrayBufferView(){
 return Js.cast(this);
 }
 @JsOverlay
-default Blob asBlob(){
+default @Nullable Blob asBlob(){
 return Js.cast(this);
 }
 @JsOverlay
-default FormData asFormData(){
+default @Nullable FormData asFormData(){
 return Js.cast(this);
 }
 @JsOverlay
-default ReadableStream asReadableStream(){
+default @Nullable ReadableStream asReadableStream(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
-default URLSearchParams asURLSearchParams(){
+default @Nullable URLSearchParams asURLSearchParams(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -113,7 +114,7 @@ static RequestInit create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-RequestInit.GetBodyUnionType getBody();
+RequestInit.@Nullable GetBodyUnionType getBody();
 @JsProperty
 String getCache();
 @JsProperty
@@ -135,38 +136,38 @@ String getReferrerPolicy();
 @JsProperty
 AbortSignal getSignal();
 @JsProperty
-Object getWindow();
+@Nullable Object getWindow();
 @JsProperty
 boolean isKeepalive();
 @JsOverlay
 default void setBody(ArrayBuffer body){
-setBody(Js.<RequestInit.GetBodyUnionType>uncheckedCast(body));
+setBody(Js.<RequestInit.@Nullable GetBodyUnionType>uncheckedCast(body));
 }
 @JsOverlay
 default void setBody(ArrayBufferView body){
-setBody(Js.<RequestInit.GetBodyUnionType>uncheckedCast(body));
+setBody(Js.<RequestInit.@Nullable GetBodyUnionType>uncheckedCast(body));
 }
 @JsOverlay
 default void setBody(Blob body){
-setBody(Js.<RequestInit.GetBodyUnionType>uncheckedCast(body));
+setBody(Js.<RequestInit.@Nullable GetBodyUnionType>uncheckedCast(body));
 }
 @JsOverlay
 default void setBody(FormData body){
-setBody(Js.<RequestInit.GetBodyUnionType>uncheckedCast(body));
+setBody(Js.<RequestInit.@Nullable GetBodyUnionType>uncheckedCast(body));
 }
 @JsProperty
-void setBody(RequestInit.GetBodyUnionType body);
+void setBody(RequestInit.@Nullable GetBodyUnionType body);
 @JsOverlay
 default void setBody(ReadableStream body){
-setBody(Js.<RequestInit.GetBodyUnionType>uncheckedCast(body));
+setBody(Js.<RequestInit.@Nullable GetBodyUnionType>uncheckedCast(body));
 }
 @JsOverlay
 default void setBody(String body){
-setBody(Js.<RequestInit.GetBodyUnionType>uncheckedCast(body));
+setBody(Js.<RequestInit.@Nullable GetBodyUnionType>uncheckedCast(body));
 }
 @JsOverlay
 default void setBody(URLSearchParams body){
-setBody(Js.<RequestInit.GetBodyUnionType>uncheckedCast(body));
+setBody(Js.<RequestInit.@Nullable GetBodyUnionType>uncheckedCast(body));
 }
 @JsProperty
 void setCache(String cache);
@@ -207,5 +208,5 @@ void setReferrerPolicy(String referrerPolicy);
 @JsProperty
 void setSignal(AbortSignal signal);
 @JsProperty
-void setWindow(Object window);
+void setWindow(@Nullable Object window);
 }

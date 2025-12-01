@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.Event;
 import elemental2.promise.Promise;
 import elemental2.core.JsArray;
@@ -17,37 +18,37 @@ import elemental2.core.JsObject;
 public interface FontFaceSet extends EventTarget{
 @JsFunction
 public interface ForEachCallbackFn{
-Object onInvoke(FontFace p0,double p1,FontFaceSet p2);
+@Nullable Object onInvoke(FontFace p0,double p1,FontFaceSet p2);
 }
 @JsFunction
 public interface OnloadingFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
 @JsFunction
 public interface OnloadingdoneFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
 @JsFunction
 public interface OnloadingerrorFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
 void add(FontFace value);
 boolean check(String font,String text);
 boolean check(String font);
 void clear();
 void delete(FontFace value);
-void forEach(FontFaceSet.ForEachCallbackFn callback,JsObject selfObj);
+void forEach(FontFaceSet.ForEachCallbackFn callback,@Nullable JsObject selfObj);
 @JsOverlay
-default void forEach(FontFaceSet.ForEachCallbackFn callback,Object selfObj){
-forEach(callback,Js.<JsObject>uncheckedCast(selfObj));
+default void forEach(FontFaceSet.ForEachCallbackFn callback,@Nullable Object selfObj){
+forEach(callback,Js.<@Nullable JsObject>uncheckedCast(selfObj));
 }
 void forEach(FontFaceSet.ForEachCallbackFn callback);
 @JsProperty
-FontFaceSet.OnloadingFn getOnloading();
+FontFaceSet.@Nullable OnloadingFn getOnloading();
 @JsProperty
-FontFaceSet.OnloadingdoneFn getOnloadingdone();
+FontFaceSet.@Nullable OnloadingdoneFn getOnloadingdone();
 @JsProperty
-FontFaceSet.OnloadingerrorFn getOnloadingerror();
+FontFaceSet.@Nullable OnloadingerrorFn getOnloadingerror();
 @JsProperty
 Promise<FontFaceSet> getReady();
 @JsProperty
@@ -56,11 +57,11 @@ boolean has(FontFace font);
 Promise<JsArray<FontFace>> load(String font,String text);
 Promise<JsArray<FontFace>> load(String font);
 @JsProperty
-void setOnloading(FontFaceSet.OnloadingFn onloading);
+void setOnloading(FontFaceSet.@Nullable OnloadingFn onloading);
 @JsProperty
-void setOnloadingdone(FontFaceSet.OnloadingdoneFn onloadingdone);
+void setOnloadingdone(FontFaceSet.@Nullable OnloadingdoneFn onloadingdone);
 @JsProperty
-void setOnloadingerror(FontFaceSet.OnloadingerrorFn onloadingerror);
+void setOnloadingerror(FontFaceSet.@Nullable OnloadingerrorFn onloadingerror);
 @JsProperty
 void setReady(Promise<FontFaceSet> ready);
 @JsProperty

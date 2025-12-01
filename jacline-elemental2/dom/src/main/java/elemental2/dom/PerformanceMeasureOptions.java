@@ -1,13 +1,14 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
+import java.lang.Double;
+import jsinterop.base.JsPropertyMap;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
-import java.lang.Double;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
 import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
-import jsinterop.base.JsPropertyMap;
 import elemental2.core.JsObject;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public interface PerformanceMeasureOptions{
@@ -62,7 +63,7 @@ static PerformanceMeasureOptions create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-JsObject getDetail();
+@Nullable JsObject getDetail();
 @JsProperty
 double getDuration();
 @JsProperty
@@ -70,10 +71,10 @@ PerformanceMeasureOptions.GetEndUnionType getEnd();
 @JsProperty
 PerformanceMeasureOptions.GetStartUnionType getStart();
 @JsProperty
-void setDetail(JsObject detail);
+void setDetail(@Nullable JsObject detail);
 @JsOverlay
-default void setDetail(Object detail){
-setDetail(Js.<JsObject>uncheckedCast(detail));
+default void setDetail(@Nullable Object detail){
+setDetail(Js.<@Nullable JsObject>uncheckedCast(detail));
 }
 @JsProperty
 void setDuration(double duration);

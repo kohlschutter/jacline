@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.Event;
 import elemental2.dom.MediaStreamTrack;
 import java.lang.String;
@@ -11,6 +12,6 @@ public class MediaStreamTrackEvent extends Event{
 public MediaStreamTrack track;
 public MediaStreamTrackEvent(String type,MediaStreamTrackEventInit eventInitDict){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 }

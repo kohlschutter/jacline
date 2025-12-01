@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.MessagePort;
 import jsinterop.base.JsPropertyMap;
 import elemental2.core.JsArray;
@@ -13,7 +14,7 @@ import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public interface ExtendableMessageEventInit<T> extends ExtendableEventInit{
+public interface ExtendableMessageEventInit<T extends @Nullable Object> extends ExtendableEventInit{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetSourceUnionType{
 @JsOverlay
@@ -46,7 +47,7 @@ return (Object)this instanceof ServiceWorkerClient;
 }
 }
 @JsOverlay
-static ExtendableMessageEventInit create(){
+static <T extends @Nullable Object> ExtendableMessageEventInit<T> create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty

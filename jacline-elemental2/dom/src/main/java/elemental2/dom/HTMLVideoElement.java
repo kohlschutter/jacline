@@ -8,6 +8,7 @@ import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class HTMLVideoElement extends HTMLMediaElement{
 public int height;
+public boolean playsInline;
 public String poster;
 public int videoHeight;
 public int videoWidth;

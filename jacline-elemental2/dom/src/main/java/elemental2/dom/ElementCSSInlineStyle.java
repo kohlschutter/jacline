@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.CSSStyleDeclaration;
 import jsinterop.annotations.JsOverlay;
@@ -13,7 +14,7 @@ static ElementCSSInlineStyle create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-CSSStyleDeclaration getStyle();
+@Nullable CSSStyleDeclaration getStyle();
 @JsProperty
-void setStyle(CSSStyleDeclaration style);
+void setStyle(@Nullable CSSStyleDeclaration style);
 }

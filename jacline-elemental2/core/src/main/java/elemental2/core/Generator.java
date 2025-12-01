@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.JsIIterableResult;
 import jsinterop.annotations.JsMethod;
 import java.lang.Object;
@@ -6,11 +7,11 @@ import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import elemental2.core.JsIteratorIterable;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public interface Generator<VALUE, UNUSED_RETURN_T, UNUSED_NEXT_T> extends JsIteratorIterable<VALUE>{
-JsIIterableResult<VALUE> next();
-JsIIterableResult<VALUE> next(Object value);
+public interface Generator<T extends @Nullable Object, TReturn extends @Nullable Object, TNext extends @Nullable Object> extends JsIteratorIterable<T, @Nullable Object, @Nullable Object>{
+JsIIterableResult<T> next();
+JsIIterableResult<T> next(@Nullable Object value);
 @JsMethod(name = "return")
-JsIIterableResult<VALUE> return_(VALUE value);
+JsIIterableResult<T> return_(T value);
 @JsMethod(name = "throw")
-JsIIterableResult<VALUE> throw_(Object exception);
+JsIIterableResult<T> throw_(@Nullable Object exception);
 }

@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.Element;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsOverlay;
 import java.lang.String;
@@ -12,7 +13,7 @@ import elemental2.dom.EventTarget;
 public class Event{
 @JsFunction
 public interface DeepPathFn{
-JsArray<EventTarget> onInvoke();
+@Nullable JsArray<EventTarget> onInvoke();
 }
 @JsOverlay
 public static final int AT_TARGET=Event__Constants.AT_TARGET;
@@ -23,16 +24,16 @@ public static final int CAPTURING_PHASE=Event__Constants.CAPTURING_PHASE;
 public boolean bubbles;
 public boolean cancelable;
 public boolean composed;
-public EventTarget currentTarget;
+public @Nullable EventTarget currentTarget;
 public Event.DeepPathFn deepPath;
 public boolean defaultPrevented;
 public int eventPhase;
 public String namespaceURI;
-public JsArray<Element> path;
-public EventTarget target;
+public @Nullable JsArray<Element> path;
+public @Nullable EventTarget target;
 public double timeStamp;
 public String type;
-public Event(String type,EventInit eventInitDict){}
+public Event(String type,@Nullable EventInit eventInitDict){}
 public Event(String type){}
 public native JsArray<EventTarget> composedPath();
 public native void initEvent(String eventTypeArg,boolean canBubbleArg,boolean cancelableArg);

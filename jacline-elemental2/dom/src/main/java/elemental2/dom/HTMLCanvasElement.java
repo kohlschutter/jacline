@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.OffscreenCanvas;
 import elemental2.dom.Blob;
 import jsinterop.base.Js;
@@ -15,21 +16,21 @@ import elemental2.core.JsObject;
 public class HTMLCanvasElement extends HTMLElement{
 @JsFunction
 public interface ToBlobCallbackFn{
-Object onInvoke(Blob p0);
+@Nullable Object onInvoke(Blob p0);
 }
 public int height;
 public int width;
 public native MediaStream captureStream();
 public native MediaStream captureStream(double framerate);
-public native JsObject getContext(String contextId,JsObject args);
+public native @Nullable JsObject getContext(String contextId,@Nullable JsObject args);
 @JsOverlay
-public final JsObject getContext(String contextId,Object args){
-return getContext(contextId,Js.<JsObject>uncheckedCast(args));
+public final @Nullable JsObject getContext(String contextId,@Nullable Object args){
+return getContext(contextId,Js.<@Nullable JsObject>uncheckedCast(args));
 }
-public native JsObject getContext(String contextId);
-public native Object toBlob(HTMLCanvasElement.ToBlobCallbackFn callback,String type,Object... var_args);
-public native Object toBlob(HTMLCanvasElement.ToBlobCallbackFn callback);
+public native @Nullable JsObject getContext(String contextId);
+public native @Nullable Object toBlob(HTMLCanvasElement.ToBlobCallbackFn callback,String type,@Nullable Object... var_args);
+public native @Nullable Object toBlob(HTMLCanvasElement.ToBlobCallbackFn callback);
 public native String toDataURL();
-public native String toDataURL(String type,Object... var_args);
+public native String toDataURL(String type,@Nullable Object... var_args);
 public native OffscreenCanvas transferControlToOffscreen();
 }

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
@@ -35,7 +36,7 @@ public Path2D(){}
 public Path2D(Path2D.ConstructorArgUnionType arg){}
 public Path2D(Path2D arg){}
 public Path2D(String arg){}
-public native void addPath(Path2D path);
+public native void addPath(@Nullable Path2D path);
 public native void arc(double x,double y,double radius,double startAngle,double endAngle,boolean optAnticlockwise);
 public native void arc(double x,double y,double radius,double startAngle,double endAngle);
 public native void arcTo(double x1,double y1,double x2,double y2,double radius);

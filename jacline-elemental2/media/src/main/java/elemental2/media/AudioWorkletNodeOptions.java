@@ -1,5 +1,6 @@
 package elemental2.media;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import java.lang.Double;
 import jsinterop.annotations.JsOverlay;
@@ -23,7 +24,7 @@ JsArray<Double> getOutputChannelCount();
 @JsProperty
 JsPropertyMap<Double> getParameterData();
 @JsProperty
-Object getProcessorOptions();
+@Nullable Object getProcessorOptions();
 @JsProperty
 void setNumberOfInputs(double numberOfInputs);
 @JsProperty
@@ -37,5 +38,5 @@ setOutputChannelCount(Js.<JsArray<Double>>uncheckedCast(outputChannelCount));
 @JsProperty
 void setParameterData(JsPropertyMap<Double> parameterData);
 @JsProperty
-void setProcessorOptions(Object processorOptions);
+void setProcessorOptions(@Nullable Object processorOptions);
 }

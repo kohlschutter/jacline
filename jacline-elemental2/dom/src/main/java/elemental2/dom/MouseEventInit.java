@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import elemental2.dom.EventModifierInit;
@@ -22,7 +23,7 @@ double getClientX();
 @JsProperty
 double getClientY();
 @JsProperty
-EventTarget getRelatedTarget();
+@Nullable EventTarget getRelatedTarget();
 @JsProperty
 double getScreenX();
 @JsProperty
@@ -36,7 +37,7 @@ void setClientX(double clientX);
 @JsProperty
 void setClientY(double clientY);
 @JsProperty
-void setRelatedTarget(EventTarget relatedTarget);
+void setRelatedTarget(@Nullable EventTarget relatedTarget);
 @JsProperty
 void setScreenX(double screenX);
 @JsProperty

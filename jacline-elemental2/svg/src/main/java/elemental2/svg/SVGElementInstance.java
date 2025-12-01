@@ -1,4 +1,5 @@
 package elemental2.svg;
+import org.jspecify.annotations.Nullable;
 import elemental2.svg.SVGUseElement;
 import elemental2.dom.Event;
 import elemental2.core.JsArray;
@@ -40,7 +41,7 @@ return (Object)this instanceof SVGElementInstanceList;
 }
 @JsFunction
 public interface OnabortFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnabortUnionType{
@@ -63,7 +64,7 @@ return (Object)this instanceof SVGElementInstance.OnabortFn;
 }
 @JsFunction
 public interface OnbeforecopyFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnbeforecopyUnionType{
@@ -86,7 +87,7 @@ return (Object)this instanceof SVGElementInstance.OnbeforecopyFn;
 }
 @JsFunction
 public interface OnbeforecutFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnbeforecutUnionType{
@@ -109,7 +110,7 @@ return (Object)this instanceof SVGElementInstance.OnbeforecutFn;
 }
 @JsFunction
 public interface OnbeforepasteFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnbeforepasteUnionType{
@@ -132,7 +133,7 @@ return (Object)this instanceof SVGElementInstance.OnbeforepasteFn;
 }
 @JsFunction
 public interface OnblurFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnblurUnionType{
@@ -155,7 +156,7 @@ return (Object)this instanceof SVGElementInstance.OnblurFn;
 }
 @JsFunction
 public interface OnchangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnchangeUnionType{
@@ -178,7 +179,7 @@ return (Object)this instanceof SVGElementInstance.OnchangeFn;
 }
 @JsFunction
 public interface OnclickFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnclickUnionType{
@@ -201,7 +202,7 @@ return (Object)this instanceof SVGElementInstance.OnclickFn;
 }
 @JsFunction
 public interface OncontextmenuFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OncontextmenuUnionType{
@@ -224,7 +225,7 @@ return (Object)this instanceof SVGElementInstance.OncontextmenuFn;
 }
 @JsFunction
 public interface OncopyFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OncopyUnionType{
@@ -247,7 +248,7 @@ return (Object)this instanceof SVGElementInstance.OncopyFn;
 }
 @JsFunction
 public interface OncutFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OncutUnionType{
@@ -270,7 +271,7 @@ return (Object)this instanceof SVGElementInstance.OncutFn;
 }
 @JsFunction
 public interface OndblclickFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OndblclickUnionType{
@@ -293,7 +294,7 @@ return (Object)this instanceof SVGElementInstance.OndblclickFn;
 }
 @JsFunction
 public interface OndragFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OndragUnionType{
@@ -316,7 +317,7 @@ return (Object)this instanceof SVGElementInstance.OndragFn;
 }
 @JsFunction
 public interface OndragendFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OndragendUnionType{
@@ -339,7 +340,7 @@ return (Object)this instanceof SVGElementInstance.OndragendFn;
 }
 @JsFunction
 public interface OndragenterFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OndragenterUnionType{
@@ -362,7 +363,7 @@ return (Object)this instanceof SVGElementInstance.OndragenterFn;
 }
 @JsFunction
 public interface OndragleaveFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OndragleaveUnionType{
@@ -385,7 +386,7 @@ return (Object)this instanceof SVGElementInstance.OndragleaveFn;
 }
 @JsFunction
 public interface OndragoverFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OndragoverUnionType{
@@ -408,7 +409,7 @@ return (Object)this instanceof SVGElementInstance.OndragoverFn;
 }
 @JsFunction
 public interface OndragstartFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OndragstartUnionType{
@@ -431,7 +432,7 @@ return (Object)this instanceof SVGElementInstance.OndragstartFn;
 }
 @JsFunction
 public interface OndropFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OndropUnionType{
@@ -454,7 +455,7 @@ return (Object)this instanceof SVGElementInstance.OndropFn;
 }
 @JsFunction
 public interface OnerrorFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnerrorUnionType{
@@ -477,7 +478,7 @@ return (Object)this instanceof SVGElementInstance.OnerrorFn;
 }
 @JsFunction
 public interface OnfocusFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnfocusUnionType{
@@ -500,7 +501,7 @@ return (Object)this instanceof SVGElementInstance.OnfocusFn;
 }
 @JsFunction
 public interface OninputFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OninputUnionType{
@@ -523,7 +524,7 @@ return (Object)this instanceof SVGElementInstance.OninputFn;
 }
 @JsFunction
 public interface OnkeydownFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnkeydownUnionType{
@@ -546,7 +547,7 @@ return (Object)this instanceof SVGElementInstance.OnkeydownFn;
 }
 @JsFunction
 public interface OnkeypressFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnkeypressUnionType{
@@ -569,7 +570,7 @@ return (Object)this instanceof SVGElementInstance.OnkeypressFn;
 }
 @JsFunction
 public interface OnkeyupFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnkeyupUnionType{
@@ -592,7 +593,7 @@ return (Object)this instanceof SVGElementInstance.OnkeyupFn;
 }
 @JsFunction
 public interface OnloadFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnloadUnionType{
@@ -615,7 +616,7 @@ return (Object)this instanceof SVGElementInstance.OnloadFn;
 }
 @JsFunction
 public interface OnmousedownFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnmousedownUnionType{
@@ -638,7 +639,7 @@ return (Object)this instanceof SVGElementInstance.OnmousedownFn;
 }
 @JsFunction
 public interface OnmousemoveFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnmousemoveUnionType{
@@ -661,7 +662,7 @@ return (Object)this instanceof SVGElementInstance.OnmousemoveFn;
 }
 @JsFunction
 public interface OnmouseoutFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnmouseoutUnionType{
@@ -684,7 +685,7 @@ return (Object)this instanceof SVGElementInstance.OnmouseoutFn;
 }
 @JsFunction
 public interface OnmouseoverFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnmouseoverUnionType{
@@ -707,7 +708,7 @@ return (Object)this instanceof SVGElementInstance.OnmouseoverFn;
 }
 @JsFunction
 public interface OnmouseupFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnmouseupUnionType{
@@ -730,7 +731,7 @@ return (Object)this instanceof SVGElementInstance.OnmouseupFn;
 }
 @JsFunction
 public interface OnmousewheelFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnmousewheelUnionType{
@@ -753,7 +754,7 @@ return (Object)this instanceof SVGElementInstance.OnmousewheelFn;
 }
 @JsFunction
 public interface OnpasteFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnpasteUnionType{
@@ -776,7 +777,7 @@ return (Object)this instanceof SVGElementInstance.OnpasteFn;
 }
 @JsFunction
 public interface OnresetFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnresetUnionType{
@@ -799,7 +800,7 @@ return (Object)this instanceof SVGElementInstance.OnresetFn;
 }
 @JsFunction
 public interface OnresizeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnresizeUnionType{
@@ -822,7 +823,7 @@ return (Object)this instanceof SVGElementInstance.OnresizeFn;
 }
 @JsFunction
 public interface OnscrollFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnscrollUnionType{
@@ -845,7 +846,7 @@ return (Object)this instanceof SVGElementInstance.OnscrollFn;
 }
 @JsFunction
 public interface OnsearchFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnsearchUnionType{
@@ -868,7 +869,7 @@ return (Object)this instanceof SVGElementInstance.OnsearchFn;
 }
 @JsFunction
 public interface OnselectFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnselectUnionType{
@@ -891,7 +892,7 @@ return (Object)this instanceof SVGElementInstance.OnselectFn;
 }
 @JsFunction
 public interface OnselectstartFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnselectstartUnionType{
@@ -914,7 +915,7 @@ return (Object)this instanceof SVGElementInstance.OnselectstartFn;
 }
 @JsFunction
 public interface OnsubmitFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnsubmitUnionType{
@@ -937,7 +938,7 @@ return (Object)this instanceof SVGElementInstance.OnsubmitFn;
 }
 @JsFunction
 public interface OnunloadFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OnunloadUnionType{

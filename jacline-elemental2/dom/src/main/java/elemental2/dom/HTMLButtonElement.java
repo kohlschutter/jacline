@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.HTMLFormElement;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.ValidityState;
 import elemental2.dom.HTMLElement;
 import elemental2.dom.NodeList;
@@ -12,17 +13,17 @@ public class HTMLButtonElement extends HTMLElement{
 public String accessKey;
 public boolean autofocus;
 public boolean disabled;
-public HTMLFormElement form;
+public @Nullable HTMLFormElement form;
 public String formAction;
 public String formEnctype;
 public String formMethod;
 public String formTarget;
-public NodeList<HTMLLabelElement> labels;
+public @Nullable NodeList<HTMLLabelElement> labels;
 public String name;
 public int tabIndex;
 public String type;
 public String validationMessage;
-public ValidityState validity;
+public @Nullable ValidityState validity;
 public String value;
 public boolean willValidate;
 public native boolean checkValidity();

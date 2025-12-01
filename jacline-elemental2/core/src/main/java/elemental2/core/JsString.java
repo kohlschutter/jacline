@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.JsIterable;
 import jsinterop.annotations.JsMethod;
 import elemental2.core.JsRegExp;
@@ -15,19 +16,19 @@ import jsinterop.annotations.JsPackage;
 import elemental2.core.JsIteratorIterable;
 import elemental2.core.JsObject;
 @JsType(isNative = true,name = "String",namespace = JsPackage.GLOBAL)
-public class JsString implements JsIterable<String>{
+public class JsString implements JsIterable<String, @Nullable Object, @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface LocaleCompareLocalesUnionType{
 @JsOverlay
-static JsString.LocaleCompareLocalesUnionType of(Object o){
+static JsString.@Nullable LocaleCompareLocalesUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<String> asJsArray(){
+default @Nullable JsArray<String> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -64,20 +65,20 @@ return (Object)this instanceof String;
 }
 @JsFunction
 public interface ReplaceAllReplacementFn{
-Object onInvoke(String p0,Object... p1);
+@Nullable Object onInvoke(String p0,@Nullable Object... p1);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ReplaceAllReplacementUnionType{
 @JsOverlay
-static JsString.ReplaceAllReplacementUnionType of(Object o){
+static JsString.@Nullable ReplaceAllReplacementUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsString.ReplaceAllReplacementFn asReplaceAllReplacementFn(){
+default JsString.@Nullable ReplaceAllReplacementFn asReplaceAllReplacementFn(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -115,15 +116,15 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ReplacePatternUnionType{
 @JsOverlay
-static JsString.ReplacePatternUnionType of(Object o){
+static JsString.@Nullable ReplacePatternUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsRegExp asJsRegExp(){
+default @Nullable JsRegExp asJsRegExp(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -137,20 +138,20 @@ return (Object)this instanceof String;
 }
 @JsFunction
 public interface ReplaceReplacementFn{
-Object onInvoke(String p0,Object... p1);
+@Nullable Object onInvoke(String p0,@Nullable Object... p1);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ReplaceReplacementUnionType{
 @JsOverlay
-static JsString.ReplaceReplacementUnionType of(Object o){
+static JsString.@Nullable ReplaceReplacementUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsString.ReplaceReplacementFn asReplaceReplacementFn(){
+default JsString.@Nullable ReplaceReplacementFn asReplaceReplacementFn(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -165,15 +166,15 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface SearchPatternUnionType{
 @JsOverlay
-static JsString.SearchPatternUnionType of(Object o){
+static JsString.@Nullable SearchPatternUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsRegExp asJsRegExp(){
+default @Nullable JsRegExp asJsRegExp(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -188,15 +189,15 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ToLocaleLowerCaseLocalesUnionType{
 @JsOverlay
-static JsString.ToLocaleLowerCaseLocalesUnionType of(Object o){
+static JsString.@Nullable ToLocaleLowerCaseLocalesUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<String> asJsArray(){
+default @Nullable JsArray<String> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -211,15 +212,15 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ToLocaleUpperCaseLocalesUnionType{
 @JsOverlay
-static JsString.ToLocaleUpperCaseLocalesUnionType of(Object o){
+static JsString.@Nullable ToLocaleUpperCaseLocalesUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<String> asJsArray(){
+default @Nullable JsArray<String> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -233,10 +234,10 @@ return (Object)this instanceof String;
 }
 public static native String fromCharCode(int... var_args);
 public static native String fromCodePoint(int codePoint,int... var_args);
-public static native String raw(ITemplateArray template,Object... var_args);
+public static native String raw(ITemplateArray template,@Nullable Object... var_args);
 public int length;
 public JsString(){}
-public JsString(Object str){}
+public JsString(@Nullable Object str){}
 public native String anchor();
 public native String at(int index);
 public native String big();
@@ -246,7 +247,7 @@ public native String charAt(int index);
 public native int charCodeAt();
 public native int charCodeAt(int index);
 public native int codePointAt(int index);
-public native String concat(Object... var_args);
+public native String concat(@Nullable Object... var_args);
 public native boolean endsWith(String searchString,int position);
 public native boolean endsWith(String searchString);
 public native String fixed();
@@ -254,63 +255,63 @@ public native String fontcolor(String color);
 public native String fontsize(int size);
 public native boolean includes(String searchString,int position);
 public native boolean includes(String searchString);
-public native int indexOf(String searchValue,int fromIndex);
-public native int indexOf(String searchValue);
+public native int indexOf(@Nullable String searchValue,int fromIndex);
+public native int indexOf(@Nullable String searchValue);
 public native String italics();
-public native int lastIndexOf(String searchValue,int fromIndex);
-public native int lastIndexOf(String searchValue);
+public native int lastIndexOf(@Nullable String searchValue,int fromIndex);
+public native int lastIndexOf(@Nullable String searchValue);
 public native String link(String hrefAttribute);
 @JsOverlay
-public final int localeCompare(String compareString,JsArray<String> locales,JsObject options){
-return localeCompare(compareString,Js.<JsString.LocaleCompareLocalesUnionType>uncheckedCast(locales),options);
+public final int localeCompare(@Nullable String compareString,JsArray<String> locales,@Nullable JsObject options){
+return localeCompare(compareString,Js.<JsString.@Nullable LocaleCompareLocalesUnionType>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final int localeCompare(String compareString,JsArray<String> locales,Object options){
-return localeCompare(compareString,locales,Js.<JsObject>uncheckedCast(options));
+public final int localeCompare(@Nullable String compareString,JsArray<String> locales,@Nullable Object options){
+return localeCompare(compareString,locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
-public final int localeCompare(String compareString,JsArray<String> locales){
-return localeCompare(compareString,Js.<JsString.LocaleCompareLocalesUnionType>uncheckedCast(locales));
+public final int localeCompare(@Nullable String compareString,JsArray<String> locales){
+return localeCompare(compareString,Js.<JsString.@Nullable LocaleCompareLocalesUnionType>uncheckedCast(locales));
 }
-public native int localeCompare(String compareString,JsString.LocaleCompareLocalesUnionType locales,JsObject options);
+public native int localeCompare(@Nullable String compareString,JsString.@Nullable LocaleCompareLocalesUnionType locales,@Nullable JsObject options);
 @JsOverlay
-public final int localeCompare(String compareString,JsString.LocaleCompareLocalesUnionType locales,Object options){
-return localeCompare(compareString,locales,Js.<JsObject>uncheckedCast(options));
+public final int localeCompare(@Nullable String compareString,JsString.@Nullable LocaleCompareLocalesUnionType locales,@Nullable Object options){
+return localeCompare(compareString,locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
-public native int localeCompare(String compareString,JsString.LocaleCompareLocalesUnionType locales);
+public native int localeCompare(@Nullable String compareString,JsString.@Nullable LocaleCompareLocalesUnionType locales);
 @JsOverlay
-public final int localeCompare(String compareString,String locales,JsObject options){
-return localeCompare(compareString,Js.<JsString.LocaleCompareLocalesUnionType>uncheckedCast(locales),options);
+public final int localeCompare(@Nullable String compareString,String locales,@Nullable JsObject options){
+return localeCompare(compareString,Js.<JsString.@Nullable LocaleCompareLocalesUnionType>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final int localeCompare(String compareString,String[] locales,JsObject options){
+public final int localeCompare(@Nullable String compareString,String[] locales,@Nullable JsObject options){
 return localeCompare(compareString,Js.<JsArray<String>>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final int localeCompare(String compareString,String locales,Object options){
-return localeCompare(compareString,locales,Js.<JsObject>uncheckedCast(options));
+public final int localeCompare(@Nullable String compareString,String locales,@Nullable Object options){
+return localeCompare(compareString,locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
-public final int localeCompare(String compareString,String[] locales,Object options){
-return localeCompare(compareString,locales,Js.<JsObject>uncheckedCast(options));
+public final int localeCompare(@Nullable String compareString,String[] locales,@Nullable Object options){
+return localeCompare(compareString,locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
-public final int localeCompare(String compareString,String locales){
-return localeCompare(compareString,Js.<JsString.LocaleCompareLocalesUnionType>uncheckedCast(locales));
+public final int localeCompare(@Nullable String compareString,String locales){
+return localeCompare(compareString,Js.<JsString.@Nullable LocaleCompareLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
-public final int localeCompare(String compareString,String[] locales){
+public final int localeCompare(@Nullable String compareString,String[] locales){
 return localeCompare(compareString,Js.<JsArray<String>>uncheckedCast(locales));
 }
-public native int localeCompare(String compareString);
-public native JsArray<String> match(Object regexp);
+public native int localeCompare(@Nullable String compareString);
+public native @Nullable RegExpResult match(@Nullable Object regexp);
 @JsOverlay
-public final JsIteratorIterable<RegExpResult> matchAll(JsRegExp regexp){
+public final JsIteratorIterable<RegExpResult, @Nullable Object, @Nullable Object> matchAll(JsRegExp regexp){
 return matchAll(Js.<JsString.MatchAllRegexpUnionType>uncheckedCast(regexp));
 }
-public native JsIteratorIterable<RegExpResult> matchAll(JsString.MatchAllRegexpUnionType regexp);
+public native JsIteratorIterable<RegExpResult, @Nullable Object, @Nullable Object> matchAll(JsString.MatchAllRegexpUnionType regexp);
 @JsOverlay
-public final JsIteratorIterable<RegExpResult> matchAll(String regexp){
+public final JsIteratorIterable<RegExpResult, @Nullable Object, @Nullable Object> matchAll(String regexp){
 return matchAll(Js.<JsString.MatchAllRegexpUnionType>uncheckedCast(regexp));
 }
 public native String normalize();
@@ -323,85 +324,85 @@ public native String quote();
 public native String repeat(int count);
 @JsOverlay
 public final String replace(JsRegExp pattern,JsString.ReplaceReplacementFn replacement){
-return replace(Js.<JsString.ReplacePatternUnionType>uncheckedCast(pattern),Js.<JsString.ReplaceReplacementUnionType>uncheckedCast(replacement));
+return replace(Js.<JsString.@Nullable ReplacePatternUnionType>uncheckedCast(pattern),Js.<JsString.@Nullable ReplaceReplacementUnionType>uncheckedCast(replacement));
 }
 @JsOverlay
-public final String replace(JsRegExp pattern,JsString.ReplaceReplacementUnionType replacement){
-return replace(Js.<JsString.ReplacePatternUnionType>uncheckedCast(pattern),replacement);
+public final String replace(JsRegExp pattern,JsString.@Nullable ReplaceReplacementUnionType replacement){
+return replace(Js.<JsString.@Nullable ReplacePatternUnionType>uncheckedCast(pattern),replacement);
 }
 @JsOverlay
 public final String replace(JsRegExp pattern,String replacement){
-return replace(Js.<JsString.ReplacePatternUnionType>uncheckedCast(pattern),Js.<JsString.ReplaceReplacementUnionType>uncheckedCast(replacement));
+return replace(Js.<JsString.@Nullable ReplacePatternUnionType>uncheckedCast(pattern),Js.<JsString.@Nullable ReplaceReplacementUnionType>uncheckedCast(replacement));
 }
 @JsOverlay
-public final String replace(JsString.ReplacePatternUnionType pattern,JsString.ReplaceReplacementFn replacement){
-return replace(pattern,Js.<JsString.ReplaceReplacementUnionType>uncheckedCast(replacement));
+public final String replace(JsString.@Nullable ReplacePatternUnionType pattern,JsString.ReplaceReplacementFn replacement){
+return replace(pattern,Js.<JsString.@Nullable ReplaceReplacementUnionType>uncheckedCast(replacement));
 }
-public native String replace(JsString.ReplacePatternUnionType pattern,JsString.ReplaceReplacementUnionType replacement);
+public native String replace(JsString.@Nullable ReplacePatternUnionType pattern,JsString.@Nullable ReplaceReplacementUnionType replacement);
 @JsOverlay
-public final String replace(JsString.ReplacePatternUnionType pattern,String replacement){
-return replace(pattern,Js.<JsString.ReplaceReplacementUnionType>uncheckedCast(replacement));
+public final String replace(JsString.@Nullable ReplacePatternUnionType pattern,String replacement){
+return replace(pattern,Js.<JsString.@Nullable ReplaceReplacementUnionType>uncheckedCast(replacement));
 }
 @JsOverlay
 public final String replace(String pattern,JsString.ReplaceReplacementFn replacement){
-return replace(Js.<JsString.ReplacePatternUnionType>uncheckedCast(pattern),Js.<JsString.ReplaceReplacementUnionType>uncheckedCast(replacement));
+return replace(Js.<JsString.@Nullable ReplacePatternUnionType>uncheckedCast(pattern),Js.<JsString.@Nullable ReplaceReplacementUnionType>uncheckedCast(replacement));
 }
 @JsOverlay
-public final String replace(String pattern,JsString.ReplaceReplacementUnionType replacement){
-return replace(Js.<JsString.ReplacePatternUnionType>uncheckedCast(pattern),replacement);
+public final String replace(String pattern,JsString.@Nullable ReplaceReplacementUnionType replacement){
+return replace(Js.<JsString.@Nullable ReplacePatternUnionType>uncheckedCast(pattern),replacement);
 }
 @JsOverlay
 public final String replace(String pattern,String replacement){
-return replace(Js.<JsString.ReplacePatternUnionType>uncheckedCast(pattern),Js.<JsString.ReplaceReplacementUnionType>uncheckedCast(replacement));
+return replace(Js.<JsString.@Nullable ReplacePatternUnionType>uncheckedCast(pattern),Js.<JsString.@Nullable ReplaceReplacementUnionType>uncheckedCast(replacement));
 }
 @JsOverlay
 public final String replaceAll(JsRegExp searchValue,JsString.ReplaceAllReplacementFn replacement){
-return replaceAll(Js.<JsString.ReplaceAllSearchValueUnionType>uncheckedCast(searchValue),Js.<JsString.ReplaceAllReplacementUnionType>uncheckedCast(replacement));
+return replaceAll(Js.<JsString.ReplaceAllSearchValueUnionType>uncheckedCast(searchValue),Js.<JsString.@Nullable ReplaceAllReplacementUnionType>uncheckedCast(replacement));
 }
 @JsOverlay
-public final String replaceAll(JsRegExp searchValue,JsString.ReplaceAllReplacementUnionType replacement){
+public final String replaceAll(JsRegExp searchValue,JsString.@Nullable ReplaceAllReplacementUnionType replacement){
 return replaceAll(Js.<JsString.ReplaceAllSearchValueUnionType>uncheckedCast(searchValue),replacement);
 }
 @JsOverlay
 public final String replaceAll(JsRegExp searchValue,String replacement){
-return replaceAll(Js.<JsString.ReplaceAllSearchValueUnionType>uncheckedCast(searchValue),Js.<JsString.ReplaceAllReplacementUnionType>uncheckedCast(replacement));
+return replaceAll(Js.<JsString.ReplaceAllSearchValueUnionType>uncheckedCast(searchValue),Js.<JsString.@Nullable ReplaceAllReplacementUnionType>uncheckedCast(replacement));
 }
 @JsOverlay
 public final String replaceAll(JsString.ReplaceAllSearchValueUnionType searchValue,JsString.ReplaceAllReplacementFn replacement){
-return replaceAll(searchValue,Js.<JsString.ReplaceAllReplacementUnionType>uncheckedCast(replacement));
+return replaceAll(searchValue,Js.<JsString.@Nullable ReplaceAllReplacementUnionType>uncheckedCast(replacement));
 }
-public native String replaceAll(JsString.ReplaceAllSearchValueUnionType searchValue,JsString.ReplaceAllReplacementUnionType replacement);
+public native String replaceAll(JsString.ReplaceAllSearchValueUnionType searchValue,JsString.@Nullable ReplaceAllReplacementUnionType replacement);
 @JsOverlay
 public final String replaceAll(JsString.ReplaceAllSearchValueUnionType searchValue,String replacement){
-return replaceAll(searchValue,Js.<JsString.ReplaceAllReplacementUnionType>uncheckedCast(replacement));
+return replaceAll(searchValue,Js.<JsString.@Nullable ReplaceAllReplacementUnionType>uncheckedCast(replacement));
 }
 @JsOverlay
 public final String replaceAll(String searchValue,JsString.ReplaceAllReplacementFn replacement){
-return replaceAll(Js.<JsString.ReplaceAllSearchValueUnionType>uncheckedCast(searchValue),Js.<JsString.ReplaceAllReplacementUnionType>uncheckedCast(replacement));
+return replaceAll(Js.<JsString.ReplaceAllSearchValueUnionType>uncheckedCast(searchValue),Js.<JsString.@Nullable ReplaceAllReplacementUnionType>uncheckedCast(replacement));
 }
 @JsOverlay
-public final String replaceAll(String searchValue,JsString.ReplaceAllReplacementUnionType replacement){
+public final String replaceAll(String searchValue,JsString.@Nullable ReplaceAllReplacementUnionType replacement){
 return replaceAll(Js.<JsString.ReplaceAllSearchValueUnionType>uncheckedCast(searchValue),replacement);
 }
 @JsOverlay
 public final String replaceAll(String searchValue,String replacement){
-return replaceAll(Js.<JsString.ReplaceAllSearchValueUnionType>uncheckedCast(searchValue),Js.<JsString.ReplaceAllReplacementUnionType>uncheckedCast(replacement));
+return replaceAll(Js.<JsString.ReplaceAllSearchValueUnionType>uncheckedCast(searchValue),Js.<JsString.@Nullable ReplaceAllReplacementUnionType>uncheckedCast(replacement));
 }
 @JsOverlay
 public final int search(JsRegExp pattern){
-return search(Js.<JsString.SearchPatternUnionType>uncheckedCast(pattern));
+return search(Js.<JsString.@Nullable SearchPatternUnionType>uncheckedCast(pattern));
 }
-public native int search(JsString.SearchPatternUnionType pattern);
+public native int search(JsString.@Nullable SearchPatternUnionType pattern);
 @JsOverlay
 public final int search(String pattern){
-return search(Js.<JsString.SearchPatternUnionType>uncheckedCast(pattern));
+return search(Js.<JsString.@Nullable SearchPatternUnionType>uncheckedCast(pattern));
 }
 public native String slice(int begin,int end);
 public native String slice(int begin);
 public native String small();
 public native JsArray<String> split();
-public native JsArray<String> split(Object separator,int limit);
-public native JsArray<String> split(Object separator);
+public native JsArray<String> split(@Nullable Object separator,int limit);
+public native JsArray<String> split(@Nullable Object separator);
 public native boolean startsWith(String searchString,int position);
 public native boolean startsWith(String searchString);
 public native String strike();
@@ -414,31 +415,31 @@ public native String sup();
 public native String toLocaleLowerCase();
 @JsOverlay
 public final String toLocaleLowerCase(JsArray<String> locales){
-return toLocaleLowerCase(Js.<JsString.ToLocaleLowerCaseLocalesUnionType>uncheckedCast(locales));
+return toLocaleLowerCase(Js.<JsString.@Nullable ToLocaleLowerCaseLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
 public final String toLocaleLowerCase(String locales){
-return toLocaleLowerCase(Js.<JsString.ToLocaleLowerCaseLocalesUnionType>uncheckedCast(locales));
+return toLocaleLowerCase(Js.<JsString.@Nullable ToLocaleLowerCaseLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
 public final String toLocaleLowerCase(String[] locales){
 return toLocaleLowerCase(Js.<JsArray<String>>uncheckedCast(locales));
 }
-public native String toLocaleLowerCase(JsString.ToLocaleLowerCaseLocalesUnionType locales);
+public native String toLocaleLowerCase(JsString.@Nullable ToLocaleLowerCaseLocalesUnionType locales);
 public native String toLocaleUpperCase();
 @JsOverlay
 public final String toLocaleUpperCase(JsArray<String> locales){
-return toLocaleUpperCase(Js.<JsString.ToLocaleUpperCaseLocalesUnionType>uncheckedCast(locales));
+return toLocaleUpperCase(Js.<JsString.@Nullable ToLocaleUpperCaseLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
 public final String toLocaleUpperCase(String locales){
-return toLocaleUpperCase(Js.<JsString.ToLocaleUpperCaseLocalesUnionType>uncheckedCast(locales));
+return toLocaleUpperCase(Js.<JsString.@Nullable ToLocaleUpperCaseLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
 public final String toLocaleUpperCase(String[] locales){
 return toLocaleUpperCase(Js.<JsArray<String>>uncheckedCast(locales));
 }
-public native String toLocaleUpperCase(JsString.ToLocaleUpperCaseLocalesUnionType locales);
+public native String toLocaleUpperCase(JsString.@Nullable ToLocaleUpperCaseLocalesUnionType locales);
 public native String toLowerCase();
 public native String toSource();
 @JsMethod(name = "toString")

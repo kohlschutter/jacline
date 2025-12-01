@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsFunction;
 import java.lang.Object;
 import elemental2.media.BaseAudioContext;
@@ -11,7 +12,7 @@ import elemental2.media.OfflineAudioCompletionEvent;
 public class OfflineAudioContext extends BaseAudioContext{
 @JsFunction
 public interface OncompleteFn{
-Object onInvoke(OfflineAudioCompletionEvent p0);
+@Nullable Object onInvoke(OfflineAudioCompletionEvent p0);
 }
 public OfflineAudioContext.OncompleteFn oncomplete;
 public OfflineAudioContext(int numberOfChannels,int length,double sampleRate){}

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.FormDataEvent;
 import elemental2.dom.HTMLFormControlsCollection;
 import jsinterop.annotations.JsFunction;
@@ -11,7 +12,7 @@ import jsinterop.annotations.JsPackage;
 public class HTMLFormElement extends HTMLElement{
 @JsFunction
 public interface OnformdataFn{
-Object onInvoke(FormDataEvent p0);
+@Nullable Object onInvoke(@Nullable FormDataEvent p0);
 }
 public String acceptCharset;
 public String action;
@@ -21,12 +22,12 @@ public int length;
 public String method;
 public String name;
 public boolean noValidate;
-public HTMLFormElement.OnformdataFn onformdata;
+public HTMLFormElement.@Nullable OnformdataFn onformdata;
 public String target;
 public native boolean checkValidity();
 public native boolean reportValidity();
-public native Object requestSubmit();
-public native Object requestSubmit(HTMLElement submitter);
+public native @Nullable Object requestSubmit();
+public native @Nullable Object requestSubmit(@Nullable HTMLElement submitter);
 public native void reset();
 public native void submit();
 }

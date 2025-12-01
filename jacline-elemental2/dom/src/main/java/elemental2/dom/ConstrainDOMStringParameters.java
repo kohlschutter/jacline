@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
@@ -13,15 +14,15 @@ public interface ConstrainDOMStringParameters{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetExactUnionType{
 @JsOverlay
-static ConstrainDOMStringParameters.GetExactUnionType of(Object o){
+static ConstrainDOMStringParameters.@Nullable GetExactUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<String> asJsArray(){
+default @Nullable JsArray<String> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -36,15 +37,15 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetIdealUnionType{
 @JsOverlay
-static ConstrainDOMStringParameters.GetIdealUnionType of(Object o){
+static ConstrainDOMStringParameters.@Nullable GetIdealUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<String> asJsArray(){
+default @Nullable JsArray<String> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -61,32 +62,32 @@ static ConstrainDOMStringParameters create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-ConstrainDOMStringParameters.GetExactUnionType getExact();
+ConstrainDOMStringParameters.@Nullable GetExactUnionType getExact();
 @JsProperty
-ConstrainDOMStringParameters.GetIdealUnionType getIdeal();
+ConstrainDOMStringParameters.@Nullable GetIdealUnionType getIdeal();
 @JsProperty
-void setExact(ConstrainDOMStringParameters.GetExactUnionType exact);
+void setExact(ConstrainDOMStringParameters.@Nullable GetExactUnionType exact);
 @JsOverlay
 default void setExact(JsArray<String> exact){
-setExact(Js.<ConstrainDOMStringParameters.GetExactUnionType>uncheckedCast(exact));
+setExact(Js.<ConstrainDOMStringParameters.@Nullable GetExactUnionType>uncheckedCast(exact));
 }
 @JsOverlay
 default void setExact(String exact){
-setExact(Js.<ConstrainDOMStringParameters.GetExactUnionType>uncheckedCast(exact));
+setExact(Js.<ConstrainDOMStringParameters.@Nullable GetExactUnionType>uncheckedCast(exact));
 }
 @JsOverlay
 default void setExact(String[] exact){
 setExact(Js.<JsArray<String>>uncheckedCast(exact));
 }
 @JsProperty
-void setIdeal(ConstrainDOMStringParameters.GetIdealUnionType ideal);
+void setIdeal(ConstrainDOMStringParameters.@Nullable GetIdealUnionType ideal);
 @JsOverlay
 default void setIdeal(JsArray<String> ideal){
-setIdeal(Js.<ConstrainDOMStringParameters.GetIdealUnionType>uncheckedCast(ideal));
+setIdeal(Js.<ConstrainDOMStringParameters.@Nullable GetIdealUnionType>uncheckedCast(ideal));
 }
 @JsOverlay
 default void setIdeal(String ideal){
-setIdeal(Js.<ConstrainDOMStringParameters.GetIdealUnionType>uncheckedCast(ideal));
+setIdeal(Js.<ConstrainDOMStringParameters.@Nullable GetIdealUnionType>uncheckedCast(ideal));
 }
 @JsOverlay
 default void setIdeal(String[] ideal){

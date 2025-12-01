@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.NavigatorBadge;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsProperty;
 import java.lang.Void;
 import jsinterop.annotations.JsType;
@@ -12,11 +13,11 @@ public class WorkerNavigator implements NavigatorBadge, NavigatorStorage{
 public double deviceMemory;
 public int hardwareConcurrency;
 public StorageManager storage;
-public native Promise<Void> clearAppBadge();
+public native @Nullable Promise<Void> clearAppBadge();
 @JsProperty
 public native StorageManager getStorage();
-public native Promise<Void> setAppBadge();
-public native Promise<Void> setAppBadge(double contents);
+public native @Nullable Promise<Void> setAppBadge();
+public native @Nullable Promise<Void> setAppBadge(double contents);
 @JsProperty
 public native void setStorage(StorageManager storage);
 }

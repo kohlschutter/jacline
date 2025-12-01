@@ -1,4 +1,5 @@
 package elemental2.webassembly;
+import org.jspecify.annotations.Nullable;
 import elemental2.webassembly.webassembly.Tag;
 import elemental2.promise.Promise;
 import elemental2.core.ArrayBuffer;
@@ -150,60 +151,60 @@ return compile(Js.<WebAssembly.CompileBytesUnionType>uncheckedCast(bytes));
 public static native Promise<Module> compile(WebAssembly.CompileBytesUnionType bytes);
 public static native Promise<Module> compileStreaming(Promise<Response> moduleStream);
 @JsOverlay
-public static final Promise<WebAssembly.InstantiateReturnType> instantiate(ArrayBuffer moduleObject,JsObject importObject){
+public static final Promise<WebAssembly.InstantiateReturnType> instantiate(ArrayBuffer moduleObject,@Nullable JsObject importObject){
 return instantiate(Js.<WebAssembly.InstantiateModuleObjectUnionType>uncheckedCast(moduleObject),importObject);
 }
 @JsOverlay
-public static final Promise<WebAssembly.InstantiateReturnType> instantiate(ArrayBuffer moduleObject,Object importObject){
-return instantiate(moduleObject,Js.<JsObject>uncheckedCast(importObject));
+public static final Promise<WebAssembly.InstantiateReturnType> instantiate(ArrayBuffer moduleObject,@Nullable Object importObject){
+return instantiate(moduleObject,Js.<@Nullable JsObject>uncheckedCast(importObject));
 }
 @JsOverlay
 public static final Promise<WebAssembly.InstantiateReturnType> instantiate(ArrayBuffer moduleObject){
 return instantiate(Js.<WebAssembly.InstantiateModuleObjectUnionType>uncheckedCast(moduleObject));
 }
 @JsOverlay
-public static final Promise<WebAssembly.InstantiateReturnType> instantiate(ArrayBufferView moduleObject,JsObject importObject){
+public static final Promise<WebAssembly.InstantiateReturnType> instantiate(ArrayBufferView moduleObject,@Nullable JsObject importObject){
 return instantiate(Js.<WebAssembly.InstantiateModuleObjectUnionType>uncheckedCast(moduleObject),importObject);
 }
 @JsOverlay
-public static final Promise<WebAssembly.InstantiateReturnType> instantiate(ArrayBufferView moduleObject,Object importObject){
-return instantiate(moduleObject,Js.<JsObject>uncheckedCast(importObject));
+public static final Promise<WebAssembly.InstantiateReturnType> instantiate(ArrayBufferView moduleObject,@Nullable Object importObject){
+return instantiate(moduleObject,Js.<@Nullable JsObject>uncheckedCast(importObject));
 }
 @JsOverlay
 public static final Promise<WebAssembly.InstantiateReturnType> instantiate(ArrayBufferView moduleObject){
 return instantiate(Js.<WebAssembly.InstantiateModuleObjectUnionType>uncheckedCast(moduleObject));
 }
-public static native Promise<WebAssembly.InstantiateReturnType> instantiate(WebAssembly.InstantiateModuleObjectUnionType moduleObject,JsObject importObject);
+public static native Promise<WebAssembly.InstantiateReturnType> instantiate(WebAssembly.InstantiateModuleObjectUnionType moduleObject,@Nullable JsObject importObject);
 @JsOverlay
-public static final Promise<WebAssembly.InstantiateReturnType> instantiate(WebAssembly.InstantiateModuleObjectUnionType moduleObject,Object importObject){
-return instantiate(moduleObject,Js.<JsObject>uncheckedCast(importObject));
+public static final Promise<WebAssembly.InstantiateReturnType> instantiate(WebAssembly.InstantiateModuleObjectUnionType moduleObject,@Nullable Object importObject){
+return instantiate(moduleObject,Js.<@Nullable JsObject>uncheckedCast(importObject));
 }
 public static native Promise<WebAssembly.InstantiateReturnType> instantiate(WebAssembly.InstantiateModuleObjectUnionType moduleObject);
-public static native Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(WebAssembly.InstantiateStreamingSourceUnionType source,JsObject importObject);
+public static native Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(WebAssembly.InstantiateStreamingSourceUnionType source,@Nullable JsObject importObject);
 @JsOverlay
-public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(WebAssembly.InstantiateStreamingSourceUnionType source,Object importObject){
-return instantiateStreaming(source,Js.<JsObject>uncheckedCast(importObject));
+public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(WebAssembly.InstantiateStreamingSourceUnionType source,@Nullable Object importObject){
+return instantiateStreaming(source,Js.<@Nullable JsObject>uncheckedCast(importObject));
 }
 public static native Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(WebAssembly.InstantiateStreamingSourceUnionType source);
 @JsOverlay
-public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(Promise<Response> source,JsObject importObject){
+public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(Promise<Response> source,@Nullable JsObject importObject){
 return instantiateStreaming(Js.<WebAssembly.InstantiateStreamingSourceUnionType>uncheckedCast(source),importObject);
 }
 @JsOverlay
-public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(Promise<Response> source,Object importObject){
-return instantiateStreaming(source,Js.<JsObject>uncheckedCast(importObject));
+public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(Promise<Response> source,@Nullable Object importObject){
+return instantiateStreaming(source,Js.<@Nullable JsObject>uncheckedCast(importObject));
 }
 @JsOverlay
 public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(Promise<Response> source){
 return instantiateStreaming(Js.<WebAssembly.InstantiateStreamingSourceUnionType>uncheckedCast(source));
 }
 @JsOverlay
-public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(Response source,JsObject importObject){
+public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(Response source,@Nullable JsObject importObject){
 return instantiateStreaming(Js.<WebAssembly.InstantiateStreamingSourceUnionType>uncheckedCast(source),importObject);
 }
 @JsOverlay
-public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(Response source,Object importObject){
-return instantiateStreaming(source,Js.<JsObject>uncheckedCast(importObject));
+public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(Response source,@Nullable Object importObject){
+return instantiateStreaming(source,Js.<@Nullable JsObject>uncheckedCast(importObject));
 }
 @JsOverlay
 public static final Promise<WebAssembly.InstantiateStreamingReturnType> instantiateStreaming(Response source){

@@ -1,4 +1,5 @@
 package elemental2.svg;
+import org.jspecify.annotations.Nullable;
 import elemental2.svg.SVGLength;
 import java.lang.Object;
 import jsinterop.annotations.JsType;
@@ -7,7 +8,7 @@ import jsinterop.annotations.JsPackage;
 public class SVGLengthList{
 public int numberOfItems;
 public native SVGLength appendItem(SVGLength item);
-public native Object clear();
+public native @Nullable Object clear();
 public native SVGLength getItem(int index);
 public native SVGLength initialize(SVGLength item);
 public native SVGLength insertItemBefore(SVGLength item,int index);

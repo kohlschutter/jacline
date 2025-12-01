@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.CSSValue;
 import jsinterop.annotations.JsOverlay;
 import elemental2.dom.Rect;
@@ -62,10 +63,10 @@ public static final int CSS_UNKNOWN=CSSPrimitiveValue__Constants.CSS_UNKNOWN;
 @JsOverlay
 public static final int CSS_URI=CSSPrimitiveValue__Constants.CSS_URI;
 public double primitiveType;
-public native Counter getCounterValue();
+public native @Nullable Counter getCounterValue();
 public native double getFloatValue(double unitType);
-public native RGBColor getRGBColorValue();
-public native Rect getRectValue();
+public native @Nullable RGBColor getRGBColorValue();
+public native @Nullable Rect getRectValue();
 public native String getStringValue();
 public native void setFloatValue(double unitType,double floatValue);
 public native void setStringValue(double stringType,String stringValue);

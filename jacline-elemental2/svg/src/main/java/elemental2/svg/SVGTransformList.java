@@ -1,4 +1,5 @@
 package elemental2.svg;
+import org.jspecify.annotations.Nullable;
 import elemental2.svg.SVGMatrix;
 import elemental2.svg.SVGTransform;
 import java.lang.Object;
@@ -8,7 +9,7 @@ import jsinterop.annotations.JsPackage;
 public class SVGTransformList{
 public int numberOfItems;
 public native SVGTransform appendItem(SVGTransform item);
-public native Object clear();
+public native @Nullable Object clear();
 public native SVGTransform consolidate();
 public native SVGTransform createSVGTransformFromMatrix(SVGMatrix matrix);
 public native SVGTransform getItem(int index);

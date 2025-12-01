@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.ClipboardItemOptions;
 import elemental2.dom.Blob;
 import elemental2.promise.Promise;
@@ -23,7 +24,7 @@ default Blob asBlob(){
 return Js.cast(this);
 }
 @JsOverlay
-default Promise<Object> asPromise(){
+default Promise<@Nullable Object> asPromise(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -44,7 +45,7 @@ return (Object)this instanceof String;
 }
 }
 public JsArray<String> types;
-public ClipboardItem(JsPropertyMap<ClipboardItem.ConstructorItemsJsPropertyMapTypeParameterUnionType> items,ClipboardItemOptions options){}
+public ClipboardItem(JsPropertyMap<ClipboardItem.ConstructorItemsJsPropertyMapTypeParameterUnionType> items,@Nullable ClipboardItemOptions options){}
 public ClipboardItem(JsPropertyMap<ClipboardItem.ConstructorItemsJsPropertyMapTypeParameterUnionType> items){}
 public native Promise<Blob> getType(String type);
 }

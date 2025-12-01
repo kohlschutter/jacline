@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.JsIterable;
 import java.lang.Double;
 import elemental2.core.JsArray;
@@ -11,11 +12,11 @@ import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import elemental2.core.JsIteratorIterable;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public class NodeList<T> implements JsIterable<T>, JsArrayLike<T>{
+public class NodeList<T extends @Nullable Object> implements JsIterable<T, @Nullable Object, @Nullable Object>, JsArrayLike<T>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
-public interface EntriesJsIteratorIterableTypeParameterArrayUnionType<T>{
+public interface EntriesJsIteratorIterableTypeParameterArrayUnionType<T extends @Nullable Object>{
 @JsOverlay
-static NodeList.EntriesJsIteratorIterableTypeParameterArrayUnionType of(Object o){
+static <T extends @Nullable Object> NodeList.EntriesJsIteratorIterableTypeParameterArrayUnionType<T> of(Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -32,14 +33,14 @@ return (Object)this instanceof Double;
 }
 }
 @JsFunction
-public interface ForEachCallbackFn<T>{
-Object onInvoke(T currentValue,int currentIndex,NodeList<T> listObj);
+public interface ForEachCallbackFn<T extends @Nullable Object>{
+@Nullable Object onInvoke(T currentValue,int currentIndex,NodeList<T> listObj);
 }
 public int length;
-public native JsIteratorIterable<JsArray<NodeList.EntriesJsIteratorIterableTypeParameterArrayUnionType<T>>> entries();
-public native <S>void forEach(NodeList.ForEachCallbackFn<T> callback,S thisobj);
-public native void forEach(NodeList.ForEachCallbackFn<T> callback);
-public native T item(int index);
-public native JsIteratorIterable<Double> keys();
-public native JsIteratorIterable<T> values();
+public native JsIteratorIterable<JsArray<NodeList.EntriesJsIteratorIterableTypeParameterArrayUnionType<T>>, @Nullable Object, @Nullable Object> entries();
+public native <S extends @Nullable Object> void forEach(NodeList.@Nullable ForEachCallbackFn<T> callback,S thisobj);
+public native void forEach(NodeList.@Nullable ForEachCallbackFn<T> callback);
+public native @Nullable T item(int index);
+public native JsIteratorIterable<Double, @Nullable Object, @Nullable Object> keys();
+public native JsIteratorIterable<T, @Nullable Object, @Nullable Object> values();
 }

@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
@@ -33,13 +34,13 @@ return (Object)this instanceof String;
 }
 }
 @JsProperty
-String getCredential();
+@Nullable String getCredential();
 @JsProperty
 RTCIceServerInterface_.GetUrlsUnionType getUrls();
 @JsProperty
-String getUsername();
+@Nullable String getUsername();
 @JsProperty
-void setCredential(String credential);
+void setCredential(@Nullable String credential);
 @JsProperty
 void setUrls(RTCIceServerInterface_.GetUrlsUnionType urls);
 @JsOverlay
@@ -55,5 +56,5 @@ default void setUrls(String[] urls){
 setUrls(Js.<JsArray<String>>uncheckedCast(urls));
 }
 @JsProperty
-void setUsername(String username);
+void setUsername(@Nullable String username);
 }

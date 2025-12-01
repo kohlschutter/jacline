@@ -1,6 +1,8 @@
 package elemental2.indexeddb;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
+import java.lang.Double;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
@@ -13,11 +15,11 @@ static IDBVersionChangeEventInit create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-double getNewVersion();
+@Nullable Double getNewVersion();
 @JsProperty
 double getOldVersion();
 @JsProperty
-void setNewVersion(double newVersion);
+void setNewVersion(@Nullable Double newVersion);
 @JsProperty
 void setOldVersion(double oldVersion);
 }

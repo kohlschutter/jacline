@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.Element;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.Node;
 import jsinterop.annotations.JsOverlay;
@@ -80,8 +81,9 @@ return (Object)this instanceof String;
 }
 public String data;
 public int length;
-public Element nextElementSibling;
-public Element previousElementSibling;
+public @Nullable Element nextElementSibling;
+public @Nullable Element previousElementSibling;
+public native void after();
 public native void after(CharacterData.AfterNodesUnionType... nodes);
 @JsOverlay
 public final void after(Node... nodes){
@@ -92,6 +94,7 @@ public final void after(String... nodes){
 after(Js.<CharacterData.AfterNodesUnionType[]>uncheckedCast(nodes));
 }
 public native void appendData(String arg);
+public native void before();
 public native void before(CharacterData.BeforeNodesUnionType... nodes);
 @JsOverlay
 public final void before(Node... nodes){
@@ -105,6 +108,7 @@ public native void deleteData(int offset,int count);
 public native void insertData(int offset,String arg);
 public native void remove();
 public native void replaceData(int offset,int count,String arg);
+public native void replaceWith();
 @JsOverlay
 public final void replaceWith(Node... nodes){
 replaceWith(Js.<CharacterData.ReplaceWithNodesUnionType[]>uncheckedCast(nodes));

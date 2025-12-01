@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.NodeIterator;
 import jsinterop.base.JsPropertyMap;
 import jsinterop.annotations.JsProperty;
@@ -14,11 +15,11 @@ import jsinterop.annotations.JsPackage;
 public interface TraversalDocument{
 @JsFunction
 public interface CreateNodeIteratorFn{
-NodeIterator onInvoke(Node p0,double p1,NodeFilter p2,boolean p3);
+@Nullable NodeIterator onInvoke(@Nullable Node p0,double p1,@Nullable NodeFilter p2,boolean p3);
 }
 @JsFunction
 public interface CreateTreeWalkerFn{
-TreeWalker onInvoke(Node p0,double p1,NodeFilter p2,boolean p3);
+@Nullable TreeWalker onInvoke(@Nullable Node p0,double p1,@Nullable NodeFilter p2,boolean p3);
 }
 @JsOverlay
 static TraversalDocument create(){

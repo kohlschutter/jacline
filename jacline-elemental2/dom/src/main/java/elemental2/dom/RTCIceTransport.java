@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.RTCIceParameters;
 import elemental2.dom.Event;
 import elemental2.core.JsArray;
@@ -15,39 +16,39 @@ import elemental2.dom.RTCIceCandidate;
 public interface RTCIceTransport extends EventTarget{
 @JsFunction
 public interface OngatheringstatechangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnselectedcandidatepairchangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnstatechangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsProperty
 String getComponent();
 @JsProperty
 String getGatheringState();
 JsArray<RTCIceCandidate> getLocalCandidates();
-RTCIceParameters getLocalParameters();
+@Nullable RTCIceParameters getLocalParameters();
 @JsProperty
-RTCIceTransport.OngatheringstatechangeFn getOngatheringstatechange();
+RTCIceTransport.@Nullable OngatheringstatechangeFn getOngatheringstatechange();
 @JsProperty
-RTCIceTransport.OnselectedcandidatepairchangeFn getOnselectedcandidatepairchange();
+RTCIceTransport.@Nullable OnselectedcandidatepairchangeFn getOnselectedcandidatepairchange();
 @JsProperty
-RTCIceTransport.OnstatechangeFn getOnstatechange();
+RTCIceTransport.@Nullable OnstatechangeFn getOnstatechange();
 JsArray<RTCIceCandidate> getRemoteCandidates();
-RTCIceParameters getRemoteParameters();
+@Nullable RTCIceParameters getRemoteParameters();
 @JsProperty
 String getRole();
-RTCIceCandidatePair getSelectedCandidatePair();
+@Nullable RTCIceCandidatePair getSelectedCandidatePair();
 @JsProperty
 String getState();
 @JsProperty
-void setOngatheringstatechange(RTCIceTransport.OngatheringstatechangeFn ongatheringstatechange);
+void setOngatheringstatechange(RTCIceTransport.@Nullable OngatheringstatechangeFn ongatheringstatechange);
 @JsProperty
-void setOnselectedcandidatepairchange(RTCIceTransport.OnselectedcandidatepairchangeFn onselectedcandidatepairchange);
+void setOnselectedcandidatepairchange(RTCIceTransport.@Nullable OnselectedcandidatepairchangeFn onselectedcandidatepairchange);
 @JsProperty
-void setOnstatechange(RTCIceTransport.OnstatechangeFn onstatechange);
+void setOnstatechange(RTCIceTransport.@Nullable OnstatechangeFn onstatechange);
 }

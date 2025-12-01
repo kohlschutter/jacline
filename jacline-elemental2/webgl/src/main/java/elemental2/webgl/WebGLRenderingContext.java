@@ -1,4 +1,5 @@
 package elemental2.webgl;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.HTMLVideoElement;
 import elemental2.webgl.WebGLShader;
 import java.lang.Double;
@@ -35,15 +36,15 @@ public class WebGLRenderingContext{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface BufferDataDataUnionType{
 @JsOverlay
-static WebGLRenderingContext.BufferDataDataUnionType of(Object o){
+static WebGLRenderingContext.@Nullable BufferDataDataUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default ArrayBufferView asArrayBufferView(){
+default @Nullable ArrayBufferView asArrayBufferView(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -66,15 +67,15 @@ return (Object)this instanceof Double;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface BufferSubDataDataUnionType{
 @JsOverlay
-static WebGLRenderingContext.BufferSubDataDataUnionType of(Object o){
+static WebGLRenderingContext.@Nullable BufferSubDataDataUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default ArrayBufferView asArrayBufferView(){
+default @Nullable ArrayBufferView asArrayBufferView(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -112,27 +113,27 @@ return (Object)this instanceof Double;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface TexImage2DImgUnionType{
 @JsOverlay
-static WebGLRenderingContext.TexImage2DImgUnionType of(Object o){
+static WebGLRenderingContext.@Nullable TexImage2DImgUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default HTMLCanvasElement asHTMLCanvasElement(){
+default @Nullable HTMLCanvasElement asHTMLCanvasElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default HTMLImageElement asHTMLImageElement(){
+default @Nullable HTMLImageElement asHTMLImageElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default HTMLVideoElement asHTMLVideoElement(){
+default @Nullable HTMLVideoElement asHTMLVideoElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default ImageBitmap asImageBitmap(){
+default @Nullable ImageBitmap asImageBitmap(){
 return Js.cast(this);
 }
 @JsOverlay
-default ImageData asImageData(){
+default @Nullable ImageData asImageData(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -140,7 +141,7 @@ default int asInt(){
 return Js.asInt(this);
 }
 @JsOverlay
-default OffscreenCanvas asOffscreenCanvas(){
+default @Nullable OffscreenCanvas asOffscreenCanvas(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -171,7 +172,7 @@ return (Object)this instanceof OffscreenCanvas;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface TexSubImage2DDataUnionType{
 @JsOverlay
-static WebGLRenderingContext.TexSubImage2DDataUnionType of(Object o){
+static WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -179,27 +180,27 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default HTMLCanvasElement asHTMLCanvasElement(){
+default @Nullable HTMLCanvasElement asHTMLCanvasElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default HTMLImageElement asHTMLImageElement(){
+default @Nullable HTMLImageElement asHTMLImageElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default HTMLVideoElement asHTMLVideoElement(){
+default @Nullable HTMLVideoElement asHTMLVideoElement(){
 return Js.cast(this);
 }
 @JsOverlay
-default ImageBitmap asImageBitmap(){
+default @Nullable ImageBitmap asImageBitmap(){
 return Js.cast(this);
 }
 @JsOverlay
-default ImageData asImageData(){
+default @Nullable ImageData asImageData(){
 return Js.cast(this);
 }
 @JsOverlay
-default OffscreenCanvas asOffscreenCanvas(){
+default @Nullable OffscreenCanvas asOffscreenCanvas(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -230,15 +231,15 @@ return (Object)this instanceof OffscreenCanvas;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface Uniform1fvValueUnionType{
 @JsOverlay
-static WebGLRenderingContext.Uniform1fvValueUnionType of(Object o){
+static WebGLRenderingContext.@Nullable Uniform1fvValueUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -276,15 +277,15 @@ return (Object)this instanceof Double;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface Uniform1ivValueUnionType{
 @JsOverlay
-static WebGLRenderingContext.Uniform1ivValueUnionType of(Object o){
+static WebGLRenderingContext.@Nullable Uniform1ivValueUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Int32Array asInt32Array(){
+default @Nullable Int32Array asInt32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default @Nullable JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -299,15 +300,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface Uniform2fvValueUnionType{
 @JsOverlay
-static WebGLRenderingContext.Uniform2fvValueUnionType of(Object o){
+static WebGLRenderingContext.@Nullable Uniform2fvValueUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -368,15 +369,15 @@ return (Object)this instanceof Double;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface Uniform2ivValueUnionType{
 @JsOverlay
-static WebGLRenderingContext.Uniform2ivValueUnionType of(Object o){
+static WebGLRenderingContext.@Nullable Uniform2ivValueUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Int32Array asInt32Array(){
+default @Nullable Int32Array asInt32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default @Nullable JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -391,15 +392,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface Uniform3fvValueUnionType{
 @JsOverlay
-static WebGLRenderingContext.Uniform3fvValueUnionType of(Object o){
+static WebGLRenderingContext.@Nullable Uniform3fvValueUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -483,15 +484,15 @@ return (Object)this instanceof Double;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface Uniform3ivValueUnionType{
 @JsOverlay
-static WebGLRenderingContext.Uniform3ivValueUnionType of(Object o){
+static WebGLRenderingContext.@Nullable Uniform3ivValueUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Int32Array asInt32Array(){
+default @Nullable Int32Array asInt32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default @Nullable JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -506,15 +507,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface Uniform4fvValueUnionType{
 @JsOverlay
-static WebGLRenderingContext.Uniform4fvValueUnionType of(Object o){
+static WebGLRenderingContext.@Nullable Uniform4fvValueUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -621,15 +622,15 @@ return (Object)this instanceof Double;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface Uniform4ivValueUnionType{
 @JsOverlay
-static WebGLRenderingContext.Uniform4ivValueUnionType of(Object o){
+static WebGLRenderingContext.@Nullable Uniform4ivValueUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Int32Array asInt32Array(){
+default @Nullable Int32Array asInt32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default @Nullable JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -644,15 +645,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface UniformMatrix2fvDataUnionType{
 @JsOverlay
-static WebGLRenderingContext.UniformMatrix2fvDataUnionType of(Object o){
+static WebGLRenderingContext.@Nullable UniformMatrix2fvDataUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -667,15 +668,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface UniformMatrix3fvDataUnionType{
 @JsOverlay
-static WebGLRenderingContext.UniformMatrix3fvDataUnionType of(Object o){
+static WebGLRenderingContext.@Nullable UniformMatrix3fvDataUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -690,15 +691,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface UniformMatrix4fvDataUnionType{
 @JsOverlay
-static WebGLRenderingContext.UniformMatrix4fvDataUnionType of(Object o){
+static WebGLRenderingContext.@Nullable UniformMatrix4fvDataUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -713,15 +714,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface VertexAttrib1fvValuesUnionType{
 @JsOverlay
-static WebGLRenderingContext.VertexAttrib1fvValuesUnionType of(Object o){
+static WebGLRenderingContext.@Nullable VertexAttrib1fvValuesUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -736,15 +737,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface VertexAttrib2fvValuesUnionType{
 @JsOverlay
-static WebGLRenderingContext.VertexAttrib2fvValuesUnionType of(Object o){
+static WebGLRenderingContext.@Nullable VertexAttrib2fvValuesUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -759,15 +760,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface VertexAttrib3fvValuesUnionType{
 @JsOverlay
-static WebGLRenderingContext.VertexAttrib3fvValuesUnionType of(Object o){
+static WebGLRenderingContext.@Nullable VertexAttrib3fvValuesUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -782,15 +783,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface VertexAttrib4fvValuesUnionType{
 @JsOverlay
-static WebGLRenderingContext.VertexAttrib4fvValuesUnionType of(Object o){
+static WebGLRenderingContext.@Nullable VertexAttrib4fvValuesUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default Float32Array asFloat32Array(){
+default @Nullable Float32Array asFloat32Array(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -1397,15 +1398,16 @@ public static final int VIEWPORT=WebGLRenderingContext__Constants.VIEWPORT;
 @JsOverlay
 public static final int ZERO=WebGLRenderingContext__Constants.ZERO;
 public HTMLCanvasElement canvas;
+public String drawingBufferColorSpace;
 public int drawingBufferHeight;
 public int drawingBufferWidth;
 public native void activeTexture(int texture);
-public native void attachShader(WebGLProgram program,WebGLShader shader);
-public native void bindAttribLocation(WebGLProgram program,int index,String name);
-public native void bindBuffer(int target,WebGLBuffer buffer);
-public native void bindFramebuffer(int target,WebGLFramebuffer buffer);
-public native void bindRenderbuffer(int target,WebGLRenderbuffer buffer);
-public native void bindTexture(int target,WebGLTexture texture);
+public native void attachShader(@Nullable WebGLProgram program,@Nullable WebGLShader shader);
+public native void bindAttribLocation(@Nullable WebGLProgram program,int index,String name);
+public native void bindBuffer(int target,@Nullable WebGLBuffer buffer);
+public native void bindFramebuffer(int target,@Nullable WebGLFramebuffer buffer);
+public native void bindRenderbuffer(int target,@Nullable WebGLRenderbuffer buffer);
+public native void bindTexture(int target,@Nullable WebGLTexture texture);
 public native void blendColor(double red,double green,double blue,double alpha);
 public native void blendEquation(int mode);
 public native void blendEquationSeparate(int modeRGB,int modeAlpha);
@@ -1413,35 +1415,35 @@ public native void blendFunc(int sfactor,int dfactor);
 public native void blendFuncSeparate(int srcRGB,int dstRGB,int srcAlpha,int dstAlpha);
 @JsOverlay
 public final void bufferData(int target,ArrayBuffer data,int usage){
-bufferData(target,Js.<WebGLRenderingContext.BufferDataDataUnionType>uncheckedCast(data),usage);
+bufferData(target,Js.<WebGLRenderingContext.@Nullable BufferDataDataUnionType>uncheckedCast(data),usage);
 }
 @JsOverlay
 public final void bufferData(int target,ArrayBufferView data,int usage){
-bufferData(target,Js.<WebGLRenderingContext.BufferDataDataUnionType>uncheckedCast(data),usage);
+bufferData(target,Js.<WebGLRenderingContext.@Nullable BufferDataDataUnionType>uncheckedCast(data),usage);
 }
-public native void bufferData(int target,WebGLRenderingContext.BufferDataDataUnionType data,int usage);
+public native void bufferData(int target,WebGLRenderingContext.@Nullable BufferDataDataUnionType data,int usage);
 @JsOverlay
 public final void bufferData(int target,double data,int usage){
-bufferData(target,Js.<WebGLRenderingContext.BufferDataDataUnionType>uncheckedCast(data),usage);
+bufferData(target,Js.<WebGLRenderingContext.@Nullable BufferDataDataUnionType>uncheckedCast(data),usage);
 }
 @JsOverlay
 public final void bufferSubData(int target,double offset,ArrayBuffer data){
-bufferSubData(target,offset,Js.<WebGLRenderingContext.BufferSubDataDataUnionType>uncheckedCast(data));
+bufferSubData(target,offset,Js.<WebGLRenderingContext.@Nullable BufferSubDataDataUnionType>uncheckedCast(data));
 }
 @JsOverlay
 public final void bufferSubData(int target,double offset,ArrayBufferView data){
-bufferSubData(target,offset,Js.<WebGLRenderingContext.BufferSubDataDataUnionType>uncheckedCast(data));
+bufferSubData(target,offset,Js.<WebGLRenderingContext.@Nullable BufferSubDataDataUnionType>uncheckedCast(data));
 }
-public native void bufferSubData(int target,double offset,WebGLRenderingContext.BufferSubDataDataUnionType data);
+public native void bufferSubData(int target,double offset,WebGLRenderingContext.@Nullable BufferSubDataDataUnionType data);
 public native int checkFramebufferStatus(int target);
 public native void clear(int mask);
 public native void clearColor(double red,double green,double blue,double alpha);
 public native void clearDepth(double depth);
 public native void clearStencil(int s);
 public native void colorMask(boolean red,boolean green,boolean blue,boolean alpha);
-public native void compileShader(WebGLShader shader);
-public native void compressedTexImage2D(int target,int level,int internalformat,int width,int height,int border,ArrayBufferView data);
-public native void compressedTexSubImage2D(int target,int level,int xoffset,int yoffset,int width,int height,int format,ArrayBufferView data);
+public native void compileShader(@Nullable WebGLShader shader);
+public native void compressedTexImage2D(int target,int level,int internalformat,int width,int height,int border,@Nullable ArrayBufferView data);
+public native void compressedTexSubImage2D(int target,int level,int xoffset,int yoffset,int width,int height,int format,@Nullable ArrayBufferView data);
 public native void copyTexImage2D(int target,int level,int format,int x,int y,int width,int height,int border);
 public native void copyTexSubImage2D(int target,int level,int xoffset,int yoffset,int x,int y,int width,int height);
 public native WebGLBuffer createBuffer();
@@ -1451,62 +1453,62 @@ public native WebGLRenderbuffer createRenderbuffer();
 public native WebGLShader createShader(int type);
 public native WebGLTexture createTexture();
 public native void cullFace(int mode);
-public native void deleteBuffer(WebGLBuffer buffer);
-public native void deleteFramebuffer(WebGLFramebuffer buffer);
-public native void deleteProgram(WebGLProgram program);
-public native void deleteRenderbuffer(WebGLRenderbuffer buffer);
-public native void deleteShader(WebGLShader shader);
-public native void deleteTexture(WebGLTexture texture);
+public native void deleteBuffer(@Nullable WebGLBuffer buffer);
+public native void deleteFramebuffer(@Nullable WebGLFramebuffer buffer);
+public native void deleteProgram(@Nullable WebGLProgram program);
+public native void deleteRenderbuffer(@Nullable WebGLRenderbuffer buffer);
+public native void deleteShader(@Nullable WebGLShader shader);
+public native void deleteTexture(@Nullable WebGLTexture texture);
 public native void depthFunc(int func);
 public native void depthMask(boolean flag);
 public native void depthRange(double nearVal,double farVal);
-public native void detachShader(WebGLProgram program,WebGLShader shader);
+public native void detachShader(@Nullable WebGLProgram program,@Nullable WebGLShader shader);
 public native void disable(int flags);
 public native void disableVertexAttribArray(int index);
 public native void drawArrays(int mode,int first,int count);
 public native void drawElements(int mode,int count,int type,double offset);
 public native void enable(int cap);
 public native void enableVertexAttribArray(int index);
-public native Object finish();
-public native Object flush();
-public native void framebufferRenderbuffer(int target,int attachment,int renderbuffertarget,WebGLRenderbuffer renderbuffer);
-public native void framebufferTexture2D(int target,int attachment,int textarget,WebGLTexture texture,int level);
+public native @Nullable Object finish();
+public native @Nullable Object flush();
+public native void framebufferRenderbuffer(int target,int attachment,int renderbuffertarget,@Nullable WebGLRenderbuffer renderbuffer);
+public native void framebufferTexture2D(int target,int attachment,int textarget,@Nullable WebGLTexture texture,int level);
 public native void frontFace(int mode);
 public native void generateMipmap(int target);
-public native WebGLActiveInfo getActiveAttrib(WebGLProgram program,int index);
-public native WebGLActiveInfo getActiveUniform(WebGLProgram program,int index);
-public native JsArray<WebGLShader> getAttachedShaders(WebGLProgram program);
-public native int getAttribLocation(WebGLProgram program,String name);
-public native Object getBufferParameter(int target,int pname);
+public native @Nullable WebGLActiveInfo getActiveAttrib(@Nullable WebGLProgram program,int index);
+public native @Nullable WebGLActiveInfo getActiveUniform(@Nullable WebGLProgram program,int index);
+public native JsArray<@Nullable WebGLShader> getAttachedShaders(@Nullable WebGLProgram program);
+public native int getAttribLocation(@Nullable WebGLProgram program,String name);
+public native @Nullable Object getBufferParameter(int target,int pname);
 public native WebGLContextAttributes getContextAttributes();
 public native int getError();
-public native JsObject getExtension(String name);
-public native Object getFramebufferAttachmentParameter(int target,int attachment,int pname);
-public native Object getParameter(int pname);
-public native String getProgramInfoLog(WebGLProgram program);
-public native Object getProgramParameter(WebGLProgram program,int pname);
-public native Object getRenderbufferParameter(int target,int pname);
-public native String getShaderInfoLog(WebGLShader shader);
-public native Object getShaderParameter(WebGLShader shader,int pname);
-public native WebGLShaderPrecisionFormat getShaderPrecisionFormat(int shadertype,int precisiontype);
-public native String getShaderSource(WebGLShader shader);
+public native @Nullable JsObject getExtension(String name);
+public native @Nullable Object getFramebufferAttachmentParameter(int target,int attachment,int pname);
+public native @Nullable Object getParameter(int pname);
+public native String getProgramInfoLog(@Nullable WebGLProgram program);
+public native @Nullable Object getProgramParameter(@Nullable WebGLProgram program,int pname);
+public native @Nullable Object getRenderbufferParameter(int target,int pname);
+public native String getShaderInfoLog(@Nullable WebGLShader shader);
+public native @Nullable Object getShaderParameter(@Nullable WebGLShader shader,int pname);
+public native @Nullable WebGLShaderPrecisionFormat getShaderPrecisionFormat(int shadertype,int precisiontype);
+public native String getShaderSource(@Nullable WebGLShader shader);
 public native JsArray<String> getSupportedExtensions();
-public native Object getTexParameter(int target,int pname);
-public native Object getUniform(WebGLProgram program,WebGLUniformLocation location);
-public native WebGLUniformLocation getUniformLocation(WebGLProgram program,String name);
-public native Object getVertexAttrib(int index,int pname);
+public native @Nullable Object getTexParameter(int target,int pname);
+public native @Nullable Object getUniform(@Nullable WebGLProgram program,@Nullable WebGLUniformLocation location);
+public native @Nullable WebGLUniformLocation getUniformLocation(@Nullable WebGLProgram program,String name);
+public native @Nullable Object getVertexAttrib(int index,int pname);
 public native double getVertexAttribOffset(int index,int pname);
 public native void hint(int target,int mode);
-public native boolean isBuffer(WebGLObject buffer);
+public native boolean isBuffer(@Nullable WebGLObject buffer);
 public native boolean isContextLost();
 public native boolean isEnabled(int cap);
-public native boolean isFramebuffer(WebGLObject framebuffer);
-public native boolean isProgram(WebGLObject program);
-public native boolean isRenderbuffer(WebGLObject renderbuffer);
-public native boolean isShader(WebGLObject shader);
-public native boolean isTexture(WebGLObject texture);
+public native boolean isFramebuffer(@Nullable WebGLObject framebuffer);
+public native boolean isProgram(@Nullable WebGLObject program);
+public native boolean isRenderbuffer(@Nullable WebGLObject renderbuffer);
+public native boolean isShader(@Nullable WebGLObject shader);
+public native boolean isTexture(@Nullable WebGLObject texture);
 public native void lineWidth(double width);
-public native void linkProgram(WebGLProgram program);
+public native void linkProgram(@Nullable WebGLProgram program);
 public native void pixelStorei(int pname,WebGLRenderingContext.PixelStoreiParamUnionType param);
 @JsOverlay
 public final void pixelStorei(int pname,boolean param){
@@ -1517,11 +1519,11 @@ public final void pixelStorei(int pname,int param){
 pixelStorei(pname,Js.<WebGLRenderingContext.PixelStoreiParamUnionType>uncheckedCast(param));
 }
 public native void polygonOffset(double factor,double units);
-public native void readPixels(int x,int y,int width,int height,int format,int type,ArrayBufferView pixels);
+public native void readPixels(int x,int y,int width,int height,int format,int type,@Nullable ArrayBufferView pixels);
 public native void renderbufferStorage(int target,int internalformat,int width,int height);
 public native void sampleCoverage(double coverage,boolean invert);
 public native void scissor(int x,int y,int width,int height);
-public native void shaderSource(WebGLShader shader,String source);
+public native void shaderSource(@Nullable WebGLShader shader,String source);
 public native void stencilFunc(int func,int ref,int mask);
 public native void stencilFuncSeparate(int face,int func,int ref,int mask);
 public native void stencilMask(int mask);
@@ -1529,837 +1531,837 @@ public native void stencilMaskSeparate(int face,int mask);
 public native void stencilOp(int fail,int zfail,int zpass);
 public native void stencilOpSeparate(int face,int fail,int zfail,int zpass);
 @JsOverlay
-public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLCanvasElement img,int format0,int type0,ArrayBufferView pixels){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
+public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLCanvasElement img,int format0,int type0,@Nullable ArrayBufferView pixels){
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLCanvasElement img,int format0,int type0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLCanvasElement img,int format0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLCanvasElement img){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img));
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img));
 }
 @JsOverlay
-public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLImageElement img,int format0,int type0,ArrayBufferView pixels){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
+public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLImageElement img,int format0,int type0,@Nullable ArrayBufferView pixels){
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLImageElement img,int format0,int type0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLImageElement img,int format0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLImageElement img){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img));
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img));
 }
 @JsOverlay
-public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLVideoElement img,int format0,int type0,ArrayBufferView pixels){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
+public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLVideoElement img,int format0,int type0,@Nullable ArrayBufferView pixels){
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLVideoElement img,int format0,int type0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLVideoElement img,int format0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,HTMLVideoElement img){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img));
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img));
 }
 @JsOverlay
-public final void texImage2D(int target,int level,int internalformat,int format,int type,ImageBitmap img,int format0,int type0,ArrayBufferView pixels){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
+public final void texImage2D(int target,int level,int internalformat,int format,int type,ImageBitmap img,int format0,int type0,@Nullable ArrayBufferView pixels){
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,ImageBitmap img,int format0,int type0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,ImageBitmap img,int format0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,ImageBitmap img){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img));
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img));
 }
 @JsOverlay
-public final void texImage2D(int target,int level,int internalformat,int format,int type,ImageData img,int format0,int type0,ArrayBufferView pixels){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
+public final void texImage2D(int target,int level,int internalformat,int format,int type,ImageData img,int format0,int type0,@Nullable ArrayBufferView pixels){
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,ImageData img,int format0,int type0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,ImageData img,int format0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,ImageData img){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img));
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img));
 }
 @JsOverlay
-public final void texImage2D(int target,int level,int internalformat,int format,int type,OffscreenCanvas img,int format0,int type0,ArrayBufferView pixels){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
+public final void texImage2D(int target,int level,int internalformat,int format,int type,OffscreenCanvas img,int format0,int type0,@Nullable ArrayBufferView pixels){
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,OffscreenCanvas img,int format0,int type0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,OffscreenCanvas img,int format0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,OffscreenCanvas img){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img));
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img));
 }
-public native void texImage2D(int target,int level,int internalformat,int format,int type,WebGLRenderingContext.TexImage2DImgUnionType img,int format0,int type0,ArrayBufferView pixels);
-public native void texImage2D(int target,int level,int internalformat,int format,int type,WebGLRenderingContext.TexImage2DImgUnionType img,int format0,int type0);
-public native void texImage2D(int target,int level,int internalformat,int format,int type,WebGLRenderingContext.TexImage2DImgUnionType img,int format0);
-public native void texImage2D(int target,int level,int internalformat,int format,int type,WebGLRenderingContext.TexImage2DImgUnionType img);
+public native void texImage2D(int target,int level,int internalformat,int format,int type,WebGLRenderingContext.@Nullable TexImage2DImgUnionType img,int format0,int type0,@Nullable ArrayBufferView pixels);
+public native void texImage2D(int target,int level,int internalformat,int format,int type,WebGLRenderingContext.@Nullable TexImage2DImgUnionType img,int format0,int type0);
+public native void texImage2D(int target,int level,int internalformat,int format,int type,WebGLRenderingContext.@Nullable TexImage2DImgUnionType img,int format0);
+public native void texImage2D(int target,int level,int internalformat,int format,int type,WebGLRenderingContext.@Nullable TexImage2DImgUnionType img);
 @JsOverlay
-public final void texImage2D(int target,int level,int internalformat,int format,int type,int img,int format0,int type0,ArrayBufferView pixels){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
+public final void texImage2D(int target,int level,int internalformat,int format,int type,int img,int format0,int type0,@Nullable ArrayBufferView pixels){
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0,pixels);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,int img,int format0,int type0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0,type0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,int img,int format0){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img),format0);
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img),format0);
 }
 @JsOverlay
 public final void texImage2D(int target,int level,int internalformat,int format,int type,int img){
-texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.TexImage2DImgUnionType>uncheckedCast(img));
+texImage2D(target,level,internalformat,format,type,Js.<WebGLRenderingContext.@Nullable TexImage2DImgUnionType>uncheckedCast(img));
 }
 public native void texParameterf(int target,int pname,double param);
 public native void texParameteri(int target,int pname,int param);
 @JsOverlay
-public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLCanvasElement data,int type0,ArrayBufferView pixels){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
+public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLCanvasElement data,int type0,@Nullable ArrayBufferView pixels){
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLCanvasElement data,int type0){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0);
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLCanvasElement data){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data));
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data));
 }
 @JsOverlay
-public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLImageElement data,int type0,ArrayBufferView pixels){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
+public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLImageElement data,int type0,@Nullable ArrayBufferView pixels){
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLImageElement data,int type0){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0);
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLImageElement data){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data));
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data));
 }
 @JsOverlay
-public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLVideoElement data,int type0,ArrayBufferView pixels){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
+public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLVideoElement data,int type0,@Nullable ArrayBufferView pixels){
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLVideoElement data,int type0){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0);
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,HTMLVideoElement data){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data));
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data));
 }
 @JsOverlay
-public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,ImageBitmap data,int type0,ArrayBufferView pixels){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
+public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,ImageBitmap data,int type0,@Nullable ArrayBufferView pixels){
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,ImageBitmap data,int type0){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0);
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,ImageBitmap data){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data));
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data));
 }
 @JsOverlay
-public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,ImageData data,int type0,ArrayBufferView pixels){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
+public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,ImageData data,int type0,@Nullable ArrayBufferView pixels){
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,ImageData data,int type0){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0);
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,ImageData data){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data));
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data));
 }
 @JsOverlay
-public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,OffscreenCanvas data,int type0,ArrayBufferView pixels){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
+public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,OffscreenCanvas data,int type0,@Nullable ArrayBufferView pixels){
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,OffscreenCanvas data,int type0){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0);
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,OffscreenCanvas data){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data));
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data));
 }
-public native void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,WebGLRenderingContext.TexSubImage2DDataUnionType data,int type0,ArrayBufferView pixels);
-public native void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,WebGLRenderingContext.TexSubImage2DDataUnionType data,int type0);
-public native void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,WebGLRenderingContext.TexSubImage2DDataUnionType data);
+public native void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType data,int type0,@Nullable ArrayBufferView pixels);
+public native void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType data,int type0);
+public native void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType data);
 @JsOverlay
-public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,double data,int type0,ArrayBufferView pixels){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
+public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,double data,int type0,@Nullable ArrayBufferView pixels){
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0,pixels);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,double data,int type0){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data),type0);
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data),type0);
 }
 @JsOverlay
 public final void texSubImage2D(int target,int level,int xoffset,int yoffset,int format,int type,double data){
-texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.TexSubImage2DDataUnionType>uncheckedCast(data));
+texSubImage2D(target,level,xoffset,yoffset,format,type,Js.<WebGLRenderingContext.@Nullable TexSubImage2DDataUnionType>uncheckedCast(data));
 }
-public native void uniform1f(WebGLUniformLocation location,double value);
+public native void uniform1f(@Nullable WebGLUniformLocation location,double value);
 @JsOverlay
-public final void uniform1fv(WebGLUniformLocation location,Float32Array value){
-uniform1fv(location,Js.<WebGLRenderingContext.Uniform1fvValueUnionType>uncheckedCast(value));
+public final void uniform1fv(@Nullable WebGLUniformLocation location,Float32Array value){
+uniform1fv(location,Js.<WebGLRenderingContext.@Nullable Uniform1fvValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform1fv(WebGLUniformLocation location,JsArray<Double> value){
-uniform1fv(location,Js.<WebGLRenderingContext.Uniform1fvValueUnionType>uncheckedCast(value));
+public final void uniform1fv(@Nullable WebGLUniformLocation location,JsArray<Double> value){
+uniform1fv(location,Js.<WebGLRenderingContext.@Nullable Uniform1fvValueUnionType>uncheckedCast(value));
 }
-public native void uniform1fv(WebGLUniformLocation location,WebGLRenderingContext.Uniform1fvValueUnionType value);
+public native void uniform1fv(@Nullable WebGLUniformLocation location,WebGLRenderingContext.@Nullable Uniform1fvValueUnionType value);
 @JsOverlay
-public final void uniform1fv(WebGLUniformLocation location,double[] value){
+public final void uniform1fv(@Nullable WebGLUniformLocation location,double[] value){
 uniform1fv(location,Js.<JsArray<Double>>uncheckedCast(value));
 }
-public native void uniform1i(WebGLUniformLocation location,WebGLRenderingContext.Uniform1iValueUnionType value);
+public native void uniform1i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform1iValueUnionType value);
 @JsOverlay
-public final void uniform1i(WebGLUniformLocation location,boolean value){
+public final void uniform1i(@Nullable WebGLUniformLocation location,boolean value){
 uniform1i(location,Js.<WebGLRenderingContext.Uniform1iValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform1i(WebGLUniformLocation location,int value){
+public final void uniform1i(@Nullable WebGLUniformLocation location,int value){
 uniform1i(location,Js.<WebGLRenderingContext.Uniform1iValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform1iv(WebGLUniformLocation location,Int32Array value){
-uniform1iv(location,Js.<WebGLRenderingContext.Uniform1ivValueUnionType>uncheckedCast(value));
+public final void uniform1iv(@Nullable WebGLUniformLocation location,Int32Array value){
+uniform1iv(location,Js.<WebGLRenderingContext.@Nullable Uniform1ivValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform1iv(WebGLUniformLocation location,JsArray<Object> value){
-uniform1iv(location,Js.<WebGLRenderingContext.Uniform1ivValueUnionType>uncheckedCast(value));
+public final void uniform1iv(@Nullable WebGLUniformLocation location,JsArray<@Nullable Object> value){
+uniform1iv(location,Js.<WebGLRenderingContext.@Nullable Uniform1ivValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform1iv(WebGLUniformLocation location,Object[] value){
-uniform1iv(location,Js.<JsArray<Object>>uncheckedCast(value));
+public final void uniform1iv(@Nullable WebGLUniformLocation location,@Nullable Object[] value){
+uniform1iv(location,Js.<JsArray<@Nullable Object>>uncheckedCast(value));
 }
-public native void uniform1iv(WebGLUniformLocation location,WebGLRenderingContext.Uniform1ivValueUnionType value);
-public native void uniform2f(WebGLUniformLocation location,double value1,double value2);
+public native void uniform1iv(@Nullable WebGLUniformLocation location,WebGLRenderingContext.@Nullable Uniform1ivValueUnionType value);
+public native void uniform2f(@Nullable WebGLUniformLocation location,double value1,double value2);
 @JsOverlay
-public final void uniform2fv(WebGLUniformLocation location,Float32Array value){
-uniform2fv(location,Js.<WebGLRenderingContext.Uniform2fvValueUnionType>uncheckedCast(value));
+public final void uniform2fv(@Nullable WebGLUniformLocation location,Float32Array value){
+uniform2fv(location,Js.<WebGLRenderingContext.@Nullable Uniform2fvValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform2fv(WebGLUniformLocation location,JsArray<Double> value){
-uniform2fv(location,Js.<WebGLRenderingContext.Uniform2fvValueUnionType>uncheckedCast(value));
+public final void uniform2fv(@Nullable WebGLUniformLocation location,JsArray<Double> value){
+uniform2fv(location,Js.<WebGLRenderingContext.@Nullable Uniform2fvValueUnionType>uncheckedCast(value));
 }
-public native void uniform2fv(WebGLUniformLocation location,WebGLRenderingContext.Uniform2fvValueUnionType value);
+public native void uniform2fv(@Nullable WebGLUniformLocation location,WebGLRenderingContext.@Nullable Uniform2fvValueUnionType value);
 @JsOverlay
-public final void uniform2fv(WebGLUniformLocation location,double[] value){
+public final void uniform2fv(@Nullable WebGLUniformLocation location,double[] value){
 uniform2fv(location,Js.<JsArray<Double>>uncheckedCast(value));
 }
-public native void uniform2i(WebGLUniformLocation location,WebGLRenderingContext.Uniform2iValue1UnionType value1,WebGLRenderingContext.Uniform2iValue2UnionType value2);
+public native void uniform2i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform2iValue1UnionType value1,WebGLRenderingContext.Uniform2iValue2UnionType value2);
 @JsOverlay
-public final void uniform2i(WebGLUniformLocation location,WebGLRenderingContext.Uniform2iValue1UnionType value1,boolean value2){
+public final void uniform2i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform2iValue1UnionType value1,boolean value2){
 uniform2i(location,value1,Js.<WebGLRenderingContext.Uniform2iValue2UnionType>uncheckedCast(value2));
 }
 @JsOverlay
-public final void uniform2i(WebGLUniformLocation location,WebGLRenderingContext.Uniform2iValue1UnionType value1,int value2){
+public final void uniform2i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform2iValue1UnionType value1,int value2){
 uniform2i(location,value1,Js.<WebGLRenderingContext.Uniform2iValue2UnionType>uncheckedCast(value2));
 }
 @JsOverlay
-public final void uniform2i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform2iValue2UnionType value2){
+public final void uniform2i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform2iValue2UnionType value2){
 uniform2i(location,Js.<WebGLRenderingContext.Uniform2iValue1UnionType>uncheckedCast(value1),value2);
 }
 @JsOverlay
-public final void uniform2i(WebGLUniformLocation location,boolean value1,boolean value2){
+public final void uniform2i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2){
 uniform2i(location,Js.<WebGLRenderingContext.Uniform2iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform2iValue2UnionType>uncheckedCast(value2));
 }
 @JsOverlay
-public final void uniform2i(WebGLUniformLocation location,boolean value1,int value2){
+public final void uniform2i(@Nullable WebGLUniformLocation location,boolean value1,int value2){
 uniform2i(location,Js.<WebGLRenderingContext.Uniform2iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform2iValue2UnionType>uncheckedCast(value2));
 }
 @JsOverlay
-public final void uniform2i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform2iValue2UnionType value2){
+public final void uniform2i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform2iValue2UnionType value2){
 uniform2i(location,Js.<WebGLRenderingContext.Uniform2iValue1UnionType>uncheckedCast(value1),value2);
 }
 @JsOverlay
-public final void uniform2i(WebGLUniformLocation location,int value1,boolean value2){
+public final void uniform2i(@Nullable WebGLUniformLocation location,int value1,boolean value2){
 uniform2i(location,Js.<WebGLRenderingContext.Uniform2iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform2iValue2UnionType>uncheckedCast(value2));
 }
 @JsOverlay
-public final void uniform2i(WebGLUniformLocation location,int value1,int value2){
+public final void uniform2i(@Nullable WebGLUniformLocation location,int value1,int value2){
 uniform2i(location,Js.<WebGLRenderingContext.Uniform2iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform2iValue2UnionType>uncheckedCast(value2));
 }
 @JsOverlay
-public final void uniform2iv(WebGLUniformLocation location,Int32Array value){
-uniform2iv(location,Js.<WebGLRenderingContext.Uniform2ivValueUnionType>uncheckedCast(value));
+public final void uniform2iv(@Nullable WebGLUniformLocation location,Int32Array value){
+uniform2iv(location,Js.<WebGLRenderingContext.@Nullable Uniform2ivValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform2iv(WebGLUniformLocation location,JsArray<Object> value){
-uniform2iv(location,Js.<WebGLRenderingContext.Uniform2ivValueUnionType>uncheckedCast(value));
+public final void uniform2iv(@Nullable WebGLUniformLocation location,JsArray<@Nullable Object> value){
+uniform2iv(location,Js.<WebGLRenderingContext.@Nullable Uniform2ivValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform2iv(WebGLUniformLocation location,Object[] value){
-uniform2iv(location,Js.<JsArray<Object>>uncheckedCast(value));
+public final void uniform2iv(@Nullable WebGLUniformLocation location,@Nullable Object[] value){
+uniform2iv(location,Js.<JsArray<@Nullable Object>>uncheckedCast(value));
 }
-public native void uniform2iv(WebGLUniformLocation location,WebGLRenderingContext.Uniform2ivValueUnionType value);
-public native void uniform3f(WebGLUniformLocation location,double value1,double value2,double value3);
+public native void uniform2iv(@Nullable WebGLUniformLocation location,WebGLRenderingContext.@Nullable Uniform2ivValueUnionType value);
+public native void uniform3f(@Nullable WebGLUniformLocation location,double value1,double value2,double value3);
 @JsOverlay
-public final void uniform3fv(WebGLUniformLocation location,Float32Array value){
-uniform3fv(location,Js.<WebGLRenderingContext.Uniform3fvValueUnionType>uncheckedCast(value));
+public final void uniform3fv(@Nullable WebGLUniformLocation location,Float32Array value){
+uniform3fv(location,Js.<WebGLRenderingContext.@Nullable Uniform3fvValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform3fv(WebGLUniformLocation location,JsArray<Double> value){
-uniform3fv(location,Js.<WebGLRenderingContext.Uniform3fvValueUnionType>uncheckedCast(value));
+public final void uniform3fv(@Nullable WebGLUniformLocation location,JsArray<Double> value){
+uniform3fv(location,Js.<WebGLRenderingContext.@Nullable Uniform3fvValueUnionType>uncheckedCast(value));
 }
-public native void uniform3fv(WebGLUniformLocation location,WebGLRenderingContext.Uniform3fvValueUnionType value);
+public native void uniform3fv(@Nullable WebGLUniformLocation location,WebGLRenderingContext.@Nullable Uniform3fvValueUnionType value);
 @JsOverlay
-public final void uniform3fv(WebGLUniformLocation location,double[] value){
+public final void uniform3fv(@Nullable WebGLUniformLocation location,double[] value){
 uniform3fv(location,Js.<JsArray<Double>>uncheckedCast(value));
 }
-public native void uniform3i(WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,WebGLRenderingContext.Uniform3iValue3UnionType value3);
+public native void uniform3i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,WebGLRenderingContext.Uniform3iValue3UnionType value3);
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,boolean value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,boolean value3){
 uniform3i(location,value1,value2,Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,int value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,int value3){
 uniform3i(location,value1,value2,Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,boolean value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,boolean value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
 uniform3i(location,value1,Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),value3);
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,boolean value2,boolean value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,boolean value2,boolean value3){
 uniform3i(location,value1,Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,boolean value2,int value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,boolean value2,int value3){
 uniform3i(location,value1,Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,int value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,int value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
 uniform3i(location,value1,Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),value3);
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,int value2,boolean value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,int value2,boolean value3){
 uniform3i(location,value1,Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,int value2,int value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform3iValue1UnionType value1,int value2,int value3){
 uniform3i(location,value1,Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),value2,value3);
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,boolean value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,boolean value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,int value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,int value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,boolean value1,boolean value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),value3);
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,boolean value1,boolean value2,boolean value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,boolean value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,boolean value1,boolean value2,int value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,int value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,boolean value1,int value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,boolean value1,int value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),value3);
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,boolean value1,int value2,boolean value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,boolean value1,int value2,boolean value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,boolean value1,int value2,int value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,boolean value1,int value2,int value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),value2,value3);
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,boolean value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,boolean value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,int value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform3iValue2UnionType value2,int value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,int value1,boolean value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,int value1,boolean value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),value3);
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,int value1,boolean value2,boolean value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,int value1,boolean value2,boolean value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,int value1,boolean value2,int value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,int value1,boolean value2,int value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,int value1,int value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,int value1,int value2,WebGLRenderingContext.Uniform3iValue3UnionType value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),value3);
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,int value1,int value2,boolean value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,int value1,int value2,boolean value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3i(WebGLUniformLocation location,int value1,int value2,int value3){
+public final void uniform3i(@Nullable WebGLUniformLocation location,int value1,int value2,int value3){
 uniform3i(location,Js.<WebGLRenderingContext.Uniform3iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform3iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform3iValue3UnionType>uncheckedCast(value3));
 }
 @JsOverlay
-public final void uniform3iv(WebGLUniformLocation location,Int32Array value){
-uniform3iv(location,Js.<WebGLRenderingContext.Uniform3ivValueUnionType>uncheckedCast(value));
+public final void uniform3iv(@Nullable WebGLUniformLocation location,Int32Array value){
+uniform3iv(location,Js.<WebGLRenderingContext.@Nullable Uniform3ivValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform3iv(WebGLUniformLocation location,JsArray<Object> value){
-uniform3iv(location,Js.<WebGLRenderingContext.Uniform3ivValueUnionType>uncheckedCast(value));
+public final void uniform3iv(@Nullable WebGLUniformLocation location,JsArray<@Nullable Object> value){
+uniform3iv(location,Js.<WebGLRenderingContext.@Nullable Uniform3ivValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform3iv(WebGLUniformLocation location,Object[] value){
-uniform3iv(location,Js.<JsArray<Object>>uncheckedCast(value));
+public final void uniform3iv(@Nullable WebGLUniformLocation location,@Nullable Object[] value){
+uniform3iv(location,Js.<JsArray<@Nullable Object>>uncheckedCast(value));
 }
-public native void uniform3iv(WebGLUniformLocation location,WebGLRenderingContext.Uniform3ivValueUnionType value);
-public native void uniform4f(WebGLUniformLocation location,double value1,double value2,double value3,double value4);
+public native void uniform3iv(@Nullable WebGLUniformLocation location,WebGLRenderingContext.@Nullable Uniform3ivValueUnionType value);
+public native void uniform4f(@Nullable WebGLUniformLocation location,double value1,double value2,double value3,double value4);
 @JsOverlay
-public final void uniform4fv(WebGLUniformLocation location,Float32Array value){
-uniform4fv(location,Js.<WebGLRenderingContext.Uniform4fvValueUnionType>uncheckedCast(value));
+public final void uniform4fv(@Nullable WebGLUniformLocation location,Float32Array value){
+uniform4fv(location,Js.<WebGLRenderingContext.@Nullable Uniform4fvValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform4fv(WebGLUniformLocation location,JsArray<Double> value){
-uniform4fv(location,Js.<WebGLRenderingContext.Uniform4fvValueUnionType>uncheckedCast(value));
+public final void uniform4fv(@Nullable WebGLUniformLocation location,JsArray<Double> value){
+uniform4fv(location,Js.<WebGLRenderingContext.@Nullable Uniform4fvValueUnionType>uncheckedCast(value));
 }
-public native void uniform4fv(WebGLUniformLocation location,WebGLRenderingContext.Uniform4fvValueUnionType value);
+public native void uniform4fv(@Nullable WebGLUniformLocation location,WebGLRenderingContext.@Nullable Uniform4fvValueUnionType value);
 @JsOverlay
-public final void uniform4fv(WebGLUniformLocation location,double[] value){
+public final void uniform4fv(@Nullable WebGLUniformLocation location,double[] value){
 uniform4fv(location,Js.<JsArray<Double>>uncheckedCast(value));
 }
-public native void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4);
+public native void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4);
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
 uniform4i(location,value1,value2,value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
 uniform4i(location,value1,value2,value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,value1,value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,boolean value4){
 uniform4i(location,value1,value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,int value4){
 uniform4i(location,value1,value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,value1,value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,boolean value4){
 uniform4i(location,value1,value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,int value4){
 uniform4i(location,value1,value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,boolean value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,boolean value3,boolean value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,boolean value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,boolean value3,int value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,int value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,int value3,boolean value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,int value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,boolean value2,int value3,int value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,boolean value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,boolean value3,boolean value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,boolean value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,boolean value3,int value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,int value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,int value3,boolean value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,int value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,WebGLRenderingContext.Uniform4iValue1UnionType value1,int value2,int value3,int value4){
 uniform4i(location,value1,Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,value3,value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,boolean value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,boolean value2,boolean value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,boolean value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,boolean value2,boolean value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,boolean value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,boolean value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,boolean value2,int value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,int value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,boolean value2,int value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,boolean value2,int value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,int value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,int value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,int value2,boolean value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,int value2,boolean value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,int value2,boolean value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,int value2,boolean value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,int value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,int value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,int value2,int value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,int value2,int value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,boolean value1,int value2,int value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,boolean value1,int value2,int value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,value3,value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,boolean value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,WebGLRenderingContext.Uniform4iValue2UnionType value2,int value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),value2,Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,boolean value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,boolean value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,boolean value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,boolean value2,boolean value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,boolean value2,boolean value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,boolean value2,boolean value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,boolean value2,boolean value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,boolean value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,boolean value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,boolean value2,int value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,boolean value2,int value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,boolean value2,int value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,boolean value2,int value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,int value2,WebGLRenderingContext.Uniform4iValue3UnionType value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),value3,Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,int value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,int value2,boolean value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,int value2,boolean value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,int value2,boolean value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,int value2,boolean value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,int value2,boolean value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,int value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,int value2,int value3,WebGLRenderingContext.Uniform4iValue4UnionType value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),value4);
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,int value2,int value3,boolean value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,int value2,int value3,boolean value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4i(WebGLUniformLocation location,int value1,int value2,int value3,int value4){
+public final void uniform4i(@Nullable WebGLUniformLocation location,int value1,int value2,int value3,int value4){
 uniform4i(location,Js.<WebGLRenderingContext.Uniform4iValue1UnionType>uncheckedCast(value1),Js.<WebGLRenderingContext.Uniform4iValue2UnionType>uncheckedCast(value2),Js.<WebGLRenderingContext.Uniform4iValue3UnionType>uncheckedCast(value3),Js.<WebGLRenderingContext.Uniform4iValue4UnionType>uncheckedCast(value4));
 }
 @JsOverlay
-public final void uniform4iv(WebGLUniformLocation location,Int32Array value){
-uniform4iv(location,Js.<WebGLRenderingContext.Uniform4ivValueUnionType>uncheckedCast(value));
+public final void uniform4iv(@Nullable WebGLUniformLocation location,Int32Array value){
+uniform4iv(location,Js.<WebGLRenderingContext.@Nullable Uniform4ivValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform4iv(WebGLUniformLocation location,JsArray<Object> value){
-uniform4iv(location,Js.<WebGLRenderingContext.Uniform4ivValueUnionType>uncheckedCast(value));
+public final void uniform4iv(@Nullable WebGLUniformLocation location,JsArray<@Nullable Object> value){
+uniform4iv(location,Js.<WebGLRenderingContext.@Nullable Uniform4ivValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public final void uniform4iv(WebGLUniformLocation location,Object[] value){
-uniform4iv(location,Js.<JsArray<Object>>uncheckedCast(value));
+public final void uniform4iv(@Nullable WebGLUniformLocation location,@Nullable Object[] value){
+uniform4iv(location,Js.<JsArray<@Nullable Object>>uncheckedCast(value));
 }
-public native void uniform4iv(WebGLUniformLocation location,WebGLRenderingContext.Uniform4ivValueUnionType value);
+public native void uniform4iv(@Nullable WebGLUniformLocation location,WebGLRenderingContext.@Nullable Uniform4ivValueUnionType value);
 @JsOverlay
-public final void uniformMatrix2fv(WebGLUniformLocation location,boolean transpose,Float32Array data){
-uniformMatrix2fv(location,transpose,Js.<WebGLRenderingContext.UniformMatrix2fvDataUnionType>uncheckedCast(data));
+public final void uniformMatrix2fv(@Nullable WebGLUniformLocation location,boolean transpose,Float32Array data){
+uniformMatrix2fv(location,transpose,Js.<WebGLRenderingContext.@Nullable UniformMatrix2fvDataUnionType>uncheckedCast(data));
 }
 @JsOverlay
-public final void uniformMatrix2fv(WebGLUniformLocation location,boolean transpose,JsArray<Double> data){
-uniformMatrix2fv(location,transpose,Js.<WebGLRenderingContext.UniformMatrix2fvDataUnionType>uncheckedCast(data));
+public final void uniformMatrix2fv(@Nullable WebGLUniformLocation location,boolean transpose,JsArray<Double> data){
+uniformMatrix2fv(location,transpose,Js.<WebGLRenderingContext.@Nullable UniformMatrix2fvDataUnionType>uncheckedCast(data));
 }
-public native void uniformMatrix2fv(WebGLUniformLocation location,boolean transpose,WebGLRenderingContext.UniformMatrix2fvDataUnionType data);
+public native void uniformMatrix2fv(@Nullable WebGLUniformLocation location,boolean transpose,WebGLRenderingContext.@Nullable UniformMatrix2fvDataUnionType data);
 @JsOverlay
-public final void uniformMatrix2fv(WebGLUniformLocation location,boolean transpose,double[] data){
+public final void uniformMatrix2fv(@Nullable WebGLUniformLocation location,boolean transpose,double[] data){
 uniformMatrix2fv(location,transpose,Js.<JsArray<Double>>uncheckedCast(data));
 }
 @JsOverlay
-public final void uniformMatrix3fv(WebGLUniformLocation location,boolean transpose,Float32Array data){
-uniformMatrix3fv(location,transpose,Js.<WebGLRenderingContext.UniformMatrix3fvDataUnionType>uncheckedCast(data));
+public final void uniformMatrix3fv(@Nullable WebGLUniformLocation location,boolean transpose,Float32Array data){
+uniformMatrix3fv(location,transpose,Js.<WebGLRenderingContext.@Nullable UniformMatrix3fvDataUnionType>uncheckedCast(data));
 }
 @JsOverlay
-public final void uniformMatrix3fv(WebGLUniformLocation location,boolean transpose,JsArray<Double> data){
-uniformMatrix3fv(location,transpose,Js.<WebGLRenderingContext.UniformMatrix3fvDataUnionType>uncheckedCast(data));
+public final void uniformMatrix3fv(@Nullable WebGLUniformLocation location,boolean transpose,JsArray<Double> data){
+uniformMatrix3fv(location,transpose,Js.<WebGLRenderingContext.@Nullable UniformMatrix3fvDataUnionType>uncheckedCast(data));
 }
-public native void uniformMatrix3fv(WebGLUniformLocation location,boolean transpose,WebGLRenderingContext.UniformMatrix3fvDataUnionType data);
+public native void uniformMatrix3fv(@Nullable WebGLUniformLocation location,boolean transpose,WebGLRenderingContext.@Nullable UniformMatrix3fvDataUnionType data);
 @JsOverlay
-public final void uniformMatrix3fv(WebGLUniformLocation location,boolean transpose,double[] data){
+public final void uniformMatrix3fv(@Nullable WebGLUniformLocation location,boolean transpose,double[] data){
 uniformMatrix3fv(location,transpose,Js.<JsArray<Double>>uncheckedCast(data));
 }
 @JsOverlay
-public final void uniformMatrix4fv(WebGLUniformLocation location,boolean transpose,Float32Array data){
-uniformMatrix4fv(location,transpose,Js.<WebGLRenderingContext.UniformMatrix4fvDataUnionType>uncheckedCast(data));
+public final void uniformMatrix4fv(@Nullable WebGLUniformLocation location,boolean transpose,Float32Array data){
+uniformMatrix4fv(location,transpose,Js.<WebGLRenderingContext.@Nullable UniformMatrix4fvDataUnionType>uncheckedCast(data));
 }
 @JsOverlay
-public final void uniformMatrix4fv(WebGLUniformLocation location,boolean transpose,JsArray<Double> data){
-uniformMatrix4fv(location,transpose,Js.<WebGLRenderingContext.UniformMatrix4fvDataUnionType>uncheckedCast(data));
+public final void uniformMatrix4fv(@Nullable WebGLUniformLocation location,boolean transpose,JsArray<Double> data){
+uniformMatrix4fv(location,transpose,Js.<WebGLRenderingContext.@Nullable UniformMatrix4fvDataUnionType>uncheckedCast(data));
 }
-public native void uniformMatrix4fv(WebGLUniformLocation location,boolean transpose,WebGLRenderingContext.UniformMatrix4fvDataUnionType data);
+public native void uniformMatrix4fv(@Nullable WebGLUniformLocation location,boolean transpose,WebGLRenderingContext.@Nullable UniformMatrix4fvDataUnionType data);
 @JsOverlay
-public final void uniformMatrix4fv(WebGLUniformLocation location,boolean transpose,double[] data){
+public final void uniformMatrix4fv(@Nullable WebGLUniformLocation location,boolean transpose,double[] data){
 uniformMatrix4fv(location,transpose,Js.<JsArray<Double>>uncheckedCast(data));
 }
-public native void useProgram(WebGLProgram program);
-public native void validateProgram(WebGLProgram program);
+public native void useProgram(@Nullable WebGLProgram program);
+public native void validateProgram(@Nullable WebGLProgram program);
 public native void vertexAttrib1f(int indx,double x);
 @JsOverlay
 public final void vertexAttrib1fv(int indx,Float32Array values){
-vertexAttrib1fv(indx,Js.<WebGLRenderingContext.VertexAttrib1fvValuesUnionType>uncheckedCast(values));
+vertexAttrib1fv(indx,Js.<WebGLRenderingContext.@Nullable VertexAttrib1fvValuesUnionType>uncheckedCast(values));
 }
 @JsOverlay
 public final void vertexAttrib1fv(int indx,JsArray<Double> values){
-vertexAttrib1fv(indx,Js.<WebGLRenderingContext.VertexAttrib1fvValuesUnionType>uncheckedCast(values));
+vertexAttrib1fv(indx,Js.<WebGLRenderingContext.@Nullable VertexAttrib1fvValuesUnionType>uncheckedCast(values));
 }
-public native void vertexAttrib1fv(int indx,WebGLRenderingContext.VertexAttrib1fvValuesUnionType values);
+public native void vertexAttrib1fv(int indx,WebGLRenderingContext.@Nullable VertexAttrib1fvValuesUnionType values);
 @JsOverlay
 public final void vertexAttrib1fv(int indx,double[] values){
 vertexAttrib1fv(indx,Js.<JsArray<Double>>uncheckedCast(values));
@@ -2367,13 +2369,13 @@ vertexAttrib1fv(indx,Js.<JsArray<Double>>uncheckedCast(values));
 public native void vertexAttrib2f(int indx,double x,double y);
 @JsOverlay
 public final void vertexAttrib2fv(int indx,Float32Array values){
-vertexAttrib2fv(indx,Js.<WebGLRenderingContext.VertexAttrib2fvValuesUnionType>uncheckedCast(values));
+vertexAttrib2fv(indx,Js.<WebGLRenderingContext.@Nullable VertexAttrib2fvValuesUnionType>uncheckedCast(values));
 }
 @JsOverlay
 public final void vertexAttrib2fv(int indx,JsArray<Double> values){
-vertexAttrib2fv(indx,Js.<WebGLRenderingContext.VertexAttrib2fvValuesUnionType>uncheckedCast(values));
+vertexAttrib2fv(indx,Js.<WebGLRenderingContext.@Nullable VertexAttrib2fvValuesUnionType>uncheckedCast(values));
 }
-public native void vertexAttrib2fv(int indx,WebGLRenderingContext.VertexAttrib2fvValuesUnionType values);
+public native void vertexAttrib2fv(int indx,WebGLRenderingContext.@Nullable VertexAttrib2fvValuesUnionType values);
 @JsOverlay
 public final void vertexAttrib2fv(int indx,double[] values){
 vertexAttrib2fv(indx,Js.<JsArray<Double>>uncheckedCast(values));
@@ -2381,13 +2383,13 @@ vertexAttrib2fv(indx,Js.<JsArray<Double>>uncheckedCast(values));
 public native void vertexAttrib3f(int indx,double x,double y,double z);
 @JsOverlay
 public final void vertexAttrib3fv(int indx,Float32Array values){
-vertexAttrib3fv(indx,Js.<WebGLRenderingContext.VertexAttrib3fvValuesUnionType>uncheckedCast(values));
+vertexAttrib3fv(indx,Js.<WebGLRenderingContext.@Nullable VertexAttrib3fvValuesUnionType>uncheckedCast(values));
 }
 @JsOverlay
 public final void vertexAttrib3fv(int indx,JsArray<Double> values){
-vertexAttrib3fv(indx,Js.<WebGLRenderingContext.VertexAttrib3fvValuesUnionType>uncheckedCast(values));
+vertexAttrib3fv(indx,Js.<WebGLRenderingContext.@Nullable VertexAttrib3fvValuesUnionType>uncheckedCast(values));
 }
-public native void vertexAttrib3fv(int indx,WebGLRenderingContext.VertexAttrib3fvValuesUnionType values);
+public native void vertexAttrib3fv(int indx,WebGLRenderingContext.@Nullable VertexAttrib3fvValuesUnionType values);
 @JsOverlay
 public final void vertexAttrib3fv(int indx,double[] values){
 vertexAttrib3fv(indx,Js.<JsArray<Double>>uncheckedCast(values));
@@ -2395,13 +2397,13 @@ vertexAttrib3fv(indx,Js.<JsArray<Double>>uncheckedCast(values));
 public native void vertexAttrib4f(int indx,double x,double y,double z,double w);
 @JsOverlay
 public final void vertexAttrib4fv(int indx,Float32Array values){
-vertexAttrib4fv(indx,Js.<WebGLRenderingContext.VertexAttrib4fvValuesUnionType>uncheckedCast(values));
+vertexAttrib4fv(indx,Js.<WebGLRenderingContext.@Nullable VertexAttrib4fvValuesUnionType>uncheckedCast(values));
 }
 @JsOverlay
 public final void vertexAttrib4fv(int indx,JsArray<Double> values){
-vertexAttrib4fv(indx,Js.<WebGLRenderingContext.VertexAttrib4fvValuesUnionType>uncheckedCast(values));
+vertexAttrib4fv(indx,Js.<WebGLRenderingContext.@Nullable VertexAttrib4fvValuesUnionType>uncheckedCast(values));
 }
-public native void vertexAttrib4fv(int indx,WebGLRenderingContext.VertexAttrib4fvValuesUnionType values);
+public native void vertexAttrib4fv(int indx,WebGLRenderingContext.@Nullable VertexAttrib4fvValuesUnionType values);
 @JsOverlay
 public final void vertexAttrib4fv(int indx,double[] values){
 vertexAttrib4fv(indx,Js.<JsArray<Double>>uncheckedCast(values));

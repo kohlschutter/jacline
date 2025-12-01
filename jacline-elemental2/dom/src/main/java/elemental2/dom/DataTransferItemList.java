@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.base.JsArrayLike;
 import jsinterop.annotations.JsOverlay;
@@ -34,25 +35,25 @@ return (Object)this instanceof String;
 }
 }
 public int length;
-public native DataTransferItem add(DataTransferItemList.AddDataUnionType data,String type);
-public native DataTransferItem add(DataTransferItemList.AddDataUnionType data);
+public native @Nullable DataTransferItem add(DataTransferItemList.AddDataUnionType data,String type);
+public native @Nullable DataTransferItem add(DataTransferItemList.AddDataUnionType data);
 @JsOverlay
-public final DataTransferItem add(File data,String type){
+public final @Nullable DataTransferItem add(File data,String type){
 return add(Js.<DataTransferItemList.AddDataUnionType>uncheckedCast(data),type);
 }
 @JsOverlay
-public final DataTransferItem add(File data){
+public final @Nullable DataTransferItem add(File data){
 return add(Js.<DataTransferItemList.AddDataUnionType>uncheckedCast(data));
 }
 @JsOverlay
-public final DataTransferItem add(String data,String type){
+public final @Nullable DataTransferItem add(String data,String type){
 return add(Js.<DataTransferItemList.AddDataUnionType>uncheckedCast(data),type);
 }
 @JsOverlay
-public final DataTransferItem add(String data){
+public final @Nullable DataTransferItem add(String data){
 return add(Js.<DataTransferItemList.AddDataUnionType>uncheckedCast(data));
 }
 public native void clear();
-public native DataTransferItem item(double i);
+public native @Nullable DataTransferItem item(double i);
 public native void remove(int i);
 }

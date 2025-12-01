@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
 import java.lang.Double;
@@ -12,7 +13,7 @@ public interface RTCRtpContributingSource{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetTimestampUnionType{
 @JsOverlay
-static RTCRtpContributingSource.GetTimestampUnionType of(Object o){
+static RTCRtpContributingSource.@Nullable GetTimestampUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -20,7 +21,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsDate asJsDate(){
+default @Nullable JsDate asJsDate(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -37,31 +38,31 @@ double getAudioLevel();
 @JsProperty
 double getCaptureTimestamp();
 @JsProperty
-double getRtpTimestamp();
+@Nullable Double getRtpTimestamp();
 @JsProperty
 double getSenderCaptureTimeOffset();
 @JsProperty
-double getSource();
+@Nullable Double getSource();
 @JsProperty
-RTCRtpContributingSource.GetTimestampUnionType getTimestamp();
+RTCRtpContributingSource.@Nullable GetTimestampUnionType getTimestamp();
 @JsProperty
 void setAudioLevel(double audioLevel);
 @JsProperty
 void setCaptureTimestamp(double captureTimestamp);
 @JsProperty
-void setRtpTimestamp(double rtpTimestamp);
+void setRtpTimestamp(@Nullable Double rtpTimestamp);
 @JsProperty
 void setSenderCaptureTimeOffset(double senderCaptureTimeOffset);
 @JsProperty
-void setSource(double source);
+void setSource(@Nullable Double source);
 @JsProperty
-void setTimestamp(RTCRtpContributingSource.GetTimestampUnionType timestamp);
+void setTimestamp(RTCRtpContributingSource.@Nullable GetTimestampUnionType timestamp);
 @JsOverlay
 default void setTimestamp(JsDate timestamp){
-setTimestamp(Js.<RTCRtpContributingSource.GetTimestampUnionType>uncheckedCast(timestamp));
+setTimestamp(Js.<RTCRtpContributingSource.@Nullable GetTimestampUnionType>uncheckedCast(timestamp));
 }
 @JsOverlay
 default void setTimestamp(double timestamp){
-setTimestamp(Js.<RTCRtpContributingSource.GetTimestampUnionType>uncheckedCast(timestamp));
+setTimestamp(Js.<RTCRtpContributingSource.@Nullable GetTimestampUnionType>uncheckedCast(timestamp));
 }
 }

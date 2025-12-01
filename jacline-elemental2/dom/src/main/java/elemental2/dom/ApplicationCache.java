@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.EventListener;
 import jsinterop.annotations.JsFunction;
 import elemental2.dom.Event;
@@ -49,13 +50,13 @@ public static final int OBSOLETE=ApplicationCache__Constants.OBSOLETE;
 public static final int UNCACHED=ApplicationCache__Constants.UNCACHED;
 @JsOverlay
 public static final int UPDATEREADY=ApplicationCache__Constants.UPDATEREADY;
-public ApplicationCache.OncachedFn oncached;
-public ApplicationCache.OncheckingFn onchecking;
-public ApplicationCache.OndownloadingFn ondownloading;
-public ApplicationCache.OnerrorFn onerror;
-public ApplicationCache.OnnoupdateFn onnoupdate;
-public ApplicationCache.OnprogressFn onprogress;
-public ApplicationCache.OnupdatereadyFn onupdateready;
+public ApplicationCache.@Nullable OncachedFn oncached;
+public ApplicationCache.@Nullable OncheckingFn onchecking;
+public ApplicationCache.@Nullable OndownloadingFn ondownloading;
+public ApplicationCache.@Nullable OnerrorFn onerror;
+public ApplicationCache.@Nullable OnnoupdateFn onnoupdate;
+public ApplicationCache.@Nullable OnprogressFn onprogress;
+public ApplicationCache.@Nullable OnupdatereadyFn onupdateready;
 public int status;
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType options);
 public native void addEventListener(String type,EventListener listener);

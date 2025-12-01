@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.PerformanceEntry;
 import elemental2.dom.Node;
 import jsinterop.annotations.JsType;
@@ -8,5 +9,5 @@ public class PerformanceEventTiming extends PerformanceEntry{
 public boolean cancelable;
 public double processingEnd;
 public double processingStart;
-public Node target;
+public @Nullable Node target;
 }

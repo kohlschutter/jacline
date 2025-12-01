@@ -1,6 +1,7 @@
 package elemental2.dom;
 import elemental2.dom.EventListenerOptions;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.AbortSignal;
 import jsinterop.annotations.JsOverlay;
@@ -14,7 +15,7 @@ static AddEventListenerOptions create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-AbortSignal getSignal();
+@Nullable AbortSignal getSignal();
 @JsProperty
 boolean isOnce();
 @JsProperty
@@ -24,5 +25,5 @@ void setOnce(boolean once);
 @JsProperty
 void setPassive(boolean passive);
 @JsProperty
-void setSignal(AbortSignal signal);
+void setSignal(@Nullable AbortSignal signal);
 }

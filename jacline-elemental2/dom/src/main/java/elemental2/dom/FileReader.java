@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.ProgressEvent;
 import elemental2.dom.DOMError;
 import elemental2.dom.Event;
@@ -17,44 +18,44 @@ import jsinterop.annotations.JsPackage;
 public class FileReader implements EventTarget{
 @JsFunction
 public interface OnabortFn{
-Object onInvoke(ProgressEvent<FileReader> p0);
+@Nullable Object onInvoke(ProgressEvent<FileReader> p0);
 }
 @JsFunction
 public interface OnerrorFn{
-Object onInvoke(ProgressEvent<FileReader> p0);
+@Nullable Object onInvoke(ProgressEvent<FileReader> p0);
 }
 @JsFunction
 public interface OnloadFn{
-Object onInvoke(ProgressEvent<FileReader> p0);
+@Nullable Object onInvoke(ProgressEvent<FileReader> p0);
 }
 @JsFunction
 public interface OnloadendFn{
-Object onInvoke(ProgressEvent<FileReader> p0);
+@Nullable Object onInvoke(ProgressEvent<FileReader> p0);
 }
 @JsFunction
 public interface OnloadstartFn{
-Object onInvoke(ProgressEvent<FileReader> p0);
+@Nullable Object onInvoke(ProgressEvent<FileReader> p0);
 }
 @JsFunction
 public interface OnprogressFn{
-Object onInvoke(ProgressEvent<FileReader> p0);
+@Nullable Object onInvoke(ProgressEvent<FileReader> p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ResultUnionType{
 @JsOverlay
-static FileReader.ResultUnionType of(Object o){
+static FileReader.@Nullable ResultUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default Blob asBlob(){
+default @Nullable Blob asBlob(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -76,15 +77,15 @@ public static final int DONE=FileReader__Constants.DONE;
 public static final int EMPTY=FileReader__Constants.EMPTY;
 @JsOverlay
 public static final int LOADING=FileReader__Constants.LOADING;
-public DOMError error;
-public FileReader.OnabortFn onabort;
-public FileReader.OnerrorFn onerror;
-public FileReader.OnloadFn onload;
-public FileReader.OnloadendFn onloadend;
-public FileReader.OnloadstartFn onloadstart;
-public FileReader.OnprogressFn onprogress;
+public @Nullable DOMError error;
+public FileReader.@Nullable OnabortFn onabort;
+public FileReader.@Nullable OnerrorFn onerror;
+public FileReader.@Nullable OnloadFn onload;
+public FileReader.@Nullable OnloadendFn onloadend;
+public FileReader.@Nullable OnloadstartFn onloadstart;
+public FileReader.@Nullable OnprogressFn onprogress;
 public int readyState;
-public FileReader.ResultUnionType result;
+public FileReader.@Nullable ResultUnionType result;
 public native void abort();
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType options);
 public native void addEventListener(String type,EventListener listener);

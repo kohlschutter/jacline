@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.RTCErrorEvent;
 import elemental2.dom.Event;
 import elemental2.core.ArrayBuffer;
@@ -15,23 +16,23 @@ import jsinterop.annotations.JsPackage;
 public interface RTCDtlsTransport extends EventTarget{
 @JsFunction
 public interface OnerrorFn{
-Object onInvoke(RTCErrorEvent p0);
+@Nullable Object onInvoke(RTCErrorEvent p0);
 }
 @JsFunction
 public interface OnstatechangeFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsProperty
 RTCIceTransport getIceTransport();
 @JsProperty
-RTCDtlsTransport.OnerrorFn getOnerror();
+RTCDtlsTransport.@Nullable OnerrorFn getOnerror();
 @JsProperty
-RTCDtlsTransport.OnstatechangeFn getOnstatechange();
+RTCDtlsTransport.@Nullable OnstatechangeFn getOnstatechange();
 JsArray<ArrayBuffer> getRemoteCertificates();
 @JsProperty
 String getState();
 @JsProperty
-void setOnerror(RTCDtlsTransport.OnerrorFn onerror);
+void setOnerror(RTCDtlsTransport.@Nullable OnerrorFn onerror);
 @JsProperty
-void setOnstatechange(RTCDtlsTransport.OnstatechangeFn onstatechange);
+void setOnstatechange(RTCDtlsTransport.@Nullable OnstatechangeFn onstatechange);
 }

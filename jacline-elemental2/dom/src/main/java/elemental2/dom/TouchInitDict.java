@@ -2,6 +2,7 @@ package elemental2.dom;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
+import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import jsinterop.base.JsPropertyMap;
@@ -12,6 +13,10 @@ public interface TouchInitDict{
 static TouchInitDict create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
+@JsProperty
+double getAltitudeAngle();
+@JsProperty
+double getAzimuthAngle();
 @JsProperty
 double getClientX();
 @JsProperty
@@ -37,6 +42,12 @@ double getScreenY();
 @JsProperty
 EventTarget getTarget();
 @JsProperty
+String getTouchType();
+@JsProperty
+void setAltitudeAngle(double altitudeAngle);
+@JsProperty
+void setAzimuthAngle(double azimuthAngle);
+@JsProperty
 void setClientX(double clientX);
 @JsProperty
 void setClientY(double clientY);
@@ -60,4 +71,6 @@ void setScreenX(double screenX);
 void setScreenY(double screenY);
 @JsProperty
 void setTarget(EventTarget target);
+@JsProperty
+void setTouchType(String touchType);
 }

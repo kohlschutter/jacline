@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import elemental2.media.AudioParam;
 import jsinterop.annotations.JsFunction;
 import java.lang.Deprecated;
@@ -22,33 +23,33 @@ public double PLAYING_STATE;
 public double SCHEDULED_STATE;
 @Deprecated
 public double UNSCHEDULED_STATE;
-public AudioBuffer buffer;
+public @Nullable AudioBuffer buffer;
 public AudioParam detune;
 @Deprecated
 public double gain;
 public boolean loop;
 public double loopEnd;
 public double loopStart;
-public AudioBufferSourceNode.OnendedFn onended;
+public AudioBufferSourceNode.@Nullable OnendedFn onended;
 public AudioParam playbackRate;
 @Deprecated
 public double playbackState;
 @Deprecated
-public native Object noteGrainOn();
+public native @Nullable Object noteGrainOn();
 @Deprecated
-public native Object noteGrainOn(double when,double offset,double duration);
+public native @Nullable Object noteGrainOn(double when,double offset,double duration);
 @Deprecated
-public native Object noteGrainOn(double when,double offset);
+public native @Nullable Object noteGrainOn(double when,double offset);
 @Deprecated
-public native Object noteGrainOn(double when);
+public native @Nullable Object noteGrainOn(double when);
 @Deprecated
-public native Object noteOff(double when);
+public native @Nullable Object noteOff(double when);
 @Deprecated
 public native void noteOn(double when);
-public native Object start();
-public native Object start(double when,double offset,double duration);
-public native Object start(double when,double offset);
-public native Object start(double when);
-public native Object stop();
-public native Object stop(double when);
+public native @Nullable Object start();
+public native @Nullable Object start(double when,double offset,double duration);
+public native @Nullable Object start(double when,double offset);
+public native @Nullable Object start(double when);
+public native @Nullable Object stop();
+public native @Nullable Object stop(double when);
 }

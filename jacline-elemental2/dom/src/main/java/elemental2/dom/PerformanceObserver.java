@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.PerformanceEntry;
 import elemental2.dom.PerformanceObserverCallback;
 import jsinterop.annotations.JsOverlay;
@@ -14,6 +15,6 @@ public class PerformanceObserver{
 public static final JsArray<String> supportedEntryTypes=PerformanceObserver__Constants.supportedEntryTypes;
 public PerformanceObserver(PerformanceObserverCallback callback){}
 public native void disconnect();
-public native Object observe(PerformanceObserverInit options);
+public native @Nullable Object observe(PerformanceObserverInit options);
 public native JsArray<PerformanceEntry> takeRecords();
 }

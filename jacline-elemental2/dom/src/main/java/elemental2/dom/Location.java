@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.URL;
 import jsinterop.annotations.JsOverlay;
@@ -55,7 +56,7 @@ default boolean isURL(){
 return (Object)this instanceof URL;
 }
 }
-public DOMStringList ancestorOrigins;
+public @Nullable DOMStringList ancestorOrigins;
 public String hash;
 public String host;
 public String hostname;

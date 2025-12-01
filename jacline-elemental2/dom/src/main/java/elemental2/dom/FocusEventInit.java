@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
@@ -14,7 +15,7 @@ static FocusEventInit create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-EventTarget getRelatedTarget();
+@Nullable EventTarget getRelatedTarget();
 @JsProperty
-void setRelatedTarget(EventTarget relatedTarget);
+void setRelatedTarget(@Nullable EventTarget relatedTarget);
 }

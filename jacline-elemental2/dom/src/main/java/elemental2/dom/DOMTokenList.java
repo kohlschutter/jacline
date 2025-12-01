@@ -1,6 +1,8 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.JsArrayLike;
 import jsinterop.annotations.JsMethod;
+import java.lang.Object;
 import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
@@ -19,5 +21,5 @@ public native boolean supports(String token);
 public native String toString_();
 public native boolean toggle(String token,boolean force);
 public native boolean toggle(String token);
-public native JsIteratorIterable<String> values();
+public native JsIteratorIterable<String, @Nullable Object, @Nullable Object> values();
 }

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.FormData;
 import elemental2.dom.URL;
 import elemental2.dom.ReadableStream;
@@ -10,6 +11,7 @@ import elemental2.core.ArrayBuffer;
 import elemental2.dom.URLSearchParams;
 import jsinterop.annotations.JsProperty;
 import elemental2.dom.Body;
+import elemental2.core.Uint8Array;
 import jsinterop.base.Js;
 import elemental2.core.ArrayBufferView;
 import jsinterop.annotations.JsOverlay;
@@ -23,35 +25,35 @@ public class Response implements Body{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorBodyUnionType{
 @JsOverlay
-static Response.ConstructorBodyUnionType of(Object o){
+static Response.@Nullable ConstructorBodyUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default ArrayBufferView asArrayBufferView(){
+default @Nullable ArrayBufferView asArrayBufferView(){
 return Js.cast(this);
 }
 @JsOverlay
-default Blob asBlob(){
+default @Nullable Blob asBlob(){
 return Js.cast(this);
 }
 @JsOverlay
-default FormData asFormData(){
+default @Nullable FormData asFormData(){
 return Js.cast(this);
 }
 @JsOverlay
-default ReadableStream asReadableStream(){
+default @Nullable ReadableStream asReadableStream(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
-default URLSearchParams asURLSearchParams(){
+default @Nullable URLSearchParams asURLSearchParams(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -125,7 +127,7 @@ return redirect(Js.<Response.RedirectUrlUnionType>uncheckedCast(url),status);
 public static final Response redirect(URL url){
 return redirect(Js.<Response.RedirectUrlUnionType>uncheckedCast(url));
 }
-public ReadableStream body;
+public @Nullable ReadableStream body;
 public boolean bodyUsed;
 public Headers headers;
 public boolean ok;
@@ -142,8 +144,8 @@ public Response(ArrayBufferView body,ResponseInit init){}
 public Response(ArrayBufferView body){}
 public Response(Blob body,ResponseInit init){}
 public Response(Blob body){}
-public Response(Response.ConstructorBodyUnionType body,ResponseInit init){}
-public Response(Response.ConstructorBodyUnionType body){}
+public Response(Response.@Nullable ConstructorBodyUnionType body,ResponseInit init){}
+public Response(Response.@Nullable ConstructorBodyUnionType body){}
 public Response(FormData body,ResponseInit init){}
 public Response(FormData body){}
 public Response(ReadableStream body,ResponseInit init){}
@@ -154,12 +156,13 @@ public Response(URLSearchParams body,ResponseInit init){}
 public Response(URLSearchParams body){}
 public native Promise<ArrayBuffer> arrayBuffer();
 public native Promise<Blob> blob();
+public native Promise<Uint8Array> bytes();
 @JsMethod(name = "clone")
 public native Response clone_();
 public native Promise<FormData> formData();
 @JsProperty
 public native boolean isBodyUsed();
-public native Promise<Object> json();
+public native Promise<@Nullable Object> json();
 @JsProperty
 public native void setBodyUsed(boolean bodyUsed);
 public native Promise<String> text();

@@ -1,4 +1,5 @@
 package elemental2.webgl;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import java.lang.Double;
 import jsinterop.annotations.JsOverlay;
@@ -41,9 +42,9 @@ public double DRAW_BUFFER8_WEBGL;
 public double DRAW_BUFFER9_WEBGL;
 public double MAX_COLOR_ATTACHMENTS_WEBGL;
 public double MAX_DRAW_BUFFERS_WEBGL;
-public native void drawBuffersWEBGL(JsArray<Double> buffers);
+public native void drawBuffersWEBGL(@Nullable JsArray<Double> buffers);
 @JsOverlay
-public final void drawBuffersWEBGL(double[] buffers){
-drawBuffersWEBGL(Js.<JsArray<Double>>uncheckedCast(buffers));
+public final void drawBuffersWEBGL(double@Nullable [] buffers){
+drawBuffersWEBGL(Js.<@Nullable JsArray<Double>>uncheckedCast(buffers));
 }
 }

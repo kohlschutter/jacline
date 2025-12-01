@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import java.lang.Deprecated;
 import java.lang.String;
 import jsinterop.annotations.JsType;
@@ -10,9 +11,9 @@ public interface NavigatorUserMediaError{
 @JsProperty
 double getCode();
 @JsProperty
-String getConstraintName();
+@Nullable String getConstraintName();
 @JsProperty
-String getMessage();
+@Nullable String getMessage();
 @JsProperty
 String getName();
 @Deprecated
@@ -22,9 +23,9 @@ double getPERMISSION_DENIED();
 @JsProperty
 void setCode(double code);
 @JsProperty
-void setConstraintName(String constraintName);
+void setConstraintName(@Nullable String constraintName);
 @JsProperty
-void setMessage(String message);
+void setMessage(@Nullable String message);
 @JsProperty
 void setName(String name);
 }

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import elemental2.dom.TouchInitDict;
@@ -16,6 +17,6 @@ public double radiusY;
 public double rotationAngle;
 public double screenX;
 public double screenY;
-public EventTarget target;
+public @Nullable EventTarget target;
 public Touch(TouchInitDict touchInitDict){}
 }

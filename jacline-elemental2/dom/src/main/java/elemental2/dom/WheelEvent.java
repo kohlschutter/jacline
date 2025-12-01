@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsOverlay;
 import elemental2.dom.MouseEventInit;
 import elemental2.dom.WheelEventInit;
@@ -18,12 +19,12 @@ public int deltaMode;
 public double deltaX;
 public double deltaY;
 public double deltaZ;
-public WheelEvent(String type,WheelEventInit eventInitDict){
+public WheelEvent(String type,@Nullable WheelEventInit eventInitDict){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(MouseEventInit)null);
+super((String)null,(@Nullable MouseEventInit)null);
 }
 public WheelEvent(String type){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(MouseEventInit)null);
+super((String)null,(@Nullable MouseEventInit)null);
 }
 }

@@ -1,4 +1,5 @@
 package elemental2.indexeddb;
+import org.jspecify.annotations.Nullable;
 import java.lang.Double;
 import elemental2.core.ArrayBuffer;
 import elemental2.core.JsArray;
@@ -31,7 +32,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -86,7 +87,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -141,7 +142,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -196,7 +197,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -251,7 +252,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -306,7 +307,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsArray<Object> asJsArray(){
+default JsArray<@Nullable Object> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -379,15 +380,15 @@ public static final IDBKeyRange bound(ArrayBuffer left,IDBKeyRange.BoundRightUni
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBuffer left,JsArray<Object> right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(ArrayBuffer left,JsArray<@Nullable Object> right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBuffer left,JsArray<Object> right,boolean openLeft){
+public static final IDBKeyRange bound(ArrayBuffer left,JsArray<@Nullable Object> right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBuffer left,JsArray<Object> right){
+public static final IDBKeyRange bound(ArrayBuffer left,JsArray<@Nullable Object> right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
@@ -403,16 +404,16 @@ public static final IDBKeyRange bound(ArrayBuffer left,JsDate right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBuffer left,Object[] right,boolean openLeft,boolean openRight){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft,openRight);
+public static final IDBKeyRange bound(ArrayBuffer left,@Nullable Object[] right,boolean openLeft,boolean openRight){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBuffer left,Object[] right,boolean openLeft){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft);
+public static final IDBKeyRange bound(ArrayBuffer left,@Nullable Object[] right,boolean openLeft){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBuffer left,Object[] right){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right));
+public static final IDBKeyRange bound(ArrayBuffer left,@Nullable Object[] right){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right));
 }
 @JsOverlay
 public static final IDBKeyRange bound(ArrayBuffer left,String right,boolean openLeft,boolean openRight){
@@ -475,15 +476,15 @@ public static final IDBKeyRange bound(ArrayBufferView left,IDBKeyRange.BoundRigh
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBufferView left,JsArray<Object> right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(ArrayBufferView left,JsArray<@Nullable Object> right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBufferView left,JsArray<Object> right,boolean openLeft){
+public static final IDBKeyRange bound(ArrayBufferView left,JsArray<@Nullable Object> right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBufferView left,JsArray<Object> right){
+public static final IDBKeyRange bound(ArrayBufferView left,JsArray<@Nullable Object> right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
@@ -499,16 +500,16 @@ public static final IDBKeyRange bound(ArrayBufferView left,JsDate right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBufferView left,Object[] right,boolean openLeft,boolean openRight){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft,openRight);
+public static final IDBKeyRange bound(ArrayBufferView left,@Nullable Object[] right,boolean openLeft,boolean openRight){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBufferView left,Object[] right,boolean openLeft){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft);
+public static final IDBKeyRange bound(ArrayBufferView left,@Nullable Object[] right,boolean openLeft){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(ArrayBufferView left,Object[] right){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right));
+public static final IDBKeyRange bound(ArrayBufferView left,@Nullable Object[] right){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right));
 }
 @JsOverlay
 public static final IDBKeyRange bound(ArrayBufferView left,String right,boolean openLeft,boolean openRight){
@@ -562,15 +563,15 @@ public static native IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,IDBKe
 public static native IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,IDBKeyRange.BoundRightUnionType right,boolean openLeft);
 public static native IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,IDBKeyRange.BoundRightUnionType right);
 @JsOverlay
-public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,JsArray<Object> right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,JsArray<@Nullable Object> right,boolean openLeft,boolean openRight){
 return bound(left,Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,JsArray<Object> right,boolean openLeft){
+public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,JsArray<@Nullable Object> right,boolean openLeft){
 return bound(left,Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,JsArray<Object> right){
+public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,JsArray<@Nullable Object> right){
 return bound(left,Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
@@ -586,16 +587,16 @@ public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,JsDate
 return bound(left,Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,Object[] right,boolean openLeft,boolean openRight){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft,openRight);
+public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,@Nullable Object[] right,boolean openLeft,boolean openRight){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,Object[] right,boolean openLeft){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft);
+public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,@Nullable Object[] right,boolean openLeft){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,Object[] right){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right));
+public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,@Nullable Object[] right){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right));
 }
 @JsOverlay
 public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,String right,boolean openLeft,boolean openRight){
@@ -622,87 +623,87 @@ public static final IDBKeyRange bound(IDBKeyRange.BoundLeftUnionType left,double
 return bound(left,Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,ArrayBuffer right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,ArrayBuffer right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,ArrayBuffer right,boolean openLeft){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,ArrayBuffer right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,ArrayBuffer right){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,ArrayBuffer right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,ArrayBufferView right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,ArrayBufferView right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,ArrayBufferView right,boolean openLeft){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,ArrayBufferView right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,ArrayBufferView right){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,ArrayBufferView right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,IDBKeyRange.BoundRightUnionType right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,IDBKeyRange.BoundRightUnionType right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),right,openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,IDBKeyRange.BoundRightUnionType right,boolean openLeft){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,IDBKeyRange.BoundRightUnionType right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),right,openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,IDBKeyRange.BoundRightUnionType right){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,IDBKeyRange.BoundRightUnionType right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,JsArray<Object> right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,JsArray<@Nullable Object> right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,JsArray<Object> right,boolean openLeft){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,JsArray<@Nullable Object> right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,JsArray<Object> right){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,JsArray<@Nullable Object> right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,JsDate right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,JsDate right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,JsDate right,boolean openLeft){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,JsDate right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,JsDate right){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,JsDate right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,String right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,String right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,String right,boolean openLeft){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,String right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,String right){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,String right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,double right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,double right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,double right,boolean openLeft){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,double right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsArray<Object> left,double right){
+public static final IDBKeyRange bound(JsArray<@Nullable Object> left,double right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
@@ -742,15 +743,15 @@ public static final IDBKeyRange bound(JsDate left,IDBKeyRange.BoundRightUnionTyp
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsDate left,JsArray<Object> right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(JsDate left,JsArray<@Nullable Object> right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsDate left,JsArray<Object> right,boolean openLeft){
+public static final IDBKeyRange bound(JsDate left,JsArray<@Nullable Object> right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsDate left,JsArray<Object> right){
+public static final IDBKeyRange bound(JsDate left,JsArray<@Nullable Object> right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
@@ -766,16 +767,16 @@ public static final IDBKeyRange bound(JsDate left,JsDate right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsDate left,Object[] right,boolean openLeft,boolean openRight){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft,openRight);
+public static final IDBKeyRange bound(JsDate left,@Nullable Object[] right,boolean openLeft,boolean openRight){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsDate left,Object[] right,boolean openLeft){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft);
+public static final IDBKeyRange bound(JsDate left,@Nullable Object[] right,boolean openLeft){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(JsDate left,Object[] right){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right));
+public static final IDBKeyRange bound(JsDate left,@Nullable Object[] right){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right));
 }
 @JsOverlay
 public static final IDBKeyRange bound(JsDate left,String right,boolean openLeft,boolean openRight){
@@ -802,88 +803,88 @@ public static final IDBKeyRange bound(JsDate left,double right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,ArrayBuffer right,boolean openLeft,boolean openRight){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft,openRight);
+public static final IDBKeyRange bound(@Nullable Object[] left,ArrayBuffer right,boolean openLeft,boolean openRight){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,ArrayBuffer right,boolean openLeft){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft);
+public static final IDBKeyRange bound(@Nullable Object[] left,ArrayBuffer right,boolean openLeft){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,ArrayBuffer right){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right);
+public static final IDBKeyRange bound(@Nullable Object[] left,ArrayBuffer right){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,ArrayBufferView right,boolean openLeft,boolean openRight){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft,openRight);
+public static final IDBKeyRange bound(@Nullable Object[] left,ArrayBufferView right,boolean openLeft,boolean openRight){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,ArrayBufferView right,boolean openLeft){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft);
+public static final IDBKeyRange bound(@Nullable Object[] left,ArrayBufferView right,boolean openLeft){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,ArrayBufferView right){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right);
+public static final IDBKeyRange bound(@Nullable Object[] left,ArrayBufferView right){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,IDBKeyRange.BoundRightUnionType right,boolean openLeft,boolean openRight){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft,openRight);
+public static final IDBKeyRange bound(@Nullable Object[] left,IDBKeyRange.BoundRightUnionType right,boolean openLeft,boolean openRight){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,IDBKeyRange.BoundRightUnionType right,boolean openLeft){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft);
+public static final IDBKeyRange bound(@Nullable Object[] left,IDBKeyRange.BoundRightUnionType right,boolean openLeft){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,IDBKeyRange.BoundRightUnionType right){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right);
+public static final IDBKeyRange bound(@Nullable Object[] left,IDBKeyRange.BoundRightUnionType right){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,JsDate right,boolean openLeft,boolean openRight){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft,openRight);
+public static final IDBKeyRange bound(@Nullable Object[] left,JsDate right,boolean openLeft,boolean openRight){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,JsDate right,boolean openLeft){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft);
+public static final IDBKeyRange bound(@Nullable Object[] left,JsDate right,boolean openLeft){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,JsDate right){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right);
+public static final IDBKeyRange bound(@Nullable Object[] left,JsDate right){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,Object[] right,boolean openLeft,boolean openRight){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),Js.<JsArray<Object>>uncheckedCast(right),openLeft,openRight);
+public static final IDBKeyRange bound(@Nullable Object[] left,@Nullable Object[] right,boolean openLeft,boolean openRight){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,Object[] right,boolean openLeft){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),Js.<JsArray<Object>>uncheckedCast(right),openLeft);
+public static final IDBKeyRange bound(@Nullable Object[] left,@Nullable Object[] right,boolean openLeft){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,Object[] right){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),Js.<JsArray<Object>>uncheckedCast(right));
+public static final IDBKeyRange bound(@Nullable Object[] left,@Nullable Object[] right){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),Js.<JsArray<@Nullable Object>>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,String right,boolean openLeft,boolean openRight){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft,openRight);
+public static final IDBKeyRange bound(@Nullable Object[] left,String right,boolean openLeft,boolean openRight){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,String right,boolean openLeft){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft);
+public static final IDBKeyRange bound(@Nullable Object[] left,String right,boolean openLeft){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,String right){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right);
+public static final IDBKeyRange bound(@Nullable Object[] left,String right){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,double right,boolean openLeft,boolean openRight){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft,openRight);
+public static final IDBKeyRange bound(@Nullable Object[] left,double right,boolean openLeft,boolean openRight){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,double right,boolean openLeft){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right,openLeft);
+public static final IDBKeyRange bound(@Nullable Object[] left,double right,boolean openLeft){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right,openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(Object[] left,double right){
-return bound(Js.<JsArray<Object>>uncheckedCast(left),right);
+public static final IDBKeyRange bound(@Nullable Object[] left,double right){
+return bound(Js.<JsArray<@Nullable Object>>uncheckedCast(left),right);
 }
 @JsOverlay
 public static final IDBKeyRange bound(String left,ArrayBuffer right,boolean openLeft,boolean openRight){
@@ -922,15 +923,15 @@ public static final IDBKeyRange bound(String left,IDBKeyRange.BoundRightUnionTyp
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(String left,JsArray<Object> right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(String left,JsArray<@Nullable Object> right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(String left,JsArray<Object> right,boolean openLeft){
+public static final IDBKeyRange bound(String left,JsArray<@Nullable Object> right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(String left,JsArray<Object> right){
+public static final IDBKeyRange bound(String left,JsArray<@Nullable Object> right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
@@ -946,16 +947,16 @@ public static final IDBKeyRange bound(String left,JsDate right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(String left,Object[] right,boolean openLeft,boolean openRight){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft,openRight);
+public static final IDBKeyRange bound(String left,@Nullable Object[] right,boolean openLeft,boolean openRight){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(String left,Object[] right,boolean openLeft){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft);
+public static final IDBKeyRange bound(String left,@Nullable Object[] right,boolean openLeft){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(String left,Object[] right){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right));
+public static final IDBKeyRange bound(String left,@Nullable Object[] right){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right));
 }
 @JsOverlay
 public static final IDBKeyRange bound(String left,String right,boolean openLeft,boolean openRight){
@@ -1018,15 +1019,15 @@ public static final IDBKeyRange bound(double left,IDBKeyRange.BoundRightUnionTyp
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),right);
 }
 @JsOverlay
-public static final IDBKeyRange bound(double left,JsArray<Object> right,boolean openLeft,boolean openRight){
+public static final IDBKeyRange bound(double left,JsArray<@Nullable Object> right,boolean openLeft,boolean openRight){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(double left,JsArray<Object> right,boolean openLeft){
+public static final IDBKeyRange bound(double left,JsArray<@Nullable Object> right,boolean openLeft){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(double left,JsArray<Object> right){
+public static final IDBKeyRange bound(double left,JsArray<@Nullable Object> right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
@@ -1042,16 +1043,16 @@ public static final IDBKeyRange bound(double left,JsDate right){
 return bound(Js.<IDBKeyRange.BoundLeftUnionType>uncheckedCast(left),Js.<IDBKeyRange.BoundRightUnionType>uncheckedCast(right));
 }
 @JsOverlay
-public static final IDBKeyRange bound(double left,Object[] right,boolean openLeft,boolean openRight){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft,openRight);
+public static final IDBKeyRange bound(double left,@Nullable Object[] right,boolean openLeft,boolean openRight){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft,openRight);
 }
 @JsOverlay
-public static final IDBKeyRange bound(double left,Object[] right,boolean openLeft){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right),openLeft);
+public static final IDBKeyRange bound(double left,@Nullable Object[] right,boolean openLeft){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right),openLeft);
 }
 @JsOverlay
-public static final IDBKeyRange bound(double left,Object[] right){
-return bound(left,Js.<JsArray<Object>>uncheckedCast(right));
+public static final IDBKeyRange bound(double left,@Nullable Object[] right){
+return bound(left,Js.<JsArray<@Nullable Object>>uncheckedCast(right));
 }
 @JsOverlay
 public static final IDBKeyRange bound(double left,String right,boolean openLeft,boolean openRight){
@@ -1094,11 +1095,11 @@ public static final IDBKeyRange lowerBound(ArrayBufferView bound){
 return lowerBound(Js.<IDBKeyRange.LowerBoundBoundUnionType>uncheckedCast(bound));
 }
 @JsOverlay
-public static final IDBKeyRange lowerBound(JsArray<Object> bound,boolean open){
+public static final IDBKeyRange lowerBound(JsArray<@Nullable Object> bound,boolean open){
 return lowerBound(Js.<IDBKeyRange.LowerBoundBoundUnionType>uncheckedCast(bound),open);
 }
 @JsOverlay
-public static final IDBKeyRange lowerBound(JsArray<Object> bound){
+public static final IDBKeyRange lowerBound(JsArray<@Nullable Object> bound){
 return lowerBound(Js.<IDBKeyRange.LowerBoundBoundUnionType>uncheckedCast(bound));
 }
 @JsOverlay
@@ -1112,12 +1113,12 @@ return lowerBound(Js.<IDBKeyRange.LowerBoundBoundUnionType>uncheckedCast(bound))
 public static native IDBKeyRange lowerBound(IDBKeyRange.LowerBoundBoundUnionType bound,boolean open);
 public static native IDBKeyRange lowerBound(IDBKeyRange.LowerBoundBoundUnionType bound);
 @JsOverlay
-public static final IDBKeyRange lowerBound(Object[] bound,boolean open){
-return lowerBound(Js.<JsArray<Object>>uncheckedCast(bound),open);
+public static final IDBKeyRange lowerBound(@Nullable Object[] bound,boolean open){
+return lowerBound(Js.<JsArray<@Nullable Object>>uncheckedCast(bound),open);
 }
 @JsOverlay
-public static final IDBKeyRange lowerBound(Object[] bound){
-return lowerBound(Js.<JsArray<Object>>uncheckedCast(bound));
+public static final IDBKeyRange lowerBound(@Nullable Object[] bound){
+return lowerBound(Js.<JsArray<@Nullable Object>>uncheckedCast(bound));
 }
 @JsOverlay
 public static final IDBKeyRange lowerBound(String bound,boolean open){
@@ -1144,7 +1145,7 @@ public static final IDBKeyRange only(ArrayBufferView value){
 return only(Js.<IDBKeyRange.OnlyValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public static final IDBKeyRange only(JsArray<Object> value){
+public static final IDBKeyRange only(JsArray<@Nullable Object> value){
 return only(Js.<IDBKeyRange.OnlyValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
@@ -1152,8 +1153,8 @@ public static final IDBKeyRange only(JsDate value){
 return only(Js.<IDBKeyRange.OnlyValueUnionType>uncheckedCast(value));
 }
 @JsOverlay
-public static final IDBKeyRange only(Object[] value){
-return only(Js.<JsArray<Object>>uncheckedCast(value));
+public static final IDBKeyRange only(@Nullable Object[] value){
+return only(Js.<JsArray<@Nullable Object>>uncheckedCast(value));
 }
 public static native IDBKeyRange only(IDBKeyRange.OnlyValueUnionType value);
 @JsOverlay
@@ -1181,11 +1182,11 @@ public static final IDBKeyRange upperBound(ArrayBufferView bound){
 return upperBound(Js.<IDBKeyRange.UpperBoundBoundUnionType>uncheckedCast(bound));
 }
 @JsOverlay
-public static final IDBKeyRange upperBound(JsArray<Object> bound,boolean open){
+public static final IDBKeyRange upperBound(JsArray<@Nullable Object> bound,boolean open){
 return upperBound(Js.<IDBKeyRange.UpperBoundBoundUnionType>uncheckedCast(bound),open);
 }
 @JsOverlay
-public static final IDBKeyRange upperBound(JsArray<Object> bound){
+public static final IDBKeyRange upperBound(JsArray<@Nullable Object> bound){
 return upperBound(Js.<IDBKeyRange.UpperBoundBoundUnionType>uncheckedCast(bound));
 }
 @JsOverlay
@@ -1197,12 +1198,12 @@ public static final IDBKeyRange upperBound(JsDate bound){
 return upperBound(Js.<IDBKeyRange.UpperBoundBoundUnionType>uncheckedCast(bound));
 }
 @JsOverlay
-public static final IDBKeyRange upperBound(Object[] bound,boolean open){
-return upperBound(Js.<JsArray<Object>>uncheckedCast(bound),open);
+public static final IDBKeyRange upperBound(@Nullable Object[] bound,boolean open){
+return upperBound(Js.<JsArray<@Nullable Object>>uncheckedCast(bound),open);
 }
 @JsOverlay
-public static final IDBKeyRange upperBound(Object[] bound){
-return upperBound(Js.<JsArray<Object>>uncheckedCast(bound));
+public static final IDBKeyRange upperBound(@Nullable Object[] bound){
+return upperBound(Js.<JsArray<@Nullable Object>>uncheckedCast(bound));
 }
 @JsOverlay
 public static final IDBKeyRange upperBound(String bound,boolean open){
@@ -1222,9 +1223,9 @@ return upperBound(Js.<IDBKeyRange.UpperBoundBoundUnionType>uncheckedCast(bound),
 public static final IDBKeyRange upperBound(double bound){
 return upperBound(Js.<IDBKeyRange.UpperBoundBoundUnionType>uncheckedCast(bound));
 }
-public Object lower;
+public @Nullable Object lower;
 public boolean lowerOpen;
-public Object upper;
+public @Nullable Object upper;
 public boolean upperOpen;
 @JsOverlay
 public final boolean includes(ArrayBuffer key){
@@ -1236,7 +1237,7 @@ return includes(Js.<IDBKeyRange.IncludesKeyUnionType>uncheckedCast(key));
 }
 public native boolean includes(IDBKeyRange.IncludesKeyUnionType key);
 @JsOverlay
-public final boolean includes(JsArray<Object> key){
+public final boolean includes(JsArray<@Nullable Object> key){
 return includes(Js.<IDBKeyRange.IncludesKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
@@ -1244,8 +1245,8 @@ public final boolean includes(JsDate key){
 return includes(Js.<IDBKeyRange.IncludesKeyUnionType>uncheckedCast(key));
 }
 @JsOverlay
-public final boolean includes(Object[] key){
-return includes(Js.<JsArray<Object>>uncheckedCast(key));
+public final boolean includes(@Nullable Object[] key){
+return includes(Js.<JsArray<@Nullable Object>>uncheckedCast(key));
 }
 @JsOverlay
 public final boolean includes(String key){

@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.String;
@@ -13,19 +14,19 @@ static RTCIceCandidateInit create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-String getCandidate();
+@Nullable String getCandidate();
 @JsProperty
 int getSdpMLineIndex();
 @JsProperty
-String getSdpMid();
+@Nullable String getSdpMid();
 @JsProperty
 String getUsernameFragment();
 @JsProperty
-void setCandidate(String candidate);
+void setCandidate(@Nullable String candidate);
 @JsProperty
 void setSdpMLineIndex(int sdpMLineIndex);
 @JsProperty
-void setSdpMid(String sdpMid);
+void setSdpMid(@Nullable String sdpMid);
 @JsProperty
 void setUsernameFragment(String usernameFragment);
 }

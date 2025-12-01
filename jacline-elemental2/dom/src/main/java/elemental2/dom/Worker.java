@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.ErrorEvent;
 import elemental2.dom.URL;
 import elemental2.dom.WorkerOptions;
@@ -56,20 +57,24 @@ void onInvoke(ErrorEvent p0);
 }
 @JsFunction
 public interface OnmessageFn{
-void onInvoke(MessageEvent<Object> p0);
+void onInvoke(MessageEvent<@Nullable Object> p0);
+}
+@JsFunction
+public interface OnmessageerrorFn{
+@Nullable Object onInvoke(MessageEvent p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface PostMessageTransferOrOptionsUnionType{
 @JsOverlay
-static Worker.PostMessageTransferOrOptionsUnionType of(Object o){
+static Worker.@Nullable PostMessageTransferOrOptionsUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<Transferable> asJsArray(){
+default @Nullable JsArray<Transferable> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default StructuredSerializeOptions asStructuredSerializeOptions(){
+default @Nullable StructuredSerializeOptions asStructuredSerializeOptions(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -80,15 +85,15 @@ return (Object)this instanceof JsArray;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface WebkitPostMessageTransferOrOptionsUnionType{
 @JsOverlay
-static Worker.WebkitPostMessageTransferOrOptionsUnionType of(Object o){
+static Worker.@Nullable WebkitPostMessageTransferOrOptionsUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<Transferable> asJsArray(){
+default @Nullable JsArray<Transferable> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default StructuredSerializeOptions asStructuredSerializeOptions(){
+default @Nullable StructuredSerializeOptions asStructuredSerializeOptions(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -96,8 +101,9 @@ default boolean isJsArray(){
 return (Object)this instanceof JsArray;
 }
 }
-public Worker.OnerrorFn onerror;
-public Worker.OnmessageFn onmessage;
+public Worker.@Nullable OnerrorFn onerror;
+public Worker.@Nullable OnmessageFn onmessage;
+public Worker.@Nullable OnmessageerrorFn onmessageerror;
 public Worker(Worker.ConstructorScriptURLUnionType scriptURL,WorkerOptions options){}
 public Worker(Worker.ConstructorScriptURLUnionType scriptURL){}
 public Worker(String scriptURL,WorkerOptions options){}
@@ -110,34 +116,34 @@ public native void addEventListener(String type,EventListener listener,EventTarg
 public native void addEventListener(String type,EventListener listener);
 public native boolean dispatchEvent(Event evt);
 @JsOverlay
-public final void postMessage(Object message,JsArray<Transferable> transferOrOptions){
-postMessage(message,Js.<Worker.PostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
+public final void postMessage(@Nullable Object message,JsArray<Transferable> transferOrOptions){
+postMessage(message,Js.<Worker.@Nullable PostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
 }
-public native void postMessage(Object message,Worker.PostMessageTransferOrOptionsUnionType transferOrOptions);
+public native void postMessage(@Nullable Object message,Worker.@Nullable PostMessageTransferOrOptionsUnionType transferOrOptions);
 @JsOverlay
-public final void postMessage(Object message,StructuredSerializeOptions transferOrOptions){
-postMessage(message,Js.<Worker.PostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
+public final void postMessage(@Nullable Object message,StructuredSerializeOptions transferOrOptions){
+postMessage(message,Js.<Worker.@Nullable PostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
 }
 @JsOverlay
-public final void postMessage(Object message,Transferable[] transferOrOptions){
+public final void postMessage(@Nullable Object message,Transferable[] transferOrOptions){
 postMessage(message,Js.<JsArray<Transferable>>uncheckedCast(transferOrOptions));
 }
-public native void postMessage(Object message);
+public native void postMessage(@Nullable Object message);
 public native void removeEventListener(String type,EventListener listener,EventTarget.RemoveEventListenerOptionsUnionType options);
 public native void removeEventListener(String type,EventListener listener);
 public native void terminate();
 @JsOverlay
-public final void webkitPostMessage(Object message,JsArray<Transferable> transferOrOptions){
-webkitPostMessage(message,Js.<Worker.WebkitPostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
+public final void webkitPostMessage(@Nullable Object message,JsArray<Transferable> transferOrOptions){
+webkitPostMessage(message,Js.<Worker.@Nullable WebkitPostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
 }
 @JsOverlay
-public final void webkitPostMessage(Object message,StructuredSerializeOptions transferOrOptions){
-webkitPostMessage(message,Js.<Worker.WebkitPostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
+public final void webkitPostMessage(@Nullable Object message,StructuredSerializeOptions transferOrOptions){
+webkitPostMessage(message,Js.<Worker.@Nullable WebkitPostMessageTransferOrOptionsUnionType>uncheckedCast(transferOrOptions));
 }
 @JsOverlay
-public final void webkitPostMessage(Object message,Transferable[] transferOrOptions){
+public final void webkitPostMessage(@Nullable Object message,Transferable[] transferOrOptions){
 webkitPostMessage(message,Js.<JsArray<Transferable>>uncheckedCast(transferOrOptions));
 }
-public native void webkitPostMessage(Object message,Worker.WebkitPostMessageTransferOrOptionsUnionType transferOrOptions);
-public native void webkitPostMessage(Object message);
+public native void webkitPostMessage(@Nullable Object message,Worker.@Nullable WebkitPostMessageTransferOrOptionsUnionType transferOrOptions);
+public native void webkitPostMessage(@Nullable Object message);
 }

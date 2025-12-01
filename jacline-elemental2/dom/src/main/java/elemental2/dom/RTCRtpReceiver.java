@@ -1,4 +1,6 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
+import java.lang.Double;
 import elemental2.dom.MediaStreamTrack;
 import elemental2.dom.RTCRtpContributingSource;
 import elemental2.promise.Promise;
@@ -13,9 +15,9 @@ import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class RTCRtpReceiver{
 public static native RTCRtpCapabilities getCapabilities(String kind);
-public double playoutDelayHint;
+public @Nullable Double playoutDelayHint;
 public MediaStreamTrack track;
-public RTCDtlsTransport transport;
+public @Nullable RTCDtlsTransport transport;
 public native JsArray<RTCRtpContributingSource> getContributingSources();
 public native RTCRtpReceiveParameters getParameters();
 public native Promise<RTCStatsReport> getStats();

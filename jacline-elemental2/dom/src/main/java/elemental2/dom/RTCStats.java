@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
 import java.lang.Double;
@@ -13,7 +14,7 @@ public interface RTCStats{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetTimestampUnionType{
 @JsOverlay
-static RTCStats.GetTimestampUnionType of(Object o){
+static RTCStats.@Nullable GetTimestampUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -21,7 +22,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsDate asJsDate(){
+default @Nullable JsDate asJsDate(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -36,7 +37,7 @@ return (Object)this instanceof JsDate;
 @JsProperty
 String getId();
 @JsProperty
-RTCStats.GetTimestampUnionType getTimestamp();
+RTCStats.@Nullable GetTimestampUnionType getTimestamp();
 @JsProperty
 String getType();
 }

@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.JsConstructorFn;
 import jsinterop.base.JsPropertyMap;
 import elemental2.core.JsArray;
@@ -14,13 +15,13 @@ import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import elemental2.core.JsObject;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public interface ProxyHandler<TARGET>{
+public interface ProxyHandler<TARGET extends @Nullable Object>{
 @JsFunction
-public interface ApplyFn<TARGET>{
-Object onInvoke(TARGET p0,Object p1,JsArray p2);
+public interface ApplyFn<TARGET extends @Nullable Object>{
+@Nullable Object onInvoke(TARGET p0,@Nullable Object p1,JsArray p2);
 }
 @JsFunction
-public interface ConstructFn<TARGET>{
+public interface ConstructFn<TARGET extends @Nullable Object>{
 @JsOverlay
 default JsObject onInvoke(TARGET p0,JsArray p1,Class<?> p2){
 return onInvoke(p0,p1,Js.asConstructorFn(p2));
@@ -28,7 +29,7 @@ return onInvoke(p0,p1,Js.asConstructorFn(p2));
 JsObject onInvoke(TARGET p0,JsArray p1,JsConstructorFn<?> p2);
 }
 @JsFunction
-public interface DefinePropertyFn<TARGET>{
+public interface DefinePropertyFn<TARGET extends @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface P1UnionType{
 @JsOverlay
@@ -63,7 +64,7 @@ return onInvoke(p0,Js.<ProxyHandler.DefinePropertyFn.P1UnionType>uncheckedCast(p
 }
 }
 @JsFunction
-public interface DeletePropertyFn<TARGET>{
+public interface DeletePropertyFn<TARGET extends @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface P1UnionType{
 @JsOverlay
@@ -98,7 +99,7 @@ return onInvoke(p0,Js.<ProxyHandler.DeletePropertyFn.P1UnionType>uncheckedCast(p
 }
 }
 @JsFunction
-public interface GetFn<TARGET>{
+public interface GetFn<TARGET extends @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface P1UnionType{
 @JsOverlay
@@ -123,29 +124,29 @@ return (Object)this instanceof String;
 }
 }
 @JsOverlay
-default Object onInvoke(TARGET p0,Object p1,JsObject p2){
+default @Nullable Object onInvoke(TARGET p0,Object p1,JsObject p2){
 return onInvoke(p0,Js.<ProxyHandler.GetFn.P1UnionType>uncheckedCast(p1),p2);
 }
 @JsOverlay
-default Object onInvoke(TARGET p0,Object p1,Object p2){
+default @Nullable Object onInvoke(TARGET p0,Object p1,Object p2){
 return onInvoke(p0,p1,Js.<JsObject>uncheckedCast(p2));
 }
-Object onInvoke(TARGET p0,ProxyHandler.GetFn.P1UnionType p1,JsObject p2);
+@Nullable Object onInvoke(TARGET p0,ProxyHandler.GetFn.P1UnionType p1,JsObject p2);
 @JsOverlay
-default Object onInvoke(TARGET p0,ProxyHandler.GetFn.P1UnionType p1,Object p2){
+default @Nullable Object onInvoke(TARGET p0,ProxyHandler.GetFn.P1UnionType p1,Object p2){
 return onInvoke(p0,p1,Js.<JsObject>uncheckedCast(p2));
 }
 @JsOverlay
-default Object onInvoke(TARGET p0,String p1,JsObject p2){
+default @Nullable Object onInvoke(TARGET p0,String p1,JsObject p2){
 return onInvoke(p0,Js.<ProxyHandler.GetFn.P1UnionType>uncheckedCast(p1),p2);
 }
 @JsOverlay
-default Object onInvoke(TARGET p0,String p1,Object p2){
+default @Nullable Object onInvoke(TARGET p0,String p1,Object p2){
 return onInvoke(p0,p1,Js.<JsObject>uncheckedCast(p2));
 }
 }
 @JsFunction
-public interface GetOwnPropertyDescriptorFn<TARGET>{
+public interface GetOwnPropertyDescriptorFn<TARGET extends @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface P1UnionType{
 @JsOverlay
@@ -180,11 +181,11 @@ return onInvoke(p0,Js.<ProxyHandler.GetOwnPropertyDescriptorFn.P1UnionType>unche
 }
 }
 @JsFunction
-public interface GetPrototypeOfFn<TARGET>{
-JsObject onInvoke(TARGET p0);
+public interface GetPrototypeOfFn<TARGET extends @Nullable Object>{
+@Nullable JsObject onInvoke(TARGET p0);
 }
 @JsFunction
-public interface HasFn<TARGET>{
+public interface HasFn<TARGET extends @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface P1UnionType{
 @JsOverlay
@@ -219,11 +220,11 @@ return onInvoke(p0,Js.<ProxyHandler.HasFn.P1UnionType>uncheckedCast(p1));
 }
 }
 @JsFunction
-public interface IsExtensibleFn<TARGET>{
+public interface IsExtensibleFn<TARGET extends @Nullable Object>{
 boolean onInvoke(TARGET p0);
 }
 @JsFunction
-public interface OwnKeysFn<TARGET>{
+public interface OwnKeysFn<TARGET extends @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ArrayUnionType{
 @JsOverlay
@@ -250,11 +251,11 @@ return (Object)this instanceof String;
 JsArray<ProxyHandler.OwnKeysFn.ArrayUnionType> onInvoke(TARGET p0);
 }
 @JsFunction
-public interface PreventExtensionsFn<TARGET>{
+public interface PreventExtensionsFn<TARGET extends @Nullable Object>{
 boolean onInvoke(TARGET p0);
 }
 @JsFunction
-public interface SetFn<TARGET>{
+public interface SetFn<TARGET extends @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface P1UnionType{
 @JsOverlay
@@ -279,37 +280,37 @@ return (Object)this instanceof String;
 }
 }
 @JsOverlay
-default boolean onInvoke(TARGET p0,Object p1,Object p2,JsObject p3){
+default boolean onInvoke(TARGET p0,Object p1,@Nullable Object p2,JsObject p3){
 return onInvoke(p0,Js.<ProxyHandler.SetFn.P1UnionType>uncheckedCast(p1),p2,p3);
 }
 @JsOverlay
-default boolean onInvoke(TARGET p0,Object p1,Object p2,Object p3){
+default boolean onInvoke(TARGET p0,Object p1,@Nullable Object p2,Object p3){
 return onInvoke(p0,p1,p2,Js.<JsObject>uncheckedCast(p3));
 }
-boolean onInvoke(TARGET p0,ProxyHandler.SetFn.P1UnionType p1,Object p2,JsObject p3);
+boolean onInvoke(TARGET p0,ProxyHandler.SetFn.P1UnionType p1,@Nullable Object p2,JsObject p3);
 @JsOverlay
-default boolean onInvoke(TARGET p0,ProxyHandler.SetFn.P1UnionType p1,Object p2,Object p3){
+default boolean onInvoke(TARGET p0,ProxyHandler.SetFn.P1UnionType p1,@Nullable Object p2,Object p3){
 return onInvoke(p0,p1,p2,Js.<JsObject>uncheckedCast(p3));
 }
 @JsOverlay
-default boolean onInvoke(TARGET p0,String p1,Object p2,JsObject p3){
+default boolean onInvoke(TARGET p0,String p1,@Nullable Object p2,JsObject p3){
 return onInvoke(p0,Js.<ProxyHandler.SetFn.P1UnionType>uncheckedCast(p1),p2,p3);
 }
 @JsOverlay
-default boolean onInvoke(TARGET p0,String p1,Object p2,Object p3){
+default boolean onInvoke(TARGET p0,String p1,@Nullable Object p2,Object p3){
 return onInvoke(p0,p1,p2,Js.<JsObject>uncheckedCast(p3));
 }
 }
 @JsFunction
-public interface SetPrototypeOfFn<TARGET>{
-boolean onInvoke(TARGET p0,JsObject p1);
+public interface SetPrototypeOfFn<TARGET extends @Nullable Object>{
+boolean onInvoke(TARGET p0,@Nullable JsObject p1);
 @JsOverlay
-default boolean onInvoke(TARGET p0,Object p1){
-return onInvoke(p0,Js.<JsObject>uncheckedCast(p1));
+default boolean onInvoke(TARGET p0,@Nullable Object p1){
+return onInvoke(p0,Js.<@Nullable JsObject>uncheckedCast(p1));
 }
 }
 @JsOverlay
-static ProxyHandler create(){
+static <TARGET extends @Nullable Object> ProxyHandler<TARGET> create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty

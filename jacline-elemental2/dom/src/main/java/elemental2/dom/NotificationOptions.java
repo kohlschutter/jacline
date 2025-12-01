@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.NotificationAction;
+import org.jspecify.annotations.Nullable;
 import java.lang.Double;
 import jsinterop.base.JsPropertyMap;
 import elemental2.core.JsArray;
@@ -23,7 +24,7 @@ String getBadge();
 @JsProperty
 String getBody();
 @JsProperty
-Object getData();
+@Nullable Object getData();
 @JsProperty
 String getDir();
 @JsProperty
@@ -55,7 +56,7 @@ void setBadge(String badge);
 @JsProperty
 void setBody(String body);
 @JsProperty
-void setData(Object data);
+void setData(@Nullable Object data);
 @JsProperty
 void setDir(String dir);
 @JsProperty

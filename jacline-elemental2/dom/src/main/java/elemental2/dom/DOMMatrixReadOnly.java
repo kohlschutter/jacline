@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.DOMMatrix;
 import elemental2.dom.DOMMatrixInit;
 import java.lang.Double;
@@ -19,15 +20,15 @@ public class DOMMatrixReadOnly implements DOMMatrixInit{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorInitUnionType{
 @JsOverlay
-static DOMMatrixReadOnly.ConstructorInitUnionType of(Object o){
+static DOMMatrixReadOnly.@Nullable ConstructorInitUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<Double> asJsArray(){
+default @Nullable JsArray<Double> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -66,7 +67,7 @@ public double m41;
 public double m42;
 public double m43;
 public double m44;
-public DOMMatrixReadOnly(DOMMatrixReadOnly.ConstructorInitUnionType init){}
+public DOMMatrixReadOnly(DOMMatrixReadOnly.@Nullable ConstructorInitUnionType init){}
 public DOMMatrixReadOnly(JsArray<Double> init){}
 public DOMMatrixReadOnly(String init){}
 public DOMMatrixReadOnly(double[] init){}

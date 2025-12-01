@@ -1,8 +1,9 @@
 package elemental2.dom;
-import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.RTCSentRtpStreamStats;
-import jsinterop.base.Js;
 import java.lang.Double;
+import jsinterop.annotations.JsProperty;
+import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
 import java.lang.String;
@@ -14,7 +15,7 @@ public interface RTCRemoteOutboundRtpStreamStats extends RTCSentRtpStreamStats{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface GetRemoteTimestampUnionType{
 @JsOverlay
-static RTCRemoteOutboundRtpStreamStats.GetRemoteTimestampUnionType of(Object o){
+static RTCRemoteOutboundRtpStreamStats.@Nullable GetRemoteTimestampUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
@@ -22,7 +23,7 @@ default double asDouble(){
 return Js.asDouble(this);
 }
 @JsOverlay
-default JsDate asJsDate(){
+default @Nullable JsDate asJsDate(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -37,7 +38,7 @@ return (Object)this instanceof JsDate;
 @JsProperty
 String getLocalId();
 @JsProperty
-RTCRemoteOutboundRtpStreamStats.GetRemoteTimestampUnionType getRemoteTimestamp();
+RTCRemoteOutboundRtpStreamStats.@Nullable GetRemoteTimestampUnionType getRemoteTimestamp();
 @JsProperty
 double getReportsSent();
 @JsProperty

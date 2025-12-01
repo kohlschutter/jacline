@@ -1,5 +1,6 @@
 package elemental2.dom;
 import java.lang.FunctionalInterface;
+import org.jspecify.annotations.Nullable;
 import java.lang.Void;
 import java.lang.Object;
 import jsinterop.annotations.JsType;
@@ -8,5 +9,5 @@ import elemental2.promise.Promise;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 @FunctionalInterface
 public interface WritableStreamDefaultController{
-Promise<Void> error(Object err);
+Promise<Void> error(@Nullable Object err);
 }

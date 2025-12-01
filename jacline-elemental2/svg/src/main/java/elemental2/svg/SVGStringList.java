@@ -1,4 +1,5 @@
 package elemental2.svg;
+import org.jspecify.annotations.Nullable;
 import java.lang.Object;
 import java.lang.String;
 import jsinterop.annotations.JsType;
@@ -7,7 +8,7 @@ import jsinterop.annotations.JsPackage;
 public class SVGStringList{
 public int numberOfItems;
 public native String appendItem(String item);
-public native Object clear();
+public native @Nullable Object clear();
 public native String getItem(int index);
 public native String initialize(String item);
 public native String insertItemBefore(String item,int index);

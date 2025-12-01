@@ -23,6 +23,8 @@ double getCurrentRoundTripTime();
 @JsProperty
 double getLastPacketReceivedTimestamp();
 @JsProperty
+double getLastPacketSentTimestamp();
+@JsProperty
 String getLocalCandidateId();
 @JsProperty
 double getPacketsDiscardedOnSend();

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.Object;
 import java.lang.String;
 import jsinterop.annotations.JsType;
@@ -9,6 +10,6 @@ import elemental2.core.ArrayBuffer;
 public class PushMessageData{
 public native ArrayBuffer arrayBuffer();
 public native Blob blob();
-public native Object json();
+public native @Nullable Object json();
 public native String text();
 }

@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.core.ArrayBufferView;
 import jsinterop.annotations.JsOverlay;
@@ -13,15 +14,15 @@ public class DataView extends ArrayBufferView{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorBufferUnionType{
 @JsOverlay
-static DataView.ConstructorBufferUnionType of(Object o){
+static DataView.@Nullable ConstructorBufferUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default ArrayBuffer asArrayBuffer(){
+default @Nullable ArrayBuffer asArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
-default SharedArrayBuffer asSharedArrayBuffer(){
+default @Nullable SharedArrayBuffer asSharedArrayBuffer(){
 return Js.cast(this);
 }
 @JsOverlay
@@ -36,9 +37,9 @@ return (Object)this instanceof SharedArrayBuffer;
 public DataView(ArrayBuffer buffer,int byteOffset,int byteLength){}
 public DataView(ArrayBuffer buffer,int byteOffset){}
 public DataView(ArrayBuffer buffer){}
-public DataView(DataView.ConstructorBufferUnionType buffer,int byteOffset,int byteLength){}
-public DataView(DataView.ConstructorBufferUnionType buffer,int byteOffset){}
-public DataView(DataView.ConstructorBufferUnionType buffer){}
+public DataView(DataView.@Nullable ConstructorBufferUnionType buffer,int byteOffset,int byteLength){}
+public DataView(DataView.@Nullable ConstructorBufferUnionType buffer,int byteOffset){}
+public DataView(DataView.@Nullable ConstructorBufferUnionType buffer){}
 public DataView(SharedArrayBuffer buffer,int byteOffset,int byteLength){}
 public DataView(SharedArrayBuffer buffer,int byteOffset){}
 public DataView(SharedArrayBuffer buffer){}

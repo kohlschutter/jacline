@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.Window;
 import jsinterop.annotations.JsOverlay;
@@ -16,9 +17,9 @@ return Js.uncheckedCast(JsPropertyMap.of());
 @JsProperty
 int getDetail();
 @JsProperty
-Window getView();
+@Nullable Window getView();
 @JsProperty
 void setDetail(int detail);
 @JsProperty
-void setView(Window view);
+void setView(@Nullable Window view);
 }

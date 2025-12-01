@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
@@ -17,7 +18,7 @@ return Js.uncheckedCast(JsPropertyMap.of());
 @JsProperty
 int getColno();
 @JsProperty
-Object getError();
+@Nullable Object getError();
 @JsProperty
 String getFilename();
 @JsProperty
@@ -27,7 +28,7 @@ String getMessage();
 @JsProperty
 void setColno(int colno);
 @JsProperty
-void setError(Object error);
+void setError(@Nullable Object error);
 @JsProperty
 void setFilename(String filename);
 @JsProperty

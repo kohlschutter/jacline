@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
@@ -13,11 +14,11 @@ static PushSubscriptionOptions create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-ArrayBuffer getApplicationServerKey();
+@Nullable ArrayBuffer getApplicationServerKey();
 @JsProperty
 boolean isUserVisibleOnly();
 @JsProperty
-void setApplicationServerKey(ArrayBuffer applicationServerKey);
+void setApplicationServerKey(@Nullable ArrayBuffer applicationServerKey);
 @JsProperty
 void setUserVisibleOnly(boolean userVisibleOnly);
 }

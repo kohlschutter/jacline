@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.Void;
 import elemental2.dom.URL;
 import elemental2.core.Transferable;
@@ -52,10 +53,10 @@ return navigate(Js.<ServiceWorkerClient.NavigateUrlUnionType>uncheckedCast(url))
 public final Promise<ServiceWorkerClient> navigate(URL url){
 return navigate(Js.<ServiceWorkerClient.NavigateUrlUnionType>uncheckedCast(url));
 }
-public native void postMessage(Object message,JsArray<Transferable> transfer);
+public native void postMessage(@Nullable Object message,JsArray<Transferable> transfer);
 @JsOverlay
-public final void postMessage(Object message,Transferable[] transfer){
+public final void postMessage(@Nullable Object message,Transferable[] transfer){
 postMessage(message,Js.<JsArray<Transferable>>uncheckedCast(transfer));
 }
-public native void postMessage(Object message);
+public native void postMessage(@Nullable Object message);
 }

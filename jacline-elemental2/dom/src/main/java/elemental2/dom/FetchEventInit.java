@@ -1,4 +1,7 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
+import elemental2.promise.Promise;
+import jsinterop.base.JsPropertyMap;
 import elemental2.dom.Response;
 import jsinterop.annotations.JsProperty;
 import jsinterop.base.Js;
@@ -7,8 +10,6 @@ import jsinterop.annotations.JsOverlay;
 import elemental2.dom.Request;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
-import elemental2.promise.Promise;
-import jsinterop.base.JsPropertyMap;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public interface FetchEventInit{
 @JsOverlay
@@ -18,7 +19,7 @@ return Js.uncheckedCast(JsPropertyMap.of());
 @JsProperty
 ServiceWorkerClient getClient();
 @JsProperty
-Promise<Response> getPreloadResponse();
+Promise<@Nullable Response> getPreloadResponse();
 @JsProperty
 Request getRequest();
 @JsProperty
@@ -36,7 +37,7 @@ void setClient(ServiceWorkerClient client);
 @JsProperty
 void setIsReload(boolean isReload);
 @JsProperty
-void setPreloadResponse(Promise<Response> preloadResponse);
+void setPreloadResponse(Promise<@Nullable Response> preloadResponse);
 @JsProperty
 void setRequest(Request request);
 }

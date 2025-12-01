@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import java.lang.Double;
 import elemental2.dom.Event;
 import elemental2.dom.EventTarget;
@@ -76,70 +77,70 @@ public int numberOfOutputs;
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType useCapture);
 public native void addEventListener(String type,EventListener listener);
 @JsOverlay
-public final AudioNode connect(AudioNode destination,int output,int input){
+public final @Nullable AudioNode connect(AudioNode destination,int output,int input){
 return connect(Js.<AudioNode.ConnectDestinationUnionType>uncheckedCast(destination),output,input);
 }
 @JsOverlay
-public final AudioNode connect(AudioNode destination,int output){
+public final @Nullable AudioNode connect(AudioNode destination,int output){
 return connect(Js.<AudioNode.ConnectDestinationUnionType>uncheckedCast(destination),output);
 }
 @JsOverlay
-public final AudioNode connect(AudioNode destination){
+public final @Nullable AudioNode connect(AudioNode destination){
 return connect(Js.<AudioNode.ConnectDestinationUnionType>uncheckedCast(destination));
 }
 @JsOverlay
-public final AudioNode connect(AudioParam destination,int output,int input){
+public final @Nullable AudioNode connect(AudioParam destination,int output,int input){
 return connect(Js.<AudioNode.ConnectDestinationUnionType>uncheckedCast(destination),output,input);
 }
 @JsOverlay
-public final AudioNode connect(AudioParam destination,int output){
+public final @Nullable AudioNode connect(AudioParam destination,int output){
 return connect(Js.<AudioNode.ConnectDestinationUnionType>uncheckedCast(destination),output);
 }
 @JsOverlay
-public final AudioNode connect(AudioParam destination){
+public final @Nullable AudioNode connect(AudioParam destination){
 return connect(Js.<AudioNode.ConnectDestinationUnionType>uncheckedCast(destination));
 }
-public native AudioNode connect(AudioNode.ConnectDestinationUnionType destination,int output,int input);
-public native AudioNode connect(AudioNode.ConnectDestinationUnionType destination,int output);
-public native AudioNode connect(AudioNode.ConnectDestinationUnionType destination);
-public native Object disconnect();
+public native @Nullable AudioNode connect(AudioNode.ConnectDestinationUnionType destination,int output,int input);
+public native @Nullable AudioNode connect(AudioNode.ConnectDestinationUnionType destination,int output);
+public native @Nullable AudioNode connect(AudioNode.ConnectDestinationUnionType destination);
+public native @Nullable Object disconnect();
 @JsOverlay
-public final Object disconnect(AudioNode destination,int output,int input){
+public final @Nullable Object disconnect(AudioNode destination,int output,int input){
 return disconnect(Js.<AudioNode.DisconnectDestinationUnionType>uncheckedCast(destination),output,input);
 }
 @JsOverlay
-public final Object disconnect(AudioNode destination,int output){
+public final @Nullable Object disconnect(AudioNode destination,int output){
 return disconnect(Js.<AudioNode.DisconnectDestinationUnionType>uncheckedCast(destination),output);
 }
 @JsOverlay
-public final Object disconnect(AudioNode destination){
+public final @Nullable Object disconnect(AudioNode destination){
 return disconnect(Js.<AudioNode.DisconnectDestinationUnionType>uncheckedCast(destination));
 }
 @JsOverlay
-public final Object disconnect(AudioParam destination,int output,int input){
+public final @Nullable Object disconnect(AudioParam destination,int output,int input){
 return disconnect(Js.<AudioNode.DisconnectDestinationUnionType>uncheckedCast(destination),output,input);
 }
 @JsOverlay
-public final Object disconnect(AudioParam destination,int output){
+public final @Nullable Object disconnect(AudioParam destination,int output){
 return disconnect(Js.<AudioNode.DisconnectDestinationUnionType>uncheckedCast(destination),output);
 }
 @JsOverlay
-public final Object disconnect(AudioParam destination){
+public final @Nullable Object disconnect(AudioParam destination){
 return disconnect(Js.<AudioNode.DisconnectDestinationUnionType>uncheckedCast(destination));
 }
-public native Object disconnect(AudioNode.DisconnectDestinationUnionType destination,int output,int input);
-public native Object disconnect(AudioNode.DisconnectDestinationUnionType destination,int output);
-public native Object disconnect(AudioNode.DisconnectDestinationUnionType destination);
+public native @Nullable Object disconnect(AudioNode.DisconnectDestinationUnionType destination,int output,int input);
+public native @Nullable Object disconnect(AudioNode.DisconnectDestinationUnionType destination,int output);
+public native @Nullable Object disconnect(AudioNode.DisconnectDestinationUnionType destination);
 @JsOverlay
-public final Object disconnect(double destination,int output,int input){
+public final @Nullable Object disconnect(double destination,int output,int input){
 return disconnect(Js.<AudioNode.DisconnectDestinationUnionType>uncheckedCast(destination),output,input);
 }
 @JsOverlay
-public final Object disconnect(double destination,int output){
+public final @Nullable Object disconnect(double destination,int output){
 return disconnect(Js.<AudioNode.DisconnectDestinationUnionType>uncheckedCast(destination),output);
 }
 @JsOverlay
-public final Object disconnect(double destination){
+public final @Nullable Object disconnect(double destination){
 return disconnect(Js.<AudioNode.DisconnectDestinationUnionType>uncheckedCast(destination));
 }
 public native boolean dispatchEvent(Event evt);

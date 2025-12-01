@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.ErrorEvent;
 import elemental2.dom.URL;
 import elemental2.dom.TrustedScriptURL;
@@ -17,6 +18,7 @@ import elemental2.dom.ServiceWorker;
 import java.lang.Object;
 import java.lang.String;
 import jsinterop.annotations.JsType;
+import elemental2.dom.MessageEvent;
 import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public interface ServiceWorkerContainer extends EventTarget{
@@ -55,6 +57,10 @@ void onInvoke(ErrorEvent p0);
 public interface OnmessageFn{
 void onInvoke(ExtendableMessageEvent p0);
 }
+@JsFunction
+public interface OnmessageerrorFn{
+@Nullable Object onInvoke(MessageEvent<@Nullable Object> p0);
+}
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface RegisterScriptURLUnionType{
 @JsOverlay
@@ -87,13 +93,15 @@ return (Object)this instanceof URL;
 }
 }
 @JsProperty
-ServiceWorker getController();
+@Nullable ServiceWorker getController();
 @JsProperty
-ServiceWorkerContainer.OncontrollerchangeFn getOncontrollerchange();
+ServiceWorkerContainer.@Nullable OncontrollerchangeFn getOncontrollerchange();
 @JsProperty
-ServiceWorkerContainer.OnerrorFn getOnerror();
+ServiceWorkerContainer.@Nullable OnerrorFn getOnerror();
 @JsProperty
-ServiceWorkerContainer.OnmessageFn getOnmessage();
+ServiceWorkerContainer.@Nullable OnmessageFn getOnmessage();
+@JsProperty
+ServiceWorkerContainer.@Nullable OnmessageerrorFn getOnmessageerror();
 @JsProperty
 Promise<ServiceWorkerRegistration> getReady();
 Promise<ServiceWorkerRegistration> getRegistration();
@@ -106,7 +114,7 @@ return getRegistration(Js.<ServiceWorkerContainer.GetRegistrationDocumentURLUnio
 default Promise<ServiceWorkerRegistration> getRegistration(URL documentURL){
 return getRegistration(Js.<ServiceWorkerContainer.GetRegistrationDocumentURLUnionType>uncheckedCast(documentURL));
 }
-Promise<JsArray<ServiceWorkerRegistration>> getRegistrations();
+Promise<@Nullable JsArray<ServiceWorkerRegistration>> getRegistrations();
 Promise<ServiceWorkerRegistration> register(ServiceWorkerContainer.RegisterScriptURLUnionType scriptURL,RegistrationOptions options);
 Promise<ServiceWorkerRegistration> register(ServiceWorkerContainer.RegisterScriptURLUnionType scriptURL);
 @JsOverlay
@@ -134,13 +142,15 @@ default Promise<ServiceWorkerRegistration> register(URL scriptURL){
 return register(Js.<ServiceWorkerContainer.RegisterScriptURLUnionType>uncheckedCast(scriptURL));
 }
 @JsProperty
-void setController(ServiceWorker controller);
+void setController(@Nullable ServiceWorker controller);
 @JsProperty
-void setOncontrollerchange(ServiceWorkerContainer.OncontrollerchangeFn oncontrollerchange);
+void setOncontrollerchange(ServiceWorkerContainer.@Nullable OncontrollerchangeFn oncontrollerchange);
 @JsProperty
-void setOnerror(ServiceWorkerContainer.OnerrorFn onerror);
+void setOnerror(ServiceWorkerContainer.@Nullable OnerrorFn onerror);
 @JsProperty
-void setOnmessage(ServiceWorkerContainer.OnmessageFn onmessage);
+void setOnmessage(ServiceWorkerContainer.@Nullable OnmessageFn onmessage);
+@JsProperty
+void setOnmessageerror(ServiceWorkerContainer.@Nullable OnmessageerrorFn onmessageerror);
 @JsProperty
 void setReady(Promise<ServiceWorkerRegistration> ready);
 }

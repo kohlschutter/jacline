@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import jsinterop.annotations.JsProperty;
 import elemental2.dom.HTMLElement;
 import elemental2.dom.StyleSheet;
@@ -10,10 +11,10 @@ import jsinterop.annotations.JsPackage;
 public class HTMLStyleElement extends HTMLElement implements LinkStyle{
 public boolean disabled;
 public String media;
-public StyleSheet sheet;
+public @Nullable StyleSheet sheet;
 public String type;
 @JsProperty
-public native StyleSheet getSheet();
+public native @Nullable StyleSheet getSheet();
 @JsProperty
-public native void setSheet(StyleSheet sheet);
+public native void setSheet(@Nullable StyleSheet sheet);
 }

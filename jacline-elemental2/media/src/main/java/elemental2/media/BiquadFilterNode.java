@@ -1,4 +1,5 @@
 package elemental2.media;
+import org.jspecify.annotations.Nullable;
 import elemental2.media.AudioParam;
 import elemental2.media.AudioNode;
 import elemental2.core.Float32Array;
@@ -12,5 +13,5 @@ public AudioParam detune;
 public AudioParam frequency;
 public AudioParam gain;
 public String type;
-public native void getFrequencyResponse(Float32Array frequencyHz,Float32Array magResponse,Float32Array phaseResponse);
+public native void getFrequencyResponse(@Nullable Float32Array frequencyHz,@Nullable Float32Array magResponse,@Nullable Float32Array phaseResponse);
 }

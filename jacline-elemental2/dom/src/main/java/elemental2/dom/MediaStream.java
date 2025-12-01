@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.Deprecated;
 import elemental2.dom.Event;
 import elemental2.dom.MediaStreamTrack;
@@ -41,23 +42,23 @@ return (Object)this instanceof MediaStream;
 }
 @JsFunction
 public interface OnactiveFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnaddtrackFn{
-Object onInvoke(MediaStreamTrackEvent p0);
+@Nullable Object onInvoke(MediaStreamTrackEvent p0);
 }
 @JsFunction
 public interface OnendedFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OninactiveFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnremovetrackFn{
-Object onInvoke(MediaStreamTrackEvent p0);
+@Nullable Object onInvoke(MediaStreamTrackEvent p0);
 }
 public boolean active;
 @Deprecated
@@ -65,12 +66,12 @@ public boolean ended;
 public String id;
 @Deprecated
 public String label;
-public MediaStream.OnactiveFn onactive;
-public MediaStream.OnaddtrackFn onaddtrack;
+public MediaStream.@Nullable OnactiveFn onactive;
+public MediaStream.@Nullable OnaddtrackFn onaddtrack;
 @Deprecated
-public MediaStream.OnendedFn onended;
-public MediaStream.OninactiveFn oninactive;
-public MediaStream.OnremovetrackFn onremovetrack;
+public MediaStream.@Nullable OnendedFn onended;
+public MediaStream.@Nullable OninactiveFn oninactive;
+public MediaStream.@Nullable OnremovetrackFn onremovetrack;
 public MediaStream(){}
 public MediaStream(MediaStream.ConstructorStreamOrTracksUnionType streamOrTracks){}
 public MediaStream(JsArray<MediaStreamTrack> streamOrTracks){}
@@ -83,7 +84,7 @@ public native void addTrack(MediaStreamTrack track);
 public native MediaStream clone_();
 public native boolean dispatchEvent(Event evt);
 public native JsArray<MediaStreamTrack> getAudioTracks();
-public native MediaStreamTrack getTrackById(String trackId);
+public native @Nullable MediaStreamTrack getTrackById(String trackId);
 public native JsArray<MediaStreamTrack> getTracks();
 public native JsArray<MediaStreamTrack> getVideoTracks();
 public native void removeEventListener(String type,EventListener listener,EventTarget.RemoveEventListenerOptionsUnionType useCapture);

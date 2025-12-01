@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.Void;
 import jsinterop.annotations.JsFunction;
 import elemental2.dom.HTMLElement;
@@ -12,11 +13,11 @@ import elemental2.promise.Promise;
 public class HTMLImageElement extends HTMLElement{
 @JsFunction
 public interface OnerrorFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
 @JsFunction
 public interface OnloadFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
 public String align;
 public String alt;
@@ -26,16 +27,18 @@ public boolean complete;
 public String crossOrigin;
 public String currentSrc;
 public String decoding;
+public String fetchPriority;
 public int height;
 public int hspace;
 public boolean isMap;
+public String loading;
 public String longDesc;
 public String lowSrc;
 public String name;
 public int naturalHeight;
 public int naturalWidth;
-public HTMLImageElement.OnerrorFn onerror;
-public HTMLImageElement.OnloadFn onload;
+public HTMLImageElement.@Nullable OnerrorFn onerror;
+public HTMLImageElement.@Nullable OnloadFn onload;
 public String sizes;
 public String src;
 public String srcset;

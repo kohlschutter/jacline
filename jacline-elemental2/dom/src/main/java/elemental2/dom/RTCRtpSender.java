@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.Void;
 import elemental2.dom.MediaStreamTrack;
 import elemental2.promise.Promise;
@@ -13,13 +14,13 @@ import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class RTCRtpSender{
-public static native RTCRtpCapabilities getCapabilities(String kind);
+public static native @Nullable RTCRtpCapabilities getCapabilities(String kind);
 public RTCDTMFSender dtmf;
-public MediaStreamTrack track;
-public RTCDtlsTransport transport;
+public @Nullable MediaStreamTrack track;
+public @Nullable RTCDtlsTransport transport;
 public native RTCRtpSendParameters getParameters();
 public native Promise<RTCStatsReport> getStats();
-public native Promise<Void> replaceTrack(MediaStreamTrack track);
+public native Promise<Void> replaceTrack(@Nullable MediaStreamTrack track);
 public native Promise<Void> setParameters(RTCRtpSendParameters params);
 public native void setStreams(MediaStream... streams);
 }

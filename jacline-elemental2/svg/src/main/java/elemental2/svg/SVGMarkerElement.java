@@ -1,4 +1,5 @@
 package elemental2.svg;
+import org.jspecify.annotations.Nullable;
 import elemental2.svg.SVGAnimatedPreserveAspectRatio;
 import elemental2.svg.SVGLangSpace;
 import elemental2.svg.SVGAnimatedEnumeration;
@@ -65,7 +66,7 @@ public native void setClassName(SVGAnimatedString className);
 public native void setExternalResourcesRequired(SVGAnimatedBoolean externalResourcesRequired);
 public native void setOrientToAngle();
 public native void setOrientToAngle(SVGAngle angle);
-public native Object setOrientToAuto();
+public native @Nullable Object setOrientToAuto();
 @JsProperty
 public native void setPreserveAspectRatio(SVGAnimatedPreserveAspectRatio preserveAspectRatio);
 @JsProperty

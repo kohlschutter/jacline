@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.Node;
 import jsinterop.annotations.JsOverlay;
 import java.lang.String;
@@ -30,9 +31,9 @@ public boolean booleanValue;
 public boolean invalidInteratorState;
 public double numberValue;
 public int resultType;
-public Node singleNodeValue;
+public @Nullable Node singleNodeValue;
 public int snapshotLength;
 public String stringValue;
-public native Node iterateNext();
-public native Node snapshotItem(int index);
+public native @Nullable Node iterateNext();
+public native @Nullable Node snapshotItem(int index);
 }

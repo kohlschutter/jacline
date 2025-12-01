@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.core.JsIterator;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.JsIterable;
 import jsinterop.base.JsPropertyMap;
 import elemental2.core.JsArray;
@@ -11,7 +12,7 @@ import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
 import elemental2.core.JsIteratorIterable;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
-public class Headers implements JsIterable<JsArray<String>>{
+public class Headers implements JsIterable<JsArray<String>, @Nullable Object, @Nullable Object>{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ConstructorHeadersInitUnionType{
 @JsOverlay
@@ -47,11 +48,11 @@ public Headers(JsPropertyMap<String> headersInit){}
 public Headers(String[][] headersInit){}
 public native void append(String name,String value);
 public native void delete(String name);
-public native JsIteratorIterable<JsArray<String>> entries();
-public native String get(String name);
+public native JsIteratorIterable<JsArray<String>, @Nullable Object, @Nullable Object> entries();
+public native @Nullable String get(String name);
 public native JsArray<String> getAll(String name);
 public native boolean has(String name);
-public native JsIteratorIterable<String> keys();
+public native JsIteratorIterable<String, @Nullable Object, @Nullable Object> keys();
 public native void set(String name,String value);
-public native JsIterator<String, Object, Object> values();
+public native JsIterator<String, @Nullable Object, @Nullable Object> values();
 }

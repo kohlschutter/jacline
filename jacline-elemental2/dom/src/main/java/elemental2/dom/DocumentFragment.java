@@ -1,5 +1,6 @@
 package elemental2.dom;
 import elemental2.dom.Element;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.Node;
 import jsinterop.annotations.JsOverlay;
@@ -79,8 +80,9 @@ return (Object)this instanceof String;
 }
 }
 public int childElementCount;
-public Element firstElementChild;
-public Element lastElementChild;
+public @Nullable Element firstElementChild;
+public @Nullable Element lastElementChild;
+public native void append();
 public native void append(DocumentFragment.AppendNodesUnionType... nodes);
 @JsOverlay
 public final void append(Node... nodes){
@@ -90,6 +92,7 @@ append(Js.<DocumentFragment.AppendNodesUnionType[]>uncheckedCast(nodes));
 public final void append(String... nodes){
 append(Js.<DocumentFragment.AppendNodesUnionType[]>uncheckedCast(nodes));
 }
+public native void prepend();
 @JsOverlay
 public final void prepend(Node... nodes){
 prepend(Js.<DocumentFragment.PrependNodesUnionType[]>uncheckedCast(nodes));
@@ -99,6 +102,7 @@ public native void prepend(DocumentFragment.PrependNodesUnionType... nodes);
 public final void prepend(String... nodes){
 prepend(Js.<DocumentFragment.PrependNodesUnionType[]>uncheckedCast(nodes));
 }
+public native void replaceChildren();
 @JsOverlay
 public final void replaceChildren(Node... nodes){
 replaceChildren(Js.<DocumentFragment.ReplaceChildrenNodesUnionType[]>uncheckedCast(nodes));

@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
@@ -14,7 +15,7 @@ static ClipboardEventInit create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-DataTransfer getClipboardData();
+@Nullable DataTransfer getClipboardData();
 @JsProperty
-void setClipboardData(DataTransfer clipboardData);
+void setClipboardData(@Nullable DataTransfer clipboardData);
 }

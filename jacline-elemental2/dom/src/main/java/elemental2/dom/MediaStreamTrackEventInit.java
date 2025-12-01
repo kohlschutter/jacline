@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import jsinterop.annotations.JsOverlay;
 import elemental2.dom.MediaStreamTrack;
@@ -13,7 +14,7 @@ static MediaStreamTrackEventInit create(){
 return Js.uncheckedCast(JsPropertyMap.of());
 }
 @JsProperty
-MediaStreamTrack getTrack();
+@Nullable MediaStreamTrack getTrack();
 @JsProperty
-void setTrack(MediaStreamTrack track);
+void setTrack(@Nullable MediaStreamTrack track);
 }

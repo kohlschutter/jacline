@@ -1,4 +1,5 @@
 package elemental2.indexeddb;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.Event;
 import elemental2.indexeddb.IDBTransaction;
 import elemental2.core.JsArray;
@@ -20,19 +21,19 @@ import jsinterop.annotations.JsPackage;
 public class IDBDatabase implements EventTarget{
 @JsFunction
 public interface OnabortFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OncloseFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnerrorFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsFunction
 public interface OnversionchangeFn{
-Object onInvoke(IDBVersionChangeEvent p0);
+@Nullable Object onInvoke(IDBVersionChangeEvent p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface TransactionStoreNamesUnionType{
@@ -67,10 +68,10 @@ return (Object)this instanceof String;
 }
 public String name;
 public DOMStringList objectStoreNames;
-public IDBDatabase.OnabortFn onabort;
-public IDBDatabase.OncloseFn onclose;
-public IDBDatabase.OnerrorFn onerror;
-public IDBDatabase.OnversionchangeFn onversionchange;
+public IDBDatabase.@Nullable OnabortFn onabort;
+public IDBDatabase.@Nullable OncloseFn onclose;
+public IDBDatabase.@Nullable OnerrorFn onerror;
+public IDBDatabase.@Nullable OnversionchangeFn onversionchange;
 public double version;
 public native void addEventListener(String type,EventListener listener,EventTarget.AddEventListenerOptionsUnionType options);
 public native void addEventListener(String type,EventListener listener);

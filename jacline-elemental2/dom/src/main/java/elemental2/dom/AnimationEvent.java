@@ -1,5 +1,6 @@
 package elemental2.dom;
 import jsinterop.annotations.JsProperty;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.Js;
 import elemental2.dom.Event;
 import jsinterop.annotations.JsOverlay;
@@ -34,10 +35,10 @@ public double elapsedTime;
 public String pseudoElement;
 public AnimationEvent(String type,AnimationEvent.AnimationEventAnimationEventInitDictType animationEventInitDict){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 public AnimationEvent(String type){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 }

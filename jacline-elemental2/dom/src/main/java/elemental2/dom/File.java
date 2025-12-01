@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.Deprecated;
 import elemental2.dom.FilePropertyBag;
 import elemental2.dom.Blob;
@@ -49,13 +50,13 @@ public String fileName;
 @Deprecated
 public String fileSize;
 public double lastModified;
-public JsDate lastModifiedDate;
+public @Nullable JsDate lastModifiedDate;
 public String name;
 public File(){}
-public File(File.ConstructorContentsArrayUnionType[] contents,String name,FilePropertyBag properties){}
+public File(File.ConstructorContentsArrayUnionType[] contents,String name,@Nullable FilePropertyBag properties){}
 public File(File.ConstructorContentsArrayUnionType[] contents,String name){}
 public File(File.ConstructorContentsArrayUnionType[] contents){}
-public File(JsArray<File.ConstructorContentsArrayUnionType> contents,String name,FilePropertyBag properties){}
+public File(JsArray<File.ConstructorContentsArrayUnionType> contents,String name,@Nullable FilePropertyBag properties){}
 public File(JsArray<File.ConstructorContentsArrayUnionType> contents,String name){}
 public File(JsArray<File.ConstructorContentsArrayUnionType> contents){}
 }

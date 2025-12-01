@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import elemental2.core.RegExpResult;
 import java.lang.Deprecated;
 import jsinterop.annotations.JsMethod;
@@ -32,13 +33,13 @@ public String source;
 public boolean sticky;
 public boolean unicode;
 public JsRegExp(){}
-public JsRegExp(Object pattern,Object flags){}
-public JsRegExp(Object pattern){}
+public JsRegExp(@Nullable Object pattern,@Nullable Object flags){}
+public JsRegExp(@Nullable Object pattern){}
 @Deprecated
-public native void compile(String pattern,Object flags);
+public native void compile(String pattern,@Nullable Object flags);
 @Deprecated
 public native void compile(String pattern);
-public native RegExpResult exec(String str);
+public native @Nullable RegExpResult exec(String str);
 public native boolean test(String str);
 @JsMethod(name = "toString")
 public native String toString_();

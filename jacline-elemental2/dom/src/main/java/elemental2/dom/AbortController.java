@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.AbortSignal;
 import java.lang.Object;
 import jsinterop.annotations.JsType;
@@ -7,5 +8,5 @@ import jsinterop.annotations.JsPackage;
 public class AbortController{
 public AbortSignal signal;
 public native void abort();
-public native void abort(Object reason);
+public native void abort(@Nullable Object reason);
 }

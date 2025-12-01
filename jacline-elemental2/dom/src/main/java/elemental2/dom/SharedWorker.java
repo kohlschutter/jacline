@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.MessagePort;
 import elemental2.dom.ErrorEvent;
 import elemental2.dom.URL;
@@ -70,7 +71,7 @@ return (Object)this instanceof URL;
 public interface OnerrorFn{
 void onInvoke(ErrorEvent p0);
 }
-public SharedWorker.OnerrorFn onerror;
+public SharedWorker.@Nullable OnerrorFn onerror;
 public MessagePort port;
 public SharedWorker(SharedWorker.ConstructorScriptURLUnionType scriptURL,SharedWorker.ConstructorOptionsUnionType options){}
 public SharedWorker(SharedWorker.ConstructorScriptURLUnionType scriptURL,String options){}

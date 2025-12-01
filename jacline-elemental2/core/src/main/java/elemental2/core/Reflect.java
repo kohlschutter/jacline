@@ -1,4 +1,5 @@
 package elemental2.core;
+import org.jspecify.annotations.Nullable;
 import jsinterop.base.JsConstructorFn;
 import elemental2.core.JsArray;
 import jsinterop.base.Js;
@@ -14,8 +15,8 @@ import elemental2.core.JsObject;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class Reflect{
 @JsFunction
-public interface ApplyTargetFn<RESULT>{
-RESULT onInvoke(Object... p0);
+public interface ApplyTargetFn<RESULT extends @Nullable Object>{
+RESULT onInvoke(@Nullable Object... p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface OwnKeysArrayUnionType{
@@ -40,36 +41,36 @@ default boolean isString(){
 return (Object)this instanceof String;
 }
 }
-public static native <THIS, RESULT>RESULT apply(Reflect.ApplyTargetFn<? extends RESULT> targetFn,THIS thisArg,JsArray<Object> argList);
+public static native <THIS extends @Nullable Object, RESULT extends @Nullable Object> RESULT apply(Reflect.ApplyTargetFn<? extends RESULT> targetFn,THIS thisArg,JsArray<@Nullable Object> argList);
 @JsOverlay
-public static final <THIS, RESULT>RESULT apply(Reflect.ApplyTargetFn<? extends RESULT> targetFn,THIS thisArg,Object[] argList){
-return apply(targetFn,thisArg,Js.<JsArray<Object>>uncheckedCast(argList));
+public static final <THIS extends @Nullable Object, RESULT extends @Nullable Object> RESULT apply(Reflect.ApplyTargetFn<? extends RESULT> targetFn,THIS thisArg,@Nullable Object[] argList){
+return apply(targetFn,thisArg,Js.<JsArray<@Nullable Object>>uncheckedCast(argList));
 }
 @JsOverlay
-public static final <TARGET>TARGET construct(Class<?> targetConstructorFn,JsArray<Object> argList,Class<? extends TARGET> newTargetConstructorFn){
+public static final <TARGET extends @Nullable Object> TARGET construct(Class<?> targetConstructorFn,JsArray<@Nullable Object> argList,Class<? extends TARGET> newTargetConstructorFn){
 return construct(Js.asConstructorFn(targetConstructorFn),argList,Js.asConstructorFn(newTargetConstructorFn));
 }
 @JsOverlay
-public static final <TARGET>TARGET construct(Class<?> targetConstructorFn,JsArray<Object> argList){
+public static final <TARGET extends @Nullable Object> TARGET construct(Class<?> targetConstructorFn,JsArray<@Nullable Object> argList){
 return construct(Js.asConstructorFn(targetConstructorFn),argList);
 }
 @JsOverlay
-public static final <TARGET>TARGET construct(Class<?> targetConstructorFn,Object[] argList,Class<? extends TARGET> newTargetConstructorFn){
-return construct(targetConstructorFn,Js.<JsArray<Object>>uncheckedCast(argList),newTargetConstructorFn);
+public static final <TARGET extends @Nullable Object> TARGET construct(Class<?> targetConstructorFn,@Nullable Object[] argList,Class<? extends TARGET> newTargetConstructorFn){
+return construct(targetConstructorFn,Js.<JsArray<@Nullable Object>>uncheckedCast(argList),newTargetConstructorFn);
 }
 @JsOverlay
-public static final <TARGET>TARGET construct(Class<?> targetConstructorFn,Object[] argList){
-return construct(targetConstructorFn,Js.<JsArray<Object>>uncheckedCast(argList));
+public static final <TARGET extends @Nullable Object> TARGET construct(Class<?> targetConstructorFn,@Nullable Object[] argList){
+return construct(targetConstructorFn,Js.<JsArray<@Nullable Object>>uncheckedCast(argList));
 }
-public static native <TARGET>TARGET construct(JsConstructorFn<?> targetConstructorFn,JsArray<Object> argList,JsConstructorFn<? extends TARGET> newTargetConstructorFn);
-public static native <TARGET>TARGET construct(JsConstructorFn<?> targetConstructorFn,JsArray<Object> argList);
+public static native <TARGET extends @Nullable Object> TARGET construct(JsConstructorFn<?> targetConstructorFn,JsArray<@Nullable Object> argList,JsConstructorFn<? extends TARGET> newTargetConstructorFn);
+public static native <TARGET extends @Nullable Object> TARGET construct(JsConstructorFn<?> targetConstructorFn,JsArray<@Nullable Object> argList);
 @JsOverlay
-public static final <TARGET>TARGET construct(JsConstructorFn<?> targetConstructorFn,Object[] argList,JsConstructorFn<? extends TARGET> newTargetConstructorFn){
-return construct(targetConstructorFn,Js.<JsArray<Object>>uncheckedCast(argList),newTargetConstructorFn);
+public static final <TARGET extends @Nullable Object> TARGET construct(JsConstructorFn<?> targetConstructorFn,@Nullable Object[] argList,JsConstructorFn<? extends TARGET> newTargetConstructorFn){
+return construct(targetConstructorFn,Js.<JsArray<@Nullable Object>>uncheckedCast(argList),newTargetConstructorFn);
 }
 @JsOverlay
-public static final <TARGET>TARGET construct(JsConstructorFn<?> targetConstructorFn,Object[] argList){
-return construct(targetConstructorFn,Js.<JsArray<Object>>uncheckedCast(argList));
+public static final <TARGET extends @Nullable Object> TARGET construct(JsConstructorFn<?> targetConstructorFn,@Nullable Object[] argList){
+return construct(targetConstructorFn,Js.<JsArray<@Nullable Object>>uncheckedCast(argList));
 }
 public static native boolean defineProperty(JsObject target,String propertyKey,ObjectPropertyDescriptor attributes);
 @JsOverlay
@@ -81,24 +82,24 @@ public static native boolean deleteProperty(JsObject target,String propertyKey);
 public static final boolean deleteProperty(Object target,String propertyKey){
 return deleteProperty(Js.<JsObject>uncheckedCast(target),propertyKey);
 }
-public static native Object get(JsObject target,String propertyKey,JsObject receiver);
-public static native Object get(JsObject target,String propertyKey);
+public static native @Nullable Object get(JsObject target,String propertyKey,JsObject receiver);
+public static native @Nullable Object get(JsObject target,String propertyKey);
 @JsOverlay
-public static final Object get(Object target,String propertyKey,Object receiver){
+public static final @Nullable Object get(Object target,String propertyKey,Object receiver){
 return get(Js.<JsObject>uncheckedCast(target),propertyKey,Js.<JsObject>uncheckedCast(receiver));
 }
 @JsOverlay
-public static final Object get(Object target,String propertyKey){
+public static final @Nullable Object get(Object target,String propertyKey){
 return get(Js.<JsObject>uncheckedCast(target),propertyKey);
 }
-public static native ObjectPropertyDescriptor getOwnPropertyDescriptor(JsObject target,String propertyKey);
+public static native @Nullable ObjectPropertyDescriptor getOwnPropertyDescriptor(JsObject target,String propertyKey);
 @JsOverlay
-public static final ObjectPropertyDescriptor getOwnPropertyDescriptor(Object target,String propertyKey){
+public static final @Nullable ObjectPropertyDescriptor getOwnPropertyDescriptor(Object target,String propertyKey){
 return getOwnPropertyDescriptor(Js.<JsObject>uncheckedCast(target),propertyKey);
 }
-public static native JsObject getPrototypeOf(JsObject target);
+public static native @Nullable JsObject getPrototypeOf(JsObject target);
 @JsOverlay
-public static final JsObject getPrototypeOf(Object target){
+public static final @Nullable JsObject getPrototypeOf(Object target){
 return getPrototypeOf(Js.<JsObject>uncheckedCast(target));
 }
 public static native boolean has(JsObject target,String propertyKey);
@@ -121,19 +122,19 @@ public static native boolean preventExtensions(JsObject target);
 public static final boolean preventExtensions(Object target){
 return preventExtensions(Js.<JsObject>uncheckedCast(target));
 }
-public static native boolean set(JsObject target,String propertyKey,Object value,JsObject receiver);
-public static native boolean set(JsObject target,String propertyKey,Object value);
+public static native boolean set(JsObject target,String propertyKey,@Nullable Object value,JsObject receiver);
+public static native boolean set(JsObject target,String propertyKey,@Nullable Object value);
 @JsOverlay
-public static final boolean set(Object target,String propertyKey,Object value,Object receiver){
+public static final boolean set(Object target,String propertyKey,@Nullable Object value,Object receiver){
 return set(Js.<JsObject>uncheckedCast(target),propertyKey,value,Js.<JsObject>uncheckedCast(receiver));
 }
 @JsOverlay
-public static final boolean set(Object target,String propertyKey,Object value){
+public static final boolean set(Object target,String propertyKey,@Nullable Object value){
 return set(Js.<JsObject>uncheckedCast(target),propertyKey,value);
 }
-public static native boolean setPrototypeOf(JsObject target,JsObject proto);
+public static native boolean setPrototypeOf(JsObject target,@Nullable JsObject proto);
 @JsOverlay
-public static final boolean setPrototypeOf(Object target,Object proto){
-return setPrototypeOf(Js.<JsObject>uncheckedCast(target),Js.<JsObject>uncheckedCast(proto));
+public static final boolean setPrototypeOf(Object target,@Nullable Object proto){
+return setPrototypeOf(Js.<JsObject>uncheckedCast(target),Js.<@Nullable JsObject>uncheckedCast(proto));
 }
 }

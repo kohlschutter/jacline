@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.Event;
 import elemental2.dom.SecurityPolicyViolationEventInit;
 import java.lang.String;
@@ -19,12 +20,12 @@ public String sample;
 public String sourceFile;
 public int statusCode;
 public String violatedDirective;
-public SecurityPolicyViolationEvent(String type,SecurityPolicyViolationEventInit securityPolicyViolationEventInitDict){
+public SecurityPolicyViolationEvent(String type,@Nullable SecurityPolicyViolationEventInit securityPolicyViolationEventInitDict){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 public SecurityPolicyViolationEvent(String type){
 // This super call is here only for the code to compile; it is never executed.
-super((String)null,(EventInit)null);
+super((String)null,(@Nullable EventInit)null);
 }
 }

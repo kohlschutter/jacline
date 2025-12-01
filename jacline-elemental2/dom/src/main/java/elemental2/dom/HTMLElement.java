@@ -1,6 +1,7 @@
 package elemental2.dom;
 import elemental2.dom.Element;
 import elemental2.dom.HTMLFormElement;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.ElementInternals;
 import elemental2.dom.ShadowRoot;
 import elemental2.dom.File;
@@ -23,27 +24,27 @@ import elemental2.core.JsObject;
 public class HTMLElement extends Element{
 @JsFunction
 public interface AttachedCallbackFn{
-Object onInvoke();
+@Nullable Object onInvoke();
 }
 @JsFunction
 public interface ConnectedCallbackFn{
-Object onInvoke();
+@Nullable Object onInvoke();
 }
 @JsFunction
 public interface CreatedCallbackFn{
-Object onInvoke();
+@Nullable Object onInvoke();
 }
 @JsFunction
 public interface DetachedCallbackFn{
-Object onInvoke();
+@Nullable Object onInvoke();
 }
 @JsFunction
 public interface DisconnectedCallbackFn{
-Object onInvoke();
+@Nullable Object onInvoke();
 }
 @JsFunction
 public interface FormResetCallbackFn{
-Object onInvoke();
+@Nullable Object onInvoke();
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface FormStateRestoreCallbackStateArrayArrayUnionType{
@@ -71,19 +72,19 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface FormStateRestoreCallbackStateUnionType{
 @JsOverlay
-static HTMLElement.FormStateRestoreCallbackStateUnionType of(Object o){
+static HTMLElement.@Nullable FormStateRestoreCallbackStateUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default File asFile(){
+default @Nullable File asFile(){
 return Js.cast(this);
 }
 @JsOverlay
-default JsArray<JsArray<HTMLElement.FormStateRestoreCallbackStateArrayArrayUnionType>> asJsArray(){
+default @Nullable JsArray<JsArray<HTMLElement.FormStateRestoreCallbackStateArrayArrayUnionType>> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -104,54 +105,60 @@ public static JsArray<String> observedAttributes;
 public HTMLElement.AttachedCallbackFn attachedCallback;
 public String className;
 public HTMLElement.ConnectedCallbackFn connectedCallback;
-public Element contextMenu;
+public @Nullable Element contextMenu;
 public HTMLElement.CreatedCallbackFn createdCallback;
 public JsPropertyMap<String> dataset;
 public HTMLElement.DetachedCallbackFn detachedCallback;
 public String dir;
 public HTMLElement.DisconnectedCallbackFn disconnectedCallback;
 public boolean draggable;
-public JsObject dropzone;
+public @Nullable JsObject dropzone;
 public HTMLElement.FormResetCallbackFn formResetCallback;
 public boolean hidden;
 public boolean inert;
 public String lang;
-public String nonce;
+public @Nullable String nonce;
 public int offsetHeight;
 public int offsetLeft;
-public Element offsetParent;
+public @Nullable Element offsetParent;
 public int offsetTop;
 public int offsetWidth;
-public ShadowRoot shadowRoot;
+public String outerText;
+public @Nullable String popover;
+public @Nullable ShadowRoot shadowRoot;
 public boolean spellcheck;
 public CSSStyleDeclaration style;
 public int tabIndex;
 public String title;
-public native Object adoptedCallback(Document oldDocument,Document newDocument);
+public native @Nullable Object adoptedCallback(Document oldDocument,Document newDocument);
 public native ElementInternals attachInternals();
 public native ShadowRoot attachShadow(ShadowRootInit options);
-public native Object attributeChangedCallback(String attributeName,String oldValue,String newValue,String namespace);
+public native @Nullable Object attributeChangedCallback(String attributeName,@Nullable String oldValue,@Nullable String newValue,@Nullable String namespace);
 public native void click();
 public native ShadowRoot createShadowRoot();
-public native Object formAssociatedCallback(HTMLFormElement form);
-public native Object formDisabledCallback(boolean disabled);
+public native @Nullable Object formAssociatedCallback(@Nullable HTMLFormElement form);
+public native @Nullable Object formDisabledCallback(boolean disabled);
 @JsOverlay
-public final Object formStateRestoreCallback(File state,String reason){
-return formStateRestoreCallback(Js.<HTMLElement.FormStateRestoreCallbackStateUnionType>uncheckedCast(state),reason);
+public final @Nullable Object formStateRestoreCallback(File state,String reason){
+return formStateRestoreCallback(Js.<HTMLElement.@Nullable FormStateRestoreCallbackStateUnionType>uncheckedCast(state),reason);
 }
 @JsOverlay
-public final Object formStateRestoreCallback(HTMLElement.FormStateRestoreCallbackStateArrayArrayUnionType[][] state,String reason){
+public final @Nullable Object formStateRestoreCallback(HTMLElement.FormStateRestoreCallbackStateArrayArrayUnionType[][] state,String reason){
 return formStateRestoreCallback(Js.<JsArray<JsArray<HTMLElement.FormStateRestoreCallbackStateArrayArrayUnionType>>>uncheckedCast(state),reason);
 }
-public native Object formStateRestoreCallback(HTMLElement.FormStateRestoreCallbackStateUnionType state,String reason);
+public native @Nullable Object formStateRestoreCallback(HTMLElement.@Nullable FormStateRestoreCallbackStateUnionType state,String reason);
 @JsOverlay
-public final Object formStateRestoreCallback(JsArray<JsArray<HTMLElement.FormStateRestoreCallbackStateArrayArrayUnionType>> state,String reason){
-return formStateRestoreCallback(Js.<HTMLElement.FormStateRestoreCallbackStateUnionType>uncheckedCast(state),reason);
+public final @Nullable Object formStateRestoreCallback(JsArray<JsArray<HTMLElement.FormStateRestoreCallbackStateArrayArrayUnionType>> state,String reason){
+return formStateRestoreCallback(Js.<HTMLElement.@Nullable FormStateRestoreCallbackStateUnionType>uncheckedCast(state),reason);
 }
 @JsOverlay
-public final Object formStateRestoreCallback(String state,String reason){
-return formStateRestoreCallback(Js.<HTMLElement.FormStateRestoreCallbackStateUnionType>uncheckedCast(state),reason);
+public final @Nullable Object formStateRestoreCallback(String state,String reason){
+return formStateRestoreCallback(Js.<HTMLElement.@Nullable FormStateRestoreCallbackStateUnionType>uncheckedCast(state),reason);
 }
 public native NodeList<Node> getDestinationInsertionPoints();
+public native void hidePopover();
+public native void showPopover();
+public native boolean togglePopover();
+public native boolean togglePopover(boolean force);
 public native ShadowRoot webkitCreateShadowRoot();
 }

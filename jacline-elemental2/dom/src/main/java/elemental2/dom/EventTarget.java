@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.Event;
 import elemental2.dom.EventListenerOptions;
 import elemental2.dom.EventListener;
@@ -15,7 +16,7 @@ import jsinterop.annotations.JsPackage;
 public interface EventTarget{
 @JsFunction
 public interface AddEventListenerListenerFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface AddEventListenerOptionsUnionType{
@@ -38,7 +39,7 @@ return (Object)this instanceof Boolean;
 }
 @JsFunction
 public interface RemoveEventListenerListenerFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(Event p0);
 }
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface RemoveEventListenerOptionsUnionType{

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.Deprecated;
 import elemental2.dom.Event;
 import elemental2.dom.NotificationOptions;
@@ -15,38 +16,38 @@ import jsinterop.annotations.JsPackage;
 public class Notification implements EventTarget{
 @JsFunction
 public interface OnclickFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
 @JsFunction
 public interface OncloseFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
 @JsFunction
 public interface OndisplayFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
 @JsFunction
 public interface OnerrorFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
 @JsFunction
 public interface OnshowFn{
-Object onInvoke(Event p0);
+@Nullable Object onInvoke(@Nullable Event p0);
 }
 public static String permission;
 public static native Promise<String> requestPermission();
 public static native Promise<String> requestPermission(NotificationPermissionCallback callback);
 public String body;
-public Object data;
+public @Nullable Object data;
 @Deprecated
 public String dir;
 public String icon;
-public Notification.OnclickFn onclick;
-public Notification.OncloseFn onclose;
+public Notification.@Nullable OnclickFn onclick;
+public Notification.@Nullable OncloseFn onclose;
 @Deprecated
-public Notification.OndisplayFn ondisplay;
-public Notification.OnerrorFn onerror;
-public Notification.OnshowFn onshow;
+public Notification.@Nullable OndisplayFn ondisplay;
+public Notification.@Nullable OnerrorFn onerror;
+public Notification.@Nullable OnshowFn onshow;
 @Deprecated
 public String replaceId;
 public String tag;

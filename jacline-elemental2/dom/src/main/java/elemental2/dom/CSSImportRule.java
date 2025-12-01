@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
@@ -8,6 +9,6 @@ import elemental2.dom.CSSRule;
 @JsType(isNative = true,namespace = JsPackage.GLOBAL)
 public class CSSImportRule extends CSSRule{
 public String href;
-public MediaList media;
-public CSSStyleSheet styleSheet;
+public @Nullable MediaList media;
+public @Nullable CSSStyleSheet styleSheet;
 }

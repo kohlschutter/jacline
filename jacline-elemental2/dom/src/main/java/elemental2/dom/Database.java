@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.SQLError;
 import jsinterop.annotations.JsFunction;
 import elemental2.dom.SQLTransaction;
@@ -33,11 +34,11 @@ public interface TransactionErrorCallbackFn{
 void onInvoke(SQLError p0);
 }
 public String version;
-public native void changeVersion(String oldVersion,String newVersion,Database.ChangeVersionCallbackFn callback,Database.ChangeVersionErrorCallbackFn errorCallback,Function successCallback);
-public native void readTransaction(Database.ReadTransactionCallbackFn callback,Database.ReadTransactionErrorCallbackFn errorCallback,Function Callback);
+public native void changeVersion(String oldVersion,String newVersion,Database.ChangeVersionCallbackFn callback,Database.ChangeVersionErrorCallbackFn errorCallback,@Nullable Function successCallback);
+public native void readTransaction(Database.ReadTransactionCallbackFn callback,Database.ReadTransactionErrorCallbackFn errorCallback,@Nullable Function Callback);
 public native void readTransaction(Database.ReadTransactionCallbackFn callback,Database.ReadTransactionErrorCallbackFn errorCallback);
 public native void readTransaction(Database.ReadTransactionCallbackFn callback);
-public native void transaction(Database.TransactionCallbackFn callback,Database.TransactionErrorCallbackFn errorCallback,Function Callback);
+public native void transaction(Database.TransactionCallbackFn callback,Database.TransactionErrorCallbackFn errorCallback,@Nullable Function Callback);
 public native void transaction(Database.TransactionCallbackFn callback,Database.TransactionErrorCallbackFn errorCallback);
 public native void transaction(Database.TransactionCallbackFn callback);
 }

@@ -1,28 +1,29 @@
 package elemental2.core;
-import jsinterop.base.Js;
+import org.jspecify.annotations.Nullable;
 import java.lang.Deprecated;
-import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsMethod;
+import elemental2.core.JsArray;
+import jsinterop.base.Js;
+import jsinterop.annotations.JsOverlay;
 import java.lang.Object;
 import java.lang.String;
 import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsPackage;
-import elemental2.core.JsArray;
 import elemental2.core.JsObject;
 @JsType(isNative = true,name = "Date",namespace = JsPackage.GLOBAL)
 public class JsDate{
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ToLocaleDateStringLocalesUnionType{
 @JsOverlay
-static JsDate.ToLocaleDateStringLocalesUnionType of(Object o){
+static JsDate.@Nullable ToLocaleDateStringLocalesUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<String> asJsArray(){
+default @Nullable JsArray<String> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -37,15 +38,15 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ToLocaleStringLocalesUnionType{
 @JsOverlay
-static JsDate.ToLocaleStringLocalesUnionType of(Object o){
+static JsDate.@Nullable ToLocaleStringLocalesUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<String> asJsArray(){
+default @Nullable JsArray<String> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -60,15 +61,15 @@ return (Object)this instanceof String;
 @JsType(isNative = true,name = "?",namespace = JsPackage.GLOBAL)
 public interface ToLocaleTimeStringLocalesUnionType{
 @JsOverlay
-static JsDate.ToLocaleTimeStringLocalesUnionType of(Object o){
+static JsDate.@Nullable ToLocaleTimeStringLocalesUnionType of(@Nullable Object o){
 return Js.cast(o);
 }
 @JsOverlay
-default JsArray<String> asJsArray(){
+default @Nullable JsArray<String> asJsArray(){
 return Js.cast(this);
 }
 @JsOverlay
-default String asString(){
+default @Nullable String asString(){
 return Js.asString(this);
 }
 @JsOverlay
@@ -88,15 +89,15 @@ public static native double UTC(double year,double month,double date);
 public static native double UTC(double year,double month);
 public static native double UTC(double year);
 public static native double now();
-public static native double parse(Object date);
+public static native double parse(@Nullable Object date);
 public JsDate(){}
-public JsDate(Object yr_num,Object mo_num,Object day_num,Object hr_num,Object min_num,Object sec_num,Object ms_num){}
-public JsDate(Object yr_num,Object mo_num,Object day_num,Object hr_num,Object min_num,Object sec_num){}
-public JsDate(Object yr_num,Object mo_num,Object day_num,Object hr_num,Object min_num){}
-public JsDate(Object yr_num,Object mo_num,Object day_num,Object hr_num){}
-public JsDate(Object yr_num,Object mo_num,Object day_num){}
-public JsDate(Object yr_num,Object mo_num){}
-public JsDate(Object yr_num){}
+public JsDate(@Nullable Object yr_num,@Nullable Object mo_num,@Nullable Object day_num,@Nullable Object hr_num,@Nullable Object min_num,@Nullable Object sec_num,@Nullable Object ms_num){}
+public JsDate(@Nullable Object yr_num,@Nullable Object mo_num,@Nullable Object day_num,@Nullable Object hr_num,@Nullable Object min_num,@Nullable Object sec_num){}
+public JsDate(@Nullable Object yr_num,@Nullable Object mo_num,@Nullable Object day_num,@Nullable Object hr_num,@Nullable Object min_num){}
+public JsDate(@Nullable Object yr_num,@Nullable Object mo_num,@Nullable Object day_num,@Nullable Object hr_num){}
+public JsDate(@Nullable Object yr_num,@Nullable Object mo_num,@Nullable Object day_num){}
+public JsDate(@Nullable Object yr_num,@Nullable Object mo_num){}
+public JsDate(@Nullable Object yr_num){}
 public native int getDate();
 public native int getDay();
 public native int getFullYear();
@@ -155,137 +156,137 @@ public native String toDateString();
 public native String toGMTString();
 public native String toISOString();
 public native String toJSON();
-public native String toJSON(Object ignoredKey);
+public native String toJSON(@Nullable Object ignoredKey);
 public native String toLocaleDateString();
 @JsOverlay
-public final String toLocaleDateString(JsArray<String> locales,JsObject options){
-return toLocaleDateString(Js.<JsDate.ToLocaleDateStringLocalesUnionType>uncheckedCast(locales),options);
+public final String toLocaleDateString(JsArray<String> locales,@Nullable JsObject options){
+return toLocaleDateString(Js.<JsDate.@Nullable ToLocaleDateStringLocalesUnionType>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleDateString(JsArray<String> locales,Object options){
-return toLocaleDateString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleDateString(JsArray<String> locales,@Nullable Object options){
+return toLocaleDateString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
 public final String toLocaleDateString(JsArray<String> locales){
-return toLocaleDateString(Js.<JsDate.ToLocaleDateStringLocalesUnionType>uncheckedCast(locales));
+return toLocaleDateString(Js.<JsDate.@Nullable ToLocaleDateStringLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
-public final String toLocaleDateString(String locales,JsObject options){
-return toLocaleDateString(Js.<JsDate.ToLocaleDateStringLocalesUnionType>uncheckedCast(locales),options);
+public final String toLocaleDateString(String locales,@Nullable JsObject options){
+return toLocaleDateString(Js.<JsDate.@Nullable ToLocaleDateStringLocalesUnionType>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleDateString(String[] locales,JsObject options){
+public final String toLocaleDateString(String[] locales,@Nullable JsObject options){
 return toLocaleDateString(Js.<JsArray<String>>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleDateString(String locales,Object options){
-return toLocaleDateString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleDateString(String locales,@Nullable Object options){
+return toLocaleDateString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
-public final String toLocaleDateString(String[] locales,Object options){
-return toLocaleDateString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleDateString(String[] locales,@Nullable Object options){
+return toLocaleDateString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
 public final String toLocaleDateString(String locales){
-return toLocaleDateString(Js.<JsDate.ToLocaleDateStringLocalesUnionType>uncheckedCast(locales));
+return toLocaleDateString(Js.<JsDate.@Nullable ToLocaleDateStringLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
 public final String toLocaleDateString(String[] locales){
 return toLocaleDateString(Js.<JsArray<String>>uncheckedCast(locales));
 }
-public native String toLocaleDateString(JsDate.ToLocaleDateStringLocalesUnionType locales,JsObject options);
+public native String toLocaleDateString(JsDate.@Nullable ToLocaleDateStringLocalesUnionType locales,@Nullable JsObject options);
 @JsOverlay
-public final String toLocaleDateString(JsDate.ToLocaleDateStringLocalesUnionType locales,Object options){
-return toLocaleDateString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleDateString(JsDate.@Nullable ToLocaleDateStringLocalesUnionType locales,@Nullable Object options){
+return toLocaleDateString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
-public native String toLocaleDateString(JsDate.ToLocaleDateStringLocalesUnionType locales);
+public native String toLocaleDateString(JsDate.@Nullable ToLocaleDateStringLocalesUnionType locales);
 public native String toLocaleFormat(String formatString);
 public native String toLocaleString();
 @JsOverlay
-public final String toLocaleString(JsArray<String> locales,JsObject options){
-return toLocaleString(Js.<JsDate.ToLocaleStringLocalesUnionType>uncheckedCast(locales),options);
+public final String toLocaleString(JsArray<String> locales,@Nullable JsObject options){
+return toLocaleString(Js.<JsDate.@Nullable ToLocaleStringLocalesUnionType>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleString(JsArray<String> locales,Object options){
-return toLocaleString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleString(JsArray<String> locales,@Nullable Object options){
+return toLocaleString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
 public final String toLocaleString(JsArray<String> locales){
-return toLocaleString(Js.<JsDate.ToLocaleStringLocalesUnionType>uncheckedCast(locales));
+return toLocaleString(Js.<JsDate.@Nullable ToLocaleStringLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
-public final String toLocaleString(String locales,JsObject options){
-return toLocaleString(Js.<JsDate.ToLocaleStringLocalesUnionType>uncheckedCast(locales),options);
+public final String toLocaleString(String locales,@Nullable JsObject options){
+return toLocaleString(Js.<JsDate.@Nullable ToLocaleStringLocalesUnionType>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleString(String[] locales,JsObject options){
+public final String toLocaleString(String[] locales,@Nullable JsObject options){
 return toLocaleString(Js.<JsArray<String>>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleString(String locales,Object options){
-return toLocaleString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleString(String locales,@Nullable Object options){
+return toLocaleString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
-public final String toLocaleString(String[] locales,Object options){
-return toLocaleString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleString(String[] locales,@Nullable Object options){
+return toLocaleString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
 public final String toLocaleString(String locales){
-return toLocaleString(Js.<JsDate.ToLocaleStringLocalesUnionType>uncheckedCast(locales));
+return toLocaleString(Js.<JsDate.@Nullable ToLocaleStringLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
 public final String toLocaleString(String[] locales){
 return toLocaleString(Js.<JsArray<String>>uncheckedCast(locales));
 }
-public native String toLocaleString(JsDate.ToLocaleStringLocalesUnionType locales,JsObject options);
+public native String toLocaleString(JsDate.@Nullable ToLocaleStringLocalesUnionType locales,@Nullable JsObject options);
 @JsOverlay
-public final String toLocaleString(JsDate.ToLocaleStringLocalesUnionType locales,Object options){
-return toLocaleString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleString(JsDate.@Nullable ToLocaleStringLocalesUnionType locales,@Nullable Object options){
+return toLocaleString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
-public native String toLocaleString(JsDate.ToLocaleStringLocalesUnionType locales);
+public native String toLocaleString(JsDate.@Nullable ToLocaleStringLocalesUnionType locales);
 public native String toLocaleTimeString();
 @JsOverlay
-public final String toLocaleTimeString(JsArray<String> locales,JsObject options){
-return toLocaleTimeString(Js.<JsDate.ToLocaleTimeStringLocalesUnionType>uncheckedCast(locales),options);
+public final String toLocaleTimeString(JsArray<String> locales,@Nullable JsObject options){
+return toLocaleTimeString(Js.<JsDate.@Nullable ToLocaleTimeStringLocalesUnionType>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleTimeString(JsArray<String> locales,Object options){
-return toLocaleTimeString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleTimeString(JsArray<String> locales,@Nullable Object options){
+return toLocaleTimeString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
 public final String toLocaleTimeString(JsArray<String> locales){
-return toLocaleTimeString(Js.<JsDate.ToLocaleTimeStringLocalesUnionType>uncheckedCast(locales));
+return toLocaleTimeString(Js.<JsDate.@Nullable ToLocaleTimeStringLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
-public final String toLocaleTimeString(String locales,JsObject options){
-return toLocaleTimeString(Js.<JsDate.ToLocaleTimeStringLocalesUnionType>uncheckedCast(locales),options);
+public final String toLocaleTimeString(String locales,@Nullable JsObject options){
+return toLocaleTimeString(Js.<JsDate.@Nullable ToLocaleTimeStringLocalesUnionType>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleTimeString(String[] locales,JsObject options){
+public final String toLocaleTimeString(String[] locales,@Nullable JsObject options){
 return toLocaleTimeString(Js.<JsArray<String>>uncheckedCast(locales),options);
 }
 @JsOverlay
-public final String toLocaleTimeString(String locales,Object options){
-return toLocaleTimeString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleTimeString(String locales,@Nullable Object options){
+return toLocaleTimeString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
-public final String toLocaleTimeString(String[] locales,Object options){
-return toLocaleTimeString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleTimeString(String[] locales,@Nullable Object options){
+return toLocaleTimeString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
 @JsOverlay
 public final String toLocaleTimeString(String locales){
-return toLocaleTimeString(Js.<JsDate.ToLocaleTimeStringLocalesUnionType>uncheckedCast(locales));
+return toLocaleTimeString(Js.<JsDate.@Nullable ToLocaleTimeStringLocalesUnionType>uncheckedCast(locales));
 }
 @JsOverlay
 public final String toLocaleTimeString(String[] locales){
 return toLocaleTimeString(Js.<JsArray<String>>uncheckedCast(locales));
 }
-public native String toLocaleTimeString(JsDate.ToLocaleTimeStringLocalesUnionType locales,JsObject options);
+public native String toLocaleTimeString(JsDate.@Nullable ToLocaleTimeStringLocalesUnionType locales,@Nullable JsObject options);
 @JsOverlay
-public final String toLocaleTimeString(JsDate.ToLocaleTimeStringLocalesUnionType locales,Object options){
-return toLocaleTimeString(locales,Js.<JsObject>uncheckedCast(options));
+public final String toLocaleTimeString(JsDate.@Nullable ToLocaleTimeStringLocalesUnionType locales,@Nullable Object options){
+return toLocaleTimeString(locales,Js.<@Nullable JsObject>uncheckedCast(options));
 }
-public native String toLocaleTimeString(JsDate.ToLocaleTimeStringLocalesUnionType locales);
+public native String toLocaleTimeString(JsDate.@Nullable ToLocaleTimeStringLocalesUnionType locales);
 public native String toSource();
 @JsMethod(name = "toString")
 public native String toString_();

@@ -1,4 +1,5 @@
 package elemental2.dom;
+import org.jspecify.annotations.Nullable;
 import elemental2.dom.Node;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
@@ -37,5 +38,5 @@ double SHOW_NOTATION=NodeFilter__Constants.SHOW_NOTATION;
 double SHOW_PROCESSING_INSTRUCTION=NodeFilter__Constants.SHOW_PROCESSING_INSTRUCTION;
 @JsOverlay
 double SHOW_TEXT=NodeFilter__Constants.SHOW_TEXT;
-double acceptNode(Node n);
+double acceptNode(@Nullable Node n);
 }
