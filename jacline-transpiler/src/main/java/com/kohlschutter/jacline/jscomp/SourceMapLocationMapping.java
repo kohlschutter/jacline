@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import org.jspecify.nullness.Nullable;
+//import org.jspecify.nullness.Nullable;
 
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
@@ -82,7 +82,7 @@ public class SourceMapLocationMapping implements LocationMapping, Closeable {
   }
 
   @Override
-  public @Nullable String map(String location) {
+  public /*@Nullable*/ String map(String location) {
     int index;
 
     int lastSlash = location.lastIndexOf('/');
