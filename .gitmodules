@@ -17,6 +17,3 @@
 [submodule "jacline-jsinterop-generator/jsinterop-generator"]
 	path = jacline-jsinterop-generator/jsinterop-generator
 	url = git@github.com:kohlschutter/jsinterop-generator.git
-[submodule "rules_closure"]
-	path = rules_closure
-	url = git@github.com:kohlschuetter/rules_closure.git
