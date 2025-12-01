@@ -79,8 +79,15 @@ public class JaclineJ2ClTranspiler implements Closeable {
 
     Problems problems = new Problems();
 
-    List<FileInfo> allSources = SourceUtils.getAllSources(sources.getSourceFiles().stream(), null,
-        problems).collect(Collectors.toList());
+    Path tmpDir = Files.createTempDirectory("tmpDir");
+    List<FileInfo> allSources;
+    try {
+      allSources = SourceUtils.getAllSources(sources.getSourceFiles().stream(), tmpDir, problems)
+          .collect(Collectors.toList());
+    } finally {
+      Files.deleteIfExists(tmpDir.resolve("j2cl_sources"));
+      Files.deleteIfExists(tmpDir);
+    }
 
     List<FileInfo> sourceFileInfos = allSources.stream().filter( //
         (fi) -> fi.sourcePath().endsWith(".java") //
