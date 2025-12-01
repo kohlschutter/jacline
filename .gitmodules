@@ -9,7 +9,7 @@
 	url = git@github.com:kohlschutter/elemental2.git
 [submodule "jacline-jsinterop-base/jsinterop-base"]
 	path = jacline-jsinterop-base/jsinterop-base
-	url = https://github.com/google/jsinterop-base.git
+	url = git@github.com:kohlschutter/jsinterop-base.git
 [submodule "closure-compiler"]
 	path = closure-compiler
 	url = git@github.com:kohlschutter/closure-compiler.git

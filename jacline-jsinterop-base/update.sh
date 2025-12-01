@@ -6,9 +6,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-if [[ ! -d jsinterop-base ]]; then
-  git clone https://github.com/google/jsinterop-base.git
-fi
+#if [[ ! -d jsinterop-base ]]; then
+#  git clone https://github.com/google/jsinterop-base.git
+#fi
 alias bazel=bazelisk
 cd jsinterop-base
 bazel build java/...
