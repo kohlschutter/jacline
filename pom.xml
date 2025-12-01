@@ -18,7 +18,7 @@
 
     <properties>
         <kohlschutter.java.release>11</kohlschutter.java.release>
-        <jacline.previous.version>1.0.1</jacline.previous.version>
+        <jacline.previous.version>1.0.2</jacline.previous.version>
         <jacline.version>${jacline.previous.version}</jacline.version>
     </properties>
 
