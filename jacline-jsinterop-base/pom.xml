@@ -138,5 +138,10 @@
             <!-- For building only -->
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.jspecify</groupId>
+            <artifactId>jspecify</artifactId>
+        </dependency>
     </dependencies>
 </project>
