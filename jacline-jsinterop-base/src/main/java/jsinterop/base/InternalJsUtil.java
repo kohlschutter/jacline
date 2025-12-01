@@ -18,6 +18,8 @@ package jsinterop.base;
 
 import com.google.gwt.core.client.UnsafeNativeLong;
 import javaemul.internal.annotations.HasNoSideEffects;
+import org.jspecify.annotations.Nullable;
+
              import jsinterop.annotations.JsMethod;
              import jsinterop.annotations.JsPackage;
 
@@ -25,12 +27,12 @@ import javaemul.internal.annotations.HasNoSideEffects;
 class InternalJsUtil {
 
                @JsMethod
-  public static native <T> JsPropertyMap<T> emptyObjectLiteral() /*-{
+  public static native <T extends @Nullable Object> JsPropertyMap<T> emptyObjectLiteral() /*-{
     return {};
   }-*/;
 
                @JsMethod(namespace = JsPackage.GLOBAL, name = "goog.getObjectByName")
-  public static native Object getObjectByName(String qualifiedName, Object obj) /*-{
+  public static native @Nullable Object getObjectByName(String qualifiedName, Object obj) /*-{
     var parts = qualifiedName.split('.');
     var cur = obj;
     for (var i = 0; i < parts.length; i++) {
@@ -43,7 +45,7 @@ class InternalJsUtil {
   }-*/;
 
                @JsMethod(name="getIndexed")
-  public static native Object get(Object obj, String key) /*-{
+  public static native @Nullable Object get(Object obj, String key) /*-{
     return obj[key];
   }-*/;
 
@@ -58,12 +60,12 @@ class InternalJsUtil {
   }-*/;
 
                @JsMethod(name="setIndexed")
-  public static native void set(Object obj, String key, Object value) /*-{
+  public static native void set(Object obj, String key, @Nullable Object value) /*-{
     obj[key] = value;
   }-*/;
 
                @JsMethod(name="getIndexed")
-  public static native Object getAt(Object obj, int key) /*-{
+  public static native @Nullable Object getAt(Object obj, int key) /*-{
     return obj[key];
   }-*/;
 
@@ -78,7 +80,7 @@ class InternalJsUtil {
   }-*/;
 
                @JsMethod(name="setIndexed")
-  public static native void setAt(Object obj, int key, Object value) /*-{
+  public static native void setAt(Object obj, int key, @Nullable Object value) /*-{
     obj[key] = value;
   }-*/;
 
@@ -90,38 +92,38 @@ class InternalJsUtil {
   }-*/;
 
                @JsMethod(name="castToAny")
-  public static native boolean asBoolean(Object obj) /*-{
+  public static native boolean asBoolean(@Nullable Object obj) /*-{
    return obj;
   }-*/;
 
                @JsMethod(name="castToAny")
-  public static native double asDouble(Object obj) /*-{
+  public static native double asDouble(@Nullable Object obj) /*-{
    return obj;
   }-*/;
 
                @JsMethod(name="castToAny")
-  public static native int asInt(Object obj) /*-{
+  public static native int asInt(@Nullable Object obj) /*-{
     return obj;
   }-*/;
 
                @JsMethod(name="castToAny")
-  public static native short asShort(Object obj) /*-{
+  public static native short asShort(@Nullable Object obj) /*-{
     return obj;
   }-*/;
 
                @JsMethod(name="castToAny")
-  public static native char asChar(Object obj) /*-{
+  public static native char asChar(@Nullable Object obj) /*-{
     return obj;
   }-*/;
 
                @JsMethod(name="castToAny")
-  public static native byte asByte(Object obj) /*-{
+  public static native byte asByte(@Nullable Object obj) /*-{
     return obj;
   }-*/;
 
   @UnsafeNativeLong
                @JsMethod(name="castToAny")
-  public static native long asLong(Object obj) /*-{
+  public static native long asLong(@Nullable Object obj) /*-{
     return obj;
   }-*/;
 
@@ -171,7 +173,7 @@ class InternalJsUtil {
   }-*/;
 
                @JsMethod(namespace=jsinterop.annotations.JsPackage.GLOBAL, name="Reflect.construct")
-  public static native <T> T construct(JsConstructorFn<T> ctor, Object[] args) /*-{
+  public static native <T> T construct(JsConstructorFn<T> ctor, @Nullable Object[] args) /*-{
     return new (ctor.bind.apply(ctor, [null].concat(args)));
   }-*/;
 
