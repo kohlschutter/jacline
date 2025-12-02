@@ -20,9 +20,16 @@
  * See InternalPreconditions.java for details.
  */
 
-goog.provide('jsinterop');
+goog.module('jsinterop');
+
+const jre = goog.require('jre');
 
 // Note that disabling checking only disables it for production.
 
 /** @define {string} */
-jsinterop.checks = goog.define('jsinterop.checks', 'DISABLED');
+const checks = goog.define('jsinterop.checks', 'DISABLED');
+jre.addSystemPropertyFromGoogDefine('jsinterop.checks', checks);
+
+exports = {
+  checks,
+};
