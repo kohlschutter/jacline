@@ -153,7 +153,10 @@ public class DuplicatedTypesUnifier implements ModelVisitor {
 
       // Add existing synthetic types from parent interfaces
       for (Type parentInterface : parentInterfaces) {
-        syntheticTypesByKey.putAll(syntheticTypesByEnclosingType.get(parentInterface));
+        Map<String, Type> map = syntheticTypesByEnclosingType.get(parentInterface);
+        if (map != null) {
+          syntheticTypesByKey.putAll(map);
+        }
       }
 
       return syntheticTypesByKey;
