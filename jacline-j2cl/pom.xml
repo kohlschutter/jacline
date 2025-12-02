@@ -175,8 +175,8 @@
             <!--
             <groupId>com.google.javascript</groupId>
             <artifactId>closure-compiler</artifactId>
-            <version>v20231112</version>
-        -->
+            <version>v20250402</version>
+            -->
             <groupId>com.kohlschutter.jacline</groupId>
             <artifactId>jacline-closure</artifactId>
         </dependency>
