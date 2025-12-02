@@ -219,6 +219,19 @@ class Arrays {
   }
 
   /**
+   * Calls $stampType; for backwards-compatibility only.
+   *
+   * @param {!Array<*>} array
+   * @param {!Object} leafType
+   * @param {number=} opt_dimensionCount
+   * @return {!Array<*>}
+   * @public
+   */
+  static $init(array, leafType, opt_dimensionCount) {
+    return Arrays.$stampType(array, leafType, opt_dimensionCount || 1);
+  }
+
+  /**
    * @param {!Array<*>} array
    * @param {!Constructor} leafType
    * @param {!Function} leafTypeIsInstance
