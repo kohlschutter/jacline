@@ -54,7 +54,7 @@ public final class JaclineUtil {
     } else if (n instanceof Integer) {
       return ((Integer) n).intValue();
     } else if (n instanceof Double) {
-      return ((Float) n).doubleValue();
+      return ((Double) n).doubleValue();
     } else if (n instanceof Short) {
       return ((Short) n).shortValue();
     } else if (n instanceof Float) {
