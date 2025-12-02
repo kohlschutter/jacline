@@ -26,6 +26,7 @@ import com.kohlschutter.jacline.annotations.JsPatched;
  * @author Christian Kohlschütter
  */
 @JsPatched
+@SuppressWarnings("JSC_TYPE_MISMATCH")
 public final class JaclineUtil {
   private JaclineUtil() {
   }
@@ -52,21 +53,21 @@ public final class JaclineUtil {
     if (n == null) {
       return null;
     } else if (n instanceof Integer) {
-      return ((Integer) n).intValue();
+      return n.intValue();
     } else if (n instanceof Double) {
-      return ((Double) n).doubleValue();
+      return n.doubleValue();
     } else if (n instanceof Short) {
-      return ((Short) n).shortValue();
+      return n.shortValue();
     } else if (n instanceof Float) {
-      return ((Float) n).floatValue();
+      return n.floatValue();
     } else if (n instanceof Long) {
-      return ((Long) n).longValue();
+      return n.longValue();
     } else if (n instanceof Byte) {
-      return ((Byte) n).byteValue();
+      return n.byteValue();
       // } else if (n instanceof BigDecimal) {
-      // return ((BigDecimal)n).toString();
+      // return n.toString();
       // } else if (n instanceof BigInteger) {
-      // return ((BigInteger)n).toString();
+      // return n.toString();
     } else {
       return n.doubleValue();
     }
