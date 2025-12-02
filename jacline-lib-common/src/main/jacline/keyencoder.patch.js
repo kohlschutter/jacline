@@ -10,7 +10,7 @@ KeyEncoder.begin = function(/** ?string */ type) {
     if (window.keepClosureHappy) {
         // prevent closure-compiler from pruning these methods
         // FIXME
-        JsKeyEncoder.begin(type).beginEncodeObject(null, null).end().encodeString("X", "Y").encodeNumber("N", 123).encodeBoolean("B", true).end().getEncoded();
+        JsKeyEncoder.begin(type).beginEncodeObject(null, null).end().encodeString("X", "Y").encodeNumber("N", 123).encodeBoolean("B", true).encodeArray(null,null,null).end().getEncoded();
     }
 
     return JsKeyEncoder.begin(type);
