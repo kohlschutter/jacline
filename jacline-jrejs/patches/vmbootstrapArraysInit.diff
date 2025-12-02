@@ -1,0 +1,24 @@
+diff --git a/jacline-jrejs/src/main/jacline/javaemul/internal/vmbootstrap/Arrays.impl.java.js b/jacline-jrejs/src/main/jacline/javaemul/internal/vmbootstrap/Arrays.impl.java.js
+index 9ae9551..c0ac6d4 100755
+--- a/jacline-jrejs/src/main/jacline/javaemul/internal/vmbootstrap/Arrays.impl.java.js
++++ b/jacline-jrejs/src/main/jacline/javaemul/internal/vmbootstrap/Arrays.impl.java.js
+@@ -218,6 +218,19 @@ class Arrays {
+         opt_dimensionCount);
+   }
+ 
++  /**
++   * Calls $stampType; for backwards-compatibility only.
++   *
++   * @param {!Array<*>} array
++   * @param {!Object} leafType
++   * @param {number=} opt_dimensionCount
++   * @return {!Array<*>}
++   * @public
++   */
++  static $init(array, leafType, opt_dimensionCount) {
++    return Arrays.$stampType(array, leafType, opt_dimensionCount || 1);
++  }
++
+   /**
+    * @param {!Array<*>} array
+    * @param {!Constructor} leafType
