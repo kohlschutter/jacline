@@ -121,6 +121,10 @@ public class JaclineJ2ClTranspiler implements Closeable {
           .setWasmEntryPointStrings(ImmutableList.of()) //
           .setDefinesForWasm(ImmutableMap.of()) //
           .setForbiddenAnnotations(ImmutableList.of()) //
+          .setJavacOptions(List.of())
+          .setEnableKlibs(false)
+          .setDependencyKlibs(List.of())
+          .setObjCNamePrefix("J2kt")
           .build(problems);
       try {
         JaclineUtil.transpile(options, problems);
