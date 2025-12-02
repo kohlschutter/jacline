@@ -5,9 +5,10 @@ const HelloWorld = goog.require('com.kohlschutter.jacline.samples.json.HelloWorl
 var hw = new HelloWorld();
 document.body.innerText = `${hw.getMessage()}`;
 
+console.log("HelloWorld", hw);
+
 var json = hw.encode(null);
 
-console.log("HelloWorld", hw);
 console.log("HelloWorld, encoded as JSON", json);
 
 var hw1 = HelloWorld.decodeDefault(json);
