@@ -81,3 +81,7 @@ for f in $( cd "$vmbootstrapIn" ; find . -name "*.js" | grep '/vmbootstrap/'); d
   cp -a "$vmbootstrapIn/$f" "$jaclineOut/$dir/"
 done
 
+for f in $(find patches -name "*.diff"); do
+  echo $f
+  cat "$f" | patch -p2 --backup-if-mismatch --version-control none
+done

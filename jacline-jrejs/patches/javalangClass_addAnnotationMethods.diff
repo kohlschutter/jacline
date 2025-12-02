@@ -1,0 +1,35 @@
+commit 440d5032faed26ff58f39c080903496edad8622a
+Author: Christian Kohlschütter <christian@kohlschutter.com>
+Date:   Sat Mar 9 11:37:29 2024 +0100
+
+    jrejs: Add some annotation-related methods to Class
+
+diff --git a/jacline-jrejs/src/main/java/java/lang/Class.java b/jacline-jrejs/src/main/java/java/lang/Class.java
+index 7283e41..2c24129 100644
+--- a/jacline-jrejs/src/main/java/java/lang/Class.java
++++ b/jacline-jrejs/src/main/java/java/lang/Class.java
+@@ -14,7 +14,10 @@
+ package java.lang;
+ 
+ import java.io.Serializable;
++import java.lang.annotation.Annotation;
+ import java.lang.reflect.Type;
++import java.util.Objects;
++
+ import javaemul.internal.Constructor;
+ import jsinterop.annotations.JsConstructor;
+ import jsinterop.annotations.JsMethod;
+@@ -142,4 +145,13 @@ public final class Class<T> implements Type, Serializable {
+     }
+     return $get(primitiveCtor);
+   }
++  
++  public boolean isAnnotationPresent(Class<? extends Annotation> annotationClass) {
++    Objects.requireNonNull(annotationClass);
++    return false; // no runtime access to annotations
++  }
++  public <A extends Annotation> A getDeclaredAnnotation(Class<A> annotationClass) {
++    Objects.requireNonNull(annotationClass);
++    return null; // no runtime access to annotations
++  }
+ }
