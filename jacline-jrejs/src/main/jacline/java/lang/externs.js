@@ -1,4 +1,4 @@
-// Copyright 2019 Google Inc.
+// Copyright 2021 Google Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,18 +13,13 @@
 // limitations under the License.
 
 /**
- * @fileoverview Header hand rolled.
+ * Constains the extern used by generated code to preserve fields during
+ * optimizations.
  *
- * @suppress {extraRequire, lateProvide, unusedLocalVariables}
+ * @externs
  */
-goog.module('vmbootstrap.JavaScriptInterface');
 
-
-// Imports headers for both eager and lazy dependencies to ensure that
-// all files are included in the dependency tree.
-const _$Util = goog.require('nativebootstrap.Util');
-
-
-// Re-exports the implementation.
-const JavaScriptInterface = goog.require('vmbootstrap.JavaScriptInterface$impl');
-exports = JavaScriptInterface;
+/**
+ * @param {...*} args Fields s prevent from optimizing away.
+ */
+function $J2CL_PRESERVE$(...args) {}

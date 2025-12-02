@@ -17,10 +17,8 @@
  */
 goog.module('nativebootstrap.Util$impl');
 
-
-const Reflect = goog.require('goog.reflect');
-const jre = goog.require('jre');
 const Constructor = goog.require('javaemul.internal.Constructor');
+const jre = goog.require('jre');
 
 
 /**
@@ -32,17 +30,14 @@ class Util {
    * if it is not defined.
    *
    * @param {string} name
-   * @param {?string=} opt_defaultValue
+   * @param {?string=} defaultValue
    * @return {?string}
    * @public
+   * @noinline
    */
-  static $getDefine(name, opt_defaultValue) {
-    // Default the optional param. Note that we are not using the common
-    // 'opt_value || default_value' pattern otherwise that would replace
-    // empty string with null value.
-    var defaultValue = opt_defaultValue == null ? null : opt_defaultValue;
-    var rv = goog.getObjectByName(name);
-    return rv == null ? defaultValue : String(rv);
+  // TODO(b/374872678): Remove the indirection through $getDefine.
+  static $getDefine(name, defaultValue = null) {
+    return jre.getSystemProperty(name, defaultValue);
   }
 
   /**
@@ -55,8 +50,7 @@ class Util {
   }
 
   /**
-   * // TODO(b/79389970): change ctor to Function
-   * @param {Object} ctor
+   * @param {!Constructor} ctor
    * @param {string} name
    * @public
    */
@@ -125,16 +119,17 @@ class Util {
    * @public
    */
   static $extractClassName(ctor) {
-    if (jre.classMetadata == 'SIMPLE') {
+    if (Util.$getDefine('jre.classMetadata') == 'SIMPLE') {
       return ctor.prototype.$$classMetadata[0];
-    } else if (jre.classMetadata == 'STRIPPED') {
+    } else if (Util.$getDefine('jre.classMetadata') == 'STRIPPED') {
       if (goog.DEBUG) {
         return ctor.prototype.$$classMetadata[0] + '_' +
             Util.$getGeneratedClassName_(ctor);
       }
       return Util.$getGeneratedClassName_(ctor);
     } else {
-      throw new Error('Incorrect value: ' + jre.classMetadata);
+      throw new Error(
+          'Incorrect value: ' + Util.$getDefine('jre.classMetadata'));
     }
   }
 
@@ -144,16 +139,17 @@ class Util {
    * @public
    */
   static $extractPrimitiveShortName(ctor) {
-    if (jre.classMetadata == 'SIMPLE') {
+    if (Util.$getDefine('jre.classMetadata') == 'SIMPLE') {
       return ctor.prototype.$$classMetadata[2];
-    } else if (jre.classMetadata == 'STRIPPED') {
+    } else if (Util.$getDefine('jre.classMetadata') == 'STRIPPED') {
       if (goog.DEBUG) {
         return ctor.prototype.$$classMetadata[2] + '_' +
             Util.$getGeneratedClassName_(ctor);
       }
       return Util.$getGeneratedClassName_(ctor);
     } else {
-      throw new Error('Incorrect value: ' + jre.classMetadata);
+      throw new Error(
+          'Incorrect value: ' + Util.$getDefine('jre.classMetadata'));
     }
   }
 
@@ -161,16 +157,25 @@ class Util {
    * @param {Constructor} ctor
    * @return {string}
    * @private
+   * @nosideeffects
    */
   static $getGeneratedClassName_(ctor) {
-    return Reflect.cache(ctor.prototype, '$$generatedClassName', function() {
-      // valueOf hack makes JsCompiler think that this is side effect free.
-      return 'Class$obf_' + {
-        valueOf() {
-          return ++Util.$nextUniqId_;
-        }
-      };
-    });
+    const propName = '$$generatedClassName';
+    if (ctor.prototype.hasOwnProperty(propName)) {
+      return ctor.prototype[propName];
+    }
+
+    // Use the constructor "name", which should be the result of the variable
+    // name JSCompiler assigned the class/function to. This allows for manual
+    // deobfuscation of the class name.
+    const constructorName = ctor.name;
+    const nextUniqId = Util.$nextUniqIdByName_.get(constructorName) ?? 0;
+    Util.$nextUniqIdByName_.set(constructorName, nextUniqId + 1);
+    const generatedClassName =
+        'Class$obf_' + constructorName + '_' + nextUniqId;
+
+    ctor.prototype[propName] = generatedClassName;
+    return generatedClassName;
   }
 
   /**
@@ -179,12 +184,13 @@ class Util {
    * @public
    */
   static $extractClassType(ctor) {
-    if (jre.classMetadata == 'SIMPLE') {
+    if (Util.$getDefine('jre.classMetadata') == 'SIMPLE') {
       return ctor.prototype.$$classMetadata[1];
-    } else if (jre.classMetadata == 'STRIPPED') {
+    } else if (Util.$getDefine('jre.classMetadata') == 'STRIPPED') {
       return Util.TYPE_CLASS;
     } else {
-      throw new Error('Incorrect value: ' + jre.classMetadata);
+      throw new Error(
+          'Incorrect value: ' + Util.$getDefine('jre.classMetadata'));
     }
   }
 
@@ -293,13 +299,41 @@ class Util {
   static $makeEnumName(enumName) {
     return enumName;
   }
+
+  /**
+   * Helper function used for logging obfuscation, string replacement passes
+   * can be targeted at this bottleneck.
+   *
+   * @param {string} message
+   * @return {string}
+   */
+  static $makeLogMessage(message) {
+    return message;
+  }
+
+  /**
+   * @param {T} value
+   * @return {T}
+   * @template T
+   */
+  static $coerceToNull(value) {
+    return value === undefined ? null : value;
+  }
+
+  /**
+   * @param {*} value
+   * @return {boolean}
+   */
+  static $isUndefined(value) {
+    return value === undefined;
+  }
 }
 
 
 /**
- * @private {number}
+ * @private @const {!Map<string, number>}
  */
-Util.$nextUniqId_ = 1000;
+Util.$nextUniqIdByName_ = new Map();
 
 /**
  * @type {number}

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 #
 # Obtains the jrejs files that are necessary for jacline
 #
@@ -24,14 +24,14 @@ bazelBin=../j2cl/bazel-bin
 javaOut=src/main/java
 sharedOut=src/shared/java
 restOut=src/main/resources/META-INF/jacline/generated/
+jaclineOut=src/main/jacline
+rm -rf "$jaclineOut"
 rm -rf "$javaOut" "$sharedOut"
 rm -rf src/main/resources
 mkdir -p "$javaOut" "$restOut" "$sharedOut"
 
 cp -r ${bazelBin}/jre/java/jre.js/* "$javaOut"/
 #cp -r ${bazelBin}/jre/java/jre.js/* "$restOut"/
-
-cp ../j2cl/jre/java/module-info.java "$javaOut"/
 
 ( cd src/main/java ; jar xf ../../../"$jsia" jsinterop )
 
@@ -48,6 +48,8 @@ mv "$javaOut"/javaemul/internal/annotations/Wasm.java "$sharedOut"/javaemul/inte
 
 rm -f $(find "$javaOut" -type f -not -name "*.java" -and -not -name "*.native_js")
 
+cp ../j2cl/jre/java/module-info.java "$javaOut"/
+
 for f in $(find "$javaOut" -name "*.native_js"); do
   new=$(echo "$f" | sed -E 's|native_js|native.js|g')
   mv -vf "$f" "$new"
@@ -62,3 +64,20 @@ for f in $(cd src/fixes/java ; find . -type f ); do
     echo Adding new file "$f"
   fi
 done
+
+jaclineIn=../j2cl/jre/java
+for f in $( cd "$jaclineIn" ; find . -name "*.js" | grep -v super-wasm | grep -v ".native.js"); do
+  dir=${f%/*}
+  mkdir -p "$jaclineOut/$dir"
+  echo $f
+  cp -a "$jaclineIn/$f" "$jaclineOut/$dir/"
+done
+
+vmbootstrapIn="$bazelBin/jre/java/jre.js"
+for f in $( cd "$vmbootstrapIn" ; find . -name "*.js" | grep '/vmbootstrap/'); do
+  dir=${f%/*}
+  mkdir -p "$jaclineOut/$dir"
+  echo $f
+  cp -a "$vmbootstrapIn/$f" "$jaclineOut/$dir/"
+done
+
