@@ -32,3 +32,5 @@ for f in $(find "$javaOut" -name "*.native_js"); do
   new=$(echo "$f" | sed -E 's|native_js|native.js|g')
   mv -vf "$f" "$new"
 done
+
+cp jsinterop-base/java/jsinterop/base/jsinterop.js src/main/jacline/jsinterop/base/
