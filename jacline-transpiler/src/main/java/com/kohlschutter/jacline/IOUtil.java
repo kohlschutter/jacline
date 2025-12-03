@@ -26,7 +26,6 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 public final class IOUtil {
   private IOUtil() {
-
   }
 
   public static void deleteRecursively(Path root) throws IOException {
@@ -40,7 +39,7 @@ public final class IOUtil {
 
       @Override
       public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        Files.delete(file);
+        Files.deleteIfExists(file);
         return FileVisitResult.CONTINUE;
       }
 
@@ -51,7 +50,7 @@ public final class IOUtil {
 
       @Override
       public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
-        Files.delete(dir);
+        Files.deleteIfExists(dir);
         return FileVisitResult.CONTINUE;
       }
     });
