@@ -48,6 +48,9 @@ public final class ClosureCompilerOptionsBuilder {
     CompilerOptions options = clr.getParsedOptions();
 
     // options.setRemoveDeadCode(false);
+
+    // DEBUGGING-ONLY: makes it a little easier to parse object structures in console.log,
+    // not recommended to keep enabled
     // options.setRenamingPolicy(VariableRenamingPolicy.LOCAL, PropertyRenamingPolicy.OFF);
 
     options.setDefineToBooleanLiteral("goog.DEBUG", false);
