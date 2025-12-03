@@ -62,10 +62,13 @@ public class JaclineJ2ClTranspiler implements Closeable {
       }
       FileTime ft = Files.getLastModifiedTime(p);
       long millis = ft.toMillis();
+
+      if (millis > now) {
+        millis = now;
+      }
+
       if (millis < 0) {
         continue;
-      } else if (millis > now) {
-        millis = now;
       } else if (millis > lastModMax) {
         lastModMax = millis;
       }
@@ -121,11 +124,8 @@ public class JaclineJ2ClTranspiler implements Closeable {
           .setWasmEntryPointStrings(ImmutableList.of()) //
           .setDefinesForWasm(ImmutableMap.of()) //
           .setForbiddenAnnotations(ImmutableList.of()) //
-          .setJavacOptions(List.of())
-          .setEnableKlibs(false)
-          .setDependencyKlibs(List.of())
-          .setObjCNamePrefix("J2kt")
-          .build(problems);
+          .setJavacOptions(List.of()).setEnableKlibs(false).setDependencyKlibs(List.of())
+          .setObjCNamePrefix("J2kt").build(problems);
       try {
         JaclineUtil.transpile(options, problems);
       } catch (Problems.Exit ex) {
