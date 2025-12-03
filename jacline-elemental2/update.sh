@@ -32,3 +32,8 @@ for module in promise core dom indexeddb media svg webassembly webcrypto webgl w
 
   sed -i "" -E 's|@NullMarked|/*@NullMarked*/|g' $(find "$javaOut" -name "*.java")
 done
+
+for f in $(find patches -name "*.diff"); do
+  echo "Applying $f"
+  cat "$f" | patch -p2 --backup-if-mismatch --version-control none
+done

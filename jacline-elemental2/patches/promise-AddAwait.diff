@@ -1,0 +1,34 @@
+commit 0d80d6e5f916397eac81a27e4a607ea23c7fe513
+Author: Christian Kohlschütter <christian@kohlschutter.com>
+Date:   Tue Aug 20 14:41:28 2024 +0200
+
+    [jacline] Add "await" helper method to Promise
+
+diff --git a/jacline-elemental2/promise/src/main/java/elemental2/promise/Promise.java b/jacline-elemental2/promise/src/main/java/elemental2/promise/Promise.java
+index 2ca17e6..d88096e 100644
+--- a/jacline-elemental2/promise/src/main/java/elemental2/promise/Promise.java
++++ b/jacline-elemental2/promise/src/main/java/elemental2/promise/Promise.java
+@@ -16,6 +16,7 @@
+  */
+ package elemental2.promise;
+ 
++import jsinterop.annotations.JsAsync;
+ import jsinterop.annotations.JsFunction;
+ import jsinterop.annotations.JsMethod;
+ import jsinterop.annotations.JsOverlay;
+@@ -148,4 +149,15 @@ public class Promise<T> implements IThenable<T> {
+ 
+   @JsMethod(name = "finally")
+   public native Promise<T> finally_(FinallyOnFinallyCallbackFn onFinally);
++  
++  /**
++   * Will be converted to a native Javascript "await" call. Use from a method annotated with
++   * {@link JsAsync}.
++   * 
++   * @param <T> The type.
++   * @param promise The promise/thenable.
++   * @return The promised object.
++   */
++  @JsMethod(namespace = JsPackage.GLOBAL)
++  public static native <T> T await(IThenable<T> promise);
+ }
