@@ -29,6 +29,7 @@ import java.io.Writer;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.FileSystems;
 import java.nio.file.FileVisitOption;
@@ -39,12 +40,14 @@ import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.FileTime;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -126,6 +129,9 @@ public class JaclineCompileMojo extends AbstractMojo {
   @Parameter(readonly = true, defaultValue = "${project.build.directory}/jacline")
   String jaclineWorkDirectoryDefault;
 
+  @Parameter(defaultValue = "${project.build.directory}/jacline.log")
+  String jaclineLogFile;
+
   /**
    * The source directories containing the sources to be transpiled.
    */
@@ -203,7 +209,23 @@ public class JaclineCompileMojo extends AbstractMojo {
   @Override
   @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.NPathComplexity"})
   public void execute() throws MojoExecutionException, MojoFailureException {
-    this.log = getLog();
+    Log log1 = getLog();
+    try (FileLog log2 = new FileLog(Path.of(jaclineLogFile))) {
+      this.log = new SplicedLog(log1, log2);
+
+      long time = System.currentTimeMillis();
+      try {
+        execute0();
+      } catch (MojoExecutionException | MojoFailureException | RuntimeException e) {
+        log.error(e);
+        throw e;
+      }
+      time = System.currentTimeMillis() - time;
+      log2.info("done after " + time + "ms");
+    }
+  }
+
+  private void execute0() throws MojoExecutionException, MojoFailureException {
     if (entryPoints == null) {
       entryPoints = List.of();
     }
@@ -220,14 +242,13 @@ public class JaclineCompileMojo extends AbstractMojo {
     Path jaclineMetaInfDirectoryPath = Path.of(jaclineMetaInfDirectory);
     Path jaclineWorkDirectoryPath = Path.of(jaclineWorkDirectory);
 
-    // This is usually necessary to prevent "Duplicate module" errors
-    // IMPORTANT: We'll always clear ./generated in code below
     try {
       if (deleteJaclineMetaInfDirectory) {
         if (Files.exists(jaclineMetaInfDirectoryPath)) {
           IOUtil.deleteRecursively(jaclineMetaInfDirectoryPath);
         }
       }
+
       if (Files.exists(jaclineWorkDirectoryPath)) {
         IOUtil.deleteRecursively(jaclineWorkDirectoryPath);
       }
@@ -244,6 +265,7 @@ public class JaclineCompileMojo extends AbstractMojo {
         transpile(transpiler, to);
 
         if (to.isSkipped()) {
+          log.error("Compilation skipped");
           return;
         }
 
@@ -294,6 +316,13 @@ public class JaclineCompileMojo extends AbstractMojo {
   private static void copy(Path source, Path dest) {
     try {
       Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
+    } catch (DirectoryNotEmptyException e) {
+      try {
+        IOUtil.deleteRecursively(dest);
+        Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
+      } catch (IOException e1) {
+        throw new IllegalStateException(e1);
+      }
     } catch (IOException e) {
       throw new IllegalStateException(e);
     }
@@ -437,12 +466,9 @@ public class JaclineCompileMojo extends AbstractMojo {
     }
 
     long lastModifiedSource = transpiler.transpile(sources, to);
-    if (lastModifiedSource == 0) {
-      return;
-    }
 
     if (!to.isSkipped()) {
-      closureCompile(to.getOutputPath());
+      lastModifiedSource = closureCompile(to.getOutputPath(), lastModifiedSource);
     }
 
     initDownstreamDeps();
@@ -464,7 +490,7 @@ public class JaclineCompileMojo extends AbstractMojo {
 
   @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.NPathComplexity"})
   @SuppressFBWarnings("QBA_QUESTIONABLE_BOOLEAN_ASSIGNMENT")
-  private void closureCompile(Path transpiledOut) throws IOException,
+  private long closureCompile(Path transpiledOut, long lastModified) throws IOException,
       DependencyResolutionRequiredException, MojoExecutionException, URISyntaxException {
 
     ClosureCompilerSources cs = new ClosureCompilerSources();
@@ -495,120 +521,152 @@ public class JaclineCompileMojo extends AbstractMojo {
     }
 
     List<String> compileClasspathElements = project.getCompileClasspathElements();
-    cs.addSourcesFromClasspath(compileClasspathElements);
-
-    Map<Path, Path> tmpPaths = new HashMap<>();
-    try {
-      for (Path p : cs.getOtherFiles()) {
-        boolean isSubDir = false;
-        if (p.endsWith("META-INF/jacline") || (p.endsWith("jacline/generated") && (isSubDir =
-            true))) {
-
-          // META-INF/jacline/generated/generated-entrypoints.js
-          Path generatedEntryPoints = isSubDir ? p.resolve("generated-entrypoints.js") : p.resolve(
-              "generated/generated-entrypoints.js");
-          if (Files.exists(generatedEntryPoints)) {
-            haveEntryPoints = true;
-
-            if (!FileSystems.getDefault().equals(generatedEntryPoints.getFileSystem()) && !tmpPaths
-                .containsKey(generatedEntryPoints)) {
-              Path tmpPath = Files.createTempFile("jacline", ".tmp.js");
-              Files.delete(tmpPath);
-              Files.copy(generatedEntryPoints, tmpPath);
-              if (log.isInfoEnabled()) {
-                log.info("Using " + tmpPath + " instead of " + generatedEntryPoints.toUri());
-              }
-              tmpPaths.put(generatedEntryPoints, tmpPath);
-              generatedEntryPoints = tmpPath;
-            }
-
-            if (cs.addEntryPoint(generatedEntryPoints)) {
-              if (log.isInfoEnabled()) {
-                log.info("Adding generated entry points: " + generatedEntryPoints.toUri());
-              }
-            }
-          }
-
-        }
-      }
-
-      if (!haveSourceRoots && !haveEntryPoints) {
-        log.info("Nothing to do for the closure-compiler");
-        return;
-      }
-
-      Path sourceMapOutputPath = createSourceMaps ? toPathIfPossible(sourceMapOutputDirectory)
-          : null;
-      if (sourceMapOutputPath != null) {
-        log.info("Writing sourcemap files to: " + sourceMapOutputPath);
-      }
-
-      URI urlBaseUri = new URI(this.urlBase.endsWith("/") ? this.urlBase : this.urlBase + "/");
-      log.info("Using URL base: " + urlBaseUri);
-
-      URI sourceMapPrefixUri = new URI(this.sourceMapUrlPrefix);
-      log.info("Using sourcemap prefix: " + sourceMapPrefixUri);
-
-      Problems problems = new Problems();
-      try (ClosureCompiler jc = new ClosureCompiler(sourceMapOutputPath, urlBaseUri,
-          sourceMapPrefixUri); ClosureCompilerRun runConfig = jc.prepareCompile(cs, true, (opt) -> {
-            opt.setErrorHandler((level, error) -> {
-              String msg = error.toString();
-
-              switch (level) {
-                case ERROR:
-                  log.error(msg);
-                  problems.addError(msg);
-                  break;
-                case WARNING:
-                  log.warn(msg);
-                  problems.addWarning(msg);
-                  break;
-                default:
-                  log.info(msg);
-                  problems.addInfoMessage(msg);
-                  break;
-              }
-            });
-          }, outputFile)) {
-
-        try (ClosureCompilationResult result = runConfig.compile()) {
-          File outFile = absolutePath(outputFile, outputFileDir).toFile();
-
-          String source = result.getSource();
-          if (source == null) {
-            log.error("Closure compiler failed to build output file: " + outputFile);
-            throw new MojoExecutionException("Closure compilation failure") {
-
-              private static final long serialVersionUID = 1L;
-
-              @Override
-              public void printStackTrace(PrintStream s) {
-                super.printStackTrace(s);
-                problems.consumeMessages((msg) -> s.println("\t" + msg));
-              }
-
-              @Override
-              public void printStackTrace(PrintWriter s) {
-                super.printStackTrace(s);
-                problems.consumeMessages((msg) -> s.println("\t" + msg));
-              }
-            };
-          }
-
-          log.info("Writing output to: " + outFile);
-          writeStringToFile(source, outFile);
-        }
-      }
-
-    } finally {
-      for (Path p : tmpPaths.values()) {
-        if (log.isInfoEnabled()) {
-          log.info("Deleting temporary file: " + p);
-        }
-        Files.delete(p);
+    Path outputFileDirPath = Path.of(outputFileDir).toAbsolutePath();
+    for (Iterator<String> it = compileClasspathElements.iterator(); it.hasNext();) {
+      String cpe = it.next();
+      if (outputFileDir.equals(cpe) || Path.of(cpe).toAbsolutePath().equals(outputFileDirPath)) {
+        it.remove();
       }
     }
+    cs.addSourcesFromClasspath(compileClasspathElements);
+
+    Path jaclineWorkDirectoryPath = Path.of(jaclineWorkDirectory);
+
+    long now = System.currentTimeMillis();
+
+    Map<Path, Path> tmpPaths = new HashMap<>();
+    for (Path p : cs.getOtherFiles()) {
+      boolean isSubDir = false;
+      if (p.endsWith("META-INF/jacline") || (p.endsWith("jacline/generated") && (isSubDir =
+          true))) {
+
+        // META-INF/jacline/generated/generated-entrypoints.js
+        Path generatedEntryPoints = isSubDir ? p.resolve("generated-entrypoints.js") : p.resolve(
+            "generated/generated-entrypoints.js");
+        if (Files.exists(generatedEntryPoints)) {
+          haveEntryPoints = true;
+
+          // copy entrypoints from jar file systems, etc., to a temporary location under target/
+          if (!FileSystems.getDefault().equals(generatedEntryPoints.getFileSystem()) && !tmpPaths
+              .containsKey(generatedEntryPoints)) {
+            Path tmpPath = Files.createTempFile(jaclineWorkDirectoryPath, "entrypoint", ".tmp.js");
+            Files.delete(tmpPath);
+            Files.copy(generatedEntryPoints, tmpPath);
+            if (log.isInfoEnabled()) {
+              log.info("Using " + tmpPath + " instead of " + generatedEntryPoints.toUri());
+            }
+            tmpPaths.put(generatedEntryPoints, tmpPath);
+            generatedEntryPoints = tmpPath;
+          }
+
+          if (cs.addEntryPoint(generatedEntryPoints)) {
+            if (log.isInfoEnabled()) {
+              log.info("Adding generated entry points: " + generatedEntryPoints.toUri());
+            }
+          }
+        }
+
+        // exclude jacline/generated etc. from "lastModified" calculations
+        continue;
+      }
+
+      // For all source folders, check its files for the last modified time, and update the
+      // global lastModified state accordingly.
+      AtomicLong latestModified = new AtomicLong(lastModified);
+      Files.walk(p).forEach((f) -> {
+        long pModTime;
+        try {
+          pModTime = Files.getLastModifiedTime(f).toMillis();
+        } catch (IOException e) {
+          return;
+        }
+        if (pModTime > now) {
+          pModTime = now;
+        }
+        if (pModTime > latestModified.get()) {
+          latestModified.set(pModTime);
+        }
+      });
+      lastModified = latestModified.get();
+    }
+
+    if (!haveSourceRoots && !haveEntryPoints) {
+      log.info("Nothing to do for the closure-compiler");
+      return lastModified;
+    }
+
+    Path sourceMapOutputPath = createSourceMaps ? toPathIfPossible(sourceMapOutputDirectory) : null;
+    if (sourceMapOutputPath != null) {
+      log.info("Writing sourcemap files to: " + sourceMapOutputPath);
+    }
+
+    URI urlBaseUri = new URI(this.urlBase.endsWith("/") ? this.urlBase : this.urlBase + "/");
+    log.info("Using URL base: " + urlBaseUri);
+
+    URI sourceMapPrefixUri = new URI(this.sourceMapUrlPrefix);
+    log.info("Using sourcemap prefix: " + sourceMapPrefixUri);
+
+    for (Path p : cs.getEntryPoints()) {
+      log.info("Adding entrypoint: " + p);
+    }
+
+    Problems problems = new Problems();
+    try (ClosureCompiler jc = new ClosureCompiler(sourceMapOutputPath, urlBaseUri,
+        sourceMapPrefixUri); ClosureCompilerRun runConfig = jc.prepareCompile(cs, true, (opt) -> {
+          opt.setErrorHandler((level, error) -> {
+            String msg = error.toString();
+
+            switch (level) {
+              case ERROR:
+                log.error(msg);
+                problems.addError(msg);
+                break;
+              case WARNING:
+                log.warn(msg);
+                problems.addWarning(msg);
+                break;
+              default:
+                log.info(msg);
+                problems.addInfoMessage(msg);
+                break;
+            }
+          });
+        }, outputFile)) {
+
+      try (ClosureCompilationResult result = runConfig.compile()) {
+        File outFile = absolutePath(outputFile, outputFileDir).toFile();
+
+        String source = result.getSource();
+        if (source == null) {
+          log.error("Closure compiler failed to build output file: " + outputFile);
+          throw new MojoExecutionException("Closure compilation failure") {
+
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public void printStackTrace(PrintStream s) {
+              super.printStackTrace(s);
+              problems.consumeMessages((msg) -> {
+                s.println("\t" + msg);
+              });
+            }
+
+            @Override
+            public void printStackTrace(PrintWriter s) {
+              super.printStackTrace(s);
+              problems.consumeMessages((msg) -> {
+                s.println("\t" + msg);
+              });
+            }
+          };
+        }
+
+        log.info("Writing output to: " + outFile);
+        writeStringToFile(source, outFile);
+      }
+    }
+
+    return lastModified;
   }
 
   private Path toPathIfPossible(String path) {
@@ -703,9 +761,9 @@ public class JaclineCompileMojo extends AbstractMojo {
   }
 
   private void touchDownstreamProjects(long updatedTimeMillis) throws IOException {
-    Path p = Path.of(outputFileDir).resolve(
-        "../../.settings/com.kohlschutter.jacline/downstream-deps");
+    Path p = projectBaseDir.toPath().resolve(".settings/com.kohlschutter.jacline/downstream-deps");
     if (!Files.isDirectory(p)) {
+      log.debug("touchDownstreamProjects: not found: " + p);
       return;
     }
 
@@ -715,12 +773,14 @@ public class JaclineCompileMojo extends AbstractMojo {
       try {
         linkedPath = Files.readSymbolicLink(path);
         if (!Files.exists(linkedPath)) {
-          log.info("Deleting outdated link: " + path);
+          log.debug("Deleting outdated touchDownstreamProjects link: " + path);
           Files.deleteIfExists(path);
           return;
         }
 
-        if (!Files.exists(linkedPath.getParent().resolve("target-eclipse/jacline/generated"))) {
+        Path jaclGeneratedPath = linkedPath.getParent().resolve("target-eclipse/jacline/generated");
+        if (!Files.exists(jaclGeneratedPath)) {
+          log.debug("touchDownstreamProjects: not found: " + jaclGeneratedPath);
           return;
         }
 
@@ -733,7 +793,11 @@ public class JaclineCompileMojo extends AbstractMojo {
 
         FileTime mod = Files.getLastModifiedTime(touchPath);
         if (mod.compareTo(updatedTime) < 0) {
+          log.debug("touching, mod(" + mod + ") < updatedTime(" + updatedTime + "): " + touchPath);
           Files.setLastModifiedTime(touchPath, updatedTime);
+        } else {
+          // log.debug("not touching, mod(" + mod + ") < updatedTime(" + updatedTime + "): "
+          // + touchPath);
         }
       } catch (NotLinkException e) {
         log.warn("Not a symbolic link: " + path, e);
