@@ -9,6 +9,9 @@ import java.nio.file.StandardOpenOption;
 
 import org.apache.maven.plugin.logging.Log;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
+
+@SuppressFBWarnings("INFORMATION_EXPOSURE_THROUGH_AN_ERROR_MESSAGE")
 final class FileLog implements Log, Closeable {
   private final PrintWriter out;
 

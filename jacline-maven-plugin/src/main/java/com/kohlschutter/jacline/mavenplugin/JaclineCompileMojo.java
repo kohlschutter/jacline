@@ -93,6 +93,7 @@ import com.kohlschutter.jacline.jscomp.ClosureCompilerSources;
 @SuppressWarnings({
     "null", "PMD.GuardLogStatement", "PMD.CouplingBetweenObjects", "PMD.CyclomaticComplexity",
     "PMD.ExcessiveImports"})
+@SuppressFBWarnings("REDOS")
 public class JaclineCompileMojo extends AbstractMojo {
   private static final HashFunction SHA_256 = Hashing.sha256();
 
@@ -553,7 +554,7 @@ public class JaclineCompileMojo extends AbstractMojo {
     }
   }
 
-  @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.NPathComplexity"})
+  @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.NPathComplexity", "PMD.NcssCount"})
   @SuppressFBWarnings("QBA_QUESTIONABLE_BOOLEAN_ASSIGNMENT")
   private long closureCompile(Path transpiledOut, long lastModified) throws IOException,
       DependencyResolutionRequiredException, MojoExecutionException, URISyntaxException {
@@ -642,17 +643,17 @@ public class JaclineCompileMojo extends AbstractMojo {
       // global lastModified state accordingly.
       AtomicLong latestModified = new AtomicLong(lastModified);
       Files.walk(p).forEach((f) -> {
-        long pModTime;
+        long modTime;
         try {
-          pModTime = Files.getLastModifiedTime(f).toMillis();
+          modTime = Files.getLastModifiedTime(f).toMillis();
         } catch (IOException e) {
           return;
         }
-        if (pModTime > now) {
-          pModTime = now;
+        if (modTime > now) {
+          modTime = now;
         }
-        if (pModTime > latestModified.get()) {
-          latestModified.set(pModTime);
+        if (modTime > latestModified.get()) {
+          latestModified.set(modTime);
         }
       });
       lastModified = latestModified.get();
@@ -766,9 +767,9 @@ public class JaclineCompileMojo extends AbstractMojo {
 
   /**
    * Tell jacline-maven-plugin about downstream dependencies, so we can trigger project updates for
-   * those when some upstream dependency's jacline code changes
+   * those when some upstream dependency's jacline code changes.
    * 
-   * @throws IOException
+   * @throws IOException on error.
    */
   private void initDownstreamDeps() throws IOException {
     Path pomFilePath = project.getFile().toPath();
