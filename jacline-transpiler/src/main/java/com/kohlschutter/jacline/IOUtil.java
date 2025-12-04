@@ -93,4 +93,20 @@ public final class IOUtil {
       Files.move(source, dest, StandardCopyOption.REPLACE_EXISTING);
     }
   }
+
+  /**
+   * Copies a file, replacing any existing file/directory at the target location.
+   * 
+   * @param source The source
+   * @param dest The destination
+   * @throws IOException on error.
+   */
+  public static void copyWithReplace(Path source, Path dest) throws IOException {
+    try {
+      Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
+    } catch (DirectoryNotEmptyException e) {
+      IOUtil.deleteRecursively(dest);
+      Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
+    }
+  }
 }
