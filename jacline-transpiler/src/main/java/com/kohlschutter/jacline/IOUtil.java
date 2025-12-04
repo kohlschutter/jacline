@@ -109,4 +109,15 @@ public final class IOUtil {
       Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
     }
   }
+
+  /**
+   * Checks if a given file name ends with a given suffix.
+   * 
+   * @param file The file name
+   * @param suffix The suffix
+   * @return {@code true} if so.
+   */
+  public static boolean filenameEndsWith(Path file, String suffix) {
+    return file.getName(file.getNameCount() - 1).toString().endsWith(suffix);
+  }
 }
