@@ -44,6 +44,12 @@ public final class IOUtil {
     }
   }
 
+  /**
+   * Recursively deletes a directory tree, even if it's not empty.
+   * 
+   * @param root The root of the directory tree to delete.
+   * @throws IOException on error.
+   */
   public static void deleteRecursively(Path root) throws IOException {
     Files.walkFileTree(root, new FileVisitor<Path>() {
 
