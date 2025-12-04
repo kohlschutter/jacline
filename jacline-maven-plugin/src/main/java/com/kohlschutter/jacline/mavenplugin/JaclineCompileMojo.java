@@ -29,15 +29,18 @@ import java.io.Writer;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.FileSystems;
 import java.nio.file.FileVisitOption;
+import java.nio.file.FileVisitResult;
+import java.nio.file.FileVisitor;
 import java.nio.file.Files;
 import java.nio.file.NotLinkException;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -51,7 +54,6 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
@@ -199,6 +201,12 @@ public class JaclineCompileMojo extends AbstractMojo {
   @SuppressWarnings("PMD.ProperLogger")
   private Log log;
 
+  private final boolean eclipse = !System.getProperty("eclipse.product", "").isEmpty();
+
+  private Properties jaclineProperties;
+
+  private FileLog log2;
+
   /**
    * Mucho mojo.
    */
@@ -206,12 +214,29 @@ public class JaclineCompileMojo extends AbstractMojo {
     super();
   }
 
+  private Properties initJaclineProperties() throws MojoExecutionException {
+    try {
+      Properties gitProps = loadGitProperties();
+
+      Properties props = new Properties();
+      props.put(PROPS_JACLINE_FORMAT, JACLINE_FORMAT_V1);
+      props.put(PROPS_JACLINE_VERSION, gitProps.get(PROPS_GIT_BUILD_VERSION));
+      props.put(PROPS_JACLINE_COMMIT, gitProps.get(PROPS_GIT_COMMIT_ID_DESCRIBE));
+
+      return props;
+    } catch (IOException e) {
+      throw new MojoExecutionException("Could not load git properties", e);
+    }
+  }
+
   @Override
   @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.NPathComplexity"})
   public void execute() throws MojoExecutionException, MojoFailureException {
-    Log log1 = getLog();
-    try (FileLog log2 = new FileLog(Path.of(jaclineLogFile))) {
-      this.log = new SplicedLog(log1, log2);
+    Log defaultLog = getLog();
+
+    try (FileLog fileLog = jaclineLogFile.isEmpty() ? null : new FileLog(Path.of(jaclineLogFile))) {
+      this.log = fileLog == null ? defaultLog : new DoubleLog(defaultLog, fileLog);
+      this.log2 = fileLog;
 
       long time = System.currentTimeMillis();
       try {
@@ -221,11 +246,20 @@ public class JaclineCompileMojo extends AbstractMojo {
         throw e;
       }
       time = System.currentTimeMillis() - time;
-      log2.info("done after " + time + "ms");
+      if (fileLog != null) {
+        fileLog.info("done after " + time + " ms");
+      }
     }
   }
 
   private void execute0() throws MojoExecutionException, MojoFailureException {
+    this.jaclineProperties = initJaclineProperties();
+    if (log2 != null) {
+      log2.info("jacline-maven-plugin " + jaclineProperties.get(PROPS_JACLINE_VERSION) + " "
+          + jaclineProperties.getProperty(PROPS_JACLINE_COMMIT));
+      log2.info("compile started at " + Instant.now());
+    }
+
     if (entryPoints == null) {
       entryPoints = List.of();
     }
@@ -300,41 +334,70 @@ public class JaclineCompileMojo extends AbstractMojo {
       throw new MojoExecutionException("Execution failed: " + e.toString(), e);
     }
 
-    try (Stream<Path> stream = Files.walk(jaclineWorkDirectoryPath)) {
-      stream.forEach((src) -> {
-        if (!includeSourcesInMetaInf && src.getName(src.getNameCount() - 1).toString().endsWith(
-            ".java")) {
-          return;
-        }
-        copy(src, jaclineMetaInfDirectoryPath.resolve(jaclineWorkDirectoryPath.relativize(src)));
-      });
-    } catch (IOException | RuntimeException e) {
-      throw new MojoExecutionException("Execution failed: " + e.toString(), e);
+    copyFilesFromWorkDirectoryToMetaInf(jaclineWorkDirectoryPath, jaclineMetaInfDirectoryPath);
+
+    if (log2 != null) {
+      log2.info("Compilation successful");
     }
   }
 
-  private static void copy(Path source, Path dest) {
+  private void copyFilesFromWorkDirectoryToMetaInf(Path jaclineWorkDirectoryPath,
+      Path jaclineMetaInfDirectoryPath) throws MojoExecutionException {
+    Path jaclineTmpPath = jaclineWorkDirectoryPath.resolve("tmp");
+
     try {
-      Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
-    } catch (DirectoryNotEmptyException e) {
-      try {
-        IOUtil.deleteRecursively(dest);
-        Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
-      } catch (IOException e1) {
-        throw new IllegalStateException(e1);
-      }
-    } catch (IOException e) {
-      throw new IllegalStateException(e);
+      Files.walkFileTree(jaclineWorkDirectoryPath, new FileVisitor<Path>() {
+
+        @Override
+        public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs)
+            throws IOException {
+          if (dir.equals(jaclineTmpPath)) {
+            return FileVisitResult.SKIP_SUBTREE;
+          }
+          Path targetDir = jaclineMetaInfDirectoryPath.resolve(jaclineWorkDirectoryPath.relativize(
+              dir));
+          Files.createDirectories(targetDir);
+
+          return FileVisitResult.CONTINUE;
+        }
+
+        @Override
+        public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+          if (!includeSourcesInMetaInf && file.getName(file.getNameCount() - 1).toString().endsWith(
+              ".java")) {
+            return FileVisitResult.CONTINUE;
+          }
+
+          IOUtil.moveWithReplace(file, jaclineMetaInfDirectoryPath.resolve(jaclineWorkDirectoryPath
+              .relativize(file)));
+          return FileVisitResult.CONTINUE;
+        }
+
+        @Override
+        public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+          throw exc;
+        }
+
+        @Override
+        public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+          Path targetDir = jaclineMetaInfDirectoryPath.resolve(jaclineWorkDirectoryPath.relativize(
+              dir));
+
+          if (!jaclineWorkDirectoryPath.equals(dir)) {
+            IOUtil.tryDeleteEmptyDirectory(dir);
+          }
+          IOUtil.tryDeleteEmptyDirectory(targetDir);
+
+          return FileVisitResult.CONTINUE;
+        }
+
+      });
+    } catch (IOException | RuntimeException e) {
+      throw new MojoExecutionException("Cannot move files to META-INF/jacline " + e.toString(), e);
     }
   }
 
   private void writeMetadata(Path jaclineMetaInfDirectoryPath) throws IOException {
-    Properties gitProps = loadGitProperties();
-
-    Properties props = new Properties();
-    props.put(PROPS_JACLINE_FORMAT, JACLINE_FORMAT_V1);
-    props.put(PROPS_JACLINE_VERSION, gitProps.get(PROPS_GIT_BUILD_VERSION));
-    props.put(PROPS_JACLINE_COMMIT, gitProps.get(PROPS_GIT_COMMIT_ID_DESCRIBE));
     try (Writer out = Files.newBufferedWriter(jaclineMetaInfDirectoryPath.resolve(
         "jacline.properties")); //
         BufferedWriter out2 = new BufferedWriter(out) {
@@ -347,7 +410,7 @@ public class JaclineCompileMojo extends AbstractMojo {
           }
         }) {
       out.write("# https://github.com/kohlschutter/jacline\n");
-      props.store(out2, null);
+      jaclineProperties.store(out2, null);
     }
   }
 
@@ -471,8 +534,10 @@ public class JaclineCompileMojo extends AbstractMojo {
       lastModifiedSource = closureCompile(to.getOutputPath(), lastModifiedSource);
     }
 
-    initDownstreamDeps();
-    touchDownstreamProjects(lastModifiedSource);
+    if (eclipse) {
+      initDownstreamDeps();
+      touchDownstreamProjects(lastModifiedSource);
+    }
   }
 
   private Path absolutePath(String path) {
@@ -531,6 +596,8 @@ public class JaclineCompileMojo extends AbstractMojo {
     cs.addSourcesFromClasspath(compileClasspathElements);
 
     Path jaclineWorkDirectoryPath = Path.of(jaclineWorkDirectory);
+    Path jaclineTmpPath = jaclineWorkDirectoryPath.resolve("tmp");
+    Files.createDirectories(jaclineTmpPath);
 
     long now = System.currentTimeMillis();
 
@@ -549,11 +616,12 @@ public class JaclineCompileMojo extends AbstractMojo {
           // copy entrypoints from jar file systems, etc., to a temporary location under target/
           if (!FileSystems.getDefault().equals(generatedEntryPoints.getFileSystem()) && !tmpPaths
               .containsKey(generatedEntryPoints)) {
-            Path tmpPath = Files.createTempFile(jaclineWorkDirectoryPath, "entrypoint", ".tmp.js");
+            Path tmpPath = Files.createTempFile(jaclineTmpPath, "entrypoint", ".tmp.js");
             Files.delete(tmpPath);
             Files.copy(generatedEntryPoints, tmpPath);
             if (log.isInfoEnabled()) {
-              log.info("Using " + tmpPath + " instead of " + generatedEntryPoints.toUri());
+              log.info("Caching external entry point " + generatedEntryPoints.toUri() + " as "
+                  + tmpPath);
             }
             tmpPaths.put(generatedEntryPoints, tmpPath);
             generatedEntryPoints = tmpPath;
@@ -780,7 +848,11 @@ public class JaclineCompileMojo extends AbstractMojo {
 
         Path jaclGeneratedPath = linkedPath.getParent().resolve("target-eclipse/jacline/generated");
         if (!Files.exists(jaclGeneratedPath)) {
-          log.debug("touchDownstreamProjects: not found: " + jaclGeneratedPath);
+          Path jaclGeneratedPath2 = linkedPath.getParent().resolve("target/jacline/generated");
+          if (!Files.exists(jaclGeneratedPath2)) {
+            log.debug("touchDownstreamProjects: not found: " + jaclGeneratedPath + " or "
+                + jaclGeneratedPath2);
+          }
           return;
         }
 

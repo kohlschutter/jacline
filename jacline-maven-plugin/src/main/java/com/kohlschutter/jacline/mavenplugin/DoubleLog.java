@@ -2,11 +2,11 @@ package com.kohlschutter.jacline.mavenplugin;
 
 import org.apache.maven.plugin.logging.Log;
 
-final class SplicedLog implements Log {
+final class DoubleLog implements Log {
   private final Log log1;
   private final Log log2;
 
-  public SplicedLog(Log log, Log log2) {
+  public DoubleLog(Log log, Log log2) {
     this.log1 = log;
     this.log2 = log2;
   }
@@ -102,5 +102,4 @@ final class SplicedLog implements Log {
     log1.error(error);
     log2.error(error);
   }
-
 }
