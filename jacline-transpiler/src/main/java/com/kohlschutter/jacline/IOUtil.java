@@ -18,14 +18,30 @@
 package com.kohlschutter.jacline;
 
 import java.io.IOException;
+import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 
 public final class IOUtil {
   private IOUtil() {
+  }
+
+  /**
+   * Tries to delete a directory; if it's not empty, the call silently returns without deleting.
+   * 
+   * @param dir The directory to delete.
+   * @throws IOException on some other error.
+   */
+  public static void tryDeleteEmptyDirectory(Path dir) throws IOException {
+    try {
+      Files.deleteIfExists(dir);
+    } catch (DirectoryNotEmptyException ignore) {
+      // ignore
+    }
   }
 
   public static void deleteRecursively(Path root) throws IOException {
@@ -54,5 +70,21 @@ public final class IOUtil {
         return FileVisitResult.CONTINUE;
       }
     });
+  }
+
+  /**
+   * Moves a file, replacing any existing file/directory at the target location.
+   * 
+   * @param source The source
+   * @param dest The destination
+   * @throws IOException on error.
+   */
+  public static void moveWithReplace(Path source, Path dest) throws IOException {
+    try {
+      Files.move(source, dest, StandardCopyOption.REPLACE_EXISTING);
+    } catch (DirectoryNotEmptyException e) {
+      IOUtil.deleteRecursively(dest);
+      Files.move(source, dest, StandardCopyOption.REPLACE_EXISTING);
+    }
   }
 }
