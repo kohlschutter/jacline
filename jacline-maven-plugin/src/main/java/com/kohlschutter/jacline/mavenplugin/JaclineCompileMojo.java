@@ -369,15 +369,14 @@ public class JaclineCompileMojo extends AbstractMojo {
 
         @Override
         public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-          if (!includeSourcesInMetaInf && file.getName(file.getNameCount() - 1).toString().endsWith(
-              ".java")) {
+          if (!includeSourcesInMetaInf && IOUtil.filenameEndsWith(file, ".java")) {
             return FileVisitResult.CONTINUE;
           }
 
           Path targetFile = jaclineMetaInfDirectoryPath.resolve(jaclineWorkDirectoryPath.relativize(
               file));
 
-          if (eclipse) {
+          if (eclipse && !IOUtil.filenameEndsWith(file, ".java")) {
             // in Eclipse, we cannot easily inspect target/classes/, so let's keep all generated
             // files in target/jacline
             IOUtil.copyWithReplace(file, targetFile);
@@ -887,6 +886,7 @@ public class JaclineCompileMojo extends AbstractMojo {
         if (mod.compareTo(updatedTime) < 0) {
           log.debug("touching, mod(" + mod + ") < updatedTime(" + updatedTime + "): " + touchPath);
           Files.setLastModifiedTime(touchPath, updatedTime);
+          // Files.setAttribute(touchPath, "lastAccessTime", updatedTime);
         } else {
           // log.debug("not touching, mod(" + mod + ") < updatedTime(" + updatedTime + "): "
           // + touchPath);
