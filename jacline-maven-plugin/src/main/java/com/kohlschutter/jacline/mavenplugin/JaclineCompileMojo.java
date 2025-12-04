@@ -374,8 +374,17 @@ public class JaclineCompileMojo extends AbstractMojo {
             return FileVisitResult.CONTINUE;
           }
 
-          IOUtil.moveWithReplace(file, jaclineMetaInfDirectoryPath.resolve(jaclineWorkDirectoryPath
-              .relativize(file)));
+          Path targetFile = jaclineMetaInfDirectoryPath.resolve(jaclineWorkDirectoryPath.relativize(
+              file));
+
+          if (eclipse) {
+            // in Eclipse, we cannot easily inspect target/classes/, so let's keep all generated
+            // files in target/jacline
+            IOUtil.copyWithReplace(file, targetFile);
+          } else {
+            IOUtil.moveWithReplace(file, targetFile);
+          }
+
           return FileVisitResult.CONTINUE;
         }
 
