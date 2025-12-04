@@ -70,6 +70,8 @@ import org.eclipse.jdt.annotation.NonNull;
 
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
+import com.google.javascript.jscomp.PropertyRenamingPolicy;
+import com.google.javascript.jscomp.VariableRenamingPolicy;
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.CompilerOutput;
 import com.kohlschutter.jacline.IOUtil;
@@ -161,6 +163,9 @@ public class JaclineCompileMojo extends AbstractMojo {
 
   @Parameter(required = true, defaultValue = "jacline-generated.js")
   String outputFile;
+
+  @Parameter(required = true, defaultValue = "true")
+  boolean closureMangleNames;
 
   /**
    * When {@code true}, sourcemap files are created in addition to the JavaScript files.
@@ -700,6 +705,11 @@ public class JaclineCompileMojo extends AbstractMojo {
                 break;
             }
           });
+
+          if (!closureMangleNames) {
+            log.info("Disabling closure variable renaming");
+            opt.setRenamingPolicy(VariableRenamingPolicy.OFF, PropertyRenamingPolicy.OFF);
+          }
         }, outputFile)) {
 
       try (ClosureCompilationResult result = runConfig.compile()) {
