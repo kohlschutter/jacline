@@ -165,7 +165,7 @@ public class JaclineCompileMojo extends AbstractMojo {
   String outputFile;
 
   @Parameter(required = true, defaultValue = "true")
-  boolean closureMangleNames;
+  boolean closureObfuscate;
 
   /**
    * When {@code true}, sourcemap files are created in addition to the JavaScript files.
@@ -715,7 +715,7 @@ public class JaclineCompileMojo extends AbstractMojo {
             }
           });
 
-          if (!closureMangleNames) {
+          if (!closureObfuscate) {
             log.info("Disabling closure variable renaming");
             opt.setRenamingPolicy(VariableRenamingPolicy.OFF, PropertyRenamingPolicy.OFF);
           }
