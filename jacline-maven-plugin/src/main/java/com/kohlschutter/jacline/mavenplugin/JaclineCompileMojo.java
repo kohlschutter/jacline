@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.io.Reader;
 import java.io.Writer;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -84,6 +85,9 @@ import com.kohlschutter.jacline.jscomp.ClosureCompilationResult;
 import com.kohlschutter.jacline.jscomp.ClosureCompiler;
 import com.kohlschutter.jacline.jscomp.ClosureCompilerRun;
 import com.kohlschutter.jacline.jscomp.ClosureCompilerSources;
+import com.kohlschutter.jacline.jscomp.serviceloader.PatchNotifier;
+import com.kohlschutter.jacline.jscomp.serviceloader.ServiceClassInfo;
+import com.kohlschutter.jacline.jscomp.serviceloader.ServiceClassMap;
 
 /**
  * Compiles code with jacline.
@@ -611,9 +615,13 @@ public class JaclineCompileMojo extends AbstractMojo {
 
     Path jaclineWorkDirectoryPath = Path.of(jaclineWorkDirectory);
     Path jaclineTmpPath = jaclineWorkDirectoryPath.resolve("tmp");
+    Path jaclineGeneratedPath = jaclineWorkDirectoryPath.resolve("generated");
     Files.createDirectories(jaclineTmpPath);
+    Files.createDirectories(jaclineGeneratedPath);
 
     long now = System.currentTimeMillis();
+
+    Properties serviceProviders = new Properties();
 
     Map<Path, Path> tmpPaths = new HashMap<>();
     for (Path p : cs.getOtherFiles()) {
@@ -621,9 +629,10 @@ public class JaclineCompileMojo extends AbstractMojo {
       if (p.endsWith("META-INF/jacline") || (p.endsWith("jacline/generated") && (isSubDir =
           true))) {
 
+        Path fileGeneratedPath = isSubDir ? p : p.resolve("generated");
+
         // META-INF/jacline/generated/generated-entrypoints.js
-        Path generatedEntryPoints = isSubDir ? p.resolve("generated-entrypoints.js") : p.resolve(
-            "generated/generated-entrypoints.js");
+        Path generatedEntryPoints = fileGeneratedPath.resolve("generated-entrypoints.js");
         if (Files.exists(generatedEntryPoints)) {
           haveEntryPoints = true;
 
@@ -645,6 +654,15 @@ public class JaclineCompileMojo extends AbstractMojo {
             if (log.isInfoEnabled()) {
               log.info("Adding generated entry points: " + generatedEntryPoints.toUri());
             }
+          }
+        }
+
+        Path serviceProvidersPath = fileGeneratedPath.resolve("service-providers.properties");
+        if (Files.exists(serviceProvidersPath)) {
+          try (Reader in = Files.newBufferedReader(serviceProvidersPath)) {
+            Properties props = new Properties();
+            props.load(in);
+            serviceProviders.putAll(props);
           }
         }
 
@@ -677,13 +695,15 @@ public class JaclineCompileMojo extends AbstractMojo {
       return lastModified;
     }
 
+    ServiceClassMap scm = mapServiceProviders(serviceProviders);
+
     Path sourceMapOutputPath = createSourceMaps ? toPathIfPossible(sourceMapOutputDirectory) : null;
     if (sourceMapOutputPath != null) {
       log.info("Writing sourcemap files to: " + sourceMapOutputPath);
     }
 
-    URI urlBaseUri = new URI(this.urlBase.endsWith("/") ? this.urlBase : this.urlBase + "/");
-    log.info("Using URL base: " + urlBaseUri);
+    URI baseUri = new URI(this.urlBase.endsWith("/") ? this.urlBase : this.urlBase + "/");
+    log.info("Using URL base: " + baseUri);
 
     URI sourceMapPrefixUri = new URI(this.sourceMapUrlPrefix);
     log.info("Using sourcemap prefix: " + sourceMapPrefixUri);
@@ -692,33 +712,39 @@ public class JaclineCompileMojo extends AbstractMojo {
       log.info("Adding entrypoint: " + p);
     }
 
+    PatchNotifier scmCallback = (originalFile, newFile, service, providers) -> {
+      log.info("Patching ServiceLoader service " + service + "; original file:" + originalFile
+          + "; new file: " + newFile + "; providers: " + providers);
+    };
+
     Problems problems = new Problems();
-    try (ClosureCompiler jc = new ClosureCompiler(sourceMapOutputPath, urlBaseUri,
-        sourceMapPrefixUri); ClosureCompilerRun runConfig = jc.prepareCompile(cs, true, (opt) -> {
-          opt.setErrorHandler((level, error) -> {
-            String msg = error.toString();
+    try (ClosureCompiler jc = new ClosureCompiler(sourceMapOutputPath, baseUri, sourceMapPrefixUri);
+        ClosureCompilerRun runConfig = jc.prepareCompile(cs, jaclineGeneratedPath, scm, scmCallback,
+            true, (opt) -> {
+              opt.setErrorHandler((level, error) -> {
+                String msg = error.toString();
 
-            switch (level) {
-              case ERROR:
-                log.error(msg);
-                problems.addError(msg);
-                break;
-              case WARNING:
-                log.warn(msg);
-                problems.addWarning(msg);
-                break;
-              default:
-                log.info(msg);
-                problems.addInfoMessage(msg);
-                break;
-            }
-          });
+                switch (level) {
+                  case ERROR:
+                    log.error(msg);
+                    problems.addError(msg);
+                    break;
+                  case WARNING:
+                    log.warn(msg);
+                    problems.addWarning(msg);
+                    break;
+                  default:
+                    log.info(msg);
+                    problems.addInfoMessage(msg);
+                    break;
+                }
+              });
 
-          if (!closureObfuscate) {
-            log.info("Disabling closure variable renaming");
-            opt.setRenamingPolicy(VariableRenamingPolicy.OFF, PropertyRenamingPolicy.OFF);
-          }
-        }, outputFile)) {
+              if (!closureObfuscate) {
+                log.info("Disabling closure variable renaming");
+                opt.setRenamingPolicy(VariableRenamingPolicy.OFF, PropertyRenamingPolicy.OFF);
+              }
+            }, outputFile)) {
 
       try (ClosureCompilationResult result = runConfig.compile()) {
         File outFile = absolutePath(outputFile, outputFileDir).toFile();
@@ -754,6 +780,27 @@ public class JaclineCompileMojo extends AbstractMojo {
     }
 
     return lastModified;
+  }
+
+  private ServiceClassMap mapServiceProviders(Properties serviceProviders) {
+    log.info("Classes with @JsServiceProvider annotation: " + serviceProviders.size());
+    ServiceClassMap scm = new ServiceClassMap();
+    for (Map.Entry<Object, Object> en : serviceProviders.entrySet()) {
+      String provider = (String) en.getKey();
+      for (String service : ((String) en.getValue()).split(",")) {
+        service = service.trim();
+        if (service.isEmpty()) {
+          continue;
+        }
+        scm.register(service, provider);
+      }
+    }
+    Map<String, ServiceClassInfo> serviceToProvider = scm.getServiceToProvider();
+    for (Map.Entry<String, ServiceClassInfo> en : serviceToProvider.entrySet()) {
+      log.info("ServiceLoader service " + en.getKey() + " has the following providers: " + en
+          .getValue().getProviders());
+    }
+    return scm;
   }
 
   private Path toPathIfPossible(String path) {
