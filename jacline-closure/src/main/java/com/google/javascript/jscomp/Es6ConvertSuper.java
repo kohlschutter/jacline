@@ -1,0 +1,279 @@
+/*
+ * Copyright 2014 The Closure Compiler Authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.google.javascript.jscomp;
+
+import static com.google.common.base.Preconditions.checkState;
+import static com.google.javascript.jscomp.AstFactory.type;
+import static com.google.javascript.jscomp.TranspilationUtil.CANNOT_CONVERT_YET;
+
+import com.google.javascript.jscomp.colors.StandardColors;
+import com.google.javascript.jscomp.parsing.parser.FeatureSet;
+import com.google.javascript.jscomp.parsing.parser.FeatureSet.Feature;
+import com.google.javascript.rhino.IR;
+import com.google.javascript.rhino.JSDocInfo;
+import com.google.javascript.rhino.Node;
+
+/**
+ * Converts {@code super.method()} calls and adds constructors to any classes that lack them.
+ *
+ * <p>This has to run before the main {@link Es6RewriteClass} pass. The super() constructor calls
+ * are not converted here, but rather in {@link Es6ConvertSuperConstructorCalls}, which runs later.
+ */
+public final class Es6ConvertSuper extends NodeTraversal.AbstractPostOrderCallback
+    implements CompilerPass {
+  private final AbstractCompiler compiler;
+  private final AstFactory astFactory;
+  private final SynthesizeExplicitConstructors constructorSynthesizer;
+  // TODO(b/329447979): Run this pass only for scripts containing Feature.SUPER and not for scripts
+  // containing just Feature.CLASSES?
+  private static final FeatureSet FEATURES_TO_RUN_FOR =
+      FeatureSet.BARE_MINIMUM.with(Feature.SUPER, Feature.CLASSES);
+
+  public Es6ConvertSuper(AbstractCompiler compiler) {
+    this.compiler = compiler;
+    this.astFactory = compiler.createAstFactory();
+    this.constructorSynthesizer = new SynthesizeExplicitConstructors(compiler);
+  }
+
+  @Override
+  public void visit(NodeTraversal t, Node n, Node parent) {
+    if (n.isClass()) {
+      constructorSynthesizer.synthesizeClassConstructorIfMissing(t, n);
+    } else if (n.isSuper()) {
+      visitSuper(n, parent);
+    }
+  }
+
+  private boolean isInterface(Node classNode) {
+    JSDocInfo classJsDocInfo = NodeUtil.getBestJSDocInfo(classNode);
+    return classJsDocInfo != null && classJsDocInfo.isInterface();
+  }
+
+  private void visitSuper(Node node, Node parent) {
+    checkState(node.isSuper());
+    Node exprRoot = node;
+
+    if (exprRoot.getParent().isGetElem() || exprRoot.getParent().isGetProp()) {
+      exprRoot = exprRoot.getParent();
+    }
+
+    Node enclosingMemberDef =
+        NodeUtil.getEnclosingNode(
+            exprRoot,
+            (Node n) ->
+                switch (n.getToken()) {
+                  case MEMBER_FUNCTION_DEF, GETTER_DEF, SETTER_DEF, COMPUTED_PROP -> true;
+                  default -> false;
+                });
+
+    if (parent.isCall()) {
+      // super(...)
+      visitSuperCall(node, parent, enclosingMemberDef);
+    } else if (parent.isGetProp() || parent.isGetElem()) {
+      if (parent.getFirstChild() == node) {
+        if (parent.getParent().isCall() && NodeUtil.isInvocationTarget(parent)) {
+          // super.something(...) or super['something'](..)
+          visitSuperPropertyCall(node, parent, enclosingMemberDef);
+        } else {
+          // super.something or super['something']
+          visitSuperPropertyAccess(node, parent, enclosingMemberDef);
+        }
+      } else {
+        // super.something used in some other way
+        compiler.report(
+            JSError.make(
+                node,
+                CANNOT_CONVERT_YET,
+                "Only calls to super or to a method of super are supported."));
+      }
+    } else if (parent.isNew()) {
+      throw new IllegalStateException("This should never happen. Did Es6SuperCheck fail to run?");
+    } else {
+      // some other use of super we don't support yet
+      compiler.report(
+          JSError.make(
+              node,
+              CANNOT_CONVERT_YET,
+              "Only calls to super or to a method of super are supported."));
+    }
+  }
+
+  private void visitSuperCall(Node node, Node parent, Node enclosingMemberDef) {
+    checkState(parent.isCall(), parent);
+    checkState(node.isSuper(), node);
+
+    Node clazz = NodeUtil.getEnclosingClass(node);
+    Node superName = clazz.getSecondChild();
+    if (!superName.isQualifiedName()) {
+      // This will be reported as an error in Es6ToEs3Converter.
+      return;
+    }
+
+    if (NodeUtil.isEs6ConstructorMemberFunctionDef(enclosingMemberDef)) {
+      // Calls to super() constructors will be transpiled by Es6ConvertSuperConstructorCalls later.
+      if (node.isFromExterns() || isInterface(clazz)) {
+        // If a class is defined in an externs file or as an interface, it's only a stub, not an
+        // implementation that should be instantiated.
+        // A call to super() shouldn't actually exist for these cases and is problematic to
+        // transpile, so just drop it.
+        Node enclosingStatement = NodeUtil.getEnclosingStatement(node);
+        Node enclosingStatementParent = enclosingStatement.getParent();
+        enclosingStatement.detach();
+        compiler.reportChangeToEnclosingScope(enclosingStatementParent);
+      }
+      // Calls to super() constructors will be transpiled by Es6ConvertSuperConstructorCalls
+      // later.
+      return;
+    } else {
+      // super can only be directly called in a constructor
+      throw new IllegalStateException("This should never happen. Did Es6SuperCheck fail to run?");
+    }
+  }
+
+  private void visitSuperPropertyCall(Node node, Node parent, Node enclosingMemberDef) {
+    checkState(parent.isGetProp() || parent.isGetElem(), parent);
+    checkState(node.isSuper(), node);
+    Node grandparent = parent.getParent();
+    checkState(grandparent.isCall());
+
+    Node clazz = NodeUtil.getEnclosingClass(node);
+    Node superName = clazz.getSecondChild();
+    if (!superName.isQualifiedName()) {
+      // This will be reported as an error in Es6ToEs3Converter.
+      return;
+    }
+
+    Node callTarget = parent;
+    if (enclosingMemberDef.isStaticMember()) {
+      Node expandedSuper = superName.cloneTree().srcrefTree(node);
+      expandedSuper.setOriginalName("super");
+      node.replaceWith(expandedSuper);
+      callTarget = astFactory.createGetPropWithUnknownType(callTarget.detach(), "call");
+      grandparent.addChildToFront(callTarget);
+      Node thisNode = astFactory.createThis(type(clazz));
+      thisNode.makeNonIndexable(); // no direct correlation with original source
+      thisNode.insertAfter(callTarget);
+      grandparent.srcrefTreeIfMissing(parent);
+
+      // We added a `this` reference to the call. We need to make sure this member is not collapsed.
+      ensureNoCollapseOnStaticMemberDef(enclosingMemberDef);
+    } else {
+      // Replace super node to give
+      // super.method(...) -> SuperClass.prototype.method(...)
+      Node expandedSuper = astFactory.createPrototypeAccess(superName.cloneTree()).srcrefTree(node);
+      expandedSuper.setOriginalName("super");
+      node.replaceWith(expandedSuper);
+      // Set the 'this' object correctly for the call
+      // SuperClass.prototype.method(...) -> SuperClass.prototype.method.call(this, ...)
+      callTarget = astFactory.createGetPropWithUnknownType(callTarget.detach(), "call");
+      grandparent.addChildToFront(callTarget);
+      Node thisNode = astFactory.createThisForEs6Class(clazz);
+      thisNode.makeNonIndexable(); // no direct correlation with original source
+      thisNode.insertAfter(callTarget);
+      grandparent.putBooleanProp(Node.FREE_CALL, false);
+      grandparent.srcrefTreeIfMissing(parent);
+    }
+    compiler.reportChangeToEnclosingScope(grandparent);
+  }
+
+  private void visitSuperPropertyAccess(Node node, Node parent, Node enclosingMemberDef) {
+    checkState(parent.isGetProp() || parent.isGetElem(), parent);
+    checkState(node.isSuper(), node);
+    Node grandparent = parent.getParent();
+
+    if (NodeUtil.isLValue(parent)) {
+      // We don't support assigning to a super property
+      compiler.report(JSError.make(parent, CANNOT_CONVERT_YET, "assigning to a super property"));
+      return;
+    }
+
+    Node clazz = NodeUtil.getEnclosingClass(node);
+    Node superName = clazz.getSecondChild();
+    if (!superName.isQualifiedName()) {
+      // This will be reported as an error in Es6ToEs3Converter.
+      return;
+    }
+
+    Node newProp;
+    if (enclosingMemberDef.isStaticMember()) {
+      // super.prop -> SuperClass.prop
+      newProp = superName.cloneTree().srcrefTree(node);
+    } else {
+      // super.prop -> SuperClass.prototype.prop
+      newProp = astFactory.createPrototypeAccess(superName.cloneTree()).srcrefTree(node);
+    }
+
+    if (parent.isGetProp()
+        && compiler.getAccessorSummary().getKind(parent.getString()).hasGetter()) {
+      // Rewrites
+      //   super.x
+      // as
+      //   Reflect.get(super, JSCompiler_renameProperty('x', ParentClass), this)
+      Node superPlaceholder = IR.name("sp"); // No need for type info as this will be replaced.
+
+      Node reflectGetCall =
+          astFactory
+              .createCall(
+                  astFactory.createGetPropWithUnknownType(
+                      astFactory.createConstantName("Reflect", type(StandardColors.UNKNOWN)),
+                      "get"),
+                  type(parent),
+                  superPlaceholder,
+                  parent.isGetProp()
+                      ? astFactory.createCall(
+                          astFactory.createName(
+                              NodeUtil.JSC_PROPERTY_NAME_FN, type(StandardColors.UNKNOWN)),
+                          type(StandardColors.STRING),
+                          astFactory.createString(parent.getString()),
+                          superName.cloneTree().srcrefTree(node))
+                      :
+                      // For getElem, we just use the accessor value in the Reflect.get call.
+                      node.getNext().detach(),
+                  astFactory.createThis(type(clazz)))
+              .srcrefTreeIfMissing(parent);
+
+      // Replace the getProp/getElem with the Reflect.get call.
+      parent.replaceWith(reflectGetCall);
+      // Swap in the `n` (super) where it goes in the Reflect.get call.
+      superPlaceholder.replaceWith(node.detach());
+
+      // We added a `this` reference to the call. We need to make sure this member is not collapsed.
+      ensureNoCollapseOnStaticMemberDef(enclosingMemberDef);
+    }
+
+    node.replaceWith(newProp);
+    newProp.setOriginalName("super");
+
+    compiler.reportChangeToEnclosingScope(grandparent);
+  }
+
+  private void ensureNoCollapseOnStaticMemberDef(Node memberDef) {
+    if (!memberDef.isStaticMember()) {
+      return;
+    }
+    JSDocInfo.Builder builder = JSDocInfo.Builder.maybeCopyFrom(memberDef.getJSDocInfo());
+    if (builder.recordNoCollapse()) {
+      memberDef.setJSDocInfo(builder.build());
+    }
+  }
+
+  @Override
+  public void process(Node externs, Node root) {
+    // Might need to synthesize constructors for ambient classes in .d.ts externs
+    TranspilationPasses.processTranspile(compiler, externs, FEATURES_TO_RUN_FOR, this);
+    TranspilationPasses.processTranspile(compiler, root, FEATURES_TO_RUN_FOR, this);
+  }
+}

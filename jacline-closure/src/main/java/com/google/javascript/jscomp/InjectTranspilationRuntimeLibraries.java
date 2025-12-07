@@ -1,0 +1,175 @@
+/*
+ * Copyright 2014 The Closure Compiler Authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.google.javascript.jscomp;
+
+import com.google.javascript.jscomp.js.RuntimeJsLibManager;
+import com.google.javascript.jscomp.parsing.parser.FeatureSet;
+import com.google.javascript.jscomp.parsing.parser.FeatureSet.Feature;
+import com.google.javascript.rhino.Node;
+
+/**
+ * Injects JS library code that may be needed by the transpiled form of the input source code.
+ *
+ * <p>The intention here is to add anything that could be needed and rely on {@link
+ * RemoveUnusedCode} to remove the parts that don't end up getting used. This pass should run before
+ * type checking so the type checking code can add type information to the injected JavaScript for
+ * checking and optimization purposes.
+ *
+ * <p>TODO(b/120486392): consider merging this pass with {@link InjectRuntimeLibraries} and {@link
+ * RewritePolyfills}.
+ */
+public final class InjectTranspilationRuntimeLibraries implements CompilerPass {
+  private final AbstractCompiler compiler;
+
+  private final RuntimeJsLibManager runtimeLibs;
+  private boolean injectedClassExtendsLibraries;
+
+  public InjectTranspilationRuntimeLibraries(AbstractCompiler compiler) {
+    this.compiler = compiler;
+    this.runtimeLibs = compiler.getRuntimeJsLibManager();
+    this.injectedClassExtendsLibraries = false;
+  }
+
+  @Override
+  public void process(Node externs, Node root) {
+    FeatureSet used = FeatureSet.ES3;
+    for (Node script = root.getFirstChild(); script != null; script = script.getNext()) {
+      used = used.with(getScriptFeatures(script));
+    }
+
+    FeatureSet outputFeatures = compiler.getOptions().getOutputFeatureSet();
+
+    // Check for references to class `extends` clauses
+    if (!outputFeatures.contains(used)) {
+      NodeUtil.visitPostOrder(
+          root, this::checkForClassExtends, (unused) -> !this.injectedClassExtendsLibraries);
+    }
+
+    FeatureSet mustBeCompiledAway = used.without(outputFeatures);
+
+    // We will need these runtime methods when we transpile, but we want the runtime
+    // functions to be have JSType applied to it by the type inferrence.
+
+    if (mustBeCompiledAway.contains(Feature.TEMPLATE_LITERALS)) {
+      runtimeLibs.injectLibForField("$jscomp.createTemplateTagFirstArg");
+      runtimeLibs.injectLibForField("$jscomp.createTemplateTagFirstArgWithRaw");
+    }
+
+    if (mustBeCompiledAway.contains(Feature.FOR_OF)
+        || mustBeCompiledAway.contains(Feature.ARRAY_DESTRUCTURING)
+        || mustBeCompiledAway.contains(Feature.OBJECT_PATTERN_REST)) {
+      // `makeIterator` isn't needed directly for `OBJECT_PATTERN_REST`, but when we transpile
+      // a destructuring case that contains it, we transpile the entire destructured assignment,
+      // which may also include `ARRAY_DESTRUCTURING`.
+      runtimeLibs.injectLibForField("$jscomp.makeIterator");
+    }
+
+    if (mustBeCompiledAway.contains(Feature.ARRAY_PATTERN_REST)) {
+      runtimeLibs.injectLibForField("$jscomp.arrayFromIterator");
+    }
+
+    if (mustBeCompiledAway.contains(Feature.SPREAD_EXPRESSIONS)) {
+      // We must automatically generate the default constructor for descendent classes,
+      // and those must call super(...arguments), so we end up injecting our own spread
+      // expressions for such cases.
+      runtimeLibs.injectLibForField("$jscomp.arrayFromIterable");
+    }
+
+    if ((mustBeCompiledAway.contains(Feature.OBJECT_LITERALS_WITH_SPREAD)
+            || mustBeCompiledAway.contains(Feature.OBJECT_PATTERN_REST))
+        && !outputFeatures.contains(FeatureSet.ES2015)) {
+      // We need `Object.assign` to transpile `obj = {a, ...rest};` or `const {a, ...rest} = obj;`,
+      // but the output language level doesn't indicate that it is guaranteed to be present, so
+      // we'll include our polyfill.
+      // Use "ensureLibraryInjected" instead of "injectLibForField" because we're injecting the
+      // polyfill
+      // for Object.assign, which is thus not an actual $jscomp.* method we can lookup.
+      runtimeLibs.ensureLibraryInjected("es6/object/assign", /* force= */ false);
+    }
+
+    if (mustBeCompiledAway.contains(Feature.CLASS_GETTER_SETTER)) {
+      runtimeLibs.injectLibForField("$jscomp.global");
+    }
+
+    if (mustBeCompiledAway.contains(Feature.GENERATORS)) {
+      runtimeLibs.injectLibForField("$jscomp.generator.createGenerator");
+      runtimeLibs.injectLibForField("$jscomp.generator.Context");
+    }
+
+    if (mustBeCompiledAway.contains(Feature.ASYNC_FUNCTIONS)) {
+      runtimeLibs.injectLibForField("$jscomp.asyncExecutePromiseGeneratorFunction");
+      if (!outputFeatures.contains(Feature.GENERATORS)) {
+        runtimeLibs.injectLibForField("$jscomp.asyncExecutePromiseGeneratorProgram");
+        runtimeLibs.injectLibForField("$jscomp.generator.Context");
+      }
+    }
+
+    if (mustBeCompiledAway.contains(Feature.ASYNC_GENERATORS)) {
+      runtimeLibs.injectLibForField("$jscomp.asyncExecutePromiseGeneratorFunction");
+      runtimeLibs.injectLibForField("$jscomp.AsyncGeneratorWrapper");
+      runtimeLibs.injectLibForField("$jscomp.AsyncGeneratorWrapper$ActionRecord");
+      runtimeLibs.injectLibForField("$jscomp.AsyncGeneratorWrapper$ActionEnum.AWAIT_VALUE");
+      runtimeLibs.injectLibForField("$jscomp.AsyncGeneratorWrapper$ActionEnum.YIELD_VALUE");
+      runtimeLibs.injectLibForField("$jscomp.AsyncGeneratorWrapper$ActionEnum.YIELD_STAR");
+      if (!outputFeatures.contains(Feature.GENERATORS)) {
+        runtimeLibs.injectLibForField("$jscomp.asyncExecutePromiseGeneratorProgram");
+        runtimeLibs.injectLibForField("$jscomp.generator.Context");
+      }
+    }
+
+    if (mustBeCompiledAway.contains(Feature.FOR_AWAIT_OF)) {
+      runtimeLibs.injectLibForField("$jscomp.makeAsyncIterator");
+    }
+
+    if (mustBeCompiledAway.contains(Feature.REST_PARAMETERS)) {
+      runtimeLibs.injectLibForField("$jscomp.getRestArguments");
+    }
+
+    if (compiler.getOptions().getInstrumentAsyncContext()
+        // NOTE: async functions only matter for output features, since we don't bother
+        // instrumenting them if they're being transpiled away.  Generators are relevant
+        // regardless of whether they're transpiled or not.
+        && (outputFeatures.contains(Feature.ASYNC_FUNCTIONS)
+            || used.contains(Feature.GENERATORS)
+            || used.contains(Feature.ASYNC_GENERATORS))) {
+      runtimeLibs.injectLibForField("$jscomp.asyncContextStart");
+    }
+  }
+
+  private static FeatureSet getScriptFeatures(Node script) {
+    FeatureSet features = NodeUtil.getFeatureSetOfScript(script);
+    return features != null ? features : FeatureSet.ES3;
+  }
+
+  private void checkForClassExtends(Node n) {
+    if (!n.isClass()) {
+      return;
+    }
+    // This is technically an optimization - we could just always inject these when we see
+    // Feature.CLASSES. That's fine for real code, but just makes some unit testing
+    // harder because more runtime libraries are injected.
+    Node superclass = n.getSecondChild();
+    if (!injectedClassExtendsLibraries && !superclass.isEmpty()) {
+      runtimeLibs.injectLibForField("$jscomp.construct");
+      runtimeLibs.injectLibForField("$jscomp.inherits");
+      // We must automatically generate the default constructor for descendent classes,
+      // and those must call super(...arguments), so we end up injecting our own spread
+      // expressions for such cases.
+      runtimeLibs.injectLibForField("$jscomp.arrayFromIterable");
+      injectedClassExtendsLibraries = true;
+    }
+  }
+}

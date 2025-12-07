@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package jscomp;
+
+option java_package = "com.google.javascript.jscomp.serialization";
+option java_multiple_files = true;
+
+message SourceFilePool {
+  // pool of all locations for AstNodes. Needed because some AstNodes may have
+  // a location not equal to their parent if synthesized by JSCompiler.
+  repeated SourceFileProto source_file = 1;
+}
+
+message SourceFileProto {
+  // required
+  // does not need to correspond to a path on disk
+  string filename = 1;
+
+  // how to read the file contents
+  oneof loader {
+    string preloaded_contents = 2;
+    FileOnDisk file_on_disk = 3;
+    ZipEntryOnDisk zip_entry = 4;
+    // If true, this SourceFile is an empty stub file that does not have any
+    // JS content
+    bool stub_file = 9;
+  }
+
+  // required
+  SourceKind source_kind = 5;
+
+  // required
+  // should be determined by the compiler's  jsdoc annotation scanning.
+  bool is_closure_unaware_code = 8;
+
+  // Optional code statistics used for metrics recording. Setting these to "0"
+  // indicates they were not computed. Other values are offset by 1 to
+  // distinguish between the "0" default value and a empty file with 0
+  // lines. For example, "num_lines_plus_one = 3" indicates a file with 2 lines.
+  uint32 num_bytes_plus_one = 6;
+  uint32 num_lines_plus_one = 7;
+
+  message FileOnDisk {
+    // optional; if empty then JavascriptFile::filename is the default path
+    string actual_path = 1;
+    // charset name as defined by java.nio.charset.CharSet
+    // optional; if empty than UTF_8 is the charset
+    string charset = 2;
+  }
+
+  message ZipEntryOnDisk {
+    // path to zip file on disk
+    string zip_path = 1;
+    // entry in zip file
+    string entry_name = 2;
+    // charset name as defined by java.nio.charset.CharSet
+    string charset = 3;
+  }
+
+  enum SourceKind {
+    NOT_SPECIFIED = 0;
+    EXTERN = 1;
+    CODE = 2;
+  }
+}

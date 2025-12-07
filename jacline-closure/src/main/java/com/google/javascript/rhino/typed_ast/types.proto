@@ -1,0 +1,136 @@
+syntax = "proto3";
+
+package jscomp;
+
+option java_package = "com.google.javascript.jscomp.serialization";
+option java_multiple_files = true;
+
+// All of these proto definitions are in flux.  Please don't depend on them.
+
+/**
+ * Holds all user-defined types in this program plus some additional debugging
+ * information
+ */
+message TypePool {
+  // List of user-defined types, excluding PrimitiveTypes.
+  // Reference a TypeProto in this list with an int32 pointer equal to its index
+  // + the # of PrimitiveTypes
+  repeated TypeProto type = 1;
+  // edges used for Closure Compiler property disambiguation/ambiguation
+  repeated SubtypingEdge disambiguation_edges = 2;
+
+  DebugInfo debug_info = 3;
+  message DebugInfo {
+    /**
+     * Details of type mismatches, which may not be errors.
+     *
+     * Mismatches make the directly involved colors, and some related colors,
+     * invalidating; therefore many colors may be present. Unions are unpacked.
+     */
+    repeated Mismatch mismatch = 1;
+    message Mismatch {
+      string source_ref = 1;
+      repeated int32 involved_color = 2;
+    }
+  }
+}
+
+message SubtypingEdge {
+  int32 subtype = 1;
+  int32 supertype = 2;
+}
+
+message UnionTypeProto {
+  repeated int32 union_member = 1;
+}
+
+message ObjectTypeProto {
+  // TODO(lharker): consider storing the bool fields as a bitmask
+
+  // If true, type-based property optimizations will back off optimizations on
+  // properties related to this type.
+  bool is_invalidating = 2;
+  bytes uuid = 3;
+  // If true, type-based property optimizations will treat this type as if it
+  // were an extern and never rename its properties. Unlike "is_invalidating"
+  // types, optimizations may still rename other references to properties
+  // appearing on this type and will not completely back off optimizations.
+  bool properties_keep_original_name = 4;
+
+  // The instance types of a constructor
+  repeated int32 instance_type = 5;
+  // If this is a constructor, its .prototype field (not the implicit prototype)
+  repeated int32 prototype = 6;
+  // Whether this was declared as either a class constructor or Closure ES5-
+  // style constructor.
+  bool marked_constructor = 7;
+  // Property names declared on this object. Used for property disambiguation.
+  // Represented as offsets into a StringPool
+  repeated int32 own_property = 8;
+
+  // Identifies assertion functions with special type-system handling that
+  // should be removed when --remove_closure_asserts is enabled.
+  // TODO(b/180648361): remove this option
+  bool closure_assert = 9;
+
+  // Optional, doesn't contribute to type equality
+  // TODO(b/232106136): remove the DebugInfo field & message
+  DebugInfo debug_info = 15;
+  message DebugInfo {
+    // offsets into the associated StringPool
+    repeated int32 typename_pointer = 1;
+  }
+}
+
+/**
+ * A single user-defined type.
+ *
+ * Equivalent to a com.google.javascript.jscomp.colors.Color.
+ */
+message TypeProto {
+  oneof kind {
+    ObjectTypeProto object = 2;
+    UnionTypeProto union = 4;
+  }
+}
+
+/*
+ * Types that exist a priori in the type system and have no TypeProto
+ * representation.
+ *
+ * This set includes the JS primitives (string, number) and the type-system
+ * primitives UNKNOWN_TYPE and TOP_OBJECT_TYPE.
+ *
+ * To reference a PrimitiveType in an int32 type pointer, use the numeric
+ * value of the NativeType.
+ *
+ * IMPORTANT: to simplify the PrimitiveType => int32 pointer mapping, the
+ * compiler requires that the numeric values of this enum are sequential. Do not
+ * skip numbers. This is also checked inside
+ * jscomp.serialization.JSTypeReconserializer.
+ */
+enum PrimitiveType {
+  // Type-system only type: The Closure '*' and '?', or TS 'any' and 'unknown'
+  // or the bottom type. (For the purposes of optimization, all these types may
+  // be treated identically)
+  UNKNOWN_TYPE = 0;
+
+  // JS primitive types
+  BOOLEAN_TYPE = 1;
+  STRING_TYPE = 2;
+  NUMBER_TYPE = 3;
+  // Optimizations treat null and void identically
+  NULL_OR_VOID_TYPE = 4;
+  SYMBOL_TYPE = 5;
+  BIGINT_TYPE = 6;
+
+  // Top object type (supertype of all objects and invalidating). Corresponds to
+  // the TS "{}" type.
+  TOP_OBJECT = 7;
+}
+
+// Used for testing only and possibly only temporary. Wraps type pools from
+// different compliations into a single message.
+message TypePoolList {
+  repeated TypePool type_pool = 1;
+}

@@ -1,0 +1,79 @@
+syntax = "proto2";
+
+package third_party.java_src.jscomp.java.com.google.javascript.jscomp.instrumentation.reporter.proto;
+
+option java_package = "com.google.javascript.jscomp.instrumentation.reporter.proto";
+option java_multiple_files = true;
+
+// Protos in this file represent data collected from JS binaries that
+// were instrumented using production:
+// https://github.com/google/closure-compiler/wiki/Production-instrumentation
+// To construct reports use ReportDecoder.java class, see example in that file.
+
+// Single point that has been instrumented. For example it can be a function
+// or a conditional branch (if, switch) in a function.
+//
+// Next tag: 7
+message InstrumentationPoint {
+  enum Type {
+    FUNCTION = 1;
+    BRANCH = 2;
+    BRANCH_DEFAULT = 3;
+  }
+
+  optional Type type = 1;
+
+  optional string file_name = 2;
+
+  optional string function_name = 3;
+
+  optional int32 line_number = 4;
+
+  optional int32 column_number = 5;
+
+  reserved 6;
+}
+
+// Stats for the given point.
+//
+// Next tag: 4
+message InstrumentationPointStats {
+  optional InstrumentationPoint point = 1;
+
+  // How many times given point was executed. Depending on context it might be
+  // how many times the point was executed during a single page session (single
+  // report) or across merged reports.
+  optional int64 times_executed = 2;
+
+  // Enum that represents whether a certain instrumentation point is present in
+  // compiled and optimized JS file.
+  enum Presence {
+    PRESENCE_UNKNOWN = 0;
+
+    // Instrumentation point is present in the optimized JS file.
+    PRESENT = 1;
+
+    // Instrumentation point is missing from the optimized JS file. The compiler
+    // deemed that that corresponding code can never be executed.
+    STATICALLY_REMOVED = 2;
+  }
+
+  // Indicates whether given point is present in the optimized code or was
+  // statically removed by the compiler.
+  optional Presence point_presence = 3;
+}
+
+// Next tag: 3
+message FileProfile {
+  optional string file_name = 1;
+
+  repeated InstrumentationPointStats instrumentation_points_stats = 2;
+}
+
+// Report showing usage information for a JS binary. For convenience all
+// instrumentation points are grouped by file.
+//
+// Next tag: 2
+message ReportProfile {
+  repeated FileProfile file_profile = 1;
+}
