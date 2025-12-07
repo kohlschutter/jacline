@@ -1,0 +1,27 @@
+commit d38a0ad0bc8a78a42cc24bed36bfe89c88b16155
+Author: Christian Kohlschütter <christian@kohlschutter.com>
+Date:   Sun Dec 7 16:44:28 2025 +0100
+
+    jrejs: jre.js: Use {} instead of Object.create(null)
+    
+    ... for creating the system properties object.
+    
+    This removes an unncessary "Object.create(null);" call in the final
+    output that closure-compiler apparently cannot remove.
+    
+    According to some blogs, using {} seems to be faster, too, so let's give
+    it a try.
+
+diff --git a/jacline-jrejs/src/main/jacline/java/lang/jre.js b/jacline-jrejs/src/main/jacline/java/lang/jre.js
+index 238827d..b3a47d7 100644
+--- a/jacline-jrejs/src/main/jacline/java/lang/jre.js
++++ b/jacline-jrejs/src/main/jacline/java/lang/jre.js
+@@ -21,7 +21,7 @@
+ goog.module('jre');
+ 
+ /** @private @const {!Object<string, *>} */
+-const systemProperties = Object.create(null);
++const systemProperties = {};
+ 
+ /**
+  * Adds a system property connected to goog.define.
