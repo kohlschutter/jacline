@@ -21,7 +21,7 @@
 goog.module('jre');
 
 /** @private @const {!Object<string, *>} */
-const systemProperties = Object.create(null);
+const systemProperties = {};
 
 /**
  * Adds a system property connected to goog.define.
