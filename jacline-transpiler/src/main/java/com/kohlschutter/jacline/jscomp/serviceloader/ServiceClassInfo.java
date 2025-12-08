@@ -78,6 +78,7 @@ public final class ServiceClassInfo {
             skip = true;
           } else if (l.startsWith(JACLINE_GENERATED_END)) {
             skip = false;
+            continue;
           }
           if (skip) {
             continue;

@@ -176,18 +176,23 @@ public class ClosureCompiler implements Closeable {
 
           for (Map.Entry<String, ServiceClassInfo> sciMapEn : sciMap.entrySet()) {
             ServiceClassInfo sci = sciMapEn.getValue();
-            if (sci.isCovered()) {
-              continue;
-            }
             String serviceName = sciMapEn.getKey();
 
             String expectedLine = "goog.module('" + serviceName + "');";
             if (firstLine.equals(expectedLine)) {
+              // false positive match
+              continue;
+            }
+
+            // There can be more than one instance of the patched original; remove all of them
+            // but patch only the first (the content is assumed identical except for the added
+            // patched section).
+            if (!sci.isCovered()) {
               Path patchedPath = sci.patch(candidateSourceFile, generatedCodeOutputPath, callback);
-              Objects.requireNonNull(filesMap.remove(candidateSourceFile),
-                  "file map inconsistency");
               addSourceFile(patchedPath, filesMap);
             }
+
+            Objects.requireNonNull(filesMap.remove(candidateSourceFile), "file map inconsistency");
           }
         }
       }
