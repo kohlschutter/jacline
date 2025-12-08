@@ -87,7 +87,6 @@ public class ClosureCompiler implements Closeable {
     addSourceFiles(otherSources, filesMap);
 
     fixServiceLoaderFiles(filesMap, scm, generatedCodeOutputPath, scmCallback);
-    scm.assertAllCovered();
 
     CompilerImpl compiler = new CompilerImpl();
 
@@ -179,7 +178,7 @@ public class ClosureCompiler implements Closeable {
             String serviceName = sciMapEn.getKey();
 
             String expectedLine = "goog.module('" + serviceName + "');";
-            if (firstLine.equals(expectedLine)) {
+            if (!firstLine.equals(expectedLine)) {
               // false positive match
               continue;
             }

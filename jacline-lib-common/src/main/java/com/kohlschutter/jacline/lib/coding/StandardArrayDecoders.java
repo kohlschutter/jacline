@@ -19,73 +19,79 @@ package com.kohlschutter.jacline.lib.coding;
 
 import java.io.IOException;
 
-import jsinterop.annotations.JsType;
-
-@JsType
 public class StandardArrayDecoders {
-  public static Object[] objects(Object serialized) throws CodingException {
-    return objectsWithDecoder(serialized, null, (l) -> new Object[l]);
+  public static ArrayDecoder<Object> objects(KeyDecoderProvider provider) {
+    return objectsWithDecoder(provider, null, (l) -> new Object[l]);
   }
 
-  public static <T> T[] objectsWithDecoder(Object serialized, ObjectDecoder<T> decoder,
-      ArrayCreator<T> arrayCreator) throws CodingException {
-    try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
-      T[] array = arrayCreator.newArray(dec.size());
-      dec.objects(array.length, decoder, (e) -> array[dec.position()] = e);
-      assert (dec.position() == dec.size());
-      return array;
-    } catch (IOException e) {
-      throw new CodingException(e);
-    }
+  public static <T> ArrayDecoder<T> objectsWithDecoder(KeyDecoderProvider provider,
+      ObjectDecoder<T> decoder, ArrayCreator<T> arrayCreator) {
+    return (serialized) -> {
+      try (SequenceDecoder dec = provider.sequenceDecoder(serialized)) {
+        T[] array = arrayCreator.newArray(dec.size());
+        dec.objects(array.length, decoder, (e) -> array[dec.position()] = e);
+        assert (dec.position() == dec.size());
+        return array;
+      } catch (IOException e) {
+        throw new CodingException(e);
+      }
+    };
   }
 
-  public static String[] strings(Object serialized) throws CodingException {
-    try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
-      String[] array = new String[dec.size()];
-      dec.strings(array.length, (e) -> array[dec.position()] = e);
-      assert (dec.position() == dec.size());
-      return array;
-    } catch (IOException e) {
-      throw new CodingException(e);
-    }
-
+  public static ArrayDecoder<String> strings(CodingServiceProvider csp) {
+    return (serialized) -> {
+      try (SequenceDecoder dec = csp.sequenceDecoder(serialized)) {
+        String[] array = new String[dec.size()];
+        dec.strings(array.length, (e) -> array[dec.position()] = e);
+        assert (dec.position() == dec.size());
+        return array;
+      } catch (IOException e) {
+        throw new CodingException(e);
+      }
+    };
   }
 
-  public static Boolean[] booleans(Object serialized) throws CodingException {
-    try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
-      Boolean[] array = new Boolean[dec.size()];
-      dec.booleans(array.length, (e) -> array[dec.position()] = e);
-      assert (dec.position() == dec.size());
-      return array;
-    } catch (IOException e) {
-      throw new CodingException(e);
-    }
+  public static ArrayDecoder<Boolean> booleans(CodingServiceProvider csp) {
+    return (serialized) -> {
+      try (SequenceDecoder dec = csp.sequenceDecoder(serialized)) {
+        Boolean[] array = new Boolean[dec.size()];
+        dec.booleans(array.length, (e) -> array[dec.position()] = e);
+        assert (dec.position() == dec.size());
+        return array;
+      } catch (IOException e) {
+        throw new CodingException(e);
+      }
+    };
   }
 
-  public static Number[] numbers(Object serialized) throws CodingException {
-    try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
-      Number[] array = new Number[dec.size()];
-      dec.numbers(array.length, (e) -> array[dec.position()] = e);
-      assert (dec.position() == dec.size());
-      return array;
-    } catch (IOException e) {
-      throw new CodingException(e);
-    }
+  public static ArrayDecoder<Number> numbers(CodingServiceProvider csp) throws CodingException {
+    return (serialized) -> {
+      try (SequenceDecoder dec = csp.sequenceDecoder(serialized)) {
+        Number[] array = new Number[dec.size()];
+        dec.numbers(array.length, (e) -> array[dec.position()] = e);
+        assert (dec.position() == dec.size());
+        return array;
+      } catch (IOException e) {
+        throw new CodingException(e);
+      }
+    };
   }
 
-  public static Object[][] arrays(Object serialized) throws CodingException {
-    return arraysWithDecoder(serialized, null, (l) -> new Object[l][]);
+  public static ArrayDecoder<Object[]> arrays(CodingServiceProvider csp) {
+    return arraysWithDecoder(csp, null, (l) -> new Object[l][]);
   }
 
-  public static <T> T[][] arraysWithDecoder(Object serialized, ArrayDecoder<T> decoder,
-      ArrayCreator<T[]> arrayCreator) throws CodingException {
-    try (SequenceDecoder dec = SequenceDecoder.load(serialized)) {
-      T[][] array = arrayCreator.newArray(dec.size());
-      dec.arrays(array.length, decoder, (e) -> array[dec.position()] = e);
-      assert (dec.position() == dec.size());
-      return array;
-    } catch (IOException e) {
-      throw new CodingException(e);
-    }
+  public static <T> ArrayDecoder<T[]> arraysWithDecoder(CodingServiceProvider csp,
+      ArrayDecoder<T> decoder, ArrayCreator<T[]> arrayCreator) {
+    return (serialized) -> {
+      try (SequenceDecoder dec = csp.sequenceDecoder(serialized)) {
+        T[][] array = arrayCreator.newArray(dec.size());
+        dec.arrays(array.length, decoder, (e) -> array[dec.position()] = e);
+        assert (dec.position() == dec.size());
+        return array;
+      } catch (IOException e) {
+        throw new CodingException(e);
+      }
+    };
   }
 }

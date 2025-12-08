@@ -17,17 +17,11 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
-import com.kohlschutter.jacline.lib.io.JsCloseable;
+import java.io.Closeable;
 
-import jsinterop.annotations.JsFunction;
-import jsinterop.annotations.JsType;
-
-@JsType(isNative = true, namespace = "kohlschutter.coding", name = "SequenceDecoder")
-public interface SequenceDecoder extends JsCloseable {
+public interface SequenceDecoder extends Closeable {
 
   @FunctionalInterface
-  @JsFunction
   interface SequenceConsumer<T> {
     void consume(T t) throws CodingException;
   }
@@ -47,9 +41,4 @@ public interface SequenceDecoder extends JsCloseable {
 
   <T> SequenceDecoder objects(int count, ObjectDecoder<T> decoder, SequenceConsumer<T> forEach)
       throws CodingException;
-
-  @JsImplementationProvidedSeparately
-  static SequenceDecoder load(Object encoded) throws CodingException {
-    return CodingServiceProvider.getDefault().sequenceDecoder(encoded);
-  }
 }

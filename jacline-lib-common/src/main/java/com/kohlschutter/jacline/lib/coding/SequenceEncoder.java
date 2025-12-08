@@ -17,11 +17,6 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
-
-import jsinterop.annotations.JsType;
-
-@JsType(isNative = true, namespace = "kohlschutter.coding", name = "SequenceEncoder")
 public interface SequenceEncoder {
   /**
    * Encodes a string (or {@code null}).
@@ -84,9 +79,4 @@ public interface SequenceEncoder {
    * @throws CodingException on error.
    */
   Object getEncoded() throws CodingException;
-
-  @JsImplementationProvidedSeparately
-  static SequenceEncoder begin() throws CodingException {
-    return CodingServiceProvider.getDefault().sequenceEncoder();
-  }
 }

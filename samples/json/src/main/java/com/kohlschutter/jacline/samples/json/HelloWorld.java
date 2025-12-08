@@ -22,12 +22,14 @@ import java.io.IOException;
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.annotations.JsExport;
 import com.kohlschutter.jacline.annotations.JsServiceProvider;
+import com.kohlschutter.jacline.lib.coding.ArrayDecoder;
+import com.kohlschutter.jacline.lib.coding.ArrayEncoder;
 import com.kohlschutter.jacline.lib.coding.Codable;
 import com.kohlschutter.jacline.lib.coding.CodingException;
 import com.kohlschutter.jacline.lib.coding.CodingProviders;
+import com.kohlschutter.jacline.lib.coding.CodingServiceProvider;
 import com.kohlschutter.jacline.lib.coding.Decodables;
 import com.kohlschutter.jacline.lib.coding.KeyDecoder;
-import com.kohlschutter.jacline.lib.coding.KeyDecoderProvider;
 import com.kohlschutter.jacline.lib.coding.KeyEncoder;
 import com.kohlschutter.jacline.lib.coding.KeyEncoderProvider;
 import com.kohlschutter.jacline.lib.coding.StandardArrayDecoders;
@@ -83,31 +85,36 @@ public final class HelloWorld implements Codable {
   @Override
   @JsExport
   public Object encode(KeyEncoderProvider provider) throws CodingException {
-    KeyEncoder enc = CodingProviders.decorateEncoderProvider(provider).begin(CODED_TYPE);
-    enc.encodeString("message", message);
-    enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", false).encodeNumber(
-        "pi", 3.14).end();
-    enc.encodeArray("stringArray", StandardArrayEncoders::strings, array);
-    return enc.getEncoded();
+    try (KeyEncoder enc = CodingProviders.decorateEncoderProvider(provider).keyEncoder(CODED_TYPE);
+        ArrayEncoder stringEncoder = StandardArrayEncoders.strings(enc.provider())) {
+
+      enc.encodeString("message", message);
+      enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", false).encodeNumber(
+          "pi", 3.14).end();
+      enc.encodeArray("stringArray", stringEncoder, array);
+      return enc.getEncoded();
+    }
   }
 
   /**
    * Decodes an encoded object of this type via {@link KeyDecoder}.
    *
-   * @param provider The {@link KeyDecoderProvider}, or {@code null} for default.
+   * @param provider The {@link CodingServiceProvider}, or {@code null} for default.
    * @param obj The encoded object.
    * @return A new {@link HelloWorld} instance.
    * @throws CodingException on error.
    */
   @JsExport
-  public static HelloWorld decode(KeyDecoderProvider provider, Object obj) throws CodingException {
-    try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).load(CODED_TYPE, obj)) {
+  public static HelloWorld decode(CodingServiceProvider provider, Object obj)
+      throws CodingException {
+    try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).keyDecoder(CODED_TYPE,
+        obj); //
+        ArrayDecoder<String> stringDecoder = StandardArrayDecoders.strings(dec.provider())) {
       checkSanity(dec);
 
       HelloWorld hw = new HelloWorld();
       hw.setMessage(dec.stringForKey("message"));
-
-      hw.array = dec.arrayForKey("stringArray", StandardArrayDecoders::strings);
+      hw.array = dec.arrayForKey("stringArray", stringDecoder);
 
       return hw;
     } catch (IOException e) {
@@ -116,27 +123,18 @@ public final class HelloWorld implements Codable {
   }
 
   /**
-   * Decodes an encoded object of this type via {@link KeyDecoder} and the default provider; for
-   * testing.
-   *
-   * @param encoded The encoded object.
-   * @return A new {@link HelloWorld} instance.
-   * @throws CodingException on error.
-   */
-  public static HelloWorld decodeDefault(Object encoded) throws CodingException {
-    return decode(KeyDecoder::load, encoded);
-  }
-
-  /**
    * Checks for the presence of some object and its properties, without actually using the data for
    * the target object.
    *
    * @param dec The {@link KeyDecoder} instance.
+   * 
    * @throws CodingException on error.
    */
   private static void checkSanity(KeyDecoder dec) throws CodingException {
+    CodingServiceProvider csp = dec.provider();
+
     dec.objectForKey("obj", (encoded) -> {
-      KeyDecoder objectDecoder = KeyDecoder.load("SomeObjectType", encoded);
+      KeyDecoder objectDecoder = csp.keyDecoder("SomeObjectType", encoded);
 
       Number pi = objectDecoder.numberForKey("pi");
 

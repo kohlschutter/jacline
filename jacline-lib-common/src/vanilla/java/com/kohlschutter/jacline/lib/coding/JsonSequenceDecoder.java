@@ -41,8 +41,10 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
   private int pos = 0;
   private final int length;
   private final Iterator<JsonValue> iterator;
+  private final CodingServiceProvider csp;
 
-  public JsonSequenceDecoder(Object encoded) throws CodingException {
+  public JsonSequenceDecoder(CodingServiceProvider csp, Object encoded) throws CodingException {
+    this.csp = csp;
     Stream<JsonValue> stream;
 
     if (encoded instanceof JsonArray) {
@@ -184,7 +186,7 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
           break;
         case ARRAY: {
           JsonArray jsonArray = (JsonArray) next;
-          val = decoder.decode(jsonArray);
+          val = decoder.decode(jsonArray); // FIXME
           break;
         }
         default:

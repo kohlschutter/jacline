@@ -26,13 +26,17 @@ import org.junit.jupiter.api.Test;
 
 public class KeyEncoderTest {
 
+  private static final CodingServiceProvider CSP = CodingServiceProvider.getDefault();
+
   @Test
   public void testEncoder() throws Exception {
-    KeyEncoder enc = KeyEncoder.begin("Dummy");
+    KeyEncoder enc = CSP.keyEncoder("Dummy");
+    ArrayEncoder stringEncoder = StandardArrayEncoders.strings(enc.provider());
+
     enc.encodeString("hello", "world");
     enc.beginEncodeObject("obj", null).encodeBoolean("indiana", true).encodeNumber("pi", 4).end()
-        .encodeString("hello", "world").encodeArray("array", StandardArrayEncoders::strings,
-            new Object[] {false, 1, 2.0, "three"});
+        .encodeString("hello", "world").encodeArray("array", stringEncoder, new Object[] {
+            false, 1, 2.0, "three"});
 
     assertEquals("{\"javaClass\":\"Dummy\",\"hello\":\"world\",\"obj\":{\"indiana\":true,\"pi\":4},"
         + "\"array\":[\"false\",\"1\",\"2.0\",\"three\"]}", enc.getEncoded().toString());
@@ -52,15 +56,15 @@ public class KeyEncoderTest {
     HelloWorld hw = new HelloWorld();
     Object encode = hw.encode(null);
 
-    HelloWorld hw1a = HelloWorld.decodeDefault(encode); // JsonObject shortcut
+    HelloWorld hw1a = HelloWorld.decode(CSP, encode); // JsonObject shortcut
     assertEquals(hw.getMessage(), hw1a.getMessage());
     assertEquals(encode, hw1a.encode(null));
 
-    HelloWorld hw1b = HelloWorld.decodeDefault(encode.toString()); // String
+    HelloWorld hw1b = HelloWorld.decode(CSP, encode.toString()); // String
     assertEquals(hw.getMessage(), hw1b.getMessage());
     assertEquals(encode.toString(), hw1b.encode(null).toString());
 
-    HelloWorld hw1c = HelloWorld.decodeDefault(new StringReader(encode.toString())); // Reader
+    HelloWorld hw1c = HelloWorld.decode(CSP, new StringReader(encode.toString())); // Reader
     assertEquals(hw.getMessage(), hw1c.getMessage());
     assertEquals(encode.toString(), hw1c.encode(null).toString());
   }
@@ -71,7 +75,7 @@ public class KeyEncoderTest {
         + "\"message\":\"Greetings, jacline user!\"," + "\"obj\":{"
         + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":false," + "\"pi\":3.14" + "},"
         + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}";
-    HelloWorld hw = HelloWorld.decodeDefault(json);
+    HelloWorld hw = HelloWorld.decode(CSP, json);
 
     assertEquals("Greetings, jacline user!", hw.getMessage());
     assertEquals(json, hw.encode(null).toString());
@@ -84,6 +88,6 @@ public class KeyEncoderTest {
         + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":true," + "\"pi\":4" + "},"
         + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}";
 
-    assertThrows(CodingException.class, () -> HelloWorld.decodeDefault(json));
+    assertThrows(CodingException.class, () -> HelloWorld.decode(CSP, json));
   }
 }

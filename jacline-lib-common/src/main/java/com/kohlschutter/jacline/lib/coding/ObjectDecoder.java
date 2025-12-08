@@ -17,10 +17,14 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import jsinterop.annotations.JsFunction;
-
-@JsFunction
 @FunctionalInterface
 public interface ObjectDecoder<T> {
+  /**
+   * Decodes an object from a serialized representation.
+   *
+   * @param serialized The serialized representation.
+   * @return The object..
+   * @throws CodingException on error.
+   */
   T decode(Object serialized) throws CodingException;
 }

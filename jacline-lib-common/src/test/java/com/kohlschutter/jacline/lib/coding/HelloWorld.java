@@ -39,8 +39,6 @@ public final class HelloWorld implements Codable {
 
   static {
     // Register our decoder with the global Decodables registry
-    // FIXME: Until @JsServiceProvider is properly implemented, we need to manually trigger
-    // static initializers by "new HelloWorld()" or similar.
     Decodables.setDecoder(CODED_TYPE, HelloWorld::decode);
   }
 
@@ -73,11 +71,11 @@ public final class HelloWorld implements Codable {
   @Override
   @JsExport
   public Object encode(KeyEncoderProvider provider) throws CodingException {
-    KeyEncoder enc = CodingProviders.decorateEncoderProvider(provider).begin(CODED_TYPE);
+    KeyEncoder enc = CodingProviders.decorateEncoderProvider(provider).keyEncoder(CODED_TYPE);
     enc.encodeString("message", message);
     enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", false).encodeNumber(
         "pi", 3.14).end();
-    enc.encodeArray("stringArray", StandardArrayEncoders::strings, array);
+    enc.encodeArray("stringArray", StandardArrayEncoders.strings(enc.provider()), array);
     return enc.getEncoded();
   }
 
@@ -90,33 +88,21 @@ public final class HelloWorld implements Codable {
    * @throws CodingException on error.
    */
   @JsExport
-  public static HelloWorld decode(KeyDecoderProvider provider, Object encoded)
+  public static HelloWorld decode(CodingServiceProvider provider, Object encoded)
       throws CodingException {
-    try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).load(CODED_TYPE,
+    try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).keyDecoder(CODED_TYPE,
         encoded)) {
       checkSanity(dec);
 
       HelloWorld hw = new HelloWorld();
       hw.setMessage(dec.stringForKey("message"));
 
-      hw.array = dec.arrayForKey("stringArray", StandardArrayDecoders::strings);
+      hw.array = dec.arrayForKey("stringArray", StandardArrayDecoders.strings(dec.provider()));
 
       return hw;
     } catch (IOException e) {
       throw new CodingException(e);
     }
-  }
-
-  /**
-   * Decodes an encoded object of this type via {@link KeyDecoder} and the default provider; for
-   * testing.
-   *
-   * @param encoded The encoded object.
-   * @return A new {@link HelloWorld} instance.
-   * @throws CodingException on error.
-   */
-  public static HelloWorld decodeDefault(Object encoded) throws CodingException {
-    return decode(null, encoded);
   }
 
   /**
@@ -127,8 +113,10 @@ public final class HelloWorld implements Codable {
    * @throws CodingException on error.
    */
   private static void checkSanity(KeyDecoder dec) throws CodingException {
+    CodingServiceProvider csp = dec.provider();
+
     dec.objectForKey("obj", (encoded) -> {
-      KeyDecoder objectDecoder = KeyDecoder.load("SomeObjectType", encoded);
+      KeyDecoder objectDecoder = csp.keyDecoder("SomeObjectType", encoded);
 
       Number pi = objectDecoder.numberForKey("pi");
 

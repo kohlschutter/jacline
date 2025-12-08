@@ -17,7 +17,7 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import jsinterop.annotations.JsFunction;
+import java.io.Closeable;
 
 /**
  * Something that can decode an array.
@@ -25,15 +25,18 @@ import jsinterop.annotations.JsFunction;
  * @param <T> The type of the array.
  * @author Christian Kohlschütter
  */
-@JsFunction
-@FunctionalInterface
-public interface ArrayDecoder<T> {
+public interface ArrayDecoder<T> extends Closeable {
   /**
    * Decodes an array from a serialized representation.
    *
-   * @param serialized The serialized representation.
+   * @param encoded The encoded object.
+   * 
    * @return The array.
    * @throws CodingException on error.
    */
-  T[] decode(Object serialized) throws CodingException;
+  T[] decode(Object encoded) throws CodingException;
+
+  @Override
+  default void close() throws CodingException {
+  }
 }

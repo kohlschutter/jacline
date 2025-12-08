@@ -26,6 +26,8 @@ public final class CodingProviders {
   private CodingProviders() {
   }
 
+  private static final CodingServiceProvider CSP = CodingServiceProvider.getDefault();
+
   /**
    * Returns the {@link KeyEncoderProvider} that should be used, given the parameters.
    *
@@ -36,7 +38,7 @@ public final class CodingProviders {
   public static KeyEncoderProvider decorateEncoderProvider(KeyEncoderProvider provider)
       throws CodingException {
     if (provider == null) {
-      return KeyEncoder::begin;
+      return CSP;
     } else {
       return provider;
     }
@@ -52,7 +54,7 @@ public final class CodingProviders {
   public static KeyDecoderProvider decorateDecoderProvider(KeyDecoderProvider provider)
       throws CodingException {
     if (provider == null) {
-      return KeyDecoder::load;
+      return CSP;
     } else {
       return provider;
     }

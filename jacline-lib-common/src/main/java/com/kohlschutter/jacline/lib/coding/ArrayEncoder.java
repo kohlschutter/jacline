@@ -17,23 +17,25 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import jsinterop.annotations.JsFunction;
+import java.io.Closeable;
 
 /**
  * Something that can encode an array.
  *
  * @author Christian Kohlschütter
  */
-@JsFunction
-@FunctionalInterface
-public interface ArrayEncoder {
+public interface ArrayEncoder extends Closeable {
   /**
-   * Returns an object that contains the encoded contents of the given array; the object itself must
-   * be created with {@link SequenceEncoder#begin()}.
+   * Returns an object that contains the encoded contents of the given array.
    *
    * @param array The array to encode.
    * @return The encoded object.
    * @throws CodingException on error.
    */
   Object encode(Object[] array) throws CodingException;
+
+  @Override
+  default void close() throws CodingException {
+
+  }
 }

@@ -17,19 +17,14 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
-import com.kohlschutter.jacline.annotations.JsPatched;
+import java.io.Closeable;
 
-import jsinterop.annotations.JsType;
-
-@JsType
-@JsPatched
-public interface KeyEncoder {
+public interface KeyEncoder extends Closeable {
   /**
    * Encodes a string (or {@code null}) for the given key.
    *
    * @param key The key, or {@code null}
-   * @param value The value.
+   * @param value The value.w
    * @return This encoder.
    * @throws CodingException on error.
    */
@@ -95,8 +90,9 @@ public interface KeyEncoder {
 
   void markAdvisory(CodingAdvisory advisory) throws CodingException;
 
-  @JsImplementationProvidedSeparately
-  static KeyEncoder begin(String type) throws CodingException {
-    return CodingServiceProvider.getDefault().keyEncoder(type);
+  CodingServiceProvider provider();
+
+  @Override
+  default void close() throws CodingException {
   }
 }

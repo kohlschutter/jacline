@@ -17,21 +17,15 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import com.kohlschutter.jacline.annotations.JsImplementationProvidedSeparately;
-import com.kohlschutter.jacline.lib.io.JsCloseable;
+import java.io.Closeable;
 
-import jsinterop.annotations.JsOverlay;
-import jsinterop.annotations.JsType;
-
-@JsType(isNative = true, namespace = "kohlschutter.coding", name = "KeyDecoder")
-public interface KeyDecoder extends JsCloseable {
+public interface KeyDecoder extends Closeable {
   String stringForKey(String key) throws CodingException;
 
   Boolean booleanForKey(String key) throws CodingException;
 
   Number numberForKey(String key) throws CodingException;
 
-  @JsOverlay
   default int intForKey(String key) throws CodingException {
     Number num = numberForKey(key);
     if (num == null) {
@@ -49,8 +43,9 @@ public interface KeyDecoder extends JsCloseable {
 
   void markAdvisory(CodingAdvisory advisory) throws CodingException;
 
-  @JsImplementationProvidedSeparately
-  static KeyDecoder load(String expectedCodedType, Object encoded) throws CodingException {
-    return CodingServiceProvider.getDefault().keyDecoder(expectedCodedType, encoded);
+  CodingServiceProvider provider();
+
+  @Override
+  default void close() throws CodingException {
   }
 }

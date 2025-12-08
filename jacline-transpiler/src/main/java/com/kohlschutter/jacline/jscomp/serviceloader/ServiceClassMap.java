@@ -33,13 +33,4 @@ public class ServiceClassMap {
   public Map<String, Map<String, ServiceClassInfo>> getPathMapCandidates() {
     return Collections.unmodifiableMap(pathMapCandidates);
   }
-
-  public void assertAllCovered() {
-    for (ServiceClassInfo sci : serviceToProvider.values()) {
-      if (!sci.isCovered()) {
-        throw new IllegalStateException("Did not cover ServiceLoader mapping for service " + sci
-            .getService());
-      }
-    }
-  }
 }

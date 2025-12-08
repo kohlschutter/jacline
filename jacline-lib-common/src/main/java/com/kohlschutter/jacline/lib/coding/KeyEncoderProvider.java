@@ -17,10 +17,8 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import jsinterop.annotations.JsFunction;
-
-@JsFunction
-@FunctionalInterface
 public interface KeyEncoderProvider {
-  KeyEncoder begin(String type) throws CodingException;
+  KeyEncoder keyEncoder(String type) throws CodingException;
+  
+  SequenceEncoder sequenceEncoder() throws CodingException;
 }

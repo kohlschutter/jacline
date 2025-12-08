@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ServiceLoader;
 
-public interface CodingServiceProvider {
+public interface CodingServiceProvider extends KeyDecoderProvider, KeyEncoderProvider {
   CodingServiceProvider DEFAULT = findDefault();
 
   static CodingServiceProvider getDefault() {
@@ -38,12 +38,4 @@ public interface CodingServiceProvider {
         CodingServiceProvider.class).findFirst();
     return first.isPresent() ? Objects.requireNonNull(first.get()) : null;
   }
-
-  KeyDecoder keyDecoder(String expectedCodedType, Object encoded) throws CodingException;
-
-  KeyEncoder keyEncoder(String type) throws CodingException;
-
-  SequenceDecoder sequenceDecoder(Object encoded) throws CodingException;
-
-  SequenceEncoder sequenceEncoder() throws CodingException;
 }

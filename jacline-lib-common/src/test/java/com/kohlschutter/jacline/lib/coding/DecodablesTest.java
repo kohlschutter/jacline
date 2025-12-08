@@ -24,6 +24,8 @@ import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
 public class DecodablesTest {
+  private static final CodingServiceProvider CSP = CodingServiceProvider.getDefault();
+
   @Test
   public void testDecodables() throws Exception {
     // NOTE: We declared HelloWorld as a SPI service provider in
@@ -33,7 +35,7 @@ public class DecodablesTest {
     // These declarations trigger HelloWorld's static initializer, which in turn registers the
     // Encodable (using the correct type) with Decodables.
     Object decoded = Objects.requireNonNull(Decodables.getDecoder(
-        "com.kohlschutter.jacline.samples.helloworld.HelloWorld").decode(null,
+        "com.kohlschutter.jacline.samples.helloworld.HelloWorld").decode(CSP,
             "{\"javaClass\":\"com.kohlschutter.jacline.samples.helloworld.HelloWorld\","
                 + "\"message\":\"Greetings, jacline user!\"," + "\"obj\":{"
                 + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":true," + "\"pi\":3.14" + "},"

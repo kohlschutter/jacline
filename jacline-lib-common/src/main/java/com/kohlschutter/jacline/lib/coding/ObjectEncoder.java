@@ -17,9 +17,6 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import jsinterop.annotations.JsFunction;
-
-@JsFunction
 @FunctionalInterface
 public interface ObjectEncoder {
   Object encode(Object obj) throws CodingException;

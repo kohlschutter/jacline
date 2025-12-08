@@ -1,6 +1,5 @@
 package com.kohlschutter.jacline.lib.coding;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -67,14 +66,10 @@ public class ResultSetRowKeyDecoderProvider implements KeyDecoderProvider {
   }
 
   @Override
-  public KeyDecoder load(String expectedCodedType, Object encoded) throws CodingException {
+  public KeyDecoder keyDecoder(String expectedCodedType, Object encoded) throws CodingException {
     ResultSet rs = (ResultSet) encoded;
 
     return new KeyDecoder() {
-      @Override
-      public void close() throws IOException {
-      }
-
       @Override
       public String stringForKey(String key) throws CodingException {
         try {
@@ -135,6 +130,16 @@ public class ResultSetRowKeyDecoderProvider implements KeyDecoderProvider {
       @Override
       public void markAdvisory(CodingAdvisory advisory) throws CodingException {
       }
+
+      @Override
+      public CodingServiceProvider provider() {
+        throw new UnsupportedOperationException();// FIXME
+      }
     };
+  }
+
+  @Override
+  public SequenceDecoder sequenceDecoder(Object encoded) throws CodingException {
+    throw new UnsupportedOperationException(); // FIXME
   }
 }

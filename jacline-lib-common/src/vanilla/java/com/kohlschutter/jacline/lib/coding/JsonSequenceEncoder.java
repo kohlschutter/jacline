@@ -31,12 +31,14 @@ public final class JsonSequenceEncoder implements SequenceEncoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonArrayBuilder builder;
   private final JsonSequenceEncoder parent;
+  private CodingServiceProvider csp;
 
-  public JsonSequenceEncoder() {
-    this(null);
+  public JsonSequenceEncoder(CodingServiceProvider csp) {
+    this(csp, null);
   }
 
-  private JsonSequenceEncoder(JsonSequenceEncoder parent) {
+  private JsonSequenceEncoder(CodingServiceProvider csp, JsonSequenceEncoder parent) {
+    this.csp = csp;
     this.builder = PROVIDER.createArrayBuilder();
     this.parent = parent;
   }
@@ -91,7 +93,7 @@ public final class JsonSequenceEncoder implements SequenceEncoder {
 
   @Override
   public SequenceEncoder beginEncodeArray() {
-    return new JsonSequenceEncoder(this);
+    return new JsonSequenceEncoder(csp, this);
   }
 
   @Override

@@ -17,48 +17,26 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import java.io.Reader;
-import java.io.StringReader;
+import com.kohlschutter.jacline.lib.json.JSON;
+import com.kohlschutter.jacline.lib.log.CommonLog;
 
-import com.kohlschutter.jacline.annotations.JsIgnoreType;
+import jsinterop.base.JsPropertyMap;
 
-import jakarta.json.JsonArray;
-import jakarta.json.JsonObject;
-import jakarta.json.spi.JsonProvider;
-import jakarta.json.stream.JsonParser;
-import jakarta.json.stream.JsonParser.Event;
-
-@JsIgnoreType
-public final class JsonKeyDecoder implements KeyDecoder {
-  private static final JsonProvider PROVIDER = JsonProvider.provider();
-  private final JsonParser parser;
-  private final JsonObject object;
+public final class JaclineKeyDecoder implements KeyDecoder {
   private final CodingServiceProvider csp;
+  private final JsPropertyMap<?> object;
+  private final String expectedCodedType;
 
-  public JsonKeyDecoder(CodingServiceProvider csp, String expectedCodedType, Object encoded)
-      throws CodingException {
+  public JaclineKeyDecoder(CodingServiceProviderJaclineImpl csp, String expectedCodedType,
+      Object encoded) throws CodingException {
     this.csp = csp;
+    this.expectedCodedType = expectedCodedType;
     if (encoded == null) {
-      parser = null;
       object = null;
-    } else if (encoded instanceof JsonObject) {
-      parser = null;
-      object = (JsonObject) encoded;
+    } else if (encoded instanceof String) {
+      object = (JsPropertyMap<?>) JSON.parse(String.valueOf(encoded));
     } else {
-      if (encoded instanceof Reader) {
-        parser = PROVIDER.createParser((Reader) encoded);
-      } else {
-        parser = PROVIDER.createParser(new StringReader(encoded.toString()));
-      }
-      if (parser.hasNext()) {
-        Event next = parser.next();
-        if (next != Event.START_OBJECT) {
-          throw new CodingException("Not an object");
-        }
-        object = parser.getObject();
-      } else {
-        object = null;
-      }
+      object = (JsPropertyMap<?>) encoded;
     }
 
     if (expectedCodedType != null && object != null) {
@@ -70,22 +48,38 @@ public final class JsonKeyDecoder implements KeyDecoder {
   }
 
   private boolean isNull(String key) {
-    return object == null || !object.containsKey(key) || object.isNull(key);
+    return object == null || !object.has(key) || object.get(key) == null;
   }
 
   @Override
   public String stringForKey(String key) {
-    return isNull(key) ? null : object.getString(key);
+    return isNull(key) ? null : String.valueOf(object.get(key));
   }
 
   @Override
   public Boolean booleanForKey(String key) {
-    return isNull(key) ? null : object.getBoolean(key);
+    if (isNull(key)) {
+      return null;
+    }
+    Object obj = object.get(key);
+    if (obj instanceof Boolean) {
+      return ((Boolean) obj);
+    } else {
+      return Boolean.valueOf(String.valueOf(obj));
+    }
   }
 
   @Override
   public Number numberForKey(String key) {
-    return isNull(key) ? null : object.getJsonNumber(key).numberValue();
+    if (isNull(key)) {
+      return null;
+    }
+    Object obj = object.get(key);
+    if (obj instanceof Number) {
+      return ((Number) obj);
+    } else {
+      return Double.valueOf(String.valueOf(obj)); // FIXME?
+    }
   }
 
   @Override
@@ -94,7 +88,7 @@ public final class JsonKeyDecoder implements KeyDecoder {
     if (isNull(key)) {
       return null;
     }
-    JsonArray jsonArray = object.getJsonArray(key);
+    Object jsonArray = object.get(key);
     return decoder.decode(jsonArray);
   }
 
@@ -104,24 +98,18 @@ public final class JsonKeyDecoder implements KeyDecoder {
     if (isNull(key)) {
       return null;
     }
-    JsonObject jsonObject = object.getJsonObject(key);
+    Object jsonObject = object.get(key);
     return decoder.decode(jsonObject);
   }
 
   @Override
   public boolean hasKey(String key) {
-    return object != null && object.containsKey(key);
-  }
-
-  @Override
-  public void close() throws CodingException {
-    if (parser != null) {
-      parser.close();
-    }
+    return object != null && object.has(key);
   }
 
   @Override
   public void markAdvisory(CodingAdvisory advisory) throws CodingException {
+    CommonLog.warn("CodingAdvisory while decoding " + expectedCodedType, advisory);
   }
 
   @Override

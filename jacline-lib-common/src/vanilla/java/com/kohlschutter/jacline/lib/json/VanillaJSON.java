@@ -10,7 +10,7 @@ import java.util.Map;
 
 import com.kohlschutter.jacline.lib.coding.Codable;
 import com.kohlschutter.jacline.lib.coding.CodingException;
-import com.kohlschutter.jacline.lib.coding.CodingSupportProviderJsonImpl;
+import com.kohlschutter.jacline.lib.coding.CodingServiceProviderJsonImpl;
 import com.kohlschutter.jacline.lib.exception.JsException;
 
 import elemental2.core.SyntaxError;
@@ -24,8 +24,8 @@ import jakarta.json.stream.JsonParser.Event;
 
 final class VanillaJSON {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
-  private static final CodingSupportProviderJsonImpl JSON_CODING =
-      new CodingSupportProviderJsonImpl();
+  private static final CodingServiceProviderJsonImpl JSON_CODING =
+      new CodingServiceProviderJsonImpl();
 
   @SuppressWarnings({"PMD.CognitiveComplexity"})
   public static String stringify(Object obj) {
@@ -51,7 +51,7 @@ final class VanillaJSON {
       return buildArray(toCollection(obj)).toString();
     } else if (obj instanceof Codable) {
       try {
-        return ((Codable) obj).encode(JSON_CODING::keyEncoder).toString();
+        return ((Codable) obj).encode(JSON_CODING).toString();
       } catch (CodingException e) {
         return obj.toString();
       }

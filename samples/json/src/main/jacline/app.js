@@ -11,7 +11,7 @@ var json = hw.encode(null);
 
 console.log("HelloWorld, encoded as JSON", json);
 
-var hw1 = HelloWorld.decodeDefault(json);
+var hw1 = HelloWorld.decode(null, json);
 console.log("HelloWorld, decoded from JSON", hw1);
 
 document.body.innerText = `${hw1.getMessage()}`;
@@ -32,11 +32,11 @@ var json2 = JSON.parse(`
 
 console.log("HelloWorld, take two, native JSON", json2);
 var hw2;
-try {
-    hw2 = HelloWorld.decodeDefault(json2);
+//try {
+    hw2 = HelloWorld.decode(null, json2);
     console.log("HelloWorld, take two, decoded from JSON", hw2);
-} catch (e) {
-    console.error("Decoding HelloWorld failed", e);
-}
+//} catch (e) {
+    //console.error("Decoding HelloWorld failed", e);
+//}
 
 document.body.innerText = `${hw2.getMessage()}`;

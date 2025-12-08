@@ -31,6 +31,7 @@
                         <configuration>
                             <sources>
                                 <source>src/vanilla/java</source>
+                                <source>src/browser/java</source>
                             </sources>
                         </configuration>
                     </execution>
@@ -53,6 +54,7 @@
                             have to mark these other classes with @JsIgnoreType -->
                             <transpileSourceRoots>
                                 <transpileSourceRoot>src/main/java</transpileSourceRoot>
+                                <transpileSourceRoot>src/browser/java</transpileSourceRoot>
                             </transpileSourceRoots>
                         </configuration>
                     </execution>

@@ -19,8 +19,17 @@ package com.kohlschutter.jacline.lib.coding;
 
 import jsinterop.annotations.JsFunction;
 
+/**
+ * Decodes an encoded {@link Codable} object compatible with the provided
+ * {@link CodingServiceProvider}.
+ * <p>
+ * This usually refers to a static {@code decode} method defined in a {@link Codable} class.
+ * 
+ * @param <T> The type of the {@link Codable} object.
+ * @author Christian Kohlschütter
+ */
 @JsFunction
 @FunctionalInterface
 public interface Decoder<T> {
-  T decode(KeyDecoderProvider decoderProvider, Object serialized) throws CodingException;
+  T decode(CodingServiceProvider csp, Object encoded) throws CodingException;
 }

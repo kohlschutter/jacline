@@ -17,16 +17,15 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import jsinterop.annotations.JsType;
-
-@JsType
 public class StandardArrayEncoders {
-  public static Object strings(Object[] array) throws CodingException {
-    SequenceEncoder sec = SequenceEncoder.begin();
-    for (Object obj : array) {
-      sec.encodeStrings(obj == null ? null : obj.toString());
-    }
-    sec.end();
-    return sec.getEncoded();
+  public static ArrayEncoder strings(CodingServiceProvider csp) throws CodingException {
+    return (array) -> {
+      SequenceEncoder sec = csp.sequenceEncoder();
+      for (Object obj : array) {
+        sec.encodeStrings(obj == null ? null : obj.toString());
+      }
+      sec.end();
+      return sec.getEncoded();
+    };
   }
 }

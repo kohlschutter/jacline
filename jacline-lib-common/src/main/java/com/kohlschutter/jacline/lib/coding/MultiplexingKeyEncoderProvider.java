@@ -67,8 +67,7 @@ public final class MultiplexingKeyEncoderProvider implements KeyEncoderProvider 
     }
 
     @Override
-    public void markAdvisory(CodingAdvisory advisory)
-        throws CodingException {
+    public void markAdvisory(CodingAdvisory advisory) throws CodingException {
       for (KeyEncoder ke : encoders) {
         ke.markAdvisory(advisory);
       }
@@ -97,15 +96,25 @@ public final class MultiplexingKeyEncoderProvider implements KeyEncoderProvider 
     public Object getEncoded(int index) throws CodingException {
       return encoders[index].getEncoded();
     }
+
+    @Override
+    public CodingServiceProvider provider() {
+      throw new UnsupportedOperationException(); // FIXME
+    }
   }
 
   @Override
-  public KeyEncoder begin(String type) throws CodingException {
+  public KeyEncoder keyEncoder(String type) throws CodingException {
     KeyEncoder[] encoders = new KeyEncoder[providers.length];
     for (int i = 0, n = providers.length; i < n; i++) {
-      encoders[i] = providers[i].begin(type);
+      encoders[i] = providers[i].keyEncoder(type);
     }
 
     return new MultiplexingKeyEncoder(encoders, null);
+  }
+
+  @Override
+  public SequenceEncoder sequenceEncoder() throws CodingException {
+    throw new UnsupportedOperationException(); // FIXME
   }
 }
