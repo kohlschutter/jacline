@@ -23,7 +23,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
@@ -752,26 +751,7 @@ public class JaclineCompileMojo extends AbstractMojo {
         String source = result.getSource();
         if (source == null) {
           log.error("Closure compiler failed to build output file: " + outputFile);
-          throw new MojoExecutionException("Closure compilation failure") {
-
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            public void printStackTrace(PrintStream s) {
-              super.printStackTrace(s);
-              problems.consumeMessages((msg) -> {
-                s.println("\t" + msg);
-              });
-            }
-
-            @Override
-            public void printStackTrace(PrintWriter s) {
-              super.printStackTrace(s);
-              problems.consumeMessages((msg) -> {
-                s.println("\t" + msg);
-              });
-            }
-          };
+          throw new MojoExecutionException("Closure compilation failure");
         }
 
         log.info("Writing output to: " + outFile);
