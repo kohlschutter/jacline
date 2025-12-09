@@ -64,4 +64,24 @@ public final class CommonLog {
   public static void error(String message, Object... args) {
     CommonLogServiceProvider.DEFAULT.error(message, args);
   }
+
+  @JsImplementationProvidedSeparately
+  public static boolean isDebugEnabled() {
+    return CommonLogServiceProvider.DEFAULT.isDebugEnabled();
+  }
+
+  @JsImplementationProvidedSeparately
+  public static boolean isInfoEnabled() {
+    return CommonLogServiceProvider.DEFAULT.isInfoEnabled();
+  }
+
+  @JsImplementationProvidedSeparately
+  public static boolean isWarnEnabled() {
+    return CommonLogServiceProvider.DEFAULT.isWarnEnabled();
+  }
+
+  @JsImplementationProvidedSeparately
+  public static boolean isErrorEnabled() {
+    return CommonLogServiceProvider.DEFAULT.isErrorEnabled();
+  }
 }

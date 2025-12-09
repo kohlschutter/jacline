@@ -103,7 +103,9 @@ public final class JaclineKeyDecoder implements KeyDecoder {
 
   @Override
   public void markAdvisory(CodingAdvisory advisory) throws CodingException {
-    CommonLog.warn("CodingAdvisory while decoding " + expectedCodedType, advisory);
+    if (CommonLog.isWarnEnabled()) {
+      CommonLog.warn("CodingAdvisory while decoding " + expectedCodedType, advisory);
+    }
   }
 
   @Override

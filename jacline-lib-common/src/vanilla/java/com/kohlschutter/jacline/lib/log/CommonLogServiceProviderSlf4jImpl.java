@@ -44,29 +44,46 @@ public final class CommonLogServiceProviderSlf4jImpl implements CommonLogService
 
   @Override
   public void debug(String message, Object... args) {
-    if (LOG.isDebugEnabled()) {
-      doLog(LOG::debug, message, args);
-    }
+    doLog(LOG::debug, message, args);
   }
 
   @Override
   public void info(String message, Object... args) {
-    if (LOG.isInfoEnabled()) {
-      doLog(LOG::info, message, args);
-    }
+    doLog(LOG::info, message, args);
   }
 
   @Override
   public void warn(String message, Object... args) {
-    if (LOG.isWarnEnabled()) {
-      doLog(LOG::warn, message, args);
-    }
+    doLog(LOG::warn, message, args);
   }
 
   @Override
   public void error(String message, Object... args) {
-    if (LOG.isErrorEnabled()) {
-      doLog(LOG::error, message, args);
-    }
+    doLog(LOG::error, message, args);
+  }
+
+  @Override
+  public boolean isLogEnabled() {
+    return true;
+  }
+
+  @Override
+  public boolean isDebugEnabled() {
+    return LOG.isDebugEnabled();
+  }
+
+  @Override
+  public boolean isInfoEnabled() {
+    return LOG.isInfoEnabled();
+  }
+
+  @Override
+  public boolean isWarnEnabled() {
+    return LOG.isWarnEnabled();
+  }
+
+  @Override
+  public boolean isErrorEnabled() {
+    return LOG.isErrorEnabled();
   }
 }

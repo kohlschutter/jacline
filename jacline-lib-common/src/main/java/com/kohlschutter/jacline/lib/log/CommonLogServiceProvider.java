@@ -39,13 +39,23 @@ public interface CommonLogServiceProvider {
     return first.isPresent() ? Objects.requireNonNull(first.get()) : null;
   }
 
+  boolean isLogEnabled();
+
   void log(String message, Object... args);
+
+  boolean isDebugEnabled();
 
   void debug(String message, Object... args);
 
+  boolean isInfoEnabled();
+
   void info(String message, Object... args);
 
+  boolean isWarnEnabled();
+
   void warn(String message, Object... args);
+
+  boolean isErrorEnabled();
 
   void error(String message, Object... args);
 }

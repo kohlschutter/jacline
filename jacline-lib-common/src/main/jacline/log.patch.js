@@ -64,4 +64,9 @@ CommonLog.error = function(message, ...args) {
     logTo(console.error, message, args);
 };
 
+CommonLog.isDebugEnabled = function() { return true; };
+CommonLog.isInfoEnabled = function() { return true; };
+CommonLog.isWarnEnabled = function() { return true; };
+CommonLog.isErrorEnabled = function() { return true; };
+
 exports = CommonLog;
