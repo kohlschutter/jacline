@@ -8,7 +8,7 @@ const HelloWorld = goog.require('com.kohlschutter.jacline.samples.helloworld.Hel
  * @return {void}
  */
 function sayHello() {
-    document.body.innerText = `${HelloWorld.getHelloWorld()} and JS!`;
+    document.body.innerText = `${HelloWorld.getHelloWorld()} and JavaScript!`;
 }
 
 // Export our method so it could be used outside of the module.
