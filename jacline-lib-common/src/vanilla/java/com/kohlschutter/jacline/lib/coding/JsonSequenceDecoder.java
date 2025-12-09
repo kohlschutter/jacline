@@ -41,10 +41,8 @@ public final class JsonSequenceDecoder implements SequenceDecoder {
   private int pos = 0;
   private final int length;
   private final Iterator<JsonValue> iterator;
-  private final CodingServiceProvider csp;
 
-  public JsonSequenceDecoder(CodingServiceProvider csp, Object encoded) throws CodingException {
-    this.csp = csp;
+  public JsonSequenceDecoder(Object encoded) throws CodingException {
     Stream<JsonValue> stream;
 
     if (encoded instanceof JsonArray) {

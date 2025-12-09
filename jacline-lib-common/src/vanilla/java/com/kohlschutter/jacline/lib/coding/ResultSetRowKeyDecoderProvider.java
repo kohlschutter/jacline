@@ -132,14 +132,25 @@ public class ResultSetRowKeyDecoderProvider implements KeyDecoderProvider {
       }
 
       @Override
-      public CodingServiceProvider provider() {
-        throw new UnsupportedOperationException();// FIXME
+      public void assertCodedType(String expectedType) throws CodingException {
+        // FIXME
+      }
+
+      @Override
+      public SequenceDecoder sequenceDecoder(Object obj) throws CodingException {
+        throw new UnsupportedOperationException(); // FIXME
+      }
+
+      @Override
+      public KeyDecoder keyDecoder(String type, Object obj)
+          throws CodingException {
+        throw new UnsupportedOperationException(); // FIXME
+      }
+
+      @Override
+      public String getCodedType() throws CodingException {
+        throw new UnsupportedOperationException(); // FIXME
       }
     };
-  }
-
-  @Override
-  public SequenceDecoder sequenceDecoder(Object encoded) throws CodingException {
-    throw new UnsupportedOperationException(); // FIXME
   }
 }

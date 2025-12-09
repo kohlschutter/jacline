@@ -24,7 +24,7 @@ public final class MultiplexingKeyEncoderProvider implements KeyEncoderProvider 
     this.providers = providers;
   }
 
-  final static class MultiplexingKeyEncoder implements KeyEncoder {
+  final class MultiplexingKeyEncoder implements KeyEncoder {
     private final KeyEncoder[] encoders;
     private final MultiplexingKeyEncoder parent;
 
@@ -98,9 +98,95 @@ public final class MultiplexingKeyEncoderProvider implements KeyEncoderProvider 
     }
 
     @Override
-    public CodingServiceProvider provider() {
-      throw new UnsupportedOperationException(); // FIXME
+    public SequenceEncoder sequenceEncoder() throws CodingException {
+      SequenceEncoder[] se = new SequenceEncoder[encoders.length];
+      for (int i = 0, n = encoders.length; i < n; i++) {
+        se[i] = encoders[i].sequenceEncoder();
+      }
+      return new MultiplexingSequenceEncoder(null, se);
     }
+
+    @Override
+    public KeyEncoder keyEncoder(String type) throws CodingException {
+      return MultiplexingKeyEncoderProvider.this.keyEncoder(type);
+    }
+
+    @Override
+    public void close() throws CodingException {
+      for (int i = 0, n = encoders.length; i < n; i++) {
+        encoders[i].close();
+      }
+    }
+  }
+
+  final class MultiplexingSequenceEncoder implements SequenceEncoder {
+    private final SequenceEncoder parent;
+    private final SequenceEncoder[] sequence;
+
+    private MultiplexingSequenceEncoder(SequenceEncoder parent, SequenceEncoder[] se) {
+      this.parent = parent;
+      this.sequence = se;
+    }
+
+    @Override
+    public SequenceEncoder encodeStrings(String... values) throws CodingException {
+      for (int i = 0, n = sequence.length; i < n; i++) {
+        sequence[i].encodeStrings(values);
+      }
+      return this;
+    }
+
+    @Override
+    public SequenceEncoder encodeBooleans(Boolean... values) throws CodingException {
+      for (int i = 0, n = sequence.length; i < n; i++) {
+        sequence[i].encodeBooleans(values);
+      }
+      return this;
+    }
+
+    @Override
+    public SequenceEncoder encodeNumbers(Number... values) throws CodingException {
+      for (int i = 0, n = sequence.length; i < n; i++) {
+        sequence[i].encodeNumbers(values);
+      }
+      return this;
+    }
+
+    @Override
+    public SequenceEncoder encodeObjects(ObjectEncoder encoder, Object... objects)
+        throws CodingException {
+      for (int i = 0, n = sequence.length; i < n; i++) {
+        sequence[i].encodeObjects(encoder, objects);
+      }
+      return this;
+    }
+
+    @Override
+    public SequenceEncoder beginEncodeArray() throws CodingException {
+      SequenceEncoder[] se = new SequenceEncoder[sequence.length];
+      for (int i = 0, n = sequence.length; i < n; i++) {
+        se[i] = sequence[i].beginEncodeArray();
+      }
+      return new MultiplexingSequenceEncoder(this, se);
+    }
+
+    @Override
+    public SequenceEncoder end() throws CodingException {
+      for (int i = 0, n = sequence.length; i < n; i++) {
+        sequence[i].end();
+      }
+      return parent == null ? this : parent;
+    }
+
+    @Override
+    public Object getEncoded() throws CodingException {
+      return getEncoded(0);
+    }
+
+    public Object getEncoded(int i) throws CodingException {
+      return sequence[i].getEncoded();
+    }
+
   }
 
   @Override
@@ -111,10 +197,5 @@ public final class MultiplexingKeyEncoderProvider implements KeyEncoderProvider 
     }
 
     return new MultiplexingKeyEncoder(encoders, null);
-  }
-
-  @Override
-  public SequenceEncoder sequenceEncoder() throws CodingException {
-    throw new UnsupportedOperationException(); // FIXME
   }
 }

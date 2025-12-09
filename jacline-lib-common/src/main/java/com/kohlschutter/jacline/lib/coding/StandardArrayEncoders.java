@@ -18,9 +18,9 @@
 package com.kohlschutter.jacline.lib.coding;
 
 public class StandardArrayEncoders {
-  public static ArrayEncoder strings(CodingServiceProvider csp) throws CodingException {
+  public static ArrayEncoder strings(KeyEncoder keyEncoder) throws CodingException {
     return (array) -> {
-      SequenceEncoder sec = csp.sequenceEncoder();
+      SequenceEncoder sec = keyEncoder.sequenceEncoder();
       for (Object obj : array) {
         sec.encodeStrings(obj == null ? null : obj.toString());
       }

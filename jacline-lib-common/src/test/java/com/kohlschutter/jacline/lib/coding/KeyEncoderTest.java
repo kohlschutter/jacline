@@ -20,8 +20,6 @@ package com.kohlschutter.jacline.lib.coding;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.StringReader;
-
 import org.junit.jupiter.api.Test;
 
 public class KeyEncoderTest {
@@ -30,16 +28,17 @@ public class KeyEncoderTest {
 
   @Test
   public void testEncoder() throws Exception {
-    KeyEncoder enc = CSP.keyEncoder("Dummy");
-    ArrayEncoder stringEncoder = StandardArrayEncoders.strings(enc.provider());
+    try (KeyEncoder enc = CSP.keyEncoder("Dummy");
+        ArrayEncoder stringEncoder = StandardArrayEncoders.strings(enc)) {
+      enc.encodeString("hello", "world");
+      enc.beginEncodeObject("obj", null).encodeBoolean("indiana", true).encodeNumber("pi", 4).end()
+          .encodeString("hello", "world").encodeArray("array", stringEncoder, new Object[] {
+              false, 1, 2.0, "three"});
 
-    enc.encodeString("hello", "world");
-    enc.beginEncodeObject("obj", null).encodeBoolean("indiana", true).encodeNumber("pi", 4).end()
-        .encodeString("hello", "world").encodeArray("array", stringEncoder, new Object[] {
-            false, 1, 2.0, "three"});
-
-    assertEquals("{\"javaClass\":\"Dummy\",\"hello\":\"world\",\"obj\":{\"indiana\":true,\"pi\":4},"
-        + "\"array\":[\"false\",\"1\",\"2.0\",\"three\"]}", enc.getEncoded().toString());
+      assertEquals(
+          "{\"javaClass\":\"Dummy\",\"hello\":\"world\",\"obj\":{\"indiana\":true,\"pi\":4},"
+              + "\"array\":[\"false\",\"1\",\"2.0\",\"three\"]}", enc.getEncoded().toString());
+    }
   }
 
   @Test
@@ -48,25 +47,31 @@ public class KeyEncoderTest {
     assertEquals(
         "{\"javaClass\":\"com.kohlschutter.jacline.samples.helloworld.HelloWorld\",\"message\":\"Hello from Java\","
             + "\"obj\":{\"javaClass\":\"SomeObjectType\",\"indiana\":false,\"pi\":3.14},\"stringArray\":null}",
-        hw.encode(null).toString());
+        hw.encode(CSP).toString());
   }
 
   @Test
   public void testDecoder() throws Exception {
     HelloWorld hw = new HelloWorld();
-    Object encode = hw.encode(null);
+    Object encode = hw.encode(CSP);
 
-    HelloWorld hw1a = HelloWorld.decode(CSP, encode); // JsonObject shortcut
-    assertEquals(hw.getMessage(), hw1a.getMessage());
-    assertEquals(encode, hw1a.encode(null));
+    try (KeyDecoder dec = CSP.keyDecoder(KeyDecoder.ANY_CODED_TYPE, encode)) {
+      HelloWorld hw1a = HelloWorld.decode(dec); // JsonObject shortcut
+      assertEquals(hw.getMessage(), hw1a.getMessage());
+      assertEquals(encode, hw1a.encode(CSP));
+    }
 
-    HelloWorld hw1b = HelloWorld.decode(CSP, encode.toString()); // String
-    assertEquals(hw.getMessage(), hw1b.getMessage());
-    assertEquals(encode.toString(), hw1b.encode(null).toString());
+    try (KeyDecoder dec = CSP.keyDecoder(KeyDecoder.ANY_CODED_TYPE, encode.toString())) {
+      HelloWorld hw1b = HelloWorld.decode(dec); // String
+      assertEquals(hw.getMessage(), hw1b.getMessage());
+      assertEquals(encode.toString(), hw1b.encode(CSP).toString());
+    }
 
-    HelloWorld hw1c = HelloWorld.decode(CSP, new StringReader(encode.toString())); // Reader
-    assertEquals(hw.getMessage(), hw1c.getMessage());
-    assertEquals(encode.toString(), hw1c.encode(null).toString());
+    try (KeyDecoder dec = CSP.keyDecoder(KeyDecoder.ANY_CODED_TYPE, encode.toString())) {
+      HelloWorld hw1c = HelloWorld.decode(dec); // Reader
+      assertEquals(hw.getMessage(), hw1c.getMessage());
+      assertEquals(encode.toString(), hw1c.encode(CSP).toString());
+    }
   }
 
   @Test
@@ -75,10 +80,13 @@ public class KeyEncoderTest {
         + "\"message\":\"Greetings, jacline user!\"," + "\"obj\":{"
         + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":false," + "\"pi\":3.14" + "},"
         + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}";
-    HelloWorld hw = HelloWorld.decode(CSP, json);
 
-    assertEquals("Greetings, jacline user!", hw.getMessage());
-    assertEquals(json, hw.encode(null).toString());
+    try (KeyDecoder dec = CSP.keyDecoder(KeyDecoder.ANY_CODED_TYPE, json)) {
+      HelloWorld hw = HelloWorld.decode(dec);
+
+      assertEquals("Greetings, jacline user!", hw.getMessage());
+      assertEquals(json, hw.encode(CSP).toString());
+    }
   }
 
   @Test
@@ -88,6 +96,8 @@ public class KeyEncoderTest {
         + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":true," + "\"pi\":4" + "},"
         + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}";
 
-    assertThrows(CodingException.class, () -> HelloWorld.decode(CSP, json));
+    try (KeyDecoder dec = CSP.keyDecoder(KeyDecoder.ANY_CODED_TYPE, json)) {
+      assertThrows(CodingException.class, () -> HelloWorld.decode(dec));
+    }
   }
 }

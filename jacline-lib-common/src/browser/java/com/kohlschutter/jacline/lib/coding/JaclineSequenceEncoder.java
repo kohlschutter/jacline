@@ -21,15 +21,13 @@ import elemental2.core.JsArray;
 
 public final class JaclineSequenceEncoder implements SequenceEncoder {
   private final JaclineSequenceEncoder parent;
-  private CodingServiceProviderJaclineImpl csp;
   private JsArray<Object> array;
 
-  public JaclineSequenceEncoder(CodingServiceProviderJaclineImpl csp) {
-    this(csp, null);
+  public JaclineSequenceEncoder() {
+    this(null);
   }
 
-  private JaclineSequenceEncoder(CodingServiceProviderJaclineImpl csp, JaclineSequenceEncoder parent) {
-    this.csp = csp;
+  private JaclineSequenceEncoder(JaclineSequenceEncoder parent) {
     this.parent = parent;
     this.array = JsArray.of();
   }
@@ -60,13 +58,15 @@ public final class JaclineSequenceEncoder implements SequenceEncoder {
 
   @Override
   public SequenceEncoder beginEncodeArray() {
-    return new JaclineSequenceEncoder(csp, this);
+    return new JaclineSequenceEncoder(this);
   }
 
   @Override
-  public SequenceEncoder encodeObjects(ObjectEncoder encoder, Object... objects) throws CodingException {
-    for (Object obj : objects) {
-      array.push(encoder.encode(obj));
+  public SequenceEncoder encodeObjects(ObjectEncoder encoder, Object... objects)
+      throws CodingException {
+    try (JaclineKeyEncoder enc = new JaclineKeyEncoder(null)) {
+      encoder.encode(enc);
+      array.push(enc.getEncoded());
     }
     return this;
   }

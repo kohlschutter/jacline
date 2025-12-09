@@ -26,15 +26,12 @@ public final class JaclineKeyEncoder implements KeyEncoder {
   private final JaclineKeyEncoder parent;
   private final String parentKey;
   private final JsPropertyMap<Object> object = JsPropertyMap.of();
-  private final CodingServiceProviderJaclineImpl csp;
 
-  public JaclineKeyEncoder(CodingServiceProviderJaclineImpl csp, String type) {
-    this(csp, type, null, null);
+  public JaclineKeyEncoder(String type) {
+    this(type, null, null);
   }
 
-  private JaclineKeyEncoder(CodingServiceProviderJaclineImpl csp, String type,
-      JaclineKeyEncoder parent, String parentKey) {
-    this.csp = csp;
+  private JaclineKeyEncoder(String type, JaclineKeyEncoder parent, String parentKey) {
     this.parent = parent;
     this.parentKey = parentKey;
     if (parent != null) {
@@ -77,7 +74,7 @@ public final class JaclineKeyEncoder implements KeyEncoder {
 
   @Override
   public KeyEncoder beginEncodeObject(String key, String type) {
-    return new JaclineKeyEncoder(csp, type, this, key);
+    return new JaclineKeyEncoder(type, this, key);
   }
 
   @Override
@@ -99,7 +96,12 @@ public final class JaclineKeyEncoder implements KeyEncoder {
   }
 
   @Override
-  public CodingServiceProvider provider() {
-    return csp;
+  public SequenceEncoder sequenceEncoder() throws CodingException {
+    return new JaclineSequenceEncoder();
+  }
+
+  @Override
+  public KeyEncoder keyEncoder(String type) throws CodingException {
+    return new JaclineKeyEncoder(type);
   }
 }

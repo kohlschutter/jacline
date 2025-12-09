@@ -31,5 +31,5 @@ import jsinterop.annotations.JsFunction;
 @JsFunction
 @FunctionalInterface
 public interface Decoder<T> {
-  T decode(CodingServiceProvider csp, Object encoded) throws CodingException;
+  T decode(KeyDecoder dec) throws CodingException;
 }

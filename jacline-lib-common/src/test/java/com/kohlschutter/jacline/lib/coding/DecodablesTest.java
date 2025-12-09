@@ -34,12 +34,14 @@ public class DecodablesTest {
     // j2cl).
     // These declarations trigger HelloWorld's static initializer, which in turn registers the
     // Encodable (using the correct type) with Decodables.
-    Object decoded = Objects.requireNonNull(Decodables.getDecoder(
-        "com.kohlschutter.jacline.samples.helloworld.HelloWorld").decode(CSP,
-            "{\"javaClass\":\"com.kohlschutter.jacline.samples.helloworld.HelloWorld\","
-                + "\"message\":\"Greetings, jacline user!\"," + "\"obj\":{"
-                + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":true," + "\"pi\":3.14" + "},"
-                + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}"));
-    assertEquals("Greetings, jacline user!", decoded.toString());
+    try (KeyDecoder dec = CSP.keyDecoder("com.kohlschutter.jacline.samples.helloworld.HelloWorld",
+        "{\"javaClass\":\"com.kohlschutter.jacline.samples.helloworld.HelloWorld\","
+            + "\"message\":\"Greetings, jacline user!\"," + "\"obj\":{"
+            + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":true," + "\"pi\":3.14" + "},"
+            + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}")) {
+      Object decoded = Objects.requireNonNull(Decodables.getDecoder(
+          "com.kohlschutter.jacline.samples.helloworld.HelloWorld").decode(dec));
+      assertEquals("Greetings, jacline user!", decoded.toString());
+    }
   }
 }

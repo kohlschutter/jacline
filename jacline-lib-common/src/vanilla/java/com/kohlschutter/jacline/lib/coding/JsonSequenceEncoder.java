@@ -31,14 +31,12 @@ public final class JsonSequenceEncoder implements SequenceEncoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonArrayBuilder builder;
   private final JsonSequenceEncoder parent;
-  private CodingServiceProvider csp;
 
-  public JsonSequenceEncoder(CodingServiceProvider csp) {
-    this(csp, null);
+  public JsonSequenceEncoder() {
+    this(null);
   }
 
-  private JsonSequenceEncoder(CodingServiceProvider csp, JsonSequenceEncoder parent) {
-    this.csp = csp;
+  private JsonSequenceEncoder(JsonSequenceEncoder parent) {
     this.builder = PROVIDER.createArrayBuilder();
     this.parent = parent;
   }
@@ -93,13 +91,23 @@ public final class JsonSequenceEncoder implements SequenceEncoder {
 
   @Override
   public SequenceEncoder beginEncodeArray() {
-    return new JsonSequenceEncoder(csp, this);
+    return new JsonSequenceEncoder(this);
   }
 
   @Override
-  public SequenceEncoder encodeObjects(ObjectEncoder encoder, Object... obj) {
-    // TODO Auto-generated method stub
-    return null;
+  public SequenceEncoder encodeObjects(ObjectEncoder encoder, Object... objects)
+      throws CodingException {
+    for (Object obj : objects) {
+      if (obj == null) {
+        builder.addNull();
+      } else {
+        try (JsonKeyEncoder enc = new JsonKeyEncoder(null)) {
+          encoder.encode(enc);
+          builder.add(enc.getEncoded());
+        }
+      }
+    }
+    return this;
   }
 
   @Override
@@ -107,8 +115,10 @@ public final class JsonSequenceEncoder implements SequenceEncoder {
     JsonSequenceEncoder p = this.parent;
     if (p != null) {
       p.builder.add(this.builder);
+      return p;
+    } else {
+      return this;
     }
-    return p;
   }
 
   @Override

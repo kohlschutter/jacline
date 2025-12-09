@@ -19,5 +19,10 @@ package com.kohlschutter.jacline.lib.coding;
 
 @FunctionalInterface
 public interface ObjectEncoder {
-  Object encode(Object obj) throws CodingException;
+  /**
+   * Encodes this instance via the given {@link KeyEncoderProvider}.
+   *
+   * @return The encoded representation.
+   */
+  Object encode(KeyEncoderProvider provider) throws CodingException;
 }

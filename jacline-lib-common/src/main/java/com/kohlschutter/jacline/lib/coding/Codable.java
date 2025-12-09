@@ -36,11 +36,5 @@ import com.kohlschutter.jacline.annotations.JsServiceProvider;
  * @author Christian Kohlschütter
  * @see JsServiceProvider
  */
-public interface Codable {
-  /**
-   * Encodes this instance via the given {@link KeyEncoderProvider}.
-   *
-   * @return The encoded representation.
-   */
-  Object encode(KeyEncoderProvider provider) throws CodingException;
+public interface Codable extends ObjectEncoder {
 }

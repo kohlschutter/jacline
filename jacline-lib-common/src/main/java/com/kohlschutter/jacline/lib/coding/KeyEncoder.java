@@ -19,7 +19,7 @@ package com.kohlschutter.jacline.lib.coding;
 
 import java.io.Closeable;
 
-public interface KeyEncoder extends Closeable {
+public interface KeyEncoder extends KeyEncoderProvider, Closeable {
   /**
    * Encodes a string (or {@code null}) for the given key.
    *
@@ -90,9 +90,9 @@ public interface KeyEncoder extends Closeable {
 
   void markAdvisory(CodingAdvisory advisory) throws CodingException;
 
-  CodingServiceProvider provider();
-
   @Override
   default void close() throws CodingException {
   }
+
+  SequenceEncoder sequenceEncoder() throws CodingException;
 }

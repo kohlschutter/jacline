@@ -19,7 +19,41 @@ package com.kohlschutter.jacline.lib.coding;
 
 import java.io.Closeable;
 
-public interface KeyDecoder extends Closeable {
+/**
+ * Encodes object-like types that are safe to use in multiple serialization formats and
+ * implementations, such as JSON, and especially for the interaction between JavaScript and Java.
+ * 
+ * @author Christian Kohlschütter
+ */
+public interface KeyDecoder extends KeyDecoderProvider, Closeable {
+  /**
+   * Designates "any" coded type is valid.
+   */
+  String ANY_CODED_TYPE = null;
+
+  /**
+   * Returns the type of the encoded object, which could be a fully-qualified Java class name, for
+   * example.
+   * 
+   * @return The coded type.
+   * @throws CodingException on error.
+   */
+  String getCodedType() throws CodingException;
+
+  /**
+   * Checks if the type of the encoded object matches the expected one, failing with a
+   * {@link CodingException} if not.
+   * 
+   * @param expectedCodedType The expected type.
+   * @throws CodingException on error.
+   */
+  default void assertCodedType(String expectedCodedType) throws CodingException {
+    String codedType = getCodedType();
+    if (codedType != null && !expectedCodedType.equals(codedType)) {
+      throw CodingException.withUnexpectedType(expectedCodedType, codedType);
+    }
+  }
+
   String stringForKey(String key) throws CodingException;
 
   Boolean booleanForKey(String key) throws CodingException;
@@ -43,9 +77,9 @@ public interface KeyDecoder extends Closeable {
 
   void markAdvisory(CodingAdvisory advisory) throws CodingException;
 
-  CodingServiceProvider provider();
-
   @Override
   default void close() throws CodingException {
   }
+
+  SequenceDecoder sequenceDecoder(Object encoded) throws CodingException;
 }

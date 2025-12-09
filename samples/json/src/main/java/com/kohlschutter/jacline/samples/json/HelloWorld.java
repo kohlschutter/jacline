@@ -17,8 +17,6 @@
  */
 package com.kohlschutter.jacline.samples.json;
 
-import java.io.IOException;
-
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.annotations.JsExport;
 import com.kohlschutter.jacline.annotations.JsServiceProvider;
@@ -26,7 +24,6 @@ import com.kohlschutter.jacline.lib.coding.ArrayDecoder;
 import com.kohlschutter.jacline.lib.coding.ArrayEncoder;
 import com.kohlschutter.jacline.lib.coding.Codable;
 import com.kohlschutter.jacline.lib.coding.CodingException;
-import com.kohlschutter.jacline.lib.coding.CodingProviders;
 import com.kohlschutter.jacline.lib.coding.CodingServiceProvider;
 import com.kohlschutter.jacline.lib.coding.Decodables;
 import com.kohlschutter.jacline.lib.coding.KeyDecoder;
@@ -83,10 +80,9 @@ public final class HelloWorld implements Codable {
   }
 
   @Override
-  @JsExport
   public Object encode(KeyEncoderProvider provider) throws CodingException {
-    try (KeyEncoder enc = CodingProviders.decorateEncoderProvider(provider).keyEncoder(CODED_TYPE);
-        ArrayEncoder stringEncoder = StandardArrayEncoders.strings(enc.provider())) {
+    try (KeyEncoder enc = provider.keyEncoder(CODED_TYPE);
+        ArrayEncoder stringEncoder = StandardArrayEncoders.strings(enc)) {
 
       enc.encodeString("message", message);
       enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", false).encodeNumber(
@@ -99,17 +95,14 @@ public final class HelloWorld implements Codable {
   /**
    * Decodes an encoded object of this type via {@link KeyDecoder}.
    *
-   * @param provider The {@link CodingServiceProvider}, or {@code null} for default.
-   * @param obj The encoded object.
+   * @param dec The {@link KeyDecoder} to use.
    * @return A new {@link HelloWorld} instance.
    * @throws CodingException on error.
    */
-  @JsExport
-  public static HelloWorld decode(CodingServiceProvider provider, Object obj)
-      throws CodingException {
-    try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).keyDecoder(CODED_TYPE,
-        obj); //
-        ArrayDecoder<String> stringDecoder = StandardArrayDecoders.strings(dec.provider())) {
+  public static HelloWorld decode(KeyDecoder dec) throws CodingException {
+    dec.assertCodedType(CODED_TYPE);
+
+    try (ArrayDecoder<String> stringDecoder = StandardArrayDecoders.strings(dec)) {
       checkSanity(dec);
 
       HelloWorld hw = new HelloWorld();
@@ -117,9 +110,40 @@ public final class HelloWorld implements Codable {
       hw.array = dec.arrayForKey("stringArray", stringDecoder);
 
       return hw;
-    } catch (IOException e) {
-      throw new CodingException(e);
     }
+  }
+
+  /**
+   * Decodes an encoded object of this type via the {@link KeyDecoder} provided by the default
+   * {@link CodingServiceProvider}.
+   * <p>
+   * This method is only recommended to use for demo purposes when in calling from vanilla
+   * JavaScript.
+   * 
+   * @param json The json object.
+   * @return The decoded object.
+   * @throws CodingException on error.
+   */
+  @JsExport
+  public static HelloWorld decodeDefault(Object json) throws CodingException {
+    try (KeyDecoder dec = CodingServiceProvider.getDefault().keyDecoder(CODED_TYPE, json)) {
+      return decode(dec);
+    }
+  }
+
+  /**
+   * Encodes this object via the {@link KeyEncoder} provided by the default
+   * {@link CodingServiceProvider}.
+   * <p>
+   * This method is only recommended to use for demo purposes when in calling from vanilla
+   * JavaScript.
+   * 
+   * @return The object.
+   * @throws CodingException on error.
+   */
+  @JsExport
+  public Object encodeDefault() throws CodingException {
+    return encode(CodingServiceProvider.getDefault());
   }
 
   /**
@@ -131,21 +155,19 @@ public final class HelloWorld implements Codable {
    * @throws CodingException on error.
    */
   private static void checkSanity(KeyDecoder dec) throws CodingException {
-    CodingServiceProvider csp = dec.provider();
-
     dec.objectForKey("obj", (encoded) -> {
-      KeyDecoder objectDecoder = csp.keyDecoder("SomeObjectType", encoded);
+      try (KeyDecoder objectDecoder = dec.keyDecoder("SomeObjectType", encoded)) {
+        Number pi = objectDecoder.numberForKey("pi");
 
-      Number pi = objectDecoder.numberForKey("pi");
-
-      if (Math.abs(3.141 - pi.floatValue()) > 0.001f) {
-        if (objectDecoder.booleanForKey("indiana")) {
-          throw new CodingException("Not again, Indiana!");
-        } else {
-          throw new CodingException("Not my reality");
+        if (Math.abs(3.141 - pi.floatValue()) > 0.001f) {
+          if (objectDecoder.booleanForKey("indiana")) {
+            throw new CodingException("Not again, Indiana!");
+          } else {
+            throw new CodingException("Not my reality");
+          }
         }
+        return pi.floatValue(); // return value is not used
       }
-      return pi.floatValue(); // return value is not used
     });
   }
 

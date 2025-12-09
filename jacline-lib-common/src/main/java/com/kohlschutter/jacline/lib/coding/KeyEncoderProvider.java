@@ -17,8 +17,7 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
+@FunctionalInterface
 public interface KeyEncoderProvider {
   KeyEncoder keyEncoder(String type) throws CodingException;
-  
-  SequenceEncoder sequenceEncoder() throws CodingException;
 }

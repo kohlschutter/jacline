@@ -17,8 +17,6 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
-import java.io.IOException;
-
 import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.annotations.JsExport;
 import com.kohlschutter.jacline.annotations.JsServiceProvider;
@@ -71,38 +69,34 @@ public final class HelloWorld implements Codable {
   @Override
   @JsExport
   public Object encode(KeyEncoderProvider provider) throws CodingException {
-    KeyEncoder enc = CodingProviders.decorateEncoderProvider(provider).keyEncoder(CODED_TYPE);
-    enc.encodeString("message", message);
-    enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", false).encodeNumber(
-        "pi", 3.14).end();
-    enc.encodeArray("stringArray", StandardArrayEncoders.strings(enc.provider()), array);
-    return enc.getEncoded();
+    try (KeyEncoder enc = provider.keyEncoder(CODED_TYPE)) {
+      enc.encodeString("message", message);
+      enc.beginEncodeObject("obj", "SomeObjectType").encodeBoolean("indiana", false).encodeNumber(
+          "pi", 3.14).end();
+      enc.encodeArray("stringArray", StandardArrayEncoders.strings(enc), array);
+      return enc.getEncoded();
+    }
   }
 
   /**
    * Decodes an encoded object of this type via {@link KeyDecoder}.
    *
-   * @param provider The decoder provider, or {@code null} for default.
-   * @param encoded The encoded object.
+   * @param dec The decoder.
    * @return A new {@link HelloWorld} instance.
    * @throws CodingException on error.
    */
   @JsExport
-  public static HelloWorld decode(CodingServiceProvider provider, Object encoded)
-      throws CodingException {
-    try (KeyDecoder dec = CodingProviders.decorateDecoderProvider(provider).keyDecoder(CODED_TYPE,
-        encoded)) {
-      checkSanity(dec);
+  public static HelloWorld decode(KeyDecoder dec) throws CodingException {
+    dec.assertCodedType(CODED_TYPE);
 
-      HelloWorld hw = new HelloWorld();
-      hw.setMessage(dec.stringForKey("message"));
+    checkSanity(dec);
 
-      hw.array = dec.arrayForKey("stringArray", StandardArrayDecoders.strings(dec.provider()));
+    HelloWorld hw = new HelloWorld();
+    hw.setMessage(dec.stringForKey("message"));
 
-      return hw;
-    } catch (IOException e) {
-      throw new CodingException(e);
-    }
+    hw.array = dec.arrayForKey("stringArray", StandardArrayDecoders.strings(dec));
+
+    return hw;
   }
 
   /**
@@ -113,21 +107,20 @@ public final class HelloWorld implements Codable {
    * @throws CodingException on error.
    */
   private static void checkSanity(KeyDecoder dec) throws CodingException {
-    CodingServiceProvider csp = dec.provider();
-
     dec.objectForKey("obj", (encoded) -> {
-      KeyDecoder objectDecoder = csp.keyDecoder("SomeObjectType", encoded);
+      try (KeyDecoder objectDecoder = dec.keyDecoder("SomeObjectType", encoded)) {
 
-      Number pi = objectDecoder.numberForKey("pi");
+        Number pi = objectDecoder.numberForKey("pi");
 
-      if (Math.abs(3.141 - pi.floatValue()) > 0.001f) {
-        if (objectDecoder.booleanForKey("indiana")) {
-          throw new CodingException("Not again, Indiana!");
-        } else {
-          throw new CodingException("Not my reality");
+        if (Math.abs(3.141 - pi.floatValue()) > 0.001f) {
+          if (objectDecoder.booleanForKey("indiana")) {
+            throw new CodingException("Not again, Indiana!");
+          } else {
+            throw new CodingException("Not my reality");
+          }
         }
+        return pi.floatValue(); // return value is not used
       }
-      return pi.floatValue(); // return value is not used
     });
   }
 

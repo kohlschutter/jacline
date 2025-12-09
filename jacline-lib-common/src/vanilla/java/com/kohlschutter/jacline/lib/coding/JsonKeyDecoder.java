@@ -33,11 +33,9 @@ public final class JsonKeyDecoder implements KeyDecoder {
   private static final JsonProvider PROVIDER = JsonProvider.provider();
   private final JsonParser parser;
   private final JsonObject object;
-  private final CodingServiceProvider csp;
 
-  public JsonKeyDecoder(CodingServiceProvider csp, String expectedCodedType, Object encoded)
+  public JsonKeyDecoder(String expectedCodedType, Object encoded)
       throws CodingException {
-    this.csp = csp;
     if (encoded == null) {
       parser = null;
       object = null;
@@ -62,10 +60,7 @@ public final class JsonKeyDecoder implements KeyDecoder {
     }
 
     if (expectedCodedType != null && object != null) {
-      String javaClass = stringForKey("javaClass");
-      if (!expectedCodedType.equals(javaClass)) {
-        throw CodingException.withUnexpectedType(expectedCodedType, javaClass);
-      }
+      assertCodedType(expectedCodedType);
     }
   }
 
@@ -125,7 +120,17 @@ public final class JsonKeyDecoder implements KeyDecoder {
   }
 
   @Override
-  public CodingServiceProvider provider() {
-    return csp;
+  public SequenceDecoder sequenceDecoder(Object encoded) throws CodingException {
+    return new JsonSequenceDecoder(encoded);
+  }
+
+  @Override
+  public KeyDecoder keyDecoder(String expectedCodedType, Object encoded) throws CodingException {
+    return new JsonKeyDecoder(expectedCodedType, encoded);
+  }
+
+  @Override
+  public String getCodedType() throws CodingException {
+    return stringForKey("javaClass");
   }
 }

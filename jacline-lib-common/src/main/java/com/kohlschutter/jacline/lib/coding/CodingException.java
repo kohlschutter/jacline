@@ -47,6 +47,6 @@ public class CodingException extends IOException {
 
   @JsMethod
   public static CodingException withUnexpectedType(String expected, String found) {
-    return new CodingException("Unexpected type: " + found + "; expected: " + expected);
+    return new CodingException("Unexpected coding type: " + found + "; expected: " + expected);
   }
 }

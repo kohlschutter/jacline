@@ -23,13 +23,10 @@ import com.kohlschutter.jacline.lib.log.CommonLog;
 import jsinterop.base.JsPropertyMap;
 
 public final class JaclineKeyDecoder implements KeyDecoder {
-  private final CodingServiceProvider csp;
   private final JsPropertyMap<?> object;
   private final String expectedCodedType;
 
-  public JaclineKeyDecoder(CodingServiceProviderJaclineImpl csp, String expectedCodedType,
-      Object encoded) throws CodingException {
-    this.csp = csp;
+  public JaclineKeyDecoder(String expectedCodedType, Object encoded) throws CodingException {
     this.expectedCodedType = expectedCodedType;
     if (encoded == null) {
       object = null;
@@ -40,10 +37,7 @@ public final class JaclineKeyDecoder implements KeyDecoder {
     }
 
     if (expectedCodedType != null && object != null) {
-      String javaClass = stringForKey("javaClass");
-      if (!expectedCodedType.equals(javaClass)) {
-        throw CodingException.withUnexpectedType(expectedCodedType, javaClass);
-      }
+      assertCodedType(expectedCodedType);
     }
   }
 
@@ -113,7 +107,17 @@ public final class JaclineKeyDecoder implements KeyDecoder {
   }
 
   @Override
-  public CodingServiceProvider provider() {
-    return csp;
+  public SequenceDecoder sequenceDecoder(Object encoded) throws CodingException {
+    return new JaclineSequenceDecoder(encoded);
+  }
+
+  @Override
+  public KeyDecoder keyDecoder(String type, Object encoded) throws CodingException {
+    return new JaclineKeyDecoder(type, encoded);
+  }
+
+  @Override
+  public String getCodedType() throws CodingException {
+    return stringForKey("javaClass");
   }
 }

@@ -20,14 +20,14 @@ package com.kohlschutter.jacline.lib.coding;
 import java.io.IOException;
 
 public class StandardArrayDecoders {
-  public static ArrayDecoder<Object> objects(KeyDecoderProvider provider) {
-    return objectsWithDecoder(provider, null, (l) -> new Object[l]);
+  public static ArrayDecoder<Object> objects(KeyDecoder keyDecoder) {
+    return objectsWithDecoder(keyDecoder, null, (l) -> new Object[l]);
   }
 
-  public static <T> ArrayDecoder<T> objectsWithDecoder(KeyDecoderProvider provider,
+  public static <T> ArrayDecoder<T> objectsWithDecoder(KeyDecoder keyDecoder,
       ObjectDecoder<T> decoder, ArrayCreator<T> arrayCreator) {
     return (serialized) -> {
-      try (SequenceDecoder dec = provider.sequenceDecoder(serialized)) {
+      try (SequenceDecoder dec = keyDecoder.sequenceDecoder(serialized)) {
         T[] array = arrayCreator.newArray(dec.size());
         dec.objects(array.length, decoder, (e) -> array[dec.position()] = e);
         assert (dec.position() == dec.size());
@@ -38,9 +38,9 @@ public class StandardArrayDecoders {
     };
   }
 
-  public static ArrayDecoder<String> strings(CodingServiceProvider csp) {
+  public static ArrayDecoder<String> strings(KeyDecoder keyDecoder) {
     return (serialized) -> {
-      try (SequenceDecoder dec = csp.sequenceDecoder(serialized)) {
+      try (SequenceDecoder dec = keyDecoder.sequenceDecoder(serialized)) {
         String[] array = new String[dec.size()];
         dec.strings(array.length, (e) -> array[dec.position()] = e);
         assert (dec.position() == dec.size());
@@ -51,9 +51,9 @@ public class StandardArrayDecoders {
     };
   }
 
-  public static ArrayDecoder<Boolean> booleans(CodingServiceProvider csp) {
+  public static ArrayDecoder<Boolean> booleans(KeyDecoder keyDecoder) {
     return (serialized) -> {
-      try (SequenceDecoder dec = csp.sequenceDecoder(serialized)) {
+      try (SequenceDecoder dec = keyDecoder.sequenceDecoder(serialized)) {
         Boolean[] array = new Boolean[dec.size()];
         dec.booleans(array.length, (e) -> array[dec.position()] = e);
         assert (dec.position() == dec.size());
@@ -64,9 +64,9 @@ public class StandardArrayDecoders {
     };
   }
 
-  public static ArrayDecoder<Number> numbers(CodingServiceProvider csp) throws CodingException {
+  public static ArrayDecoder<Number> numbers(KeyDecoder keyDecoder) throws CodingException {
     return (serialized) -> {
-      try (SequenceDecoder dec = csp.sequenceDecoder(serialized)) {
+      try (SequenceDecoder dec = keyDecoder.sequenceDecoder(serialized)) {
         Number[] array = new Number[dec.size()];
         dec.numbers(array.length, (e) -> array[dec.position()] = e);
         assert (dec.position() == dec.size());
@@ -77,14 +77,14 @@ public class StandardArrayDecoders {
     };
   }
 
-  public static ArrayDecoder<Object[]> arrays(CodingServiceProvider csp) {
-    return arraysWithDecoder(csp, null, (l) -> new Object[l][]);
+  public static ArrayDecoder<Object[]> arrays(KeyDecoder keyDecoder) {
+    return arraysWithDecoder(keyDecoder, null, (l) -> new Object[l][]);
   }
 
-  public static <T> ArrayDecoder<T[]> arraysWithDecoder(CodingServiceProvider csp,
+  public static <T> ArrayDecoder<T[]> arraysWithDecoder(KeyDecoder keyDecoder,
       ArrayDecoder<T> decoder, ArrayCreator<T[]> arrayCreator) {
     return (serialized) -> {
-      try (SequenceDecoder dec = csp.sequenceDecoder(serialized)) {
+      try (SequenceDecoder dec = keyDecoder.sequenceDecoder(serialized)) {
         T[][] array = arrayCreator.newArray(dec.size());
         dec.arrays(array.length, decoder, (e) -> array[dec.position()] = e);
         assert (dec.position() == dec.size());

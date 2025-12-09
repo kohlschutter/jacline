@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 
 import com.kohlschutter.jacline.lib.coding.CodingException;
 import com.kohlschutter.jacline.lib.coding.CodingServiceProvider;
+import com.kohlschutter.jacline.lib.coding.KeyDecoder;
 
 public class HelloWorldTest {
   private static final CodingServiceProvider CSP = CodingServiceProvider.getDefault();
@@ -36,25 +37,32 @@ public class HelloWorldTest {
     assertEquals(
         "{\"javaClass\":\"com.kohlschutter.jacline.samples.helloworld.HelloWorld\",\"message\":\"Hello from Java\","
             + "\"obj\":{\"javaClass\":\"SomeObjectType\",\"indiana\":false,\"pi\":3.14},\"stringArray\":null}",
-        hw.encode(null).toString());
+        hw.encode(CSP).toString());
   }
 
   @Test
   public void testDecoder() throws Exception {
     HelloWorld hw = new HelloWorld();
-    Object encode = hw.encode(null);
+    Object encode = hw.encode(CSP);
 
-    HelloWorld hw1a = HelloWorld.decode(CSP, encode); // JsonObject shortcut
-    assertEquals(hw.getMessage(), hw1a.getMessage());
-    assertEquals(encode, hw1a.encode(null));
+    try (KeyDecoder dec = CSP.keyDecoder(null, encode)) {
+      HelloWorld hw1a = HelloWorld.decode(dec); // JsonObject shortcut
+      assertEquals(hw.getMessage(), hw1a.getMessage());
+      assertEquals(encode, hw1a.encode(CSP));
+    }
 
-    HelloWorld hw1b = HelloWorld.decode(CSP, encode.toString()); // String
-    assertEquals(hw.getMessage(), hw1b.getMessage());
-    assertEquals(encode.toString(), hw1b.encode(null).toString());
+    try (KeyDecoder dec = CSP.keyDecoder(null, encode.toString())) {
+      HelloWorld hw1b = HelloWorld.decode(dec); // String
+      assertEquals(hw.getMessage(), hw1b.getMessage());
+      assertEquals(encode.toString(), hw1b.encode(CSP).toString());
+    }
 
-    HelloWorld hw1c = HelloWorld.decode(CSP, new StringReader(encode.toString())); // Reader
-    assertEquals(hw.getMessage(), hw1c.getMessage());
-    assertEquals(encode.toString(), hw1c.encode(null).toString());
+    try (KeyDecoder dec = CSP.keyDecoder(KeyDecoder.ANY_CODED_TYPE, new StringReader(encode
+        .toString()))) {
+      HelloWorld hw1c = HelloWorld.decode(dec); // Reader
+      assertEquals(hw.getMessage(), hw1c.getMessage());
+      assertEquals(encode.toString(), hw1c.encode(CSP).toString());
+    }
   }
 
   @Test
@@ -63,10 +71,12 @@ public class HelloWorldTest {
         + "\"message\":\"Greetings, jacline user!\"," + "\"obj\":{"
         + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":false," + "\"pi\":3.14" + "},"
         + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}";
-    HelloWorld hw = HelloWorld.decode(CSP, json);
 
-    assertEquals("Greetings, jacline user!", hw.getMessage());
-    assertEquals(json, hw.encode(null).toString());
+    try (KeyDecoder dec = CSP.keyDecoder(KeyDecoder.ANY_CODED_TYPE, json)) {
+      HelloWorld hw = HelloWorld.decode(dec);
+      assertEquals("Greetings, jacline user!", hw.getMessage());
+      assertEquals(json, hw.encode(CSP).toString());
+    }
   }
 
   @Test
@@ -76,6 +86,8 @@ public class HelloWorldTest {
         + "\"javaClass\":\"SomeObjectType\"," + "\"indiana\":true," + "\"pi\":4" + "},"
         + "\"stringArray\":[\"one\",\"two\",\"mississippi\"]" + "}";
 
-    assertThrows(CodingException.class, () -> HelloWorld.decode(CSP, json));
+    try (KeyDecoder dec = CSP.keyDecoder(KeyDecoder.ANY_CODED_TYPE, json)) {
+      assertThrows(CodingException.class, () -> HelloWorld.decode(dec));
+    }
   }
 }

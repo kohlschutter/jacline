@@ -26,13 +26,10 @@ import elemental2.core.JsArray;
 public final class JaclineSequenceDecoder implements SequenceDecoder {
   private int pos = 0;
   private final int length;
-  private final CodingServiceProviderJaclineImpl csp;
   private JsArray<Object> array;
 
   @SuppressWarnings("unchecked")
-  public JaclineSequenceDecoder(CodingServiceProviderJaclineImpl csp, Object encoded)
-      throws CodingException {
-    this.csp = csp;
+  public JaclineSequenceDecoder(Object encoded) throws CodingException {
 
     if (encoded == null) {
       this.array = null;
@@ -178,4 +175,5 @@ public final class JaclineSequenceDecoder implements SequenceDecoder {
   @Override
   public void close() throws IOException {
   }
+
 }

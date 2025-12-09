@@ -34,15 +34,12 @@ public final class JsonKeyEncoder implements KeyEncoder {
   private final JsonKeyEncoder parent;
   private final JsonObjectBuilder builder;
   private final String parentKey;
-  private final CodingServiceProviderJsonImpl csp;
 
-  public JsonKeyEncoder(CodingServiceProviderJsonImpl csp, String type) {
-    this(csp, type, null, null);
+  public JsonKeyEncoder(String type) {
+    this(type, null, null);
   }
 
-  private JsonKeyEncoder(CodingServiceProviderJsonImpl csp, String type, JsonKeyEncoder parent,
-      String parentKey) {
-    this.csp = csp;
+  private JsonKeyEncoder(String type, JsonKeyEncoder parent, String parentKey) {
     this.parent = parent;
     this.parentKey = parentKey;
     if (parent != null) {
@@ -114,7 +111,7 @@ public final class JsonKeyEncoder implements KeyEncoder {
 
   @Override
   public KeyEncoder beginEncodeObject(String key, String type) {
-    return new JsonKeyEncoder(csp, type, this, key);
+    return new JsonKeyEncoder(type, this, key);
   }
 
   @Override
@@ -136,7 +133,13 @@ public final class JsonKeyEncoder implements KeyEncoder {
   }
 
   @Override
-  public CodingServiceProvider provider() {
-    return csp;
+  public SequenceEncoder sequenceEncoder() {
+    return new JsonSequenceEncoder();
   }
+
+  @Override
+  public KeyEncoder keyEncoder(String type) throws CodingException {
+    return new JsonKeyEncoder(type);
+  }
+
 }
