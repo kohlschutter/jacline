@@ -17,6 +17,7 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.lib.json.JSON;
 import com.kohlschutter.jacline.lib.log.CommonLog;
 
@@ -26,6 +27,7 @@ public final class JaclineKeyDecoder implements KeyDecoder {
   private final JsPropertyMap<?> object;
   private final String expectedCodedType;
 
+  @SuppressFBWarnings("EI_EXPOSE_REP2")
   public JaclineKeyDecoder(String expectedCodedType, Object encoded) throws CodingException {
     this.expectedCodedType = expectedCodedType;
     if (encoded == null) {
@@ -51,6 +53,7 @@ public final class JaclineKeyDecoder implements KeyDecoder {
   }
 
   @Override
+  @SuppressFBWarnings("NP_BOOLEAN_RETURN_NULL")
   public Boolean booleanForKey(String key) {
     if (isNull(key)) {
       return null;

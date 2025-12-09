@@ -30,6 +30,7 @@ public class CodingAdvisory {
   }
 
   @SuppressFBWarnings("EI_EXPOSE_REP")
+  @SuppressWarnings("PMD.MethodReturnsInternalArray")
   public String[] getKeys() {
     return keys;
   }

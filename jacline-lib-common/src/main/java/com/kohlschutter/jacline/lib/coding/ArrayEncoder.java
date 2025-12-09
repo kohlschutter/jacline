@@ -24,6 +24,7 @@ import java.io.Closeable;
  *
  * @author Christian Kohlschütter
  */
+@SuppressWarnings("PMD.ImplicitFunctionalInterface")
 public interface ArrayEncoder extends Closeable {
   /**
    * Returns an object that contains the encoded contents of the given array.

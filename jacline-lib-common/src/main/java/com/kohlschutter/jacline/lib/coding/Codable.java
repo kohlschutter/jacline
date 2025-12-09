@@ -36,5 +36,6 @@ import com.kohlschutter.jacline.annotations.JsServiceProvider;
  * @author Christian Kohlschütter
  * @see JsServiceProvider
  */
+@SuppressWarnings("PMD.ImplicitFunctionalInterface")
 public interface Codable extends ObjectEncoder {
 }

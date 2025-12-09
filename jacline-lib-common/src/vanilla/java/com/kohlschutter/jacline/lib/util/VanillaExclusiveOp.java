@@ -17,6 +17,8 @@
  */
 package com.kohlschutter.jacline.lib.util;
 
+import java.util.Objects;
+
 import com.kohlschutter.jacline.annotations.JsIgnoreType;
 
 /**
@@ -79,6 +81,6 @@ final class VanillaExclusiveOp implements ExclusiveOp {
 
   @Override
   public boolean isCurrent(Object reservation) {
-    return reservation != null && this.vanillaDelay == reservation;
+    return reservation != null && Objects.equals(this.vanillaDelay, reservation);
   }
 }

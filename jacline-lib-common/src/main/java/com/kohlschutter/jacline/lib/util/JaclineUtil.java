@@ -45,7 +45,7 @@ public final class JaclineUtil {
     if (b == null) {
       return null;
     } else {
-      return b.booleanValue();
+      return b;
     }
   }
 

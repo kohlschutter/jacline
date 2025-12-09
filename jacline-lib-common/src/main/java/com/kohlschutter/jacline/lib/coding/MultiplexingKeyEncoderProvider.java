@@ -17,11 +17,13 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
+import java.util.Arrays;
+
 public final class MultiplexingKeyEncoderProvider implements KeyEncoderProvider {
   private final KeyEncoderProvider[] providers;
 
   public MultiplexingKeyEncoderProvider(KeyEncoderProvider... providers) {
-    this.providers = providers;
+    this.providers = Arrays.copyOf(providers, providers.length);
   }
 
   final class MultiplexingKeyEncoder implements KeyEncoder {

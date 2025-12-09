@@ -37,6 +37,7 @@ import java.io.IOException;
  * @author Christian Kohlschütter
  */
 @SuppressWarnings("unusable-by-js" /* for "extends Closeable" */ )
+@FunctionalInterface
 public interface JsCloseable extends Closeable {
   @Override
   void close() throws IOException;

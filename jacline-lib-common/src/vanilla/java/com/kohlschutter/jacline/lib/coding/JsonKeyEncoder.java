@@ -119,8 +119,10 @@ public final class JsonKeyEncoder implements KeyEncoder {
     JsonKeyEncoder p = this.parent;
     if (p != null) {
       p.builder.add(parentKey, this.builder);
+      return p;
+    } else {
+      return this;
     }
-    return p;
   }
 
   @Override

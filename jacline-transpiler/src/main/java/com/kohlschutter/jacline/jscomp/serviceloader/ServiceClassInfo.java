@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Utility class for ServiceLoader shim code generation. 
+ * Utility class for ServiceLoader shim code generation.
  * 
  * @author Christian Kohlschütter
  */
@@ -55,7 +55,10 @@ public final class ServiceClassInfo {
 
     callback.notify(originalFile, newPath, service, providers);
 
-    Files.createDirectories(newPath.getParent());
+    Path parentPath = newPath.getParent();
+    if (parentPath != null) {
+      Files.createDirectories(parentPath);
+    }
 
     Path tmpFile = Files.createTempFile(generatedCodeOutputPath, "ServiceClassInfo", ".tmp");
     try {
@@ -121,9 +124,9 @@ public final class ServiceClassInfo {
           out.println("  if (" + providerConst + ".$clinit) {");
           out.println("      " + providerConst + ".$clinit();");
           out.println("  }");
-          out.println(
-              "  jaclineServiceLoader_ServiceLoader.m_jaclineRegisterService__java_lang_Class__java_util_ServiceLoader_ServiceProvider__void(serviceClass, "
-                  + providerConst + ".$create__);");
+          out.println("  jaclineServiceLoader_ServiceLoader."
+              + "m_jaclineRegisterService__java_lang_Class__java_util_ServiceLoader_ServiceProvider__void"
+              + "(serviceClass, " + providerConst + ".$create__);");
         }
 
         out.println();

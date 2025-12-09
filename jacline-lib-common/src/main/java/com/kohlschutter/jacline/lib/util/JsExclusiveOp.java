@@ -18,6 +18,7 @@
 package com.kohlschutter.jacline.lib.util;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import elemental2.dom.DomGlobal;
 
@@ -28,7 +29,7 @@ import elemental2.dom.DomGlobal;
  */
 final class JsExclusiveOp implements ExclusiveOp {
   private volatile double timeoutID = -1;
-  private int id = 0;
+  private final AtomicInteger id = new AtomicInteger(0);
 
   JsExclusiveOp() {
   }
@@ -41,8 +42,12 @@ final class JsExclusiveOp implements ExclusiveOp {
     if (timeoutID != -1) {
       DomGlobal.clearTimeout(timeoutID);
       timeoutID = -1;
-      ++id;
+      incrementId();
     }
+  }
+
+  private int incrementId() {
+    return id.incrementAndGet();
   }
 
   /**
@@ -57,12 +62,12 @@ final class JsExclusiveOp implements ExclusiveOp {
 
   @Override
   public Object reserve() {
-    return ++id;
+    return incrementId();
   }
 
   @Override
   public boolean isCurrent(Object expectedId) {
-    return Objects.equals(id, expectedId);
+    return Objects.equals(id.get(), expectedId);
   }
 
   /**
@@ -75,9 +80,9 @@ final class JsExclusiveOp implements ExclusiveOp {
   public void schedule(double delay, Runnable callback) {
     cancel();
 
-    int expectedId = ++id;
+    int expectedId = incrementId();
     timeoutID = DomGlobal.setTimeout((x) -> {
-      if (timeoutID != -1 && id == expectedId) {
+      if (timeoutID != -1 && id.get() == expectedId) {
         callback.run();
         timeoutID = -1;
       }

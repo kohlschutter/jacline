@@ -768,7 +768,7 @@ public class JaclineCompileMojo extends AbstractMojo {
     for (Map.Entry<Object, Object> en : serviceProviders.entrySet()) {
       String provider = (String) en.getKey();
       for (String service : ((String) en.getValue()).split(",")) {
-        service = service.trim();
+        service = service.trim(); // NOPMD.AvoidReassigningLoopVariables
         if (service.isEmpty()) {
           continue;
         }

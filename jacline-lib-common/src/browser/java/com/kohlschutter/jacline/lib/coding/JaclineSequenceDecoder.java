@@ -19,6 +19,7 @@ package com.kohlschutter.jacline.lib.coding;
 
 import java.io.IOException;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
 import com.kohlschutter.jacline.lib.json.JSON;
 
 import elemental2.core.JsArray;
@@ -26,8 +27,9 @@ import elemental2.core.JsArray;
 public final class JaclineSequenceDecoder implements SequenceDecoder {
   private int pos = 0;
   private final int length;
-  private JsArray<Object> array;
+  private final JsArray<Object> array;
 
+  @SuppressFBWarnings("EI_EXPOSE_REP2")
   @SuppressWarnings("unchecked")
   public JaclineSequenceDecoder(Object encoded) throws CodingException {
 

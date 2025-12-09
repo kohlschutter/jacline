@@ -17,11 +17,13 @@
  */
 package com.kohlschutter.jacline.lib.coding;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
+
 import elemental2.core.JsArray;
 
 public final class JaclineSequenceEncoder implements SequenceEncoder {
   private final JaclineSequenceEncoder parent;
-  private JsArray<Object> array;
+  private final JsArray<Object> array;
 
   public JaclineSequenceEncoder() {
     this(null);
@@ -80,6 +82,7 @@ public final class JaclineSequenceEncoder implements SequenceEncoder {
     return p;
   }
 
+  @SuppressFBWarnings("EI_EXPOSE_REP")
   @Override
   public Object getEncoded() {
     return array;

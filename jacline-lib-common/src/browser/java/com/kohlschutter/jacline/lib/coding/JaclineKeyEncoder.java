@@ -20,6 +20,8 @@ package com.kohlschutter.jacline.lib.coding;
 import java.util.Collection;
 import java.util.Objects;
 
+import com.kohlschutter.annotations.compiletime.SuppressFBWarnings;
+
 import jsinterop.base.JsPropertyMap;
 
 public final class JaclineKeyEncoder implements KeyEncoder {
@@ -82,10 +84,13 @@ public final class JaclineKeyEncoder implements KeyEncoder {
     JaclineKeyEncoder p = this.parent;
     if (p != null) {
       p.object.set(parentKey, this.object);
+      return p;
+    } else {
+      return this;
     }
-    return p;
   }
 
+  @SuppressFBWarnings("EI_EXPOSE_REP")
   @Override
   public JsPropertyMap<Object> getEncoded() {
     return object;

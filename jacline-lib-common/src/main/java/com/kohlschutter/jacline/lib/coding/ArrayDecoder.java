@@ -25,6 +25,7 @@ import java.io.Closeable;
  * @param <T> The type of the array.
  * @author Christian Kohlschütter
  */
+@SuppressWarnings("PMD.ImplicitFunctionalInterface")
 public interface ArrayDecoder<T> extends Closeable {
   /**
    * Decodes an array from a serialized representation.

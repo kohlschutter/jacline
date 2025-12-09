@@ -47,6 +47,7 @@ import com.kohlschutter.jacline.jscomp.serviceloader.PatchNotifier;
 import com.kohlschutter.jacline.jscomp.serviceloader.ServiceClassInfo;
 import com.kohlschutter.jacline.jscomp.serviceloader.ServiceClassMap;
 
+@SuppressWarnings("PMD.CouplingBetweenObjects")
 public class ClosureCompiler implements Closeable {
   private static List<SourceFile> builtinExterns;
 
@@ -126,7 +127,11 @@ public class ClosureCompiler implements Closeable {
   private Map<String, List<Path>> baseClassnameMappingForFilesMap(Map<Path, SourceFile> filesMap) {
     Map<String, List<Path>> baseClassnameMap = new HashMap<>(); // NestedService -> path...
     for (Path p : filesMap.keySet()) {
-      String filename = p.getFileName().toString();
+      Path filenamePath = p.getFileName();
+      if (filenamePath == null) {
+        continue;
+      }
+      String filename = filenamePath.toString();
       String base;
 
       if (!filename.endsWith(".java.js")) {

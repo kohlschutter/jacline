@@ -24,6 +24,15 @@ public class ResultSetRowKeyDecoderProvider implements KeyDecoderProvider {
       };
 
   /**
+   * Constructs a new {@link ResultSetRowKeyDecoderProvider}, to be customized via
+   * {@link #setColumnForKey(String, String)}.
+   * 
+   * @see #getDefaultInstance()
+   */
+  protected ResultSetRowKeyDecoderProvider() {
+  }
+
+  /**
    * Returns the default {@link ResultSetRowKeyDecoderProvider} instance, which does not allow or
    * require any further customization.
    * 
@@ -32,15 +41,6 @@ public class ResultSetRowKeyDecoderProvider implements KeyDecoderProvider {
   @SuppressFBWarnings("MS_EXPOSE_REP")
   public static ResultSetRowKeyDecoderProvider getDefaultInstance() {
     return DEFAULT;
-  }
-
-  /**
-   * Constructs a new {@link ResultSetRowKeyDecoderProvider}, to be customized via
-   * {@link #setColumnForKey(String, String)}.
-   * 
-   * @see #getDefaultInstance()
-   */
-  public ResultSetRowKeyDecoderProvider() {
   }
 
   private String columnForKey(String key) {
@@ -142,8 +142,7 @@ public class ResultSetRowKeyDecoderProvider implements KeyDecoderProvider {
       }
 
       @Override
-      public KeyDecoder keyDecoder(String type, Object obj)
-          throws CodingException {
+      public KeyDecoder keyDecoder(String type, Object obj) throws CodingException {
         throw new UnsupportedOperationException(); // FIXME
       }
 
