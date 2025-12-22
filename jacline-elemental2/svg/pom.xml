@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-elemental2-svg</artifactId>
+    <name>jacline-elemental2-svg</name>
     <packaging>jar</packaging>
 
     <description>Thin Java abstractions for the native SVG APIs.</description>

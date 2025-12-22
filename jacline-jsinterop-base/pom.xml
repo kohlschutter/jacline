@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-jsinterop-base</artifactId>
+    <name>jacline-jsinterop-base</name>
     <packaging>jar</packaging>
 
     <description>Base classes and utilities that provide access to JavaScript

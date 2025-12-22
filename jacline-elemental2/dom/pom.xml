@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-elemental2-dom</artifactId>
+    <name>jacline-elemental2-dom</name>
     <packaging>jar</packaging>
 
     <description>Thin Java abstractions for the standard built-in objects for

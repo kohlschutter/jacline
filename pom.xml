@@ -11,6 +11,7 @@
         <relativePath>../kohlschutter-parent/pom.xml</relativePath>
     </parent>
 
+    <name>jacline</name>
     <groupId>com.kohlschutter.jacline</groupId>
     <artifactId>jacline</artifactId>
     <version>1.0.3</version>

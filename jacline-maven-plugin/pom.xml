@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>jacline-maven-plugin</artifactId>
+    <name>jacline-maven-plugin</name>
     <packaging>maven-plugin</packaging>
 
     <description>Jacline compiler Maven Plugin</description>

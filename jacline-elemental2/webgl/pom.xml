@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-elemental2-webgl</artifactId>
+    <name>jacline-elemental2-webgl</name>
     <packaging>jar</packaging>
 
     <description>Thin Java abstractions for the native Web Graphics Library APIs.</description>

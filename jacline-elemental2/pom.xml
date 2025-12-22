@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-elemental2</artifactId>
+    <name>jacline-elemental2</name>
     <packaging>pom</packaging>
 
     <description>Thin Java abstractions for the standard built-in objects for

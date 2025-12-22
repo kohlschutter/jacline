@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>jacline-annotations</artifactId>
+    <name>jacline-annotations</name>
 
     <properties>
     </properties>

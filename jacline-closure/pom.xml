@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>jacline-closure</artifactId>
+    <name>jacline-closure</name>
 
     <properties>
         <kohlschutter.java.release>21</kohlschutter.java.release>

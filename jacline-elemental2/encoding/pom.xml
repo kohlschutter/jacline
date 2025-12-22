@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-elemental2-encoding</artifactId>
+    <name>jacline-elemental2-encoding</name>
     <packaging>jar</packaging>
 
     <description>Thin Java abstractions for the native Encoding API.</description>

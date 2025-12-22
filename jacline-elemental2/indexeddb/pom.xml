@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-elemental2-indexeddb</artifactId>
+    <name>jacline-elemental2-indexeddb</name>
     <packaging>jar</packaging>
 
     <description>Thin Java abstractions for the IndexedDB APIs</description>

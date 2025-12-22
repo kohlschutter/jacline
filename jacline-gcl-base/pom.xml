@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>jacline-gcl-base</artifactId>
+    <name>jacline-gcl-base</name>
     <description>Google Closure Library essentials for j2cl/jacline</description>
 
     <properties>

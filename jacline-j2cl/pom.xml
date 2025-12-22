@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>jacline-j2cl</artifactId>
+    <name>jacline-j2cl</name>
 
     <properties>
         <kohlschutter.java.release>21</kohlschutter.java.release>

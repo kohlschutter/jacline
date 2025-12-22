@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>jacline-lib-common</artifactId>
+    <name>jacline-lib-common</name>
 
     <properties>
         <jacline.version>${project.version}</jacline.version>

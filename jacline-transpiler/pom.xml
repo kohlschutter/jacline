@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>jacline-transpiler</artifactId>
+    <name>jacline-transpiler</name>
 
     <properties>
         <kohlschutter.project.notice.file>${project.parent.basedir}/NOTICE</kohlschutter.project.notice.file>

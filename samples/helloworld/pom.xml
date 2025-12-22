@@ -13,6 +13,7 @@
 
     <groupId>com.kohlschutter.jacline.samples</groupId>
     <artifactId>helloworld</artifactId>
+    <name>jacline-sample-helloworld</name>
 
     <properties>
         <!-- In your own projects, replace ${project.version} with the actual

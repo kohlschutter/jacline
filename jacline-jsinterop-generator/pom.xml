@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-jsinterop-generator</artifactId>
+    <name>jacline-jsinterop-generator</name>
     <packaging>jar</packaging>
 
     <properties>

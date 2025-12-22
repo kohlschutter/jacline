@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-elemental2-webstorage</artifactId>
+    <name>jacline-elemental2-webstorage</name>
     <packaging>jar</packaging>
 
     <description>Thin Java abstractions for the native Web Storage APIs.</description>

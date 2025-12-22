@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-elemental2-media</artifactId>
+    <name>jacline-elemental2-media</name>
     <packaging>jar</packaging>
 
     <description>Thin Java abstractions for the native media APIs provided by the browser.</description>

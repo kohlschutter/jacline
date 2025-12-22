@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>jacline-elemental2-core</artifactId>
+    <name>jacline-elemental2-core</name>
     <packaging>jar</packaging>
 
     <description>Thin Java abstractions for the standard built-in objects for
