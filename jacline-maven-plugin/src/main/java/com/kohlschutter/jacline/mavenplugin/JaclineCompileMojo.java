@@ -293,7 +293,12 @@ public class JaclineCompileMojo extends AbstractMojo {
       }
 
       if (Files.exists(jaclineWorkDirectoryPath)) {
-        IOUtil.deleteRecursively(jaclineWorkDirectoryPath);
+        if (jaclineWorkDirectoryPath.equals(jaclineMetaInfDirectoryPath) || jaclineWorkDirectoryPath
+            .startsWith(jaclineMetaInfDirectoryPath)) {
+          // handled above
+        } else {
+          IOUtil.deleteRecursively(jaclineWorkDirectoryPath);
+        }
       }
       Files.createDirectories(jaclineMetaInfDirectoryPath);
     } catch (IOException e) {
