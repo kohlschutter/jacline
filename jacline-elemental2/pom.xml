@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.kohlschutter.jacline</groupId>
         <artifactId>jacline</artifactId>
-        <version>1.0.3</version>
+        <version>1.1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -110,6 +110,7 @@
                             <transpileSourceRoots>
                                 <transpileSourceRoot>src/main/java</transpileSourceRoot>
                             </transpileSourceRoots>
+                            <deleteJaclineMetaInfDirectory>false</deleteJaclineMetaInfDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -144,5 +145,6 @@
         <module>webcrypto</module>
         <module>webgl</module>
         <module>webstorage</module>
+        <module>barcode</module>
     </modules>
 </project>

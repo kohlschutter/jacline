@@ -14,12 +14,12 @@
     <name>jacline</name>
     <groupId>com.kohlschutter.jacline</groupId>
     <artifactId>jacline</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
     <packaging>pom</packaging>
 
     <properties>
         <kohlschutter.java.release>11</kohlschutter.java.release>
-        <jacline.previous.version>1.0.2</jacline.previous.version>
+        <jacline.previous.version>1.0.3</jacline.previous.version>
         <jacline.version>${jacline.previous.version}</jacline.version>
         <license.skip>true</license.skip>
     </properties>
