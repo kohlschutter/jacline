@@ -14,8 +14,11 @@ bazel build java/...
 cd -
 
 fromBase=elemental2/bazel-bin/java/elemental2
+fromSrcBase=elemental2/java/elemental2
 
-for module in promise core dom indexeddb media svg webassembly webcrypto webgl webstorage; do
+for module in promise core dom indexeddb media svg webassembly webcrypto webgl webstorage \
+	barcode \
+; do
   src="${module}/src"
   javaOut=${src}/main/java
   restOut=${src}/main/resources/META-INF/jacline/generated/
@@ -24,6 +27,7 @@ for module in promise core dom indexeddb media svg webassembly webcrypto webgl w
 
   cp -r "$fromBase/$module/${module}-j2cl.js"/* "$javaOut"/
   #cp -r "$fromBase/$module/${module}-j2cl.js/"* "$restOut"/
+  find $fromSrcBase/$module -name "*.extern.js" -exec cp {} $restOut/ \;
 
   chmod 755 $(find ${src} -type d)
   chmod 644 $(find ${src} -type f)
