@@ -149,7 +149,6 @@ final class FuturePledge<T> implements Pledge<T> {
       additionalFuture.complete(nullResult);
     }
 
-    @SuppressWarnings("cast")
     CompletableFuture<T[]> future = (CompletableFuture<T[]>) CompletableFuture.allOf(
         unwrappedFuturesPlus1).thenApply((v) -> {
           return results;
